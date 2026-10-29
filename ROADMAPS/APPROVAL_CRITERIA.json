@@ -1,0 +1,17 @@
+{
+  "schema": "loaded-pair-lane-criteria-v1",
+  "version": 1,
+  "status": "PREREGISTERED",
+  "registered_on": "2026-10-29",
+  "minimum_independent_seeds": 2,
+  "minimum_evaluated_legal_alternatives": 2,
+  "required_lane_fields": ["condition", "objective", "metric", "direction", "compared_alternatives", "uncertainty", "approval_basis", "evidence"],
+  "definitions": {
+    "GREEN": "Reviewed evidence supports the specified legal choice and objective under the stated conditions, including evaluated alternatives and uncertainty.",
+    "YELLOW": "A legal choice with documented conditional tradeoffs or uncertainty; the applicable conditions and alternatives are explicit.",
+    "RED": "A legal choice with reviewed evidence of unfavorable performance against evaluated alternatives under the stated conditions.",
+    "UNKNOWN": "Legal verification or strategy evidence is insufficient for a strategic lane.",
+    "ILLEGAL": "A separate official-rules ruling; never a strategic lane."
+  },
+  "note": "These are minimum structural evidence requirements, not a statistical confidence guarantee. One outcome, heuristic scores and a rules review alone cannot approve a lane. Criteria are hashed before the cohort and may not be changed retrospectively."
+}

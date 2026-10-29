@@ -14,6 +14,8 @@ import random
 from match_evidence import ROOT, canonical_bytes, digest, provenance
 from loaded_digivolution import BY_SEAT
 from seeded_opening_probe import seed_for
+from workflow_policy import (load_object, validate_rules_pin, validate_coverage,
+                             validate_criteria, validate_strategy_lane, validate_strategy_review)
 
 
 def file_hash(path):
@@ -141,7 +143,7 @@ def read_records(cohort_dir, summary):
     return records, issues
 
 
-def assess_eligibility(root, cohort_dir, review_path=None):
+def assess_eligibility(root, cohort_dir, review_path=None, strategy_review_path=None):
     root, cohort_dir = Path(root).resolve(), Path(cohort_dir).resolve()
     blockers = []
 
@@ -167,10 +169,12 @@ def assess_eligibility(root, cohort_dir, review_path=None):
             block('SOURCE_OR_DECK_CHANGED', str(exc))
         records, issues = read_records(cohort_dir, summary)
         blockers.extend(issues)
-        if len(records) != 60 or summary['attempted'] != 60:
-            block('FACT_FINDING_COHORT_NOT_60', f'{len(records)} records; exactly 60 required')
+        if len(records) < 60:
+            block('FACT_FINDING_COHORT_BELOW_MINIMUM', f'{len(records)} records; at least 60 required')
+        if type(summary['attempted']) is not int or summary['attempted'] != len(records):
+            block('ATTEMPT_COUNT_MISMATCH', 'Declared attempts must include every recorded seed')
         starts = Counter(record['first'] for _, record in records)
-        if starts != {'A': 30, 'B': 30}:
+        if starts['A'] < 30 or starts['A'] != starts['B'] or set(starts) != {'A', 'B'}:
             block('START_BALANCE_INVALID', str(dict(starts)))
         completed = 0
         optional = Counter()
@@ -197,6 +201,23 @@ def assess_eligibility(root, cohort_dir, review_path=None):
         result['starts'] = dict(starts)
         result['cohort_sha256'] = file_hash(cohort_dir / 'cohort.json')
         result['provenance_sha256'] = summary['provenance_sha256']
+
+        pin = None
+        try:
+            pin = validate_rules_pin(root)
+        except (OSError, ValueError, KeyError, TypeError, AttributeError) as exc:
+            block('RULES_PIN_INVALID', str(exc))
+
+        criteria, criteria_hash = None, None
+        try:
+            criteria_path = root / 'ROADMAPS/APPROVAL_CRITERIA.json'
+            criteria = validate_criteria(load_object(criteria_path))
+            criteria_hash = file_hash(criteria_path)
+            if inputs['files'].get('ROADMAPS/APPROVAL_CRITERIA.json') != criteria_hash:
+                raise ValueError('Lane criteria were not pinned before this cohort')
+        except (OSError, ValueError, KeyError, TypeError, AttributeError) as exc:
+            block('LANE_CRITERIA_INVALID', str(exc))
+            criteria = None
 
         review = None
         if review_path is None:
@@ -227,12 +248,16 @@ def assess_eligibility(root, cohort_dir, review_path=None):
                             or path.stat().st_size == 0
                             or not nonblank(source.get('citation'))):
                         raise ValueError('Official source/citation/hash invalid')
+                    if pin is not None and not any(
+                            d['id'] == source['id'] and d['file'] == source['file']
+                            and d['sha256'] == source['sha256'] for d in pin['documents']):
+                        raise ValueError('Review source is outside the pinned official snapshot')
                 reviewed = review.get('matches', [])
                 if not isinstance(reviewed, list) or not all(isinstance(r, dict) for r in reviewed):
                     raise ValueError('Match reviews must be objects')
                 by_index = {row['index']: row for row in reviewed}
-                if len(reviewed) != 60 or len(by_index) != 60:
-                    raise ValueError('Exactly 60 distinct match reviews required')
+                if len(reviewed) != len(records) or set(by_index) != {r['index'] for _, r in records}:
+                    raise ValueError('Exactly one review per recorded full match required')
                 checks = {'physical_cards', 'memory', 'timing', 'counter_windows',
                           'once_per_turn', 'optional_choices', 'terminal_state', 'card_rules'}
                 for entry, record in records:
@@ -251,6 +276,26 @@ def assess_eligibility(root, cohort_dir, review_path=None):
                 block('JUDGE_REVIEW_INVALID', str(exc))
                 review = None
 
+        try:
+            pinned_ids = {d['id'] for d in pin['documents']} if pin else set()
+            review_ids = {d['id'] for d in review['official_sources']} if review else set()
+            result['interaction_coverage'] = validate_coverage(
+                root, summary['provenance_sha256'], records, pinned_ids & review_ids, validate_snapshot)
+        except (OSError, ValueError, KeyError, TypeError, AttributeError) as exc:
+            block('INTERACTION_COVERAGE_INVALID', str(exc))
+
+        strategy_review = None
+        if strategy_review_path is None:
+            block('STRATEGY_REVIEW_MISSING', 'Rules legality review does not approve strategic lanes')
+        else:
+            try:
+                strategy_review = load_object(strategy_review_path)
+                roadmap_hashes = {s: file_hash(root / 'ROADMAPS' / (s + '.json')) for s in ('A', 'B')}
+                validate_strategy_review(strategy_review, result, inputs['pilots'], criteria_hash, roadmap_hashes)
+            except (OSError, ValueError, KeyError, TypeError, AttributeError) as exc:
+                block('STRATEGY_REVIEW_INVALID', str(exc))
+                strategy_review = None
+
         roadmap_errors = []
         for seat in ('A', 'B'):
             path = root / 'ROADMAPS' / (seat + '.json')
@@ -261,11 +306,10 @@ def assess_eligibility(root, cohort_dir, review_path=None):
                         or roadmap.get('cohort_sha256') != result['cohort_sha256']
                         or not roadmap.get('entries')
                         or roadmap.get('unknown')
-                        or review is None
-                        or review.get('roadmap_sha256', {}).get(seat) != file_hash(path)
-                        or review.get('roadmap_verdicts', {}).get(seat) != 'APPROVED'):
+                        or review is None or strategy_review is None or criteria is None):
                     raise ValueError('Missing approval, classifications, or current evidence')
                 for lane in roadmap['entries']:
+                    validate_strategy_lane(lane, criteria, criteria_hash, records)
                     if (lane['lane'] not in ('GREEN', 'YELLOW', 'RED')
                             or lane['legality'] != 'LEGAL'
                             or not lane.get('condition') or not lane.get('evidence')
@@ -288,6 +332,11 @@ def assess_eligibility(root, cohort_dir, review_path=None):
                 roadmap_errors.append(seat + ': ' + str(exc))
         if roadmap_errors:
             block('ROADMAPS_NOT_APPROVED', '; '.join(roadmap_errors))
+        result['review_separation'] = {
+            'rules_review': 'BOUND_ATTESTATION_PRESENT' if review else 'MISSING_OR_INVALID',
+            'strategy_review': 'BOUND_ATTESTATION_PRESENT' if strategy_review else 'MISSING_OR_INVALID',
+            'note': 'Neither attestation replaces the other or authenticates reviewer qualifications',
+        }
     except (OSError, ValueError, KeyError, TypeError) as exc:
         block('EVIDENCE_UNREADABLE', str(exc))
     result['eligible'] = not blockers
@@ -349,11 +398,11 @@ def write_candidate_roadmaps(root, cohort_dir):
     return maps
 
 
-def prepare_evaluation(root, cohort_dir, output, review_path=None):
+def prepare_evaluation(root, cohort_dir, output, review_path=None, strategy_review_path=None):
     """Reserve a balanced disjoint seed schedule; never fake a frozen run."""
     output = Path(output)
     output.mkdir(parents=True, exist_ok=False)
-    gate = assess_eligibility(root, cohort_dir, review_path)
+    gate = assess_eligibility(root, cohort_dir, review_path, strategy_review_path)
     summary = json.loads((Path(cohort_dir) / 'cohort.json').read_bytes())
     training_seeds = {row['seed'] for row in summary['records']}
     training_seeds.update(seed_for(i) for i in range(60))
@@ -376,7 +425,16 @@ def prepare_evaluation(root, cohort_dir, output, review_path=None):
         'frozen': False, 'evaluation_matches_played': 0, 'target_matches': 10000,
         'planned_starts': {'A': 5000, 'B': 5000},
         'schedule_file_sha256': hashlib.sha256(packed).hexdigest(),
+        'schedule_sha256': digest(schedule),
         'required_learning_enabled': False, 'gate': gate,
+        'halt_policy': {
+            'replacement_seeds_allowed': False,
+            'same_freeze_infrastructure_retry': 'REPLAY_ORIGINAL_MATCH',
+            'unresolved_rules_halt': 'BLOCKED_HALT',
+            'changed_frozen_gameplay': 'NEW_FREEZE_AND_RESTART_FULL_EVALUATION',
+            'retain_all_halted_seeds_and_traces': True,
+            'policy_function': 'workflow_policy.assess_resume',
+        },
         'remaining_execution_work': [
             'Official evidence, complete independent match reviews, and approved conditional roadmaps',
             'Atomic freeze of decks, verified rules, both pilots, and both roadmaps',
@@ -395,16 +453,17 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--cohort', type=Path, required=True)
     parser.add_argument('--review', type=Path)
+    parser.add_argument('--strategy-review', type=Path)
     parser.add_argument('--prepare', type=Path)
     parser.add_argument('--candidate-roadmaps', action='store_true')
     args = parser.parse_args()
     if args.candidate_roadmaps:
         write_candidate_roadmaps(ROOT, args.cohort)
     if args.prepare:
-        result = prepare_evaluation(ROOT, args.cohort, args.prepare, args.review)
+        result = prepare_evaluation(ROOT, args.cohort, args.prepare, args.review, args.strategy_review)
         eligible = result['gate']['eligible']
     else:
-        result = assess_eligibility(ROOT, args.cohort, args.review)
+        result = assess_eligibility(ROOT, args.cohort, args.review, args.strategy_review)
         eligible = result['eligible']
     print(json.dumps(result, indent=2))
     raise SystemExit(0 if eligible else 2)

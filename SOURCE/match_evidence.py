@@ -17,6 +17,7 @@ from loaded_effects import Copy, JudgeHalt
 from matchup_v12_attack_sources import MatchV12
 from full_match_attempt import Player, src
 from seeded_opening_probe import _select_main_action
+from workflow_policy import source_file
 
 
 class EvidenceMatch(MatchV12):
@@ -198,6 +199,17 @@ def provenance(root=ROOT):
     paths = sorted(p for p in (root / 'SOURCE').glob('*.py') if not p.name.startswith('test_'))
     paths += sorted((root / 'SOURCE').glob('*.json'))
     paths += [root / folder / filename for folder in ('DECKS', 'SOURCE') for filename in DECK_NAMES.values()]
+    # These files must exist before the cohort to preregister its format/rules
+    # and lane criteria. Coverage/reviews bind this provenance AFTER the run;
+    # hashing those here would create a circular dependency.
+    lock = root / 'RULES/RULES_LOCK.json'
+    criteria = root / 'ROADMAPS/APPROVAL_CRITERIA.json'
+    paths += [p for p in (lock, criteria) if p.exists()]
+    if lock.exists():
+        pin = json.loads(lock.read_bytes())
+        if not isinstance(pin, dict) or not isinstance(pin.get('documents'), list):
+            raise ValueError('Invalid rules-lock object')
+        paths += [source_file(root, doc['file']) for doc in pin['documents']]
     hashes = {p.relative_to(root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}
     bundle = digest(hashes)
     return {

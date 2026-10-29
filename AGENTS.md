@@ -14,14 +14,17 @@ User owns all deck construction, interpretation, and decisions; offer **no card/
 - Mark unsupported, ambiguous, or unverified mandatory interactions as **HALT** with precise card, effect, state, seed and reproducible trace. Do not silently skip them, manufacture outcomes, or treat an automatic decline of an optional effect as learned skill.
 - Keep an explicit distinction between: `SOFTWARE_COMPLETED`, `JUDGE_CERTIFIED`, `HALT`, and `EXPERIMENTAL`. Code tests and deterministic replay alone do not certify rules.
 - No actions after game end; validate memory bounds, zone/card conservation, security timing, trigger/Counter windows, and once-per-turn state.
+- Pin the selected format/region, language, rules editions, errata, restrictions, effective dates and official source hashes in `RULES/RULES_LOCK.json`. Missing pins remain UNVERIFIED and block final eligibility.
+- Separate software integrity, judge-verified legality and strategic effectiveness. A rules judge does not approve strategy colors; strategy review cannot establish legality. See `WORKFLOW.md` for the evidence contracts.
 
 ## Fixed workflow
 1. Load and lock the two exact decklists; validate 50 main cards + Digi-Eggs as listed and applicable restrictions.
-2. Run **60 complete, turn-by-turn bot-vs-bot fact-finding MATCHES**: 30 A-first, 30 B-first. Opening probes or partial turns count as zero matches.
+2. Run **at least 60 complete, turn-by-turn bot-vs-bot fact-finding MATCHES**: at least 30 starts per deck, with equal starting-player counts. Sixty is a minimum evidence cohort, not an automatic readiness certificate. Opening probes, partial turns and targeted scenarios count as zero full matches.
 3. During those matches discover only in-scope combinations, decision alternatives, interactions, and opponent responses. Judge verifies rules evidence. Fix in-scope defects and rerun affected matches / entire evidence cohort when the engine changes.
-4. Save **matchup-specific** situational GREEN / YELLOW / RED lane roadmaps, including conditions, evidence, and provenance. UNKNOWN / UNVERIFIED must remain separate until evidence supports a lane; distinguish strategically RED from judge-confirmed ILLEGAL. Do not arbitrarily promote a lane based on one outcome.
+4. Close encountered interaction/choice coverage using explicit branch inventories and targeted scenarios where needed; record evidence in `RULES/INTERACTION_COVERAGE.json`. Then save **matchup-specific** situational GREEN / YELLOW / RED lane roadmaps under the preregistered `ROADMAPS/APPROVAL_CRITERIA.json`: objective conditions, evaluated legal alternatives, trace provenance, metric/objective and uncertainty are required. UNKNOWN / UNVERIFIED remain separate; strategically RED is distinct from judge-confirmed ILLEGAL. A rules review or one winning outcome cannot approve a lane.
 5. Freeze decks, rules snapshot, both pilots, and both roadmaps with hashes. No learning or exploration in the final evaluation.
 6. Run **10,000 ACTUALLY PLAYED turn-by-turn matches**, 5,000 starts per deck, as fast as possible without simplifying effects, inventing outcomes, or violating legality. Stream compressed per-match transcripts, seeds, actions, decisions, interactions and end states. Checkpoint and resume safely.
+   Preserve every HALT's original seed and trace; never replace a halted match with a new seed. Infrastructure interruption can replay the original match under identical frozen inputs. Unresolved rules HALTs block continuation. Any change to frozen engine, rules/format, decks, pilots, criteria or roadmaps invalidates all final results and requires a new freeze and full evaluation restart.
 7. Deliver numerical results only: W/L, rate, first-player split, turn distributions, card play frequency, combo frequency, lane evidence, halts and rule-check status. Do not interpret the numbers as a deck-building recommendation.
 
 ## Current snapshot (2026-10-19)

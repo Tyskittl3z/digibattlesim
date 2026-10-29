@@ -31,7 +31,7 @@ class EvaluationGateTests(unittest.TestCase):
         result = gate.assess_eligibility(evidence.ROOT, self.out)
         self.assertEqual(result['status'], 'BLOCKED')
         self.assertFalse(result['eligible'])
-        self.assertIn('FACT_FINDING_COHORT_NOT_60', self.codes(result))
+        self.assertIn('FACT_FINDING_COHORT_BELOW_MINIMUM', self.codes(result))
         self.assertIn('INDEPENDENT_JUDGE_REVIEW_MISSING', self.codes(result))
         self.assertIn('ROADMAPS_NOT_APPROVED', self.codes(result))
 
@@ -167,7 +167,7 @@ class OfficialEvidenceTests(unittest.TestCase):
             shutil.copytree(evidence.ROOT / folder, cls.root / folder,
                             ignore=shutil.ignore_patterns('__pycache__'))
         cls.out = Path(cls.tmp.name) / 'cohort'
-        cls.summary = evidence.run_evidence_cohort(cls.out, count=60)
+        cls.summary = evidence.run_evidence_cohort(cls.out, count=62)
         (cls.root / 'RULES').mkdir()
 
     @classmethod
@@ -215,6 +215,23 @@ class OfficialEvidenceTests(unittest.TestCase):
     def test_match_citation_must_reference_a_bound_source(self):
         result = self.assess(self.review(match_citations=[{'source_id': 'absent', 'locator': 'Rule 1'}]))
         self.assertIn('JUDGE_REVIEW_INVALID', {r['code'] for r in result['blockers']})
+
+    def test_larger_balanced_cohort_is_allowed_but_does_not_imply_readiness(self):
+        result = self.assess(self.review())
+        codes = {r['code'] for r in result['blockers']}
+        self.assertEqual(result['starts'], {'A': 31, 'B': 31})
+        self.assertNotIn('FACT_FINDING_COHORT_NOT_60', codes)
+        self.assertNotIn('FACT_FINDING_COHORT_BELOW_MINIMUM', codes)
+        self.assertNotIn('START_BALANCE_INVALID', codes)
+        self.assertNotIn('JUDGE_REVIEW_INVALID', codes)
+        self.assertFalse(result['eligible'])
+
+    def test_rules_review_alone_leaves_strategy_and_coverage_blocked(self):
+        result = self.assess(self.review())
+        codes = {r['code'] for r in result['blockers']}
+        self.assertIn('STRATEGY_REVIEW_MISSING', codes)
+        self.assertIn('INTERACTION_COVERAGE_INVALID', codes)
+        self.assertIn('RULES_PIN_INVALID', codes)
 
 
 if __name__ == '__main__':

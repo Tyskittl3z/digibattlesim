@@ -71,11 +71,21 @@ solely for reproduction; use `match_evidence` for current diagnostic evidence.
 
 Tests, replay, source hashes, and software `JUDGE_PATH` event names do not certify
 rules. The evaluation gate requires an explicit independent review attestation
-bound to all 60 exact transcript hashes and the current source/input hashes,
-official source snapshots/citations, deck-restriction review, and both approved
-roadmap files. Code review is not a Digimon judge review.
+bound to every exact transcript hash in a balanced cohort of at least 60 full
+matches and the current source/input hashes, official source snapshots/citations,
+and deck-restriction review. Format/region/language, editions and effective dates
+must be pinned in `RULES_LOCK.json`. Encountered legal alternatives need reviewed
+coverage in `INTERACTION_COVERAGE.json`, using targeted scenarios where matches
+did not exercise them. Scenarios count as zero full matches. Both files remain
+explicitly UNVERIFIED pending actual evidence.
+
+Roadmap colors require a separate strategy-effectiveness review under preregistered
+criteria. A rules judge verifies legality; neither a rules review nor code review
+approves strategic effectiveness. See `../WORKFLOW.md` for the accepted contracts.
 
 No rule fix is claimed for the five original halts. No strategic GREEN, YELLOW,
 or RED lane is approved. UNKNOWN proposals must remain distinct from RED and
-ILLEGAL. The 10,000-match runner, atomic freeze, and resume protocol remain
-behind the eligibility gate; a reserved seed schedule is not a played match.
+ILLEGAL. The 10,000-match runner, atomic freeze, checkpoint storage and actual
+resume execution remain behind the eligibility gate; a reserved seed schedule
+is not a played match. The new pure resume-policy validator preserves original
+seeds and requires a new freeze/full restart after frozen gameplay changes.

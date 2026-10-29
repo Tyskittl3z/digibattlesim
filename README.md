@@ -4,6 +4,12 @@ This is the **current Jupitermon vs Amaterasumon/Toho simulator** transferred fo
 
 **READ FIRST:** `AGENTS.md` (immutable project boundaries), `STATUS.md` (verified current state), `CODEX_TASK.md` (the exact next work).
 
+The user-approved verification adjustments are in `WORKFLOW.md`: pinned official
+rules/format, a minimum balanced 60-match cohort plus branch coverage, separate
+legality/strategy reviews, preregistered lane criteria and strict HALT/restart
+policy. Missing official evidence remains UNVERIFIED; no lane or result is
+approved by adopting these requirements.
+
 ## Current continuation (2026-10-29)
 
 Use the strict evidence runner from `SOURCE/`:
@@ -14,7 +20,7 @@ python -m match_evidence --out ../ARTIFACTS/current-NEW-UNIQUE-VERSION --count 6
 python -m evaluation_gate --cohort ../ARTIFACTS/current-NEW-UNIQUE-VERSION
 ```
 
-The gate currently exits **2 / BLOCKED**. See `REPORTS/CURRENT_VERIFICATION_2026-10-29.md`
+The gate currently exits **2 / BLOCKED**. See `REPORTS/WORKFLOW_ADJUSTMENTS_2026-10-29.md`
 and `RULES/REVIEW_REQUIRED.md` for evidence and remaining work. No final matches
 or strategic lanes are certified. `ROADMAPS/` contains UNKNOWN-only candidates;
 `EVALUATION/` contains an unplayed seed schedule, not a freeze.

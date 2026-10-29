@@ -1,6 +1,34 @@
 # Verified handoff status
 
-## Current continuation — 2026-10-29
+## Current workflow adjustments — 2026-10-29, version 02
+
+The user's five requested adjustments are implemented in the requirements and
+gate: official rules/format/edition/effective-date pins; minimum balanced 60
+full matches plus encountered legal-branch coverage; separate rules and strategy
+reviews; preregistered alternative/uncertainty lane criteria; and preserved HALT
+seeds with a new freeze/full restart after any frozen gameplay/input change.
+See `WORKFLOW.md` and `REPORTS/WORKFLOW_ADJUSTMENTS_2026-10-29.md`.
+
+Verified: **128 tests passed**. Fresh diagnostic cohort
+`ARTIFACTS/current-2026-10-29-02/`: **60 attempts, starts 30/30, 29 software
+completions, 31 HALTs, 60 matching full evidence replays, 60 final physical-state
+checks passed**. Judge-valid matches remain **0**; approved lanes **0**; final
+matches played **0/10,000**. No card rule or decklist was changed by these workflow
+adjustments. A balanced 62-record cohort is explicitly covered by gate tests.
+
+`RULES/RULES_LOCK.json` and `RULES/INTERACTION_COVERAGE.json` remain explicitly
+UNVERIFIED; missing format/region/language and official documents were not guessed.
+`ROADMAPS/APPROVAL_CRITERIA.json` is preregistered and hashed before the new cohort.
+Old roadmap files are preserved in `ROADMAPS/history/2026-10-29-01/`; current
+roadmaps remain UNKNOWN-only. New preparation is
+`EVALUATION/preparation-2026-10-29-02/`, explicitly BLOCKED_NOT_FROZEN.
+
+The pure resume-policy validator checks the original 10,000-match schedule's
+hash/balance/uniqueness, exact checkpoint position and original seed. It does not
+implement the live final runner or checkpoint storage. Those, official rulings,
+full rules review/branch coverage and actual strategy approval remain outstanding.
+
+## Prior continuation — 2026-10-29, version 01 (historical)
 
 Work is **blocked before judge-valid fact-finding and freeze**. The five original
 Susanoomon interactions have exact reproducible state records but no verified

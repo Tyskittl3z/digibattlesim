@@ -1,0 +1,7 @@
+{
+  "schema": "loaded-pair-interaction-coverage-v1",
+  "status": "UNVERIFIED",
+  "provenance_sha256": null,
+  "entries": [],
+  "note": "Register every encountered decision/judge-path event and its reviewed legal alternatives. Targeted scenarios are not complete matches."
+}
