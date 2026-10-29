@@ -4,6 +4,26 @@ This is the **current Jupitermon vs Amaterasumon/Toho simulator** transferred fo
 
 **READ FIRST:** `AGENTS.md` (immutable project boundaries), `STATUS.md` (verified current state), `CODEX_TASK.md` (the exact next work).
 
+## Current continuation (2026-10-29)
+
+Use the strict evidence runner from `SOURCE/`:
+
+```bash
+python -m unittest discover -p 'test_*.py' -q
+python -m match_evidence --out ../ARTIFACTS/current-NEW-UNIQUE-VERSION --count 60
+python -m evaluation_gate --cohort ../ARTIFACTS/current-NEW-UNIQUE-VERSION
+```
+
+The gate currently exits **2 / BLOCKED**. See `REPORTS/CURRENT_VERIFICATION_2026-10-29.md`
+and `RULES/REVIEW_REQUIRED.md` for evidence and remaining work. No final matches
+or strategic lanes are certified. `ROADMAPS/` contains UNKNOWN-only candidates;
+`EVALUATION/` contains an unplayed seed schedule, not a freeze.
+
+The historical runners below remain unchanged for reproduction. Their internal
+`VALID_COMPLETE_GAME` label means software completion only. A stricter reaudit
+found invalid physical states in 11 of the original 55 software completions;
+these must not be counted as valid fact-finding matches.
+
 ## File layout
 - `SOURCE/`: runnable Python matchup engine, card manifests, cost data and unit tests.
 - `DECKS/`: exact two decklists — never edit without user permission.
@@ -21,7 +41,7 @@ cd SOURCE
 python -m unittest discover -p 'test_*.py' -q
 ```
 
-Current batch runner (experimental; writes its own cohort output from `SOURCE/`):
+Historical baseline runner (experimental; writes its own cohort output from `SOURCE/`):
 ```powershell
 python -m matchup_v12_attack_sources
 ```
