@@ -1,7 +1,6 @@
 """Final-runner tests use synthetic eligibility; they never certify gameplay."""
 from __future__ import annotations
 
-from contextlib import ExitStack
 import gzip
 import hashlib
 import importlib
@@ -11,7 +10,7 @@ from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import patch
 
-from match_evidence import ROOT, canonical_bytes, digest, provenance
+from match_evidence import ROOT, canonical_bytes, digest, provenance, record_match
 
 try:
     frozen = importlib.import_module('frozen_evaluation')
@@ -69,6 +68,46 @@ class FrozenEvaluationFreezeTests(unittest.TestCase):
         rules.write_bytes(canonical_bytes({'kind': 'INDEPENDENT_RULES_REVIEW'}))
         strategy.write_bytes(canonical_bytes({'kind': 'STRATEGY_EVALUATION_REVIEW'}))
         return rules, strategy
+
+    def create_synthetic_freeze(self, schedule=None):
+        schedule = self.schedule if schedule is None else schedule
+        preparation = self.make_preparation(schedule=schedule)
+        output = self.temp / ('run-' + str(len(list(self.temp.iterdir()))))
+        rules, strategy = self.review_files()
+        with patch.object(frozen, 'assess_eligibility', return_value=self.synthetic_gate()):
+            frozen.create_freeze(ROOT, ROOT / 'ARTIFACTS/current-2026-10-29-02',
+                                 preparation, output, rules, strategy)
+        return output
+
+    def schedule_with_completed_first_match(self):
+        schedule = [dict(row) for row in self.schedule]
+        complete_position = next(i for i, row in enumerate(schedule) if row['index'] == 62)
+        schedule[0], schedule[complete_position] = schedule[complete_position], schedule[0]
+        return schedule
+
+    def completed_runner(self, index, provenance_sha256):
+        record = record_match(index, provenance_sha256)
+        self.assertEqual(record['status'], 'SOFTWARE_COMPLETED')
+        return record
+
+    def halted_runner(self, index, provenance_sha256):
+        record = record_match(index, provenance_sha256)
+        transcript = record['transcript']
+        if transcript['events'] and transcript['events'][-1]['type'] in (
+                'GAME_END', 'WIN_DRAW_PHASE_DECKOUT'):
+            transcript['events'].pop()
+        record['status'] = 'HALT'
+        record['judge_certified'] = False
+        record['rule_check_status'] = 'HALT'
+        transcript['status'] = 'JUDGE_HALT'
+        transcript['winner'] = None
+        transcript['halt_reason'] = 'JudgeHalt: SYNTHETIC_RULES_HALT'
+        transcript['events'].append({
+            't': transcript['turn'], 'actor': record['final_state']['runtime']['active'],
+            'type': 'JUDGE_HALT', 'reason': transcript['halt_reason'],
+        })
+        record['final_state']['runtime']['winner'] = None
+        return record
 
     def test_api_exists(self):
         self.assertTrue(callable(frozen.create_freeze))
@@ -142,6 +181,83 @@ class FrozenEvaluationFreezeTests(unittest.TestCase):
         self.assertEqual(loaded, manifest)
         self.assertEqual(schedule, self.schedule)
         self.assertEqual(len(schedule), 10000)
+
+    def test_one_valid_match_is_credited_at_its_exact_schedule_position(self):
+        run = self.create_synthetic_freeze(self.schedule_with_completed_first_match())
+        result = frozen.run_frozen(run, match_runner=self.completed_runner, stop_after=1)
+        self.assertEqual(result['status'], 'PAUSED')
+        self.assertEqual(result['credited_matches'], 1)
+        checkpoint = json.loads((run / 'CHECKPOINT.json').read_bytes())
+        self.assertEqual(checkpoint['schedule_position'], 1)
+        self.assertEqual(checkpoint['next_match']['index'], 61)
+        records = list((run / 'records').glob('*.json.gz'))
+        self.assertEqual(len(records), 1)
+        record = json.loads(gzip.decompress(records[0].read_bytes()))
+        self.assertEqual(record['index'], 62)
+        self.assertEqual(record['seed'], frozen.seed_for(62))
+
+    def test_wrong_record_identity_never_advances_checkpoint(self):
+        run = self.create_synthetic_freeze()
+
+        def wrong_runner(index, provenance_sha256):
+            return record_match(62, provenance_sha256)
+
+        with self.assertRaisesRegex(ValueError, 'identity'):
+            frozen.run_frozen(run, match_runner=wrong_runner, stop_after=1)
+        checkpoint = json.loads((run / 'CHECKPOINT.json').read_bytes())
+        self.assertEqual(checkpoint['schedule_position'], 0)
+        self.assertEqual(list((run / 'records').glob('*')), [])
+
+    def test_rules_halt_is_preserved_without_seed_replacement_or_credit(self):
+        run = self.create_synthetic_freeze()
+        result = frozen.run_frozen(run, match_runner=self.halted_runner)
+        self.assertEqual(result['status'], 'BLOCKED_HALT')
+        self.assertEqual(result['credited_matches'], 0)
+        self.assertEqual(result['halted_match'], self.schedule[0])
+        checkpoint = json.loads((run / 'CHECKPOINT.json').read_bytes())
+        self.assertEqual(checkpoint['schedule_position'], 0)
+        self.assertEqual(checkpoint['next_match'], self.schedule[0])
+        self.assertEqual(checkpoint['halt_kind'], 'RULES')
+        halt_files = list((run / 'halts').glob('*.json.gz'))
+        self.assertEqual(len(halt_files), 1)
+        record = json.loads(gzip.decompress(halt_files[0].read_bytes()))
+        self.assertEqual(record['seed'], self.schedule[0]['seed'])
+
+    def test_interruption_orphan_replays_same_seed_before_credit(self):
+        run = self.create_synthetic_freeze(self.schedule_with_completed_first_match())
+        calls = []
+
+        def runner(index, provenance_sha256):
+            calls.append(index)
+            return self.completed_runner(index, provenance_sha256)
+
+        def interrupt_after_record(_record):
+            raise RuntimeError('synthetic infrastructure interruption')
+
+        with self.assertRaisesRegex(RuntimeError, 'infrastructure interruption'):
+            frozen.run_frozen(run, match_runner=runner, stop_after=1,
+                              interruption_hook=interrupt_after_record)
+        checkpoint = json.loads((run / 'CHECKPOINT.json').read_bytes())
+        self.assertEqual(checkpoint['schedule_position'], 0)
+        self.assertEqual(len(list((run / 'records').glob('*.json.gz'))), 1)
+        result = frozen.resume_frozen(run, match_runner=runner, stop_after=1)
+        self.assertEqual(result['credited_matches'], 1)
+        self.assertEqual(calls, [62, 62])
+        self.assertEqual(len(list((run / 'records').glob('*.json.gz'))), 1)
+
+    def test_changed_frozen_input_requires_full_restart_without_running_match(self):
+        run = self.create_synthetic_freeze(self.schedule_with_completed_first_match())
+        manifest, schedule = frozen.load_freeze(run)
+        changed = dict(manifest['frozen_inputs'], engine='f' * 64)
+
+        def forbidden_runner(_index, _provenance_sha256):
+            self.fail('match runner must not execute after frozen input change')
+
+        with patch.object(frozen, '_component_hashes', return_value=changed):
+            result = frozen.resume_frozen(run, match_runner=forbidden_runner, stop_after=1)
+        self.assertEqual(result['status'], 'RESTART_FULL_EVALUATION')
+        self.assertTrue(result['invalidate_all_prior_results'])
+        self.assertEqual(result['restart_schedule_from_position'], 0)
 
 
 class FrozenEvaluationMissingModuleTest(unittest.TestCase):

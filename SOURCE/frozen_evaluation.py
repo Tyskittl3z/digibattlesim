@@ -13,13 +13,14 @@ import os
 from pathlib import Path
 import re
 
-from evaluation_gate import assess_eligibility, file_hash
-from match_evidence import ROOT, canonical_bytes, digest, provenance
+from evaluation_gate import assess_eligibility, file_hash, validate_record
+from match_evidence import ROOT, canonical_bytes, digest, provenance, record_match
 from seeded_opening_probe import seed_for
-from workflow_policy import FROZEN_COMPONENTS
+from workflow_policy import FROZEN_COMPONENTS, assess_resume
 
 
 FREEZE_SCHEMA = 'loaded-pair-frozen-evaluation-v1'
+CHECKPOINT_SCHEMA = 'loaded-pair-frozen-checkpoint-v1'
 HEX_SHA256 = re.compile(r'[0-9a-f]{64}')
 
 
@@ -167,10 +168,25 @@ def create_freeze(root, cohort_dir, preparation_dir, output,
         'evaluation_matches_played': 0,
     }
 
+    checkpoint = {
+        'schema': CHECKPOINT_SCHEMA,
+        'status': 'READY',
+        'frozen_inputs': dict(frozen_inputs),
+        'schedule_position': 0,
+        'credited_matches': 0,
+        'next_match': dict(schedule[0]),
+        'halt_kind': 'INFRASTRUCTURE',
+        'last_record': None,
+        'halt_record': None,
+    }
+
     output.mkdir(parents=True, exist_ok=False)
     try:
+        (output / 'records').mkdir()
+        (output / 'halts').mkdir()
         atomic_write(output / 'SEEDS.json.gz', packed_schedule)
         atomic_write(output / 'FREEZE.json', canonical_bytes(manifest))
+        atomic_write(output / 'CHECKPOINT.json', canonical_bytes(checkpoint))
     except BaseException:
         # Never turn a partially written directory into a valid-looking freeze.
         marker = output / 'FREEZE_INCOMPLETE'
@@ -203,7 +219,205 @@ def load_freeze(run_dir):
     return manifest, schedule
 
 
+def _load_checkpoint(run_dir, manifest, schedule):
+    checkpoint = json.loads((Path(run_dir) / 'CHECKPOINT.json').read_bytes())
+    position = checkpoint.get('schedule_position')
+    if (not isinstance(checkpoint, dict) or checkpoint.get('schema') != CHECKPOINT_SCHEMA
+            or checkpoint.get('status') not in ('READY', 'RUNNING', 'BLOCKED_HALT',
+                                                 'COMPLETE_PENDING_SUMMARY')
+            or checkpoint.get('frozen_inputs') != manifest['frozen_inputs']
+            or type(position) is not int or not 0 <= position <= len(schedule)
+            or checkpoint.get('credited_matches') != position
+            or checkpoint.get('next_match') != (
+                schedule[position] if position < len(schedule) else None)
+            or checkpoint.get('halt_kind') not in ('INFRASTRUCTURE', 'RULES')):
+        raise ValueError('Invalid frozen evaluation checkpoint')
+    if checkpoint['halt_kind'] == 'RULES' and checkpoint.get('halt_record') is None:
+        raise ValueError('Rules halt checkpoint is missing its preserved record')
+    return checkpoint
+
+
+def _record_path(run_dir, position, row, folder='records'):
+    return (Path(run_dir) / folder /
+            f"MATCH_{position + 1:05d}_INDEX_{row['index']:05d}.json.gz")
+
+
+def _validate_scheduled_record(record, row, provenance_sha256):
+    if not isinstance(record, dict):
+        raise ValueError('Scheduled match runner must return a record object')
+    try:
+        validate_record(record)
+    except (ValueError, KeyError, TypeError, IndexError, AttributeError) as exc:
+        raise ValueError('Scheduled record schema invalid: ' + str(exc)) from exc
+    if (record.get('index') != row['index'] or record.get('seed') != row['seed']
+            or record.get('first') != row['first']
+            or record.get('provenance_sha256') != provenance_sha256):
+        raise ValueError('Scheduled record identity mismatch')
+    if record.get('physical_integrity') != {'status': 'PASS'}:
+        raise ValueError('Scheduled record physical integrity failed')
+    transcript = record['transcript']
+    if record['status'] == 'SOFTWARE_COMPLETED':
+        terminals = [i for i, event in enumerate(transcript['events'])
+                     if event['type'] in ('GAME_END', 'WIN_DRAW_PHASE_DECKOUT')]
+        if (transcript.get('halt_reason') is not None
+                or transcript.get('winner') not in ('A', 'B')
+                or terminals != [len(transcript['events']) - 1]
+                or record['final_state']['runtime']['winner'] != transcript['winner']):
+            raise ValueError('Completed scheduled record lacks one final terminal result')
+    elif record['status'] == 'HALT':
+        if (not isinstance(transcript.get('halt_reason'), str)
+                or not transcript['halt_reason'].strip()
+                or transcript.get('winner') is not None
+                or transcript['events'][-1].get('type') != 'JUDGE_HALT'):
+            raise ValueError('HALT record lacks its exact terminal judge trace')
+    else:
+        raise ValueError('Unknown scheduled record status')
+    return record
+
+
+def _write_or_verify_record(path, record):
+    raw = canonical_bytes(record)
+    packed = gzip.compress(raw, mtime=0)
+    path = Path(path)
+    if path.exists():
+        try:
+            prior_raw = gzip.decompress(path.read_bytes())
+        except (OSError, EOFError) as exc:
+            raise ValueError('Existing scheduled record is unreadable') from exc
+        if prior_raw != raw:
+            raise ValueError('Infrastructure replay did not reproduce the original record')
+    else:
+        atomic_write(path, packed)
+    return {
+        'file': path.relative_to(path.parent.parent).as_posix(),
+        'record_sha256': hashlib.sha256(raw).hexdigest(),
+        'file_sha256': hashlib.sha256(packed).hexdigest(),
+        'index': record['index'],
+        'seed': record['seed'],
+        'first': record['first'],
+        'status': record['status'],
+    }
+
+
+def _read_record(path):
+    try:
+        return json.loads(gzip.decompress(Path(path).read_bytes()))
+    except (OSError, EOFError, json.JSONDecodeError, UnicodeDecodeError) as exc:
+        raise ValueError('Frozen match record is unreadable: ' + str(path)) from exc
+
+
+def _verify_credited_records(run_dir, schedule, checkpoint, provenance_sha256):
+    position = checkpoint['schedule_position']
+    expected = set()
+    for offset in range(position):
+        row = schedule[offset]
+        path = _record_path(run_dir, offset, row)
+        expected.add(path.resolve())
+        if not path.is_file():
+            raise ValueError('Credited match record missing at position ' + str(offset))
+        _validate_scheduled_record(_read_record(path), row, provenance_sha256)
+    actual = {path.resolve() for path in (Path(run_dir) / 'records').glob('*.json.gz')}
+    allowed_orphan = set()
+    if position < len(schedule):
+        orphan = _record_path(run_dir, position, schedule[position]).resolve()
+        if orphan in actual:
+            allowed_orphan.add(orphan)
+    extras = actual - expected - allowed_orphan
+    if extras:
+        raise ValueError('Uncredited match records exist beyond the checkpoint')
+
+
+def _write_checkpoint(run_dir, checkpoint):
+    atomic_write(Path(run_dir) / 'CHECKPOINT.json', canonical_bytes(checkpoint))
+
+
+def run_frozen(run_dir, match_runner=record_match, stop_after=None,
+               interruption_hook=None):
+    """Run exact scheduled matches, advancing only after durable validation."""
+    if stop_after is not None and (type(stop_after) is not int or stop_after <= 0):
+        raise ValueError('stop_after must be a positive integer')
+    run_dir = Path(run_dir).resolve()
+    manifest, schedule = load_freeze(run_dir)
+    checkpoint = _load_checkpoint(run_dir, manifest, schedule)
+    position = checkpoint['schedule_position']
+    if position == len(schedule):
+        _verify_credited_records(run_dir, schedule, checkpoint,
+                                 manifest['provenance_sha256'])
+        return {'status': 'COMPLETE_PENDING_SUMMARY',
+                'credited_matches': position, 'target_matches': len(schedule)}
+
+    current_inputs = _component_hashes(ROOT, schedule)
+    decision = assess_resume(checkpoint, current_inputs, frozen_schedule=schedule)
+    if decision['status'] == 'RESTART_FULL_EVALUATION':
+        return decision
+    if decision['status'] == 'BLOCKED_HALT':
+        return {
+            **decision,
+            'credited_matches': position,
+            'halted_match': dict(checkpoint['next_match']),
+            'halt_record': checkpoint['halt_record'],
+        }
+    _verify_credited_records(run_dir, schedule, checkpoint,
+                             manifest['provenance_sha256'])
+
+    played = 0
+    while position < len(schedule) and (stop_after is None or played < stop_after):
+        row = schedule[position]
+        record = match_runner(row['index'], manifest['provenance_sha256'])
+        _validate_scheduled_record(record, row, manifest['provenance_sha256'])
+        if record['status'] == 'HALT':
+            metadata = _write_or_verify_record(
+                _record_path(run_dir, position, row, 'halts'), record)
+            checkpoint = {
+                **checkpoint,
+                'status': 'BLOCKED_HALT',
+                'halt_kind': 'RULES',
+                'schedule_position': position,
+                'credited_matches': position,
+                'next_match': dict(row),
+                'halt_record': metadata,
+            }
+            _write_checkpoint(run_dir, checkpoint)
+            return {
+                'status': 'BLOCKED_HALT',
+                'credited_matches': position,
+                'halted_match': dict(row),
+                'halt_record': metadata,
+            }
+
+        metadata = _write_or_verify_record(
+            _record_path(run_dir, position, row), record)
+        if interruption_hook is not None:
+            interruption_hook(record)
+        position += 1
+        played += 1
+        checkpoint = {
+            **checkpoint,
+            'status': ('COMPLETE_PENDING_SUMMARY' if position == len(schedule)
+                       else 'RUNNING'),
+            'halt_kind': 'INFRASTRUCTURE',
+            'schedule_position': position,
+            'credited_matches': position,
+            'next_match': (dict(schedule[position]) if position < len(schedule) else None),
+            'last_record': metadata,
+            'halt_record': None,
+        }
+        _write_checkpoint(run_dir, checkpoint)
+
+    return {
+        'status': ('COMPLETE_PENDING_SUMMARY' if position == len(schedule) else 'PAUSED'),
+        'credited_matches': position,
+        'target_matches': len(schedule),
+        'next_match': (dict(schedule[position]) if position < len(schedule) else None),
+    }
+
+
+def resume_frozen(run_dir, match_runner=record_match, stop_after=None):
+    """Resume by replaying the exact checkpoint seed under the same freeze."""
+    return run_frozen(run_dir, match_runner=match_runner, stop_after=stop_after)
+
+
 __all__ = [
     'FROZEN_COMPONENTS', 'ROOT', 'atomic_write', 'create_freeze', 'load_freeze',
-    'seed_for', 'validate_schedule',
+    'resume_frozen', 'run_frozen', 'seed_for', 'validate_schedule',
 ]

@@ -55,11 +55,11 @@
 - Consumes: Task 1 freeze and `record_match(index, provenance_sha256)`.
 - Produces: `run_frozen(run_dir, match_runner=record_match, stop_after=None, interruption_hook=None) -> dict` and `resume_frozen(run_dir, match_runner=record_match) -> dict`.
 
-- [ ] **Step 1: Write failing tests** for record/schedule identity, one credited match, preserved rules HALT, no checkpoint advance on invalid record, an orphan record after simulated interruption, exact-seed replay, and changed-input full-restart rejection.
-- [ ] **Step 2: Run focused tests and confirm each new behavior fails for the expected missing implementation.**
-- [ ] **Step 3: Implement minimal execution/checkpoint logic.** Write gzip with deterministic mtime, validate before atomic checkpoint advance, replay an orphan at the same position, and stop on HALT without substituting a seed.
-- [ ] **Step 4: Run focused and full suites; confirm all pass.**
-- [ ] **Step 5: Commit Task 2.**
+- [x] **Step 1: Write failing tests** for record/schedule identity, one credited match, preserved rules HALT, no checkpoint advance on invalid record, an orphan record after simulated interruption, exact-seed replay, and changed-input full-restart rejection.
+- [x] **Step 2: Run focused tests and confirm each new behavior fails for the expected missing implementation.**
+- [x] **Step 3: Implement minimal execution/checkpoint logic.** Write gzip with deterministic mtime, validate before atomic checkpoint advance, replay an orphan at the same position, and stop on HALT without substituting a seed.
+- [x] **Step 4: Run focused and full suites; confirm all pass.**
+- [x] **Step 5: Commit Task 2.**
 
 ### Task 3: Complete-run numerical report and CLI
 
