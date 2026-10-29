@@ -39,11 +39,11 @@
 - Consumes: `assess_eligibility`, `provenance`, `validate_record`, `workflow_policy.FROZEN_COMPONENTS`, and `SEEDS.json.gz`.
 - Produces: `create_freeze(root, cohort_dir, preparation_dir, output, review_path, strategy_review_path) -> dict` and `load_freeze(run_dir) -> tuple[dict, list[dict]]`.
 
-- [ ] **Step 1: Write failing freeze tests** for a blocked gate, forged/imbalanced schedule, schedule-file hash mismatch, and a valid synthetic eligible freeze containing all seven component hashes.
-- [ ] **Step 2: Run the focused tests and confirm they fail because the module/API is missing.**
-- [ ] **Step 3: Implement atomic canonical writes, schedule validation and freeze creation.** Refuse an existing output directory and bind engine, rules/format, decks, pilots, criteria, roadmaps and schedule to current bytes.
-- [ ] **Step 4: Run focused and full suites; confirm all pass.**
-- [ ] **Step 5: Commit Task 1.**
+- [x] **Step 1: Write failing freeze tests** for a blocked gate, forged/imbalanced schedule, schedule-file hash mismatch, and a valid synthetic eligible freeze containing all seven component hashes.
+- [x] **Step 2: Run the focused tests and confirm they fail because the module/API is missing.**
+- [x] **Step 3: Implement atomic canonical writes, schedule validation and freeze creation.** Refuse an existing output directory and bind engine, rules/format, decks, pilots, criteria, roadmaps and schedule to current bytes.
+- [x] **Step 4: Run focused and full suites; confirm all pass.**
+- [x] **Step 5: Commit Task 1.**
 
 ### Task 2: Exact-seed execution and checkpoint recovery
 
