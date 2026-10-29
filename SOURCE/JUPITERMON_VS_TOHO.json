@@ -1,0 +1,230 @@
+{
+  "schema_version": "phase5-decklist-import-v1",
+  "source": "DigimonCard.io-style text (local import)",
+  "restriction_snapshot_id": "BANDAI-GLOBAL-RESTRICTION-2026-09-01",
+  "decks": [
+    {
+      "name": "Jupitermon",
+      "main": [
+        {
+          "card_number": "BT24-031",
+          "name": "Elecmon",
+          "qty": 4
+        },
+        {
+          "card_number": "BT24-034",
+          "name": "Aegiomon",
+          "qty": 4
+        },
+        {
+          "card_number": "BT24-083",
+          "name": "Hiroko Sagisaka",
+          "qty": 2
+        },
+        {
+          "card_number": "BT24-084",
+          "name": "Inori Misono",
+          "qty": 3
+        },
+        {
+          "card_number": "BT24-085",
+          "name": "Dan Yuki & Kanan Yuki",
+          "qty": 2
+        },
+        {
+          "card_number": "BT24-088",
+          "name": "Asuna Shiroki",
+          "qty": 2
+        },
+        {
+          "card_number": "BT24-100",
+          "name": "In-Between Theater",
+          "qty": 2
+        },
+        {
+          "card_number": "BT24-101",
+          "name": "Jupitermon",
+          "qty": 3
+        },
+        {
+          "card_number": "BT24-102",
+          "name": "Homeros",
+          "qty": 2
+        },
+        {
+          "card_number": "BT25-022",
+          "name": "Lunamon",
+          "qty": 2
+        },
+        {
+          "card_number": "BT25-025",
+          "name": "Aegiochusmon: Blue",
+          "qty": 3
+        },
+        {
+          "card_number": "BT25-028",
+          "name": "Dianamon",
+          "qty": 1
+        },
+        {
+          "card_number": "BT25-030",
+          "name": "Elecmon",
+          "qty": 4
+        },
+        {
+          "card_number": "BT25-033",
+          "name": "Aegiomon",
+          "qty": 4
+        },
+        {
+          "card_number": "BT26-016",
+          "name": "Chronomon: Holy Mode",
+          "qty": 1
+        },
+        {
+          "card_number": "BT26-029",
+          "name": "Aegiochusmon: Holy",
+          "qty": 3
+        },
+        {
+          "card_number": "BT26-033",
+          "name": "Jupitermon",
+          "qty": 3
+        },
+        {
+          "card_number": "BT26-103",
+          "name": "Jupitermon: Wrath Mode",
+          "qty": 3
+        },
+        {
+          "card_number": "P-213",
+          "name": "Aegiochusmon",
+          "qty": 2
+        }
+      ],
+      "eggs": [
+        {
+          "card_number": "BT24-003",
+          "name": "Tsunomon",
+          "qty": 4
+        }
+      ],
+      "main_count": 50,
+      "egg_count": 4
+    },
+    {
+      "name": "Amaterasumon-Toho",
+      "main": [
+        {
+          "card_number": "BT26-012",
+          "name": "Manekimon",
+          "qty": 2
+        },
+        {
+          "card_number": "BT26-013",
+          "name": "Musyamon",
+          "qty": 1
+        },
+        {
+          "card_number": "BT26-014",
+          "name": "Darumamon",
+          "qty": 1
+        },
+        {
+          "card_number": "BT26-104",
+          "name": "Kunlun",
+          "qty": 2
+        },
+        {
+          "card_number": "EX1-066",
+          "name": "Analog Youth",
+          "qty": 1
+        },
+        {
+          "card_number": "EX12-009",
+          "name": "Wankomon",
+          "qty": 4
+        },
+        {
+          "card_number": "EX12-020",
+          "name": "Gasamon",
+          "qty": 3
+        },
+        {
+          "card_number": "EX12-026",
+          "name": "Shellmon",
+          "qty": 4
+        },
+        {
+          "card_number": "EX12-031",
+          "name": "MarineBullmon",
+          "qty": 2
+        },
+        {
+          "card_number": "EX12-036",
+          "name": "Ryugumon",
+          "qty": 2
+        },
+        {
+          "card_number": "EX12-046",
+          "name": "Shishimamon",
+          "qty": 4
+        },
+        {
+          "card_number": "EX12-047",
+          "name": "Amaterasumon",
+          "qty": 3
+        },
+        {
+          "card_number": "EX12-061",
+          "name": "Hanimon",
+          "qty": 3
+        },
+        {
+          "card_number": "EX12-062",
+          "name": "Kokeshimon",
+          "qty": 3
+        },
+        {
+          "card_number": "EX12-063",
+          "name": "Karakurumon",
+          "qty": 2
+        },
+        {
+          "card_number": "EX12-065",
+          "name": "Kaguyamon",
+          "qty": 3
+        },
+        {
+          "card_number": "EX12-070",
+          "name": "Sanmyojin Arrival",
+          "qty": 4
+        },
+        {
+          "card_number": "EX12-074",
+          "name": "Genshi Continent & Ashino Island",
+          "qty": 2
+        },
+        {
+          "card_number": "EX12-075",
+          "name": "Kunlun's Imperial Decree",
+          "qty": 1
+        },
+        {
+          "card_number": "EX12-076",
+          "name": "Susanoomon",
+          "qty": 3
+        }
+      ],
+      "eggs": [
+        {
+          "card_number": "EX12-004",
+          "name": "Onibimon",
+          "qty": 4
+        }
+      ],
+      "main_count": 50,
+      "egg_count": 4
+    }
+  ]
+}

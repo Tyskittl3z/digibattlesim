@@ -1,0 +1,964 @@
+{
+  "schema": "digimon-loaded-pair-preflight-2026-10-14-v1",
+  "decks": {
+    "A": {
+      "name": "Jupitermon",
+      "main": 50,
+      "eggs": 4,
+      "unique_main_ids": 19,
+      "unique_egg_ids": 1,
+      "deck_content_sha256": "4557160999ede438901e45eb95ad2363f2b3fa5ac35ed29ba6b95e051b494682",
+      "card_manifest": [
+        {
+          "card_number": "BT24-031",
+          "name": "Elecmon",
+          "qty": 4,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 3,
+          "colors": [
+            "Yellow"
+          ],
+          "traits": [
+            "Mammal",
+            "Iliad",
+            "TS"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.2 w/[TS] trait: Cost 0\n\n[Effect]\n[On Play] Reveal the top 3 cards of your deck. Add 1 card with the [Iliad] trait and 1 card with the [TS] trait among them to the hand. Return the rest to the bottom of the deck.\n\n[Inherited Effect]\n[When Attacking] [Once Per Turn] You may add your top security card to the hand. Then, if you have 0 security cards, ＜Recovery +1 ≪Deck≫＞.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?category=522033&search=true",
+          "card_text_sha256": "a35a80781fe5fccffbbf53d7582a4592de593c1f26160684ab48a374469370d8",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT24-034",
+          "name": "Aegiomon",
+          "qty": 4,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 4,
+          "colors": [
+            "Yellow"
+          ],
+          "traits": [
+            "Shaman",
+            "Iliad",
+            "TS"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] [Elecmon]/Lv.3 w/[TS] trait: Cost 2\n\n[Effect]\n＜Barrier＞\n[When Moving] [On Play] [When Digivolving] By adding your top security card to the hand, you may play 1 [TS] trait Tamer card from your hand without paying the cost. This effect can't play cards with the same name as any of your Tamers.\n\n[Inherited Effect]\n＜Barrier＞ (When this Digimon would be deleted in battle, by trashing your top security card, it isn't deleted.)",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?category=522033&search=true",
+          "card_text_sha256": "24423e63513d18445396d8e2b59d38a61705104ece287bcdf11a786ff3564817",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT24-083",
+          "name": "Hiroko Sagisaka",
+          "qty": 2,
+          "zone": "main",
+          "type": "Tamer",
+          "level": null,
+          "colors": [
+            "Red"
+          ],
+          "traits": [
+            "TS"
+          ],
+          "card_text": "[Effect]\n[Start of Your Turn] If you have 4 or less memory, by returning this Tamer to the bottom of the deck, you may play 1 [Hiroko Sagisaka] or 1 [TS] trait Digimon card with 5000 DP or less from your hand without paying the cost.\n[On Play] Reveal the top 3 cards of your deck. Add 1 card with the [TS] trait among them to the hand. Return the rest to the bottom of the deck.\n\n[Security Effect]\n[Security] Play this card without paying the cost.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?category=522033&search=true",
+          "card_text_sha256": "3e658ec76b8da658cfd616c02f5e6e9395cb5adcc079447ab632f75a0deac59c",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT24-084",
+          "name": "Inori Misono",
+          "qty": 3,
+          "zone": "main",
+          "type": "Tamer",
+          "level": null,
+          "colors": [
+            "Yellow"
+          ],
+          "traits": [
+            "TS"
+          ],
+          "card_text": "[Effect]\n[Start of Your Main Phase] If you have 4 or less memory, gain 1 memory.\n[All Turns] When your security stack is removed from, by suspending this Tamer, 1 of your [Aegiomon] may digivolve into a Digimon card with [Aegiochusmon] in its name in the hand without paying the cost.\n\n[Security Effect]\n[Security] Play this card without paying the cost.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?category=522033&search=true",
+          "card_text_sha256": "4295b23d0e1ebdaec5cfcc05fcbe72b5dc845a64344898979f100c592c578e7b",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT24-085",
+          "name": "Dan Yuki & Kanan Yuki",
+          "qty": 2,
+          "zone": "main",
+          "type": "Tamer",
+          "level": null,
+          "colors": [
+            "Green",
+            "Red"
+          ],
+          "traits": [
+            "ADAMAS",
+            "TS"
+          ],
+          "card_text": "[Effect]\n[Start of Your Main Phase] If you have 4 or less memory, gain 1 memory.\n[End of Your Turn] By suspending this Tamer, you may use 1 [TS] trait Option card with as high or lower a use cost as your opponent's memory from your hand without paying the cost. Then, 1 of your Digimon with the [TS] trait may attack.\n\n[Security Effect]\n[Security] Play this card without paying the cost.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?category=522033&search=true",
+          "card_text_sha256": "8b14759ba2d29facba958e9bc4198d50a8f74797ff3162caf5fdcca466505118",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT24-088",
+          "name": "Asuna Shiroki",
+          "qty": 2,
+          "zone": "main",
+          "type": "Tamer",
+          "level": null,
+          "colors": [
+            "Purple"
+          ],
+          "traits": [
+            "TS"
+          ],
+          "card_text": "[Effect]\n[Start of Your Turn] If you have 4 or less memory, by returning this Tamer to the bottom of the deck, you may play 1 [Asuna Shiroki] or 1 level 4 or lower Digimon card with the [TS] trait or [Three Musketeers] in its text from your trash without paying the cost.\n[On Play] By trashing 1 card with [Three Musketeers] in its text or the [TS] trait from your hand, ＜Draw 2＞.\n\n[Security Effect]\n[Security] Play this card without paying the cost.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?category=522033&search=true",
+          "card_text_sha256": "7e27654e40ccb7724ab0bba185f79ae21246fe8719e28e2659efaf9363e8ee54",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT24-100",
+          "name": "In-Between Theater",
+          "qty": 2,
+          "zone": "main",
+          "type": "Option",
+          "level": null,
+          "colors": [
+            "White"
+          ],
+          "traits": [
+            "TS"
+          ],
+          "card_text": "[Effect]\nWhile you have a [TS] trait Digimon or Tamer on the field, you can ignore this card's color requirements.\n[Main] Reveal the top 3 cards of your deck. Add 1 card with the [TS] trait among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.\n[Main] ＜Delay＞\n・Gain 2 memory.\n\n[Security Effect]\n[Security] Place this card in the battle area.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?category=522033&search=true",
+          "card_text_sha256": "c8ba3b36922439cb0ed4af84373f8c58d46876a951601e8b38752e2ae4d01812",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT24-101",
+          "name": "Jupitermon",
+          "qty": 3,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 6,
+          "colors": [
+            "Yellow"
+          ],
+          "traits": [
+            "Shaman",
+            "Olympos XII",
+            "Iliad",
+            "TS"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.5 w/[TS] trait: Cost 5\n[Digivolve] Lv.5 w/[Aegiochusmon] in name: Cost 1 for each of your security cards\n[Effect]\n[On Play] [When Digivolving] Trash your top security card and 1 of your opponent's Digimon gets -13000 DP until their turn ends. Then, if you have 1 or fewer security cards, ＜Recovery +2 ≪Deck≫＞.\n[All Turns] [Once Per Turn] When your security stack is removed from, trash your opponent's top security card.\n[All Turns] [Once Per Turn] When any of your [TS] trait Digimon or Tamers would leave the battle area, by trashing your top security card, they don't leave.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?category=522033&search=true",
+          "card_text_sha256": "16f781a8605ee0a1ca7c65a3d396ac3cc061142847f482974cfcdfa82aa7192b",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT24-102",
+          "name": "Homeros",
+          "qty": 2,
+          "zone": "main",
+          "type": "Tamer",
+          "level": null,
+          "colors": [
+            "White"
+          ],
+          "traits": [
+            "Iliad",
+            "TS"
+          ],
+          "card_text": "[Effect]\n[Start of Your Main Phase] Gain 1 memory. Then, if you have 5 or more memory, suspend this Tamer and ＜Draw 1＞.\n[All Turns] All of your [TS] trait Digimon get +1000 DP.\n[End of Your Turn] By suspending this Tamer, you may activate 1 [On Play] or [When Digivolving] effect of 1 of your [Olympos XII] trait Digimon.\n\n[Security Effect]\n[Security] Play this card without paying the cost.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?category=522033&search=true",
+          "card_text_sha256": "21dbb5a69f5b7a6e271aa4bd859357008ded2d1a2a03f819cab721f67a5cf988",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT25-022",
+          "name": "Lunamon",
+          "qty": 2,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 3,
+          "colors": [
+            "Blue"
+          ],
+          "traits": [
+            "Mammal",
+            "Iliad",
+            "TS"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.2 w/[TS] trait: Cost 0\n\n[Effect]\n[On Play] Reveal the top 3 cards of your deck. Add 1 [Iliad] trait card and 1 [TS] trait card among them to the hand. Return the rest to the bottom of the deck.\n\n[Inherited Effect]\n＜Jamming＞ (This Digimon can't be deleted in battles against Security Digimon.)",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?category=522036&search=true",
+          "card_text_sha256": "3f6f2b6e18c899289f0ea8619b77c29ca0547b89480334290aeee6ab44c26727",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT25-025",
+          "name": "Aegiochusmon: Blue",
+          "qty": 3,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 5,
+          "colors": [
+            "Blue",
+            "Black"
+          ],
+          "traits": [
+            "Shaman",
+            "Iliad",
+            "TS"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] [Aegiomon]: Cost 3\n\n[Effect]\n＜Blocker＞ ＜Decode ([Aegiomon])＞\n[On Play] [When Digivolving] ＜De-Digivolve 1＞ 1 of your opponent's Digimon. Then, if you have 3 or fewer security cards, 1 of your Digimon unsuspends.\n(Rule) Trait: Has [Cyborg] Type.\n\n[Inherited Effect]\n[All Turns] [Once Per Turn] When your security stack is removed from, 1 of your [Shaman] trait Digimon may unsuspend.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?category=522036&search=true",
+          "card_text_sha256": "9ad859d12921e50c159ce8613f3d9c0f562ac432e0139bbe918be8b739031d65",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT25-028",
+          "name": "Dianamon",
+          "qty": 1,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 6,
+          "colors": [
+            "Blue",
+            "Purple"
+          ],
+          "traits": [
+            "Shaman",
+            "Olympos XII",
+            "Iliad",
+            "TS"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.5 w/[TS] trait: Cost 3\n\n[Effect]\nWhen this card would be played, if your opponent has a level 6 or higher Digimon, reduce the cost by 5.\n[On Play] [When Digivolving] None of your opponent's Digimon with 1 or fewer digivolution cards can suspend until their turn ends. Then, delete 1 of your opponent's unsuspended Digimon.\n[All Turns] [Once Per Turn] When any Digimon are played or digivolve, you may trash any 4 digivolution cards from your opponent's Digimon. Then, 2 of your Digimon may DNA digivolve into [GraceNovamon] in the hand.\n\n[Inherited Effect]\n[When Attacking] [Once Per Turn] 1 of your opponent's Digimon or Tamers can't suspend until their turn ends.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?category=522036&search=true",
+          "card_text_sha256": "72a1aa265ccc4841879d8c6481372e8812e9898c3f5371fb664fff7f78616371",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT25-030",
+          "name": "Elecmon",
+          "qty": 4,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 3,
+          "colors": [
+            "Yellow"
+          ],
+          "traits": [
+            "Mammal",
+            "Iliad",
+            "TS"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.2 w/[TS] trait: Cost 0\n\n[Effect]\n[Start of Your Main Phase] By adding your top security card to the hand, gain 1 memory.\n\n[Inherited Effect]\n[When Attacking] [Once Per Turn] You may add your top security card to the hand. Then, if you have 0 security cards, ＜Recovery +1＞.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?category=522036&search=true",
+          "card_text_sha256": "3d628768d63e1828ec4f40b1764d4fa2ed72a8ecb8b3fb3d9c962b29d7bcc34d",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT25-033",
+          "name": "Aegiomon",
+          "qty": 4,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 4,
+          "colors": [
+            "Yellow"
+          ],
+          "traits": [
+            "Shaman",
+            "Iliad",
+            "TS"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.3 w/[TS] trait: Cost 2\n\n[Effect]\n＜Barrier＞\n[On Play] [When Digivolving] By adding your top security card to the hand, 1 of your opponent's Digimon gets -5000 DP for the turn.\n\n[Inherited Effect]\n＜Barrier＞ (When this Digimon would be deleted in battle, by trashing your top security card, it isn't deleted.)",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?category=522036&search=true",
+          "card_text_sha256": "7b6d338cb603eabbe2d7bafbc8a857aba511c3c2be3000ffecf1c8df03b4d411",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT26-016",
+          "name": "Chronomon: Holy Mode",
+          "qty": 1,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 6,
+          "colors": [
+            "Red",
+            "Yellow"
+          ],
+          "traits": [
+            "Shaman",
+            "Iliad",
+            "TS"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.5 w/[TS] trait: Cost 3\n\n[Effect]\n＜Piercing＞ ＜Engage＞ (At the end of your turn, this Digimon may attack.)\n[On Play] [When Digivolving] [When Attacking] [Once Per Turn] You may delete 1 of your opponent's Digimon with as much DP as this Digimon or less. Then, by returning 3 cards in trashes to the bottom of the deck, ＜Recovery +1＞.\n[All Turns] [Once Per Turn] When this Digimon would leave the battle area, by returning your top security card to the bottom of the deck, it doesn't leave.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?search=true&category=522038",
+          "card_text_sha256": "9d2daa0cd00a33f8c2cb5063ff4265abe7f07a75b1cd770ae63aff454f7b59d1",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT26-029",
+          "name": "Aegiochusmon: Holy",
+          "qty": 3,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 5,
+          "colors": [
+            "Yellow",
+            "Black"
+          ],
+          "traits": [
+            "Shaman",
+            "Iliad",
+            "TS"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] [Aegiomon]: Cost 3\n\n[Effect]\n＜Decode ([Aegiomon])＞ ＜Ascension＞ (When this Digimon is deleted, you may place this card as the top security card.)\n[On Play] [When Digivolving] By trashing your top security card, until your opponent's turn ends, their effects can't reduce the DP of 1 of your Digimon, trash any of its stacked cards, or return them to hands or decks.\n[All Turns] [Once Per Turn] When your security stack is removed from, 3 of your opponent's Digimon get -5000 DP for the turn.\n(Rule) Trait: Has [Angel] Type.\n\n[Inherited Effect]\n[All Turns] [Once Per Turn] When your security stack is removed from, ＜De-Digivolve 1＞ 1 of your opponent's Digimon.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?search=true&category=522038",
+          "card_text_sha256": "beba313586b0b6e88f2aefb0f1efd21710cbc28235295626c9d225e009ace4da",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT26-033",
+          "name": "Jupitermon",
+          "qty": 3,
+          "zone": "main",
+          "type": "Digimon/Tamer",
+          "level": 6,
+          "colors": [
+            "Yellow",
+            "Red"
+          ],
+          "traits": [
+            "Shaman",
+            "Olympos XII",
+            "Iliad",
+            "TS"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.5 w/[TS] trait: Cost 4\n\n[Effect]\n＜Raid＞ ＜Alliance＞ ＜Engage＞ (At the end of your turn, this Digimon may attack.)\n[When Digivolving] Add your top security card to the hand. Then, if it's your turn, you may play or use 1 [Iliad] or [TS] trait card from your hand with the cost reduced by 5.\n[All Turns] When any of your [TS] trait Digimon or Tamers would leave the battle area, by placing this Digimon's top stacked card as the bottom security card, they don't leave.\n\n[DUAL Effect]\nFor each of your security cards, add 1 to this card's use cost.\n＜Use Req. ([TS] trait)＞ (Specified cards let you ignore color requirements.)\n[Main] Delete all of your opponent's Digimon with the lowest DP. Then, ＜Recovery +1＞.\n\n[DUAL Rule]\n＜Arts Digivolve＞ (Instead of trashing after use, your cards may digivolve into this card without paying the cost.)",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?search=true&category=522038",
+          "card_text_sha256": "24ce9bb0d785819ffcf0a6c76018218077a2634be34e80648eff1e1a3e62418f",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT26-103",
+          "name": "Jupitermon: Wrath Mode",
+          "qty": 3,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 7,
+          "colors": [
+            "Yellow",
+            "Red",
+            "Black"
+          ],
+          "traits": [
+            "Shaman",
+            "Olympos XII",
+            "Iliad",
+            "TS"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.6 w/[Olympos XII] trait: Cost 5\n\n[Effect]\n＜Piercing＞ ＜Reboot＞ ＜Blocker＞ ＜Succession ([Jupitermon])＞ (This Digimon gains all effects other than ＜Succession＞ on its topmost specified digivolution card.)\n[When Digivolving] [Counter] [Once Per Turn] Trash your top security card and ＜Recovery +2＞.\n[All Turns] [Once Per Turn] When security stacks are removed from, 1 of your opponent's Digimon gets -15000 DP until their turn ends.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?search=true&category=522038",
+          "card_text_sha256": "bce9b4149fef6f8f5f0366da94d786842f82594fc75633c247ea717bbae841f9",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "P-213",
+          "name": "Aegiochusmon",
+          "qty": 2,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 5,
+          "colors": [
+            "Red"
+          ],
+          "traits": [
+            "Shaman",
+            "Iliad",
+            "TS"
+          ],
+          "card_text": "[Effect]\n[Digivolve] [Aegiomon]: Cost 3\n＜Raid＞ ＜Decode《[Aegiomon]》＞\n[When Digivolving] If you have 3 or fewer security cards, this Digimon gains ＜Rush＞ and +3000 DP until your opponent's turn ends. Then, this Digimon may attack.\n[Rule] Trait: Has [Dragonkin] Type.\n\n[Inherited Effect]\n＜Decode 《[Aegiomon]》＞ (When this Digimon would leave the battle area other than in battle, you may play 1 [Aegiomon] from its digivolution cards without paying the cost.)",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?card_no=P-213&search=true",
+          "card_text_sha256": "36bb21d37f475a30904848b6cff49d951a57f06fab604eb8bbd72388f6b74525",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT24-003",
+          "name": "Tsunomon",
+          "qty": 4,
+          "zone": "eggs",
+          "type": "Digi-Egg",
+          "level": 2,
+          "colors": [
+            "Yellow"
+          ],
+          "traits": [
+            "Lesser",
+            "Iliad",
+            "TS"
+          ],
+          "card_text": "[Inherited Effect]\n[Your Turn] [Once Per Turn] When your security stack is removed from, this Digimon may digivolve into a [Shaman] trait Digimon card in the hand with the digivolution cost reduced by 1.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?category=522033&search=true",
+          "card_text_sha256": "6b9ce247c44ca21d2d5df78d3db77b85427c9fb816ce0d01be2b44fd0d2f7562",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        }
+      ]
+    },
+    "B": {
+      "name": "Amaterasumon-Toho",
+      "main": 50,
+      "eggs": 4,
+      "unique_main_ids": 20,
+      "unique_egg_ids": 1,
+      "deck_content_sha256": "0a8746c7bf573e51e817e3db17710c3e54c262f98c021cac2816d08d40e546dd",
+      "card_manifest": [
+        {
+          "card_number": "BT26-012",
+          "name": "Manekimon",
+          "qty": 2,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 4,
+          "colors": [
+            "Red",
+            "Yellow"
+          ],
+          "traits": [
+            "Puppet",
+            "Shambala",
+            "TB"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.3 w/[Shambala] trait: Cost 2\n\n[Effect]\n[Main] [Once Per Turn] You may play or use 1 [TB] trait card from your hand with the cost reduced by 2.\n\n[Inherited Effect]\n[When Attacking] [Once Per Turn] 1 of your opponent's Digimon gets -2000 DP for the turn.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?search=true&category=522038",
+          "card_text_sha256": "f8c6226041e16921a8005ccab8a91d57c4ec2dbcf599cfbab1652b7dd98b0fe8",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT26-013",
+          "name": "Musyamon",
+          "qty": 1,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 4,
+          "colors": [
+            "Red",
+            "Purple"
+          ],
+          "traits": [
+            "Wizard",
+            "Shambala",
+            "TB",
+            "TS"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.3 w/[Shambala]/[TS] trait: Cost 2\n\n[Effect]\n＜Blocker＞\n[On Play] [On Deletion] By trashing 1 card in your hand, delete 1 of your opponent's Digimon with 6000 DP or less.\n\n[Inherited Effect]\n[Your Turn] This Digimon gets +2000 DP.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?search=true&category=522038",
+          "card_text_sha256": "59c63e6a2b0ac09625ebd1fe111f15f3bd4bb09ae57004c6a1d5d01d51aa2e97",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT26-014",
+          "name": "Darumamon",
+          "qty": 1,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 5,
+          "colors": [
+            "Red",
+            "Yellow"
+          ],
+          "traits": [
+            "Mutant",
+            "Shambala",
+            "TB"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.4 w/[Shambala] trait: Cost 3\n\n[Effect]\n[On Play] [When Digivolving] Delete 1 of your opponent's Digimon with 7000 DP or less.\n[On Deletion] You may return 1 [Shambala] trait card from your trash to the hand. Then, you may play 1 [TB] trait Digimon card with 6000 DP or less from your hand without paying the cost.\n\n[Special Play Condition]\nAssembly -2: Lv.4 or lower [TB] trait card\n\n[Inherited Effect]\n[On Deletion] You may play 1 [TB] trait Digimon card with 6000 DP or less from your hand without paying the cost.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?search=true&category=522038",
+          "card_text_sha256": "7b7d5535d55c4223abd86977c5c8e9cf52f5d1a082530ae83fcb8161fc7a5727",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 0,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "BT26-104",
+          "name": "Kunlun",
+          "qty": 2,
+          "zone": "main",
+          "type": "Tamer",
+          "level": null,
+          "colors": [
+            "White"
+          ],
+          "traits": [
+            "Shambala",
+            "SW",
+            "TB",
+            "TS"
+          ],
+          "card_text": "[Effect]\n[Start of Your Main Phase] Gain 1 memory.\n[On Play] By trashing 1 [Shambala] trait card from your hand, ＜Draw 2＞.\n[End of Your Turn] If you have a Digimon with the [Tentei Hachibushu] trait, by suspending this Tamer, you may use 1 Option card with the [Shambala] trait from your hand without paying the cost.\n\n[Security Effect]\n[Security] Play this card without paying the cost.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?search=true&category=522038",
+          "card_text_sha256": "31179827b9a058a3ddc825519910ac90b8e6749d97053437df4ce4a66af1bb9f",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 3,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "EX1-066",
+          "name": "Analog Youth",
+          "qty": 1,
+          "zone": "main",
+          "type": "Tamer",
+          "level": null,
+          "colors": [
+            "White"
+          ],
+          "traits": [],
+          "card_text": "[Effect]\n[On Play] Reveal the top 3 cards of your deck. Add 1 Digimon card among them to your hand. Trash the remaining cards. [All Turns] When one of your level 5 or higher Digimon with digivolution cards is deleted, you may suspend this Tamer. If you do, gain 1 memory, then hatch 1 Digi-Egg card to an empty space in your Breeding Area.\n\n[Security Effect]\n[Security] Play this card without paying its memory cost.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?category=522006&search=true",
+          "card_text_sha256": "36eaea4ab328034ddd524409600eda4a5f075b277c97d92aab15028f78064394",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 2,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "EX12-009",
+          "name": "Wankomon",
+          "qty": 4,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 3,
+          "colors": [
+            "Red"
+          ],
+          "traits": [
+            "Beast",
+            "Shambala",
+            "TB"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.2 w/[Shambala] trait: Cost 0\n[Effect]\n[On Play] Reveal the top 3 cards of your deck. Add 1 card with the [Shambala] trait and 1 card with the [TB] trait among them to the hand. Return the rest to the bottom of the deck.\n[Inherited Effect]\n[Your Turn] This Digimon gets +2000 DP.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?card_no=EX12-009&search=true",
+          "card_text_sha256": "033fae53e0de4b3880414686efb786943fa5de21d82963c62aea0de35eb157e5",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 2,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "EX12-020",
+          "name": "Gasamon",
+          "qty": 3,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 3,
+          "colors": [
+            "Blue"
+          ],
+          "traits": [
+            "Mollusk",
+            "Shambala",
+            "TB"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.2 w/[Shambala] trait: Cost 0\n[Effect]\n[Your Turn] When this Digimon would digivolve into a Digimon card with the [TB] trait, reduce the cost by 1.\n[Inherited Effect]\n[When Attacking] [Once Per Turn] If your hand has 7 or fewer cards, ＜Draw 1＞.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?card_no=EX12-020&search=true",
+          "card_text_sha256": "992ffe99b0b740779b59ce3e5c5a914ac2bbe7bef99183016c321021a0cca6f4",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 2,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "EX12-026",
+          "name": "Shellmon",
+          "qty": 4,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 4,
+          "colors": [
+            "Blue"
+          ],
+          "traits": [
+            "Mollusk",
+            "Shambala",
+            "TB"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.3 w/[Shambala] trait: Cost 2\n[Effect]\n＜Blocker＞\n[On Play] [When Digivolving] Trash the bottom 2 digivolution cards of 1 of your opponent's Digimon. Then, 1 of their Digimon with 1 or fewer digivolution cards can't attack or block until their turn ends.\n(Rule) Trait: Has [Aquatic] Type.\n[Inherited Effect]\n[When Attacking] [Once Per Turn] If your hand has 7 or fewer cards, ＜Draw 1＞.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?card_no=EX12-026&search=true",
+          "card_text_sha256": "c81384b088df22cf9682cd8b9d631c5c414963a56fa1f8967d84cb4ea7b28633",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 2,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "EX12-031",
+          "name": "MarineBullmon",
+          "qty": 2,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 5,
+          "colors": [
+            "Blue",
+            "Yellow"
+          ],
+          "traits": [
+            "Mollusk",
+            "Shambala",
+            "TB"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.4 w/[Aquatic]/[Shambala] trait: Cost 3\n[Effect]\n＜Decode (Lv.4 or lower w/[Aqua]/[Sea Animal] in any trait or w/[TB] trait)＞\n[On Play] [When Digivolving] By placing 1 level 6 or lower card with [Aqua] or [Sea Animal] in any of its traits or the [TB] trait from your hand as this Digimon's bottom digivolution card, return 1 of your opponent's Digimon with 1 or fewer digivolution cards to the hand.\n(Rule) Trait: Has [Aquatic] Type.\n[Special Play Condition]\nAssembly -2: Lv.4 or lower card w/[Aqua]/[Sea Animal] in any trait or w/[TB] trait\n[Inherited Effect]\n＜Decode (Lv.4 or lower w/[Aqua]/[Sea Animal] in any trait or w/[TB] trait)＞ (When this Digimon would leave the battle area other than in battle, you may play 1 specified Digimon card from its digivolution cards without paying the cost.)",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?card_no=EX12-031&search=true",
+          "card_text_sha256": "71888c415477d685fc3d714a23b7f30f63d047ee664ad7a4fc29c78bf7a5f2df",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 5,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "EX12-036",
+          "name": "Ryugumon",
+          "qty": 2,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 6,
+          "colors": [
+            "Blue",
+            "Yellow"
+          ],
+          "traits": [
+            "Mollusk",
+            "Sanmyojin",
+            "Tentei Hachibushu",
+            "Shambala",
+            "TB"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.5 w/[Aquatic]/[Shambala] trait: Cost 3\n[Effect]\n＜Barrier＞ ＜Evade＞ ＜Decode (Lv.5 or lower w/[Aqua]/[Sea Animal] in any trait or w/[TB] trait)＞\n[On Play] [When Digivolving] [When Attacking] [Once Per Turn] By placing 1 level 6 or lower card with [Aqua] or [Sea Animal] in any of its traits or the [TB] trait from your hand as this Digimon's bottom digivolution card, 1 of your Digimon may unsuspend.\n[All Turns] [Once Per Turn] When any of your Digimon are played or digivolve, 1 of your opponent's Digimon can't activate [When Digivolving] effects or suspend until their turn ends.\n(Rule) Trait: Has [Aquatic] Type.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?card_no=EX12-036&search=true",
+          "card_text_sha256": "2beaa3245b5f3b1215aa4fe6fff42016b9aaedb66ed7df328461f4cd012bb661",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 4,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "EX12-046",
+          "name": "Shishimamon",
+          "qty": 4,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 5,
+          "colors": [
+            "Red",
+            "Yellow"
+          ],
+          "traits": [
+            "Holy Beast",
+            "Shambala",
+            "TB"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.4 w/[Shambala] trait: Cost 3\n[Effect]\n[On Play] [When Digivolving] Give 1 of your opponent's Digimon ＜Security A. -1＞ and -3000 DP until their turn ends.\n[Your Turn] When your opponent's security stack is removed from, this Digimon may digivolve into a [TB] trait Digimon card in the hand with the cost reduced by 2.\n[Special Play Condition]\nAssembly -2: Lv.4 or lower [TB] trait card\n[Inherited Effect]\n[End of Attack] [Once Per Turn] You may play 1 [TB] trait Digimon card with 5000 DP or less from your hand without paying the cost.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?card_no=EX12-046&search=true",
+          "card_text_sha256": "3c7f4af7dea523495f5e05f65d4561f7860109dc01b92790d6f8cd95c3a5b49b",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 5,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "EX12-047",
+          "name": "Amaterasumon",
+          "qty": 3,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 6,
+          "colors": [
+            "Red",
+            "Yellow"
+          ],
+          "traits": [
+            "Shaman",
+            "Sanmyojin",
+            "Tentei Hachibushu",
+            "Shambala",
+            "TB"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.5 w/[Shambala] trait: Cost 3\n[Effect]\n＜Piercing＞ ＜Security A. +1＞ ＜Ascension＞ (When this Digimon is deleted, you may place this card as the top security card.)\n[On Play] [When Digivolving] Delete 1 of your opponent's lowest DP Digimon. Then, by returning 2 cards from their trash to the bottom of the deck, for the turn, this Digimon gets +6000 DP and, to 1 of their Digimon, give -5000 DP for each of those returned cards' colors.\n[On Deletion] You may return 1 [TB] trait card from your trash to the hand. Then, you may play 1 level 5 or lower [TB] trait Digimon card from your hand without paying the cost.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?card_no=EX12-047&search=true",
+          "card_text_sha256": "81e504668cb7019d54de12ac7130639a6f143803b108566e2ae94dca2a06a228",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 3,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "EX12-061",
+          "name": "Hanimon",
+          "qty": 3,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 3,
+          "colors": [
+            "Purple"
+          ],
+          "traits": [
+            "Puppet",
+            "Shambala",
+            "TB"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.2 w/[Shambala] trait: Cost 0\n[Effect]\n[On Play] By trashing 1 card with the [Puppet] or [TB] trait from your hand, ＜Draw 2＞.\n[Inherited Effect]\n[When Attacking] [Once Per Turn] ＜Draw 1＞ and trash 1 card in your hand.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?card_no=EX12-061&search=true",
+          "card_text_sha256": "4727cbc2058bb7fc0a6a642dd755ae95a76f907c969d73e39257c53e388b169d",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 2,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "EX12-062",
+          "name": "Kokeshimon",
+          "qty": 3,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 4,
+          "colors": [
+            "Purple",
+            "Green"
+          ],
+          "traits": [
+            "Puppet",
+            "Shambala",
+            "TB"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.3 w/[Puppet]/[Shambala] trait: Cost 2\n[Effect]\n[On Play] [When Digivolving] By deleting 1 of your Digimon, delete 1 of your opponent's level 4 or lower Digimon.\n[Inherited Effect]\n[When Attacking] [Once Per Turn] ＜Draw 1＞ and trash 1 card in your hand.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?card_no=EX12-062&search=true",
+          "card_text_sha256": "60cc6ec60add067577a38244b1903b7bc558b83d4ce64ae339e768597e4060eb",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 2,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "EX12-063",
+          "name": "Karakurumon",
+          "qty": 2,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 5,
+          "colors": [
+            "Purple",
+            "Green"
+          ],
+          "traits": [
+            "Puppet",
+            "Shambala",
+            "TB"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Non-white Lv.4 w/[Puppet]/[Shambala] trait: Cost 3\n[Effect]\n[On Play] [When Digivolving] Suspend 1 of your opponent's Digimon or Tamers. Then, 1 of their Digimon or Tamers can't unsuspend until their turn ends.\n[On Deletion] You may play 1 level 4 or lower [Puppet] or [TB] trait Digimon card from your trash without paying the cost.\n[Special Play Condition]\nAssembly -2: Lv.4 or lower [Puppet]/[TB] trait card\n[Inherited Effect]\n[On Deletion] You may play 1 level 4 or lower [Puppet] or [TB] trait Digimon card from your trash without paying the cost.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?card_no=EX12-063&search=true",
+          "card_text_sha256": "25afa0bc9607d2d3fb81f95ed4b0a23d85f84abf4d3d98a10a96cb1aa2fbb63f",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 5,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "EX12-065",
+          "name": "Kaguyamon",
+          "qty": 3,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 6,
+          "colors": [
+            "Green",
+            "Purple"
+          ],
+          "traits": [
+            "Puppet",
+            "Sanmyojin",
+            "Tentei Hachibushu",
+            "Shambala",
+            "TB"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.5 w/[Puppet]/[Shambala] trait: Cost 3\n[Effect]\n＜Fortitude＞\n[On Play] [When Digivolving] [When Attacking] [Once Per Turn] You may play 1 play cost 5 or lower [Puppet] or [Shambala] trait card from your trash without paying the cost.\n[All Turns] All of your [Puppet] or [TB] trait Digimon gain ＜Blocker＞ and ＜Retaliation＞.\n[On Deletion] Return 1 of your opponent's lowest level Digimon to the bottom of the deck.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?card_no=EX12-065&search=true",
+          "card_text_sha256": "f7a9d3917ae43a9d848dc3afb008a951d1c5eb526ae84125cb5f313fd141bf9f",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 4,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "EX12-070",
+          "name": "Sanmyojin Arrival",
+          "qty": 4,
+          "zone": "main",
+          "type": "Option",
+          "level": null,
+          "colors": [
+            "Yellow",
+            "Green",
+            "Blue"
+          ],
+          "traits": [
+            "Shambala",
+            "TB"
+          ],
+          "card_text": "[Effect]\n＜Use Req. ([TB] trait)＞ (Specified cards let you ignore color requirements.)\n[Main] By trashing 1 [TB] trait card from your hand, ＜Draw 2＞. After, place this card in the battle area.\n[All Turns] When any of your level 5 or higher [TB] trait Digimon would leave the battle area, ＜Delay＞.\n・You may play 1 [Sanmyojin] trait Digimon card from your hand without paying the cost.\n[Security Effect]\n[Security] Activate this card's [Main] effects.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?card_no=EX12-070&search=true",
+          "card_text_sha256": "da0ae3d213c45f295f0826307149bc91a532ca3966e59e3101eafafc2a26a9c5",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 7,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "EX12-074",
+          "name": "Genshi Continent & Ashino Island",
+          "qty": 2,
+          "zone": "main",
+          "type": "Option",
+          "level": null,
+          "colors": [
+            "White"
+          ],
+          "traits": [
+            "Shambala",
+            "SW",
+            "TB"
+          ],
+          "card_text": "[Effect]\n＜Use Req. ([Shambala] trait)＞ (Specified cards let you ignore color requirements.)\n{Security} [Your Turn] [Once Per Turn] When one of your [Shambala] trait Digimon attacks, it may digivolve into a [Shambala] trait Digimon card in the hand with the cost reduced by 1.\n[Main] Add your bottom security card to the hand and place this card face up as the bottom security card. Then, you may play 1 [Shambala] trait card from your hand with the cost reduced by 3.\n[Security Effect]\n[Security] You may play 1 play cost 5 or lower [Shambala] trait card from your hand or trash without paying the cost.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?card_no=EX12-074&search=true",
+          "card_text_sha256": "f1780d58efe7c54ff7494feee4252a91f64cc806bf70267bdd59f34c8fb535f9",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 6,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "EX12-075",
+          "name": "Kunlun's Imperial Decree",
+          "qty": 1,
+          "zone": "main",
+          "type": "Option",
+          "level": null,
+          "colors": [
+            "White"
+          ],
+          "traits": [
+            "Shambala",
+            "SW",
+            "TB"
+          ],
+          "card_text": "[Effect]\n＜Use Req. ([Shambala] trait)＞ (Specified cards let you ignore color requirements.)\n[Main] Reveal the top 3 cards of your deck. Add 1 [Shambala] trait card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.\n[Main] ＜Delay＞\n・Gain 2 memory.\n[Security Effect]\n[Security] Place this card in the battle area.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?card_no=EX12-075&search=true",
+          "card_text_sha256": "1efdc68f81a8f417836923ef0387a3ec0a15ead54478cfc78f51ba7282049258",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 7,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "EX12-076",
+          "name": "Susanoomon",
+          "qty": 3,
+          "zone": "main",
+          "type": "Digimon",
+          "level": 7,
+          "colors": [
+            "Yellow",
+            "White",
+            "Red"
+          ],
+          "traits": [
+            "Shaman",
+            "Shambala",
+            "SW",
+            "TB",
+            "TS"
+          ],
+          "card_text": "[Special Digivolution Condition]\n[Digivolve] Lv.6 w/[Hybrid]/[Shambala]/[TS] trait: Cost 5\n[Effect]\n＜Rush＞ ＜Raid＞ ＜Blocker＞\n[On Play] [When Digivolving] To all of your opponent's Digimon, give -3000 DP for the turn for each color in this Digimon's digivolution cards.\n[When Attacking] [Once Per Turn] Place 1 of your opponent's Digimon as the top security card. Then, if this Digimon has 4 or more colors in its digivolution cards, trash their top security card and ＜Recovery +1＞.\n(Rule) Trait: Has [Hybrid] Form.\n[Special Play Condition]\nAssembly -9: 8 [Hybrid]/[Shambala] trait cards w/different names",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?card_no=EX12-076&search=true",
+          "card_text_sha256": "4a26eee7effd9d0408672a57571ac79157dd0fee076d7625ca3888fd40dd78c3",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 4,
+          "judge_status": "UNVERIFIED"
+        },
+        {
+          "card_number": "EX12-004",
+          "name": "Onibimon",
+          "qty": 4,
+          "zone": "eggs",
+          "type": "Digi-Egg",
+          "level": 2,
+          "colors": [
+            "Purple"
+          ],
+          "traits": [
+            "Ghost",
+            "Shambala",
+            "TB"
+          ],
+          "card_text": "[Inherited Effect]\n[Your Turn] This Digimon with the [TB] trait gains ＜Execute＞.",
+          "catalog_source_url": "https://world.digimoncard.com/cards/?card_no=EX12-004&search=true",
+          "card_text_sha256": "d890b3780e9b0573388a9e0204365949366a445ac5d6708b8b0f2b5fb04721b0",
+          "phase26_explicit_card_execution_refs": 0,
+          "isolated_toho_runtime_refs": 1,
+          "judge_status": "UNVERIFIED"
+        }
+      ]
+    }
+  },
+  "import_validation": "PASS_SNAPSHOT_RESTRICTIONS_NOT_FORMAT_CERTIFIED",
+  "engine_baseline": "phase26-controller-on-legacy-accelerated-engine",
+  "fact_finding_requested_games": 60,
+  "fact_finding_completed_valid_games": 0,
+  "competitive_evaluation_valid_games": 0,
+  "evaluation_target": 10000,
+  "status": "HALT_UNSUPPORTED_MATCHUP_EFFECTS",
+  "hard_failures": [
+    "Phase26 accelerated runtime normal_digi_cost has no generic digivolution support for new matchup; both diagnostic games ended as turn-cap draws without digivolutions.",
+    "Phase26 on_play_effect and resolve_digi_effects have no exact card-id branches for these two decklists.",
+    "Phase26 main-action option whitelist excludes BT24-100, EX12-070, EX12-074 and EX12-075.",
+    "BT26-033 has Digimon/Tamer DUAL and Arts behavior not represented in current Phase26 controller.",
+    "Experimental Toho standalone runtime is separate from Phase26 and has not been integrated or certified for this exact matchup."
+  ],
+  "total_unique_card_ids": 41,
+  "total_unique_main_ids": 39
+}

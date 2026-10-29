@@ -1,0 +1,248 @@
+{
+  "BT24-003": {
+    "play_cost": null,
+    "type": "Digi-Egg",
+    "dp": null,
+    "card_text_sha256": "6b9ce247c44ca21d2d5df78d3db77b85427c9fb816ce0d01be2b44fd0d2f7562"
+  },
+  "BT24-031": {
+    "play_cost": 3,
+    "type": "Digimon",
+    "dp": 1000,
+    "card_text_sha256": "a35a80781fe5fccffbbf53d7582a4592de593c1f26160684ab48a374469370d8"
+  },
+  "BT24-034": {
+    "play_cost": 5,
+    "type": "Digimon",
+    "dp": 5000,
+    "card_text_sha256": "24423e63513d18445396d8e2b59d38a61705104ece287bcdf11a786ff3564817"
+  },
+  "BT24-083": {
+    "play_cost": 3,
+    "type": "Tamer",
+    "dp": null,
+    "card_text_sha256": "3e658ec76b8da658cfd616c02f5e6e9395cb5adcc079447ab632f75a0deac59c"
+  },
+  "BT24-084": {
+    "play_cost": 3,
+    "type": "Tamer",
+    "dp": null,
+    "card_text_sha256": "4295b23d0e1ebdaec5cfcc05fcbe72b5dc845a64344898979f100c592c578e7b"
+  },
+  "BT24-085": {
+    "play_cost": 4,
+    "type": "Tamer",
+    "dp": null,
+    "card_text_sha256": "8b14759ba2d29facba958e9bc4198d50a8f74797ff3162caf5fdcca466505118"
+  },
+  "BT24-088": {
+    "play_cost": 3,
+    "type": "Tamer",
+    "dp": null,
+    "card_text_sha256": "7e27654e40ccb7724ab0bba185f79ae21246fe8719e28e2659efaf9363e8ee54"
+  },
+  "BT24-100": {
+    "play_cost": 3,
+    "type": "Option",
+    "dp": null,
+    "card_text_sha256": "c8ba3b36922439cb0ed4af84373f8c58d46876a951601e8b38752e2ae4d01812"
+  },
+  "BT24-101": {
+    "play_cost": 12,
+    "type": "Digimon",
+    "dp": 13000,
+    "card_text_sha256": "16f781a8605ee0a1ca7c65a3d396ac3cc061142847f482974cfcdfa82aa7192b"
+  },
+  "BT24-102": {
+    "play_cost": 5,
+    "type": "Tamer",
+    "dp": null,
+    "card_text_sha256": "21dbb5a69f5b7a6e271aa4bd859357008ded2d1a2a03f819cab721f67a5cf988"
+  },
+  "BT25-022": {
+    "play_cost": 3,
+    "type": "Digimon",
+    "dp": 2000,
+    "card_text_sha256": "3f6f2b6e18c899289f0ea8619b77c29ca0547b89480334290aeee6ab44c26727"
+  },
+  "BT25-025": {
+    "play_cost": 8,
+    "type": "Digimon",
+    "dp": 8000,
+    "card_text_sha256": "9ad859d12921e50c159ce8613f3d9c0f562ac432e0139bbe918be8b739031d65"
+  },
+  "BT25-028": {
+    "play_cost": 12,
+    "type": "Digimon",
+    "dp": 12000,
+    "card_text_sha256": "72a1aa265ccc4841879d8c6481372e8812e9898c3f5371fb664fff7f78616371"
+  },
+  "BT25-030": {
+    "play_cost": 3,
+    "type": "Digimon",
+    "dp": 2000,
+    "card_text_sha256": "3d628768d63e1828ec4f40b1764d4fa2ed72a8ecb8b3fb3d9c962b29d7bcc34d"
+  },
+  "BT25-033": {
+    "play_cost": 5,
+    "type": "Digimon",
+    "dp": 5000,
+    "card_text_sha256": "7b6d338cb603eabbe2d7bafbc8a857aba511c3c2be3000ffecf1c8df03b4d411"
+  },
+  "BT26-012": {
+    "play_cost": 5,
+    "type": "Digimon",
+    "dp": 6000,
+    "card_text_sha256": "f8c6226041e16921a8005ccab8a91d57c4ec2dbcf599cfbab1652b7dd98b0fe8"
+  },
+  "BT26-013": {
+    "play_cost": 4,
+    "type": "Digimon",
+    "dp": 5000,
+    "card_text_sha256": "59c63e6a2b0ac09625ebd1fe111f15f3bd4bb09ae57004c6a1d5d01d51aa2e97"
+  },
+  "BT26-014": {
+    "play_cost": 7,
+    "type": "Digimon",
+    "dp": 7000,
+    "card_text_sha256": "7b7d5535d55c4223abd86977c5c8e9cf52f5d1a082530ae83fcb8161fc7a5727"
+  },
+  "BT26-016": {
+    "play_cost": 12,
+    "type": "Digimon",
+    "dp": 12000,
+    "card_text_sha256": "9d2daa0cd00a33f8c2cb5063ff4265abe7f07a75b1cd770ae63aff454f7b59d1"
+  },
+  "BT26-029": {
+    "play_cost": 8,
+    "type": "Digimon",
+    "dp": 8000,
+    "card_text_sha256": "beba313586b0b6e88f2aefb0f1efd21710cbc28235295626c9d225e009ace4da"
+  },
+  "BT26-033": {
+    "play_cost": "D",
+    "type": "Digimon/Tamer",
+    "dp": 13000,
+    "card_text_sha256": "24ce9bb0d785819ffcf0a6c76018218077a2634be34e80648eff1e1a3e62418f"
+  },
+  "BT26-103": {
+    "play_cost": 16,
+    "type": "Digimon",
+    "dp": 16000,
+    "card_text_sha256": "bce9b4149fef6f8f5f0366da94d786842f82594fc75633c247ea717bbae841f9"
+  },
+  "BT26-104": {
+    "play_cost": 5,
+    "type": "Tamer",
+    "dp": null,
+    "card_text_sha256": "31179827b9a058a3ddc825519910ac90b8e6749d97053437df4ce4a66af1bb9f"
+  },
+  "EX1-066": {
+    "play_cost": 2,
+    "type": "Tamer",
+    "dp": null,
+    "card_text_sha256": "36eaea4ab328034ddd524409600eda4a5f075b277c97d92aab15028f78064394"
+  },
+  "EX12-004": {
+    "play_cost": null,
+    "type": "Digi-Egg",
+    "dp": null,
+    "card_text_sha256": "d890b3780e9b0573388a9e0204365949366a445ac5d6708b8b0f2b5fb04721b0"
+  },
+  "EX12-009": {
+    "play_cost": 3,
+    "type": "Digimon",
+    "dp": 2000,
+    "card_text_sha256": "033fae53e0de4b3880414686efb786943fa5de21d82963c62aea0de35eb157e5"
+  },
+  "EX12-020": {
+    "play_cost": 3,
+    "type": "Digimon",
+    "dp": 2000,
+    "card_text_sha256": "992ffe99b0b740779b59ce3e5c5a914ac2bbe7bef99183016c321021a0cca6f4"
+  },
+  "EX12-026": {
+    "play_cost": 5,
+    "type": "Digimon",
+    "dp": 5000,
+    "card_text_sha256": "c81384b088df22cf9682cd8b9d631c5c414963a56fa1f8967d84cb4ea7b28633"
+  },
+  "EX12-031": {
+    "play_cost": 7,
+    "type": "Digimon",
+    "dp": 7000,
+    "card_text_sha256": "71888c415477d685fc3d714a23b7f30f63d047ee664ad7a4fc29c78bf7a5f2df"
+  },
+  "EX12-036": {
+    "play_cost": 12,
+    "type": "Digimon",
+    "dp": 12000,
+    "card_text_sha256": "2beaa3245b5f3b1215aa4fe6fff42016b9aaedb66ed7df328461f4cd012bb661"
+  },
+  "EX12-046": {
+    "play_cost": 7,
+    "type": "Digimon",
+    "dp": 7000,
+    "card_text_sha256": "3c7f4af7dea523495f5e05f65d4561f7860109dc01b92790d6f8cd95c3a5b49b"
+  },
+  "EX12-047": {
+    "play_cost": 12,
+    "type": "Digimon",
+    "dp": 12000,
+    "card_text_sha256": "81e504668cb7019d54de12ac7130639a6f143803b108566e2ae94dca2a06a228"
+  },
+  "EX12-061": {
+    "play_cost": 3,
+    "type": "Digimon",
+    "dp": 2000,
+    "card_text_sha256": "4727cbc2058bb7fc0a6a642dd755ae95a76f907c969d73e39257c53e388b169d"
+  },
+  "EX12-062": {
+    "play_cost": 4,
+    "type": "Digimon",
+    "dp": 5000,
+    "card_text_sha256": "60cc6ec60add067577a38244b1903b7bc558b83d4ce64ae339e768597e4060eb"
+  },
+  "EX12-063": {
+    "play_cost": 7,
+    "type": "Digimon",
+    "dp": 7000,
+    "card_text_sha256": "25afa0bc9607d2d3fb81f95ed4b0a23d85f84abf4d3d98a10a96cb1aa2fbb63f"
+  },
+  "EX12-065": {
+    "play_cost": 12,
+    "type": "Digimon",
+    "dp": 12000,
+    "card_text_sha256": "f7a9d3917ae43a9d848dc3afb008a951d1c5eb526ae84125cb5f313fd141bf9f"
+  },
+  "EX12-070": {
+    "play_cost": 3,
+    "type": "Option",
+    "dp": null,
+    "card_text_sha256": "da0ae3d213c45f295f0826307149bc91a532ca3966e59e3101eafafc2a26a9c5"
+  },
+  "EX12-074": {
+    "play_cost": 3,
+    "type": "Option",
+    "dp": null,
+    "card_text_sha256": "f1780d58efe7c54ff7494feee4252a91f64cc806bf70267bdd59f34c8fb535f9"
+  },
+  "EX12-075": {
+    "play_cost": 3,
+    "type": "Option",
+    "dp": null,
+    "card_text_sha256": "1efdc68f81a8f417836923ef0387a3ec0a15ead54478cfc78f51ba7282049258"
+  },
+  "EX12-076": {
+    "play_cost": 16,
+    "type": "Digimon",
+    "dp": 16000,
+    "card_text_sha256": "4a26eee7effd9d0408672a57571ac79157dd0fee076d7625ca3888fd40dd78c3"
+  },
+  "P-213": {
+    "play_cost": 7,
+    "type": "Digimon",
+    "dp": 7000,
+    "card_text_sha256": "36bb21d37f475a30904848b6cff49d951a57f06fab604eb8bbd72388f6b74525"
+  }
+}
