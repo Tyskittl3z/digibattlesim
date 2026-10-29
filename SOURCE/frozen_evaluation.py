@@ -235,8 +235,10 @@ def load_freeze(run_dir):
 
 def _load_checkpoint(run_dir, manifest, schedule):
     checkpoint = json.loads((Path(run_dir) / 'CHECKPOINT.json').read_bytes())
+    if not isinstance(checkpoint, dict):
+        raise ValueError('Invalid frozen evaluation checkpoint')
     position = checkpoint.get('schedule_position')
-    if (not isinstance(checkpoint, dict) or checkpoint.get('schema') != CHECKPOINT_SCHEMA
+    if (checkpoint.get('schema') != CHECKPOINT_SCHEMA
             or checkpoint.get('status') not in ('READY', 'RUNNING', 'BLOCKED_HALT',
                                                  'COMPLETE_PENDING_SUMMARY', 'COMPLETED')
             or checkpoint.get('frozen_inputs') != manifest['frozen_inputs']

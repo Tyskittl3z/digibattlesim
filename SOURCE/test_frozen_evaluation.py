@@ -218,6 +218,12 @@ class FrozenEvaluationFreezeTests(unittest.TestCase):
         self.assertEqual(checkpoint['schedule_position'], 0)
         self.assertEqual(list((run / 'records').glob('*')), [])
 
+    def test_malformed_checkpoint_fails_closed_with_a_validation_error(self):
+        run = self.create_synthetic_freeze()
+        (run / 'CHECKPOINT.json').write_bytes(b'[]\n')
+        with self.assertRaisesRegex(ValueError, 'checkpoint'):
+            frozen.status_frozen(run)
+
     def test_rules_halt_is_preserved_without_seed_replacement_or_credit(self):
         run = self.create_synthetic_freeze()
         result = frozen.run_frozen(run, match_runner=self.halted_runner)
