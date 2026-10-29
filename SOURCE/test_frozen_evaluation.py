@@ -43,6 +43,7 @@ class FrozenEvaluationFreezeTests(unittest.TestCase):
             'planned_starts': {'A': 5000, 'B': 5000},
             'schedule_file_sha256': hashlib.sha256(packed).hexdigest(),
             'schedule_sha256': digest(schedule),
+            'gate': self.synthetic_gate(),
         }
         (folder / 'PREPARATION.json').write_bytes(canonical_bytes(report))
         return folder
@@ -236,8 +237,9 @@ class FrozenEvaluationFreezeTests(unittest.TestCase):
         self.assertEqual(checkpoint['halt_kind'], 'RULES')
         halt_files = list((run / 'halts').glob('*.json.gz'))
         self.assertEqual(len(halt_files), 1)
-        record = json.loads(gzip.decompress(halt_files[0].read_bytes()))
-        self.assertEqual(record['seed'], self.schedule[0]['seed'])
+        envelope = json.loads(gzip.decompress(halt_files[0].read_bytes()))
+        self.assertEqual(envelope['scheduled_match'], self.schedule[0])
+        self.assertEqual(envelope['record']['seed'], self.schedule[0]['seed'])
 
     def test_interruption_orphan_replays_same_seed_before_credit(self):
         run = self.create_synthetic_freeze(self.schedule_with_completed_first_match())
@@ -260,6 +262,102 @@ class FrozenEvaluationFreezeTests(unittest.TestCase):
         self.assertEqual(result['credited_matches'], 1)
         self.assertEqual(calls, [62, 62])
         self.assertEqual(len(list((run / 'records').glob('*.json.gz'))), 1)
+
+    def test_credited_record_is_bound_to_immutable_receipt_on_resume(self):
+        run = self.create_synthetic_freeze(self.schedule_with_completed_first_match())
+        frozen.run_frozen(run, match_runner=self.completed_runner, stop_after=1)
+        record_path = next((run / 'records').glob('*.json.gz'))
+        record = json.loads(gzip.decompress(record_path.read_bytes()))
+        replacement = 'B' if record['transcript']['winner'] == 'A' else 'A'
+        record['transcript']['winner'] = replacement
+        record['final_state']['runtime']['winner'] = replacement
+        record['transcript']['events'][-1]['winner'] = replacement
+        raw = canonical_bytes(record)
+        packed = gzip.compress(raw, mtime=0)
+        record_path.write_bytes(packed)
+        receipt_path = next((run / 'receipts').glob('*.json'))
+        receipt = json.loads(receipt_path.read_bytes())
+        receipt['record_sha256'] = hashlib.sha256(raw).hexdigest()
+        receipt['file_sha256'] = hashlib.sha256(packed).hexdigest()
+        receipt_path.write_bytes(canonical_bytes(receipt))
+
+        def forbidden_runner(_index, _provenance_sha256):
+            self.fail('tampered credited evidence must be rejected before another match')
+
+        with self.assertRaisesRegex(ValueError, 'hash|chain'):
+            frozen.resume_frozen(run, match_runner=forbidden_runner, stop_after=1)
+        self.assertEqual(len(list((run / 'receipts').glob('*.json'))), 1)
+
+    def test_orphan_halt_is_recovered_before_replaying_or_finalizing(self):
+        run = self.create_synthetic_freeze()
+        original_write_checkpoint = frozen._write_checkpoint
+        with patch.object(frozen, '_write_checkpoint', side_effect=OSError('checkpoint interrupted')):
+            with self.assertRaisesRegex(OSError, 'checkpoint interrupted'):
+                frozen.run_frozen(run, match_runner=self.halted_runner)
+        self.assertEqual(len(list((run / 'halts').glob('*.json.gz'))), 1)
+
+        def forbidden_runner(_index, _provenance_sha256):
+            self.fail('a preserved orphan HALT must block before replay')
+
+        with patch.object(frozen, '_write_checkpoint', wraps=original_write_checkpoint):
+            result = frozen.resume_frozen(run, match_runner=forbidden_runner)
+        self.assertEqual(result['status'], 'BLOCKED_HALT')
+        self.assertEqual(result['halted_match'], self.schedule[0])
+        checkpoint = json.loads((run / 'CHECKPOINT.json').read_bytes())
+        self.assertEqual(checkpoint['halt_kind'], 'RULES')
+
+    def test_atomic_write_failure_does_not_leave_a_blocking_temp_file(self):
+        target = self.temp / 'atomic.json'
+        with patch.object(frozen.os, 'replace', side_effect=OSError('replace interrupted')):
+            with self.assertRaisesRegex(OSError, 'replace interrupted'):
+                frozen.atomic_write(target, b'first')
+        self.assertEqual(list(self.temp.glob('atomic.json*.tmp')), [])
+        frozen.atomic_write(target, b'second')
+        self.assertEqual(target.read_bytes(), b'second')
+
+    def test_integrity_failed_halt_is_preserved_as_blocking_diagnostic(self):
+        run = self.create_synthetic_freeze()
+
+        def integrity_halt(index, provenance_sha256):
+            record = self.halted_runner(index, provenance_sha256)
+            record['physical_integrity'] = {
+                'status': 'FAIL', 'reason': 'PHYSICAL_CARD_MISMATCH fixture'}
+            return record
+
+        result = frozen.run_frozen(run, match_runner=integrity_halt)
+        self.assertEqual(result['status'], 'BLOCKED_HALT')
+        self.assertEqual(result['credited_matches'], 0)
+        halt_path = next((run / 'halts').glob('*.json.gz'))
+        envelope = json.loads(gzip.decompress(halt_path.read_bytes()))
+        self.assertEqual(envelope['scheduled_match'], self.schedule[0])
+        self.assertIn('physical integrity', envelope['validation_error'])
+        self.assertEqual(envelope['record']['physical_integrity']['status'], 'FAIL')
+
+    def test_preparation_must_bind_live_cohort_and_exclude_all_training_seeds(self):
+        preparation = self.make_preparation()
+        report_path = preparation / 'PREPARATION.json'
+        report = json.loads(report_path.read_bytes())
+        report['gate']['cohort_sha256'] = '2' * 64
+        report_path.write_bytes(canonical_bytes(report))
+        rules, strategy = self.review_files()
+        output = self.temp / 'stale-gate-run'
+        with patch.object(frozen, 'assess_eligibility', return_value=self.synthetic_gate()):
+            with self.assertRaisesRegex(ValueError, 'cohort|preparation'):
+                frozen.create_freeze(ROOT, ROOT / 'ARTIFACTS/current-2026-10-29-02',
+                                     preparation, output, rules, strategy)
+        self.assertFalse(output.exists())
+
+        preparation = self.make_preparation()
+        cohort = self.temp / 'expanded-cohort'
+        cohort.mkdir()
+        (cohort / 'cohort.json').write_bytes(canonical_bytes({
+            'records': [{'index': self.schedule[0]['index'],
+                         'seed': self.schedule[0]['seed']}]}))
+        output = self.temp / 'overlap-run'
+        with patch.object(frozen, 'assess_eligibility', return_value=self.synthetic_gate()):
+            with self.assertRaisesRegex(ValueError, 'overlap'):
+                frozen.create_freeze(ROOT, cohort, preparation, output, rules, strategy)
+        self.assertFalse(output.exists())
 
     def test_changed_frozen_input_requires_full_restart_without_running_match(self):
         run = self.create_synthetic_freeze(self.schedule_with_completed_first_match())

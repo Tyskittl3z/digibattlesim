@@ -15,12 +15,17 @@ judge layers are **Justitia** (runtime integrity), **Dike** (independent rules)
 and **Týr** (final evidence audit); the names appear in the app, freeze and saved
 after-report. They do not merge software, rules or strategy authority.
 
-Verified software checks currently total **142 Python tests**, **9 app-core
+Verified software checks currently total **148 Python tests**, **9 app-core
 tests**, **1 app-build test** and **6 Chromium checks**. A real freeze CLI attempt
 exited 2 before creating output because the current cohort/source is stale after
 runner development and still contains 31 gameplay HALTs, optional unmodeled
 effects, unpinned rules, missing reviews/coverage and unapproved roadmaps.
 Final evaluation remains **0/10,000**; no win rate exists.
+
+The required progression is explicit: first obtain 60 valid, full, independently
+reviewed fact-finding matches; then approve evidence-backed GREEN/best,
+YELLOW/medium and RED/worst routes; then freeze and run 10,000 matches with a
+5,000/5,000 start split. Current attempts do not pass the first gate.
 
 ## Browser app — 2026-10-29
 

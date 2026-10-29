@@ -21,6 +21,11 @@ increase the full-match count. The gate also requires the current rules/format
 lock, complete encountered branch coverage, and preregistered lane criteria.
 See `../WORKFLOW.md` for the file contracts.
 
+After all 60+ matches are valid and reviewed, their legal routes are classified
+as GREEN (best), YELLOW (medium) or RED (worst) using the preregistered numeric
+comparison and uncertainty requirements. The frozen 10,000-match run starts only
+after those three-lane roadmaps are separately approved.
+
 Rules and strategy reviews are separate inputs:
 
 ```bash
@@ -54,11 +59,12 @@ python -m frozen_evaluation status --run-dir ../EVALUATION/run-NEW
 
 Freeze creation re-runs eligibility and exits 2 without creating a run when any
 prerequisite is missing. The current real CLI check does exactly that. Each
-credited match gets its own deterministic gzip record, followed by an atomic
-checkpoint. An interruption replays the same original seed and compares the
-entire record before credit. A rules HALT is preserved and blocks continuation.
-Final JSON is written only after Týr revalidates exactly 10,000 unique records,
-5,000 starts per deck, frozen hashes, terminal states and aggregate totals.
+credited match gets its own deterministic gzip record and hash receipt. Receipts
+advance a cumulative atomic checkpoint chain. An interruption replays the same
+original seed and compares the entire record before credit. Rules and integrity
+HALTs are preserved as exact diagnostic envelopes and block continuation. Final
+JSON is written only after Týr revalidates exactly 10,000 unique record/receipt
+pairs, 5,000 starts per deck, frozen hashes, terminal states and aggregate totals.
 
 The two deterministic pilots remain Bot A (Jupitermon) and Bot B
 (Amaterasumon/Toho). Judge labels are Justitia for runtime integrity, Dike for

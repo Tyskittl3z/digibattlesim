@@ -92,7 +92,7 @@
 - Consumes: all prior tasks and the current blocked evidence.
 - Produces: reviewable software verification and an exact remaining-blocker list.
 
-- [ ] **Step 1: Build a final review package and obtain a fresh code review.**
-- [ ] **Step 2: Re-grade findings; fix Critical/Important findings with RED-to-GREEN regressions and rerun the whole suite once.**
-- [ ] **Step 3: Run final verification, refresh checksums, record actual test/CLI results and commit.**
-- [ ] **Step 4: Report the concrete next external actions: publish official-site access, select format/region/language, and supply independent rules/strategy review.**
+- [x] **Step 1: Build a final review package and obtain a fresh code review.**
+- [x] **Step 2: Re-grade findings; fix Critical/Important findings with RED-to-GREEN regressions and rerun the whole suite once.**
+- [x] **Step 3: Run final verification, refresh checksums, record actual test/CLI results and commit.**
+- [x] **Step 4: Report the concrete next external actions: publish official-site access, select format/region/language, and supply independent rules/strategy review.**

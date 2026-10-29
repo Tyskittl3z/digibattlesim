@@ -13,6 +13,7 @@ import json
 import os
 from pathlib import Path
 import re
+import tempfile
 
 from evaluation_gate import assess_eligibility, file_hash, validate_record
 from match_evidence import ROOT, canonical_bytes, digest, provenance, record_match
@@ -20,9 +21,12 @@ from seeded_opening_probe import seed_for
 from workflow_policy import FROZEN_COMPONENTS, assess_resume
 
 
-FREEZE_SCHEMA = 'loaded-pair-frozen-evaluation-v1'
-CHECKPOINT_SCHEMA = 'loaded-pair-frozen-checkpoint-v1'
+FREEZE_SCHEMA = 'loaded-pair-frozen-evaluation-v2'
+CHECKPOINT_SCHEMA = 'loaded-pair-frozen-checkpoint-v2'
+RECEIPT_SCHEMA = 'loaded-pair-record-receipt-v1'
+HALT_SCHEMA = 'loaded-pair-halt-attempt-v1'
 HEX_SHA256 = re.compile(r'[0-9a-f]{64}')
+EMPTY_EVIDENCE_CHAIN_SHA256 = hashlib.sha256(b'').hexdigest()
 JUDGE_LAYERS = (
     {'name': 'Justitia', 'role': 'RUNTIME_INTEGRITY'},
     {'name': 'Dike', 'role': 'INDEPENDENT_RULES'},
@@ -39,19 +43,32 @@ def atomic_write(path, data):
     path = Path(path)
     if not isinstance(data, bytes):
         raise TypeError('atomic_write requires bytes')
-    temporary = path.with_name(path.name + '.tmp')
-    if temporary.exists():
-        raise FileExistsError('Stale atomic-write temporary file: ' + str(temporary))
-    with temporary.open('xb') as handle:
-        handle.write(data)
-        handle.flush()
-        os.fsync(handle.fileno())
-    os.replace(temporary, path)
-    directory = os.open(path.parent, os.O_RDONLY)
+    descriptor, temporary_name = tempfile.mkstemp(
+        prefix=path.name + '.', suffix='.tmp', dir=path.parent)
+    temporary = Path(temporary_name)
     try:
-        os.fsync(directory)
+        with os.fdopen(descriptor, 'wb') as handle:
+            handle.write(data)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary, path)
+        directory = os.open(path.parent, os.O_RDONLY)
+        try:
+            os.fsync(directory)
+        finally:
+            os.close(directory)
     finally:
-        os.close(directory)
+        if temporary.exists():
+            temporary.unlink()
+
+
+def _advance_evidence_chain(previous_sha256, receipt):
+    """Bind one canonical credited receipt to the checkpoint's prior chain."""
+    if (not isinstance(previous_sha256, str)
+            or not HEX_SHA256.fullmatch(previous_sha256)):
+        raise ValueError('Invalid credited-evidence chain hash')
+    return hashlib.sha256(
+        bytes.fromhex(previous_sha256) + canonical_bytes(receipt)).hexdigest()
 
 
 def validate_schedule(schedule, expected_sha256):
@@ -144,6 +161,12 @@ def create_freeze(root, cohort_dir, preparation_dir, output,
             or preparation.get('target_matches') != 10000
             or preparation.get('planned_starts') != {'A': 5000, 'B': 5000}):
         raise ValueError('Preparation is not an unplayed eligible 10000-match schedule')
+    prepared_gate = preparation.get('gate')
+    if (not isinstance(prepared_gate, dict) or prepared_gate.get('eligible') is not True
+            or prepared_gate.get('status') != 'ELIGIBLE_PENDING_FREEZE'
+            or prepared_gate.get('cohort_sha256') != gate.get('cohort_sha256')
+            or prepared_gate.get('provenance_sha256') != gate.get('provenance_sha256')):
+        raise ValueError('Preparation does not bind the live eligible cohort and provenance')
     if hashlib.sha256(packed_schedule).hexdigest() != preparation.get('schedule_file_sha256'):
         raise ValueError('Preparation schedule file hash mismatch')
     try:
@@ -151,6 +174,17 @@ def create_freeze(root, cohort_dir, preparation_dir, output,
     except (OSError, EOFError, json.JSONDecodeError, UnicodeDecodeError) as exc:
         raise ValueError('Preparation schedule is unreadable') from exc
     schedule = validate_schedule(schedule, preparation.get('schedule_sha256'))
+
+    cohort_summary = json.loads((cohort_dir / 'cohort.json').read_bytes())
+    cohort_records = cohort_summary.get('records') if isinstance(cohort_summary, dict) else None
+    if (not isinstance(cohort_records, list)
+            or not all(isinstance(entry, dict) and type(entry.get('seed')) is int
+                       for entry in cohort_records)):
+        raise ValueError('Current cohort seed inventory is incomplete')
+    training_seeds = {entry['seed'] for entry in cohort_records}
+    overlap = training_seeds.intersection(row['seed'] for row in schedule)
+    if overlap:
+        raise ValueError('Final schedule overlaps current fact-finding cohort seeds')
 
     inputs = provenance(root)
     inputs_sha256 = digest(inputs)
@@ -186,6 +220,7 @@ def create_freeze(root, cohort_dir, preparation_dir, output,
         'frozen_inputs': dict(frozen_inputs),
         'schedule_position': 0,
         'credited_matches': 0,
+        'evidence_chain_sha256': EMPTY_EVIDENCE_CHAIN_SHA256,
         'next_match': dict(schedule[0]),
         'halt_kind': 'INFRASTRUCTURE',
         'last_record': None,
@@ -195,6 +230,7 @@ def create_freeze(root, cohort_dir, preparation_dir, output,
     output.mkdir(parents=True, exist_ok=False)
     try:
         (output / 'records').mkdir()
+        (output / 'receipts').mkdir()
         (output / 'halts').mkdir()
         atomic_write(output / 'SEEDS.json.gz', packed_schedule)
         atomic_write(output / 'FREEZE.json', canonical_bytes(manifest))
@@ -244,6 +280,10 @@ def _load_checkpoint(run_dir, manifest, schedule):
             or checkpoint.get('frozen_inputs') != manifest['frozen_inputs']
             or type(position) is not int or not 0 <= position <= len(schedule)
             or checkpoint.get('credited_matches') != position
+            or not isinstance(checkpoint.get('evidence_chain_sha256'), str)
+            or not HEX_SHA256.fullmatch(checkpoint['evidence_chain_sha256'])
+            or (position == 0 and checkpoint['evidence_chain_sha256']
+                != EMPTY_EVIDENCE_CHAIN_SHA256)
             or checkpoint.get('next_match') != (
                 schedule[position] if position < len(schedule) else None)
             or checkpoint.get('halt_kind') not in ('INFRASTRUCTURE', 'RULES')):
@@ -256,6 +296,11 @@ def _load_checkpoint(run_dir, manifest, schedule):
 def _record_path(run_dir, position, row, folder='records'):
     return (Path(run_dir) / folder /
             f"MATCH_{position + 1:05d}_INDEX_{row['index']:05d}.json.gz")
+
+
+def _receipt_path(run_dir, position, row):
+    return (Path(run_dir) / 'receipts' /
+            f"MATCH_{position + 1:05d}_INDEX_{row['index']:05d}.json")
 
 
 def _validate_scheduled_record(record, row, provenance_sha256):
@@ -304,15 +349,33 @@ def _write_or_verify_record(path, record):
             raise ValueError('Infrastructure replay did not reproduce the original record')
     else:
         atomic_write(path, packed)
+    actual_packed = path.read_bytes()
+    if gzip.decompress(actual_packed) != raw:
+        raise ValueError('Stored scheduled record differs from validated evidence')
     return {
         'file': path.relative_to(path.parent.parent).as_posix(),
         'record_sha256': hashlib.sha256(raw).hexdigest(),
-        'file_sha256': hashlib.sha256(packed).hexdigest(),
+        'file_sha256': hashlib.sha256(actual_packed).hexdigest(),
         'index': record['index'],
         'seed': record['seed'],
         'first': record['first'],
         'status': record['status'],
     }
+
+
+def _write_or_verify_receipt(path, position, metadata):
+    receipt = {'schema': RECEIPT_SCHEMA, 'position': position, **metadata}
+    path = Path(path)
+    if path.exists():
+        try:
+            prior = json.loads(path.read_bytes())
+        except (OSError, json.JSONDecodeError, UnicodeDecodeError) as exc:
+            raise ValueError('Existing record receipt is unreadable') from exc
+        if prior != receipt:
+            raise ValueError('Record receipt does not match the original credited hashes')
+    else:
+        atomic_write(path, canonical_bytes(receipt))
+    return receipt
 
 
 def _read_record(path):
@@ -322,25 +385,152 @@ def _read_record(path):
         raise ValueError('Frozen match record is unreadable: ' + str(path)) from exc
 
 
+def _verify_record_receipt(run_dir, position, row, provenance_sha256):
+    path = _record_path(run_dir, position, row)
+    receipt_path = _receipt_path(run_dir, position, row)
+    if not path.is_file() or not receipt_path.is_file():
+        raise ValueError('Credited record or immutable receipt missing at position '
+                         + str(position))
+    try:
+        receipt = json.loads(receipt_path.read_bytes())
+    except (OSError, json.JSONDecodeError, UnicodeDecodeError) as exc:
+        raise ValueError('Record receipt is unreadable at position ' + str(position)) from exc
+    record = _read_record(path)
+    _validate_scheduled_record(record, row, provenance_sha256)
+    raw, packed = canonical_bytes(record), path.read_bytes()
+    expected = {
+        'schema': RECEIPT_SCHEMA,
+        'position': position,
+        'file': path.relative_to(Path(run_dir)).as_posix(),
+        'record_sha256': hashlib.sha256(raw).hexdigest(),
+        'file_sha256': hashlib.sha256(packed).hexdigest(),
+        'index': row['index'], 'seed': row['seed'], 'first': row['first'],
+        'status': 'SOFTWARE_COMPLETED',
+    }
+    if receipt != expected or gzip.decompress(packed) != raw:
+        raise ValueError('Credited record hash does not match its immutable receipt')
+    return receipt, record
+
+
 def _verify_credited_records(run_dir, schedule, checkpoint, provenance_sha256):
     position = checkpoint['schedule_position']
-    expected = set()
+    expected, expected_receipts = set(), set()
+    evidence_chain = EMPTY_EVIDENCE_CHAIN_SHA256
     for offset in range(position):
         row = schedule[offset]
         path = _record_path(run_dir, offset, row)
         expected.add(path.resolve())
-        if not path.is_file():
-            raise ValueError('Credited match record missing at position ' + str(offset))
-        _validate_scheduled_record(_read_record(path), row, provenance_sha256)
+        expected_receipts.add(_receipt_path(run_dir, offset, row).resolve())
+        receipt, _record = _verify_record_receipt(
+            run_dir, offset, row, provenance_sha256)
+        evidence_chain = _advance_evidence_chain(evidence_chain, receipt)
+    if evidence_chain != checkpoint['evidence_chain_sha256']:
+        raise ValueError('Credited evidence does not match the checkpoint hash chain')
     actual = {path.resolve() for path in (Path(run_dir) / 'records').glob('*.json.gz')}
-    allowed_orphan = set()
+    actual_receipts = {path.resolve() for path in (Path(run_dir) / 'receipts').glob('*.json')}
+    allowed_orphan, allowed_orphan_receipt = set(), set()
     if position < len(schedule):
         orphan = _record_path(run_dir, position, schedule[position]).resolve()
         if orphan in actual:
             allowed_orphan.add(orphan)
+        orphan_receipt = _receipt_path(run_dir, position, schedule[position]).resolve()
+        if orphan_receipt in actual_receipts:
+            allowed_orphan_receipt.add(orphan_receipt)
     extras = actual - expected - allowed_orphan
-    if extras:
-        raise ValueError('Uncredited match records exist beyond the checkpoint')
+    extra_receipts = actual_receipts - expected_receipts - allowed_orphan_receipt
+    if extras or extra_receipts:
+        raise ValueError('Uncredited records or receipts exist beyond the checkpoint')
+
+
+def _halt_path(run_dir, position, row):
+    return _record_path(run_dir, position, row, 'halts')
+
+
+def _write_or_verify_halt(run_dir, position, row, record, validation_error=None):
+    envelope = {
+        'schema': HALT_SCHEMA,
+        'scheduled_match': dict(row),
+        'validation_error': validation_error,
+        'record': record,
+    }
+    raw = canonical_bytes(envelope)
+    packed = gzip.compress(raw, mtime=0)
+    path = _halt_path(run_dir, position, row)
+    if path.exists():
+        try:
+            prior = gzip.decompress(path.read_bytes())
+        except (OSError, EOFError) as exc:
+            raise ValueError('Existing HALT evidence is unreadable') from exc
+        if prior != raw:
+            raise ValueError('HALT replay differs from the preserved attempt')
+    else:
+        atomic_write(path, packed)
+    actual = path.read_bytes()
+    if gzip.decompress(actual) != raw:
+        raise ValueError('Stored HALT evidence differs from the original attempt')
+    return {
+        'file': path.relative_to(Path(run_dir)).as_posix(),
+        'scheduled_match': dict(row),
+        'validation_error': validation_error,
+        'record_sha256': hashlib.sha256(canonical_bytes(record)).hexdigest(),
+        'envelope_sha256': hashlib.sha256(raw).hexdigest(),
+        'file_sha256': hashlib.sha256(actual).hexdigest(),
+    }
+
+
+def _read_halt_metadata(run_dir, position, row):
+    path = _halt_path(run_dir, position, row)
+    try:
+        packed = path.read_bytes()
+        raw = gzip.decompress(packed)
+        envelope = json.loads(raw)
+    except (OSError, EOFError, json.JSONDecodeError, UnicodeDecodeError) as exc:
+        raise ValueError('Preserved orphan HALT is unreadable') from exc
+    if (not isinstance(envelope, dict) or envelope.get('schema') != HALT_SCHEMA
+            or envelope.get('scheduled_match') != row
+            or 'record' not in envelope):
+        raise ValueError('Preserved orphan HALT does not match the checkpoint seed')
+    return {
+        'file': path.relative_to(Path(run_dir)).as_posix(),
+        'scheduled_match': dict(row),
+        'validation_error': envelope.get('validation_error'),
+        'record_sha256': hashlib.sha256(canonical_bytes(envelope['record'])).hexdigest(),
+        'envelope_sha256': hashlib.sha256(raw).hexdigest(),
+        'file_sha256': hashlib.sha256(packed).hexdigest(),
+    }
+
+
+def _blocked_halt_checkpoint(checkpoint, position, row, metadata):
+    return {
+        **checkpoint,
+        'status': 'BLOCKED_HALT',
+        'halt_kind': 'RULES',
+        'halt_category': ('INTEGRITY' if metadata.get('validation_error') else 'GAMEPLAY_RULES'),
+        'schedule_position': position,
+        'credited_matches': position,
+        'next_match': dict(row),
+        'halt_record': metadata,
+    }
+
+
+def _recover_orphan_halt(run_dir, schedule, checkpoint):
+    position = checkpoint['schedule_position']
+    if position >= len(schedule):
+        return None
+    row = schedule[position]
+    actual = {path.resolve() for path in (Path(run_dir) / 'halts').glob('*.json.gz')}
+    if not actual:
+        return None
+    expected = _halt_path(run_dir, position, row).resolve()
+    if actual != {expected}:
+        raise ValueError('Unresolved HALT evidence does not match the checkpoint position')
+    metadata = _read_halt_metadata(run_dir, position, row)
+    recovered = _blocked_halt_checkpoint(checkpoint, position, row, metadata)
+    _write_checkpoint(run_dir, recovered)
+    return {
+        'status': 'BLOCKED_HALT', 'credited_matches': position,
+        'halted_match': dict(row), 'halt_record': metadata,
+    }
 
 
 def _write_checkpoint(run_dir, checkpoint):
@@ -372,24 +562,40 @@ def run_frozen(run_dir, match_runner=record_match, stop_after=None,
         }
     _verify_credited_records(run_dir, schedule, checkpoint,
                              manifest['provenance_sha256'])
+    recovered_halt = _recover_orphan_halt(run_dir, schedule, checkpoint)
+    if recovered_halt is not None:
+        return recovered_halt
 
     played = 0
     while position < len(schedule) and (stop_after is None or played < stop_after):
         row = schedule[position]
         record = match_runner(row['index'], manifest['provenance_sha256'])
-        _validate_scheduled_record(record, row, manifest['provenance_sha256'])
-        if record['status'] == 'HALT':
-            metadata = _write_or_verify_record(
-                _record_path(run_dir, position, row, 'halts'), record)
-            checkpoint = {
-                **checkpoint,
-                'status': 'BLOCKED_HALT',
-                'halt_kind': 'RULES',
-                'schedule_position': position,
-                'credited_matches': position,
-                'next_match': dict(row),
-                'halt_record': metadata,
+        try:
+            _validate_scheduled_record(record, row, manifest['provenance_sha256'])
+        except ValueError as exc:
+            physical_integrity = (record.get('physical_integrity')
+                                  if isinstance(record, dict) else None)
+            preserve = (isinstance(record, dict)
+                        and (record.get('status') == 'HALT'
+                             or (isinstance(physical_integrity, dict)
+                                 and physical_integrity.get('status') == 'FAIL')
+                             or (isinstance(record.get('transcript'), dict)
+                                 and record['transcript'].get('status') == 'JUDGE_HALT')))
+            if not preserve:
+                raise
+            metadata = _write_or_verify_halt(
+                run_dir, position, row, record, validation_error=str(exc))
+            checkpoint = _blocked_halt_checkpoint(
+                checkpoint, position, row, metadata)
+            _write_checkpoint(run_dir, checkpoint)
+            return {
+                'status': 'BLOCKED_HALT', 'credited_matches': position,
+                'halted_match': dict(row), 'halt_record': metadata,
             }
+        if record['status'] == 'HALT':
+            metadata = _write_or_verify_halt(run_dir, position, row, record)
+            checkpoint = _blocked_halt_checkpoint(
+                checkpoint, position, row, metadata)
             _write_checkpoint(run_dir, checkpoint)
             return {
                 'status': 'BLOCKED_HALT',
@@ -400,6 +606,8 @@ def run_frozen(run_dir, match_runner=record_match, stop_after=None,
 
         metadata = _write_or_verify_record(
             _record_path(run_dir, position, row), record)
+        receipt = _write_or_verify_receipt(
+            _receipt_path(run_dir, position, row), position, metadata)
         if interruption_hook is not None:
             interruption_hook(record)
         position += 1
@@ -411,6 +619,8 @@ def run_frozen(run_dir, match_runner=record_match, stop_after=None,
             'halt_kind': 'INFRASTRUCTURE',
             'schedule_position': position,
             'credited_matches': position,
+            'evidence_chain_sha256': _advance_evidence_chain(
+                checkpoint['evidence_chain_sha256'], receipt),
             'next_match': (dict(schedule[position]) if position < len(schedule) else None),
             'last_record': metadata,
             'halt_record': None,
@@ -512,32 +722,35 @@ def summarize_completed_run(run_dir):
     current_inputs = _component_hashes(ROOT, schedule)
     if current_inputs != manifest['frozen_inputs']:
         raise ValueError('Frozen inputs changed; a new freeze and full restart are required')
+    if any((run_dir / 'halts').glob('*.json.gz')):
+        raise ValueError('Unresolved preserved HALT evidence blocks finalization')
 
     expected_paths = {_record_path(run_dir, position, row).resolve()
                       for position, row in enumerate(schedule)}
     actual_paths = {path.resolve() for path in (run_dir / 'records').glob('*.json.gz')}
-    if actual_paths != expected_paths:
-        raise ValueError('Final record set does not exactly match all 10000 positions')
+    expected_receipts = {_receipt_path(run_dir, position, row).resolve()
+                         for position, row in enumerate(schedule)}
+    actual_receipts = {path.resolve() for path in (run_dir / 'receipts').glob('*.json')}
+    if actual_paths != expected_paths or actual_receipts != expected_receipts:
+        raise ValueError('Final record/receipt set does not exactly match all 10000 positions')
     entries = []
+    evidence_chain = [EMPTY_EVIDENCE_CHAIN_SHA256]
 
     def validated_facts():
         for position, row in enumerate(schedule):
             path = _record_path(run_dir, position, row)
-            packed = path.read_bytes()
-            record = _read_record(path)
-            _validate_scheduled_record(record, row, manifest['provenance_sha256'])
+            receipt, record = _verify_record_receipt(
+                run_dir, position, row, manifest['provenance_sha256'])
+            evidence_chain[0] = _advance_evidence_chain(evidence_chain[0], receipt)
             if record['status'] != 'SOFTWARE_COMPLETED':
                 raise ValueError('Final record set contains a HALT')
-            raw = canonical_bytes(record)
-            if gzip.decompress(packed) != raw:
-                raise ValueError('Final record is not canonical JSON evidence')
             transcript = record['transcript']
             entries.append({
-                'position': position, 'file': path.relative_to(run_dir).as_posix(),
+                'position': position, 'file': receipt['file'],
                 'index': row['index'], 'seed': row['seed'], 'first': row['first'],
                 'winner': transcript['winner'], 'turn': transcript['turn'],
-                'record_sha256': hashlib.sha256(raw).hexdigest(),
-                'file_sha256': hashlib.sha256(packed).hexdigest(),
+                'record_sha256': receipt['record_sha256'],
+                'file_sha256': receipt['file_sha256'],
             })
             yield {
                 'index': row['index'], 'seed': row['seed'], 'first': row['first'],
@@ -546,6 +759,8 @@ def summarize_completed_run(run_dir):
             }
 
     numerical = aggregate_results(validated_facts())
+    if evidence_chain[0] != checkpoint['evidence_chain_sha256']:
+        raise ValueError('Final evidence does not match the checkpoint hash chain')
     if numerical['matches_played'] != 10000 or numerical['starts'] != {'A': 5000, 'B': 5000}:
         raise ValueError('Final numerical aggregation lost matches or start balance')
     packed_manifest = gzip.compress(canonical_bytes(entries), mtime=0)
@@ -562,12 +777,26 @@ def summarize_completed_run(run_dir):
         'record_manifest_sha256': hashlib.sha256(packed_manifest).hexdigest(),
         'numerical_results': numerical,
     }
-    atomic_write(run_dir / 'RECORD_MANIFEST.json.gz', packed_manifest)
-    atomic_write(run_dir / 'FINAL_RESULTS.json', canonical_bytes(result))
+    result_bytes = canonical_bytes(result)
+    record_manifest_path = run_dir / 'RECORD_MANIFEST.json.gz'
+    results_path = run_dir / 'FINAL_RESULTS.json'
+    if record_manifest_path.exists() and record_manifest_path.read_bytes() != packed_manifest:
+        raise ValueError('Existing final record manifest differs from immutable receipts')
+    if results_path.exists() and results_path.read_bytes() != result_bytes:
+        raise ValueError('Existing final results differ from immutable credited evidence')
+    if checkpoint['status'] == 'COMPLETED':
+        if (not record_manifest_path.is_file() or not results_path.is_file()
+                or checkpoint.get('final_results_sha256') != hashlib.sha256(result_bytes).hexdigest()):
+            raise ValueError('Completed final artifacts are missing or fail their checkpoint hash')
+        return result
+    if not record_manifest_path.exists():
+        atomic_write(record_manifest_path, packed_manifest)
+    if not results_path.exists():
+        atomic_write(results_path, result_bytes)
     checkpoint = {
         **checkpoint,
         'status': 'COMPLETED',
-        'final_results_sha256': hashlib.sha256(canonical_bytes(result)).hexdigest(),
+        'final_results_sha256': hashlib.sha256(result_bytes).hexdigest(),
     }
     _write_checkpoint(run_dir, checkpoint)
     return result
