@@ -7,3 +7,4 @@ __pycache__/
 V12_GAMES.json
 *.tmp
 .DS_Store
+.superpowers/
