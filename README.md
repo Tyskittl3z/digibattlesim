@@ -1,5 +1,17 @@
 # Digimon Battle Simulator — Codex handoff
 
+## Use the drag-and-drop app
+
+Open **[APP/DeckCompare.html](APP/DeckCompare.html)** in your browser. Drop two text
+decklists (or paste them) to compare quantities and available card statistics.
+Click **Save after-report** to keep the exact inputs, hashes, all statistics,
+missing data and simulation status. No installation or server is required.
+
+The app has Digimon TCG-inspired styling. **Head-to-head simulation remains
+unavailable** until the underlying gameplay verification and runner are completed.
+The bundled card metadata covers the supplied 41 cards; other IDs are retained with
+explicit missing-data notices. See `APP/README.md` for supported input formats.
+
 This is the **current Jupitermon vs Amaterasumon/Toho simulator** transferred for software development with Codex. It is not a universal rules engine or a deck-building advisor.
 
 **READ FIRST:** `AGENTS.md` (immutable project boundaries), `STATUS.md` (verified current state), `CODEX_TASK.md` (the exact next work).
@@ -62,4 +74,5 @@ The existing batch runner **will report HALTs** for incomplete Susanoomon intera
 Codex CLI alternative: install/sign in to Codex CLI, open this folder in a terminal, and run `codex`.
 
 ## Report contract
-Results are raw numbers and rule-check status only. No card swaps, no unsolicited strategy recommendations, no deck-version comparisons.
+Results and user-requested comparisons are numerical, with explicit rule-check
+and missing-data status. No card swaps or unsolicited strategy recommendations.

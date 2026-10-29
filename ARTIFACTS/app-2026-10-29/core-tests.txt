@@ -1,0 +1,17 @@
+✔ both supplied decks retain 50 main + 4 eggs and distinct card counts (23.793726ms)
+✔ common quantity/code formats aggregate duplicate physical counts (2.129794ms)
+✔ malformed and ambiguous rows are explicit errors, never silently compared (23.603366ms)
+✔ unknown cards preserve quantities without guessed metadata or main-deck size (2.945961ms)
+✔ shared copies and deltas use quantities, and stay numerical (1.552259ms)
+✔ after-report preserves exact input texts, hashes, full data and unavailable simulation (16.769964ms)
+✔ changed matchup never inherits old pilots/results or simulation support (3.820721ms)
+✔ invalid imports remain inspectable in after-report without partial results (4.671943ms)
+✔ readable report escapes uploaded markup and embeds the complete original evidence (5.218547ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 122.217225

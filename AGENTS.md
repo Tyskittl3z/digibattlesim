@@ -2,10 +2,11 @@
 
 ## Project purpose — NON-NEGOTIABLE
 This repository is a **simulation and numerical-results tool**, not a deck-building assistant.
-User owns all deck construction, interpretation, and decisions; offer **no card/slot recommendations**, no deck-version comparisons, and no speculative conclusions. Do not alter decklists without explicit user instruction.
+User owns all deck construction, interpretation, and decisions; offer **no card/slot recommendations** and no speculative conclusions. User-requested numerical deck comparisons are allowed. Do not alter decklists without explicit user instruction.
 
 ## Scope and isolation
-- **Loaded decks only**: `DECKS/JUPITERMON.txt` (A) vs `DECKS/AMATERASUMON_TOHO.txt` (B).
+- User request (2026-10-29): add a drag-and-drop browser app for **both** side-by-side deck contents/statistics and head-to-head simulation. Decklist intake/numerical comparison may accept user-supplied lists. This explicitly authorizes the comparison interface; simulation support remains limited to verified mechanics of the selected matchup. Unknown cards/unsupported pairings must remain explicit; never manufacture win rates or reuse another matchup's results. Save exact inputs, hashes, statistics, data gaps, simulation status and actual results/log references in a downloadable after-report.
+- **Current simulator gameplay scope**: `DECKS/JUPITERMON.txt` (A) vs `DECKS/AMATERASUMON_TOHO.txt` (B). Browser import/statistics for another pairing do not certify its gameplay support.
 - NEW DECK = FRESH START. For any new deck or changed matchup, invalidate all deck-specific roadmaps, training data, pilot weights, and matchup results. Reuse only rules, generic match infrastructure, and verified generic mechanics. Do not seed a new match with another deck's data.
 - Never expand toward universal Digimon card support or unsolicited feature work. Work on interactions that the **loaded two decks can actually produce**, as found during gameplay.
 

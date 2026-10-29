@@ -1,5 +1,31 @@
 # Verified handoff status
 
+## Browser app — 2026-10-29
+
+Open `APP/DeckCompare.html` directly in a modern browser. Drag/drop or paste two
+decklists for immediate numerical comparison, then use **Save after-report** to
+retain exact inputs, original file/text/composition hashes, full unfiltered
+statistics/differences, data gaps and unavailable simulation fields. Reports are
+readable offline HTML with complete JSON evidence embedded. The user explicitly
+authorized general decklist intake/statistics; simulator gameplay support remains
+limited to verified selected-matchup mechanics.
+
+The interface uses Digimon TCG-inspired blue/orange card frames and a digital
+playmat background. It runs locally without installation or external requests.
+Bundled metadata covers 41 IDs; unknown cards retain their quantities and show
+missing data. No unknown effects, egg classifications or costs are guessed.
+
+**Head-to-head win rates are not operational.** The app reports unverified or
+unsupported pairing status, matches played 0, and unavailable wins/losses/rates.
+No historical matchup results/pilots are reused. Existing engine defects and
+verification/frozen-runner work remain outstanding.
+
+Verified app checks: 9 JavaScript core tests, 1 built-inline-script check,
+6 Chromium interaction/download/mobile checks. Existing 128 Python engine tests
+also pass. Browser checks used an internal static server because managed Chromium
+blocks file URLs; the delivered HTML has no runtime server dependency. See
+`APP/README.md` and `REPORTS/APP_VERIFICATION_2026-10-29.md`.
+
 ## Current workflow adjustments — 2026-10-29, version 02
 
 The user's five requested adjustments are implemented in the requirements and
