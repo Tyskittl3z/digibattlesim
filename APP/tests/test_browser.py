@@ -81,6 +81,11 @@ class BrowserAppTests(unittest.TestCase):
         self.assertEqual(report['simulation']['matches_played'], 0)
         self.assertIsNone(report['simulation']['win_rate'])
         self.assertEqual(report['simulation']['logs'], [])
+        self.page.get_by_role('tab', name='Head-to-head').click()
+        judge_text = self.page.locator('#judge-layers').inner_text()
+        self.assertIn('Justitia', judge_text)
+        self.assertIn('Dike', judge_text)
+        self.assertIn('Týr', judge_text)
 
     def test_actual_two_file_drag_drop_and_swap(self):
         a = (ROOT / 'DECKS/JUPITERMON.txt').read_text()

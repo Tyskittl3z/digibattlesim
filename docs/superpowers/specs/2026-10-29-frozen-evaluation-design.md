@@ -18,6 +18,9 @@ seed, mix versions, or label a software replay as rules certification.
 - Stop on the first gameplay/rules HALT and preserve its record and seed.
 - Produce numerical W/L, starting-player and turn summaries only after all
   10,000 scheduled records have passed identity, integrity and terminal checks.
+- Preserve the two pilots as Bot A (Jupitermon) and Bot B
+  (Amaterasumon/Toho). Label the three distinct audit layers Justitia (runtime
+  integrity), Dike (independent rules) and Týr (final evidence audit).
 
 ## Non-goals
 
@@ -61,6 +64,9 @@ an unverified simulator or a hidden service.
   match record identity, atomic checkpoint, halt preservation, interruption
   replay, changed-freeze rejection and complete numerical summary tests.
 - `EVALUATION/README.md`: exact operator contract and status distinction.
+- The browser simulation panel and saved after-report carry the same bot and
+  judge labels; the names are presentation, while their responsibilities and
+  evidence boundaries remain unchanged.
 
 ## Remaining external path
 

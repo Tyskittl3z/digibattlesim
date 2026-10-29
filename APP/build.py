@@ -19,7 +19,7 @@ def build():
     sources = ['SOURCE/EXACT_CARD_MANIFEST.json', 'SOURCE/LOADED_EXACT_COSTS.json',
                'DECKS/JUPITERMON.txt', 'DECKS/AMATERASUMON_TOHO.txt']
     sources += ['APP/compare.js', 'APP/ui.js', 'APP/style.css', 'APP/template.html', 'APP/build.py']
-    metadata = {'version': '0.1.0', 'catalog': catalog,
+    metadata = {'version': '0.2.0', 'catalog': catalog,
                 'source_files': {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest() for name in sources},
                 'samples': {
                     'A': {'name': 'Jupitermon', 'text': (ROOT / sources[2]).read_text()},

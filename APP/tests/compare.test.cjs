@@ -74,6 +74,13 @@ test('after-report preserves exact input texts, hashes, full data and unavailabl
   assert.equal(report.simulation.wins, null);
   assert.deepEqual(report.simulation.logs, []);
   assert.equal(report.simulation.historical_results_reused, false);
+  assert.deepEqual(report.simulation.judges.map(judge => judge.name), ['Justitia', 'Dike', 'Týr']);
+  assert.deepEqual(report.simulation.judges.map(judge => judge.role),
+    ['Runtime integrity', 'Independent rules', 'Final evidence audit']);
+  assert.deepEqual(report.simulation.bots, [
+    {name: 'Bot A', seat: 'A', deck: 'Jupitermon'},
+    {name: 'Bot B', seat: 'B', deck: 'Amaterasumon / Toho'}
+  ]);
 });
 
 test('changed matchup never inherits old pilots/results or simulation support', async () => {
@@ -104,4 +111,7 @@ test('readable report escapes uploaded markup and embeds the complete original e
   assert.ok(embedded);
   assert.equal(JSON.parse(embedded[1]).inputs.A.raw_text, raw);
   assert.equal(JSON.parse(embedded[1]).inputs.A.filename, '<script>bad</script>.txt');
+  assert.match(html, /Justitia/);
+  assert.match(html, /Dike/);
+  assert.match(html, /Týr/);
 });

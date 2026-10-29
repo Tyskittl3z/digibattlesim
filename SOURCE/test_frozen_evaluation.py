@@ -174,6 +174,16 @@ class FrozenEvaluationFreezeTests(unittest.TestCase):
                 strategy,
             )
         self.assertEqual(manifest['status'], 'FROZEN_READY')
+        self.assertEqual(
+            [(judge['name'], judge['role']) for judge in manifest['judge_layers']],
+            [('Justitia', 'RUNTIME_INTEGRITY'),
+             ('Dike', 'INDEPENDENT_RULES'),
+             ('Týr', 'FINAL_EVIDENCE_AUDIT')],
+        )
+        self.assertEqual(manifest['bots'], [
+            {'name': 'Bot A', 'seat': 'A', 'deck': 'Jupitermon'},
+            {'name': 'Bot B', 'seat': 'B', 'deck': 'Amaterasumon/Toho'},
+        ])
         self.assertEqual(set(manifest['frozen_inputs']), set(frozen.FROZEN_COMPONENTS))
         self.assertTrue(all(len(value) == 64 for value in manifest['frozen_inputs'].values()))
         self.assertEqual(manifest['frozen_inputs']['schedule'], digest(self.schedule))
@@ -258,6 +268,52 @@ class FrozenEvaluationFreezeTests(unittest.TestCase):
         self.assertEqual(result['status'], 'RESTART_FULL_EVALUATION')
         self.assertTrue(result['invalidate_all_prior_results'])
         self.assertEqual(result['restart_schedule_from_position'], 0)
+
+    def test_final_aggregate_reports_exact_numerical_totals(self):
+        records = []
+        for position, row in enumerate(self.schedule):
+            winner = 'A' if position < 6000 else 'B'
+            events = [{'type': 'PAID_PLAY', 'card': 'BT24-031#1'}]
+            if position % 2 == 0:
+                events.append({'type': 'JUDGE_PATH', 'kind': 'FIXTURE_PATH',
+                               'card': 'BT24-031'})
+            if position % 4 == 0:
+                events.append({'type': 'BOT_DECISION', 'decision_type': 'FIXTURE',
+                               'source': 'BT24-031', 'chosen': 'ACTIVATE',
+                               'lane_id': 'fixture-green',
+                               'combo_id': 'fixture-combo'})
+            records.append({'index': row['index'], 'seed': row['seed'],
+                            'first': row['first'], 'winner': winner,
+                            'turn': position % 3 + 5, 'events': events})
+        result = frozen.aggregate_results(records)
+        self.assertEqual(result['matches_played'], 10000)
+        self.assertEqual(result['wins'], {'A': 6000, 'B': 4000})
+        self.assertEqual(result['losses'], {'A': 4000, 'B': 6000})
+        self.assertEqual(result['win_rate'], {'A': 0.6, 'B': 0.4})
+        self.assertEqual(result['starts'], {'A': 5000, 'B': 5000})
+        self.assertEqual(result['wins_by_starting_deck'], {
+            'A': {'A': 3000, 'B': 2000}, 'B': {'A': 3000, 'B': 2000}})
+        self.assertEqual(result['first_player_wins'], 5000)
+        self.assertEqual(result['turn_distribution'], {'5': 3334, '6': 3333, '7': 3333})
+        self.assertEqual(result['mean_turns'], 5.9999)
+        self.assertEqual(result['card_play_frequency'], {'BT24-031': 10000})
+        self.assertEqual(result['interaction_frequency'], {'BT24-031|FIXTURE_PATH': 5000})
+        self.assertEqual(result['combo_frequency'], {'fixture-combo': 2500})
+        self.assertEqual(result['lane_frequency'], {'fixture-green': 2500})
+
+    def test_incomplete_or_halted_run_cannot_emit_final_results(self):
+        incomplete = self.create_synthetic_freeze()
+        with self.assertRaisesRegex(ValueError, '10000'):
+            frozen.summarize_completed_run(incomplete)
+        halted = self.create_synthetic_freeze()
+        frozen.run_frozen(halted, match_runner=self.halted_runner)
+        with self.assertRaisesRegex(ValueError, '10000|halt'):
+            frozen.summarize_completed_run(halted)
+
+    def test_final_summary_and_cli_apis_exist(self):
+        self.assertTrue(callable(frozen.aggregate_results))
+        self.assertTrue(callable(frozen.summarize_completed_run))
+        self.assertTrue(callable(frozen.main))
 
 
 class FrozenEvaluationMissingModuleTest(unittest.TestCase):

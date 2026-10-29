@@ -5,6 +5,7 @@ This module can prepare execution software, but it cannot certify gameplay.
 """
 from __future__ import annotations
 
+import argparse
 from collections import Counter
 import gzip
 import hashlib
@@ -22,6 +23,15 @@ from workflow_policy import FROZEN_COMPONENTS, assess_resume
 FREEZE_SCHEMA = 'loaded-pair-frozen-evaluation-v1'
 CHECKPOINT_SCHEMA = 'loaded-pair-frozen-checkpoint-v1'
 HEX_SHA256 = re.compile(r'[0-9a-f]{64}')
+JUDGE_LAYERS = (
+    {'name': 'Justitia', 'role': 'RUNTIME_INTEGRITY'},
+    {'name': 'Dike', 'role': 'INDEPENDENT_RULES'},
+    {'name': 'Týr', 'role': 'FINAL_EVIDENCE_AUDIT'},
+)
+BOT_ROSTER = (
+    {'name': 'Bot A', 'seat': 'A', 'deck': 'Jupitermon'},
+    {'name': 'Bot B', 'seat': 'B', 'deck': 'Amaterasumon/Toho'},
+)
 
 
 def atomic_write(path, data):
@@ -157,6 +167,8 @@ def create_freeze(root, cohort_dir, preparation_dir, output,
         'status': 'FROZEN_READY',
         'target_matches': 10000,
         'learning_enabled': False,
+        'bots': [dict(bot) for bot in BOT_ROSTER],
+        'judge_layers': [dict(judge) for judge in JUDGE_LAYERS],
         'frozen_inputs': frozen_inputs,
         'provenance_sha256': inputs_sha256,
         'cohort_sha256': gate['cohort_sha256'],
@@ -204,6 +216,8 @@ def load_freeze(run_dir):
             or manifest.get('status') != 'FROZEN_READY'
             or manifest.get('target_matches') != 10000
             or manifest.get('learning_enabled') is not False
+            or manifest.get('bots') != [dict(bot) for bot in BOT_ROSTER]
+            or manifest.get('judge_layers') != [dict(judge) for judge in JUDGE_LAYERS]
             or set(manifest.get('frozen_inputs', {})) != set(FROZEN_COMPONENTS)
             or not all(isinstance(value, str) and HEX_SHA256.fullmatch(value)
                        for value in manifest['frozen_inputs'].values())):
@@ -224,7 +238,7 @@ def _load_checkpoint(run_dir, manifest, schedule):
     position = checkpoint.get('schedule_position')
     if (not isinstance(checkpoint, dict) or checkpoint.get('schema') != CHECKPOINT_SCHEMA
             or checkpoint.get('status') not in ('READY', 'RUNNING', 'BLOCKED_HALT',
-                                                 'COMPLETE_PENDING_SUMMARY')
+                                                 'COMPLETE_PENDING_SUMMARY', 'COMPLETED')
             or checkpoint.get('frozen_inputs') != manifest['frozen_inputs']
             or type(position) is not int or not 0 <= position <= len(schedule)
             or checkpoint.get('credited_matches') != position
@@ -341,10 +355,7 @@ def run_frozen(run_dir, match_runner=record_match, stop_after=None,
     checkpoint = _load_checkpoint(run_dir, manifest, schedule)
     position = checkpoint['schedule_position']
     if position == len(schedule):
-        _verify_credited_records(run_dir, schedule, checkpoint,
-                                 manifest['provenance_sha256'])
-        return {'status': 'COMPLETE_PENDING_SUMMARY',
-                'credited_matches': position, 'target_matches': len(schedule)}
+        return summarize_completed_run(run_dir)
 
     current_inputs = _component_hashes(ROOT, schedule)
     decision = assess_resume(checkpoint, current_inputs, frozen_schedule=schedule)
@@ -404,12 +415,10 @@ def run_frozen(run_dir, match_runner=record_match, stop_after=None,
         }
         _write_checkpoint(run_dir, checkpoint)
 
-    return {
-        'status': ('COMPLETE_PENDING_SUMMARY' if position == len(schedule) else 'PAUSED'),
-        'credited_matches': position,
-        'target_matches': len(schedule),
-        'next_match': (dict(schedule[position]) if position < len(schedule) else None),
-    }
+    if position == len(schedule):
+        return summarize_completed_run(run_dir)
+    return {'status': 'PAUSED', 'credited_matches': position,
+            'target_matches': len(schedule), 'next_match': dict(schedule[position])}
 
 
 def resume_frozen(run_dir, match_runner=record_match, stop_after=None):
@@ -417,7 +426,213 @@ def resume_frozen(run_dir, match_runner=record_match, stop_after=None):
     return run_frozen(run_dir, match_runner=match_runner, stop_after=stop_after)
 
 
+def _sorted_counter(counter):
+    return {key: counter[key] for key in sorted(counter)}
+
+
+def aggregate_results(records):
+    """Aggregate already validated final records into numerical results only."""
+    wins, starts, turns = Counter(), Counter(), Counter()
+    win_by_start = {'A': Counter(), 'B': Counter()}
+    card_plays, interactions = Counter(), Counter()
+    decisions, combos, lanes = Counter(), Counter(), Counter()
+    seen_indexes, seen_seeds = set(), set()
+    first_player_wins = total_turns = count = 0
+    for record in records:
+        if (not isinstance(record, dict) or type(record.get('index')) is not int
+                or type(record.get('seed')) is not int
+                or record.get('first') not in ('A', 'B')
+                or record.get('winner') not in ('A', 'B')
+                or type(record.get('turn')) is not int or record['turn'] <= 0
+                or not isinstance(record.get('events'), list)):
+            raise ValueError('Complete numerical match facts required')
+        if record['index'] in seen_indexes or record['seed'] in seen_seeds:
+            raise ValueError('Duplicate final match identity')
+        seen_indexes.add(record['index'])
+        seen_seeds.add(record['seed'])
+        first, winner, turn = record['first'], record['winner'], record['turn']
+        count += 1
+        wins[winner] += 1
+        starts[first] += 1
+        win_by_start[first][winner] += 1
+        turns[str(turn)] += 1
+        total_turns += turn
+        first_player_wins += winner == first
+        for event in record['events']:
+            if not isinstance(event, dict):
+                raise ValueError('Final event facts must be objects')
+            if event.get('type') == 'PAID_PLAY' and isinstance(event.get('card'), str):
+                card_plays[event['card'].split('#')[0]] += 1
+            if (event.get('type') == 'JUDGE_PATH' and isinstance(event.get('card'), str)
+                    and isinstance(event.get('kind'), str)):
+                interactions[event['card'].split('#')[0] + '|' + event['kind']] += 1
+            if event.get('type') == 'BOT_DECISION':
+                values = [event.get('decision_type'), event.get('source', ''), event.get('chosen')]
+                if all(isinstance(value, str) for value in values):
+                    decisions['|'.join(values)] += 1
+            if isinstance(event.get('combo_id'), str) and event['combo_id']:
+                combos[event['combo_id']] += 1
+            if isinstance(event.get('lane_id'), str) and event['lane_id']:
+                lanes[event['lane_id']] += 1
+    if count == 0:
+        raise ValueError('At least one completed match is required')
+    return {
+        'matches_played': count,
+        'wins': {'A': wins['A'], 'B': wins['B']},
+        'losses': {'A': wins['B'], 'B': wins['A']},
+        'win_rate': {'A': round(wins['A'] / count, 8),
+                     'B': round(wins['B'] / count, 8)},
+        'starts': {'A': starts['A'], 'B': starts['B']},
+        'wins_by_starting_deck': {
+            first: {'A': win_by_start[first]['A'], 'B': win_by_start[first]['B']}
+            for first in ('A', 'B')},
+        'first_player_wins': first_player_wins,
+        'first_player_win_rate': round(first_player_wins / count, 8),
+        'turn_distribution': {key: turns[key] for key in sorted(turns, key=int)},
+        'mean_turns': round(total_turns / count, 8),
+        'card_play_frequency': _sorted_counter(card_plays),
+        'interaction_frequency': _sorted_counter(interactions),
+        'decision_frequency': _sorted_counter(decisions),
+        'combo_frequency': _sorted_counter(combos),
+        'lane_frequency': _sorted_counter(lanes),
+    }
+
+
+def summarize_completed_run(run_dir):
+    """Revalidate all 10,000 records and atomically publish final numbers."""
+    run_dir = Path(run_dir).resolve()
+    manifest, schedule = load_freeze(run_dir)
+    checkpoint = _load_checkpoint(run_dir, manifest, schedule)
+    if (checkpoint['schedule_position'] != 10000
+            or checkpoint['credited_matches'] != 10000
+            or checkpoint['halt_kind'] == 'RULES'):
+        raise ValueError('Exactly 10000 credited matches and zero unresolved halts required')
+    current_inputs = _component_hashes(ROOT, schedule)
+    if current_inputs != manifest['frozen_inputs']:
+        raise ValueError('Frozen inputs changed; a new freeze and full restart are required')
+
+    expected_paths = {_record_path(run_dir, position, row).resolve()
+                      for position, row in enumerate(schedule)}
+    actual_paths = {path.resolve() for path in (run_dir / 'records').glob('*.json.gz')}
+    if actual_paths != expected_paths:
+        raise ValueError('Final record set does not exactly match all 10000 positions')
+    entries = []
+
+    def validated_facts():
+        for position, row in enumerate(schedule):
+            path = _record_path(run_dir, position, row)
+            packed = path.read_bytes()
+            record = _read_record(path)
+            _validate_scheduled_record(record, row, manifest['provenance_sha256'])
+            if record['status'] != 'SOFTWARE_COMPLETED':
+                raise ValueError('Final record set contains a HALT')
+            raw = canonical_bytes(record)
+            if gzip.decompress(packed) != raw:
+                raise ValueError('Final record is not canonical JSON evidence')
+            transcript = record['transcript']
+            entries.append({
+                'position': position, 'file': path.relative_to(run_dir).as_posix(),
+                'index': row['index'], 'seed': row['seed'], 'first': row['first'],
+                'winner': transcript['winner'], 'turn': transcript['turn'],
+                'record_sha256': hashlib.sha256(raw).hexdigest(),
+                'file_sha256': hashlib.sha256(packed).hexdigest(),
+            })
+            yield {
+                'index': row['index'], 'seed': row['seed'], 'first': row['first'],
+                'winner': transcript['winner'], 'turn': transcript['turn'],
+                'events': transcript['events'],
+            }
+
+    numerical = aggregate_results(validated_facts())
+    if numerical['matches_played'] != 10000 or numerical['starts'] != {'A': 5000, 'B': 5000}:
+        raise ValueError('Final numerical aggregation lost matches or start balance')
+    packed_manifest = gzip.compress(canonical_bytes(entries), mtime=0)
+    result = {
+        'schema': 'loaded-pair-final-results-v1',
+        'status': 'COMPLETED',
+        'bots': [dict(bot) for bot in BOT_ROSTER],
+        'judge_layers': [dict(judge) for judge in JUDGE_LAYERS],
+        'frozen_inputs': dict(manifest['frozen_inputs']),
+        'cohort_sha256': manifest['cohort_sha256'],
+        'provenance_sha256': manifest['provenance_sha256'],
+        'halted_matches': 0,
+        'record_manifest_file': 'RECORD_MANIFEST.json.gz',
+        'record_manifest_sha256': hashlib.sha256(packed_manifest).hexdigest(),
+        'numerical_results': numerical,
+    }
+    atomic_write(run_dir / 'RECORD_MANIFEST.json.gz', packed_manifest)
+    atomic_write(run_dir / 'FINAL_RESULTS.json', canonical_bytes(result))
+    checkpoint = {
+        **checkpoint,
+        'status': 'COMPLETED',
+        'final_results_sha256': hashlib.sha256(canonical_bytes(result)).hexdigest(),
+    }
+    _write_checkpoint(run_dir, checkpoint)
+    return result
+
+
+def status_frozen(run_dir):
+    run_dir = Path(run_dir).resolve()
+    manifest, schedule = load_freeze(run_dir)
+    checkpoint = _load_checkpoint(run_dir, manifest, schedule)
+    current_inputs = _component_hashes(ROOT, schedule)
+    if current_inputs != manifest['frozen_inputs']:
+        return {'status': 'RESTART_FULL_EVALUATION',
+                'invalidate_all_prior_results': True,
+                'restart_schedule_from_position': 0,
+                'credited_matches': checkpoint['credited_matches']}
+    return {
+        'status': checkpoint['status'],
+        'credited_matches': checkpoint['credited_matches'],
+        'target_matches': len(schedule),
+        'next_match': checkpoint['next_match'],
+        'halt_kind': checkpoint['halt_kind'],
+        'judge_layers': [dict(judge) for judge in JUDGE_LAYERS],
+    }
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    commands = parser.add_subparsers(dest='command', required=True)
+    freeze = commands.add_parser('freeze')
+    freeze.add_argument('--root', type=Path, default=ROOT)
+    freeze.add_argument('--cohort', type=Path, required=True)
+    freeze.add_argument('--preparation', type=Path, required=True)
+    freeze.add_argument('--out', type=Path, required=True)
+    freeze.add_argument('--review', type=Path)
+    freeze.add_argument('--strategy-review', type=Path)
+    for name in ('run', 'resume'):
+        command = commands.add_parser(name)
+        command.add_argument('--run-dir', type=Path, required=True)
+        command.add_argument('--stop-after', type=int)
+    status = commands.add_parser('status')
+    status.add_argument('--run-dir', type=Path, required=True)
+    args = parser.parse_args(argv)
+    try:
+        if args.command == 'freeze':
+            result = create_freeze(args.root, args.cohort, args.preparation, args.out,
+                                   args.review, args.strategy_review)
+        elif args.command == 'run':
+            result = run_frozen(args.run_dir, stop_after=args.stop_after)
+        elif args.command == 'resume':
+            result = resume_frozen(args.run_dir, stop_after=args.stop_after)
+        else:
+            result = status_frozen(args.run_dir)
+    except (OSError, ValueError, KeyError, TypeError, EOFError) as exc:
+        print(json.dumps({'status': 'ERROR', 'error': str(exc)}, indent=2,
+                         ensure_ascii=False))
+        return 2
+    print(json.dumps(result, indent=2, ensure_ascii=False))
+    return 0
+
+
 __all__ = [
-    'FROZEN_COMPONENTS', 'ROOT', 'atomic_write', 'create_freeze', 'load_freeze',
-    'resume_frozen', 'run_frozen', 'seed_for', 'validate_schedule',
+    'BOT_ROSTER', 'FROZEN_COMPONENTS', 'JUDGE_LAYERS', 'ROOT', 'aggregate_results',
+    'atomic_write', 'create_freeze', 'load_freeze', 'main', 'resume_frozen',
+    'run_frozen', 'seed_for', 'status_frozen', 'summarize_completed_run',
+    'validate_schedule',
 ]
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

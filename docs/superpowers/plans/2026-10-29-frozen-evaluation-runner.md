@@ -18,6 +18,7 @@
 - Rules HALT stops the run. Infrastructure recovery replays the same original match and verifies it before credit.
 - Changed frozen inputs invalidate all prior final results and require a new freeze and full restart.
 - No learning, exploration, rules certification or provisional win rate is introduced by this runner.
+- Preserve Bot A/Jupitermon and Bot B/Amaterasumon-Toho. Name the three judge layers Justitia (runtime integrity), Dike (independent rules) and Týr (final evidence audit) in frozen evidence, the app and after-reports.
 
 ## Review Focus
 
@@ -68,17 +69,18 @@
 - Modify: `SOURCE/test_frozen_evaluation.py`
 - Modify: `EVALUATION/README.md`
 - Modify: `STATUS.md`
+- Modify: `APP/compare.js`, `APP/template.html`, `APP/style.css`, `APP/build.py` and app tests for the user-selected bot/judge labels.
 
 **Interfaces:**
 - Consumes: 10,000 validated record manifests from Task 2.
 - Produces: `summarize_completed_run(run_dir) -> dict`, `FINAL_RESULTS.json`, and CLI subcommands `freeze`, `run`, `resume`, `status`.
 
-- [ ] **Step 1: Write failing tests** proving that 9,999/HALT runs cannot finalize and a synthetic complete balanced run reports exact W/L, starts, first-player wins and turn distribution without recommendations.
-- [ ] **Step 2: Run focused tests and confirm expected failures.**
-- [ ] **Step 3: Implement streaming validation/aggregation and CLI.** Finalize only when all schedule positions are uniquely credited and hash-valid; never infer missing results.
-- [ ] **Step 4: Document the operational command and current blocked status.** Do not run the real schedule.
-- [ ] **Step 5: Run focused/full tests and a blocked real freeze CLI check; confirm the CLI refuses current evidence before playing a match.**
-- [ ] **Step 6: Commit Task 3.**
+- [x] **Step 1: Write failing tests** proving that 9,999/HALT runs cannot finalize and a synthetic complete balanced run reports exact W/L, starts, first-player wins and turn distribution without recommendations.
+- [x] **Step 2: Run focused tests and confirm expected failures.**
+- [x] **Step 3: Implement streaming validation/aggregation and CLI.** Finalize only when all schedule positions are uniquely credited and hash-valid; never infer missing results.
+- [x] **Step 4: Document the operational command and current blocked status.** Do not run the real schedule.
+- [x] **Step 5: Run focused/full tests and a blocked real freeze CLI check; confirm the CLI refuses current evidence before playing a match.**
+- [x] **Step 6: Commit Task 3.**
 
 ### Task 4: Review and handoff
 

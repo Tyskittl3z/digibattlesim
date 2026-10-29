@@ -8,7 +8,9 @@ Click **Save after-report** to keep the exact inputs, hashes, all statistics,
 missing data and simulation status. No installation or server is required.
 
 The app has Digimon TCG-inspired styling. **Head-to-head simulation remains
-unavailable** until the underlying gameplay verification and runner are completed.
+unavailable** until the underlying gameplay verification passes. The frozen
+runner/checkpoint/final-audit software is implemented, but correctly refuses the
+current blocked evidence and has played 0/10,000 final matches.
 The bundled card metadata covers the supplied 41 cards; other IDs are retained with
 explicit missing-data notices. See `APP/README.md` for supported input formats.
 

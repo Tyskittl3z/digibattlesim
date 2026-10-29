@@ -27,8 +27,12 @@ digital playmat background; no remote assets or card images are requested.
   app clears unsaved inputs.
 - **Head-to-head simulation is not operational.** Its tab reports the pairing's
   unverified/unsupported status. Existing engine rules defects, legal verification,
-  pilots, roadmaps and the frozen runner still need completion. No wins, losses,
+  pilots and roadmaps still need completion. The frozen runner is software-ready
+  but refuses the current blocked gate. No wins, losses,
   estimated win rates or past matchup results are substituted.
+- The panel names the three audit layers **Justitia** (runtime integrity),
+  **Dike** (independent rules) and **Týr** (final evidence audit). Reports also
+  retain Bot A/Jupitermon, Bot B/Amaterasumon-Toho and these judge labels.
 
 ## What the after-report saves
 

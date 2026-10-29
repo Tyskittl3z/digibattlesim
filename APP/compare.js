@@ -2,6 +2,15 @@
   'use strict';
   const LIMIT = 1000000;
   const own = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
+  const JUDGES = Object.freeze([
+    Object.freeze({name: 'Justitia', role: 'Runtime integrity'}),
+    Object.freeze({name: 'Dike', role: 'Independent rules'}),
+    Object.freeze({name: 'Týr', role: 'Final evidence audit'})
+  ]);
+  const BOTS = Object.freeze([
+    Object.freeze({name: 'Bot A', seat: 'A', deck: 'Jupitermon'}),
+    Object.freeze({name: 'Bot B', seat: 'B', deck: 'Amaterasumon / Toho'})
+  ]);
 
   function parseDeck(raw, catalog = {}) {
     const errors = [], grouped = new Map();
@@ -80,7 +89,8 @@
 
   function simulationStatus(a, b, metadata) {
     const base = {matches_played: 0, wins: null, losses: null, win_rate: null, first_player_split: null,
-      seeds: [], logs: [], historical_results_reused: false, supported_pairing: false};
+      seeds: [], logs: [], historical_results_reused: false, supported_pairing: false,
+      bots: BOTS.map(bot => ({...bot})), judges: JUDGES.map(judge => ({...judge}))};
     if (a.errors.length || b.errors.length) return {...base, status: 'INPUT_ERRORS', message: 'Fix the decklist rows before checking simulation support.'};
     const key = d => JSON.stringify(composition(d));
     const samples = metadata.samples;
@@ -133,8 +143,9 @@
       const input = report.inputs[seat];
       return `<section><h2>Deck ${seat}: ${esc(input.filename)}</h2><p>Input kind: ${esc(input.input_kind)}. Uploaded-file SHA-256: <code>${esc(input.original_file_sha256)}</code></p><p>Preserved-text SHA-256: <code>${esc(input.raw_sha256)}</code></p><p>Composition SHA-256: <code>${esc(input.composition_sha256)}</code></p>${input.errors.map(e => `<p>Line ${e.line}: ${esc(e.message)}</p>`).join('')}<pre>${esc(input.raw_text)}</pre></section>`;
     }).join('');
+    const judges = report.simulation.judges.map(judge => `<li><strong>${esc(judge.name)}</strong> — ${esc(judge.role)}</li>`).join('');
     const json = JSON.stringify(report, null, 2);
-    return `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Digimon deck comparison after-report</title><style>body{font:16px/1.6 system-ui,sans-serif;color:#182832;max-width:1050px;margin:40px auto;padding:0 24px}h1,h2{line-height:1.2}section{margin:30px 0}table{border-collapse:collapse;width:100%;margin:20px 0}th,td{text-align:left;padding:9px;border-bottom:1px solid #dce3e3}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f5;padding:18px;border-radius:8px}code{overflow-wrap:anywhere}.notice{padding:18px;border-left:4px solid #d99a33;background:#fff5e4}small{color:#52646b}@media print{details{display:block}body{margin:0}}</style><h1>Deck comparison after-report</h1><small>Created ${esc(report.created_at_utc)} · App ${esc(report.app_version)}</small><p class="notice"><strong>Head-to-head: no verified result.</strong> ${esc(report.simulation.message)} Matches played: 0. Win rate: unavailable.</p>${statistics ? `<h2>Numerical comparison</h2><table><tr><th>Metric</th><th>Deck A</th><th>Deck B</th></tr>${statRows}</table><p>Shared copies: ${statistics.comparison.shared_copies}. Shared distinct cards: ${statistics.comparison.shared_distinct}.</p><h2>Full card comparison</h2><table><tr><th>Code</th><th>Card</th><th>A</th><th>B</th><th>B − A</th></tr>${rows}</table>` : '<p>Import errors prevented calculation of comparison statistics.</p>'}${inputs}<h2>Data limits</h2><ul>${report.limitations.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><details><summary>Complete machine-readable evidence, provenance and unavailable fields</summary><pre>${esc(json)}</pre></details><script type="application/json" id="report-data">${json.replace(/</g,'\\u003c')}</script></html>`;
+    return `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Digimon deck comparison after-report</title><style>body{font:16px/1.6 system-ui,sans-serif;color:#182832;max-width:1050px;margin:40px auto;padding:0 24px}h1,h2{line-height:1.2}section{margin:30px 0}table{border-collapse:collapse;width:100%;margin:20px 0}th,td{text-align:left;padding:9px;border-bottom:1px solid #dce3e3}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f5;padding:18px;border-radius:8px}code{overflow-wrap:anywhere}.notice{padding:18px;border-left:4px solid #d99a33;background:#fff5e4}small{color:#52646b}@media print{details{display:block}body{margin:0}}</style><h1>Deck comparison after-report</h1><small>Created ${esc(report.created_at_utc)} · App ${esc(report.app_version)}</small><p class="notice"><strong>Head-to-head: no verified result.</strong> ${esc(report.simulation.message)} Matches played: 0. Win rate: unavailable.</p><h2>Judge layers</h2><ul>${judges}</ul>${statistics ? `<h2>Numerical comparison</h2><table><tr><th>Metric</th><th>Deck A</th><th>Deck B</th></tr>${statRows}</table><p>Shared copies: ${statistics.comparison.shared_copies}. Shared distinct cards: ${statistics.comparison.shared_distinct}.</p><h2>Full card comparison</h2><table><tr><th>Code</th><th>Card</th><th>A</th><th>B</th><th>B − A</th></tr>${rows}</table>` : '<p>Import errors prevented calculation of comparison statistics.</p>'}${inputs}<h2>Data limits</h2><ul>${report.limitations.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><details><summary>Complete machine-readable evidence, provenance and unavailable fields</summary><pre>${esc(json)}</pre></details><script type="application/json" id="report-data">${json.replace(/</g,'\\u003c')}</script></html>`;
   }
 
   const api = {parseDeck, summarize, compare, composition, simulationStatus, buildReport, reportHtml};

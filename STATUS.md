@@ -1,5 +1,27 @@
 # Verified handoff status
 
+## Frozen 10,000 runner software — 2026-10-29
+
+The exact-pair final runner is now implemented behind the existing eligibility
+gate. It binds all seven frozen components and the balanced 10,000-seed schedule,
+writes deterministic per-match gzip evidence, advances an atomic checkpoint only
+after full record validation, preserves rules HALTs, replays an infrastructure
+orphan at the same seed, and forces a new freeze/full restart after any frozen
+input changes. Final numerical JSON cannot be emitted before all 10,000 unique
+records are revalidated.
+
+The two pilots remain Bot A/Jupitermon and Bot B/Amaterasumon-Toho. The named
+judge layers are **Justitia** (runtime integrity), **Dike** (independent rules)
+and **Týr** (final evidence audit); the names appear in the app, freeze and saved
+after-report. They do not merge software, rules or strategy authority.
+
+Verified software checks currently total **142 Python tests**, **9 app-core
+tests**, **1 app-build test** and **6 Chromium checks**. A real freeze CLI attempt
+exited 2 before creating output because the current cohort/source is stale after
+runner development and still contains 31 gameplay HALTs, optional unmodeled
+effects, unpinned rules, missing reviews/coverage and unapproved roadmaps.
+Final evaluation remains **0/10,000**; no win rate exists.
+
 ## Browser app — 2026-10-29
 
 Open `APP/DeckCompare.html` directly in a modern browser. Drag/drop or paste two
