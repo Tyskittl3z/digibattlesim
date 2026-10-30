@@ -1,0 +1,675 @@
+{
+  "BT11-023": [
+    {
+      "id": "Q2066",
+      "date": "Mar. 28, 2024",
+      "question": "If the cards revealed only include either a Digimon card with [Veedramon] in its name or a blue Tamer card, can I still add a card to my hand using this effect?",
+      "answer": "Yes, as long as either a Digimon card with [Veedramon] in its name or a blue Tamer card is among the cards revealed, you can add it to your hand."
+    },
+    {
+      "id": "Q2067",
+      "date": "Mar. 28, 2024",
+      "question": "This card’s effect reveals 3 cards. If both a Digimon card with [Veedramon] in its name and a blue Tamer are among the cards revealed, can I choose to only add one of them to my hand, and place the remaining cards at the bottom of my deck?",
+      "answer": "No. This card's effect reads “Add 1 Digimon card [...] and 1 blue Tamer card among them to your hand,” so you must add as many cards to your hand as possible."
+    }
+  ],
+  "BT11-032": [],
+  "BT11-112": [
+    {
+      "id": "Q2142",
+      "date": "Sep. 18, 2026",
+      "question": "When one of my Digimon with [Veedramon] in its name without a [When Digivolving] effect becomes suspended, can I activate this card's [All Turns] effect?",
+      "answer": "Yes you can.\nIf activated, suspend this Tamer and no [When Digivolving] effect will activate."
+    },
+    {
+      "id": "Q2143",
+      "date": "Sep. 18, 2026",
+      "question": "My Digimon with [Veedramon] in its name becomes suspended, and this card's [All Turns] effect and another effect trigger. At this time, the other effect is activated first, and the Digimon digivolves.\nAfterwards, if the digivolved card has a [When Digivolving] effect, can I activate this card's [All Turns] effect and activate the digivolved card's [When Digivolving] effect?",
+      "answer": "Yes, you can.\nIf activated, you must activate the digivolved card's [When Digivolving] effect before you can activate this card's [All Turns] effect.\nAdditionally, even if the digivolved card is a Digimon without [Veedramon] in its name, you can still activate that card's [When Digivolving] effect."
+    },
+    {
+      "id": "Q7198",
+      "date": "Sep. 18, 2026",
+      "question": "Can I use this card's [All Turns] effect to activate a [When Digivolving] effect on another card that was given a \"[When Digivolving] effects don't activate\" effect?",
+      "answer": "No."
+    },
+    {
+      "id": "Q7199",
+      "date": "Sep. 18, 2026",
+      "question": "Can I use this card's [All Turns] effect to activate another card's [When Digivolving] effect even if it has used up all of its [X Per Turn] uses?",
+      "answer": "No."
+    },
+    {
+      "id": "Q7200",
+      "date": "Sep. 18, 2026",
+      "question": "Can I use this card's [All Turns] effect to choose and activate one [When Digivolving] effect on another card that has multiple [When Digivolving] effects?",
+      "answer": "Yes, you can."
+    }
+  ],
+  "BT12-016": [
+    {
+      "id": "Q2146",
+      "date": "Mar. 28, 2024",
+      "question": "When this Digimon's [When Digivolving] effect doesn't delete any of my opponent's Digimon, does the effect let it digivolve into [BT5-081 ChaosGallantmon], [BT9-017 Gallantmon (X Antibody)], or [EX2-073 Gallantmon Crimson Mode]?",
+      "answer": "Digivolution into [BT9-017 Gallantmon (X Antibody)] is possible.\nDigivolution into [BT5-081 ChaosGallantmon] isn't possible because the digivolution requirements aren't met.\n[EX2-073 Gallantmon Crimson Mode] is level 7, so digivolution isn't possible.\nRelated Cards"
+    },
+    {
+      "id": "Q2147",
+      "date": "Mar. 28, 2024",
+      "question": "If a Digimon with this card in its digivolution cards attacks and is deleted in a battle during that attack, does this card's [End of Attack] inherited effect activate?",
+      "answer": "No, it doesn't activate."
+    }
+  ],
+  "BT12-029": [],
+  "BT17-013": [
+    {
+      "id": "Q2739",
+      "date": "Mar. 28, 2024",
+      "question": "When my opponent has a Digimon with 6000 DP or less, can I activate this card's effect and gain but choose not to delete my opponent’s Digimon?",
+      "answer": "No. If there's a valid target, you must choose it when you activate the effect. You can't choose to not activate the effect when there is a valid target."
+    },
+    {
+      "id": "Q2740",
+      "date": "Mar. 28, 2024",
+      "question": "My opponent has a Digimon with 6000 DP or less and an effect that reads, “This Digimon can't be deleted by your opponent’s effects,” and another Digimon with 6000 DP or less but no effect. Can I intentionally have this card’s effect target the Digimon with the effect preventing deletion and gain ?",
+      "answer": "Yes. You can choose your opponent’s Digimon with 6000 DP or less as a target, even if the chosen Digimon has an effect that prevents it from being deleted, in order to get the “if this effect didn't delete” part of the effect."
+    }
+  ],
+  "BT17-016": [
+    {
+      "id": "Q2744",
+      "date": "Mar. 28, 2024",
+      "question": "When my opponent has a Digimon with 8000 DP or less, can I activate this card's effect and have this Digimon get 3000 DP but choose not to delete my opponent’s Digimon?",
+      "answer": "No. If there's a valid target, you must choose it when you activate the effect. You can't choose to not activate the effect when there is a valid target."
+    },
+    {
+      "id": "Q2745",
+      "date": "Mar. 28, 2024",
+      "question": "My opponent has a Digimon with 8000 DP or less and an effect that reads, “This Digimon can't be deleted by your opponent’s effects,” and another Digimon with 8000 DP or less but no effect. Can I intentionally have this card’s effect target the Digimon with the effect preventing deletion and have this Digimon get 3000 DP?",
+      "answer": "Yes. You can choose your opponent’s Digimon with 8000 DP or less as a target, even if the chosen Digimon has an effect that prevents it from being deleted, in order to get the “if this effect didn't delete” part of the effect."
+    },
+    {
+      "id": "Q2746",
+      "date": "Mar. 28, 2024",
+      "question": "The memory is at 0, I use this Digimon with ST7-05 [Growlmon] in its digivolution cards to attack, and it deleted an opponent's Digimon with in battle. Is this Digimon deleted by the effect at such times?",
+      "answer": "Yes, it's deleted.\nWhen your opponent's Digimon is deleted in battle, it causes ST7-05 [Growlmon]'s inherited effect and on the opponent's Digimon to trigger simultaneously. The turn player's effect activates first, the memory becomes 1, and this Digimon's [Your Turn] effect can no longer activate, therefore it's deleted by .\nRelated Cards"
+    }
+  ],
+  "BT19-007": [
+    {
+      "id": "Q3059",
+      "date": "Sep. 20, 2024",
+      "question": "What does \"while you have 0 or less memory\" in this card’s inherited effect mean, exactly?",
+      "answer": "This inherited effect's condition is fulfilled if the memory is at 0 through 10 on your opponent's side when a DP-based deletion effect activates on a Digimon with this card in its digivolution cards."
+    },
+    {
+      "id": "Q3060",
+      "date": "Sep. 20, 2024",
+      "question": "What does an \"add X000 to the maximum your DP-based deletion effects can delete\" effect do?",
+      "answer": "Such effects increase the maximum value shown for DP-based deletion effects.\nFor example, while \"[Your Turn] Add 1000 to the maximum your DP-based deletion effects can delete\" is activated, \"[When Digivolving] Delete 1 of your opponent's Digimon with 3000 DP or less\" will allow you to delete an opponent's Digimon with 4000 DP or less."
+    },
+    {
+      "id": "Q3061",
+      "date": "Sep. 20, 2024",
+      "question": "If \"add X000 to the maximum your DP-based deletion effects can delete\" is activating, can the maximum be increased for an effect such as \"delete 1 of your opponent's Digimon with DP less than or equal to this Digimon's DP\" that references a Digimon's DP for deletion?",
+      "answer": "No, it can't be increased.\nYou can't increase the maximum of a DP-based deletion effect that doesn't show a numerical value."
+    }
+  ],
+  "BT19-009": [
+    {
+      "id": "Q3064",
+      "date": "Sep. 20, 2024",
+      "question": "What does \"while you have 0 or less memory\" in this card’s inherited effect mean, exactly?",
+      "answer": "This inherited effect's condition is fulfilled if the memory is at 0 through 10 on your opponent's side when a DP-based deletion effect activates on a Digimon with this card in its digivolution cards."
+    },
+    {
+      "id": "Q3065",
+      "date": "Sep. 20, 2024",
+      "question": "What does an \"add X000 to the maximum your DP-based deletion effects can delete\" effect do?",
+      "answer": "Such effects increase the maximum value shown for DP-based deletion effects.\nFor example, while \"[Your Turn] Add 1000 to the maximum your DP-based deletion effects can delete\" is activated, \"[When Digivolving] Delete 1 of your opponent's Digimon with 3000 DP or less\" will allow you to delete an opponent's Digimon with 4000 DP or less."
+    },
+    {
+      "id": "Q3066",
+      "date": "Sep. 20, 2024",
+      "question": "If \"add X000 to the maximum your DP-based deletion effects can delete\" is activating, can the maximum be increased for an effect such as \"delete 1 of your opponent's Digimon with DP less than or equal to this Digimon's DP\" that references a Digimon's DP for deletion?",
+      "answer": "No, it can't be increased.\nYou can't increase the maximum of a DP-based deletion effect that doesn't show a numerical value."
+    }
+  ],
+  "BT19-011": [
+    {
+      "id": "Q6016",
+      "date": "Mar. 13, 2026",
+      "question": "I activated this card's [On Play] [When Digivolving] effect, and when my opponent's Digimon would leave the battle area for the 1st process, an immediate-type effect such as a \"when [...] would leave\" effect caused this card to be removed from the battle area.\nCan I then process the part of the effect after \"then\" in this card's effect?",
+      "answer": "Yes, you can.\nIf an effect activates, it is to be fully resolved even if the card that activated the effect is removed from that area during the processing."
+    }
+  ],
+  "BT19-080": [
+    {
+      "id": "Q3141",
+      "date": "Sep. 20, 2024",
+      "question": "If I use this card's [Your Turn] effect to give to [Growlmon] or [Gallantmon], can I then choose to not attack with that Digimon?",
+      "answer": "No, you can't.\nThe Digimon that was given must attack if possible."
+    }
+  ],
+  "BT20-102": [
+    {
+      "id": "Q4417",
+      "date": "Jan. 24, 2025",
+      "question": "Can I use this card's [End of Your Turn] effect to give to 1 of my Digimon, but then choose to not use that Digimon to attack without suspending?",
+      "answer": "No, you can't.\nYou must use the Digimon that was given to attack without suspending if possible."
+    },
+    {
+      "id": "Q4418",
+      "date": "Jan. 24, 2025",
+      "question": "Can I use this card's [End of Your Turn] effect to attack even with a suspended Digimon?",
+      "answer": "Yes, it can be used to attack even with a suspended Digimon."
+    },
+    {
+      "id": "Q4419",
+      "date": "Apr. 4, 2025",
+      "question": "I have 2 copies of this card in the battle area.\nAt the end of my turn, I used the [End of Your Turn] effect on the 1st copy of this card to attack. Can I then use the [End of Your Turn] effect on the 2nd copy of this card to attack?",
+      "answer": "No, an attack using the 2nd effect isn't possible. A new attack declaration can't be made during an attack.\nIn this case, the [End of Your Turn] effects on both copies of this card trigger simultaneously at the end of your turn, and you use the [End of Your Turn] effect on the 1st copy of this card to attack.\nThe 2nd [End of Your Turn] effect can be activated before the counter timing, but because you can't declare another attack during an attack, you won't be able to attack using the 2nd effect, even if you activate it."
+    },
+    {
+      "id": "Q4725",
+      "date": "Jun. 13, 2025",
+      "question": "Can I process the part of the effect after \"then\" in this card's [On Play] [When Digivolving] effect even if the \"if\" condition in the 1st process isn't met?",
+      "answer": "Yes, you can process it.\nEven if [Omnimon] or [X Antibody] isn't in this card's digivolution cards, this card's [On Play] [When Digivolving] effect will return 1 of your opponent's Digimon to the bottom of the deck."
+    },
+    {
+      "id": "Q4726",
+      "date": "Jun. 13, 2025",
+      "question": "I have this card and BT20-060 [Alphamon: Ouryuken ACE] in the battle area.\nI use this card's [End of Your Turn] effect to give to this card itself, then I use this card to attack a player.\nIf the attack causes a security check on my opponent, BT20-060 [Alphamon: Ouryuken ACE]'s effect gives me +3 memory, and the turn doesn't end, does this card still have ?",
+      "answer": "Yes, it still has it.\nThe text reads \"for the turn,\" so it will last until the turn ends and switches to your opponent's turn.\nRelated Cards"
+    },
+    {
+      "id": "Q6018",
+      "date": "Mar. 13, 2026",
+      "question": "I activated this card's [On Play] [When Digivolving] effect, and when my opponent's Digimon would leave the battle area for the 1st process, an immediate-type effect such as a \"when [...] would leave\" effect caused this card to be removed from the battle area.\nCan I then process the part of the effect after \"then\" in this card's effect?",
+      "answer": "Yes, you can.\nIf an effect activates, it is to be fully resolved even if the card that activated the effect is removed from that area during the processing."
+    }
+  ],
+  "BT22-022": [
+    {
+      "id": "Q4875",
+      "date": "Jul. 4, 2025",
+      "question": "What does a card with \"X in its text\" refer to?",
+      "answer": "It refers to a card that contains the specified text or icon in its name, traits, effects, inherited effects, (Rule), digivolution requirements, DNA digivolution, DigiXros requirements, burst digivolve, App Fusion, Link, or Assembly requirements.\nFor example, a card with [Knightmon] in its text would include cards with the name [DarkKnightmon] and cards with the text [Knightmon] in their effects."
+    }
+  ],
+  "BT22-023": [],
+  "BT22-085": [],
+  "BT9-011": [
+    {
+      "id": "Q1801",
+      "date": "May. 24, 2024",
+      "question": "What does an \"add X000 to the maximum your DP-based deletion effects can delete\" effect do?",
+      "answer": "Such effects increase the maximum value shown for DP-based deletion effects.\nFor example, while \"[Your Turn] Add 1000 to the maximum your DP-based deletion effects can delete\" is activated, \"[When Digivolving] Delete 1 of your opponent's Digimon with 3000 DP or less\" will allow you to delete an opponent's Digimon with 4000 DP or less."
+    },
+    {
+      "id": "Q1802",
+      "date": "May. 24, 2024",
+      "question": "If \"add X000 to the maximum your DP-based deletion effects can delete\" is activating, can the maximum be increased for an effect such as \"delete 1 of your opponent's Digimon with DP less than or equal to this Digimon's DP\" that references a Digimon's DP for deletion?",
+      "answer": "No, it can't be increased.\nYou can't increase the maximum of a DP-based deletion effect that doesn't show a numerical value."
+    }
+  ],
+  "BT9-092": [
+    {
+      "id": "Q1894",
+      "date": "Mar. 28, 2024",
+      "question": "This card’s effect reveals 3 cards. If the cards revealed only include a Digimon card with the [X Antibody] trait or an Option card with the [X Antibody] trait, can I still add a card to my hand?",
+      "answer": "Yes, as long as either a Digimon card with the [X Antibody] trait or an Option card with the [X Antibody] trait is among the cards revealed, you can add it to your hand."
+    },
+    {
+      "id": "Q1895",
+      "date": "Mar. 28, 2024",
+      "question": "This card's effect reveals 3 cards. If both a Digimon card with the [X Antibody] trait and an Option Card with the [X Antibody] trait are among the cards revealed, can I choose to only add one of them to my hand, and place the other at the bottom of my deck?",
+      "answer": "No. This card's effect reads “Add 1 [...] among them to your hand,” so you must add as many cards to your hand as possible. In this situation, you must add both 1 Digimon card with the [X Antibody] trait and 1 Option card with the [X Antibody] trait to your hand."
+    }
+  ],
+  "BT9-109": [
+    {
+      "id": "Q1917",
+      "date": "Mar. 28, 2024",
+      "question": "Does this card have inherited effects even though it's an Option card?",
+      "answer": "Yes. This card's [Main] effect can place it in a Digimon’s digivolution cards, and it has inherited effects.\nAs with Digi-Egg cards and Digimon cards, this card's inherited effects can activate while it's placed in a Digimon’s digivolution cards."
+    },
+    {
+      "id": "Q1918",
+      "date": "Mar. 28, 2024",
+      "question": "Can this card's inherited effect digivolve a Digimon that doesn't meet the digivolution requirements into a Digimon card with [X Antibody] in its traits in my hand?",
+      "answer": "No, you can’t ignore digivolution requirements when using this card's effect."
+    },
+    {
+      "id": "Q1919",
+      "date": "Mar. 28, 2024",
+      "question": "Can I activate an effect that reduces the digivolution cost when digivolving using this card's inherited effect?",
+      "answer": "Yes, as long as the activation conditions are met."
+    },
+    {
+      "id": "Q1920",
+      "date": "Mar. 28, 2024",
+      "question": "Can this card be trashed by effects on Digimon with this card in its digivolution cards?",
+      "answer": "No. Trashing by is also trashing by an effect."
+    },
+    {
+      "id": "Q1921",
+      "date": "Mar. 28, 2024",
+      "question": "What happens if this card becomes the top card after a Digimon with this card in its digivolution cards is affected by ?",
+      "answer": "As with Digimon without DP, this card can't exist in the battle area as the top card, therefore it's trashed. This isn't considered deletion.\nIf this card has other digivolution cards under it, they are also trashed."
+    },
+    {
+      "id": "Q1922",
+      "date": "Mar. 28, 2024",
+      "question": "What happens if a \"trash the bottom 2 digivolution cards of your opponent's Digimon\" effect activates on a Digimon with this card as its bottom digivolution card?",
+      "answer": "Effects can't trash this card, therefore only the digivolution card on top of this card is trashed."
+    },
+    {
+      "id": "Q1923",
+      "date": "Mar. 28, 2024",
+      "question": "There are 8 digivolution cards under [EX2-007 Mother D-Reaper], and this card is the bottom card. Does the \"you may trash 7 or more digivolution cards from the bottom of 1 of your [EX2-007 Mother D-Reaper]s to set this Digimon's play cost to 0\" effect activate when my [EX2-055 Reaper] is played?",
+      "answer": "It can activate in such cases if you declare to trash 8 cards and then trash 7 cards except for [BT9-109 X Antibody].\nRelated Cards"
+    }
+  ],
+  "EX1-013": [
+    {
+      "id": "Q3203",
+      "date": "Mar. 28, 2024",
+      "question": "During my main phase, I have an unsuspended Digimon in play with this card in its digivolution cards. If one of my effects unsuspends that Digimon, does this card’s inherited effect activate?",
+      "answer": "No. The Digimon is already unsuspended, so this card’s inherited effect doesn’t activate. The Digimon must go from suspended to unsuspended for the effect to activate."
+    }
+  ],
+  "EX13-002": [],
+  "EX13-015": [
+    {
+      "id": "Q7247",
+      "date": "Sep. 18, 2026",
+      "question": "When this card would leave the battle area other than by my effects, I try using its [All Turns] effect to delete another Digimon but another effect prevents it.\nAt this time, does this card not leave the battle area?",
+      "answer": "No, it leaves the battle area.\nIf the \"by doing X\" condition isn't met, the rest of the effect isn't processed.\nIn this case, this card leaves the battle area if the deletion isn't possible."
+    },
+    {
+      "id": "Q7248",
+      "date": "Sep. 18, 2026",
+      "question": "My opponent has a 12000 DP or higher Digimon.\nCan I use this card's [On Play] [When Digivolving] [When Attacking] [Counter] effect and fulfill the \"if this effect didn't delete\" portion by not selecting a card to delete?",
+      "answer": "No.\nIf your opponent has a 12000 DP or higher Digimon, then you must select that card and delete it."
+    },
+    {
+      "id": "Q7249",
+      "date": "Sep. 18, 2026",
+      "question": "My opponent has a 12000 DP or higher Digimon with an effect that prevents deletion.\nCan I use this card's [On Play] [When Digivolving] [When Attacking] [Counter] effect and fulfill the \"if this effect didn't delete\" portion by choosing that Digimon?",
+      "answer": "Yes."
+    },
+    {
+      "id": "Q7250",
+      "date": "Sep. 18, 2026",
+      "question": "Can I activate a [Counter] effect and then activate another [Counter] effect?",
+      "answer": "No, you can't. Only 1 [Counter] effect can be activated per an attack."
+    },
+    {
+      "id": "Q7251",
+      "date": "Sep. 18, 2026",
+      "question": "Do this card's Assembly requirements mean that each Lv.5/Lv.4/Lv.3 card must have [Guilmon] or [Growlmon] in its name?",
+      "answer": "Yes, they must each satisfy the requirements."
+    },
+    {
+      "id": "Q7252",
+      "date": "Sep. 18, 2026",
+      "question": "Does this card's [All Turns] effect get its maximum increased by an \"add X000 to the maximum your DP-based deletion effects can delete\" effect?",
+      "answer": "Yes.\nIf the DP-based deletion effect's maximum is increased by 2000, deleting one of your opponent's 11000 DP or lower Digimon will be prevent it from leaving."
+    }
+  ],
+  "EX13-017": [
+    {
+      "id": "Q7255",
+      "date": "Sep. 18, 2026",
+      "question": "What kind of card does \"a card with X in its text\" refer to?",
+      "answer": "It refers to a card that contains the specified text or icon in its name, traits, effects, inherited effects, (Rule), digivolve requirements, DNA Digivolve, DigiXros requirements, Burst Digivolve, App Fusion, Link, or Assembly requirements.\nFor example, \"a card with [Knightmon] in its text\" would include cards with the name [DarkKnightmon] and cards with the text [Knightmon] in their effects."
+    }
+  ],
+  "EX13-019": [
+    {
+      "id": "Q7259",
+      "date": "Sep. 18, 2026",
+      "question": "What kind of card does \"a card with X in its text\" refer to?",
+      "answer": "It refers to a card that contains the specified text or icon in its name, traits, effects, inherited effects, (Rule), digivolve requirements, DNA Digivolve, DigiXros requirements, Burst Digivolve, App Fusion, Link, or Assembly requirements.\nFor example, \"a card with [Knightmon] in its text\" would include cards with the name [DarkKnightmon] and cards with the text [Knightmon] in their effects."
+    }
+  ],
+  "EX13-022": [
+    {
+      "id": "Q7264",
+      "date": "Sep. 18, 2026",
+      "question": "What kind of card does \"a card with X in its text\" refer to?",
+      "answer": "It refers to a card that contains the specified text or icon in its name, traits, effects, inherited effects, (Rule), digivolve requirements, DNA Digivolve, DigiXros requirements, Burst Digivolve, App Fusion, Link, or Assembly requirements.\nFor example, \"a card with [Knightmon] in its text\" would include cards with the name [DarkKnightmon] and cards with the text [Knightmon] in their effects."
+    }
+  ],
+  "EX13-023": [
+    {
+      "id": "Q7265",
+      "date": "Sep. 18, 2026",
+      "question": "What exactly does a \"can't (perform XX on) stacked cards\" effect mean?",
+      "answer": "This means that the effect prevents processing of \"(perform XX on) stacked cards.\"\nFor example, a \"can't trash stacked cards\" effect prevents trashing the top stacked cards by (which trashes the top stacked cards) or similar effects, and it prevents trashing the bottom stacked cards by \"trash a digivolution card\" or similar effects.\nHowever, because the effect only prevents processing \"(perform XX on) stacked cards,\" XX is still permitted to be performed on the Digimon itself, for instance by effects that tell you to \"perform XX\" on the Digimon."
+    },
+    {
+      "id": "Q7266",
+      "date": "Sep. 18, 2026",
+      "question": "This card has multiple effects that trigger when it's played or when it digivolves. In what order can they be activated?",
+      "answer": "The effects trigger simultaneously, so the player can choose the activation order."
+    },
+    {
+      "id": "Q7267",
+      "date": "Sep. 18, 2026",
+      "question": "What does orientation mean?",
+      "answer": "It refers to the suspended or unsuspended state of a card."
+    },
+    {
+      "id": "Q7268",
+      "date": "Sep. 18, 2026",
+      "question": "Do this card's Assembly requirements mean that each Lv.5/Lv.4/Lv.3 card must have [Veemon] or [Veedramon] in its name?",
+      "answer": "Yes, they must each satisfy the requirements."
+    },
+    {
+      "id": "Q7269",
+      "date": "Sep. 18, 2026",
+      "question": "This Digimon has [EX13-022 AeroVeedramon] as a digivolution card.\nThis Digimon is suspended after receiving a DP reduction, and its DP becomes 0. At this time, can I unsuspend it with [EX13-022 AeroVeedramon]'s inherited effect before it is deleted for having 0 DP?",
+      "answer": "No.\nBefore triggered effects can activate, a rule check occurs during which all Digimon with 0 DP are deleted.\nRelated Cards"
+    }
+  ],
+  "EX13-069": [
+    {
+      "id": "Q7437",
+      "date": "Sep. 18, 2026",
+      "question": "Can I process the part of the effect after \"after\" in this card's [Your Turn] effect without meeting the \"by\" condition?",
+      "answer": "No, you can't.\nIf you don't suspend this card, you can't process the part after \"after\" in this card's [Your Turn] effect."
+    },
+    {
+      "id": "Q7438",
+      "date": "Sep. 18, 2026",
+      "question": "If a Digimon such as [BT5-021 Syakomon] with a \"players can't reduce play costs\" effect is in the battle area, can I activate this card's [Your Turn] effect and digivolve 1 of my Digimon into a specified card?",
+      "answer": "You can activate the effect and digivolve, but its cost won't be reduced.\nRelated Cards"
+    },
+    {
+      "id": "Q7439",
+      "date": "Sep. 18, 2026",
+      "question": "There are two copies of this card in the battle area.\nCan I activate both of their [Your Turn] effects and digivolve one specified card with its cost reduced by the combined amount from both effects?",
+      "answer": "No, you can't.\nYou can't simultaneously activate multiple effects that digivolve a card."
+    }
+  ],
+  "EX2-001": [],
+  "EX2-008": [
+    {
+      "id": "Q3289",
+      "date": "Mar. 28, 2024",
+      "question": "This card’s effect reveals 4 cards. If the cards revealed only include either a card with [Growlmon] or [Gallantmon] in its name or [Takato Matsuki], can I still add a card to my hand?",
+      "answer": "Yes, as long as either a card with [Growlmon] or [Gallantmon] in its name or [Takato Matsuki] is among the cards revealed, you can add it to your hand."
+    },
+    {
+      "id": "Q3290",
+      "date": "Mar. 28, 2024",
+      "question": "This card’s effect reveals 4 cards. If both a card with [Growlmon] or [Gallantmon] in its name and [Takato Matsuki] are among the cards revealed, can I choose to only add one of them to my hand, and place the remaining card at the bottom of my deck?",
+      "answer": "No. This card's effect reads “Add 1 card [...] and 1 [Takato Matsuki] among them to your hand,” so you must add as many cards to your hand as possible. In this case, you must add both 1 card with [Growlmon] or [Gallantmon] in its name, and 1 [Takato Matsuki] to your hand."
+    }
+  ],
+  "EX4-006": [
+    {
+      "id": "Q3440",
+      "date": "Mar. 28, 2024",
+      "question": "Does \"If the total number of cards in both players' trashes is 20 or more\" mean 20 or more cards in either me or my opponent's trashes?",
+      "answer": "No, it means when the cards in your trash and the cards in your opponent's trash add up to 20 or more cards in total.\nFor example, the condition is met if you have 12 cards in your trash and your opponent has 8 cards in their trash."
+    },
+    {
+      "id": "Q3441",
+      "date": "Mar. 28, 2024",
+      "question": "After gaining from this card's [On Play] effect, is lost if the total cards in both players' trashes is reduced to 19 or fewer cards?",
+      "answer": "No, \"for the turn\" effects persist as long as the conditions were met at the time of activation."
+    }
+  ],
+  "EX5-070": [
+    {
+      "id": "Q3679",
+      "date": "Mar. 28, 2024",
+      "question": "If a Digimon has this card in its digivolution cards, does that mean that it isn't treated as \"1 of your Digimon without [X Antibody] in its digivolution cards\"?",
+      "answer": "That's correct. This card has a \"Name: Also treated as [X Antibody]\" rule, therefore a Digimon with this card in its digivolution cards isn't treated as \"1 of your Digimon without [X Antibody] in its digivolution cards.\""
+    },
+    {
+      "id": "Q3680",
+      "date": "Mar. 28, 2024",
+      "question": "Does this card's inherited effect only activate if both [X Antibody] and a Digimon card are in the digivolution cards?",
+      "answer": "No, it activates even if only this card is in the digivolution cards."
+    },
+    {
+      "id": "Q3681",
+      "date": "Mar. 28, 2024",
+      "question": "If a Digimon with this card in its digivolution cards would be deleted other than by one of my effects, then an effect such as prevents it from being deleted, does this card's inherited effect activate?",
+      "answer": "Yes, it activates."
+    },
+    {
+      "id": "Q3682",
+      "date": "Mar. 28, 2024",
+      "question": "Can I use this card and then place this card in digivolution cards without digivolving 1 of my Digimon without [X Antibody] in its digivolution cards?",
+      "answer": "No, you can't.\nIf digivolution isn't performed using this card's effect, you can't place this card in digivolution cards."
+    }
+  ],
+  "EX8-009": [
+    {
+      "id": "Q3874",
+      "date": "Nov. 22, 2024",
+      "question": "Can I activate this card’s inherited effect even if my opponent's Digimon and the Digimon that has this card in its digivolution cards are deleted at the same timing?",
+      "answer": "No, you can't activate it."
+    }
+  ],
+  "EX8-012": [
+    {
+      "id": "Q3875",
+      "date": "Nov. 22, 2024",
+      "question": "Can I activate this card’s inherited effect even if my opponent's Digimon and the Digimon that has this card in its digivolution cards are deleted at the same timing?",
+      "answer": "No, you can't activate it."
+    }
+  ],
+  "EX8-015": [],
+  "EX8-073": [
+    {
+      "id": "Q3975",
+      "date": "Nov. 22, 2024",
+      "question": "Multiple effects trigger when this card digivolves. In what order do they activate?",
+      "answer": "The effects trigger simultaneously, so the player can choose the activation order."
+    },
+    {
+      "id": "Q3976",
+      "date": "Nov. 22, 2024",
+      "question": "My opponent has a Digimon with 10000 DP or less.\nCan I meet the \"if this effect didn't delete\" condition in this card's [When Digivolving] [End of Attack] effect by not choosing a card to delete?",
+      "answer": "No, you can't.\nIf your opponent has a Digimon with 10000 DP or less, you must choose that card and delete it."
+    },
+    {
+      "id": "Q3977",
+      "date": "Nov. 22, 2024",
+      "question": "My opponent has a Digimon with 10000 DP or less.\nCan I meet the \"if this effect didn't delete\" condition in this card's [When Digivolving] [End of Attack] effect by choosing an opponent's Digimon with 10000 DP or less and an effect that prevents deletion?",
+      "answer": "Yes, you can."
+    },
+    {
+      "id": "Q3978",
+      "date": "Nov. 22, 2024",
+      "question": "What position on the memory gauge does \"while you have 0 or less\" memory refer to?",
+      "answer": "It refers to when the memory gauge is at 0 or further to the right."
+    },
+    {
+      "id": "Q3979",
+      "date": "Nov. 22, 2024",
+      "question": "What does \"isn't affected by [...] effects\" mean, exactly?",
+      "answer": "This effect prevents Digimon from being affected by effects.\nFor example, your Digmon won't suspend if it's chosen for a \"suspend 1 of your opponent's Digimon\" effect, and its DP won't be reduced if it's chosen for a \"1 of your opponent's Digimon gets -3000 DP\" effect."
+    },
+    {
+      "id": "Q3980",
+      "date": "Nov. 22, 2024",
+      "question": "Can a card that has an \"isn't affected by [...] effects\" effect be chosen for an effect?",
+      "answer": "Yes, it can be chosen."
+    },
+    {
+      "id": "Q3981",
+      "date": "Apr. 4, 2025",
+      "question": "Can a card that has an \"effects don't affect\" effect be given an effect?",
+      "answer": "Yes, it can.\nIt won't be affected by it, but it can be given an effect.\nHowever, if an effect such as is given to a Digimon that isn't affected by effects, the Digimon won't be considered to have that effect."
+    },
+    {
+      "id": "Q3982",
+      "date": "Nov. 22, 2024",
+      "question": "If a card is affected by an effect, then it later gains an \"isn't affected by [...] effects\" effect, what happens to the effect that was affecting it?",
+      "answer": "As soon as it gains the \"isn't affected by [...] effects\" effect, it will no longer be affected."
+    },
+    {
+      "id": "Q3983",
+      "date": "Nov. 22, 2024",
+      "question": "If a card has an \"isn't affected by [...] effects\" effect, it gains an effect, then it later loses the \"isn't affected by [...] effects\" effect, what happens to the effect that it gained?",
+      "answer": "It will be affected by the effect as soon as it can be affected by effects."
+    },
+    {
+      "id": "Q3984",
+      "date": "Jun. 13, 2025",
+      "question": "A card that has an \"isn't affected by [...] effects\" effect was given an effect that triggers at a timing such as [When Attacking].\nWill the effect trigger if that card later meets the trigger conditions?",
+      "answer": "If the Digimon isn't affected by effects upon the trigger timing, the effect won't trigger."
+    }
+  ],
+  "LM-027": [
+    {
+      "id": "Q4033",
+      "date": "May. 24, 2024",
+      "question": "When I use this card's [Main] effect to digivolve into a card in my hand, can it digivolve regardless of its digivolution requirements?",
+      "answer": "No, this card's [Main] effect does not allow ignoring digivolution requirements, so you can only digivolve into a card that meets the digivolution requirements."
+    },
+    {
+      "id": "Q4034",
+      "date": "May. 24, 2024",
+      "question": "Can I use this card's [Main] effect to burst digivolve or DNA digivolve into a card in my hand?",
+      "answer": "No, you can't burst digivolve or DNA digivolve."
+    },
+    {
+      "id": "Q4035",
+      "date": "May. 24, 2024",
+      "question": "Can I use this card's [Main] effect to digivolve a Tamer into a Digimon card with a \"your Tamer is treated as a Digimon and can digivolve\" effect?",
+      "answer": "No, you can't.\nThis card's [Main] effect digivolves 1 Digimon. It doesn't digivolve Tamers."
+    },
+    {
+      "id": "Q4036",
+      "date": "May. 24, 2024",
+      "question": "Can I activate this card's effect if I don't have any red Digimon cards in my trash?",
+      "answer": "Yes, you can."
+    },
+    {
+      "id": "Q4037",
+      "date": "May. 24, 2024",
+      "question": "Can I use this card's effect to play a red Digimon card with 2000 DP or less from my trash without returning a Digimon card from my trash to the top of the deck?",
+      "answer": "No, you can't.\nYou must perform \"return 1 red Digimon card from your trash to the top of the deck\" whenever possible."
+    }
+  ],
+  "LM-028": [
+    {
+      "id": "Q4038",
+      "date": "May. 24, 2024",
+      "question": "When I use this card's [Main] effect to digivolve into a card in my hand, can it digivolve regardless of its digivolution requirements?",
+      "answer": "No, this card's [Main] effect does not allow ignoring digivolution requirements, so you can only digivolve into a card that meets the digivolution requirements."
+    },
+    {
+      "id": "Q4039",
+      "date": "May. 24, 2024",
+      "question": "Can I use this card's [Main] effect to burst digivolve or DNA digivolve into a card in my hand?",
+      "answer": "No, you can't burst digivolve or DNA digivolve."
+    },
+    {
+      "id": "Q4040",
+      "date": "May. 24, 2024",
+      "question": "Can I use this card's [Main] effect to digivolve a Tamer into a Digimon card with a \"your Tamer is treated as a Digimon and can digivolve\" effect?",
+      "answer": "No, you can't.\nThis card's [Main] effect digivolves 1 Digimon. It doesn't digivolve Tamers."
+    },
+    {
+      "id": "Q4041",
+      "date": "May. 24, 2024",
+      "question": "Can I activate this card's effect if I don't have any blue Digimon cards in my trash?",
+      "answer": "Yes, you can."
+    },
+    {
+      "id": "Q4042",
+      "date": "May. 24, 2024",
+      "question": "Can I use this card's effect to play a blue Digimon card with 2000 DP or less from my trash without returning a Digimon card from my trash to the top of the deck?",
+      "answer": "No, you can't.\nYou must perform \"return 1 blue Digimon card from your trash to the top of the deck\" whenever possible."
+    }
+  ],
+  "LM-034": [
+    {
+      "id": "Q4065",
+      "date": "Aug. 1, 2024",
+      "question": "What does this card's 1st effect do, exactly?",
+      "answer": "To meet color requirements, normally you must have a Digimon or Tamer in your area that's the same color as the corresponding Option card. However, with this effect, this card's color requirements are met when you have a red Digimon or Tamer in the area."
+    },
+    {
+      "id": "Q4066",
+      "date": "Aug. 1, 2024",
+      "question": "Does this card's 1st effect mean that this card's color requirements are met even when I have a red Digimon in the breeding area?",
+      "answer": "Yes, the color requirements are met when you have a red Digimon in the breeding area."
+    }
+  ],
+  "LM-056": [],
+  "LM-057": [],
+  "LM-058": [],
+  "LM-061": [],
+  "P-104": [
+    {
+      "id": "Q4192",
+      "date": "Mar. 28, 2024",
+      "question": "When I use this card's effect to digivolve into a card in my hand, can it digivolve regardless of its digivolution requirements?",
+      "answer": "No, this card's effect does not allow ignoring digivolution requirements, so you can only digivolve into a card that meets the digivolution requirements."
+    },
+    {
+      "id": "Q4193",
+      "date": "Mar. 28, 2024",
+      "question": "Can I use this card's effect to burst digivolve or DNA digivolve into a card in my hand?",
+      "answer": "No, you can't burst digivolve or DNA digivolve."
+    },
+    {
+      "id": "Q4194",
+      "date": "Mar. 28, 2024",
+      "question": "Can I use this card's effect to digivolve a Tamer into a Digimon card with a \"your Tamer is treated as a Digimon and can digivolve\" effect?",
+      "answer": "No, you can't.\nThis card's effect digivolves 1 Digimon. It doesn't digivolve Tamers."
+    },
+    {
+      "id": "Q4195",
+      "date": "Mar. 28, 2024",
+      "question": "Can I activate this card's effect but choose to not digivolve?",
+      "answer": "Yes, you can."
+    }
+  ],
+  "P-138": [
+    {
+      "id": "Q4244",
+      "date": "Mar. 28, 2024",
+      "question": "If the 3 cards I reveal from the deck with this card's effect include only a Digimon card with [Veedramon] in its name or a blue Tamer card, can I just add that 1 card to my hand?",
+      "answer": "Yes, even if you only reveal one of the applicable cards, you can still add it to your hand."
+    },
+    {
+      "id": "Q4245",
+      "date": "Mar. 28, 2024",
+      "question": "If the cards I reveal from my deck for this card's effect include both a Digimon card with [Veedramon] in its name and a blue Tamer card, can I choose to only add one of them to my hand, and place the remaining cards at the bottom of my deck?",
+      "answer": "No. If you have cards that are targets of this effect, you must add as many cards to your hand as possible."
+    }
+  ],
+  "P-186": [
+    {
+      "id": "Q4629",
+      "date": "Apr. 4, 2025",
+      "question": "My opponent has a Digimon with 13000 DP or less.\nCan I meet the \"if this effect didn't delete\" condition in this card's [On Play] [When Digivolving] effect by not choosing a card to delete?",
+      "answer": "No, you can't.\nIf your opponent has a Digimon with 13000 DP or less, you must choose that card and delete it."
+    },
+    {
+      "id": "Q4630",
+      "date": "Apr. 4, 2025",
+      "question": "My opponent has a Digimon with 13000 DP or less.\nCan I meet the \"if this effect didn't delete\" condition in this card's [On Play] [When Digivolving] effect by choosing an opponent's Digimon with 13000 DP or less and an effect that prevents deletion?",
+      "answer": "Yes, you can."
+    }
+  ],
+  "ST7-05": [
+    {
+      "id": "Q683",
+      "date": "Mar. 28, 2024",
+      "question": "A Digimon with this card in its digivolution cards and an opponent’s Digimon are deleted simultaneously. Does this card’s inherited effect activate?",
+      "answer": "No. This card is placed in your trash before the effect can activate. It’s no longer in your battle area, so it doesn't activate."
+    }
+  ]
+}

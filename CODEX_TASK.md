@@ -1,5 +1,16 @@
 # First Codex task (execute, don't just plan)
 
+> **2026-10-30 continuation:** The user expanded this engine track to selected,
+> randomized exact pairs from `DigiLab_EX13_Top_Decklists_Deduplicated.xlsx` and
+> chose English-version worldwide rules. The old two-deck-only restriction below
+> is historical and superseded for this authorized track; all integrity,
+> no-advice, source-evidence, fresh-matchup and freeze requirements remain.
+> Read `REPORTS/EX13_ENGINE_PROGRESS_2026-10-30.md` before continuing. The current
+> explicit-context foundation has 193 passing tests but no full-game simulator
+> support or valid matches for the first imported pairing. Continue implementing
+> its remaining scoped mechanics and full gameplay, then the 60/roadmap/10,000
+> gates. The other chat owns catalog/import/comparison/storage/browser work.
+
 ## Goal
 Bring the **Jupitermon (A) vs Amaterasumon/Toho (B)** two-deck simulator to at least 60 **fully completed, judge-verified** fact-finding games with balanced starts, then evidence-backed GREEN/YELLOW/RED roadmap readiness. Sixty is the minimum, not proof that all encountered branches were covered. Keep the 10,000-match final evaluation as a later gate. Apply the accepted verification adjustments in `WORKFLOW.md`.
 

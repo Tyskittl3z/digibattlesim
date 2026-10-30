@@ -1,5 +1,31 @@
 # Verified handoff status
 
+## EX13 engine track — 2026-10-30
+
+The user authorized randomized pairings from the uploaded 54-entry/11-archetype
+EX13 workbook and **English-version worldwide rules**, with 60+ fact-finding and
+10,000 final matches **per selected pairing**. First queued pairing is
+UlforceVeedramon/Federico Nine (123129) versus Gallantmon/RTA (124303).
+
+Added immutable explicit-context input models, experimental physical-state and
+transactional mechanic dispatch, selected printed evolution candidates, a scoped
+EX13-023 orientation pack and an executable readiness inventory. Retrieved both
+exact lists (50+4 each), 45 official card pages, 99 Q&A entries and official
+rules/restrictions/errata. Three HTML type conflicts are preserved alongside
+official OPTION images. No APP/catalog changes or old-matchup evidence reuse.
+
+Actual verification: **193 Python tests pass**, including the original 148.
+Independent software review findings were reproduced and fixed. Six targeted
+scenarios: 3 experimental resolutions and 3 expected scope HALTs; **zero full
+match credit**. Readiness CLI exits **2/BLOCKED**: 1 experimental handler among
+150 printed-text inventory units, 149 units still without full handlers, full
+gameplay loop/independent rules review/pilots/roadmaps/freeze unfinished.
+**0 judge-valid fact-finding, 0 approved lanes, 0/10,000 final matches** for this
+pairing. See `REPORTS/EX13_ENGINE_PROGRESS_2026-10-30.md` and the new plan/spec.
+
+The old loaded-pair engine and its blocked gate remain preserved below. Their
+historical results do not establish support for the new imported pairing.
+
 ## Frozen 10,000 runner software — 2026-10-29
 
 The exact-pair final runner is now implemented behind the existing eligibility

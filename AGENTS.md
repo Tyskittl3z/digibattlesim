@@ -5,8 +5,20 @@ This repository is a **simulation and numerical-results tool**, not a deck-build
 User owns all deck construction, interpretation, and decisions; offer **no card/slot recommendations** and no speculative conclusions. User-requested numerical deck comparisons are allowed. Do not alter decklists without explicit user instruction.
 
 ## Scope and isolation
+- **User-authorized engine-track expansion (2026-10-30):** The user selected
+  `DigiLab_EX13_Top_Decklists_Deduplicated.xlsx` (54 indexed exact-list entries,
+  11 archetypes), requested randomized matchups, and confirmed a separate
+  balanced 60+ fact-finding cohort and 10,000 final matches **per selected
+  pairing**. This supersedes the old two-deck-only scope for this track. Build
+  reusable match infrastructure and verified mechanics only for selected
+  imported pairs, never universal speculative card support. The other chat
+  owns catalog, generic intake/legality/comparison/storage and browser UI.
+  Preserve the random queue and exact composition identities; unavailable lists
+  stay explicit. New matchups receive fresh pilots, roadmaps and evidence.
+  First queued pair: UlforceVeedramon/Federico Nine (123129) vs Gallantmon/RTA
+  (124303). See `docs/superpowers/specs/2026-10-30-ex13-engine-design.md`.
 - User request (2026-10-29): add a drag-and-drop browser app for **both** side-by-side deck contents/statistics and head-to-head simulation. Decklist intake/numerical comparison may accept user-supplied lists. This explicitly authorizes the comparison interface; simulation support remains limited to verified mechanics of the selected matchup. Unknown cards/unsupported pairings must remain explicit; never manufacture win rates or reuse another matchup's results. Save exact inputs, hashes, statistics, data gaps, simulation status and actual results/log references in a downloadable after-report.
-- **Current simulator gameplay scope**: `DECKS/JUPITERMON.txt` (A) vs `DECKS/AMATERASUMON_TOHO.txt` (B). Browser import/statistics for another pairing do not certify its gameplay support.
+- **Historical loaded simulator gameplay scope**: `DECKS/JUPITERMON.txt` (A) vs `DECKS/AMATERASUMON_TOHO.txt` (B). Browser import/statistics for another pairing do not certify its gameplay support. The new explicit-context engine track is separate experimental software until it passes the same evidence contracts.
 - NEW DECK = FRESH START. For any new deck or changed matchup, invalidate all deck-specific roadmaps, training data, pilot weights, and matchup results. Reuse only rules, generic match infrastructure, and verified generic mechanics. Do not seed a new match with another deck's data.
 - Never expand toward universal Digimon card support or unsolicited feature work. Work on interactions that the **loaded two decks can actually produce**, as found during gameplay.
 
