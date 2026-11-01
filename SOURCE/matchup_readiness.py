@@ -11,7 +11,8 @@ from pathlib import Path
 
 from context_evolution import printed_evolution_options, UnsupportedEvolutionCondition
 from match_context import CardDefinition, DeckDefinition, MatchContext, require, digest
-from selected_mechanics import build_selected_registry, ORIENTATION_LINE, ORIENTATION_EFFECT
+from selected_mechanics import build_selected_registry, ORIENTATION_LINE, ORIENTATION_EFFECT, INHERITED_REACTIONS, PHASE_EFFECTS
+from search_effects import SEARCH_SPECS
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CONTEXT = ROOT / 'ARTIFACTS/ex13-engine-2026-10-30/context.json'
@@ -40,7 +41,7 @@ def inspect_readiness(context, registry, root=ROOT):
     if not rules.get('region'):
         block('REGION_UNSELECTED', 'EX13 and English are source labels; applicable tournament region is unconfirmed.')
     block('RULES_SNAPSHOT_UNREVIEWED', 'Official bytes retrieved; edition/effective-date pins and independent rules review remain required.')
-    block('FULL_MATCH_ENGINE_UNIMPLEMENTED', 'Context runtime supports physical-state/scenario dispatch, not complete phase/attack/security/trigger play for these decks.')
+    block('FULL_MATCH_ENGINE_UNIMPLEMENTED', 'Opening/initial phases, pending reactions, empty-board first play/search and breeding evolution exist; live-board main actions, attack/security and full turn-end play remain incomplete.')
     block('MECHANIC_PACK_UNREVIEWED', 'Experimental software bindings have no independent judge approval.')
     block('NO_CURRENT_FACT_FINDING_COHORT', 'Zero full current-context matches; require 60+ judge-valid matches with balanced starts and reviewed branch coverage.')
     block('ROADMAPS_UNAPPROVED', 'No current-context pilots, evaluated legal alternatives or approved best/medium/worst roadmaps.')
@@ -76,11 +77,22 @@ def inspect_readiness(context, registry, root=ROOT):
             for index, line in enumerate(raw[field].splitlines()):
                 if not line.strip():
                     continue
-                implemented = (card.number == 'EX13-023' and field == 'main_text'
-                               and line == ORIENTATION_LINE and (card.number, ORIENTATION_EFFECT) in bound)
+                handler = None
+                if card.number == 'EX13-023' and field == 'main_text' and line == ORIENTATION_LINE:
+                    handler = ORIENTATION_EFFECT
+                inherited = INHERITED_REACTIONS.get(card.number)
+                if field == 'inherited_text' and inherited and line == inherited[1]:
+                    handler = inherited[0]
+                phase_effect = PHASE_EFFECTS.get(card.number)
+                if field == 'main_text' and phase_effect and line == phase_effect[2]:
+                    handler = phase_effect[0]
+                search = SEARCH_SPECS.get(card.number)
+                if field == 'main_text' and search and line == search[1]:
+                    handler = search[0]
+                implemented = handler is not None and (card.number,handler) in bound
                 inventory.append({'card_number': card.number, 'field': field, 'line_index': index,
                                   'printed_text': line, 'text_sha256': hashlib.sha256(line.encode()).hexdigest(),
-                                  'software_handler': ORIENTATION_EFFECT if implemented else None,
+                                  'software_handler': handler if implemented else None,
                                   'status': 'EXPERIMENTAL_UNREVIEWED' if implemented else 'UNIMPLEMENTED',
                                   'judge_review': None})
         for kind, text in raw.get('special_conditions', {}).items():
@@ -109,7 +121,10 @@ def inspect_readiness(context, registry, root=ROOT):
     code = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in [
         Path(__file__), Path(__file__).with_name('match_context.py'),
         Path(__file__).with_name('context_runtime.py'), Path(__file__).with_name('context_evolution.py'),
-        Path(__file__).with_name('selected_mechanics.py')]}
+        Path(__file__).with_name('selected_mechanics.py'),Path(__file__).with_name('effect_scheduler.py'),
+        Path(__file__).with_name('match_preparation.py'),Path(__file__).with_name('phase_flow.py'),
+        Path(__file__).with_name('main_actions.py'),Path(__file__).with_name('breeding_evolution.py'),
+        Path(__file__).with_name('search_effects.py')]}
     return {'schema': 'imported-matchup-readiness-v1', 'status': 'BLOCKED',
             'context_id': context.matchup_id, 'engine_source_sha256': code,
             'decks': {s: context.deck(s).to_dict() for s in ('A', 'B')},

@@ -36,6 +36,8 @@ class Stack:
     cards: list[PhysicalCard]
     suspended: bool = False
     statuses: dict = field(default_factory=dict)
+    instance_id: str = ''
+    played_turn: int | None = None
 
 
 @dataclass
@@ -49,6 +51,10 @@ class PhysicalState:
     terminal: bool = False
     once_used: set = field(default_factory=set)
     pending: list = field(default_factory=list)
+    effect_sequence: int = 0
+    entity_sequence: int = 0
+    phase: str = 'SCENARIO'
+    preparation: dict = field(default_factory=lambda:{'started':False,'choices':[]})
 
 
 @dataclass(frozen=True)
@@ -134,7 +140,8 @@ def state_value(value):
         return value.key
     if isinstance(value, Stack):
         return {'cards': [c.key for c in value.cards], 'suspended': value.suspended,
-                'statuses': state_value(value.statuses)}
+                'statuses': state_value(value.statuses), 'instance_id': value.instance_id,
+                'played_turn':value.played_turn}
     if isinstance(value, dict):
         return {k: state_value(v) for k, v in value.items()}
     if isinstance(value, (tuple, list)):
@@ -191,7 +198,9 @@ class ContextRuntime:
     def execution_id(self):
         from pathlib import Path
         code = {name: hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
-                for name in ('context_runtime.py', 'match_context.py')}
+                for name in ('context_runtime.py', 'match_context.py', 'effect_scheduler.py','match_preparation.py',
+                             'phase_flow.py','breeding_evolution.py','main_actions.py',
+                             'context_evolution.py','search_effects.py','selected_mechanics.py')}
         return digest({'context_id': self.context.matchup_id, 'packs': self.registry.manifest(),
                        'engine': code, 'allow_experimental': self.allow_experimental})
 
@@ -217,6 +226,7 @@ class ContextRuntime:
                 'breeding': [c.key for c in self.state.breeding[owner]],
             }
         return {'active': self.state.active, 'memory': self.state.memory, 'turn': self.state.turn,
+                'phase':self.state.phase,
                 'players': players}
 
     def verify(self):
@@ -229,6 +239,9 @@ class ContextRuntime:
             raise RuntimeHalt('MEMORY_GAUGE_INVALID')
         if state.active not in ('A', 'B') or type(state.terminal) is not bool:
             raise RuntimeHalt('TURN_STATE_INVALID')
+        if type(state.turn) is not int or state.turn<0 or state.phase not in (
+                'SCENARIO','INITIAL_HANDS','START_OF_TURN','TURN_START_EFFECTS','UNSUSPEND','DRAW','BREEDING','MAIN','END_OF_TURN'):
+            raise RuntimeHalt('TURN_PHASE_INVALID')
         for seat in ('A', 'B'):
             if set(state.zones[seat]) != {'deck', 'eggdeck', 'hand', 'security', 'trash'}:
                 raise RuntimeHalt('PHYSICAL_ZONE_SCHEMA_INVALID')
@@ -251,6 +264,8 @@ class ContextRuntime:
                 raise RuntimeHalt('EGG_DECK_TYPE_INVALID')
         # Also fail on unrecordable status, pending-choice or OPT state.
         canonical(state_value(vars(state)))
+        from effect_scheduler import validate_pending
+        validate_pending(self)
 
     def _source(self, seat, source_key, field_):
         self.context.deck(seat)
@@ -265,7 +280,7 @@ class ContextRuntime:
                     return card
         raise RuntimeHalt('SOURCE_NOT_ACTIVE: ' + str(source_key))
 
-    def dispatch(self, effect_id, seat, source_key, choice, *, field_='main_text'):
+    def dispatch(self, effect_id, seat, source_key, choice, *, field_='main_text', pending_id=None):
         """Resolve a scenario effect atomically or preserve a reproducible halt.
 
         Pending trigger scheduling and full game timing are not implemented here.
@@ -282,7 +297,14 @@ class ContextRuntime:
             self.verify()
             if self.state.terminal:
                 raise RuntimeHalt('ACTION_AFTER_TERMINAL')
-            if self.state.pending:
+            selected_pending = None
+            if pending_id is not None:
+                from effect_scheduler import pending_options
+                selected_pending = next((p for p in pending_options(self,seat) if p['id']==pending_id),None)
+                if (selected_pending is None or (selected_pending['effect_id'], selected_pending['source'],
+                        selected_pending['field']) != (effect_id,source_key,field_)):
+                    raise RuntimeHalt('PENDING_CHOICE_INVALID')
+            elif self.state.pending:
                 raise RuntimeHalt('PENDING_EFFECTS_REQUIRE_RESOLUTION')
             if canonical(self.registry.manifest()) != self._pack_manifest:
                 raise RuntimeHalt('PACK_CHANGED_RESTART_REQUIRED')
@@ -297,15 +319,21 @@ class ContextRuntime:
             # A failed handler receives only a trial state and RNG. Its partial
             # zone movements and decisions can never leak into the live trace.
             trial = copy.deepcopy(self)
+            if selected_pending:
+                trial.state.pending = [p for p in trial.state.pending if p['id']!=pending_id]
+            trial._resolution_depth = selected_pending['depth'] if selected_pending else -1
+            trial._activated_effect=(effect_id,seat,source_key,field_,pending_id)
             result = binding.handler(trial, seat, source_key, copy.deepcopy(choice))
+            from effect_scheduler import prune_pending
+            prune_pending(trial)
+            trial._finish_main_processing()
             trial.verify()
-            if trial.state.pending:
-                raise RuntimeHalt('UNRESOLVED_DEPENDENT_EFFECT')
             event = json.loads(canonical({
                 'type': 'MECHANIC_RESOLVED', 'status': 'EXPERIMENTAL',
                 'context_id': self.context.matchup_id, 'execution_id': self.execution_id,
                 'turn': trial.state.turn, 'seat': seat, 'source': source_key,
-                'effect_id': effect_id, 'field': field_, 'choice': choice, 'result': result}))
+                'effect_id': effect_id, 'field': field_, 'choice': choice, 'result': result,
+                'pending_id': pending_id}))
             # Validate the whole future trace BEFORE committing physical state.
             canonical(trial.events + [event])
             self.state = trial.state
@@ -318,6 +346,7 @@ class ContextRuntime:
                                 'first': self.first, 'context_id': self.context.matchup_id,
                                 'turn': self.state.turn, 'seat': audit_value(seat), 'source': audit_value(source_key),
                                 'effect_id': audit_value(effect_id), 'field': audit_value(field_),
+                                'pending_id':audit_value(pending_id),
                                 'choice': audit_value(choice), 'reason': str(exc),
                                 'exception': type(exc).__name__,
                                 'before': before if before is not None else {
@@ -326,3 +355,53 @@ class ContextRuntime:
             if isinstance(exc, RuntimeHalt):
                 raise
             raise RuntimeHalt('MECHANIC_ERROR: ' + str(exc)) from exc
+
+    def settle_pending(self):
+        """Apply automatic source-loss/OPT cancellations, never optional choices."""
+        if self.halted or self.state.terminal:
+            raise RuntimeHalt('SETTLE_AFTER_HALT_OR_TERMINAL')
+        from effect_scheduler import prune_pending
+        def settle(trial,seat,choice):
+            return {'cancelled':prune_pending(trial)}
+        return self._control_command('SETTLE_PENDING',self.state.active,None,settle,allow_pending=True)
+
+    def _control_command(self,kind,seat,choice,operation,*,allow_pending=False):
+        """Atomic trusted rules primitive; never an unbound pilot action API."""
+        if self.halted:
+            raise RuntimeHalt('ALREADY_HALTED')
+        before=None
+        try:
+            before=self.snapshot()
+            choice=json.loads(canonical(choice))
+            self.context.deck(seat)
+            self.verify()
+            if self.state.terminal:
+                raise RuntimeHalt('ACTION_AFTER_TERMINAL')
+            if self.state.pending and not allow_pending:
+                raise RuntimeHalt('PENDING_EFFECTS_REQUIRE_RESOLUTION')
+            if canonical(self.registry.manifest())!=self._pack_manifest:
+                raise RuntimeHalt('PACK_CHANGED_RESTART_REQUIRED')
+            trial=copy.deepcopy(self)
+            result=operation(trial,seat,choice)
+            trial._finish_main_processing()
+            trial.verify()
+            event=json.loads(canonical({'type':'CONTROL_RESOLVED','kind':kind,'status':'EXPERIMENTAL',
+                    'context_id':self.context.matchup_id,'execution_id':self.execution_id,
+                    'seat':seat,'choice':choice,'result':result,'turn':trial.state.turn}))
+            canonical(trial.events+[event])
+            self.state,self.rng,self.events=trial.state,trial.rng,trial.events+[event]
+            return copy.deepcopy(event['result'])
+        except Exception as exc:
+            self.halted=True
+            self.events.append({'type':'HALT','status':'HALT','seed':self.seed,'first':self.first,
+                'context_id':self.context.matchup_id,'command':kind,'seat':audit_value(seat),
+                'choice':audit_value(choice),'reason':str(exc),'exception':type(exc).__name__,
+                'before':before if before is not None else {'status':'SNAPSHOT_UNAVAILABLE_INVALID_STATE'}})
+            if isinstance(exc,RuntimeHalt):raise
+            raise RuntimeHalt('CONTROL_COMMAND_ERROR: '+str(exc)) from exc
+
+    def _finish_main_processing(self):
+        # Turn-end conditions are checked after all current processing, including
+        # derived effects. END_OF_TURN is an explicit unimplemented window.
+        if self.state.phase=='MAIN' and self.state.memory<0 and not self.state.pending:
+            self.state.phase='END_OF_TURN'

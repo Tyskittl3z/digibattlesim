@@ -22,7 +22,13 @@ class ReadinessTests(unittest.TestCase):
         self.assertEqual(r['counts']['digi_eggs'], {'A': 4, 'B': 4})
         self.assertEqual(r['counts']['judge_valid_fact_finding_matches'], 0)
         self.assertEqual(r['counts']['final_matches'], 0)
-        self.assertEqual(r['counts']['software_only_mechanic_bindings'], 1)
+        self.assertEqual(r['counts']['software_only_mechanic_bindings'], 12)
+        inherited = [e for e in r['printed_text_inventory'] if e['field']=='inherited_text' and e['software_handler']]
+        self.assertEqual({e['card_number'] for e in inherited},{'EX13-022','BT22-023','P-138','EX1-013'})
+        phase_handlers={e['software_handler'] for e in r['printed_text_inventory'] if e['software_handler'] and 'start_' in e['software_handler']}
+        self.assertEqual(phase_handlers,{'BT22-085.start_turn_memory','BT19-080.start_turn_memory','BT19-007.start_main_memory','EX13-069.start_main_memory'})
+        search_handlers={e['software_handler'] for e in r['printed_text_inventory'] if e['software_handler'] and 'on_play_search' in e['software_handler']}
+        self.assertEqual(search_handlers,{'BT11-023.on_play_search','P-138.on_play_search','EX2-008.on_play_search'})
         self.assertTrue(any(b['code'] == 'FULL_MATCH_ENGINE_UNIMPLEMENTED' for b in r['blockers']))
         self.assertFalse(any(b['code'] == 'REGION_UNSELECTED' for b in r['blockers']))
         self.assertEqual(c.to_dict()['rules']['region'], 'English-version worldwide rules')

@@ -93,10 +93,10 @@ class OrientationTests(unittest.TestCase):
 
     def test_inherited_suspension_trigger_is_not_silently_skipped(self):
         r = self.runtime(); source = stage(r, 'A', ['EX13-022', 'EX13-023'])
-        before = r.snapshot()['state']
-        with self.assertRaisesRegex(RuntimeHalt, 'ORIENTATION_DEPENDENT_TRIGGER.*EX13-022'):
-            r.dispatch(ORIENTATION_EFFECT, 'A', source, source)
-        self.assertEqual(r.snapshot()['state'], before)
+        r.dispatch(ORIENTATION_EFFECT, 'A', source, source)
+        self.assertTrue(r.state.battle['A'][source].suspended)
+        self.assertEqual(len(r.state.pending),1)
+        self.assertEqual(r.state.pending[0]['effect_id'],'EX13-022.inherited_unsuspend')
 
     def test_tamer_unsuspend_trigger_is_not_silently_skipped(self):
         r = self.runtime(); source = stage(r, 'A', ['EX13-023'], suspended=True)
