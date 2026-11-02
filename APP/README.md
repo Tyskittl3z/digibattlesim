@@ -41,7 +41,8 @@ browser/device; keep after-reports as backups. Save failures are shown explicitl
 ## Official source snapshot
 
 Snapshot date: **2026-11-02**. **4,481 unique cards, 72 category pages, 68 code-prefix
-chunks**, zero conflicting canonical base records. Official English page HTML is
+chunks**, zero conflicting canonical base records. Seven token records remain browsable but
+are explicitly excluded from deck construction. Official English page HTML is
 retained as deterministic gzip files in `TOOLS/catalog/sources/`, with SHA-256
 pins in `APP/catalog/manifest.json`. Alternate art never overrides canonical rules.
 The current restriction source supplies **57 banned/restricted IDs and three banned

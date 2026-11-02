@@ -13,9 +13,11 @@ class PwaTests(unittest.TestCase):
   class Quiet(SimpleHTTPRequestHandler):
    def log_message(self,*_):pass
    def do_GET(self):
-    if getattr(self.server,'fail_asset',False) and self.path.endswith('/chunks/AD1.json'):
-     self.send_error(404);return
-    super().do_GET()
+    try:
+     if getattr(self.server,'fail_asset',False) and self.path.endswith('/chunks/AD1.json'):
+      self.send_error(404);return
+     super().do_GET()
+    except (BrokenPipeError,ConnectionResetError):pass  # browser canceled an in-flight cache request
   cls.server=ThreadingHTTPServer(('127.0.0.1',0),partial(Quiet,directory=str(ROOT/'APP')))
   cls.thread=Thread(target=cls.server.serve_forever,daemon=True);cls.thread.start()
   cls.url=f'http://127.0.0.1:{cls.server.server_port}/index.html'

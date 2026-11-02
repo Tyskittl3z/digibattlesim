@@ -63,7 +63,7 @@ def parse_cards(raw):
             'printed_cost':fields.get('Cost',fields.get('Play Cost',fields.get('Use Cost'))),
             'dp':number(fields.get('DP','')), 'form':fields.get('Form'), 'attribute':fields.get('Attribute'),
             'traits':fields.get('Type'), 'effect':'\n'.join(effects.values()), 'effects':effects,
-            'deck_card':typ in {'Digimon','Digi-Egg','Tamer','Option','Digimon/Option','Digimon/Tamer'}, 'simulation_support':'UNVERIFIED'})
+            'deck_card':bool(re.fullmatch(r'[A-Z]+\d*-\d{2,3}',card_id)) and typ in {'Digimon','Digi-Egg','Tamer','Option','Digimon/Option','Digimon/Tamer'}, 'simulation_support':'UNVERIFIED'})
     return result
 
 def has_card_markup(raw):

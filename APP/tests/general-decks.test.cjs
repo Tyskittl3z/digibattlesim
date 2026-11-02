@@ -35,3 +35,11 @@ test('official high-copy rule and shared card-number groups are respected',()=>{
  assert.equal(legal.check(core.parseDeck('50 EX2-046'),c,lock).status,'CHECKS_PASSED');
  assert.ok(legal.check(core.parseDeck('3 RB1-004\n3 P-009'),c,lock).issues.some(i=>i.code==='SHARED_COPY_LIMIT'));
 });
+test('official token records can be browsed without accepting them as deck cards',async()=>{
+ require('../core/identity.js');const Catalog=require('../core/catalog.js');const raw=JSON.stringify({TOKEN:{id:'TOKEN',type:'Digimon',deck_card:false}})+'\n';const sha=await globalThis.DeckIdentity.hash(raw),original=globalThis.fetch;
+ globalThis.fetch=async()=>({ok:true,text:async()=>raw});try{const c=new Catalog({chunks:{TOKEN:{path:'TOKEN.json',sha256:sha}}});await c.load('TOKEN');assert.equal(c.cards.TOKEN.deck_card,false);}finally{globalThis.fetch=original;}
+});
+test('catalog chunks with the wrong bytes are refused before records are exposed',async()=>{
+ require('../core/identity.js');const Catalog=require('../core/catalog.js'),original=globalThis.fetch;globalThis.fetch=async()=>({ok:true,text:async()=>'{}'});
+ try{const c=new Catalog({chunks:{BT1:{path:'BT1.json',sha256:'bad'}}});await assert.rejects(c.load('BT1'),/integrity/);assert.equal(Object.keys(c.cards).length,0);}finally{globalThis.fetch=original;}
+});

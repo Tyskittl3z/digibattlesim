@@ -17,7 +17,8 @@ or merged. The engine's existing verification blockers remain unresolved.
 
 - Official English catalog: **4,481 unique canonical cards, 72 category sources,
   68 hash-verified prefix chunks**, zero conflicting base records. All 41 IDs in
-  the supplied decks resolve. Alternate art does not replace base text.
+  the supplied decks resolve. Seven non-deck token records remain browsable and
+  explicitly excluded from deck construction. Alternate art does not replace base text.
 - Official restriction snapshot: **57 banned/restricted IDs**, **three banned
   pairs**, effective September 1, 2026, pinned as of November 2, 2026. Current-list
   parsing excludes historical restrictions. Official errata source is pinned;
@@ -53,8 +54,8 @@ remain visible and are accepted as main-deck cards.
 | Check | Result |
 |---|---:|
 | Existing engine Python regression tests | 148 passed |
-| Node comparison, legality, identity and storage tests | 18 passed |
-| Official-parser fixture tests | 7 passed |
+| Node comparison, legality, identity, catalog and storage tests | 20 passed |
+| Official-parser fixture tests | 8 passed |
 | App Python suite | 18 passed (17 Chromium checks + 1 inline-build check) |
 | Catalog source/chunk/coverage/restriction verifier | Passed |
 | PWA + portable release verifier | Passed |
@@ -62,7 +63,7 @@ remain visible and are accepted as main-deck cards.
 | Local launcher | HTTP 200 on loopback |
 | Git whitespace verification | Passed |
 
-**191 automated tests passed** across the four suites. Chromium checks include
+**194 automated tests passed** across the four suites. Chromium checks include
 legacy flows, actual two-file drag/drop, exact-byte report/restore, real IndexedDB
 abort rollback and concurrent-save conflicts, archive, offline reload and a card
 prefix not previously requested by the page, mobile layout, uploaded markup safety,

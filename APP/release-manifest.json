@@ -1,7 +1,7 @@
 {
   "assets": {
     "DeckCompare.html": "32771432aff9d83452e6421a48663783b201e32bce2335a65be4f2f9d5b38667",
-    "app-data.json": "1c6a7a94d5614c355f1455e32f742fbce04afb54e84891fbc751ef5583ad739e",
+    "app-data.json": "3dfe32177fa7b478347961fac9e8d5906f785f4eb6ac7b82107d2e5d3d1d581a",
     "catalog/chunks/AD1.json": "5f07bf084ef595025fdbcd530882591499dc4725914014dc0d234abc7ae7bab0",
     "catalog/chunks/BT1.json": "b794a997dc70d20a954a30172367101fe3d315bd4260dc2eaba1a69cd581dc7b",
     "catalog/chunks/BT10.json": "36836f33615d83449dcf04374c1255ed9d6afcf0d2678ed6a13108b02515c79b",
@@ -17,9 +17,9 @@
     "catalog/chunks/BT2.json": "6a629160b507b5e41aa3bdb48fd2d4713bbaa2531872034bbbf0d4b75d06fa38",
     "catalog/chunks/BT20.json": "6867fd6d0ffb04d323d41ed23ecdf65b9829ec2eea947274f41d3a8932e91cd2",
     "catalog/chunks/BT21.json": "7ba4aa2b937553de603447c323242d8079523ca133ed20a8a08ecb5e4f417e28",
-    "catalog/chunks/BT22.json": "ffa176cb0108c1e493eed08688b78ae0976dd6fc534fe0b62a256e7a8bf7bec6",
-    "catalog/chunks/BT23.json": "3782618e74abfbc0c41d9ede9fb7d5178be5f5640a5035a0ffe6332a227c92a1",
-    "catalog/chunks/BT24.json": "60c7c7640e51ec8210c9d141ee57cfdef67a9753f6b4388be34455fe14e7bb22",
+    "catalog/chunks/BT22.json": "ded07464bd3b0c3c58459e6bc8065ccf62ca594c62463557d22b8315336c6e84",
+    "catalog/chunks/BT23.json": "8f46c04c38d828b52b7d8850c51919edab218aabb1e8bb767d602c61d19410a7",
+    "catalog/chunks/BT24.json": "0a138e4a9fad3cad57fa8bddb44a358ec73ff146a4033f00785bddadf80040aa",
     "catalog/chunks/BT25.json": "fc35e196e70e25b51eb34bf7364000237b8935e5a97ca36e87d1239a8d67a2a8",
     "catalog/chunks/BT26.json": "49c60b4f129ef52b803e16d9a3c0bb24b5aa220428d6cefe9d724d67d8508e05",
     "catalog/chunks/BT3.json": "51490c12610e74e8bef5b9a4454b8d394e91bcadd211e97bc640c615436b8de4",
@@ -58,7 +58,7 @@
     "catalog/chunks/ST2.json": "773c67e5e95fcded65ce643a6c0810ee95032efb6ab447db8eeb1fab6e1ab0e7",
     "catalog/chunks/ST20.json": "95c25040162dcb6e58ea307c2764eb064b59725472b07d1f08477d18f5abba3b",
     "catalog/chunks/ST21.json": "0e03dd9c5e901b92b2437c242c1cca00437c20c3477eb3e56d0aeb4603145fa5",
-    "catalog/chunks/ST22.json": "f47ab3f8eacf1e258e5cdc2d87978cbf7406d59c7a1b9db855101c675c6c8d4e",
+    "catalog/chunks/ST22.json": "53a941c27750b802493f0e4f425eaf208a2d4d91dc62cb31baf0ecf41633ec88",
     "catalog/chunks/ST23.json": "2e9bd2f9627cffd1c2ebbfbdb94f5bffe7c9453b4797df774e7d78e8c575f724",
     "catalog/chunks/ST24.json": "00d099dc73086d44cf99100146048c7c17c4510f53001b78da426cc7e878eba6",
     "catalog/chunks/ST3.json": "423f63038c2c2b6877400546f8dcbf145d42bed5baa62d72b815fc0b5effdc3b",
@@ -68,12 +68,12 @@
     "catalog/chunks/ST7.json": "d3440c080fe79c0bdef792dba9ea1f7d0dd5ad723e31ded06494f5fce7223652",
     "catalog/chunks/ST8.json": "aaab8db43da5c4f02c403cb81ebb69cdcc429b242f3efde8f75f84932a9efbd8",
     "catalog/chunks/ST9.json": "2c70a54ef7005fb44017276cbd0fd6d61acc9c4689fe2d7a314ac9841d35cf7d",
-    "catalog/chunks/TOKEN.json": "dbd046e882fc40fa97aca8cea27c7b8df6237eb5407465bbfa3625da32171822",
-    "catalog/chunks/TOKEN01.json": "8950e10ad02214be156ce509c2fdb5da5d1f5ec195eb84ee6a0dc8e3c98b91f9",
-    "catalog/manifest.json": "8d0cd7060c76277f02ce4a7712b0d5ba9b8c5a8447adced513c5b54708040ddb",
+    "catalog/chunks/TOKEN.json": "5d6eba3023a7d152f91cd228540b9e08258baf711c6511b9dc70c40a92471fa5",
+    "catalog/chunks/TOKEN01.json": "2e90bd896e102f832941fd2e05c2f7705992e5f8ef7d560395e4b11df731d89f",
+    "catalog/manifest.json": "085d46d6af88b4a5e3b0de1b2949a6730901d355b72cac2fe6ca22eefe218108",
     "catalog/restrictions.json": "6f91c72f1cb775fe8720bb594ac7cad9d80e389169596b285ee96cef0de84d81",
     "compare.js": "e1e508efef824c573cc011cdec5ec03a2d6af35ac166be8fb6ad02201f15b9e7",
-    "core/catalog.js": "3ece4b0cbd58b1eb85fb56ba907d99ac1181cfc609f8d9dd4b34cb76e06e314d",
+    "core/catalog.js": "8fe7f367c112da80806b17cd98080efd2d9e368d0388095f8d4a2d7bd837a9d9",
     "core/identity.js": "1417c86aa9d164152b8c5d1948a072052c123ddd1ef20be7eac4098e69b7c74f",
     "core/legality.js": "1feab14886bc1a89867b5581f2415468fa7875df7ca5fc26dc70ee66cc5ac67e",
     "icon-192.png": "c976d9d45308d6e8cfa2efbdb891d9aa50cd5636e27d9ce79992ba2e0fd66654",
@@ -87,9 +87,9 @@
     "storage/workspaces.js": "7aa952ff7eebb7e3b1d7f7e542e8ffd9f2c51b3ce1015dbf95b66f77bd8c84e4"
   },
   "generated": {
-    "DigiBattle-DeckLab.html": "38e9840c8241a54ee9e396efe2b2980c0b82677e3511a7599873f655245769f7",
-    "service-worker.js": "478ed04d6ea2f85c187971bd94761c6799d8961501c202c85af37e4098e162da"
+    "DigiBattle-DeckLab.html": "554bf92cb1b0700666bb95e6ffbc1106b6dcc42d39a28755c0fa5ff65d30c146",
+    "service-worker.js": "b526c70f1c55a4e0c2d71668532f4ea6a661f879aa0a14644223fbf0ad041016"
   },
   "schema": "digimon-static-release-v1",
-  "version": "6e5e89abd72e4c09"
+  "version": "492e14c25c2495bb"
 }

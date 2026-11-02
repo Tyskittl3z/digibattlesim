@@ -43,6 +43,12 @@ class CatalogTests(unittest.TestCase):
             self.assertEqual(card['printed_cost'],'D')
             self.assertEqual(card['type'],'Digi-Egg' if typ=='Digi-egg' else typ)
 
+    def test_official_token_identifiers_remain_non_deck_even_with_digimon_type(self):
+        m=self.parser()
+        for code in ['TOKEN','TOKEN01','BT22-TOKEN','ST22-TOKEN01']:
+            card=m.parse_cards(f'<div class="popupCol" id="{code}"><li class="cardNo">{code}</li><li class="cardType">Digimon</li><div class="cardTitle">Diaboromon</div></div>')[0]
+            self.assertFalse(card['deck_card'])
+
     def test_missing_cost_and_token_stay_explicit(self):
         m = self.parser()
         cards = m.parse_cards('<div class="popupCol" id="TOKEN-001"><li class="cardNo">TOKEN-001</li><li class="cardType">Token</li><div class="cardTitle">Token</div></div>')

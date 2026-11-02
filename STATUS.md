@@ -6,7 +6,7 @@ build was deleted. The original later commits were unavailable. Browser-only sco
 comparison/construction checks, exact-input reports, transactional IndexedDB
 workspaces, installable offline PWA, and a full-catalog portable HTML edition.
 
-Verified: 148 existing engine tests, 18 Node tests, 7 catalog tests and 18 app Python
+Verified: 148 existing engine tests, 20 Node tests, 8 catalog tests and 18 app Python
 checks (17 Chromium + 1 build), all passing. Catalog/release integrity checks and
 byte-identical deterministic rebuild pass. Gameplay remains locked, with no browser
 match evidence or win rates. Engine, deck, rules, evaluation and roadmap files were
