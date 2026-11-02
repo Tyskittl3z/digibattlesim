@@ -90,13 +90,14 @@
   function simulationStatus(a, b, metadata) {
     const base = {matches_played: 0, wins: null, losses: null, win_rate: null, first_player_split: null,
       seeds: [], logs: [], historical_results_reused: false, supported_pairing: false,
-      bots: BOTS.map(bot => ({...bot})), judges: JUDGES.map(judge => ({...judge}))};
+      bots: BOTS.map(bot => ({...bot, deck: null})), judges: JUDGES.map(judge => ({...judge}))};
     if (a.errors.length || b.errors.length) return {...base, status: 'INPUT_ERRORS', message: 'Fix the decklist rows before checking simulation support.'};
     const key = d => JSON.stringify(composition(d));
     const samples = metadata.samples;
     const sa = key(parseDeck(samples.A.text, metadata.catalog)), sb = key(parseDeck(samples.B.text, metadata.catalog));
     const samePair = (key(a) === sa && key(b) === sb) || (key(a) === sb && key(b) === sa);
     return {...base, supported_pairing: samePair,
+      bots: BOTS.map(bot => ({...bot, deck: samePair ? (key(bot.seat === 'A' ? a : b) === sa ? 'Jupitermon' : 'Amaterasumon / Toho') : null})),
       status: samePair ? 'RULES_UNVERIFIED' : 'UNSUPPORTED_PAIRING',
       message: samePair ? 'This pairing still has unresolved gameplay interactions. Verified win rates are not available yet.'
         : 'Gameplay support has not been verified for this pairing. You can compare its deck contents and available card statistics.',

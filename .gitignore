@@ -8,3 +8,6 @@ V12_GAMES.json
 *.tmp
 .DS_Store
 .superpowers/
+
+# Local recovery scratch and browser captures
+work/

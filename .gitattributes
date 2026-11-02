@@ -1,0 +1,5 @@
+APP/*.html text eol=lf
+APP/**/*.js text eol=lf
+APP/**/*.css text eol=lf
+APP/**/*.json text eol=lf
+TOOLS/catalog/sources/*.gz binary

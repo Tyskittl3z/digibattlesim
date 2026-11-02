@@ -1,3 +1,19 @@
+# Browser/catalog reconstruction — 2026-11-02
+
+Rebuilt on `general-browser-simulator` from `a5cd54e` after the other chat's cloud
+build was deleted. The original later commits were unavailable. Browser-only scope:
+4,481 official-English catalog records, 72 pinned categories, 68 chunks, general
+comparison/construction checks, exact-input reports, transactional IndexedDB
+workspaces, installable offline PWA, and a full-catalog portable HTML edition.
+
+Verified: 148 existing engine tests, 18 Node tests, 7 catalog tests and 18 app Python
+checks (17 Chromium + 1 build), all passing. Catalog/release integrity checks and
+byte-identical deterministic rebuild pass. Gameplay remains locked, with no browser
+match evidence or win rates. Engine, deck, rules, evaluation and roadmap files were
+not changed. See `REPORTS/BROWSER_RECOVERY_2026-11-02.md` and `APP/README.md`.
+
+---
+
 # Verified handoff status
 
 ## Frozen 10,000 runner software — 2026-10-29

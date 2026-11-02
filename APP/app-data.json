@@ -1,0 +1,28 @@
+{
+  "samples": {
+    "A": {
+      "name": "Jupitermon",
+      "text": "// DigimonCard.io Deck List\n2 Aegiochusmon P-213\n3 Aegiochusmon: Blue BT25-025\n3 Aegiochusmon: Holy BT26-029\n4 Aegiomon BT24-034\n4 Aegiomon BT25-033\n2 Asuna Shiroki BT24-088\n1 Chronomon: Holy Mode BT26-016\n2 Dan Yuki & Kanan Yuki BT24-085\n1 Dianamon BT25-028\n4 Elecmon BT24-031\n4 Elecmon BT25-030\n2 Hiroko Sagisaka BT24-083\n2 Homeros BT24-102\n2 In-Between Theater BT24-100\n3 Inori Misono BT24-084\n3 Jupitermon BT24-101\n3 Jupitermon BT26-033\n3 Jupitermon: Wrath Mode BT26-103\n2 Lunamon BT25-022\n4 Tsunomon BT24-003\n"
+    },
+    "B": {
+      "name": "Amaterasumon · Toho",
+      "text": "// DigimonCard.io Deck List\n3 Amaterasumon EX12-047\n1 Analog Youth EX1-066\n1 Darumamon BT26-014\n3 Gasamon EX12-020\n2 Genshi Continent & Ashino Island EX12-074\n3 Hanimon EX12-061\n3 Kaguyamon EX12-065\n2 Karakurumon EX12-063\n3 Kokeshimon EX12-062\n2 Kunlun BT26-104\n1 Kunlun's Imperial Decree EX12-075\n2 Manekimon BT26-012\n2 MarineBullmon EX12-031\n1 Musyamon BT26-013\n4 Onibimon EX12-004\n2 Ryugumon EX12-036\n4 Sanmyojin Arrival EX12-070\n4 Shellmon EX12-026\n4 Shishimamon EX12-046\n3 Susanoomon EX12-076\n4 Wankomon EX12-009\n"
+    }
+  },
+  "source_files": {
+    "APP/build_portable.py": "2f522b2bc3a972f242b6e9fd6ab69152dda2079925e0a26717cc06aedcc2847a",
+    "APP/build_pwa.py": "be6ba118af596f9b0470e9c05493ecd873b86e5d01a770a8a288822962f7280a",
+    "APP/compare.js": "e1e508efef824c573cc011cdec5ec03a2d6af35ac166be8fb6ad02201f15b9e7",
+    "APP/core/catalog.js": "3ece4b0cbd58b1eb85fb56ba907d99ac1181cfc609f8d9dd4b34cb76e06e314d",
+    "APP/core/identity.js": "1417c86aa9d164152b8c5d1948a072052c123ddd1ef20be7eac4098e69b7c74f",
+    "APP/core/legality.js": "1feab14886bc1a89867b5581f2415468fa7875df7ca5fc26dc70ee66cc5ac67e",
+    "APP/index.html": "b3695a38134e05d457e7337ec0c7727539458ca155e7452607478fdea1f0b86b",
+    "APP/shell/app.js": "7a116e48cf7adab4442f7bbd369119a83ad9ed3b44ff8bd25e8be3dfa8afe274",
+    "APP/shell/style.css": "50cc9f744e0eff0339553451094642610884b0150cfc97476da800b5cdcf0391",
+    "APP/storage/db.js": "d5fccc9560f23bd91b22a2228902c72f90a89913f942735c9608087ccd9bc32a",
+    "APP/storage/workspaces.js": "7aa952ff7eebb7e3b1d7f7e542e8ffd9f2c51b3ce1015dbf95b66f77bd8c84e4",
+    "DECKS/AMATERASUMON_TOHO.txt": "47c77b2519e76066de858fa308f56f8e40cb58b899b975f48ea20ee1f82ac24d",
+    "DECKS/JUPITERMON.txt": "b9b1d65ae3bfd9b74cdd3449fd7e9906eecff0c235492c14475d361cdb9af1ae"
+  },
+  "version": "0.3.0-rebuilt"
+}

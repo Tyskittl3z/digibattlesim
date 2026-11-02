@@ -1,64 +1,89 @@
-# Open the app
+# DigiBattle Deck Lab
 
-Download/open **DeckCompare.html** in a modern desktop browser. No installation,
-terminal, server, account or Internet connection is required to use it.
+The browser/catalog work was reconstructed from the supplied screenshots on the
+`general-browser-simulator` branch, starting at `a5cd54e`. The deleted environment's
+later commits were not recovered. Engine, gameplay, evaluation and deck files were
+not changed by this reconstruction.
 
-1. Drop one UTF-8 text decklist into each panel, drop two files together, or paste both lists.
-2. Compare their contents, quantities and available card statistics automatically.
-3. Click **Save after-report** to download a readable, self-contained HTML report.
+## Open it
 
-**Try the sample decks** loads the exact supplied Jupitermon and Amaterasumon/Toho
-lists. Browse, paste, swap, clear, search and differences-only filtering are also
-available. The interface uses Digimon TCG-inspired blue/orange card frames and a
-digital playmat background; no remote assets or card images are requested.
+**Easiest:** open `DigiBattle-DeckLab.html` in a modern browser. It contains the
+entire app and all 4,481 official card records, with no runtime network requests.
+Browser support for persistent storage on local files varies; use the local PWA
+launcher for a stable workspace origin. Both editions export portable after-reports.
 
-## Current capabilities and limitations
+**Installable PWA:** run `python APP/serve.py` from the project root. On Windows,
+you can open `APP/START-WINDOWS.cmd`; on macOS, `APP/START-MAC.command` runs the
+same launcher (Python 3 required). Open **http://127.0.0.1:8765/index.html** and
+keep the launcher running while using that address. Once **Ready offline** appears,
+the app and every catalog chunk are cached. Supported browsers offer installation.
+Keep using the same browser and address/port to see your saved workspaces.
 
-- Comparison accepts arbitrary well-formed printed card-code lists. The bundled
-  metadata covers **41 IDs from the supplied matchup**. Other IDs retain their
-  exact names/quantities and show missing data; their types, eggs, colors, costs
-  and effects are not guessed. Main/egg totals remain unclassified while unknown
-  cards exist. Printed-cost averages use known main cards only.
-- Typical lines: `4 Elecmon BT24-031`, `4 BT24-031`, `BT24-031 x4`.
-  Comments and main/Digi-Egg section headings are accepted. Invalid/ambiguous
-  rows prevent comparison instead of being silently dropped. Keep files under 1 MB.
-- All processing stays in the browser. Uploaded files are read, never changed.
-  Reports are saved only when you click the report button. Refreshing/closing the
-  app clears unsaved inputs.
-- **Head-to-head simulation is not operational.** Its tab reports the pairing's
-  unverified/unsupported status. Existing engine rules defects, legal verification,
-  pilots and roadmaps still need completion. The frozen runner is software-ready
-  but refuses the current blocked gate. No wins, losses,
-  estimated win rates or past matchup results are substituted.
-- The panel names the three audit layers **Justitia** (runtime integrity),
-  **Dike** (independent rules) and **Týr** (final evidence audit). Reports also
-  retain Bot A/Jupitermon, Bot B/Amaterasumon-Toho and these judge labels.
+## Use the lab
 
-## What the after-report saves
+1. Drop one UTF-8 decklist in each panel, drop two files together, or paste lists.
+2. Inspect quantities, composition, card differences and construction checks.
+3. **Download after-report** saves the full comparison, exact original inputs,
+   byte/text/composition hashes, resolved card records, source pins, legality,
+   matchup identity and explicit missing simulation evidence. Filters do not trim it.
+4. Name and **Save workspace**, then restore it from **Workspaces** after reopening.
+   **Save as new** makes a separate workspace. **Archive** keeps it restorable.
+5. **Catalog** browses official English records and applicable errata by card series.
+   **Match evidence** explains each locked stage and lists missing mechanic packs.
 
-The readable HTML report also embeds complete JSON in `script#report-data`:
-original texts/filenames, input kind, original uploaded-file SHA-256, preserved-text
-and canonical composition hashes, all entries and parse errors, full unfiltered
-statistics/differences, unknown IDs, data/app source hashes, limitations and
-simulation fields. UTF-8 BOM and CRLF are retained for unedited uploaded files;
-editing changes the input to pasted/edited text and clears the old file hash.
-If Web Crypto is unavailable, hashes are explicitly unavailable rather than invented.
+Typical lines: `4 Elecmon BT24-031`, `4 BT24-031`, `BT24-031 x4`.
+Main/Digi-Egg section headings and comment lines are accepted. Ambiguous rows remain
+errors. Unknown codes keep their quantities; types and costs are not invented.
+Uploaded files are never changed. BOM and CRLF text survive reports and restoration
+until the user edits the input. Browser storage is local and can be cleared by the
+browser/device; keep after-reports as backups. Save failures are shown explicitly.
 
-Current simulation fields are matches 0, wins/losses/rate null, seeds/logs empty.
-They are unavailable results, not a zero-percent win rate. A new deck never inherits
-another pairing's results or pilots.
+## Official source snapshot
 
-## Development
+Snapshot date: **2026-11-02**. **4,481 unique cards, 72 category pages, 68 code-prefix
+chunks**, zero conflicting canonical base records. Official English page HTML is
+retained as deterministic gzip files in `TOOLS/catalog/sources/`, with SHA-256
+pins in `APP/catalog/manifest.json`. Alternate art never overrides canonical rules.
+The current restriction source supplies **57 banned/restricted IDs and three banned
+pairs**, effective September 1, 2026. Official errata are retained with before/after
+text and exposed in card details and report records. Catalog text is not executable
+mechanics. Missing/non-numeric printed costs (such as `D`) stay explicit and are
+excluded from numerical cost averages. Hybrid types remain as printed.
 
-```bash
-python APP/build.py
-node --test --test-isolation=none --test-reporter=spec APP/tests/compare.test.cjs
-python -m unittest discover -s APP/tests -p 'test_build.py' -q
-python -m unittest discover -s APP/tests -p 'test_browser.py' -q
+Construction checks cover exactly 50 main cards, 0–5 eggs, four-copy defaults,
+explicit high-copy exceptions, shared card numbers, restrictions and banned pairs.
+`CHECKS_PASSED` means those pinned construction checks passed; it does not certify
+release eligibility, event-specific legality, gameplay rules or strategy.
+
+**Simulation is locked. No matches are generated by this app and no win rates exist.**
+Each matchup needs verified mechanics, at least 60 complete independently reviewed
+matches with balanced starts, approved conditional routes, a new freeze, then
+10,000 actually played matches. Justitia, Dike and Týr remain separate judge layers.
+New decks or changed dependencies never inherit another matchup's evidence.
+
+## Build and verify
+
+Python standard library and Node are sufficient to build. Playwright plus Chromium
+are development-only browser-test requirements; the app itself has no dependencies.
+
+```sh
+python TOOLS/catalog/build_catalog.py        # deterministic, pinned local sources
+python TOOLS/catalog/verify_catalog.py
+python APP/build.py                         # legacy 41-ID single-file fallback
+python APP/build_pwa.py
+python APP/build_portable.py
+python APP/verify_release.py
+node --test APP/tests/*.test.cjs
+python -m unittest discover -s TOOLS/catalog/tests -q
+python -m unittest discover -s APP/tests -p 'test_*.py' -q
+(cd SOURCE && python -m unittest discover -p 'test_*.py' -q)
 ```
 
-Browser tests use development-only Playwright plus system Chromium. In this managed
-environment, file URLs are blocked by browser policy, so those tests serve the exact
-single HTML internally on loopback. The product itself has no server/network dependency.
-Browser tests require the process permissions needed to launch Chromium. Python engine
-tests remain under `SOURCE/` and no engine/deck files were changed for this interface.
+`build_catalog.py --fetch` fetches missing official source files; it does not silently
+refresh already-pinned snapshots. Changing sources requires reviewing the snapshot
+date/effective date and rebuilding every dependent release artifact. The service
+worker verifies all 85 assets before activating a new offline release. It never
+replaces an open app with an update while inputs might be unsaved.
+
+`DeckCompare.html` is preserved as the older 41-ID comparison fallback. It does not
+provide the new catalog, construction checks or workspace persistence.
