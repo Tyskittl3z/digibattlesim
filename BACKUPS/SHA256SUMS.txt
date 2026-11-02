@@ -1,2 +1,2 @@
-c96023fb4fccb3ec8d4e833f96ab0fc9042a7ba1d5ea3a84e4987679ce7e33a7  DigiBattle-Rebuilt-2026-11-02.zip
-554bf92cb1b0700666bb95e6ffbc1106b6dcc42d39a28755c0fa5ff65d30c146  ../APP/DigiBattle-DeckLab.html
+58e6b76045437293507e9018d92d4e74f89dc35596c627f22827ff005a9a2e2b  DigiBattle-Rebuilt-2026-11-02.zip
+235a6a0c6a569860f9b2ca9285f26722a1e0589b642df3715d0163ae6bcc7026  ../APP/DigiBattle-DeckLab.html
