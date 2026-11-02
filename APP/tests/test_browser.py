@@ -8,6 +8,7 @@ import re
 import unittest
 from threading import Thread
 
+import os
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -27,7 +28,7 @@ class BrowserAppTests(unittest.TestCase):
         cls.thread.start()
         cls.url = f'http://127.0.0.1:{cls.server.server_port}/DeckCompare.html'
         cls.playwright = sync_playwright().start()
-        cls.browser = cls.playwright.chromium.launch(executable_path='/usr/bin/chromium',
+        cls.browser = cls.playwright.chromium.launch(executable_path=os.environ.get('CHROMIUM_EXECUTABLE','/usr/bin/chromium'),
                                                      headless=True, args=['--no-sandbox'])
 
     @classmethod

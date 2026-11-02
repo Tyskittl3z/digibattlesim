@@ -4,6 +4,7 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from threading import Thread
 import hashlib, json, re, unittest
+import os
 from playwright.sync_api import sync_playwright
 ROOT=Path(__file__).resolve().parents[2]
 
@@ -21,7 +22,7 @@ class PwaTests(unittest.TestCase):
   cls.server=ThreadingHTTPServer(('127.0.0.1',0),partial(Quiet,directory=str(ROOT/'APP')))
   cls.thread=Thread(target=cls.server.serve_forever,daemon=True);cls.thread.start()
   cls.url=f'http://127.0.0.1:{cls.server.server_port}/index.html'
-  cls.pw=sync_playwright().start();cls.browser=cls.pw.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox'])
+  cls.pw=sync_playwright().start();cls.browser=cls.pw.chromium.launch(executable_path=os.environ.get('CHROMIUM_EXECUTABLE','/usr/bin/chromium'),headless=True,args=['--no-sandbox'])
  @classmethod
  def tearDownClass(cls):
   cls.browser.close();cls.pw.stop();cls.server.shutdown();cls.server.server_close();cls.thread.join()
@@ -98,4 +99,19 @@ class PwaTests(unittest.TestCase):
   try:
    p.goto(self.url);p.wait_for_function('window.appReady === true');p.wait_for_function("document.querySelector('#offline-status').textContent === 'Offline access unavailable'",timeout=8000)
   finally:c.close();self.server.fail_asset=False
+ def test_matching_pair_shows_actual_stale_engine_diagnostics(self):
+  self.samples();ready=self.page.evaluate('window.currentReport.engine_readiness')
+  self.assertIsNotNone(ready,'actual engine readiness must be included')
+  self.assertEqual(ready['scope'],'LOADED_PAIR_BLOCKED');self.assertEqual(ready['diagnostic']['halts'],31);self.assertEqual(ready['diagnostic']['reviewed_matches'],0)
+  self.page.get_by_role('button',name='Match evidence',exact=True).click();self.assertIn('EX12-062',self.page.locator('#engine-drift').inner_text());self.assertIn('31',self.page.locator('#engine-diagnostic').inner_text())
+ def test_other_pair_does_not_borrow_engine_diagnostics(self):
+  self.page.locator('#textA').fill('4 BT1-010');self.page.locator('#textB').fill('4 ST1-03');self.page.wait_for_function('window.currentReport !== null')
+  ready=self.page.evaluate('window.currentReport.engine_readiness');self.assertIsNotNone(ready);self.assertEqual(ready['scope'],'UNSUPPORTED_PAIRING');self.assertIsNone(ready['diagnostic'])
+ def test_exported_simulation_request_is_validated_by_real_python_cli(self):
+  import subprocess
+  self.samples();button=self.page.get_by_role('button',name='Export simulation request',exact=True);self.assertEqual(button.count(),1,'simulation request export must exist')
+  with self.page.expect_download() as event:button.click()
+  request=json.loads(Path(event.value.path()).read_text());self.assertFalse(request['payload']['execution_requested'])
+  result=subprocess.run(['python',str(ROOT/'TOOLS/engine/request.py'),event.value.path()],capture_output=True,text=True,cwd=ROOT)
+  self.assertEqual(result.returncode,2,result.stderr);preflight=json.loads(result.stdout);self.assertTrue(preflight['request_valid']);self.assertFalse(preflight['can_execute']);self.assertEqual(preflight['status'],'BLOCKED')
 if __name__=='__main__':unittest.main()

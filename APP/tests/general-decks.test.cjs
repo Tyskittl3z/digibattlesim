@@ -43,3 +43,7 @@ test('catalog chunks with the wrong bytes are refused before records are exposed
  require('../core/identity.js');const Catalog=require('../core/catalog.js'),original=globalThis.fetch;globalThis.fetch=async()=>({ok:true,text:async()=>'{}'});
  try{const c=new Catalog({chunks:{BT1:{path:'BT1.json',sha256:'bad'}}});await assert.rejects(c.load('BT1'),/integrity/);assert.equal(Object.keys(c.cards).length,0);}finally{globalThis.fetch=original;}
 });
+test('match identity never depends on the browser locale collation',async()=>{
+ const {identify}=require('../core/identity.js'),original=String.prototype.localeCompare;String.prototype.localeCompare=function(){throw Error('Locale collation must not be consulted for protocol identities');};
+ try{assert.match(await identify({entries:[{id:'BT10-010',count:4},{id:'BT1-010',count:4}]},{entries:[{id:'EX1-001',count:4}]},{catalog:'x'}),/^[a-f0-9]{64}$/);}finally{String.prototype.localeCompare=original;}
+});

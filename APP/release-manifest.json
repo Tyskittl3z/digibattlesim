@@ -1,7 +1,7 @@
 {
   "assets": {
     "DeckCompare.html": "32771432aff9d83452e6421a48663783b201e32bce2335a65be4f2f9d5b38667",
-    "app-data.json": "3dfe32177fa7b478347961fac9e8d5906f785f4eb6ac7b82107d2e5d3d1d581a",
+    "app-data.json": "3e08763792222b4701238311948b825a0600bfde6bb05eaf54a6b0011d9cef61",
     "catalog/chunks/AD1.json": "5f07bf084ef595025fdbcd530882591499dc4725914014dc0d234abc7ae7bab0",
     "catalog/chunks/BT1.json": "b794a997dc70d20a954a30172367101fe3d315bd4260dc2eaba1a69cd581dc7b",
     "catalog/chunks/BT10.json": "36836f33615d83449dcf04374c1255ed9d6afcf0d2678ed6a13108b02515c79b",
@@ -74,22 +74,24 @@
     "catalog/restrictions.json": "6f91c72f1cb775fe8720bb594ac7cad9d80e389169596b285ee96cef0de84d81",
     "compare.js": "e1e508efef824c573cc011cdec5ec03a2d6af35ac166be8fb6ad02201f15b9e7",
     "core/catalog.js": "8fe7f367c112da80806b17cd98080efd2d9e368d0388095f8d4a2d7bd837a9d9",
-    "core/identity.js": "1417c86aa9d164152b8c5d1948a072052c123ddd1ef20be7eac4098e69b7c74f",
+    "core/engine.js": "2d076f245181057e756efa4a958d2d2c1b98baae8d6477b354ecae5b5d06435b",
+    "core/identity.js": "4dfa33608ba1b5f7cff4d584316a30a61719486b396f7dd3bb9ef689f09cd0d7",
     "core/legality.js": "1feab14886bc1a89867b5581f2415468fa7875df7ca5fc26dc70ee66cc5ac67e",
+    "engine/readiness.json": "25c698f5bb9442b34b68d9857e2ea383a607036edeb7c7ff03cbee3bae13fa42",
     "icon-192.png": "c976d9d45308d6e8cfa2efbdb891d9aa50cd5636e27d9ce79992ba2e0fd66654",
     "icon-512.png": "2c20ef2f37826f1c8b4dfcbd855a2f3b78b8318a62b94e25f5a40acf3d6bbbf3",
     "icon.svg": "710918abf9c3db9811c836e15ecf727562c3201338e5ef6b8c694e6bd4118b44",
-    "index.html": "b3695a38134e05d457e7337ec0c7727539458ca155e7452607478fdea1f0b86b",
+    "index.html": "28e4e15e73728f5edc1b8c39a6d71d96b6a8de0c7a5c41326dce3a8580b6598c",
     "manifest.webmanifest": "b676fed298c2fb9bbdeb2ea38919176695551799aa68843586b008874c785de3",
-    "shell/app.js": "7a116e48cf7adab4442f7bbd369119a83ad9ed3b44ff8bd25e8be3dfa8afe274",
-    "shell/style.css": "50cc9f744e0eff0339553451094642610884b0150cfc97476da800b5cdcf0391",
+    "shell/app.js": "deea7e8c2c68d031509fcde4d9c4512008888c4acfb35993e2eb9495cefda738",
+    "shell/style.css": "c689c3146425ba7360f64cfbbae8892656234f64674bbaf654b39afe518ca9dc",
     "storage/db.js": "d5fccc9560f23bd91b22a2228902c72f90a89913f942735c9608087ccd9bc32a",
     "storage/workspaces.js": "7aa952ff7eebb7e3b1d7f7e542e8ffd9f2c51b3ce1015dbf95b66f77bd8c84e4"
   },
   "generated": {
-    "DigiBattle-DeckLab.html": "554bf92cb1b0700666bb95e6ffbc1106b6dcc42d39a28755c0fa5ff65d30c146",
-    "service-worker.js": "b526c70f1c55a4e0c2d71668532f4ea6a661f879aa0a14644223fbf0ad041016"
+    "DigiBattle-DeckLab.html": "235a6a0c6a569860f9b2ca9285f26722a1e0589b642df3715d0163ae6bcc7026",
+    "service-worker.js": "75af2680de06632d2a54d6d300f482e78e0973461f64454b70b0065b409fe325"
   },
   "schema": "digimon-static-release-v1",
-  "version": "492e14c25c2495bb"
+  "version": "8f13212eb5ba01a8"
 }

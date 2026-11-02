@@ -1,16 +1,20 @@
 """Build versioned offline assets with no runtime CDN dependencies."""
 from pathlib import Path
-import hashlib,json,sys
+import hashlib,json,subprocess,sys
 ROOT=Path(__file__).resolve().parents[1];APP=ROOT/'APP'
 def encoded(v):return (json.dumps(v,sort_keys=True,ensure_ascii=False,indent=2)+'\n').encode()
 def sha(raw):return hashlib.sha256(raw).hexdigest()
 def build():
-    source_names=['compare.js','index.html','shell/app.js','shell/style.css','core/identity.js','core/catalog.js','core/legality.js','storage/db.js','storage/workspaces.js','build_pwa.py','build_portable.py']
-    metadata={'version':'0.3.0-rebuilt','source_files':{'APP/'+p:sha((APP/p).read_bytes()) for p in source_names},'samples':{}}
+    check=subprocess.run([sys.executable,str(ROOT/'TOOLS/engine/readiness.py'),'--check'],capture_output=True,text=True)
+    if check.returncode:raise ValueError(check.stdout+check.stderr)
+    source_names=['compare.js','index.html','shell/app.js','shell/style.css','core/identity.js','core/engine.js','core/catalog.js','core/legality.js','storage/db.js','storage/workspaces.js','build_pwa.py','build_portable.py']
+    readiness=json.loads((APP/'engine/readiness.json').read_bytes())
+    metadata={'version':'0.4.0-engine-handoff','engine_readiness':readiness,'source_files':{'APP/'+p:sha((APP/p).read_bytes()) for p in source_names},'samples':{}}
     for seat,name,path in [('A','Jupitermon','DECKS/JUPITERMON.txt'),('B','Amaterasumon · Toho','DECKS/AMATERASUMON_TOHO.txt')]:
         metadata['samples'][seat]={'name':name,'text':(ROOT/path).read_text()};metadata['source_files'][path]=sha((ROOT/path).read_bytes())
+    metadata['source_files']['APP/engine/readiness.json']=sha((APP/'engine/readiness.json').read_bytes())
     (APP/'app-data.json').write_bytes(encoded(metadata))
-    assets=['index.html','app-data.json','compare.js','shell/app.js','shell/style.css','core/identity.js','core/catalog.js','core/legality.js','storage/db.js','storage/workspaces.js','manifest.webmanifest','icon.svg','icon-192.png','icon-512.png','catalog/manifest.json','catalog/restrictions.json','DeckCompare.html']
+    assets=['index.html','app-data.json','compare.js','shell/app.js','shell/style.css','core/identity.js','core/engine.js','core/catalog.js','core/legality.js','storage/db.js','storage/workspaces.js','manifest.webmanifest','icon.svg','icon-192.png','icon-512.png','catalog/manifest.json','catalog/restrictions.json','engine/readiness.json','DeckCompare.html']
     manifest=json.loads((APP/'catalog/manifest.json').read_bytes());assets+=['catalog/'+c['path'] for c in manifest['chunks'].values()]
     files={p:sha((APP/p).read_bytes()) for p in sorted(assets)};version=sha(encoded(files))[:16]
     release={'schema':'digimon-static-release-v1','version':version,'assets':files};(APP/'release-manifest.json').write_bytes(encoded(release))

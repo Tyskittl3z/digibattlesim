@@ -1,14 +1,15 @@
-# Recovery backup — November 2, 2026
+# Current project backup
 
-Download `DigiBattle-Rebuilt-2026-11-02.zip` to keep a complete source/history backup
-outside this cloud environment. It includes the rebuilt application at commit
-`2a4180d`, official source snapshots, verification logs, and `HISTORY.bundle`.
-Extract it and read `START-HERE.md`.
+Download `DigiBattle-Rebuilt-2026-11-02.zip`, extract it and read `START-HERE.md`.
+It contains the complete current source, official source snapshots, portable/PWA
+builds, the browser/engine preparation contract and successful verification logs.
+Prior nested ZIPs are excluded to avoid archive growth. Full Git history remains
+on the `general-browser-simulator` GitHub branch.
 
 For just the portable app, download `APP/DigiBattle-DeckLab.html` from this branch
-and open the downloaded file in a modern browser. It contains all 4,481 card
-records and requires no runtime network requests. For stable persistent workspaces
-and the installable offline PWA, follow `APP/README.md`.
+and open the downloaded HTML. It includes all 4,481 catalog records. Follow
+`APP/README.md` for the installable PWA and stable persistent workspace origin.
 
-Simulation remains locked; no verified win rates are provided. All 194 automated
-tests passed before packaging. SHA256SUMS.txt verifies both downloads.
+The app exports engine preparation requests and shows actual readiness blockers.
+It does not yet play verified battles or provide win rates. All 211 automated tests
+passed. `SHA256SUMS.txt` verifies the ZIP and portable app.

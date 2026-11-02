@@ -5,3 +5,5 @@
 @media(max-width:600px){.intro .hero-art{display:none}.intro{min-height:205px}.sidebar nav{max-width:100%}}
 .logo{display:flex;align-items:center;justify-content:center}
 @media(max-width:450px){nav{display:grid;grid-template-columns:1fr 1fr;gap:4px}.nav-item{justify-content:center;padding:8px;font-size:11px}}
+.readiness-blocker{padding:12px 0;border-bottom:1px solid var(--line);font-size:12px;color:var(--muted)}.readiness-blocker summary{cursor:pointer;color:#c0d1ed;text-transform:capitalize}.readiness-blocker .issues{overflow-wrap:anywhere}#engine-drift p{color:var(--warn);overflow-wrap:anywhere}#export-request{font-size:10px;padding:11px 12px}
+@media(max-width:760px){#export-request{order:4;flex:1}.action-row #download{margin-left:auto}#engine-readiness{margin-bottom:20px}}

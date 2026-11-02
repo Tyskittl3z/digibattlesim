@@ -1,7 +1,7 @@
 """Verify the saved release assets and the portable HTML's executable scripts."""
 from pathlib import Path
 from html.parser import HTMLParser
-import hashlib,json,re,subprocess
+import hashlib,json,re,subprocess,sys
 APP=Path(__file__).resolve().parent
 class Scripts(HTMLParser):
     def __init__(self):super().__init__();self.current=None;self.scripts=[]
@@ -13,6 +13,7 @@ class Scripts(HTMLParser):
         if tag=='script' and self.current is not None:self.scripts.append(self.current);self.current=None
 
 def verify():
+    subprocess.run([sys.executable,str(APP.parent/'TOOLS/engine/readiness.py'),'--check'],check=True,capture_output=True,text=True)
     release=json.loads((APP/'release-manifest.json').read_bytes())
     for name,expected in release['assets'].items():
         assert hashlib.sha256((APP/name).read_bytes()).hexdigest()==expected,'Release asset changed: '+name

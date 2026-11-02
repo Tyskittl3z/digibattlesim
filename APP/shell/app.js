@@ -14,7 +14,7 @@ const stages=[
 ];
 const announce=message=>{$('toast').textContent=message;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,6500);};
 const input=seat=>({...state[seat],filename:state[seat].filename||'Pasted deck '+seat});
-const setActions=ready=>{const usable=ready&&state.A.text.trim()&&state.B.text.trim();$('download').disabled=!usable;for(const id of ['save-workspace','new-workspace'])$(id).disabled=!usable||!store||saving;};
+const setActions=ready=>{const usable=ready&&state.A.text.trim()&&state.B.text.trim();$('download').disabled=!usable;$('export-request').disabled=!usable||!current?.statistics;for(const id of ['save-workspace','new-workspace'])$(id).disabled=!usable||!store||saving;};
 function setSeat(seat,value){fileVersions[seat]++;state[seat]={text:value.text||'',filename:value.filename||'',kind:value.kind||'PASTE',file_sha256:value.file_sha256||null,encoding:value.encoding||null};$('text'+seat).value=state[seat].text;}
 function renderFeedback(seat,deck,stats){
  $('meta'+seat).textContent=state[seat].filename||(state[seat].text?'Pasted decklist':'No file loaded');
@@ -37,6 +37,14 @@ function renderStats(report){const stats=report.statistics;$('empty-state').hidd
 }
 function renderLegality(report){$('legality-grid').replaceChildren();for(const seat of ['A','B']){const l=report.legality[seat],panel=make('article',null,'panel');const heading=make('div',null,'legality-heading');heading.append(make('h3','Deck '+seat),make('span',l.status.replaceAll('_',' '),'legal-state'+(l.status==='CHECKS_PASSED'?' passed':'')));panel.append(heading);
  panel.append(make('p',l.main_count+' main · '+l.egg_count+' eggs · '+lock.as_of+' snapshot'));const list=make('ul',null,'issues');const messages=[...l.issues.map(i=>i.message),...l.unverified];if(!messages.length)messages.push('Count, copy-limit and pinned restriction checks passed. Event/release eligibility remains separate.');messages.forEach(s=>list.append(make('li',s)));panel.append(list);$('legality-grid').append(panel);}}
+function renderEngine(report){
+ const r=report.engine_readiness,d=r.diagnostic;const labels={LOADED_PAIR_BLOCKED:'Loaded pair: verification blocked',SEAT_MAPPING_REQUIRED:'Swap the decks for the current engine',UNSUPPORTED_PAIRING:'Pairing needs its own engine support',INPUT_ERRORS:'Fix the deck import errors'};
+ $('engine-scope').textContent=labels[r.scope]||'Verification unavailable';
+ $('engine-diagnostic').textContent=d?'Previous diagnostic cohort: '+d.attempted+' attempts · '+d.software_completed+' software completions · '+d.halts+' HALTs. '+(d.source_current?'':'Source changed; these records are stale. ')+d.reviewed_matches+' independently reviewed valid matches.':'No diagnostic records or results are assigned to these inputs.';
+ $('engine-drift').replaceChildren();if(r.metadata_drift.length){const n=make('div',null,'notice error');n.append(make('strong','Official card data differs from the engine snapshot'));for(const item of r.metadata_drift)n.append(make('p',item.card+' · '+item.field+': engine '+JSON.stringify(item.engine)+'; official '+JSON.stringify(item.official)));$('engine-drift').append(n);}
+ $('engine-blockers').replaceChildren();const groups=new Map();for(const blocker of r.blockers){if(!groups.has(blocker.code))groups.set(blocker.code,[]);groups.get(blocker.code).push(blocker.detail);}
+ for(const [code,details] of groups){const n=make('details',null,'readiness-blocker');n.append(make('summary',code.replaceAll('_',' ').toLowerCase()+(details.length>1?' ('+details.length+')':'')));const list=make('ul',null,'issues');details.forEach(text=>list.append(make('li',text)));n.append(list);$('engine-blockers').append(n);}
+}
 async function refresh(){
  const version=++generation;current=null;window.currentReport=null;setActions(false);$('comparison-status').textContent='Checking the exact inputs…';
  const a=core.parseDeck(state.A.text),b=core.parseDeck(state.B.text);const snapshots={A:input('A'),B:input('B')};let loadError=null;
@@ -56,11 +64,16 @@ async function refresh(){
   report.evidence_stages[0].blockers=missingMechanics.length?['Missing verified mechanic packs: '+missingMechanics.join(', '),'Official gameplay rules and format lock are unverified.']:['Load both exact decks before verifying mechanics.'];
   report.simulation.blockers=['Verified mechanics and independent rules review are missing for the exact loaded decks.',...stages.slice(1).map(s=>s[1])];
   report.simulation.message='No verified gameplay evidence is loaded for this pairing. Win rates are unavailable.';
+  const scope=EngineBridge.scope(a,b,metadata.engine_readiness),matched=scope==='LOADED_PAIR_BLOCKED';
+  report.engine_readiness={schema:metadata.engine_readiness.schema,source_snapshot_sha256:metadata.engine_readiness.source_snapshot_sha256,scope,execution_enabled:false,
+   diagnostic:matched?metadata.engine_readiness.diagnostic:null,metadata_drift:matched?metadata.engine_readiness.metadata_drift:[],
+   blockers:matched?metadata.engine_readiness.blockers:[{code:scope,detail:scope==='INPUT_ERRORS'?'Fix the deck import errors.':scope==='SEAT_MAPPING_REQUIRED'?'The current engine requires Jupitermon in seat A and Amaterasumon-Toho in seat B.':'This pairing needs its own verified mechanics and match evidence.'}]};
+  report.simulation.status=scope;report.simulation.blockers=report.engine_readiness.blockers.map(b=>b.detail);
   report.data_provenance.official_rule_verification='UNVERIFIED';
   if(version!==generation)return;
   current=report;window.currentReport=report;
   for(const [seat,deck] of [['A',a],['B',b]])renderFeedback(seat,deck,core.summarize(deck,catalog.cards));
-  renderStats(report);renderLegality(report);setActions(true);$('pairing-status').textContent=missingMechanics.length?'This pairing is locked. Missing verified mechanic packs for '+missingMechanics.length+' card codes: '+missingMechanics.join(', ')+'. No reviewed match records are loaded.':'Load both decks to identify the exact missing mechanics.';
+  renderStats(report);renderLegality(report);renderEngine(report);setActions(true);$('pairing-status').textContent=missingMechanics.length?'This pairing is locked. Missing verified mechanic packs for '+missingMechanics.length+' card codes: '+missingMechanics.join(', ')+'. No reviewed match records are loaded.':'Load both decks to identify the exact missing mechanics.';
   $('comparison-status').textContent=loadError?'Catalog unavailable: '+loadError:!state.A.text.trim()||!state.B.text.trim()?'Add two lists to begin.':report.statistics?report.statistics.comparison.shared_copies+' shared copies · comparison updated':'Fix import errors. Exact inputs can still be downloaded.';
  }catch(error){if(version===generation){$('comparison-status').textContent='Comparison unavailable: '+error.message;announce(error.message);}}
 }
@@ -105,7 +118,7 @@ async function offline(){if(window.__portableData){$('offline-status').textConte
 
 async function start(){
  try{const urls=['./catalog/manifest.json','./catalog/restrictions.json','./app-data.json'];const raws=window.__portableData?window.__portableData.raws:await Promise.all(urls.map(async url=>{const r=await fetch(url);if(!r.ok)throw new Error('Required app data unavailable: '+url);return r.text();}));
- [manifest,lock,metadata]=raws.map(JSON.parse);catalog=new OfficialCatalog(manifest);dependencies={catalog:await identity.hash(raws[0]),restrictions:await identity.hash(raws[1]),app:metadata.source_files,mechanics:'UNVERIFIED',rules:'UNVERIFIED',pilots:'UNVERIFIED',roadmaps:'UNVERIFIED'};
+ [manifest,lock,metadata]=raws.map(JSON.parse);catalog=new OfficialCatalog(manifest);dependencies={catalog:await identity.hash(raws[0]),restrictions:await identity.hash(raws[1]),app:metadata.source_files,mechanics:'UNVERIFIED',rules:'UNVERIFIED',pilots:'UNVERIFIED',roadmaps:'UNVERIFIED',engine_readiness:await identity.hash(identity.canonical(metadata.engine_readiness))};
  $('catalog-count').textContent=manifest.card_count.toLocaleString()+' cards';$('snapshot-date').textContent=manifest.category_count+' categories · '+manifest.snapshot_date;$('legality-note').textContent='English constructed · restrictions effective '+lock.effective_date+' · snapshot '+lock.as_of+'. Event and release eligibility require separate verification.';
  try{store=new WorkspaceStorage.Workspaces(await BrowserDB.open());}catch(error){$('storage-status').textContent='Persistent storage unavailable: '+error.message;}
  for(const prefix of Object.keys(manifest.chunks).sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}))){const o=make('option',prefix);o.value=prefix;$('catalog-prefix').append(o);}$('catalog-prefix').value='BT1';
@@ -119,6 +132,7 @@ async function start(){
  $('examples').addEventListener('click',()=>{for(const seat of ['A','B'])setSeat(seat,{text:metadata.samples[seat].text,filename:metadata.samples[seat].name+'.txt',kind:'EXAMPLE'});changed();});
  $('swap').addEventListener('click',()=>{const a=input('A'),b=input('B');setSeat('A',b);setSeat('B',a);changed();});
  $('search').addEventListener('input',renderRows);$('differences-only').addEventListener('change',renderRows);$('download').addEventListener('click',()=>{if(current)download(structuredClone(current));});
+ $('export-request').addEventListener('click',async()=>{if(!current?.statistics)return;const captured=structuredClone(current);try{const request=await EngineBridge.prepare(captured),url=URL.createObjectURL(new Blob([JSON.stringify(request,null,2)+'\n'],{type:'application/json'})),link=make('a');link.href=url;link.download='DigiBattle-'+request.request_id.slice(0,12)+'.battle-request.json';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),10000);announce('Preparation request exported. No battle was started.');}catch(error){announce('Request could not be exported: '+error.message);}});
  $('save-workspace').addEventListener('click',()=>save(false));$('new-workspace').addEventListener('click',()=>save(true));$('workspace-name').addEventListener('input',()=>{restoreVersion++;dirty=true;});
  document.querySelectorAll('[data-view]').forEach(n=>n.addEventListener('click',()=>{restoreVersion++;showView(n.dataset.view);}));
  document.querySelector('.brand').addEventListener('click',e=>{e.preventDefault();showView('compare');});

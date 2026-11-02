@@ -38,6 +38,23 @@ Uploaded files are never changed. BOM and CRLF text survive reports and restorat
 until the user edits the input. Browser storage is local and can be cleared by the
 browser/device; keep after-reports as backups. Save failures are shown explicitly.
 
+## Prepare a battle-simulation handoff
+
+After importing two lists, **Export simulation request** downloads exact raw inputs,
+composition/matchup hashes and current catalog/engine dependencies. It does not start
+a battle. Validate it from the project root:
+
+```sh
+python TOOLS/engine/request.py path/to/download.battle-request.json
+```
+
+The current matching pair returns exit 2, `BLOCKED`, with valid request integrity
+and actual readiness blockers. Unknown decks, swapped seats and stale sources are
+refused explicitly. **Match evidence** shows old diagnostic attempts separately
+from valid reviewed games, plus official/engine card-data drift. Reports retain
+the matching snapshot and exact blockers. Other pairings inherit no diagnostic data.
+See `docs/ENGINE_HANDOFF.md` for the engine integration contract.
+
 ## Official source snapshot
 
 Snapshot date: **2026-11-02**. **4,481 unique cards, 72 category pages, 68 code-prefix
@@ -71,6 +88,7 @@ are development-only browser-test requirements; the app itself has no dependenci
 python TOOLS/catalog/build_catalog.py        # deterministic, pinned local sources
 python TOOLS/catalog/verify_catalog.py
 python APP/build.py                         # legacy 41-ID single-file fallback
+python TOOLS/engine/readiness.py
 python APP/build_pwa.py
 python APP/build_portable.py
 python APP/verify_release.py
@@ -83,8 +101,11 @@ python -m unittest discover -s APP/tests -p 'test_*.py' -q
 `build_catalog.py --fetch` fetches missing official source files; it does not silently
 refresh already-pinned snapshots. Changing sources requires reviewing the snapshot
 date/effective date and rebuilding every dependent release artifact. The service
-worker verifies all 85 assets before activating a new offline release. It never
+worker verifies all 87 assets before activating a new offline release. It never
 replaces an open app with an update while inputs might be unsaved.
 
 `DeckCompare.html` is preserved as the older 41-ID comparison fallback. It does not
 provide the new catalog, construction checks or workspace persistence.
+
+For the complete release check, run `python TOOLS/verify_project.py`. It includes
+the cross-language handoff tests and real browser flows.

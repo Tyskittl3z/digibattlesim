@@ -1,0 +1,43 @@
+name: Verify browser and engine handoff
+on:
+  push:
+    branches: [main, work, general-browser-simulator]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install browser test dependencies
+        run: |
+          python -m pip install playwright==1.62.0
+          python -m playwright install --with-deps chromium
+          python - <<'PY'
+          import os
+          from playwright.sync_api import sync_playwright
+          with sync_playwright() as p:
+              with open(os.environ['GITHUB_ENV'], 'a') as f:
+                  f.write('CHROMIUM_EXECUTABLE=' + p.chromium.executable_path + '\n')
+          PY
+      - name: Verify project
+        run: python TOOLS/verify_project.py
+      - name: Require reproducible committed app builds
+        run: |
+          git diff --exit-code -- APP
+          python TOOLS/checksums.py --check
+      - name: Retain verification logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-logs
+          path: work/verification/

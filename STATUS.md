@@ -1,3 +1,21 @@
+# Battle-simulation integration readiness — 2026-11-02
+
+The browser now exports versioned exact-input simulation preparation requests.
+`TOOLS/engine/request.py` independently reparses and validates them, with no gameplay
+execution path. Match evidence and reports show actual, source-bound readiness for
+the matching loaded decks, including stale diagnostic records and official/engine
+card-data drift. Unknown/swapped decks inherit no diagnostic evidence.
+
+Verified: **211 tests passed** (148 engine, 21 Node, 8 catalog, 11 JS/Python handoff,
+21 app checks, 2 checksum inventory checks), plus source/catalog/release integrity
+and deterministic rebuild. GitHub Actions and a one-command verifier are included.
+No SOURCE/deck/gameplay/rules/evaluation/roadmap files changed. The existing 60 old
+attempts remain stale: 29 software completions, 31 HALTs, 0 valid reviewed matches.
+Final evaluation remains 0/10,000. See `docs/ENGINE_HANDOFF.md` and
+`REPORTS/ENGINE_HANDOFF_2026-11-02.md` for the exact contract and remaining work.
+
+---
+
 # Browser/catalog reconstruction — 2026-11-02
 
 Rebuilt on `general-browser-simulator` from `a5cd54e` after the other chat's cloud

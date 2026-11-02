@@ -1,18 +1,28 @@
 # Digimon Battle Simulator — Codex handoff
 
-## Use the drag-and-drop app
+## Use the current app
 
-Open **[APP/DeckCompare.html](APP/DeckCompare.html)** in your browser. Drop two text
-decklists (or paste them) to compare quantities and available card statistics.
-Click **Save after-report** to keep the exact inputs, hashes, all statistics,
-missing data and simulation status. No installation or server is required.
+Open **[APP/DigiBattle-DeckLab.html](APP/DigiBattle-DeckLab.html)** after downloading
+it, or extract the [project backup](BACKUPS/DigiBattle-Rebuilt-2026-11-02.zip) and
+open that file from `APP/`. It includes the full **4,481-record official English
+catalog**, numerical deck comparison, construction checks, saved workspaces and
+exact-input reports. See [APP/README.md](APP/README.md) for the installable offline
+PWA launcher and browser storage details.
 
-The app has Digimon TCG-inspired styling. **Head-to-head simulation remains
-unavailable** until the underlying gameplay verification passes. The frozen
-runner/checkpoint/final-audit software is implemented, but correctly refuses the
-current blocked evidence and has played 0/10,000 final matches.
-The bundled card metadata covers the supplied 41 cards; other IDs are retained with
-explicit missing-data notices. See `APP/README.md` for supported input formats.
+The app now exports **simulation preparation requests** validated independently
+by the Python engine bridge. **Match evidence** shows actual readiness blockers
+for the matching loaded decks and keeps stale diagnostics separate from reviewed
+valid matches. No battles are started by exporting a request. Head-to-head win rates
+remain unavailable until the gameplay/evidence workflow is completed.
+
+```sh
+python TOOLS/engine/request.py path/to/export.battle-request.json
+python TOOLS/verify_project.py
+```
+
+Read [docs/ENGINE_HANDOFF.md](docs/ENGINE_HANDOFF.md) for the versioned browser/engine
+contract and exact remaining mechanics work. GitHub Actions runs the same software
+checks. Passing tests never substitutes for rules certification.
 
 This is the **current Jupitermon vs Amaterasumon/Toho simulator** transferred for software development with Codex. It is not a universal rules engine or a deck-building advisor.
 
