@@ -1,0 +1,20 @@
+{
+  "status": "PASS_REFERENCE_INTEGRITY_ONLY",
+  "transcripts": 8,
+  "caption_segments": 5029,
+  "exact_frame_samples": 105,
+  "official_page_hashes_checked": 5,
+  "reference_deck_counts": [
+    [
+      50,
+      4
+    ],
+    [
+      50,
+      4
+    ]
+  ],
+  "production_source_diff": false,
+  "simulated_match_credit": 0,
+  "new_engine_test_run": false
+}

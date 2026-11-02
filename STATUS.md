@@ -1,5 +1,22 @@
 # Verified handoff status
 
+## Gameplay reference intake — 2026-11-02
+
+Indexed eight user-supplied timestamped transcripts (5,029 caption blocks),
+two exact reference decklists (each listed 50 main + 4 eggs), and timestamped
+frame samples from the accessible 17-minute 240p SeitenGokuumon/Gammamon video.
+Saved source hashes, printed-source checks and concrete regression candidates
+in `ARTIFACTS/video-reference-2026-11-02/`; see
+`REPORTS/GAMEPLAY_REFERENCE_REVIEW_2026-11-02.md`.
+
+Ten Ulforce/Gallantmon transcript candidates map to overlapping current-pair
+mechanics; sixteen referenced official-source hashes match the pinned context.
+The narrated Gallantmon list differs from selected B, so any adapted fixture
+must identify its synthetic inputs. These references do not change the selected
+pair, production source, rules review, pilots, roadmaps or simulator match
+counts. Last engine verification remains 312 passing tests; zero complete valid
+fact-finding matches and zero final matches. No new test execution is claimed.
+
 ## Printed trigger correction — 2026-11-02
 
 User correction accepted: card wording is executed at the printed timing; prior
