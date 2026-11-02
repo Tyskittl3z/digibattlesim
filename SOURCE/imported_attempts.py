@@ -228,11 +228,31 @@ def _apply(runtime, kind, seat, args, root):
     raise RuntimeHalt('DIAGNOSTIC_COMMAND_UNSUPPORTED: ' + kind)
 
 
-def run_attempt(index, root=ROOT, max_commands=300):
+def _context_path(root, context_file):
+    """Normalize a contained input path; a path itself grants no capability."""
+    path = (root / Path(context_file)).resolve()
+    if not path.is_relative_to(root):
+        raise RuntimeHalt('CONTEXT_PATH_OUTSIDE_ROOT')
+    return path, path.relative_to(root).as_posix()
+
+
+def _load_context_selection(root, context_file):
+    from selected_contexts import require_selected_context
+
+    path, relative = _context_path(root, context_file)
+    body = path.read_bytes()
+    context = load_context_file(path)
+    require_selected_context(context, root)
+    if path.read_bytes() != body:
+        raise RuntimeHalt('CONTEXT_FILE_CHANGED_DURING_LOAD')
+    return context, relative, hashlib.sha256(body).hexdigest()
+
+
+def run_attempt(index, root=ROOT, max_commands=300, *, context_file=CONTEXT_FILE):
     if type(max_commands) is not int or max_commands < 1:
         raise ValueError('Positive command budget required')
     root = Path(root).resolve()
-    context = load_context_file(root / CONTEXT_FILE)
+    context, context_file, context_file_sha256 = _load_context_selection(root, context_file)
     seed = seed_for(index, context.matchup_id)
     first = 'A' if index % 2 == 0 else 'B'
     runtime = ContextRuntime(context, seed, first, build_selected_registry(context, root),
@@ -340,8 +360,8 @@ def run_attempt(index, root=ROOT, max_commands=300):
                                    'exception': type(exc).__name__, 'before': runtime.snapshot()})
         runtime.halted = True
     final = runtime.snapshot()  # Audit only.
-    provenance = {'context_file': CONTEXT_FILE,
-                  'context_file_sha256': hashlib.sha256((root / CONTEXT_FILE).read_bytes()).hexdigest(),
+    provenance = {'context_file': context_file,
+                  'context_file_sha256': context_file_sha256,
                   'execution_id': runtime.execution_id,
                   'runner_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                   'seed_schedule': 'SHA256(context_id,index,imported-live-diagnostic-v1)[:16]',
@@ -363,23 +383,42 @@ def run_attempt(index, root=ROOT, max_commands=300):
 
 
 def replay_attempt(record, root=ROOT):
-    replay = run_attempt(record['index'], root, record['max_commands'])
+    root = Path(root).resolve()
+    provenance = record.get('replay_provenance', {})
+    if not isinstance(provenance, dict):
+        raise RuntimeHalt('REPLAY_CONTEXT_PROVENANCE_INVALID')
+    context_file = provenance.get('context_file', CONTEXT_FILE)
+    path, context_file = _context_path(root, context_file)
+    expected_sha256 = provenance.get('context_file_sha256')
+    if (not isinstance(expected_sha256, str) or len(expected_sha256) != 64
+            or any(c not in '0123456789abcdef' for c in expected_sha256)):
+        raise RuntimeHalt('REPLAY_CONTEXT_PROVENANCE_INVALID')
+    if hashlib.sha256(path.read_bytes()).hexdigest() != expected_sha256:
+        raise RuntimeHalt('REPLAY_CONTEXT_FILE_CHANGED')
+    context = load_context_file(path)
+    if context.matchup_id != record.get('context_id'):
+        raise RuntimeHalt('REPLAY_CONTEXT_ID_MISMATCH')
+    # Legacy records without a saved path use the original default only. A
+    # matching context ID is still required before any gameplay can rerun.
+    replay = run_attempt(record['index'], root, record['max_commands'], context_file=context_file)
     return {'index': record['index'], 'exact_match': canonical(record) == canonical(replay),
             'saved_record_sha256': digest(record), 'replayed_record_sha256': digest(replay),
             'certification': 'NONE_SOFTWARE_REPLAY_ONLY'}
 
 
-def write_attempts(out, root=ROOT, count=60, max_commands=300):
+def write_attempts(out, root=ROOT, count=60, max_commands=300, *, context_file=CONTEXT_FILE):
     if type(count) is not int or count < 2 or count % 2:
         raise ValueError('Positive even attempt count of at least two required for balanced starts')
     if type(max_commands) is not int or max_commands < 1:
         raise ValueError('Positive command budget required')
+    root = Path(root).resolve()
+    context, context_file, context_file_sha256 = _load_context_selection(root, context_file)
     out = Path(out)
     out.mkdir(parents=True, exist_ok=False)
     rows = []
     replays = []
     for index in range(count):
-        record = run_attempt(index, root, max_commands)
+        record = run_attempt(index, root, max_commands, context_file=context_file)
         body = canonical(record) + b'\n'
         name = f'attempt-{index:04d}.json.gz'
         with (out / name).open('xb') as handle:
@@ -388,6 +427,9 @@ def write_attempts(out, root=ROOT, count=60, max_commands=300):
         # Preserve the actual attempted seed and trace BEFORE any replay can
         # fail or be interrupted. A failed verification never replaces a seed.
         try:
+            if (record['context_id'] != context.matchup_id
+                    or record['replay_provenance']['context_file_sha256'] != context_file_sha256):
+                raise RuntimeHalt('COHORT_CONTEXT_CHANGED')
             replay = replay_attempt(record, root)
             if not replay['exact_match']:
                 raise RuntimeHalt('EXACT_REPLAY_MISMATCH: index=' + str(index))
@@ -431,9 +473,12 @@ def main(argv=None):
     parser.add_argument('--count', type=int, default=60)
     parser.add_argument('--max-commands', type=int, default=300)
     parser.add_argument('--root', type=Path, default=ROOT)
+    parser.add_argument('--context-file', type=Path, default=CONTEXT_FILE,
+                        help='Saved context under --root; defaults to the original pairing')
     args = parser.parse_args(argv)
     try:
-        summary = write_attempts(args.out, args.root, args.count, args.max_commands)
+        summary = write_attempts(args.out, args.root, args.count, args.max_commands,
+                                 context_file=args.context_file)
     except (OSError, ValueError, RuntimeHalt) as exc:
         print(json.dumps({'status': 'DIAGNOSTIC_OUTPUT_ERROR', 'reason': str(exc)}))
         return 2

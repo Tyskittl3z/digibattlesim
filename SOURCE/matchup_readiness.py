@@ -125,7 +125,8 @@ def inspect_readiness(context, registry, root=ROOT):
         Path(__file__).with_name('match_preparation.py'),Path(__file__).with_name('phase_flow.py'),
         Path(__file__).with_name('main_actions.py'),Path(__file__).with_name('breeding_evolution.py'),
         Path(__file__).with_name('search_effects.py'),Path(__file__).with_name('turn_flow.py'),
-        Path(__file__).with_name('battlefield_scope.py'),Path(__file__).with_name('attack_flow.py')]}
+        Path(__file__).with_name('battlefield_scope.py'),Path(__file__).with_name('attack_flow.py'),
+        Path(__file__).with_name('printed_triggers.py'),Path(__file__).with_name('selected_contexts.py')]}
     return {'schema': 'imported-matchup-readiness-v1', 'status': 'BLOCKED',
             'context_id': context.matchup_id, 'engine_source_sha256': code,
             'decks': {s: context.deck(s).to_dict() for s in ('A', 'B')},

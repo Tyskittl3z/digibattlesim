@@ -1,0 +1,659 @@
+{
+  "kind": "READ_ONLY_MATCHUP_READINESS_COMPARISON",
+  "generated_at_utc": "2026-11-02",
+  "source_definitions_reused": 45,
+  "deck_sources": {
+    "123129": {
+      "path": "/workspace/work/ex13-intake/123129.html",
+      "source_url": "https://digimon.digilab.cards/decklist/123129",
+      "sha256": "eed7c91958db15172061e3ae07dfb51d943d89413464845bfbaf94aa2a23278a",
+      "workbook_index_sha256_matched": true,
+      "composition_sha256": "f9c8261b83e908e13c6bf5770faf5809649543b5d3494081c8ec5eae8d7965c7",
+      "main": 50,
+      "eggs": 4,
+      "distinct_cards": 21,
+      "status": "CACHE_EXACT_COUNTS_AND_PINNED_OFFICIAL_TYPES_CHECKED_NOT_TOURNAMENT_CERTIFIED"
+    },
+    "124303": {
+      "path": "/workspace/work/ex13-intake/124303.html",
+      "source_url": "https://digimon.digilab.cards/decklist/124303",
+      "sha256": "650e4442efbe4d339b52e4fdaf74a55affa7bd8a9e28800b57b4871c8aeae812",
+      "workbook_index_sha256_matched": null,
+      "composition_sha256": "931d1672cc00ab2800fc8f3a8878e65be2b04fe0ae20f16cf2534af82f2789c4",
+      "main": 50,
+      "eggs": 4,
+      "distinct_cards": 25,
+      "status": "CACHE_EXACT_COUNTS_AND_PINNED_OFFICIAL_TYPES_CHECKED_NOT_TOURNAMENT_CERTIFIED"
+    },
+    "122110": {
+      "path": "/workspace/work/ex13-intake/122110.html",
+      "source_url": "https://digimon.digilab.cards/decklist/122110",
+      "sha256": "d94a80dd22b12120424e9254f4b74fee15d3f6d9eb642ad47866ea46497a4a73",
+      "workbook_index_sha256_matched": true,
+      "composition_sha256": "50e14d9172891a00025b7708edabbc740cffac55d2e1ba3beb0f8f75c42998e7",
+      "main": 50,
+      "eggs": 4,
+      "distinct_cards": 21,
+      "status": "CACHE_EXACT_COUNTS_AND_PINNED_OFFICIAL_TYPES_CHECKED_NOT_TOURNAMENT_CERTIFIED"
+    }
+  },
+  "pairing_inventories": [
+    {
+      "A": "123129",
+      "B": "124303",
+      "queue_order": 1,
+      "distinct_cards": 45,
+      "printed_text_units": 150,
+      "unimplemented_printed_text_units": 136,
+      "experimental_bindings": 14,
+      "official_source_checks": [
+        {
+          "card_number": "BT11-023",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "8a0641a7b790f34271ee55cfac8b183f29ce2f546bfd62b704069952e5001e23"
+        },
+        {
+          "card_number": "BT11-032",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "82c0b74c599cb27d0784d93959057b2504e97c4e593af5ee0a0fce51db30d50e"
+        },
+        {
+          "card_number": "BT11-112",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc"
+        },
+        {
+          "card_number": "BT12-016",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "059954b02e84898dd35723dd259c9cc970918044e6166a0cf343d7cc15833c5d"
+        },
+        {
+          "card_number": "BT12-029",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "4815904431fc1ad0c54a6185aa3269fe75b844cae57da5dc68b72eca0654d505"
+        },
+        {
+          "card_number": "BT17-013",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "cada35a9e1e68b0582cd0f646dc6067216678712e882402998e4efeb4b099abd"
+        },
+        {
+          "card_number": "BT17-016",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "a52eece9d558dc9622df3a53164342b7d4e4ada2c3d748921bee353d2acb0218"
+        },
+        {
+          "card_number": "BT19-007",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "2f00fcac685cff30579f00b45e6b2f40d70b7cc461b661cc6101cc97d01b3ac3"
+        },
+        {
+          "card_number": "BT19-009",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "8230cec3dcb85b49128b12eb5f70dc3791032c66dc4192008bafc6fe1228f7eb"
+        },
+        {
+          "card_number": "BT19-011",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "65d731cf89caed980da1efa7306675db772d11435eccaadd929713f9b6194482"
+        },
+        {
+          "card_number": "BT19-080",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "99917b24bb30d7530475289002e744c38dc841d04a2c4cdd220d4c800a6ee21f"
+        },
+        {
+          "card_number": "BT20-102",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "6769bd16a111b682dc8f9a27fb5ea0e5a4438a6822e160c79575f480fcd8519b"
+        },
+        {
+          "card_number": "BT22-022",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "b2bc45d6d74a4c8a9569094c25bcc7ffe10e179b4891341dd2187298a0346c85"
+        },
+        {
+          "card_number": "BT22-023",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "a184df26a6bd8c5ccaed325998c9b85a18c0c2d5c0778a20993fd2d6a01e67dd"
+        },
+        {
+          "card_number": "BT22-085",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "a453871077f17613ac9b1d52bbe3065509f2d0fd75ff8d2e040aa3658d3435f1"
+        },
+        {
+          "card_number": "BT9-011",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "933f4c58d621282a134d4919e14a95265e03d9de050b6c698464639d05c6c420"
+        },
+        {
+          "card_number": "BT9-092",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "819c58d36db86504fddfe683e1ed69816f7d8622e975401531c6f625a9c2ca00"
+        },
+        {
+          "card_number": "BT9-109",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "e6a3bcb0cc0d88514529f7c606a3ce5690faee05dfd98a063599e9cfcfe84893"
+        },
+        {
+          "card_number": "EX1-013",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "df126caa2ee95d5f7b86008ef828291645d15204c177801eb2f73404d0611f38"
+        },
+        {
+          "card_number": "EX13-002",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "9d2abc2c3a5f20aebefbcb5b89818a4559748ddbde4e20f92562092b7267cd4f"
+        },
+        {
+          "card_number": "EX13-015",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "da5ea099591f442de21e60eb9c13857f9585b1ea4c40215dbf27ff56f47c06d6"
+        },
+        {
+          "card_number": "EX13-017",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "2aa137a4f5c18f878139b6021a274f44a1ad001b0a952390ef6690031e5e77d4"
+        },
+        {
+          "card_number": "EX13-019",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "0e9158139b3c4d46987c85a968f40469743a76892cba86227871ed897b1e4d5a"
+        },
+        {
+          "card_number": "EX13-022",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "4771e6eab5218e833eebf7d1ff6cf70ad6fa51a51d556f8a404ac88f07256874"
+        },
+        {
+          "card_number": "EX13-023",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "3d50f704648b02667258fceb3f3675a80141599f76ca4ad1beeb3069d8fad7aa"
+        },
+        {
+          "card_number": "EX13-069",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7"
+        },
+        {
+          "card_number": "EX2-001",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "5c9084896415a13a05c4a8ee21481fec88ba3334d8befac23d70a85d518ed338"
+        },
+        {
+          "card_number": "EX2-008",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "bf0c5a65a6a80a06ab835706d3eb0a1c3fefaa3d27b07d677108c9f48e79330c"
+        },
+        {
+          "card_number": "EX4-006",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "5936d220799867bd530f8c82224bac7279b7d5a5cef975ad8062b47bdf90c2aa"
+        },
+        {
+          "card_number": "EX5-070",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "65770db65c5e83c6f0dcacc532a5211f406f523c930df3b6e90f899714faa36b"
+        },
+        {
+          "card_number": "EX8-009",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "069a61b7df9075b4f1a0947bb65deb8203b8d4b5288c229dfd8a1448f80fccfb"
+        },
+        {
+          "card_number": "EX8-012",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "75984eaa3a914e3d3698269d192e1a6ce60b1538657039230057b4f2b45d2c9f"
+        },
+        {
+          "card_number": "EX8-015",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "ccd72027e297a8bbdb05743b340060ce939e1edc314916b629380239488f1bf2"
+        },
+        {
+          "card_number": "EX8-073",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "e64b9dd17ba2fb40f941f5b81bca0956491f506d1ac0f5736caafd5f200d1d68"
+        },
+        {
+          "card_number": "LM-027",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "749c781db7266ffd08a51a7700841531c8f90a719c471970ae6499bef14e8110"
+        },
+        {
+          "card_number": "LM-028",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "add30c8ec48a6972ae26bc56af14b6faaab06af29d1b032151662b8e3723c0ee"
+        },
+        {
+          "card_number": "LM-034",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "2917e45cc7c729ffe78ae583a7c4f4b12778a51e9c8d68b25dd532f5b96c10f1"
+        },
+        {
+          "card_number": "LM-056",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "de0eb9e7c894f8e66217296f511b004d540f5ba030c8cb8c961c53b4bf7ec0dd"
+        },
+        {
+          "card_number": "LM-057",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "fa76304967284b7ac49ef134942e3d9bb68ed6bcb58379d796f5d1e695e13fc8"
+        },
+        {
+          "card_number": "LM-058",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "a1c4562d78bdc5ca50a66fdeea057570c0324319f7900e7d2fcb008de4c12de7"
+        },
+        {
+          "card_number": "LM-061",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "c0e30c3fa53807a3a81211ee07c93d9edc7103aa10b39989f5ddbea9f83bac0d"
+        },
+        {
+          "card_number": "P-104",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "912bf92380c5be9e6f52fcb21cd997c53010023981328e80c0617348180cf5ec"
+        },
+        {
+          "card_number": "P-138",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "61d9574f6132911aa54a8e75990a0c829ef424521b26b97fbaca62be9f456354"
+        },
+        {
+          "card_number": "P-186",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "d6cc244087bcc7f2ee2d863723e8dbf74521d224d375183fb27266dbcf8e2c23"
+        },
+        {
+          "card_number": "ST7-05",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "048f88fb5e74f13b12ff468102747a050da5f95564f632fa489a1c0914fd9b26"
+        }
+      ],
+      "metadata_conflict_ids": [
+        "LM-027",
+        "LM-028",
+        "LM-034"
+      ],
+      "printed_evolution_syntax_gaps": 0,
+      "live_actions_supported": false,
+      "note": "In-memory inventory only. Existing exact-context main-action and battlefield guards reject both alternate contexts. Printed-text units are not interaction branches or effort estimates; no games were run."
+    },
+    {
+      "A": "122110",
+      "B": "124303",
+      "queue_order": 43,
+      "distinct_cards": 44,
+      "printed_text_units": 145,
+      "unimplemented_printed_text_units": 131,
+      "experimental_bindings": 14,
+      "official_source_checks": [
+        {
+          "card_number": "BT11-023",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "8a0641a7b790f34271ee55cfac8b183f29ce2f546bfd62b704069952e5001e23"
+        },
+        {
+          "card_number": "BT11-032",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "82c0b74c599cb27d0784d93959057b2504e97c4e593af5ee0a0fce51db30d50e"
+        },
+        {
+          "card_number": "BT11-112",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc"
+        },
+        {
+          "card_number": "BT12-016",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "059954b02e84898dd35723dd259c9cc970918044e6166a0cf343d7cc15833c5d"
+        },
+        {
+          "card_number": "BT12-029",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "4815904431fc1ad0c54a6185aa3269fe75b844cae57da5dc68b72eca0654d505"
+        },
+        {
+          "card_number": "BT17-013",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "cada35a9e1e68b0582cd0f646dc6067216678712e882402998e4efeb4b099abd"
+        },
+        {
+          "card_number": "BT17-016",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "a52eece9d558dc9622df3a53164342b7d4e4ada2c3d748921bee353d2acb0218"
+        },
+        {
+          "card_number": "BT19-007",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "2f00fcac685cff30579f00b45e6b2f40d70b7cc461b661cc6101cc97d01b3ac3"
+        },
+        {
+          "card_number": "BT19-009",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "8230cec3dcb85b49128b12eb5f70dc3791032c66dc4192008bafc6fe1228f7eb"
+        },
+        {
+          "card_number": "BT19-011",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "65d731cf89caed980da1efa7306675db772d11435eccaadd929713f9b6194482"
+        },
+        {
+          "card_number": "BT19-080",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "99917b24bb30d7530475289002e744c38dc841d04a2c4cdd220d4c800a6ee21f"
+        },
+        {
+          "card_number": "BT20-102",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "6769bd16a111b682dc8f9a27fb5ea0e5a4438a6822e160c79575f480fcd8519b"
+        },
+        {
+          "card_number": "BT22-022",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "b2bc45d6d74a4c8a9569094c25bcc7ffe10e179b4891341dd2187298a0346c85"
+        },
+        {
+          "card_number": "BT22-023",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "a184df26a6bd8c5ccaed325998c9b85a18c0c2d5c0778a20993fd2d6a01e67dd"
+        },
+        {
+          "card_number": "BT22-085",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "a453871077f17613ac9b1d52bbe3065509f2d0fd75ff8d2e040aa3658d3435f1"
+        },
+        {
+          "card_number": "BT9-011",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "933f4c58d621282a134d4919e14a95265e03d9de050b6c698464639d05c6c420"
+        },
+        {
+          "card_number": "BT9-092",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "819c58d36db86504fddfe683e1ed69816f7d8622e975401531c6f625a9c2ca00"
+        },
+        {
+          "card_number": "BT9-109",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "e6a3bcb0cc0d88514529f7c606a3ce5690faee05dfd98a063599e9cfcfe84893"
+        },
+        {
+          "card_number": "EX1-013",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "df126caa2ee95d5f7b86008ef828291645d15204c177801eb2f73404d0611f38"
+        },
+        {
+          "card_number": "EX13-002",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "9d2abc2c3a5f20aebefbcb5b89818a4559748ddbde4e20f92562092b7267cd4f"
+        },
+        {
+          "card_number": "EX13-015",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "da5ea099591f442de21e60eb9c13857f9585b1ea4c40215dbf27ff56f47c06d6"
+        },
+        {
+          "card_number": "EX13-017",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "2aa137a4f5c18f878139b6021a274f44a1ad001b0a952390ef6690031e5e77d4"
+        },
+        {
+          "card_number": "EX13-019",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "0e9158139b3c4d46987c85a968f40469743a76892cba86227871ed897b1e4d5a"
+        },
+        {
+          "card_number": "EX13-022",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "4771e6eab5218e833eebf7d1ff6cf70ad6fa51a51d556f8a404ac88f07256874"
+        },
+        {
+          "card_number": "EX13-023",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "3d50f704648b02667258fceb3f3675a80141599f76ca4ad1beeb3069d8fad7aa"
+        },
+        {
+          "card_number": "EX13-069",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7"
+        },
+        {
+          "card_number": "EX2-001",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "5c9084896415a13a05c4a8ee21481fec88ba3334d8befac23d70a85d518ed338"
+        },
+        {
+          "card_number": "EX2-008",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "bf0c5a65a6a80a06ab835706d3eb0a1c3fefaa3d27b07d677108c9f48e79330c"
+        },
+        {
+          "card_number": "EX4-006",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "5936d220799867bd530f8c82224bac7279b7d5a5cef975ad8062b47bdf90c2aa"
+        },
+        {
+          "card_number": "EX5-070",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "65770db65c5e83c6f0dcacc532a5211f406f523c930df3b6e90f899714faa36b"
+        },
+        {
+          "card_number": "EX8-009",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "069a61b7df9075b4f1a0947bb65deb8203b8d4b5288c229dfd8a1448f80fccfb"
+        },
+        {
+          "card_number": "EX8-012",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "75984eaa3a914e3d3698269d192e1a6ce60b1538657039230057b4f2b45d2c9f"
+        },
+        {
+          "card_number": "EX8-015",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "ccd72027e297a8bbdb05743b340060ce939e1edc314916b629380239488f1bf2"
+        },
+        {
+          "card_number": "EX8-073",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "e64b9dd17ba2fb40f941f5b81bca0956491f506d1ac0f5736caafd5f200d1d68"
+        },
+        {
+          "card_number": "LM-027",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "749c781db7266ffd08a51a7700841531c8f90a719c471970ae6499bef14e8110"
+        },
+        {
+          "card_number": "LM-028",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "add30c8ec48a6972ae26bc56af14b6faaab06af29d1b032151662b8e3723c0ee"
+        },
+        {
+          "card_number": "LM-056",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "de0eb9e7c894f8e66217296f511b004d540f5ba030c8cb8c961c53b4bf7ec0dd"
+        },
+        {
+          "card_number": "LM-057",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "fa76304967284b7ac49ef134942e3d9bb68ed6bcb58379d796f5d1e695e13fc8"
+        },
+        {
+          "card_number": "LM-058",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "a1c4562d78bdc5ca50a66fdeea057570c0324319f7900e7d2fcb008de4c12de7"
+        },
+        {
+          "card_number": "LM-061",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "c0e30c3fa53807a3a81211ee07c93d9edc7103aa10b39989f5ddbea9f83bac0d"
+        },
+        {
+          "card_number": "P-104",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "912bf92380c5be9e6f52fcb21cd997c53010023981328e80c0617348180cf5ec"
+        },
+        {
+          "card_number": "P-138",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "61d9574f6132911aa54a8e75990a0c829ef424521b26b97fbaca62be9f456354"
+        },
+        {
+          "card_number": "P-186",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "d6cc244087bcc7f2ee2d863723e8dbf74521d224d375183fb27266dbcf8e2c23"
+        },
+        {
+          "card_number": "ST7-05",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "048f88fb5e74f13b12ff468102747a050da5f95564f632fa489a1c0914fd9b26"
+        }
+      ],
+      "metadata_conflict_ids": [
+        "LM-027",
+        "LM-028"
+      ],
+      "printed_evolution_syntax_gaps": 0,
+      "live_actions_supported": false,
+      "note": "In-memory inventory only. Existing exact-context main-action and battlefield guards reject both alternate contexts. Printed-text units are not interaction branches or effort estimates; no games were run."
+    },
+    {
+      "A": "123129",
+      "B": "122110",
+      "queue_order": 145,
+      "distinct_cards": 22,
+      "printed_text_units": 79,
+      "unimplemented_printed_text_units": 69,
+      "experimental_bindings": 10,
+      "official_source_checks": [
+        {
+          "card_number": "BT11-023",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "8a0641a7b790f34271ee55cfac8b183f29ce2f546bfd62b704069952e5001e23"
+        },
+        {
+          "card_number": "BT11-032",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "82c0b74c599cb27d0784d93959057b2504e97c4e593af5ee0a0fce51db30d50e"
+        },
+        {
+          "card_number": "BT11-112",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc"
+        },
+        {
+          "card_number": "BT12-029",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "4815904431fc1ad0c54a6185aa3269fe75b844cae57da5dc68b72eca0654d505"
+        },
+        {
+          "card_number": "BT20-102",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "6769bd16a111b682dc8f9a27fb5ea0e5a4438a6822e160c79575f480fcd8519b"
+        },
+        {
+          "card_number": "BT22-022",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "b2bc45d6d74a4c8a9569094c25bcc7ffe10e179b4891341dd2187298a0346c85"
+        },
+        {
+          "card_number": "BT22-023",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "a184df26a6bd8c5ccaed325998c9b85a18c0c2d5c0778a20993fd2d6a01e67dd"
+        },
+        {
+          "card_number": "BT22-085",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "a453871077f17613ac9b1d52bbe3065509f2d0fd75ff8d2e040aa3658d3435f1"
+        },
+        {
+          "card_number": "EX1-013",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "df126caa2ee95d5f7b86008ef828291645d15204c177801eb2f73404d0611f38"
+        },
+        {
+          "card_number": "EX13-002",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "9d2abc2c3a5f20aebefbcb5b89818a4559748ddbde4e20f92562092b7267cd4f"
+        },
+        {
+          "card_number": "EX13-017",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "2aa137a4f5c18f878139b6021a274f44a1ad001b0a952390ef6690031e5e77d4"
+        },
+        {
+          "card_number": "EX13-019",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "0e9158139b3c4d46987c85a968f40469743a76892cba86227871ed897b1e4d5a"
+        },
+        {
+          "card_number": "EX13-022",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "4771e6eab5218e833eebf7d1ff6cf70ad6fa51a51d556f8a404ac88f07256874"
+        },
+        {
+          "card_number": "EX13-023",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "3d50f704648b02667258fceb3f3675a80141599f76ca4ad1beeb3069d8fad7aa"
+        },
+        {
+          "card_number": "EX13-069",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7"
+        },
+        {
+          "card_number": "LM-028",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "add30c8ec48a6972ae26bc56af14b6faaab06af29d1b032151662b8e3723c0ee"
+        },
+        {
+          "card_number": "LM-034",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "2917e45cc7c729ffe78ae583a7c4f4b12778a51e9c8d68b25dd532f5b96c10f1"
+        },
+        {
+          "card_number": "LM-056",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "de0eb9e7c894f8e66217296f511b004d540f5ba030c8cb8c961c53b4bf7ec0dd"
+        },
+        {
+          "card_number": "LM-057",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "fa76304967284b7ac49ef134942e3d9bb68ed6bcb58379d796f5d1e695e13fc8"
+        },
+        {
+          "card_number": "LM-058",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "a1c4562d78bdc5ca50a66fdeea057570c0324319f7900e7d2fcb008de4c12de7"
+        },
+        {
+          "card_number": "P-104",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "912bf92380c5be9e6f52fcb21cd997c53010023981328e80c0617348180cf5ec"
+        },
+        {
+          "card_number": "P-138",
+          "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+          "sha256": "61d9574f6132911aa54a8e75990a0c829ef424521b26b97fbaca62be9f456354"
+        }
+      ],
+      "metadata_conflict_ids": [
+        "LM-028",
+        "LM-034"
+      ],
+      "printed_evolution_syntax_gaps": 0,
+      "live_actions_supported": false,
+      "note": "In-memory inventory only. Existing exact-context main-action and battlefield guards reject both alternate contexts. Printed-text units are not interaction branches or effort estimates; no games were run."
+    }
+  ],
+  "recommendation": "If distinct-list mirrors are acceptable, prioritize 123129 vs 122110 as the strongest demonstrated narrowing: no new official card definitions and 69 vs 136 missing printed units. For different-archetype matchups keep original 123129 vs 124303: 122110 vs 124303 saves only five units and still requires a new context. Fresh pilots, balanced60+, branch review, roadmaps, freeze and final10k remain required for any new pairing.",
+  "uncertainties": [
+    "Inventory size does not establish completion effort or guarantee progress through live games.",
+    "Mirror still requires unsuspend/Tamer reaction chains, protection/replacement interactions, Delay Options, same-level evolution and Omnimon board-wide removal/attacks.",
+    "All experimental bindings lack independent rules certification.",
+    "No unknown third-party card text was promoted into a card definition."
+  ]
+}

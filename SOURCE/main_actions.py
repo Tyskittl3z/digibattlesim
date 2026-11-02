@@ -7,19 +7,18 @@ from context_runtime import RuntimeHalt,Stack
 from effect_scheduler import queue_effects
 from match_preparation import _rules
 from search_effects import SEARCH_SPECS
-from pathlib import Path
 from printed_triggers import trigger_lines
+from selected_contexts import require_selected_context
 
 PLAIN_MAIN_TEXT = {'EX1-013':'','ST7-05':'','BT9-011':''}
 
 
 def _play(runtime,seat,choice,root):
     state=runtime.state
-    from matchup_readiness import load_context_file
-    locked=load_context_file(Path(root)/'ARTIFACTS/ex13-engine-2026-10-30/context.json')
-    if ((runtime.context.deck_a.source_id,runtime.context.deck_b.source_id)!=('123129','124303')
-            or runtime.context.matchup_id!=locked.matchup_id):
-        raise RuntimeHalt('SELECTED_PLAY_CAPABILITY_REQUIRED')
+    try:
+        locked=require_selected_context(runtime.context,root)
+    except RuntimeHalt as exc:
+        raise RuntimeHalt('SELECTED_PLAY_CAPABILITY_REQUIRED') from exc
     if not runtime.allow_experimental:raise RuntimeHalt('UNREVIEWED_MAIN_ACTION')
     if seat!=state.active or state.phase!='MAIN' or state.memory<0:
         raise RuntimeHalt('MAIN_PLAY_WINDOW_NOT_OPEN')

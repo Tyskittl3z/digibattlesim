@@ -30,7 +30,7 @@
 
 **Files:** Create `SOURCE/selected_contexts.py`, `SOURCE/test_selected_contexts.py`; modify `SOURCE/battlefield_scope.py`, `SOURCE/main_actions.py`, `SOURCE/breeding_evolution.py`, `SOURCE/context_runtime.py`; add mirror artifact snapshots.
 
-**Interfaces:** Produce `assert_selected_context(runtime, root) -> MatchContext`, returning the matching locked context or raising RuntimeHalt with the existing selected-context error. Recognize original context/source IDs and the mirror ID/source IDs in the spec only. Include selected_contexts.py in execution_id hashing.
+**Interfaces:** Produce `require_selected_context(context, root) -> MatchContext`, returning the matching locked context or raising RuntimeHalt with the existing selected-context error. Recognize original context/source IDs and the mirror ID/source IDs in the spec only. Include selected_contexts.py in execution_id hashing. The pure context input also lets runner preflight happen before runtime construction.
 
 - [ ] Write tests that execute mirror hard play/search and breeding evolution; reject changed source IDs, composition, rules or definitions without card/memory mutation.
 - [ ] Run `python -m unittest test_selected_contexts -q` from SOURCE and observe missing mirror support fail.

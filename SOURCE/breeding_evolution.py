@@ -11,6 +11,7 @@ from context_evolution import printed_evolution_options, UnsupportedEvolutionCon
 from context_runtime import RuntimeHalt
 from match_preparation import _rules
 from pathlib import Path
+from selected_contexts import require_selected_context
 
 
 RULE_LOCATOR = ('Comprehensive rules v4.3: 1-3-11-1; 3-4-7-3 through 3-4-7-8; '
@@ -19,8 +20,10 @@ RULE_LOCATOR = ('Comprehensive rules v4.3: 1-3-11-1; 3-4-7-3 through 3-4-7-8; '
 
 def _guard(runtime, seat, root=None):
     runtime.context.deck(seat)
-    if (runtime.context.deck_a.source_id,runtime.context.deck_b.source_id) != ('123129','124303'):
-        raise RuntimeHalt('SELECTED_PAIR_REQUIRED: Ulforce123129/Gallantmon124303')
+    try:
+        require_selected_context(runtime.context,root or Path(__file__).resolve().parents[1])
+    except RuntimeHalt as exc:
+        raise RuntimeHalt('SELECTED_PAIR_REQUIRED') from exc
     runtime.verify()
     if runtime.halted:raise RuntimeHalt('ALREADY_HALTED')
     if runtime.state.terminal:raise RuntimeHalt('ACTION_AFTER_TERMINAL')

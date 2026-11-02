@@ -12,14 +12,10 @@ physical-state validation, legal action windows, and the new action's effects.
 It inspects neither hidden zones nor breeding contents and never mutates state,
 events, RNG or halt flags, including on failure.
 """
-from pathlib import Path
-
 from context_runtime import PhysicalCard, PhysicalState, RuntimeHalt, Stack
-from match_context import MatchContext
+from selected_contexts import require_selected_context
 
 
-_SELECTED_CONTEXT_ID = '53f4e043b49fca0bf6e691754098e73774995cfee182e7c8245cf446e2d70733'
-_CONTEXT_FILE = 'ARTIFACTS/ex13-engine-2026-10-30/context.json'
 _ACTIONS = frozenset(('play_plain', 'play_search', 'breeding_evolve', 'attack_plain'))
 _PLAIN_TOPS = frozenset(('EX1-013', 'ST7-05', 'BT9-011'))
 _SEARCH_TOPS = frozenset(('BT11-023','P-138','EX13-017','EX2-008','EX8-009'))
@@ -35,22 +31,7 @@ _CARD_FIELDS = frozenset(('owner', 'card_number', 'index'))
 
 
 def _assert_selected_context(runtime, root):
-    # Pin the original capability as well as reading the selected lock: changing
-    # both a runtime and its on-disk context cannot authorize new card effects.
-    from matchup_readiness import load_context_file
-
-    try:
-        context = runtime.context
-        locked = load_context_file(Path(root) / _CONTEXT_FILE)
-        selected = ('123129', '124303')
-        valid = (type(context) is MatchContext
-                 and (context.deck_a.source_id, context.deck_b.source_id) == selected
-                 and (locked.deck_a.source_id, locked.deck_b.source_id) == selected
-                 and context.matchup_id == locked.matchup_id == _SELECTED_CONTEXT_ID)
-    except (OSError, ValueError, KeyError, TypeError, AttributeError, StopIteration) as exc:
-        raise RuntimeHalt('BASIC_BOARD_SELECTED_CONTEXT_REQUIRED') from exc
-    if not valid:
-        raise RuntimeHalt('BASIC_BOARD_SELECTED_CONTEXT_REQUIRED')
+    require_selected_context(runtime.context, root)
 
 
 def assert_basic_board_scope(runtime, action, root):

@@ -205,7 +205,8 @@ class ContextRuntime:
                 for name in ('context_runtime.py', 'match_context.py', 'effect_scheduler.py','match_preparation.py',
                              'phase_flow.py','breeding_evolution.py','main_actions.py',
                              'context_evolution.py','search_effects.py','selected_mechanics.py',
-                             'turn_flow.py','battlefield_scope.py','attack_flow.py','printed_triggers.py')}
+                             'turn_flow.py','battlefield_scope.py','attack_flow.py','printed_triggers.py',
+                             'selected_contexts.py')}
         return digest({'context_id': self.context.matchup_id, 'packs': self.registry.manifest(),
                        'engine': code, 'allow_experimental': self.allow_experimental})
 
