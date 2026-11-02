@@ -54,7 +54,7 @@
 - [x] Run `python -m unittest discover -p 'test_*.py' -q` from SOURCE. Expected: all tests pass.
 - [x] Inspect mirror readiness, then run 60 new diagnostic attempts with 30 starts each and exact replays. Preserve every halt and report actual totals.
 - [x] Update AGENTS.md/STATUS.md with user delegation, development choice, checks and actual remaining blockers. Keep the original queue unchanged.
-- [x] Commit the changes and integrate them into the shared work branch.
+- [x] Commit the changes and publish the review branch with a draft PR, following the user's later GitHub publish request.
 
 ## Execution notes
 
@@ -70,3 +70,5 @@ Task3: tested335/335; mirror diagnostic02 60 HALTs,60 exact replays; original qu
 Final review: independent review found a preflight/rerun context-swap race. Two new regressions RED→GREEN; full suite335/335.
 Ruling: add load_context_bytes and an internal expected-context argument so parsing/hashing use one immutable input and replay checks its expected identity/hash before any game action. This strengthens the stated replay contract.
 Publication preparation: user requested a Python handoff and GitHub publish flow; finish checkpoint and publish a draft PR, preserving the default branch.
+
+Publication complete: draft PR https://github.com/Tyskittl3z/digibattlesim/pull/1 against work. Review branch and isolated worktree retained; no merge performed.

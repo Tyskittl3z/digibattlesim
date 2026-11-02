@@ -6,9 +6,9 @@ Checkpoint: November 2, 2026. This document describes the engine track. Read
 ## Goal and ownership
 
 Build a turn-by-turn Digimon simulator for exact imported decklists. For each
-selected pairing: complete at least60 valid fact-finding matches with balanced
+selected pairing: complete at least 60 valid fact-finding matches with balanced
 starts, evaluate best/medium/worst situational roadmaps, freeze the inputs and
-bots, then actually play10,000 evaluation matches (5,000 starts per deck).
+bots, then actually play 10,000 evaluation matches (5,000 starts per deck).
 The user wants randomized deck matchups across their EX13 workbook and has
 chosen English-version worldwide rules. They have no coding experience.
 
@@ -23,18 +23,18 @@ slots, manufacture outcomes, or transfer another matchup's strategy/results.
 
 ## Current state: what works and what does not
 
-- **335 Python unittest tests passed**, last full run57.555 seconds.
+- **335 Python unittest tests passed**, last full run 57.555 seconds.
 - Exact immutable card/deck/match contexts, physical card accounting,
   transactional commands, reproducible seeds and explicit failure traces work.
 - Opening hands/redraws, initial phase progression, breeding evolution, selected
   searches, ordinary hard plays at their real printed triggers, pending-effect
   scheduling, some orientation/memory reactions and plain attack/security steps
   have implementations. These are limited experimental capabilities.
-- Current mirror registry has10 experimental bindings. Source inventory has79
-  printed units,69 with no full binding. These counts are not complete branch
+- Current mirror registry has 10 experimental bindings. Source inventory has 79
+  printed units, 69 with no full binding. These counts are not complete branch
   coverage or rules certification.
-- Latest mirror diagnostic:60 attempts,30 starts per deck,60 exact replays,
-  **all60 HALT**, zero software-terminal games.
+- Latest mirror diagnostic: 60 attempts, 30 starts per deck, 60 exact replays,
+  **all 60 HALT**, zero software-terminal games.
 - **Zero valid current-pair fact-finding matches, zero approved roadmap lanes,
   zero final matches. No usable win rate exists.**
 
@@ -52,7 +52,7 @@ The active development pairing is two different UlforceVeedramon lists:
 | A |123129|Federico Nine|50 /4|
 | B |122110|Bern|50 /4|
 
-They use22 distinct pinned cards versus45 in the original Ulforce/Gallant pair.
+They use 22 distinct pinned cards versus 45 in the original Ulforce/Gallant pair.
 Their composition hashes differ. This reduces the required card families; it
 does not predict deck strength or guarantee a quick engine completion.
 
@@ -68,11 +68,11 @@ Deck B composition:
 `50e14d9172891a00025b7708edabbc740cffac55d2e1ba3beb0f8f75c42998e7`.
 
 Exact quantities and canonical definitions are in that directory's `deck-A.json`,
-`deck-B.json`, and `context.json`. The workbook indexes54 exact-list entries,
-11 archetypes. The preserved random queue contains1,431 distinct unordered
-exact-list pairs; this mirror is entry145. Selecting it first is a development
+`deck-B.json`, and `context.json`. The workbook indexes 54 exact-list entries,
+11 archetypes. The preserved random queue contains 1,431 distinct unordered
+exact-list pairs; this mirror is entry 145. Selecting it first is a development
 priority change; the original queue was not rewritten or called an evaluation.
-It does not mean all1,431 pairings are implemented or already scheduled to run.
+It does not mean all 1,431 pairings are implemented or already scheduled to run.
 
 The old development context is still supported for its prior basic capabilities:
 123129 vs124303, ID
@@ -83,7 +83,7 @@ Pass `--context-file` explicitly for the current mirror.**
 
 ## Start locally
 
-Core engine/tests use Python's standard library. Python3.12 is verified; no pip
+Core engine/tests use Python's standard library. Python 3.12 is verified; no pip
 packages are needed for these commands. Scratch video-analysis packages are not
 engine dependencies and should not be installed to run the simulator.
 
@@ -179,8 +179,8 @@ that are hashed; do not reintroduce a separate path read for parsing.
 ## Latest evidence and remaining first stops
 
 Current cohort:
-`ARTIFACTS/ulforce-bootstrap-diagnostic-2026-11-02-02/summary.json` and60 original
-`attempt-*.json.gz` files. Both version01 and02 remain preserved. Version02 has:
+`ARTIFACTS/ulforce-bootstrap-diagnostic-2026-11-02-02/summary.json` and 60 original
+`attempt-*.json.gz` files. Both version 01 and02 remain preserved. Version 02 has:
 
 | First stop | Attempts |
 |---|---:|
@@ -190,7 +190,7 @@ Current cohort:
 |Stacked board capability|2|
 |Security card capability|1|
 
-On Play stops: BT11-11216, EX13-02212, BT22-0235, BT22-0855, EX13-0234.
+On Play stops: BT11-112: 16, EX13-022: 12, BT22-023: 5, BT22-085: 5, EX13-023: 4.
 These are counts of first stops, not counts of all defects or a strategy signal.
 Options observed first include LM-028, LM-034, LM-056, LM-057 and P-104.
 Other cards such as LM-058 remain in scope even when no seed reaches them first.
@@ -218,7 +218,7 @@ not transfer the original pair's match results.
 
 Key source files: `SOURCE_INDEX.json`, `CARD_QA.json`, official HTML/PNG sources
 and comprehensive-rule PDF in that directory. Pinned comprehensive rules are
-v4.3 dated2026-09-18; PDF SHA256
+v4.3 dated 2026-09-18; PDF SHA256
 `a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271`.
 Region/language were selected, but complete final rules-lock/errata/restriction
 review remains unfinished. Read metadata-review notes: LM-027/028/034 HTML type
@@ -226,10 +226,10 @@ conflicts are preserved with official OPTION images; X Antibody field extraction
 is unreliable in the original pair; extracted Q&A can lose keyword angle tags.
 Use raw official sources/images when extraction conflicts.
 
-Eight user-provided transcripts, two reference decklists and105 exact frame
-samples are indexed under `ARTIFACTS/video-reference-2026-11-02/`. The17-minute
+Eight user-provided transcripts, two reference decklists and 105 exact frame
+samples are indexed under `ARTIFACTS/video-reference-2026-11-02/`. The 17-minute
 240p SeitenGokuumon/Gammamon video was sampled, not reconstructed continuously.
-The original six720p uploads exceeded a32MiB transfer limit and were not viewed.
+The original six 720p uploads exceeded a 32MiB transfer limit and were not viewed.
 Other game transcripts are references only, with recognition errors and different
 deck compositions. They supply timestamped synthetic test ideas, not pilot data,
 authoritative rulings or simulator match credit.
@@ -249,10 +249,10 @@ authoritative rulings or simulator match credit.
    zero-DP rule checks. Run focused tests and the full suite.
 5. Rerun the same current-context diagnostic seed indices under the changed
    engine into a new directory. Preserve old records and report actual stops.
-6. Only complete reviewed matches count toward the60+ gate. Close encountered
+6. Only complete reviewed matches count toward the 60+ gate. Close encountered
    branches, evaluate legal alternatives and build situation-specific roadmaps.
 7. Integrate a new context-bound freeze/evaluation after readiness passes. Keep
-   learning disabled during10,000 actual matches and preserve every final HALT.
+   learning disabled during 10,000 actual matches and preserve every final HALT.
 
 Roadmap GREEN/best, YELLOW/medium and RED/worst are strategic comparisons under
 objective situations; RED is not the same as illegal. UNKNOWN is allowed.
@@ -262,18 +262,20 @@ roadmaps and evidence; only generic verified mechanics are reusable.
 
 ## Recent checkpoints
 
-- `881b9fc`: explicit-context/physical-runtime foundation,193 tests.
-- `24fee77`: scheduling/opening/search/breeding work,247 tests.
-- `ab099ed`: scoped live turns/attacks and diagnostics,307 tests.
-- `f0bb02f`: printed-trigger correction,312 tests;24 historical wrongly blocked
+- `881b9fc`: explicit-context/physical-runtime foundation, 193 tests.
+- `24fee77`: scheduling/opening/search/breeding work, 247 tests.
+- `ab099ed`: scoped live turns/attacks and diagnostics, 307 tests.
+- `f0bb02f`: printed-trigger correction, 312 tests; 24 historical wrongly blocked
   ordinary plays replay successfully without unrelated effects firing.
 - `5bae536`: source-indexed gameplay reference cases.
 - `386dbfc`: distinct-list mirror snapshots and implementation design/plan.
-- `43eace1`: dual-context integration,333 tests and mirror diagnostic01.
-- Current branch also contains the tested replay byte-binding fix,335 tests and
+- `43eace1`: dual-context integration, 333 tests and mirror diagnostic01.
+- Current branch also contains the tested replay byte-binding fix, 335 tests and
   mirror diagnostic02. Use the branch HEAD for the complete handoff checkpoint.
 
 Development branch: `engine-ulforce-bootstrap`. Publication is a draft PR for
 review; this document does not claim a merge or a finished playable simulator.
 Keep scratch `work/`, virtual environments, downloaded videos, credentials and
 temporary packages out of commits. Core engine changes require no credentials.
+
+Published review: https://github.com/Tyskittl3z/digibattlesim/pull/1 (draft, unmerged).
