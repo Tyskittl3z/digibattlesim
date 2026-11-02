@@ -5,6 +5,7 @@ import gzip
 import hashlib
 import io
 import json
+import shutil
 from pathlib import Path
 import tempfile
 import unittest
@@ -72,6 +73,54 @@ class ImportedContextSelectionTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeHalt, 'REPLAY_CONTEXT_ID_MISMATCH'):
                 runner.replay_attempt(record, ROOT)
         self.assertEqual(record, before)
+
+    def test_replay_rejects_context_replaced_between_preflight_and_rerun(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            shutil.copytree(ROOT / 'RULES', root / 'RULES')
+            for relative in (MIRROR, runner.CONTEXT_FILE):
+                target = root / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes((ROOT / relative).read_bytes())
+            selected = root / 'selected.json'
+            selected.write_bytes((ROOT / MIRROR).read_bytes())
+            record = runner.run_attempt(0, root, 1, context_file='selected.json')
+            real_run = runner.run_attempt
+            executed = []
+
+            def replace_before_rerun(*args, **kwargs):
+                selected.write_bytes((ROOT / runner.CONTEXT_FILE).read_bytes())
+                replayed = real_run(*args, **kwargs)
+                executed.append(replayed)
+                return replayed
+
+            with patch.object(runner, 'run_attempt', side_effect=replace_before_rerun):
+                with self.assertRaisesRegex(RuntimeHalt, 'REPLAY_CONTEXT_FILE_CHANGED'):
+                    runner.replay_attempt(record, root)
+            self.assertEqual(executed, [], 'Changed replay inputs must fail before a game runs')
+
+    def test_context_selection_uses_the_same_bytes_for_hash_and_definition(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for relative in (MIRROR, runner.CONTEXT_FILE):
+                target = root / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes((ROOT / relative).read_bytes())
+            selected = root / 'selected.json'
+            mirror_bytes = (ROOT / MIRROR).read_bytes()
+            selected.write_bytes(mirror_bytes)
+            real_load = runner.load_context_file
+
+            def swap_during_second_read(path):
+                selected.write_bytes((ROOT / runner.CONTEXT_FILE).read_bytes())
+                context = real_load(path)
+                selected.write_bytes(mirror_bytes)
+                return context
+
+            with patch.object(runner, 'load_context_file', side_effect=swap_during_second_read):
+                context, _, recorded_hash = runner._load_context_selection(root, 'selected.json')
+            self.assertEqual(context.matchup_id, MIRROR_ID)
+            self.assertEqual(recorded_hash, hashlib.sha256(mirror_bytes).hexdigest())
 
     def test_missing_saved_context_hash_cannot_disable_replay_source_checks(self):
         record = self.attempt()

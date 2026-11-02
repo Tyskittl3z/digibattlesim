@@ -1,5 +1,14 @@
 # First Codex task (execute, don't just plan)
 
+> **2026-11-02 current priority:** User delegated choosing the best starting
+> matchup. Use the distinct-list Ulforce mirror 123129 vs122110, not the original
+> pair's default CLI argument. Read `PYTHON_DEVELOPER_HANDOFF.md`, latest STATUS,
+> and `REPORTS/ULFORCE_BOOTSTRAP_PROGRESS_2026-11-02.md`. Latest source passes335
+> tests. New diagnostic version02 records60 original context-bound seeds with
+>30 starts each and60 exact replays; all60 HALT, zero valid full-match credit.
+> Finish the encountered real effects and inspect overbroad scope guards;
+> retain all evidence and the original randomized queue.
+
 > **2026-11-01 live continuation:** Read the latest STATUS section and
 > `REPORTS/EX13_LIVE_ENGINE_PROGRESS_2026-11-01.md`. The selected engine now has
 > 307 passing tests and actual balanced diagnostic attempts; both60-attempt

@@ -32,10 +32,10 @@
 
 **Interfaces:** Produce `require_selected_context(context, root) -> MatchContext`, returning the matching locked context or raising RuntimeHalt with the existing selected-context error. Recognize original context/source IDs and the mirror ID/source IDs in the spec only. Include selected_contexts.py in execution_id hashing. The pure context input also lets runner preflight happen before runtime construction.
 
-- [ ] Write tests that execute mirror hard play/search and breeding evolution; reject changed source IDs, composition, rules or definitions without card/memory mutation.
-- [ ] Run `python -m unittest test_selected_contexts -q` from SOURCE and observe missing mirror support fail.
-- [ ] Implement the shared resolver; replace only the duplicated pair checks. Preserve card/effect/source validation and existing board scope.
-- [ ] Re-run the focused tests and existing action/board/breeding tests.
+- [x] Write tests that execute mirror hard play/search and breeding evolution; reject changed source IDs, composition, rules or definitions without card/memory mutation.
+- [x] Run `python -m unittest test_selected_contexts -q` from SOURCE and observe missing mirror support fail.
+- [x] Implement the shared resolver; replace only the duplicated pair checks. Preserve card/effect/source validation and existing board scope.
+- [x] Re-run the focused tests and existing action/board/breeding tests.
 
 ### Task 2: Bind diagnostics and replay to the selected context
 
@@ -43,18 +43,18 @@
 
 **Interfaces:** Extend `run_attempt(index, root=ROOT, max_commands=300, *, context_file=CONTEXT_FILE)` and `write_attempts(out, root=ROOT, count=60, max_commands=300, *, context_file=CONTEXT_FILE)`. Add CLI `--context-file`. Task 2 consumes the exact snapshot produced by Task 1; original defaults remain unchanged.
 
-- [ ] Write tests for explicit mirror context, recorded provenance, fresh pilot/seed identities, exact replay, changed-context rejection and original default behavior.
-- [ ] Observe failure before implementation with `python -m unittest test_imported_context_selection -q`.
-- [ ] Pass the selected path through loading, provenance, replay, cohort and CLI. Reject path escape outside root; verify saved context hash before replay. Preserve originals before replay and retain zero-credit fields.
-- [ ] Run new and existing runner tests; then run the full suite from SOURCE.
+- [x] Write tests for explicit mirror context, recorded provenance, fresh pilot/seed identities, exact replay, changed-context rejection and original default behavior.
+- [x] Observe failure before implementation with `python -m unittest test_imported_context_selection -q`.
+- [x] Pass the selected path through loading, provenance, replay, cohort and CLI. Reject path escape outside root; verify saved context hash before replay. Preserve originals before replay and retain zero-credit fields.
+- [x] Run new and existing runner tests; then run the full suite from SOURCE.
 
 ### Task 3: Review and demonstrate the new priority
 
-- [ ] Independently review the capability boundary and replay path for both contexts; fix any material findings with failing regressions first.
-- [ ] Run `python -m unittest discover -p 'test_*.py' -q` from SOURCE. Expected: all tests pass.
-- [ ] Inspect mirror readiness, then run 60 new diagnostic attempts with 30 starts each and exact replays. Preserve every halt and report actual totals.
-- [ ] Update AGENTS.md/STATUS.md with user delegation, development choice, checks and actual remaining blockers. Keep the original queue unchanged.
-- [ ] Commit the changes and integrate them into the shared work branch.
+- [x] Independently review the capability boundary and replay path for both contexts; fix any material findings with failing regressions first.
+- [x] Run `python -m unittest discover -p 'test_*.py' -q` from SOURCE. Expected: all tests pass.
+- [x] Inspect mirror readiness, then run 60 new diagnostic attempts with 30 starts each and exact replays. Preserve every halt and report actual totals.
+- [x] Update AGENTS.md/STATUS.md with user delegation, development choice, checks and actual remaining blockers. Keep the original queue unchanged.
+- [x] Commit the changes and integrate them into the shared work branch.
 
 ## Execution notes
 
@@ -63,3 +63,10 @@ written before concurrent implementation; production files do not overlap.
 Root implements Task 1 and a separate worker implements Task 2. The user has
 delegated implementation choices and asked to proceed; no further approval is
 needed for this reversible scope-preserving increment.
+
+Task1: complete. Original per-action rejection labels retained for compatibility.
+Task2: complete. Fresh worker implemented runner with failing regressions first.
+Task3: tested335/335; mirror diagnostic02 60 HALTs,60 exact replays; original queue unchanged.
+Final review: independent review found a preflight/rerun context-swap race. Two new regressions RED→GREEN; full suite335/335.
+Ruling: add load_context_bytes and an internal expected-context argument so parsing/hashing use one immutable input and replay checks its expected identity/hash before any game action. This strengthens the stated replay contract.
+Publication preparation: user requested a Python handoff and GitHub publish flow; finish checkpoint and publish a draft PR, preserving the default branch.

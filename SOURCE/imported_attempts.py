@@ -23,7 +23,7 @@ from effect_scheduler import pending_options, resolve_pending
 from main_actions import choose_play
 from match_context import canonical, digest
 from match_preparation import begin_preparation, choose_redraw
-from matchup_readiness import load_context_file
+from matchup_readiness import load_context_file, load_context_bytes
 from phase_flow import advance_phase, choose_breeding_action
 from search_effects import SEARCH_SPECS, search_choices
 from selected_mechanics import build_selected_registry, INHERITED_REACTIONS, PHASE_EFFECTS
@@ -236,23 +236,28 @@ def _context_path(root, context_file):
     return path, path.relative_to(root).as_posix()
 
 
-def _load_context_selection(root, context_file):
+def _load_context_selection(root, context_file, *, expected_context=None):
     from selected_contexts import require_selected_context
 
     path, relative = _context_path(root, context_file)
     body = path.read_bytes()
-    context = load_context_file(path)
+    body_sha256 = hashlib.sha256(body).hexdigest()
+    if expected_context is not None and body_sha256 != expected_context[1]:
+        raise RuntimeHalt('REPLAY_CONTEXT_FILE_CHANGED')
+    context = load_context_bytes(body)
+    if expected_context is not None and context.matchup_id != expected_context[0]:
+        raise RuntimeHalt('REPLAY_CONTEXT_ID_MISMATCH')
     require_selected_context(context, root)
-    if path.read_bytes() != body:
-        raise RuntimeHalt('CONTEXT_FILE_CHANGED_DURING_LOAD')
-    return context, relative, hashlib.sha256(body).hexdigest()
+    return context, relative, body_sha256
 
 
-def run_attempt(index, root=ROOT, max_commands=300, *, context_file=CONTEXT_FILE):
+def run_attempt(index, root=ROOT, max_commands=300, *, context_file=CONTEXT_FILE,
+                _expected_context=None):
     if type(max_commands) is not int or max_commands < 1:
         raise ValueError('Positive command budget required')
     root = Path(root).resolve()
-    context, context_file, context_file_sha256 = _load_context_selection(root, context_file)
+    context, context_file, context_file_sha256 = _load_context_selection(
+        root, context_file, expected_context=_expected_context)
     seed = seed_for(index, context.matchup_id)
     first = 'A' if index % 2 == 0 else 'B'
     runtime = ContextRuntime(context, seed, first, build_selected_registry(context, root),
@@ -400,7 +405,8 @@ def replay_attempt(record, root=ROOT):
         raise RuntimeHalt('REPLAY_CONTEXT_ID_MISMATCH')
     # Legacy records without a saved path use the original default only. A
     # matching context ID is still required before any gameplay can rerun.
-    replay = run_attempt(record['index'], root, record['max_commands'], context_file=context_file)
+    replay = run_attempt(record['index'], root, record['max_commands'], context_file=context_file,
+                         _expected_context=(record['context_id'], expected_sha256))
     return {'index': record['index'], 'exact_match': canonical(record) == canonical(replay),
             'saved_record_sha256': digest(record), 'replayed_record_sha256': digest(replay),
             'certification': 'NONE_SOFTWARE_REPLAY_ONLY'}
@@ -418,7 +424,8 @@ def write_attempts(out, root=ROOT, count=60, max_commands=300, *, context_file=C
     rows = []
     replays = []
     for index in range(count):
-        record = run_attempt(index, root, max_commands, context_file=context_file)
+        record = run_attempt(index, root, max_commands, context_file=context_file,
+                             _expected_context=(context.matchup_id, context_file_sha256))
         body = canonical(record) + b'\n'
         name = f'attempt-{index:04d}.json.gz'
         with (out / name).open('xb') as handle:

@@ -1,5 +1,33 @@
 # Verified handoff status
 
+## Current development priority: Ulforce mirror — 2026-11-02
+
+User delegated the best starting matchup. Selected two different exact workbook
+lists, Federico Nine123129 (A) and Bern122110 (B), each50 main+4 eggs. Their
+union is22 source-pinned cards /79 printed units, compared with45 /150 in the
+original pair. This narrows implementation scope without predicting deck
+strength or completion time. Original randomized queue and old evidence remain
+unchanged; mirror pair is queue entry145.
+
+Added shared exact-context capability resolution and explicit diagnostic context
+selection/replay. Both context ID and ordered source IDs are pinned. Changed
+cards/counts/rules/IDs or escaping input paths do not gain support. Replay uses
+one immutable context-byte snapshot and verifies expected bytes/identity before
+runtime construction, including changes between preflight and execution.
+
+**335 tests passed** (57.555s). Fresh mirror diagnostic version02: **60 attempts,
+30 starts per deck,60 exact replays,60 HALTs**. First stops:42 actual On Play,
+8 Options,7 battle evolutions,2 stacked boards,1 scoped security card. No full
+current-context games, approved roadmaps or final evaluation results exist.
+Version01 is preserved; runner edits changed pilot identities, so differences
+between cohorts are not an isolated mechanic-effect comparison.
+
+Active context: `ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json`.
+Evidence: `ARTIFACTS/ulforce-bootstrap-diagnostic-2026-11-02-02/`.
+Read `PYTHON_DEVELOPER_HANDOFF.md` for setup, architecture, sources, exact commands
+and concrete next work. Original runner default remains Ulforce/Gallantmon;
+use `--context-file` for the current development pairing.
+
 ## Gameplay reference intake — 2026-11-02
 
 Indexed eight user-supplied timestamped transcripts (5,029 caption blocks),

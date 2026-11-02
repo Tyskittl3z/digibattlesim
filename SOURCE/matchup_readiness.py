@@ -18,8 +18,9 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CONTEXT = ROOT / 'ARTIFACTS/ex13-engine-2026-10-30/context.json'
 
 
-def load_context_file(path):
-    bundle = json.loads(Path(path).read_bytes())
+def load_context_bytes(body):
+    """Parse one immutable byte snapshot; provenance must hash these same bytes."""
+    bundle = json.loads(body)
     raw = bundle['context']
     require(raw.get('schema') == 'imported-matchup-context-v1', 'Unknown matchup context schema')
     context = MatchContext.create(DeckDefinition.from_dict(raw['decks']['A']),
@@ -28,6 +29,10 @@ def load_context_file(path):
                                   raw['rules'])
     require(bundle.get('matchup_id') == context.matchup_id, 'Matchup context hash mismatch')
     return context
+
+
+def load_context_file(path):
+    return load_context_bytes(Path(path).read_bytes())
 
 
 def inspect_readiness(context, registry, root=ROOT):

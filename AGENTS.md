@@ -5,6 +5,16 @@ This repository is a **simulation and numerical-results tool**, not a deck-build
 User owns all deck construction, interpretation, and decisions; offer **no card/slot recommendations** and no speculative conclusions. User-requested numerical deck comparisons are allowed. Do not alter decklists without explicit user instruction.
 
 ## Scope and isolation
+- **User-delegated development priority (2026-11-02):** The user said the
+  starting matchup need not be Ulforce/Gallantmon and delegated whichever route
+  works best. Bootstrap the two distinct workbook Ulforce lists: Federico Nine
+  123129 (A) versus Bern 122110 (B), 50+4 each, 22 distinct pinned cards. Active
+  context: `ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json`. This is an
+  engineering priority choice, not a deck recommendation or a change to the
+  preserved random queue (this pair is entry145). Preserve original-pair
+  evidence; new matchup gets fresh pilots/seeds/roadmaps/results. The original
+  diagnostic CLI default remains for compatibility: explicitly pass the new
+  context. Read `PYTHON_DEVELOPER_HANDOFF.md` and the latest STATUS first.
 - **User-authorized engine-track expansion (2026-10-30):** The user selected
   `DigiLab_EX13_Top_Decklists_Deduplicated.xlsx` (54 indexed exact-list entries,
   11 archetypes), requested randomized matchups, and confirmed a separate
