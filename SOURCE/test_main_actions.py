@@ -91,4 +91,13 @@ class MainPlayTests(unittest.TestCase):
             with self.subTest(mutation=mutation),self.assertRaisesRegex(RuntimeHalt,'SELECTED_PLAY_CAPABILITY_REQUIRED'):
                 choose_play(r,'A',key,ROOT)
             self.assertEqual(before,r.snapshot()['state'])
+
+    def test_inert_singleton_board_allows_second_plain_or_search_play(self):
+        for number in ('EX1-013','BT11-023'):
+            r=self.runtime();r.state.memory=6
+            existing=stage(r,'B',['ST7-05'])
+            key=hand_card(r,'A',number)
+            choose_play(r,'A',key,ROOT)
+            self.assertIn(existing,r.state.battle['B']);self.assertIn(key,r.state.battle['A'])
+            self.assertEqual(r.state.memory,3);r.verify()
 if __name__=='__main__':unittest.main()

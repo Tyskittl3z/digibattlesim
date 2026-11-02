@@ -1,4 +1,4 @@
-"""First main-phase play actions, deliberately scoped to an empty live board.
+"""Main-phase play actions scoped to verified inert singleton battlefields.
 
 Unknown On Play, Option, live replacement/trigger and Assembly interactions
 halt before card/cost mutation. This is not a complete main-action generator.
@@ -34,8 +34,8 @@ def _play(runtime,seat,choice,root):
     spec=SEARCH_SPECS.get(card.number)
     if spec is None and (card.number not in PLAIN_MAIN_TEXT or card.effect_text('main_text')!=PLAIN_MAIN_TEXT[card.number]):
         raise RuntimeHalt('PLAY_EFFECT_UNSUPPORTED: '+card.number)
-    if any(state.battle[owner] for owner in ('A','B')):
-        raise RuntimeHalt('PLAY_LIVE_BOARD_SCOPE_UNIMPLEMENTED')
+    from battlefield_scope import assert_basic_board_scope
+    assert_basic_board_scope(runtime,'play_search' if spec is not None else 'play_plain',root)
     if spec is not None:
         runtime.registry.lookup(card.number,spec[0],'main_text')
     cost=card.to_dict()['play_cost']
@@ -44,7 +44,7 @@ def _play(runtime,seat,choice,root):
     state.memory-=cost;hand.remove(physical)
     state.entity_sequence+=1
     state.battle[seat][physical.key]=Stack([physical],instance_id='entity-'+str(state.entity_sequence),
-                                         played_turn=state.turn)
+                                         played_turn=state.turn,ready_since_turn=state.turn+1)
     if spec is not None:
         queue_effects(runtime,[{'seat':seat,'source':physical.key,'effect_id':spec[0],'field':'main_text',
                                 'trigger':{'kind':'On Play','card':physical.key}}])

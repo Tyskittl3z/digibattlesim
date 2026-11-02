@@ -1,5 +1,30 @@
 # Verified handoff status
 
+## EX13 live turn/attack continuation — 2026-11-01
+
+Paused work was reverified at 247 passing tests and committed as 24fee77.
+Current suite: **307 passed**. Added explicit pass/turn switching, basic attack
+Counter/Block/success/end windows, scoped DP/security battles and terminal guards,
+inert live-board capability, and EX13-017/EX8-009 searches. Fourteen mechanic
+bindings remain EXPERIMENTAL_UNREVIEWED; full selected-pair gameplay is incomplete.
+
+Actually executed two balanced diagnostic cohorts on the **same 60 original
+seeds/pilots** under different engines: starts30/30 and exact replays60/60 each.
+Both cohorts: 60 HALTs, zero software terminals, zero accepted/full fact-finding
+credit. Version02 removed all21 search-top scope halts; current blockers are
+43 unsupported play capabilities, 11 Option actions, 4 battle evolutions and
+2 stacked boards. No ILLEGAL ruling or deck-strength conclusion is implied.
+
+See `REPORTS/EX13_LIVE_ENGINE_PROGRESS_2026-11-01.md` and
+`ARTIFACTS/imported-diagnostic-2026-11-01-02/summary.json` before resuming.
+Original seed/trace/policy identities and both versions are preserved.
+Rules/branch review, valid60+, approved roadmaps and final freeze remain unmet:
+**0 judge-valid matches, 0 approved lanes, 0/10,000 final matches**.
+
+Next: implement the actually encountered play/evolution/Option/stack interactions
+and rerun those same seeds. Source metadata-review notes identify unresolved
+X Antibody extraction and Q&A keyword issues; do not guess around them.
+
 ## EX13 engine track — 2026-10-30
 
 The user authorized randomized pairings from the uploaded 54-entry/11-archetype

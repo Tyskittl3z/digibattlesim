@@ -1,5 +1,12 @@
 # First Codex task (execute, don't just plan)
 
+> **2026-11-01 live continuation:** Read the latest STATUS section and
+> `REPORTS/EX13_LIVE_ENGINE_PROGRESS_2026-11-01.md`. The selected engine now has
+> 307 passing tests and actual balanced diagnostic attempts; both60-attempt
+> versions halted and provide zero accepted-match credit. Continue from their
+> preserved seeds and exact blockers; do not restart the project or reinterpret
+> the diagnostic cohort as the completed fact-finding requirement.
+
 > **2026-10-30 continuation:** The user expanded this engine track to selected,
 > randomized exact pairs from `DigiLab_EX13_Top_Decklists_Deduplicated.xlsx` and
 > chose English-version worldwide rules. The old two-deck-only restriction below

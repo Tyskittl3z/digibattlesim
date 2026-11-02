@@ -1,4 +1,4 @@
-"""Experimental printed-route main action, restricted to empty battle areas.
+"""Experimental printed routes with empty or verified inert battle areas.
 
 Official comprehensive rules v4.3, 3-4-7-3..8: ordinary effects on/involving
 breeding cards do not activate or trigger. 8-1-3-1..3 specifies choose, pay,
@@ -10,13 +10,14 @@ from dataclasses import asdict
 from context_evolution import printed_evolution_options, UnsupportedEvolutionCondition
 from context_runtime import RuntimeHalt
 from match_preparation import _rules
+from pathlib import Path
 
 
 RULE_LOCATOR = ('Comprehensive rules v4.3: 1-3-11-1; 3-4-7-3 through 3-4-7-8; '
                 '6-5; 8-1-2-8; 8-1-3-1 through 8-1-3-3')
 
 
-def _guard(runtime, seat):
+def _guard(runtime, seat, root=None):
     runtime.context.deck(seat)
     if (runtime.context.deck_a.source_id,runtime.context.deck_b.source_id) != ('123129','124303'):
         raise RuntimeHalt('SELECTED_PAIR_REQUIRED: Ulforce123129/Gallantmon124303')
@@ -28,10 +29,9 @@ def _guard(runtime, seat):
     if runtime.state.phase != 'MAIN':raise RuntimeHalt('MAIN_PHASE_REQUIRED')
     if runtime.state.pending:raise RuntimeHalt('PENDING_EFFECTS_REQUIRE_RESOLUTION')
     if runtime.state.memory < 0:raise RuntimeHalt('TURN_END_WINDOW_UNIMPLEMENTED')
-    for owner in ('A','B'):
-        if runtime.state.battle[owner]:
-            raise RuntimeHalt('LIVE_BATTLE_SCOPE_UNSUPPORTED: '+owner+
-                              ' battle area must be empty; live cost/name/prohibition interactions unmodeled')
+    if any(runtime.state.battle[owner] for owner in ('A','B')):
+        from battlefield_scope import assert_basic_board_scope
+        assert_basic_board_scope(runtime,'breeding_evolve',root or Path(__file__).resolve().parents[1])
     if not runtime.state.breeding[seat]:raise RuntimeHalt('BREEDING_SOURCE_REQUIRED')
     top=runtime.state.breeding[seat][-1]
     if runtime.context.card(seat,top.card_number).kind not in ('Digi-Egg','Digimon'):
@@ -71,8 +71,8 @@ def breeding_evolution_choices(runtime,seat):
     return choices
 
 
-def _choose(runtime,seat,choice):
-    _guard(runtime,seat)
+def _choose(runtime,seat,choice,root):
+    _guard(runtime,seat,root)
     key=choice['hand_key'];index=choice['route_index']
     card=next((c for c in runtime.state.zones[seat]['hand'] if c.key==key),None)
     if card is None:raise RuntimeHalt('HAND_COPY_REQUIRED: '+str(key))
@@ -99,4 +99,5 @@ def choose_breeding_evolution(runtime,seat,hand_key,route_index,root):
     evidence=_rules(root)
     evidence={**evidence,'locator':RULE_LOCATOR}
     return runtime._control_command('BREEDING_EVOLUTION',seat,
-            {'hand_key':hand_key,'route_index':route_index,'rules':evidence},_choose)
+            {'hand_key':hand_key,'route_index':route_index,'rules':evidence},
+            lambda r,s,c:_choose(r,s,c,root))

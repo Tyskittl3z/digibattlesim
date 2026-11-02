@@ -41,7 +41,7 @@ def inspect_readiness(context, registry, root=ROOT):
     if not rules.get('region'):
         block('REGION_UNSELECTED', 'EX13 and English are source labels; applicable tournament region is unconfirmed.')
     block('RULES_SNAPSHOT_UNREVIEWED', 'Official bytes retrieved; edition/effective-date pins and independent rules review remain required.')
-    block('FULL_MATCH_ENGINE_UNIMPLEMENTED', 'Opening/initial phases, pending reactions, empty-board first play/search and breeding evolution exist; live-board main actions, attack/security and full turn-end play remain incomplete.')
+    block('FULL_MATCH_ENGINE_UNIMPLEMENTED', 'Turn switching, scoped battlefield actions, explicit attack windows and plain security battles exist. Remaining card effects, stacked/modified battlefields, counters, Options and end triggers prevent complete selected-pair gameplay.')
     block('MECHANIC_PACK_UNREVIEWED', 'Experimental software bindings have no independent judge approval.')
     block('NO_CURRENT_FACT_FINDING_COHORT', 'Zero full current-context matches; require 60+ judge-valid matches with balanced starts and reviewed branch coverage.')
     block('ROADMAPS_UNAPPROVED', 'No current-context pilots, evaluated legal alternatives or approved best/medium/worst roadmaps.')
@@ -124,7 +124,8 @@ def inspect_readiness(context, registry, root=ROOT):
         Path(__file__).with_name('selected_mechanics.py'),Path(__file__).with_name('effect_scheduler.py'),
         Path(__file__).with_name('match_preparation.py'),Path(__file__).with_name('phase_flow.py'),
         Path(__file__).with_name('main_actions.py'),Path(__file__).with_name('breeding_evolution.py'),
-        Path(__file__).with_name('search_effects.py')]}
+        Path(__file__).with_name('search_effects.py'),Path(__file__).with_name('turn_flow.py'),
+        Path(__file__).with_name('battlefield_scope.py'),Path(__file__).with_name('attack_flow.py')]}
     return {'schema': 'imported-matchup-readiness-v1', 'status': 'BLOCKED',
             'context_id': context.matchup_id, 'engine_source_sha256': code,
             'decks': {s: context.deck(s).to_dict() for s in ('A', 'B')},

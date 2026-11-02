@@ -130,10 +130,16 @@ class BreedingEvolutionTests(unittest.TestCase):
         self.assertEqual(before,r.snapshot()['state'])
 
     def test_live_battle_on_either_side_refused_before_mutation(self):
-        for seat,number in [('A','BT11-023'),('B','BT19-007')]:
+        for seat,number in [('A','EX13-022'),('B','BT19-007')]:
             r=self.runtime();stage(r,seat,[number]);before=r.snapshot()['state']
-            with self.assertRaisesRegex(RuntimeHalt,'LIVE_BATTLE_SCOPE_UNSUPPORTED'):self.choose(r)
+            with self.assertRaisesRegex(RuntimeHalt,'BASIC_BOARD_'):self.choose(r)
             self.assertEqual(before,r.snapshot()['state'])
+
+    def test_inert_singletons_do_not_block_ordinary_breeding_evolution(self):
+        r=self.runtime();stage(r,'A',['EX1-013']);stage(r,'B',['ST7-05'])
+        self.choose(r)
+        self.assertEqual(r.state.breeding['B'][-1].card_number,'EX8-009')
+        self.assertEqual(r.state.pending,[]);r.verify()
 
     def test_empty_evolution_draw_does_not_lose(self):
         r=self.runtime();r.state.zones['B']['trash'].extend(r.state.zones['B']['deck']);r.state.zones['B']['deck']=[]

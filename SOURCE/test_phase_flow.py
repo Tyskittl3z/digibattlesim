@@ -84,20 +84,36 @@ class PhaseTests(unittest.TestCase):
             advance_phase(r,'A',ROOT)
         self.assertEqual(before,r.snapshot()['state'])
 
-    def test_egg_cannot_promote_and_when_moving_search_is_not_skipped(self):
+    def test_egg_cannot_promote(self):
         r=self.runtime();r.state.phase='BREEDING'
         egg=r.state.zones['A']['eggdeck'].pop();r.state.breeding['A']=[egg]
         before=r.snapshot()['state']
         with self.assertRaisesRegex(RuntimeHalt,'PROMOTION_REQUIRES_LEVEL_3'):
             choose_breeding_action(r,'A','promote',ROOT)
         self.assertEqual(before,r.snapshot()['state'])
+
+    def test_draw_phase_deckout_is_terminal_and_never_continues_to_breeding(self):
+        r=self.runtime();r.state.phase='DRAW';r.state.turn=2;r.state.active='B'
+        r.state.zones['B']['trash'].extend(r.state.zones['B']['deck']);r.state.zones['B']['deck']=[]
+        advance_phase(r,'B',ROOT)
+        self.assertTrue(r.state.terminal);self.assertEqual(r.state.winner,'A')
+        self.assertEqual(r.state.phase,'DRAW');self.assertEqual(r.state.terminal_reason,'DRAW_PHASE_DECKOUT')
+        self.assertEqual(r.matches_played,0)
+
+    def test_when_moving_search_finishes_before_main_phase_begins(self):
         r=self.runtime();r.state.phase='BREEDING'
         c=next(c for c in r.state.zones['A']['deck'] if c.card_number=='EX13-017')
         r.state.zones['A']['deck'].remove(c);r.state.breeding['A']=[c]
-        before=r.snapshot()['state']
-        with self.assertRaisesRegex(RuntimeHalt,'WHEN_MOVING_UNSUPPORTED.*EX13-017'):
-            choose_breeding_action(r,'A','promote',ROOT)
-        self.assertEqual(before,r.snapshot()['state'])
+        choose_breeding_action(r,'A','promote',ROOT)
+        self.assertEqual(r.state.phase,'BREEDING_MOVING_EFFECTS')
+        opts=pending_options(r,'A');self.assertEqual(len(opts),1)
+        self.assertEqual(opts[0]['effect_id'],'EX13-017.on_play_search')
+        from search_effects import search_choices
+        choices=search_choices(r,'A',c.key);selected=choices['selections'][0]
+        bottom=[k for k in choices['revealed'] if k not in selected]
+        resolve_pending(r,'A',opts[0]['id'],{'selected':selected,'bottom_order':bottom})
+        self.assertEqual(r.state.phase,'BREEDING_MOVING_EFFECTS')
+        advance_phase(r,'A',ROOT);self.assertEqual(r.state.phase,'MAIN')
 
 
 if __name__=='__main__':unittest.main()

@@ -38,6 +38,7 @@ class Stack:
     statuses: dict = field(default_factory=dict)
     instance_id: str = ''
     played_turn: int | None = None
+    ready_since_turn: int | None = None
 
 
 @dataclass
@@ -55,6 +56,9 @@ class PhysicalState:
     entity_sequence: int = 0
     phase: str = 'SCENARIO'
     preparation: dict = field(default_factory=lambda:{'started':False,'choices':[]})
+    attack: dict | None = None
+    winner: str | None = None
+    terminal_reason: str | None = None
 
 
 @dataclass(frozen=True)
@@ -141,7 +145,7 @@ def state_value(value):
     if isinstance(value, Stack):
         return {'cards': [c.key for c in value.cards], 'suspended': value.suspended,
                 'statuses': state_value(value.statuses), 'instance_id': value.instance_id,
-                'played_turn':value.played_turn}
+                'played_turn':value.played_turn,'ready_since_turn':value.ready_since_turn}
     if isinstance(value, dict):
         return {k: state_value(v) for k, v in value.items()}
     if isinstance(value, (tuple, list)):
@@ -200,7 +204,8 @@ class ContextRuntime:
         code = {name: hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
                 for name in ('context_runtime.py', 'match_context.py', 'effect_scheduler.py','match_preparation.py',
                              'phase_flow.py','breeding_evolution.py','main_actions.py',
-                             'context_evolution.py','search_effects.py','selected_mechanics.py')}
+                             'context_evolution.py','search_effects.py','selected_mechanics.py',
+                             'turn_flow.py','battlefield_scope.py','attack_flow.py')}
         return digest({'context_id': self.context.matchup_id, 'packs': self.registry.manifest(),
                        'engine': code, 'allow_experimental': self.allow_experimental})
 
@@ -227,6 +232,8 @@ class ContextRuntime:
             }
         return {'active': self.state.active, 'memory': self.state.memory, 'turn': self.state.turn,
                 'phase':self.state.phase,
+                'attack':state_value(self.state.attack),'terminal':self.state.terminal,
+                'winner':self.state.winner,
                 'players': players}
 
     def verify(self):
@@ -240,7 +247,8 @@ class ContextRuntime:
         if state.active not in ('A', 'B') or type(state.terminal) is not bool:
             raise RuntimeHalt('TURN_STATE_INVALID')
         if type(state.turn) is not int or state.turn<0 or state.phase not in (
-                'SCENARIO','INITIAL_HANDS','START_OF_TURN','TURN_START_EFFECTS','UNSUSPEND','DRAW','BREEDING','MAIN','END_OF_TURN'):
+                'SCENARIO','INITIAL_HANDS','START_OF_TURN','TURN_START_EFFECTS','UNSUSPEND','DRAW','BREEDING',
+                'BREEDING_MOVING_EFFECTS','MAIN','END_OF_TURN'):
             raise RuntimeHalt('TURN_PHASE_INVALID')
         for seat in ('A', 'B'):
             if set(state.zones[seat]) != {'deck', 'eggdeck', 'hand', 'security', 'trash'}:
@@ -266,6 +274,10 @@ class ContextRuntime:
         canonical(state_value(vars(state)))
         from effect_scheduler import validate_pending
         validate_pending(self)
+        from attack_flow import validate_attack
+        validate_attack(state)
+        if state.winner is not None and (not state.terminal or state.winner not in ('A','B') or not isinstance(state.terminal_reason,str)):
+            raise RuntimeHalt('TERMINAL_RESULT_INVALID')
 
     def _source(self, seat, source_key, field_):
         self.context.deck(seat)
@@ -297,6 +309,8 @@ class ContextRuntime:
             self.verify()
             if self.state.terminal:
                 raise RuntimeHalt('ACTION_AFTER_TERMINAL')
+            if self.state.attack and pending_id is None:
+                raise RuntimeHalt('ATTACK_PROCESSING_PENDING')
             selected_pending = None
             if pending_id is not None:
                 from effect_scheduler import pending_options
@@ -365,7 +379,7 @@ class ContextRuntime:
             return {'cancelled':prune_pending(trial)}
         return self._control_command('SETTLE_PENDING',self.state.active,None,settle,allow_pending=True)
 
-    def _control_command(self,kind,seat,choice,operation,*,allow_pending=False):
+    def _control_command(self,kind,seat,choice,operation,*,allow_pending=False,allow_attack=False):
         """Atomic trusted rules primitive; never an unbound pilot action API."""
         if self.halted:
             raise RuntimeHalt('ALREADY_HALTED')
@@ -377,6 +391,8 @@ class ContextRuntime:
             self.verify()
             if self.state.terminal:
                 raise RuntimeHalt('ACTION_AFTER_TERMINAL')
+            if self.state.attack is not None and not allow_attack:
+                raise RuntimeHalt('ATTACK_PROCESSING_PENDING')
             if self.state.pending and not allow_pending:
                 raise RuntimeHalt('PENDING_EFFECTS_REQUIRE_RESOLUTION')
             if canonical(self.registry.manifest())!=self._pack_manifest:
@@ -403,5 +419,5 @@ class ContextRuntime:
     def _finish_main_processing(self):
         # Turn-end conditions are checked after all current processing, including
         # derived effects. END_OF_TURN is an explicit unimplemented window.
-        if self.state.phase=='MAIN' and self.state.memory<0 and not self.state.pending:
+        if self.state.phase=='MAIN' and self.state.memory<0 and not self.state.pending and not self.state.attack and not self.state.terminal:
             self.state.phase='END_OF_TURN'

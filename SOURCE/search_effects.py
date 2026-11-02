@@ -12,11 +12,13 @@ from context_runtime import MechanicBinding, RuntimeHalt
 from match_context import require
 
 SEARCH_SPECS = {
+ 'EX13-017': ('EX13-017.on_play_search', '[When Moving] [On Play] Reveal the top 3 cards of your deck. Add 1 card with [Veedramon] in its text or the [Royal Knight] trait among them to the hand. Return the rest to the bottom of the deck.', 3),
+ 'EX8-009': ('EX8-009.on_play_search', '[On Play] [When Digivolving] Reveal the top 3 cards of your deck. Add 1 card with [Growlmon] or [Gallantmon] in its name and 1 [X Antibody] among them to the hand. Return the rest to the bottom of the deck.', 3),
  'BT11-023': ('BT11-023.on_play_search', '[On Play] Reveal the top 3 cards of your deck. Add 1 Digimon card with [Veedramon] in its name and 1 blue Tamer card among them to your hand. Place the rest at the bottom of your deck in any order.', 3),
  'P-138': ('P-138.on_play_search', '[On Play] [When Digivolving] Reveal the top 3 cards of your deck. Add 1 Digimon card with [Veedramon] in its name and 1 blue Tamer card among them to the hand. Return the rest to the bottom of the deck.', 3),
  'EX2-008': ('EX2-008.on_play_search', '[On Play] Reveal the top 4 cards of your deck. Add 1 card with [Growlmon] or [Gallantmon] in its name and 1 [Takato Matsuki] among them to your hand. Place the remaining cards at the bottom of your deck in any order.', 4),
 }
-_QA = {'BT11-023':'Q2066/Q2067','P-138':'Q4244/Q4245','EX2-008':'Q3289/Q3290'}
+_QA = {'EX13-017':'Q7255 (printed-text definition)', 'EX8-009':'exact On Play text; Q3874 concerns inherited effect only','BT11-023':'Q2066/Q2067','P-138':'Q4244/Q4245','EX2-008':'Q3289/Q3290'}
 
 
 def _selection_alternatives(keys, slots):
@@ -28,6 +30,25 @@ def _selection_alternatives(keys, slots):
             candidates.add(tuple(k for k in keys if k in chosen))
     maximum = max(map(len,candidates))
     return [list(c) for c in sorted(candidates) if len(c)==maximum]
+
+
+def _has_veedramon_text(card):
+    """Q7255: search printed game text, excluding source/catalog metadata.
+
+    Special conditions contain Rule, DNA, DigiXros, Burst, App Fusion, Link,
+    Assembly and special evolution text in this context schema.
+    """
+    def strings(value):
+        if isinstance(value,str): return [value]
+        if isinstance(value,dict):
+            return [text for key,item in value.items() for text in strings(key)+strings(item)]
+        if isinstance(value,(tuple,list)):
+            return [text for item in value for text in strings(item)]
+        return []
+    raw=card.to_dict()
+    return any('Veedramon' in text for field in (
+        'name','traits','main_text','inherited_text','security_text',
+        'special_conditions','normal_digivolution') for text in strings(raw.get(field)))
 
 
 def search_choices(runtime, seat, source_key):
@@ -51,12 +72,15 @@ def search_choices(runtime, seat, source_key):
                 raise RuntimeHalt('SEARCH_ACTIVATION_WINDOW_REQUIRED')
     count = SEARCH_SPECS[source.card_number][2]
     revealed = list(reversed(runtime.state.zones[seat]['deck'][-count:]))
-    slots = (set(),set())
+    slots = (set(),) if source.card_number == 'EX13-017' else (set(),set())
     for physical in revealed:
         card = runtime.context.card(seat,physical.card_number)
-        if source.card_number == 'EX2-008':
+        if source.card_number == 'EX13-017':
+            first = _has_veedramon_text(card) or 'Royal Knight' in card.to_dict()['traits']
+            second = False
+        elif source.card_number in ('EX2-008','EX8-009'):
             first = any(n in card.name for n in ('Growlmon','Gallantmon'))
-            second = card.name == 'Takato Matsuki'
+            second = card.name == ('X Antibody' if source.card_number == 'EX8-009' else 'Takato Matsuki')
         else:
             first = card.kind == 'Digimon' and 'Veedramon' in card.name
             second = card.kind == 'Tamer' and 'Blue' in card.to_dict()['colors']

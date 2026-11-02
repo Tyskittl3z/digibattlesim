@@ -1,12 +1,13 @@
 """Selected-pair opening phases, with explicit trigger and breeding choices.
 
-No main-action loop, attacks or results are implemented by this module. Every
-unsupported timing/status/turn-end interaction halts before the command commits.
+Main actions/attacks are separate modules; this module also records experimental
+draw-phase deckout. Unsupported timing/status interactions halt before commit.
 """
 from context_runtime import RuntimeHalt,Stack
 from effect_scheduler import queue_effects
 from match_preparation import _rules
 from selected_mechanics import PHASE_EFFECTS,_orientation_dependencies,_orientation_reactions
+from search_effects import SEARCH_SPECS
 
 
 def _actor(runtime,seat):
@@ -57,18 +58,24 @@ def _advance(runtime,seat,choice):
     elif state.phase=='DRAW':
         if not (state.turn==1 and seat==runtime.first):
             if not state.zones[seat]['deck']:
-                raise RuntimeHalt('DRAW_PHASE_DECKOUT_RESULT_HANDLING_UNIMPLEMENTED')
+                state.terminal=True;state.winner='B' if seat=='A' else 'A'
+                state.terminal_reason='DRAW_PHASE_DECKOUT'
+                return {'phase':state.phase,'winner':state.winner,'status':'EXPERIMENTAL_TERMINAL',
+                        'full_match_credit':0,'rules_source':choice['rules']}
             state.zones[seat]['hand'].append(state.zones[seat]['deck'].pop())
         state.phase='BREEDING'
     elif state.phase=='MAIN':
         raise RuntimeHalt('MAIN_ACTION_REQUIRED_NOT_IMPLICIT_PASS')
+    elif state.phase=='BREEDING_MOVING_EFFECTS':
+        state.phase='MAIN'
+        _phase_triggers(runtime,seat,'Start of Your Main Phase')
     else:
         raise RuntimeHalt('PHASE_ADVANCE_NOT_AVAILABLE: '+state.phase)
     return {'phase':state.phase,'full_match_credit':0,'rules_source':choice['rules']}
 
 
 def advance_phase(runtime,seat,root):
-    rules={**_rules(root),'locator':'Comprehensive rules v4.3: 6-1 through 6-4; 15-4'}
+    rules={**_rules(root),'locator':'Comprehensive rules v4.3: 1-2-3-2; 6-1 through 6-4; 15-4'}
     return runtime._control_command('ADVANCE_PHASE',seat,{'rules':rules},_advance)
 
 
@@ -86,11 +93,20 @@ def _breeding(runtime,seat,choice):
         top=cards[-1];definition=runtime.context.card(seat,top.card_number).to_dict()
         if definition['type']!='Digimon' or not isinstance(definition['level'],int) or definition['level']<3:
             raise RuntimeHalt('PROMOTION_REQUIRES_LEVEL_3_OR_HIGHER')
+        moving=None
         if '[When Moving]' in definition['main_text']:
-            raise RuntimeHalt('WHEN_MOVING_UNSUPPORTED: '+top.card_number)
+            moving=SEARCH_SPECS.get(top.card_number)
+            if moving is None or '[When Moving]' not in moving[1] or moving[1] not in definition['main_text'].splitlines():
+                raise RuntimeHalt('WHEN_MOVING_UNSUPPORTED: '+top.card_number)
         state.entity_sequence+=1
-        state.battle[seat][top.key]=Stack(list(cards),instance_id='entity-'+str(state.entity_sequence))
+        state.battle[seat][top.key]=Stack(list(cards),instance_id='entity-'+str(state.entity_sequence),
+                                        ready_since_turn=state.turn)
         state.breeding[seat]=[]
+        if moving is not None:
+            queue_effects(runtime,[{'seat':seat,'source':top.key,'effect_id':moving[0],'field':'main_text',
+                                   'trigger':{'kind':'When Moving','card':top.key}}])
+            state.phase='BREEDING_MOVING_EFFECTS'
+            return {'action':action,'phase':state.phase,'full_match_credit':0,'rules_source':choice['rules']}
     elif action!='skip':raise RuntimeHalt('BREEDING_CHOICE_INVALID')
     state.phase='MAIN'
     _phase_triggers(runtime,seat,'Start of Your Main Phase')
