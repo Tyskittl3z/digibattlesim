@@ -48,13 +48,15 @@ def _number(key):
 
 class ReferencePilot:
     """A new policy instance per attempt/seat; no runtime or audit-state input."""
-    def __init__(self, context_id, index, seat):
+    def __init__(self, context_id, index, seat, *, policy_segment=None):
         if seat not in ('A', 'B'):
             raise ValueError('Pilot seat required')
         self.seat = seat
         self._identity = {'policy': POLICY, 'context_id': context_id,
                           'attempt_index': index, 'seat': seat,
                           'runner_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+        if policy_segment is not None:
+            self._identity['policy_segment'] = copy.deepcopy(policy_segment)
         self._seed = int(digest({'domain': 'pilot-rng', **self._identity})[:16], 16)
         self.rng = random.Random(self._seed)
 
@@ -119,7 +121,11 @@ def main_candidates(runtime, seat, root=ROOT):
             choices.append({'kind': 'PLAY_CARD', 'hand_key': key, 'printed_cost': cost,
                             'legality': 'PRINTED_PAYABLE_NOT_FULL_LEGALITY'})
         elif card['type'] == 'Option':
-            choices.append({'kind': 'UNKNOWN_OPTION_ACTION', 'hand_key': key,
+            from option_actions import OPTION_SPECS, option_colors_met
+            known=card['card_number'] in OPTION_SPECS
+            if known and not option_colors_met(runtime,seat,runtime.context.card(seat,card['card_number'])):
+                continue
+            choices.append({'kind': 'USE_OPTION' if known else 'UNKNOWN_OPTION_ACTION', 'hand_key': key,
                             'printed_cost': cost, 'legality': 'UNVERIFIED_OPTION_ACTION'})
     # Generate possible actions first; validate the chosen action at its actual
     # timing. An unimplemented attack must not block choosing to play or pass.
@@ -134,6 +140,12 @@ def main_candidates(runtime, seat, root=ROOT):
                                     'legality':'PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY'})
     for stack in own['battle'].values():
         source = stack['cards'][-1]
+        if runtime.context.card(seat,_number(source)).kind=='Option':
+            from option_actions import OPTION_SPECS
+            if (_number(source) in OPTION_SPECS
+                    and (stack['played_turn'] is None or stack['played_turn']<view['turn'])):
+                choices.append({'kind':'UNKNOWN_DELAY_ACTION','source_key':source,
+                    'legality':'DELAY_TIMING_CANDIDATE_NOT_FULL_EFFECT_LEGALITY'})
         if runtime.context.card(seat, _number(source)).kind != 'Digimon':
             continue
         for target in own['hand']:
@@ -144,7 +156,7 @@ def main_candidates(runtime, seat, root=ROOT):
                                   + ' target=' + target + ' ' + str(exc)) from exc
             for route_index, route in enumerate(routes):
                 if route.cost <= view['memory'] + 10:
-                    choices.append({'kind': 'UNKNOWN_BATTLE_EVOLUTION', 'source_key': source,
+                    choices.append({'kind': 'BATTLE_EVOLUTION', 'source_key': source,
                                     'hand_key': target, 'route_index': route_index, **asdict(route),
                                     'legality': 'PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY'})
     targets = ['PLAYER'] + [key for key, stack in view['players'][other]['battle'].items()
@@ -177,6 +189,21 @@ def pending_choice(runtime, seat, selected, pilot):
         return pilot.choose(view, [False, True])
     if effect in memory:
         return None
+    from on_play_effects import ON_PLAY_SPECS, on_play_choices
+    if effect in {spec[0] for spec in ON_PLAY_SPECS.values()}:
+        return pilot.choose(view, on_play_choices(runtime, seat, selected['source']))
+    from option_actions import OPTION_SPECS, option_choices
+    if effect in {spec[0] for spec in OPTION_SPECS.values()}:
+        exposed=option_choices(runtime,seat,selected['source'])
+        chosen=pilot.choose(view,exposed['selections'])
+        remainder=[key for key in exposed['revealed'] if key not in chosen]
+        return {'selected':chosen,'bottom_order':pilot.bottom_order(remainder)}
+    from aero_effects import PLAY_EFFECT,DIGIVOLVE_EFFECT,END_EFFECT,aero_choices
+    if effect in (PLAY_EFFECT,DIGIVOLVE_EFFECT,END_EFFECT):
+        return pilot.choose(view,aero_choices(runtime,seat,selected['source'],effect))
+    from tamer_play_effects import PLAY_EFFECT, OBSERVER_EFFECT, tamer_play_choices
+    if effect in (PLAY_EFFECT, OBSERVER_EFFECT):
+        return pilot.choose(view, tamer_play_choices(runtime, seat, selected['source'], effect))
     if effect in {spec[0] for spec in SEARCH_SPECS.values()}:
         exposed = search_choices(runtime, seat, selected['source'])
         chosen = pilot.choose(view, exposed['selections'])
@@ -196,11 +223,19 @@ def _apply(runtime, kind, seat, args, root):
         return choose_breeding_action(runtime, seat, args['action'], root)
     if kind == 'PLAY_CARD':
         return choose_play(runtime, seat, args['hand_key'], root)
+    if kind == 'USE_OPTION':
+        from option_actions import choose_use_option
+        return choose_use_option(runtime,seat,args['hand_key'],root)
     if kind == 'UNKNOWN_OPTION_ACTION':
         raise RuntimeHalt('UNKNOWN_OPTION_ACTION: ' + args['hand_key']
                           + ' OPTION_LEGALITY_AND_EFFECT_UNVERIFIED')
+    if kind == 'UNKNOWN_DELAY_ACTION':
+        raise RuntimeHalt('DELAY_EFFECT_UNIMPLEMENTED: '+args['source_key'])
     if kind == 'BREEDING_EVOLUTION':
         return choose_breeding_evolution(runtime, seat, args['hand_key'], args['route_index'], root)
+    if kind == 'BATTLE_EVOLUTION':
+        from battle_evolution import choose_battle_evolution
+        return choose_battle_evolution(runtime,seat,args['source_key'],args['hand_key'],args['route_index'],root)
     if kind == 'UNKNOWN_BATTLE_EVOLUTION':
         raise RuntimeHalt('BATTLE_EVOLUTION_UNIMPLEMENTED: source=' + args['source_key']
                           + ' target=' + args['hand_key'] + ' route_index=' + str(args['route_index'])
@@ -251,38 +286,213 @@ def _load_context_selection(root, context_file, *, expected_context=None):
     return context, relative, body_sha256
 
 
+def _physical_snapshot(snapshot):
+    """Compare physical state/RNG across engine revisions, retaining all fields.
+
+    execution_id identifies the deliberately changed software, not game state.
+    The sole legacy state migration is the new, initially empty Option slot.
+    """
+    value = copy.deepcopy(snapshot)
+    if not isinstance(value, dict) or not isinstance(value.get('state'), dict):
+        raise RuntimeHalt('CONTINUATION_PHYSICAL_SNAPSHOT_INVALID')
+    value.pop('execution_id', None)
+    value['state'].setdefault('resolving_option', None)
+    return value
+
+
+def _comparable_public_view(view):
+    value = copy.deepcopy(view)
+    if not isinstance(value, dict):
+        raise RuntimeHalt('CONTINUATION_PREFIX_PUBLIC_VIEW_INVALID')
+    value.setdefault('resolving_option', None)
+    return value
+
+
+def _saved_context_inputs(record, root):
+    provenance = record.get('replay_provenance', {})
+    if not isinstance(provenance, dict):
+        raise RuntimeHalt('REPLAY_CONTEXT_PROVENANCE_INVALID')
+    path, context_file = _context_path(root, provenance.get('context_file', CONTEXT_FILE))
+    expected_sha256 = provenance.get('context_file_sha256')
+    if (not isinstance(expected_sha256, str) or len(expected_sha256) != 64
+            or any(c not in '0123456789abcdef' for c in expected_sha256)):
+        raise RuntimeHalt('REPLAY_CONTEXT_PROVENANCE_INVALID')
+    body = path.read_bytes()
+    if hashlib.sha256(body).hexdigest() != expected_sha256:
+        raise RuntimeHalt('REPLAY_CONTEXT_FILE_CHANGED')
+    if load_context_bytes(body).matchup_id != record.get('context_id'):
+        raise RuntimeHalt('REPLAY_CONTEXT_ID_MISMATCH')
+    return context_file, expected_sha256
+
+
+def _verify_previous_record_hash(record):
+    lineage = record.get('continuation_provenance')
+    if lineage is not None:
+        if (not isinstance(lineage, dict) or not isinstance(lineage.get('previous_record'), dict)
+                or digest(lineage['previous_record']) != lineage.get('previous_record_sha256')):
+            raise RuntimeHalt('CONTINUATION_PREVIOUS_RECORD_HASH_MISMATCH')
+        _verify_previous_record_hash(lineage['previous_record'])
+
+
+def continue_attempt(previous_record, root=ROOT, max_commands=2000):
+    """Revalidate a saved HALT's decisions, then continue the same physical game.
+
+    This discovery-only operation retains the predecessor and its identities.
+    A fresh, explicitly seeded policy segment makes decisions only after the
+    recorded prefix; neither policy receives snapshots or hidden audit data.
+    """
+    if type(max_commands) is not int or max_commands < 1:
+        raise ValueError('Positive command budget required')
+    root = Path(root).resolve()
+    previous = json.loads(canonical(previous_record))
+    _verify_previous_record_hash(previous)
+    context_file, context_sha256 = _saved_context_inputs(previous, root)
+    commands = previous.get('commands')
+    if (previous.get('status') not in ('HALT', 'DIAGNOSTIC_SOFTWARE_ERROR')
+            or not isinstance(commands, list) or not commands
+            or any(command.get('status') != 'EXPERIMENTAL_RESOLVED' for command in commands[:-1])
+            or commands[-1].get('status') != previous['status']):
+        raise RuntimeHalt('CONTINUATION_HALTED_PREFIX_REQUIRED')
+    if len(commands) > max_commands:
+        raise ValueError('Continuation command budget must exceed the successful prefix')
+    if (type(previous.get('index')) is not int or previous['index'] < 0
+            or type(previous.get('seed')) is not int or previous['seed'] < 0
+            or previous.get('first') not in ('A', 'B')):
+        raise RuntimeHalt('CONTINUATION_ORIGINAL_GAME_INPUTS_INVALID')
+    halts = previous.get('halts')
+    if not isinstance(halts, list) or not halts or not isinstance(halts[-1].get('before'), dict):
+        raise RuntimeHalt('CONTINUATION_BEFORE_HALT_REQUIRED')
+    before = _physical_snapshot(halts[-1]['before'])
+    if (canonical(before) != canonical(_physical_snapshot(previous.get('final')))
+            or before.get('context_id') != previous['context_id']
+            or before.get('seed') != previous['seed'] or before.get('first') != previous['first']
+            or before['state'].get('terminal')):
+        raise RuntimeHalt('CONTINUATION_ORIGINAL_CHECKPOINT_INVALID')
+    return run_attempt(previous['index'], root, max_commands, context_file=context_file,
+                       _expected_context=(previous['context_id'], context_sha256),
+                       _previous_record=previous)
+
+
 def run_attempt(index, root=ROOT, max_commands=300, *, context_file=CONTEXT_FILE,
-                _expected_context=None):
+                _expected_context=None, _previous_record=None):
     if type(max_commands) is not int or max_commands < 1:
         raise ValueError('Positive command budget required')
     root = Path(root).resolve()
     context, context_file, context_file_sha256 = _load_context_selection(
         root, context_file, expected_context=_expected_context)
-    seed = seed_for(index, context.matchup_id)
-    first = 'A' if index % 2 == 0 else 'B'
+    seed = seed_for(index, context.matchup_id) if _previous_record is None else _previous_record['seed']
+    first = ('A' if index % 2 == 0 else 'B') if _previous_record is None else _previous_record['first']
     runtime = ContextRuntime(context, seed, first, build_selected_registry(context, root),
                              allow_experimental=True)
-    pilots = {seat: ReferencePilot(context.matchup_id, index, seat) for seat in ('A', 'B')}
+    previous_hash = digest(_previous_record) if _previous_record is not None else None
+    segment = None if _previous_record is None else {
+        'kind': 'FRESH_POLICY_AFTER_REVALIDATED_PREFIX',
+        'previous_record_sha256': previous_hash,
+        'context_id': context.matchup_id, 'attempt_index': index,
+        'seed_derivation': 'SHA256(pilot-rng,current-policy-identity,previous-record-sha256)[:16]'}
+    pilots = {seat: ReferencePilot(context.matchup_id, index, seat, policy_segment=segment)
+              for seat in ('A', 'B')}
     initial = runtime.snapshot()  # Audit only: never supplied to either pilot.
     commands = []
     current = None
     redraw_count = 0
     status = 'HALT'
     halt_reason = None
+    continuation = None
 
-    def call(kind, seat, args=None, candidates=None):
+    def call(kind, seat, args=None, candidates=None, *, decision_origin=None, recorded_pilot_id=None):
         nonlocal current
         current = {'command': kind, 'seat': seat, 'args': copy.deepcopy(args or {}),
                    'public_view': runtime.public_view(seat)}
         if candidates is not None:
             current['candidates'] = copy.deepcopy(candidates)
-            current['pilot_id'] = pilots[seat].manifest()['pilot_id']
+            current['pilot_id'] = recorded_pilot_id or pilots[seat].manifest()['pilot_id']
+        if decision_origin is not None:
+            current['decision_origin'] = copy.deepcopy(decision_origin)
         commands.append(current)
         result = _apply(runtime, kind, seat, current['args'], root)
         current['status'] = 'EXPERIMENTAL_RESOLVED'
         current['result'] = copy.deepcopy(result)
 
+    retry = None
+    if _previous_record is not None:
+        if canonical(_physical_snapshot(initial)) != canonical(_physical_snapshot(_previous_record['initial'])):
+            raise RuntimeHalt('CONTINUATION_INITIAL_PHYSICAL_MISMATCH')
+        for command_index, saved in enumerate(_previous_record['commands'][:-1]):
+            seat = saved.get('seat')
+            if seat not in pilots or canonical(_comparable_public_view(saved.get('public_view'))) != canonical(
+                    _comparable_public_view(runtime.public_view(seat))):
+                raise RuntimeHalt('CONTINUATION_PREFIX_PUBLIC_VIEW_MISMATCH: command=' + str(command_index))
+            origin = {'kind': 'REVALIDATED_SAVED_COMMAND', 'previous_record_sha256': previous_hash,
+                      'previous_command_index': command_index, 'previous_command_sha256': digest(saved),
+                      'candidates_origin': 'SAVED_DECISION_CONTEXT'}
+            try:
+                call(saved['command'], seat, saved['args'], saved.get('candidates'),
+                     decision_origin=origin, recorded_pilot_id=saved.get('pilot_id'))
+            except Exception as exc:
+                raise RuntimeHalt('CONTINUATION_PREFIX_ACTION_FAILED: command=' + str(command_index)
+                                  + ' ' + str(exc)) from exc
+            redraw_count += saved['command'] == 'REDRAW_CHOICE'
+        original_before = _physical_snapshot(_previous_record['halts'][-1]['before'])
+        revalidated_before = _physical_snapshot(runtime.snapshot())
+        if canonical(original_before) != canonical(revalidated_before):
+            raise RuntimeHalt('CONTINUATION_BEFORE_HALT_PHYSICAL_MISMATCH')
+        failed = _previous_record['commands'][-1]
+        if 'public_view' in failed and canonical(_comparable_public_view(failed['public_view'])) != canonical(
+                _comparable_public_view(runtime.public_view(failed['seat']))):
+            raise RuntimeHalt('CONTINUATION_FAILED_ACTION_PUBLIC_VIEW_MISMATCH')
+        generators = {'SELECT_NEXT_COMMAND', 'GENERATE_MAIN_CANDIDATES', 'GENERATE_PENDING_CHOICES',
+                      'GENERATE_COUNTER_CHOICES', 'COMMAND_BUDGET'}
+        retry = None if failed['command'] in generators and 'selected_pending' not in failed else failed
+        continuation = {
+            'schema': 'imported-live-game-continuation-v1',
+            'previous_record_sha256': previous_hash, 'previous_record': copy.deepcopy(_previous_record),
+            'previous_execution_id': _previous_record['replay_provenance']['execution_id'],
+            'previous_runner_sha256': _previous_record['replay_provenance']['runner_sha256'],
+            'previous_pilots': copy.deepcopy(_previous_record['pilots']),
+            'successful_commands_revalidated': len(commands),
+            'physical_state_proof': {
+                'comparison': 'ALL_SNAPSHOT_FIELDS_EXCEPT_EXECUTION_ID',
+                'legacy_defaults': {'state.resolving_option': None},
+                'original_before_sha256': digest(original_before),
+                'revalidated_before_sha256': digest(revalidated_before),
+                'original_rng_sha256': digest(original_before['rng_state']),
+                'revalidated_rng_sha256': digest(revalidated_before['rng_state'])},
+            'retry': {'kind': 'RESUME_GENERATOR_WINDOW' if retry is None else 'RETRY_SAVED_SELECTION',
+                      'previous_command_index': len(commands), 'original_command': failed['command']},
+            'policy_segment': {'first_new_decision_command_index': len(commands) + (
+                                   retry is not None and retry['command'] != 'GENERATE_PENDING_CHOICES'),
+                               'pilots': {seat: pilots[seat].manifest() for seat in pilots}},
+            'certification': 'NONE_REVALIDATION_IS_SOFTWARE_EVIDENCE_ONLY',
+            'accepted_fact_finding_credit': 0, 'final_evaluation_credit': 0}
+
     try:
+        if retry is not None:
+            kind, seat, args = retry['command'], retry['seat'], copy.deepcopy(retry.get('args', {}))
+            candidates = retry.get('candidates')
+            if kind == 'UNKNOWN_OPTION_ACTION':
+                from option_actions import OPTION_SPECS
+                if _number(args['hand_key']) in OPTION_SPECS:
+                    kind = 'USE_OPTION'
+            elif kind == 'UNKNOWN_BATTLE_EVOLUTION':
+                kind = 'BATTLE_EVOLUTION'
+            elif kind == 'GENERATE_PENDING_CHOICES':
+                current = copy.deepcopy(retry)
+                selected = retry['selected_pending']
+                candidates = pending_options(runtime, seat)
+                if selected not in candidates:
+                    raise RuntimeHalt('CONTINUATION_SELECTED_PENDING_NO_LONGER_AVAILABLE')
+                kind = 'RESOLVE_PENDING'
+                args = {'pending_id': selected['id'],
+                        'choice': pending_choice(runtime, seat, selected, pilots[seat])}
+            continuation['retry']['current_command'] = kind
+            call(kind, seat, args, candidates,
+                 decision_origin={'kind': 'RETRIED_SAVED_SELECTION', 'previous_record_sha256': previous_hash,
+                                  'previous_command_index': len(commands),
+                                  'original_command': retry['command'],
+                                  'candidates_origin': ('CURRENT_PENDING_WINDOW' if retry['command'] ==
+                                                        'GENERATE_PENDING_CHOICES' else 'SAVED_DECISION_CONTEXT')},
+                 recorded_pilot_id=retry.get('pilot_id'))
         while not runtime.public_view(first)['terminal']:
             if len(commands) >= max_commands:
                 current = {'command': 'COMMAND_BUDGET', 'max_commands': max_commands}
@@ -372,7 +582,7 @@ def run_attempt(index, root=ROOT, max_commands=300, *, context_file=CONTEXT_FILE
                   'seed_schedule': 'SHA256(context_id,index,imported-live-diagnostic-v1)[:16]',
                   'replay_method': 'RERUN_SAME_INDEX_INPUTS_AND_COMPARE_ENTIRE_RECORD',
                   'certification': 'NONE_EXACT_REPLAY_IS_SOFTWARE_EVIDENCE_ONLY'}
-    return json.loads(canonical({
+    record = {
         'schema': 'imported-live-diagnostic-attempt-v1', 'index': index,
         'context_id': context.matchup_id, 'seed': seed, 'first': first,
         'max_commands': max_commands, 'status': status,
@@ -384,29 +594,28 @@ def run_attempt(index, root=ROOT, max_commands=300, *, context_file=CONTEXT_FILE
         'terminal_reason': runtime.state.terminal_reason,
         'halt_reason': halt_reason, 'commands': commands, 'events': runtime.events,
         'halts': [event for event in runtime.events if event.get('type') == 'HALT'],
-        'initial': initial, 'final': final, 'replay_provenance': provenance}))
+        'initial': initial, 'final': final, 'replay_provenance': provenance}
+    if continuation is not None:
+        provenance['replay_method'] = 'REVALIDATE_SAVED_PREFIX_RUN_EXPLICIT_POLICY_SEGMENT_COMPARE_ENTIRE_RECORD'
+        record['continuation_provenance'] = continuation
+    return json.loads(canonical(record))
 
 
 def replay_attempt(record, root=ROOT):
     root = Path(root).resolve()
-    provenance = record.get('replay_provenance', {})
-    if not isinstance(provenance, dict):
-        raise RuntimeHalt('REPLAY_CONTEXT_PROVENANCE_INVALID')
-    context_file = provenance.get('context_file', CONTEXT_FILE)
-    path, context_file = _context_path(root, context_file)
-    expected_sha256 = provenance.get('context_file_sha256')
-    if (not isinstance(expected_sha256, str) or len(expected_sha256) != 64
-            or any(c not in '0123456789abcdef' for c in expected_sha256)):
-        raise RuntimeHalt('REPLAY_CONTEXT_PROVENANCE_INVALID')
-    if hashlib.sha256(path.read_bytes()).hexdigest() != expected_sha256:
-        raise RuntimeHalt('REPLAY_CONTEXT_FILE_CHANGED')
-    context = load_context_file(path)
-    if context.matchup_id != record.get('context_id'):
-        raise RuntimeHalt('REPLAY_CONTEXT_ID_MISMATCH')
+    context_file, expected_sha256 = _saved_context_inputs(record, root)
+    _verify_previous_record_hash(record)
     # Legacy records without a saved path use the original default only. A
     # matching context ID is still required before any gameplay can rerun.
-    replay = run_attempt(record['index'], root, record['max_commands'], context_file=context_file,
-                         _expected_context=(record['context_id'], expected_sha256))
+    if 'continuation_provenance' in record:
+        previous = record['continuation_provenance']['previous_record']
+        if (previous['context_id'] != record['context_id'] or previous['seed'] != record['seed']
+                or previous['first'] != record['first'] or previous['index'] != record['index']):
+            raise RuntimeHalt('CONTINUATION_ORIGINAL_GAME_INPUTS_MISMATCH')
+        replay = continue_attempt(previous, root, record['max_commands'])
+    else:
+        replay = run_attempt(record['index'], root, record['max_commands'], context_file=context_file,
+                             _expected_context=(record['context_id'], expected_sha256))
     return {'index': record['index'], 'exact_match': canonical(record) == canonical(replay),
             'saved_record_sha256': digest(record), 'replayed_record_sha256': digest(replay),
             'certification': 'NONE_SOFTWARE_REPLAY_ONLY'}

@@ -1,5 +1,32 @@
 # Verified handoff status
 
+## Gameplay-first continuation — 2026-11-02
+
+Following the user's correction, continue actual chosen actions and preserve
+the same game, rather than front-loading route inventories or rerolling its
+earlier decisions. `continue_attempt` revalidates saved successful commands,
+proves the pre-stop physical state and RNG, retries the original selected action,
+and records a separately seeded discovery-policy segment for subsequent moves.
+
+**409 tests passed** (134.239s). Source-backed reviews and exact historical
+prefix regressions now resolve Rina's actual On Play targets/no-target cases,
+BT22-023 return effects and end-turn choices, EX13-022 free-Tamer play plus its
+simultaneous restriction reaction, Mental Training use, ordinary encountered
+battle evolutions, the checked Ulforce security battle, and two plays wrongly
+blocked just because unrelated inherited cards were in stacks.
+
+Game0000 preserves original seed12017913134550805276 and advances beyond its
+original turn1 Rina stop to **turn3,22 recorded commands**. Its new selected
+action is A:LM-028#1 Blue Scramble, whose implementation is next. The complete
+new record replays exactly. Evidence and source reviews:
+`ARTIFACTS/gameplay-continuations-2026-11-02-01/`.
+
+This is one unfinished game: **zero valid complete matches, zero approved
+strategy lanes and zero final matches**. Code/turn prefixes do not count toward
+60. Preserve those original decisions and continue this game after the next
+specific effect is implemented. The current source is experimental; old60-HALT
+cohorts remain historical diagnostic evidence.
+
 ## Current development priority: Ulforce mirror — 2026-11-02
 
 User delegated the best starting matchup. Selected two different exact workbook

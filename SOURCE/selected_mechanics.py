@@ -61,11 +61,14 @@ def _orientation_dependencies(runtime):
                         continue
                     raise RuntimeHalt('ORIENTATION_DEPENDENT_TRIGGER_UNIMPLEMENTED: '
                                       + card.card_number + ' ' + field_)
-            if set(stack.statuses) - {'cannot_suspend', 'cannot_unsuspend'}:
+            if set(stack.statuses) - {'cannot_suspend', 'cannot_unsuspend','effect_grants'}:
                 # Includes DP reduction: EX13-023 Q7269 says a 0-DP rule check
                 # precedes triggered effects; an unsuspend cannot rescue it.
                 raise RuntimeHalt('ORIENTATION_STATUS_UNSUPPORTED: ' + stack.cards[-1].key)
-            if any(type(v) is not bool for v in stack.statuses.values()):
+            if 'effect_grants' in stack.statuses:
+                from effect_grants import validate_grants
+                validate_grants(runtime,seat,stack.cards[-1].key)
+            if any(type(v) is not bool for k,v in stack.statuses.items() if k!='effect_grants'):
                 raise RuntimeHalt('ORIENTATION_STATUS_UNSUPPORTED: non-boolean prohibition')
 
 
@@ -102,7 +105,10 @@ def _orientation_reactions(runtime,seat,stack,suspended_before):
 def _set_orientation(runtime,seat,stack,suspended):
     before = stack.suspended
     prohibition = 'cannot_suspend' if suspended else 'cannot_unsuspend'
-    blocked = before != suspended and stack.statuses.get(prohibition,False)
+    from effect_grants import active_restriction
+    blocked = before != suspended and (stack.statuses.get(prohibition,False)
+        or ('effect_grants' in stack.statuses
+            and active_restriction(runtime,seat,stack.cards[-1].key,prohibition)))
     if before != suspended and not blocked:
         _orientation_dependencies(runtime)
         stack.suspended = suspended
@@ -228,4 +234,12 @@ def build_selected_registry(context, root):
                                        hashlib.sha256(card.effect_text(field).encode()).hexdigest(),evidence,handler))
     from search_effects import search_bindings
     bindings.extend(search_bindings(context,root,rules))
+    from on_play_effects import on_play_bindings
+    bindings.extend(on_play_bindings(context,root,rules))
+    from option_actions import option_bindings
+    bindings.extend(option_bindings(context,root,rules))
+    from aero_effects import aero_bindings
+    bindings.extend(aero_bindings(context,root,rules))
+    from tamer_play_effects import tamer_play_bindings
+    bindings.extend(tamer_play_bindings(context,root,rules))
     return MechanicRegistry(tuple(bindings))

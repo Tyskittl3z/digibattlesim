@@ -47,6 +47,13 @@ User owns all deck construction, interpretation, and decisions; offer **no card/
 - Separate software integrity, judge-verified legality and strategic effectiveness. A rules judge does not approve strategy colors; strategy review cannot establish legality. See `WORKFLOW.md` for the evidence contracts.
 
 ## Fixed workflow
+The user's latest instruction is gameplay-first: choose an action from the
+actual state, assess legality against the wording/rules, resolve and record it,
+then continue that game. Use the 60 completed games to discover interactions and
+assess empirical green/yellow/red choices. Do not delay gameplay to inventory
+all possible routes or rebuild the whole architecture. Implement only the
+actually encountered missing behavior needed to continue, preserve every
+original trace, and report complete games separately from diagnostic prefixes.
 1. Load and lock the two exact decklists; validate 50 main cards + Digi-Eggs as listed and applicable restrictions.
 2. Run **at least 60 complete, turn-by-turn bot-vs-bot fact-finding MATCHES**: at least 30 starts per deck, with equal starting-player counts. Sixty is a minimum evidence cohort, not an automatic readiness certificate. Opening probes, partial turns and targeted scenarios count as zero full matches.
 3. During those matches discover only in-scope combinations, decision alternatives, interactions, and opponent responses. Judge verifies rules evidence. Fix in-scope defects and rerun affected matches / entire evidence cohort when the engine changes.

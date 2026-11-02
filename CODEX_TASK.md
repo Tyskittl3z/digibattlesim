@@ -1,5 +1,13 @@
 # First Codex task (execute, don't just plan)
 
+> **Latest live continuation:** Gameplay-first per user. Read newest STATUS.
+> Source passes409 tests; recorded game0000 nowreaches turn3 with22commands,
+> originalseed+earlierchoices preserved andexactreplay. Continue the selected
+> BlueScramble A:LM-028#1 action from
+> `ARTIFACTS/gameplay-continuations-2026-11-02-01/game-0000-segment-01.json.gz`.
+> Do not call this a completed game or start a route-planning project. Resolve
+> the actual action against official text/rules, recordit, thenkeepplaying.
+
 > **2026-11-02 current priority:** User delegated choosing the best starting
 > matchup. Use the distinct-list Ulforce mirror 123129 vs122110, not the original
 > pair's default CLI argument. Read `PYTHON_DEVELOPER_HANDOFF.md`, latest STATUS,

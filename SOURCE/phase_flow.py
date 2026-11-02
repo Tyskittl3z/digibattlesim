@@ -16,9 +16,12 @@ def _actor(runtime,seat):
     if runtime.state.memory<0:
         raise RuntimeHalt('TURN_END_WINDOW_UNIMPLEMENTED')
     for owner in ('A','B'):
-        for stack in runtime.state.battle[owner].values():
-            if set(stack.statuses)-{'cannot_suspend','cannot_unsuspend'}:
+        for key,stack in runtime.state.battle[owner].items():
+            if set(stack.statuses)-{'cannot_suspend','cannot_unsuspend','effect_grants'}:
                 raise RuntimeHalt('PHASE_STATUS_UNSUPPORTED: '+stack.cards[-1].key)
+            if 'effect_grants' in stack.statuses:
+                from effect_grants import validate_grants
+                validate_grants(runtime,owner,key)
 
 
 def _phase_triggers(runtime,seat,timing):

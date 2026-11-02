@@ -54,8 +54,8 @@ class MainPlayTests(unittest.TestCase):
 
     def test_live_board_scope_wrong_actor_or_not_in_hand_fails_atomically(self):
         for case in ('board','actor','source'):
-            r=self.runtime();key=hand_card(r,'A','EX1-013')
-            if case=='board':stage(r,'B',['EX13-015'])
+            r=self.runtime();key=hand_card(r,'A','BT11-112' if case=='board' else 'EX1-013')
+            if case=='board':stage(r,'A',['BT11-023','P-138'])
             before=r.snapshot()['state']
             with self.assertRaises(RuntimeHalt):
                 choose_play(r,'B' if case=='actor' else 'A','absent' if case=='source' else key,ROOT)

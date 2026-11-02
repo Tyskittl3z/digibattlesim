@@ -129,11 +129,13 @@ class BreedingEvolutionTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeHalt,'PENDING_EFFECTS_REQUIRE_RESOLUTION'):self.choose(r)
         self.assertEqual(before,r.snapshot()['state'])
 
-    def test_live_battle_on_either_side_refused_before_mutation(self):
+    def test_unrelated_live_battle_effects_do_not_block_breeding_evolution(self):
         for seat,number in [('A','EX13-022'),('B','BT19-011')]:
-            r=self.runtime();stage(r,seat,[number]);before=r.snapshot()['state']
-            with self.assertRaisesRegex(RuntimeHalt,'BASIC_BOARD_'):self.choose(r)
-            self.assertEqual(before,r.snapshot()['state'])
+            r=self.runtime();stage(r,seat,[number]);before=r.snapshot()['state']['battle']
+            self.choose(r)
+            self.assertEqual(before,r.snapshot()['state']['battle'])
+            self.assertEqual(r.state.breeding['B'][-1].card_number,'EX8-009')
+            self.assertFalse(r.state.pending);r.verify()
 
     def test_inert_singletons_do_not_block_ordinary_breeding_evolution(self):
         r=self.runtime();stage(r,'A',['EX1-013']);stage(r,'B',['ST7-05'])

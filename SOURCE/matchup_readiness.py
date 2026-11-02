@@ -13,6 +13,10 @@ from context_evolution import printed_evolution_options, UnsupportedEvolutionCon
 from match_context import CardDefinition, DeckDefinition, MatchContext, require, digest
 from selected_mechanics import build_selected_registry, ORIENTATION_LINE, ORIENTATION_EFFECT, INHERITED_REACTIONS, PHASE_EFFECTS
 from search_effects import SEARCH_SPECS
+from on_play_effects import ON_PLAY_SPECS
+from option_actions import OPTION_SPECS
+from aero_effects import PLAY_SPECS,END_EFFECT,END_LINE
+from tamer_play_effects import PLAY_SPECS as TAMER_PLAY_SPECS,OBSERVER_EFFECT,OBSERVER_LINE
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CONTEXT = ROOT / 'ARTIFACTS/ex13-engine-2026-10-30/context.json'
@@ -94,6 +98,15 @@ def inspect_readiness(context, registry, root=ROOT):
                 search = SEARCH_SPECS.get(card.number)
                 if field == 'main_text' and search and line == search[1]:
                     handler = search[0]
+                on_play = ON_PLAY_SPECS.get(card.number)
+                if field == 'main_text' and on_play and line == on_play[1]:
+                    handler = on_play[0]
+                option=OPTION_SPECS.get(card.number)
+                if field=='main_text' and option and line==option[1]:handler=option[0]
+                play=PLAY_SPECS.get(card.number) or TAMER_PLAY_SPECS.get(card.number)
+                if field=='main_text' and play and line==play[1]:handler=play[0]
+                if field=='main_text' and card.number=='BT22-023' and line==END_LINE:handler=END_EFFECT
+                if field=='main_text' and card.number=='EX13-022' and line==OBSERVER_LINE:handler=OBSERVER_EFFECT
                 implemented = handler is not None and (card.number,handler) in bound
                 inventory.append({'card_number': card.number, 'field': field, 'line_index': index,
                                   'printed_text': line, 'text_sha256': hashlib.sha256(line.encode()).hexdigest(),
@@ -131,7 +144,11 @@ def inspect_readiness(context, registry, root=ROOT):
         Path(__file__).with_name('main_actions.py'),Path(__file__).with_name('breeding_evolution.py'),
         Path(__file__).with_name('search_effects.py'),Path(__file__).with_name('turn_flow.py'),
         Path(__file__).with_name('battlefield_scope.py'),Path(__file__).with_name('attack_flow.py'),
-        Path(__file__).with_name('printed_triggers.py'),Path(__file__).with_name('selected_contexts.py')]}
+        Path(__file__).with_name('printed_triggers.py'),Path(__file__).with_name('selected_contexts.py'),
+        Path(__file__).with_name('on_play_effects.py'),Path(__file__).with_name('effect_grants.py'),
+        Path(__file__).with_name('option_actions.py'),Path(__file__).with_name('aero_effects.py'),
+        Path(__file__).with_name('battle_evolution.py'),Path(__file__).with_name('basic_event_dependencies.py'),
+        Path(__file__).with_name('tamer_play_effects.py')]}
     return {'schema': 'imported-matchup-readiness-v1', 'status': 'BLOCKED',
             'context_id': context.matchup_id, 'engine_source_sha256': code,
             'decks': {s: context.deck(s).to_dict() for s in ('A', 'B')},

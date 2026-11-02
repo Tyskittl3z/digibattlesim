@@ -57,6 +57,7 @@ class PhysicalState:
     phase: str = 'SCENARIO'
     preparation: dict = field(default_factory=lambda:{'started':False,'choices':[]})
     attack: dict | None = None
+    resolving_option: dict | None = None
     winner: str | None = None
     terminal_reason: str | None = None
 
@@ -206,7 +207,10 @@ class ContextRuntime:
                              'phase_flow.py','breeding_evolution.py','main_actions.py',
                              'context_evolution.py','search_effects.py','selected_mechanics.py',
                              'turn_flow.py','battlefield_scope.py','attack_flow.py','printed_triggers.py',
-                             'selected_contexts.py','matchup_readiness.py')}
+                             'selected_contexts.py','matchup_readiness.py',
+                             'on_play_effects.py','effect_grants.py','option_actions.py',
+                             'aero_effects.py','battle_evolution.py','basic_event_dependencies.py',
+                             'tamer_play_effects.py')}
         return digest({'context_id': self.context.matchup_id, 'packs': self.registry.manifest(),
                        'engine': code, 'allow_experimental': self.allow_experimental})
 
@@ -234,6 +238,7 @@ class ContextRuntime:
         return {'active': self.state.active, 'memory': self.state.memory, 'turn': self.state.turn,
                 'phase':self.state.phase,
                 'attack':state_value(self.state.attack),'terminal':self.state.terminal,
+                'resolving_option':state_value(self.state.resolving_option),
                 'winner':self.state.winner,
                 'players': players}
 
@@ -251,11 +256,23 @@ class ContextRuntime:
                 'SCENARIO','INITIAL_HANDS','START_OF_TURN','TURN_START_EFFECTS','UNSUSPEND','DRAW','BREEDING',
                 'BREEDING_MOVING_EFFECTS','MAIN','END_OF_TURN'):
             raise RuntimeHalt('TURN_PHASE_INVALID')
+        resolving = state.resolving_option
+        if resolving is not None:
+            if (not isinstance(resolving, dict) or set(resolving) != {'seat','stack'}
+                    or resolving['seat'] not in ('A','B')
+                    or not isinstance(resolving['stack'], Stack)
+                    or len(resolving['stack'].cards) != 1
+                    or not isinstance(resolving['stack'].cards[0], PhysicalCard)
+                    or resolving['stack'].cards[0].owner != resolving['seat']
+                    or self.context.card(resolving['seat'], resolving['stack'].cards[0].card_number).kind != 'Option'):
+                raise RuntimeHalt('RESOLVING_OPTION_SCHEMA_INVALID')
         for seat in ('A', 'B'):
             if set(state.zones[seat]) != {'deck', 'eggdeck', 'hand', 'security', 'trash'}:
                 raise RuntimeHalt('PHYSICAL_ZONE_SCHEMA_INVALID')
             observed = [c for zone in state.zones[seat].values() for c in zone]
             observed.extend(state.breeding[seat])
+            if resolving is not None and resolving['seat'] == seat:
+                observed.extend(resolving['stack'].cards)
             for anchor, stack in state.battle[seat].items():
                 if not isinstance(stack, Stack) or not stack.cards or stack.cards[-1].key != anchor:
                     raise RuntimeHalt('STACK_ANCHOR_MISMATCH: ' + seat + ' ' + anchor)
@@ -286,6 +303,11 @@ class ContextRuntime:
             raise RuntimeHalt('SECURITY_WINDOW_UNIMPLEMENTED')
         if field_ not in ('main_text', 'inherited_text'):
             raise RuntimeHalt('UNKNOWN_EFFECT_FIELD')
+        resolving = self.state.resolving_option
+        if resolving is not None and resolving['seat'] == seat and field_ == 'main_text':
+            physical = resolving['stack'].cards[-1]
+            if physical.key == source_key:
+                return physical
         for stack in self.state.battle[seat].values():
             pool = stack.cards[:-1] if field_ == 'inherited_text' else stack.cards[-1:]
             for card in pool:
@@ -420,5 +442,5 @@ class ContextRuntime:
     def _finish_main_processing(self):
         # Turn-end conditions are checked after all current processing, including
         # derived effects. END_OF_TURN is an explicit unimplemented window.
-        if self.state.phase=='MAIN' and self.state.memory<0 and not self.state.pending and not self.state.attack and not self.state.terminal:
+        if self.state.phase=='MAIN' and self.state.memory<0 and not self.state.pending and not self.state.attack and not self.state.resolving_option and not self.state.terminal:
             self.state.phase='END_OF_TURN'

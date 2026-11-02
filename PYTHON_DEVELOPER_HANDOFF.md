@@ -3,6 +3,17 @@
 Checkpoint: November 2, 2026. This document describes the engine track. Read
 `AGENTS.md`, the newest section of `STATUS.md`, and `WORKFLOW.md` before editing.
 
+Latest increment:409 full-suite tests passed (134.239s). The user directs a
+gameplay-first loop: choose an actual action, assess legality, resolve and
+record it, then continue the same game. `continue_attempt(previous_record)`
+preserves original choices/physical state/RNG, retries the selected stopped
+action and records an explicit new discovery-policy segment. Game0000 reaches
+turn3 with22commands from its original seed andexactlyreplays; nextselected
+action is Blue Scramble A:LM-028#1. See
+`ARTIFACTS/gameplay-continuations-2026-11-02-01/`. It remains unfinished and
+earns zero full-match credit. The335-test/60-HALT snapshot below is preserved
+historical context; newest STATUS and source take precedence.
+
 ## Goal and ownership
 
 Build a turn-by-turn Digimon simulator for exact imported decklists. For each

@@ -102,7 +102,7 @@ class TurnFlowTests(unittest.TestCase):
                 self.assertIn('6-6', event['choice']['rules']['locator'])
 
     def test_exact_optional_end_effects_halt_before_pass_or_finish_mutates(self):
-        for seat, number in (('A', 'BT22-023'), ('B', 'BT20-102')):
+        for seat, number in (('B', 'BT20-102'),):
             for command in (turn_flow.pass_turn, turn_flow.finish_turn):
                 with self.subTest(card=number, command=command.__name__):
                     phase = 'MAIN' if command == turn_flow.pass_turn else 'END_OF_TURN'

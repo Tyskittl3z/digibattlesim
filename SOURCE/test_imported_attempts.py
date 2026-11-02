@@ -81,7 +81,7 @@ class ImportedAttemptTests(unittest.TestCase):
         runtime = self.runtime()
         plain = self.take(runtime, 'A', 'EX1-013')
         unknown = self.take(runtime, 'A', 'EX13-023')
-        option = self.take(runtime, 'A', 'P-104')
+        option = self.take(runtime, 'A', 'LM-028')
         candidates = self.runner.main_candidates(runtime, 'A', ROOT)
         by_key = {c['hand_key']: c for c in candidates if 'hand_key' in c}
         self.assertEqual(set(by_key), {plain, unknown, option})
@@ -105,29 +105,31 @@ class ImportedAttemptTests(unittest.TestCase):
         self.assertTrue(any(c['kind']=='PASS_TURN' for c in choices))
         evolutions=[c for c in choices if c['kind']=='BREEDING_EVOLUTION' and c['hand_key']==rookie]
         self.assertTrue(evolutions)
-        before=r.snapshot()['state']
-        with self.assertRaisesRegex(RuntimeHalt,'BASIC_BOARD_TOP_UNSUPPORTED.*BT11-032'):
-            self.runner._apply(r,'BREEDING_EVOLUTION','A',evolutions[0],ROOT)
-        self.assertEqual(before,r.snapshot()['state'])
+        before=r.snapshot()['state']['battle']
+        self.runner._apply(r,'BREEDING_EVOLUTION','A',evolutions[0],ROOT)
+        self.assertEqual(before,r.snapshot()['state']['battle'])
+        self.assertEqual(r.state.breeding['A'][-1].key,rookie);r.verify()
 
-    def test_printed_battle_evolution_is_visible_and_selected_unknown_action_halts(self):
+    def test_printed_battle_evolution_is_visible_and_selected_action_queues_its_effect(self):
         from context_evolution import printed_evolution_options
         runtime = self.runtime()
         source = self.take(runtime, 'A', 'EX1-013', 'battle')
         target = self.take(runtime, 'A', 'P-138')
         before = runtime.snapshot()
         candidates = self.runner.main_candidates(runtime, 'A', ROOT)
-        evolutions = [c for c in candidates if c['kind'] == 'UNKNOWN_BATTLE_EVOLUTION']
+        self.assertEqual(runtime.snapshot(),before)
+        evolutions = [c for c in candidates if c['kind'] == 'BATTLE_EVOLUTION']
         routes = printed_evolution_options(runtime.context, 'A', 'EX1-013', 'P-138')
         self.assertEqual([(c['source_key'], c['hand_key'], c['route_index'], c['cost'])
                           for c in evolutions],
                          [(source, target, index, route.cost) for index, route in enumerate(routes)])
         self.assertTrue(all(c['legality'] == 'PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY'
                             for c in evolutions))
-        with self.assertRaisesRegex(RuntimeHalt, 'BATTLE_EVOLUTION_UNIMPLEMENTED.*'
-                                    + source + '.*' + target):
-            self.runner._apply(runtime, 'UNKNOWN_BATTLE_EVOLUTION', 'A', evolutions[0], ROOT)
-        self.assertEqual(before, runtime.snapshot())
+        self.runner._apply(runtime,'BATTLE_EVOLUTION','A',evolutions[0],ROOT)
+        self.assertEqual([c.key for c in runtime.state.battle['A'][target].cards],[source,target])
+        self.assertEqual(runtime.state.memory,10-routes[0].cost)
+        self.assertEqual(runtime.state.pending[0]['effect_id'],'P-138.on_play_search')
+        runtime.verify()
 
     def test_pilot_identity_and_evidence_bind_runner_policy_bytes(self):
         context_id = self.runtime().context.matchup_id

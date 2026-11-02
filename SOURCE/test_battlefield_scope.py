@@ -72,18 +72,36 @@ class BattlefieldScopeTests(unittest.TestCase):
                     self.assertEqual(runtime.matches_played, 0)
                     self.assertEqual(runtime.certification, 'EXPERIMENTAL')
 
-    def test_each_other_selected_main_card_is_explicitly_outside_scope(self):
+    def test_unimplemented_attack_tops_remain_explicitly_outside_combat_scope(self):
         context = selected_context()
         for seat in ('A', 'B'):
             for number, _ in context.deck(seat).main:
-                if number in PLAIN | SEARCH_TOPS:
+                if number in PLAIN | SEARCH_TOPS | {'P-104'}:
                     continue
-                for action in ACTIONS:
-                    if number in OTHER_TIMINGS and action!='attack_plain':continue
+                for action in ('attack_plain',):
                     with self.subTest(seat=seat, number=number, action=action):
                         runtime = self.runtime()
                         stage(runtime, seat, [number])
                         self.assert_rejected_unchanged(runtime, 'BASIC_BOARD_TOP_UNSUPPORTED', action)
+
+    def test_existing_self_timings_do_not_block_a_different_digimon_play(self):
+        context=selected_context()
+        for seat in ('A','B'):
+            for number,_ in context.deck(seat).main:
+                if context.card(seat,number).kind not in ('Digimon','Tamer'):continue
+                with self.subTest(seat=seat,number=number):
+                    runtime=self.runtime();stage(runtime,seat,[number]);before=self.snapshot(runtime)
+                    assert_basic_board_scope(runtime,'play_plain',ROOT,
+                        event={'seat':'A','card_number':'EX1-013'})
+                    self.assertEqual(self.snapshot(runtime),before)
+
+    def test_an_actual_unimplemented_tamer_play_observer_is_not_skipped(self):
+        runtime=self.runtime();stage(runtime,'A',['BT11-032'])
+        before=self.snapshot(runtime)
+        with self.assertRaisesRegex(RuntimeHalt,'BASIC_EVENT_OBSERVER_UNIMPLEMENTED.*BT11-032'):
+            assert_basic_board_scope(runtime,'play_plain',ROOT,
+                event={'seat':'A','card_number':'BT11-112'})
+        self.assertEqual(self.snapshot(runtime),before)
 
     def test_other_card_timings_do_not_block_ordinary_play_or_breeding(self):
         c=selected_context()
@@ -107,16 +125,18 @@ class BattlefieldScopeTests(unittest.TestCase):
                         self.guard(r,action)
                         self.assertEqual(before,self.snapshot(r))
 
-    def test_inherited_effects_are_not_treated_as_inert_inside_stacks(self):
-        # Every physical card is from the selected deck; even two otherwise
-        # allowed cards expose an inherited effect and must halt.
+    def test_inherited_effects_are_checked_at_the_actual_event(self):
         for seat, numbers in (('A', ['EX1-013', 'EX1-013']),
                               ('B', ['ST7-05', 'BT9-011'])):
             for action in ACTIONS:
                 with self.subTest(seat=seat, action=action):
                     runtime = self.runtime()
                     stage(runtime, seat, numbers)
-                    self.assert_rejected_unchanged(runtime, 'BASIC_BOARD_STACK_UNSUPPORTED', action)
+                    if action=='attack_plain':
+                        self.assert_rejected_unchanged(runtime,'BASIC_BOARD_STACK_UNSUPPORTED',action)
+                    else:
+                        before=self.snapshot(runtime);self.guard(runtime,action)
+                        self.assertEqual(self.snapshot(runtime),before)
 
     def test_statuses_including_false_or_zero_values_are_outside_scope(self):
         for statuses in ({'cannot_play': True}, {'cannot_suspend': False},

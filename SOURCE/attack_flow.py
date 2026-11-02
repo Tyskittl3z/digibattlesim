@@ -45,9 +45,13 @@ def _declare(r,seat,c,root):
     s=r.state
     if seat!=s.active or s.phase!='MAIN' or s.memory<0:
         raise RuntimeHalt('ATTACK_DECLARATION_WINDOW_NOT_OPEN')
-    _scope(r,root)
     stack=s.battle[seat].get(c['attacker'])
     if stack is None or stack.suspended:raise RuntimeHalt('ATTACKER_NOT_READY')
+    from effect_grants import active_restriction
+    if stack.statuses.get('cannot_suspend',False) or ('effect_grants' in stack.statuses
+            and active_restriction(r,seat,c['attacker'],'cannot_suspend')):
+        raise RuntimeHalt('ATTACKER_CANNOT_SUSPEND')
+    _scope(r,root)
     if stack.played_turn is not None and (stack.played_turn>s.turn or
             (stack.ready_since_turn is not None and stack.ready_since_turn<=stack.played_turn)):
         raise RuntimeHalt('ATTACK_HISTORY_UNVERIFIED')
@@ -155,8 +159,12 @@ def _confirm(r,seat,c,root):
         return {'success':True,'winner':seat,'status':'EXPERIMENTAL_TERMINAL','full_match_credit':0}
     checked=s.zones[other]['security'][-1]
     definition=r.context.card(other,checked.card_number)
-    if (checked.card_number not in PLAIN_SECURITY or definition.kind!='Digimon'
-            or definition.effect_text('main_text') or definition.effect_text('security_text')):
+    from printed_triggers import trigger_lines
+    # CR13/14: a checked Digimon battles using printed DP. Its ordinary battle
+    # area abilities do not become Security effects merely because it has text.
+    if (definition.kind!='Digimon' or definition.effect_text('security_text')
+            or trigger_lines(definition.effect_text('main_text'),'Security')
+            or type(definition.to_dict()['dp']) is not int):
         raise RuntimeHalt('SECURITY_CARD_UNSUPPORTED: '+checked.card_number+' source='+checked.key)
     from selected_mechanics import _source_evidence
     evidence=_source_evidence(root,definition.to_dict()['official_source'],

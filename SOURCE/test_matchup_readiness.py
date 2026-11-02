@@ -22,7 +22,7 @@ class ReadinessTests(unittest.TestCase):
         self.assertEqual(r['counts']['digi_eggs'], {'A': 4, 'B': 4})
         self.assertEqual(r['counts']['judge_valid_fact_finding_matches'], 0)
         self.assertEqual(r['counts']['final_matches'], 0)
-        self.assertEqual(r['counts']['software_only_mechanic_bindings'], 14)
+        self.assertEqual(r['counts']['software_only_mechanic_bindings'], 22)
         inherited = [e for e in r['printed_text_inventory'] if e['field']=='inherited_text' and e['software_handler']]
         self.assertEqual({e['card_number'] for e in inherited},{'EX13-022','BT22-023','P-138','EX1-013'})
         phase_handlers={e['software_handler'] for e in r['printed_text_inventory'] if e['software_handler'] and 'start_' in e['software_handler']}

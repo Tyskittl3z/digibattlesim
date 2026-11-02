@@ -13,6 +13,10 @@ from match_context import canonical
 
 def source_stack(runtime, seat, source, field):
     runtime._source(seat, source, field)
+    resolving = runtime.state.resolving_option
+    if resolving is not None and resolving['seat'] == seat and field == 'main_text':
+        if resolving['stack'].cards[-1].key == source:
+            return resolving['stack']
     for stack in runtime.state.battle[seat].values():
         if any(c.key == source for c in stack.cards):
             return stack
