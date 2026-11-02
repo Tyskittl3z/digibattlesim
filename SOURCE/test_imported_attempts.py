@@ -90,11 +90,25 @@ class ImportedAttemptTests(unittest.TestCase):
         self.assertEqual(by_key[option]['legality'], 'UNVERIFIED_OPTION_ACTION')
         self.assertTrue(any(c['kind'] == 'PASS_TURN' for c in candidates))
 
-    def test_generator_preserves_unmodeled_live_board_halt_instead_of_pass(self):
+    def test_generator_does_not_validate_an_attack_before_one_is_selected(self):
         runtime = self.runtime()
         self.take(runtime, 'B', 'EX13-015', 'battle')
-        with self.assertRaisesRegex(RuntimeHalt, 'BASIC_BOARD_TOP_UNSUPPORTED.*EX13-015'):
-            self.runner.main_candidates(runtime, 'A', ROOT)
+        choices=self.runner.main_candidates(runtime,'A',ROOT)
+        self.assertTrue(any(c['kind']=='PASS_TURN' for c in choices))
+        self.assertEqual(runtime.state.memory,10)
+
+    def test_generator_does_not_validate_breeding_evolution_before_selection(self):
+        r=self.runtime();self.take(r,'A','BT11-032','battle')
+        egg=r.state.zones['A']['eggdeck'].pop();r.state.breeding['A']=[egg]
+        rookie=self.take(r,'A','EX13-017')
+        choices=self.runner.main_candidates(r,'A',ROOT)
+        self.assertTrue(any(c['kind']=='PASS_TURN' for c in choices))
+        evolutions=[c for c in choices if c['kind']=='BREEDING_EVOLUTION' and c['hand_key']==rookie]
+        self.assertTrue(evolutions)
+        before=r.snapshot()['state']
+        with self.assertRaisesRegex(RuntimeHalt,'BASIC_BOARD_TOP_UNSUPPORTED.*BT11-032'):
+            self.runner._apply(r,'BREEDING_EVOLUTION','A',evolutions[0],ROOT)
+        self.assertEqual(before,r.snapshot()['state'])
 
     def test_printed_battle_evolution_is_visible_and_selected_unknown_action_halts(self):
         from context_evolution import printed_evolution_options

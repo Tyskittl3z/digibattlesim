@@ -19,6 +19,8 @@ except ImportError:
 ACTIONS = ('play_plain', 'play_search', 'breeding_evolve', 'attack_plain')
 PLAIN = {'EX1-013', 'ST7-05', 'BT9-011'}
 SEARCH_TOPS = {'BT11-023','P-138','EX13-017','EX2-008','EX8-009'}
+OTHER_TIMINGS = {'BT12-016','BT12-029','BT17-013','BT17-016','BT19-007','BT19-009',
+                 'BT19-080','BT22-022','EX13-019','EX13-069','EX8-012','EX8-015'}
 CONTEXT_FILE = Path('ARTIFACTS/ex13-engine-2026-10-30/context.json')
 
 
@@ -77,10 +79,21 @@ class BattlefieldScopeTests(unittest.TestCase):
                 if number in PLAIN | SEARCH_TOPS:
                     continue
                 for action in ACTIONS:
+                    if number in OTHER_TIMINGS and action!='attack_plain':continue
                     with self.subTest(seat=seat, number=number, action=action):
                         runtime = self.runtime()
                         stage(runtime, seat, [number])
                         self.assert_rejected_unchanged(runtime, 'BASIC_BOARD_TOP_UNSUPPORTED', action)
+
+    def test_other_card_timings_do_not_block_ordinary_play_or_breeding(self):
+        c=selected_context()
+        for seat in ('A','B'):
+            for number,_ in c.deck(seat).main:
+                if number not in OTHER_TIMINGS:continue
+                for action in ('play_plain','play_search','breeding_evolve'):
+                    r=self.runtime();stage(r,seat,[number]);before=self.snapshot(r)
+                    self.guard(r,action)
+                    self.assertEqual(before,self.snapshot(r))
 
     def test_encountered_search_tops_are_inert_between_their_specific_triggers(self):
         context=selected_context()

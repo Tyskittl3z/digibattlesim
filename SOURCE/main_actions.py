@@ -8,6 +8,7 @@ from effect_scheduler import queue_effects
 from match_preparation import _rules
 from search_effects import SEARCH_SPECS
 from pathlib import Path
+from printed_triggers import trigger_lines
 
 PLAIN_MAIN_TEXT = {'EX1-013':'','ST7-05':'','BT9-011':''}
 
@@ -32,8 +33,10 @@ def _play(runtime,seat,choice,root):
     if card.kind=='Option':raise RuntimeHalt('OPTION_USE_UNIMPLEMENTED: '+card.number)
     if card.kind not in ('Digimon','Tamer'):raise RuntimeHalt('PLAY_CARD_TYPE_INVALID')
     spec=SEARCH_SPECS.get(card.number)
-    if spec is None and (card.number not in PLAIN_MAIN_TEXT or card.effect_text('main_text')!=PLAIN_MAIN_TEXT[card.number]):
-        raise RuntimeHalt('PLAY_EFFECT_UNSUPPORTED: '+card.number)
+    on_play=trigger_lines(card.effect_text('main_text'),'On Play')
+    if on_play and (spec is None or on_play!=(spec[1],)):
+        raise RuntimeHalt('PLAY_EFFECT_UNSUPPORTED: '+card.number+' timing=On Play')
+    if not on_play:spec=None
     from battlefield_scope import assert_basic_board_scope
     assert_basic_board_scope(runtime,'play_search' if spec is not None else 'play_plain',root)
     if spec is not None:
@@ -49,7 +52,8 @@ def _play(runtime,seat,choice,root):
         queue_effects(runtime,[{'seat':seat,'source':physical.key,'effect_id':spec[0],'field':'main_text',
                                 'trigger':{'kind':'On Play','card':physical.key}}])
     return {'played_card':physical.key,'cost':cost,'memory_after':state.memory,'full_match_credit':0,
-            'rules_source':choice['rules'],'card_source':card_evidence,'scope_context_id':locked.matchup_id}
+            'rules_source':choice['rules'],'card_source':card_evidence,'scope_context_id':locked.matchup_id,
+            'printed_trigger':'On Play','triggered_effects':[spec[0]] if spec else []}
 
 
 def choose_play(runtime,seat,hand_key,root):

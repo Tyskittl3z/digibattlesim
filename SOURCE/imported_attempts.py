@@ -121,13 +121,17 @@ def main_candidates(runtime, seat, root=ROOT):
         elif card['type'] == 'Option':
             choices.append({'kind': 'UNKNOWN_OPTION_ACTION', 'hand_key': key,
                             'printed_cost': cost, 'legality': 'UNVERIFIED_OPTION_ACTION'})
-    if any(view['players'][owner]['battle'] for owner in ('A', 'B')):
-        # A failed capability query is a diagnostic HALT, never a reason to
-        # silently replace an unmodeled live-board decision with passing.
-        assert_basic_board_scope(runtime, 'attack_plain', root)
+    # Generate possible actions first; validate the chosen action at its actual
+    # timing. An unimplemented attack must not block choosing to play or pass.
     if own['breeding']:
-        for choice in breeding_evolution_choices(runtime, seat):
-            choices.append({'kind': 'BREEDING_EVOLUTION', **choice})
+        source=own['breeding'][-1]
+        for target in own['hand']:
+            routes=printed_evolution_options(runtime.context,seat,_number(source),_number(target))
+            for route_index,route in enumerate(routes):
+                if route.cost<=view['memory']+10:
+                    choices.append({'kind':'BREEDING_EVOLUTION','source_key':source,'hand_key':target,
+                                    'route_index':route_index,**asdict(route),
+                                    'legality':'PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY'})
     for stack in own['battle'].values():
         source = stack['cards'][-1]
         if runtime.context.card(seat, _number(source)).kind != 'Digimon':

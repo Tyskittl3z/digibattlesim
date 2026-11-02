@@ -130,7 +130,7 @@ class BreedingEvolutionTests(unittest.TestCase):
         self.assertEqual(before,r.snapshot()['state'])
 
     def test_live_battle_on_either_side_refused_before_mutation(self):
-        for seat,number in [('A','EX13-022'),('B','BT19-007')]:
+        for seat,number in [('A','EX13-022'),('B','BT19-011')]:
             r=self.runtime();stage(r,seat,[number]);before=r.snapshot()['state']
             with self.assertRaisesRegex(RuntimeHalt,'BASIC_BOARD_'):self.choose(r)
             self.assertEqual(before,r.snapshot()['state'])

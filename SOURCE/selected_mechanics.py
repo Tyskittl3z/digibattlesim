@@ -13,6 +13,7 @@ import re
 from context_runtime import MechanicBinding, MechanicRegistry, OfficialEvidence, RuntimeHalt
 from match_context import require
 from effect_scheduler import queue_effects, source_stack
+from printed_triggers import effect_body
 
 ORIENTATION_EFFECT = 'EX13-023.orientation'
 ORIENTATION_LINE = ('[On Play] [When Digivolving] [When Attacking] [Once Per Turn] '
@@ -53,7 +54,7 @@ def _orientation_dependencies(runtime):
             for index, card in enumerate(stack.cards):
                 field_ = 'main_text' if index == len(stack.cards) - 1 else 'inherited_text'
                 text = runtime.context.card(seat, card.card_number).effect_text(field_)
-                if reaction.search(text):
+                if any(reaction.search(effect_body(line)) for line in text.splitlines()):
                     known = INHERITED_REACTIONS.get(card.card_number)
                     if field_ == 'inherited_text' and known and text == known[1]:
                         runtime.registry.lookup(card.card_number,known[0],field_)

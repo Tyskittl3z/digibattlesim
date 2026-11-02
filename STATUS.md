@@ -1,5 +1,23 @@
 # Verified handoff status
 
+## Printed trigger correction — 2026-11-02
+
+User correction accepted: card wording is executed at the printed timing; prior
+"interaction gaps" included overly broad code guards. All24 original no-On-Play
+hard-play failures now resolve in exact command-prefix replays, with pre-action
+states equal to the saved originals and no unrelated ability fired. Ordinary
+play and candidate enumeration no longer require an unrelated timing's handler.
+
+**312 tests pass**. A new balanced60-attempt diagnostic cohort retains the same
+match seeds (policy hash changed with candidate correction), with60 exact replays.
+Current halts:31 actual On Play handlers,16 Options,8 battle evolutions,2 stacks,
+3 battlefield/attack capabilities. Zero complete or judge-valid matches remain;
+roadmaps and final10,000 are still gated. These are software limits, not rulings
+that the cards are ambiguous or illegal.
+
+Read `REPORTS/PRINTED_TRIGGER_CORRECTION_2026-11-02.md` before continuing. Implement
+clear effect wording directly at its trigger; use shared rules for procedures.
+
 ## EX13 live turn/attack continuation — 2026-11-01
 
 Paused work was reverified at 247 passing tests and committed as 24fee77.

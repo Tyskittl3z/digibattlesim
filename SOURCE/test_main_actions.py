@@ -100,4 +100,18 @@ class MainPlayTests(unittest.TestCase):
             choose_play(r,'A',key,ROOT)
             self.assertIn(existing,r.state.battle['B']);self.assertIn(key,r.state.battle['A'])
             self.assertEqual(r.state.memory,3);r.verify()
+
+    def test_hard_play_executes_no_unrelated_timing_or_inherited_effect(self):
+        for seat,number in [('A','EX13-019'),('B','BT12-016'),('B','EX8-012'),
+                            ('B','BT19-007'),('B','BT19-080'),('A','EX13-069')]:
+            r=self.runtime();r.state.active=seat;r.state.memory=10
+            key=hand_card(r,seat,number);hand_before=len(r.state.zones[seat]['hand'])
+            cost=r.context.card(seat,number).to_dict()['play_cost']
+            result=choose_play(r,seat,key,ROOT)
+            self.assertIn(key,r.state.battle[seat]);self.assertEqual(r.state.memory,10-cost)
+            self.assertEqual(len(r.state.zones[seat]['hand']),hand_before-1)
+            self.assertEqual(r.state.pending,[])
+            self.assertEqual(result['triggered_effects'],[])
+            self.assertEqual(r.state.battle[seat][key].statuses,{})
+            r.verify()
 if __name__=='__main__':unittest.main()

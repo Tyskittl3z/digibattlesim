@@ -23,6 +23,8 @@ _CONTEXT_FILE = 'ARTIFACTS/ex13-engine-2026-10-30/context.json'
 _ACTIONS = frozenset(('play_plain', 'play_search', 'breeding_evolve', 'attack_plain'))
 _PLAIN_TOPS = frozenset(('EX1-013', 'ST7-05', 'BT9-011'))
 _SEARCH_TOPS = frozenset(('BT11-023','P-138','EX13-017','EX2-008','EX8-009'))
+_OTHER_TIMINGS_TOPS = frozenset(('BT12-016','BT12-029','BT17-013','BT17-016','BT19-007',
+    'BT19-009','BT19-080','BT22-022','EX13-019','EX13-069','EX8-012','EX8-015'))
 # Keep explicit schemas: a newly added effect-bearing dataclass field must not
 # silently acquire support merely because the dataclass accepted it.
 _STATE_FIELDS = frozenset(('zones', 'battle', 'breeding', 'active', 'memory', 'turn',
@@ -97,7 +99,8 @@ def assert_basic_board_scope(runtime, action, root):
                     or type(physical.index) is not int or physical.index < 1
                     or type(anchor) is not str or anchor != physical.key):
                 raise RuntimeHalt('BASIC_BOARD_METADATA_UNSUPPORTED: card ' + owner)
-            if physical.card_number not in _PLAIN_TOPS | _SEARCH_TOPS:
+            other_timing=(physical.card_number in _OTHER_TIMINGS_TOPS and action!='attack_plain')
+            if physical.card_number not in _PLAIN_TOPS | _SEARCH_TOPS and not other_timing:
                 raise RuntimeHalt('BASIC_BOARD_TOP_UNSUPPORTED: ' + owner + ' ' + physical.card_number)
             try:
                 definition = runtime.context.card(owner, physical.card_number)
@@ -107,13 +110,24 @@ def assert_basic_board_scope(runtime, action, root):
             if physical.card_number in _SEARCH_TOPS:
                 from search_effects import SEARCH_SPECS
                 expected_main=SEARCH_SPECS[physical.card_number][1]
-            if definition.kind != 'Digimon' or definition.effect_text('main_text') != expected_main:
+            if other_timing:
+                from printed_triggers import trigger_lines
+                # Original context/hash pin above fixes the complete wording.
+                # These audited cards have no play observer, cost replacement or
+                # breeding exception. Their own later triggers do not activate
+                # here. BT17-016's self-immunity doesn't affect these actions,
+                # which apply no opponent effect to that Digimon.
+                if trigger_lines(definition.effect_text('main_text'),'On Play'):
+                    raise RuntimeHalt('BASIC_BOARD_TOP_UNSUPPORTED: unexpected On Play')
+                expected_main=definition.effect_text('main_text')
+            allowed_kinds=('Digimon','Tamer') if other_timing else ('Digimon',)
+            if definition.kind not in allowed_kinds or definition.effect_text('main_text') != expected_main:
                 raise RuntimeHalt('BASIC_BOARD_TOP_UNSUPPORTED: ' + owner + ' ' + physical.card_number)
             if physical.card_number not in checked:
                 try:
                     _source_evidence(root, definition.to_dict()['official_source'],
-                                     '#' + physical.card_number + ' singleton main effects: blank or exact self search '
-                                     'only on play/digivolving/moving; none triggers on other basic actions. '
+                                     '#' + physical.card_number + ' main effects at the selected basic-action timing; '
+                                     'unrelated self triggers do not activate, and no active text changes this action. '
                                      'Inherited effect is not active on a singleton top (15-3-1).').manifest()
                 except (OSError, ValueError, KeyError, TypeError) as exc:
                     raise RuntimeHalt('BASIC_BOARD_OFFICIAL_SOURCE_UNAVAILABLE: '

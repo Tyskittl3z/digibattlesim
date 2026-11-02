@@ -23,6 +23,12 @@ User owns all deck construction, interpretation, and decisions; offer **no card/
 - Never expand toward universal Digimon card support or unsolicited feature work. Work on interactions that the **loaded two decks can actually produce**, as found during gameplay.
 
 ## Authority and integrity
+- **User clarification (2026-11-02):** Execute the actual card wording at its
+  printed trigger. An unimplemented When Digivolving/When Attacking effect must
+  not by itself block ordinary hard play. Do not label unfinished code or overly
+  broad guards as card-text ambiguity. Clear wording does not require inventing
+  a new ruling; comprehensive rules supply shared procedures and timing. Do not
+  silently skip an effect when its actual trigger occurs.
 - Official Digimon card text, comprehensive rules and official card Q&A/rulings are the hard authority for legality and effect resolution. A judge validates each encountered interaction. Never guess card effects, costs, timings, targets, replacements or player choices.
 - Mark unsupported, ambiguous, or unverified mandatory interactions as **HALT** with precise card, effect, state, seed and reproducible trace. Do not silently skip them, manufacture outcomes, or treat an automatic decline of an optional effect as learned skill.
 - Keep an explicit distinction between: `SOFTWARE_COMPLETED`, `JUDGE_CERTIFIED`, `HALT`, and `EXPERIMENTAL`. Code tests and deterministic replay alone do not certify rules.

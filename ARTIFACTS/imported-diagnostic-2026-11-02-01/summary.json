@@ -1,0 +1,1077 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "attempted_seeds": 60,
+  "attempts": [
+    {
+      "file": "attempt-0000.json.gz",
+      "first": "A",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: B:BT9-109#2 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 0,
+      "record_sha256": "9718aced35c29330becd30e9db7750211023e0acc172b465895394955223c464",
+      "seed": 9868153880939325788,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0001.json.gz",
+      "first": "B",
+      "halt_reason": "BATTLE_EVOLUTION_UNIMPLEMENTED: source=B:BT12-016#1 target=B:EX8-015#1 route_index=0 cost=1",
+      "index": 1,
+      "record_sha256": "173aef71ec2daf704f23424f75ca154f3e37fe9f374706e7574e5e4e4ea42f25",
+      "seed": 7180933269826343563,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0002.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-022 timing=On Play",
+      "index": 2,
+      "record_sha256": "59deb1c29ab73ed7fa26f79fadd54f12b56ab474587f5b9d53fb39cb036aa6be",
+      "seed": 16176122583430342000,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0003.json.gz",
+      "first": "B",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: B:LM-027#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 3,
+      "record_sha256": "df2245e11a49a73850aef79bc1dd1e6c8fc0fc092e268daecc8b17500985019d",
+      "seed": 1151579073706309854,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0004.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: P-186 timing=On Play",
+      "index": 4,
+      "record_sha256": "e099df3c37885dc5e34bc492740c5c6ecd9a97a5d5f08f16519ddc85f43a2a6d",
+      "seed": 12843947211272656438,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0005.json.gz",
+      "first": "B",
+      "halt_reason": "BATTLE_EVOLUTION_UNIMPLEMENTED: source=B:EX8-012#1 target=B:BT17-013#2 route_index=0 cost=3",
+      "index": 5,
+      "record_sha256": "6d024283f59d12dd4f7d1f1fa9f86611ebe1e147d00f90cd56d1cdb5ab3d8243",
+      "seed": 10490652261888666678,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0006.json.gz",
+      "first": "A",
+      "halt_reason": "BASIC_BOARD_TOP_UNSUPPORTED: B EX8-012",
+      "index": 6,
+      "record_sha256": "a09652278d9a4332496711a3279b25911dec4bd8d9c84d66ef55ce42258113fc",
+      "seed": 2665461681727973756,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0007.json.gz",
+      "first": "B",
+      "halt_reason": "BATTLE_EVOLUTION_UNIMPLEMENTED: source=A:P-138#1 target=A:EX13-022#2 route_index=0 cost=3",
+      "index": 7,
+      "record_sha256": "0649cda57ab90ee26f76032aded724fb7c0aa1ebbc3314157090f01ff6c1d5c0",
+      "seed": 15452872569869899231,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0008.json.gz",
+      "first": "A",
+      "halt_reason": "BASIC_BOARD_STACK_UNSUPPORTED: B",
+      "index": 8,
+      "record_sha256": "84df7b2f7575b0bc8ee8fd299f37c55e9c510d2c3ef4c7479582beb5db29fb94",
+      "seed": 9696969287623374852,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0009.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT9-092 timing=On Play",
+      "index": 9,
+      "record_sha256": "73daa0d52b85818f3ef60d1c4e459853a3f37b9c3a157d60c7e180b529dc5250",
+      "seed": 18298840645504356645,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0010.json.gz",
+      "first": "A",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: B:BT9-109#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 10,
+      "record_sha256": "4fe54125b7709c65b42f0513bf072f95310146592bd16f94ed1f85546c1b9cb3",
+      "seed": 8028546578389686625,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0011.json.gz",
+      "first": "B",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: B:BT9-109#3 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 11,
+      "record_sha256": "e90c71ee837f72f793da35916e5b1d1dc7b6047023eb29b12fe3cdc6530cec5c",
+      "seed": 15328943115294644517,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0012.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-022 timing=On Play",
+      "index": 12,
+      "record_sha256": "b169e23da45fa70c72b5a364ec510e47cfe7faeb952d990d88fbbde603964ae9",
+      "seed": 18283682758801196054,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0013.json.gz",
+      "first": "B",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: B:EX5-070#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 13,
+      "record_sha256": "dc7b9e7d16cfca9e946c5c4d090b29ee8bf4eb7e854ede1dc0ec8cbbd8e22a1a",
+      "seed": 2765587413655144927,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0014.json.gz",
+      "first": "A",
+      "halt_reason": "BATTLE_EVOLUTION_UNIMPLEMENTED: source=A:EX1-013#1 target=A:P-138#4 route_index=0 cost=2",
+      "index": 14,
+      "record_sha256": "3ee902256aa83545767b03a4306d89ff6860e75666421f1d8fadc786faf512b6",
+      "seed": 3363286231018775596,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0015.json.gz",
+      "first": "B",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: B:BT9-109#3 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 15,
+      "record_sha256": "97079351075f28b1b40d318ce76aef9c6b7737a8e15472db4a6cb7e65eefe2e6",
+      "seed": 3767934774322299883,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0016.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: P-186 timing=On Play",
+      "index": 16,
+      "record_sha256": "1be24e7e36dc99973ed555f55ffd90a8c585245e2c1ec1945dbd170f796ff945",
+      "seed": 13273916988843399644,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0017.json.gz",
+      "first": "B",
+      "halt_reason": "BATTLE_EVOLUTION_UNIMPLEMENTED: source=B:ST7-05#1 target=B:EX8-015#1 route_index=0 cost=4",
+      "index": 17,
+      "record_sha256": "fcdf92bcd749cb86121a744f9a3054cb5c54f14f99340cf977a3cf788beb9727",
+      "seed": 294421968593405907,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0018.json.gz",
+      "first": "A",
+      "halt_reason": "BASIC_BOARD_TOP_UNSUPPORTED: B EX8-073",
+      "index": 18,
+      "record_sha256": "f15dacc14b0ed8350ca8abe664652466617690d95d0d794127b4e0f6f2036f30",
+      "seed": 1418517683219074633,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0019.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-023 timing=On Play",
+      "index": 19,
+      "record_sha256": "63a6affb09de9b922e12ee8ec20cc1ed9a19aca3fce10fc81e33ec5fc80afcfd",
+      "seed": 3868800396733383269,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0020.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT9-092 timing=On Play",
+      "index": 20,
+      "record_sha256": "2b1c9f13fa430215c449b4b78b57468033ded4f5a07188e27f976d08a0c2f070",
+      "seed": 11943492060074943188,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0021.json.gz",
+      "first": "B",
+      "halt_reason": "BATTLE_EVOLUTION_UNIMPLEMENTED: source=A:BT11-023#2 target=A:EX13-019#1 route_index=0 cost=2",
+      "index": 21,
+      "record_sha256": "657871250021710559093dcf58d8546ef241b96bf44a63dc62d7908864cabeab",
+      "seed": 16099447012631170531,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0022.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT11-112 timing=On Play",
+      "index": 22,
+      "record_sha256": "0de429e2c022e261218c915296e5b12861707102e2ff7eb318f7fbd7ae1b81d2",
+      "seed": 7320563707252884658,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0023.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT9-092 timing=On Play",
+      "index": 23,
+      "record_sha256": "80071c1c0fd9a35f9d1c82916152d46caf48ad84ed4d4053eb126a2e94fb269c",
+      "seed": 9430457564635975175,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0024.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-023 timing=On Play",
+      "index": 24,
+      "record_sha256": "fe6d4f2ca56001230a997332fbebefde6e95af352156f5d403c0329174a07ae9",
+      "seed": 15343123455136169348,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0025.json.gz",
+      "first": "B",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: B:BT9-109#2 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 25,
+      "record_sha256": "70193e9b49b10d726f2855ab6d3dc927575e8631c546a3ca5d1561de5eada008",
+      "seed": 4620506677826617417,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0026.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT22-023 timing=On Play",
+      "index": 26,
+      "record_sha256": "fde1b79fc3aed3a7b8ff5eb35358326cd2cfafc12cc9cbd307d28254f642973d",
+      "seed": 3764708558389145788,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0027.json.gz",
+      "first": "B",
+      "halt_reason": "BASIC_BOARD_TOP_UNSUPPORTED: A EX13-069",
+      "index": 27,
+      "record_sha256": "a75790c5cf54978097cf000cd5e44d4422ba708eca24f6d0f4c6cac8da3f1923",
+      "seed": 7823811018897796250,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0028.json.gz",
+      "first": "A",
+      "halt_reason": "BASIC_BOARD_STACK_UNSUPPORTED: A",
+      "index": 28,
+      "record_sha256": "55fc9f98baf435e9c270ff345cf3b3d7d2d085a441d1affff8b741cb1b9dbb0d",
+      "seed": 5749392079553878226,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0029.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-022 timing=On Play",
+      "index": 29,
+      "record_sha256": "273f561b3a083d21c2f66ad76adcaf2da3e5e192d02ee9f2568a1efd94b21173",
+      "seed": 1931283748236078854,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0030.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-015 timing=On Play",
+      "index": 30,
+      "record_sha256": "74d21e945524246e2728152937e2a3a73e7f084ec533ded11fec4883fe9b4897",
+      "seed": 14360641291940641341,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0031.json.gz",
+      "first": "B",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: A:LM-056#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 31,
+      "record_sha256": "50ed559da462cc3f8ce1edf68c1d8b4134654d20c40addf80194e54036b29ae1",
+      "seed": 11668027723483408774,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0032.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT11-112 timing=On Play",
+      "index": 32,
+      "record_sha256": "74e473836c6d049a045701dd6743d2aec50135dbbe70d38ae8bece7e1c75db84",
+      "seed": 4298310684869581644,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0033.json.gz",
+      "first": "B",
+      "halt_reason": "BATTLE_EVOLUTION_UNIMPLEMENTED: source=B:BT19-007#3 target=B:ST7-05#3 route_index=0 cost=2",
+      "index": 33,
+      "record_sha256": "7527d2780ce40437cbd49e7261a3adc4d524681d1d26a90d9d4305776b5ac0a3",
+      "seed": 5770876558852780270,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0034.json.gz",
+      "first": "A",
+      "halt_reason": "BATTLE_EVOLUTION_UNIMPLEMENTED: source=B:EX2-008#1 target=B:ST7-05#2 route_index=0 cost=2",
+      "index": 34,
+      "record_sha256": "ecf132c1652cda21c8e3eb8e3027a6736a239ed0f534559ecd53579545f74e10",
+      "seed": 11008761135982330237,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0035.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT11-112 timing=On Play",
+      "index": 35,
+      "record_sha256": "c9e0c93e7e766b927a9211167c6b45ed51a849019e64095da1cd3287d88f386a",
+      "seed": 4087916659809055287,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0036.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT11-112 timing=On Play",
+      "index": 36,
+      "record_sha256": "40e82f4f2318ab30cedd6e4c49347a4a141e4e6a9b2c8910ea161b3fd009324f",
+      "seed": 7633314804918244246,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0037.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-022 timing=On Play",
+      "index": 37,
+      "record_sha256": "db1d1a7d33c20408fbf06cb35f2acedd2a4c87cdfb495db6788184360bf3246f",
+      "seed": 3241061249011764357,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0038.json.gz",
+      "first": "A",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: A:P-104#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 38,
+      "record_sha256": "9583bee047cf5ec9557b848e9b364cabdc034656e8e24c53316ce791a92a58dc",
+      "seed": 1702132420231203301,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0039.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX4-006 timing=On Play",
+      "index": 39,
+      "record_sha256": "4cce5e2eaf46d3bbd189184b53c34ed3f418f045afdc92e77baf27806bad43b7",
+      "seed": 12098530257148709868,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0040.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-015 timing=On Play",
+      "index": 40,
+      "record_sha256": "8b3384740071b38ea353f49ca022685ae3501636f7349482b739dc48e954ff5c",
+      "seed": 15128580604449926723,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0041.json.gz",
+      "first": "B",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: B:LM-057#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 41,
+      "record_sha256": "d35fe322eb94d55c61af1227775cf51a773688b2a92c25aef98d0033d4d91e82",
+      "seed": 12895392623896152788,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0042.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT19-011 timing=On Play",
+      "index": 42,
+      "record_sha256": "42cdbf481c3bbd17650a12676b8c6d501c1a131dce1c5ed17ad16c5844b981e1",
+      "seed": 14552368107925397003,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0043.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT22-023 timing=On Play",
+      "index": 43,
+      "record_sha256": "142c24595a8697f0547967468c108aa11dd84bf4d5e1d50abd38e39a4d6a22f3",
+      "seed": 5048416584406791733,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0044.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT22-023 timing=On Play",
+      "index": 44,
+      "record_sha256": "458cd2fda8065ff530a99cb90217601c98ef734bd8bf1abea6fd6a8067d41e9f",
+      "seed": 14820494179514914053,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0045.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-015 timing=On Play",
+      "index": 45,
+      "record_sha256": "9dbdc03c1fbc0a6b1a4697ac08ceed45936ad9a22a9f6d4e828dd88064a65577",
+      "seed": 13031414172743331943,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0046.json.gz",
+      "first": "A",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: B:BT9-109#3 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 46,
+      "record_sha256": "f98dc6f053fd33a5edec89227a01ee529dfbcdcbefb2638e6f80a06c996529e6",
+      "seed": 10018944218727892247,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0047.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT19-011 timing=On Play",
+      "index": 47,
+      "record_sha256": "6251785d44873ca8d7f541f5aa5d2a0a00e7942a3518fe96aacdeff465fdec87",
+      "seed": 7933651009896893745,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0048.json.gz",
+      "first": "A",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: B:BT9-109#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 48,
+      "record_sha256": "464ed00b3131929ffbf1f7604c08ff6f98e069526221bbf09eaedb5aaaa42a0a",
+      "seed": 10447970964298112698,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0049.json.gz",
+      "first": "B",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: B:LM-061#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 49,
+      "record_sha256": "9d6f06a1cb471c40b8bf90ae9defd76647aa78a10266e873717c5056ea9738b1",
+      "seed": 1706236455896132910,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0050.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-022 timing=On Play",
+      "index": 50,
+      "record_sha256": "effc5cdae9e6def35d3fa58ca80031469e8e452f0ceb34d55e1b1ae6ee815fdb",
+      "seed": 216921621972784692,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0051.json.gz",
+      "first": "B",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: A:LM-028#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 51,
+      "record_sha256": "f2135b4ee58f3bb42bb51dff4ddcf05666bbc7ba941de7641853ac7939e1665d",
+      "seed": 2618434238398208761,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0052.json.gz",
+      "first": "A",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: A:LM-028#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 52,
+      "record_sha256": "e74399c4c3f42cb5c78fab364cb1c4597114ee5c481a1676144aa97423642e96",
+      "seed": 9744689141544227989,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0053.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT22-023 timing=On Play",
+      "index": 53,
+      "record_sha256": "22253f227725238233b658c0a15f3f15396f14d0fe3d008f47619d8fad3c6e81",
+      "seed": 18210050433024477556,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0054.json.gz",
+      "first": "A",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: B:LM-027#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 54,
+      "record_sha256": "2fcfc4b9d7bec0e5dd92fbc0eefb593a359698fb6608642f8e51a85e726d3f0a",
+      "seed": 3091993376248171393,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0055.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT11-112 timing=On Play",
+      "index": 55,
+      "record_sha256": "98a44032889e3a90756c53740b2e49219fa6bef0a3abe3a6e26ddfe25bea8ad2",
+      "seed": 16806614432865590500,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0056.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT11-112 timing=On Play",
+      "index": 56,
+      "record_sha256": "df35ad652e6d52cc30b185a0a1f12ee830b077360294803732c54fcf895bc090",
+      "seed": 8809793823769447594,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0057.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT22-023 timing=On Play",
+      "index": 57,
+      "record_sha256": "fa1a0b3d66a70b68ab175745bec6d3703b83137030e7f3f6331328053ed473a0",
+      "seed": 15684305397654467,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0058.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT22-023 timing=On Play",
+      "index": 58,
+      "record_sha256": "de69fb0f476e742b510a59e93af1a57c6a909d96feae3eac9957507ecd5626c9",
+      "seed": 11155366223531230037,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0059.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-022 timing=On Play",
+      "index": 59,
+      "record_sha256": "8325c1842e7c47fad0254142d9a3545d7b2cecb622144e8dce13ac8d5fedff06",
+      "seed": 12506608472261762232,
+      "status": "HALT",
+      "winner": null
+    }
+  ],
+  "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+  "exact_replay_matches": 60,
+  "experimental_terminal_winner_counts": {},
+  "final_evaluation_credit": 0,
+  "first_counts": {
+    "A": 30,
+    "B": 30
+  },
+  "halt_reason_counts": {
+    "BASIC_BOARD_STACK_UNSUPPORTED: A": 1,
+    "BASIC_BOARD_STACK_UNSUPPORTED: B": 1,
+    "BASIC_BOARD_TOP_UNSUPPORTED: A EX13-069": 1,
+    "BASIC_BOARD_TOP_UNSUPPORTED: B EX8-012": 1,
+    "BASIC_BOARD_TOP_UNSUPPORTED: B EX8-073": 1,
+    "BATTLE_EVOLUTION_UNIMPLEMENTED: source=A:BT11-023#2 target=A:EX13-019#1 route_index=0 cost=2": 1,
+    "BATTLE_EVOLUTION_UNIMPLEMENTED: source=A:EX1-013#1 target=A:P-138#4 route_index=0 cost=2": 1,
+    "BATTLE_EVOLUTION_UNIMPLEMENTED: source=A:P-138#1 target=A:EX13-022#2 route_index=0 cost=3": 1,
+    "BATTLE_EVOLUTION_UNIMPLEMENTED: source=B:BT12-016#1 target=B:EX8-015#1 route_index=0 cost=1": 1,
+    "BATTLE_EVOLUTION_UNIMPLEMENTED: source=B:BT19-007#3 target=B:ST7-05#3 route_index=0 cost=2": 1,
+    "BATTLE_EVOLUTION_UNIMPLEMENTED: source=B:EX2-008#1 target=B:ST7-05#2 route_index=0 cost=2": 1,
+    "BATTLE_EVOLUTION_UNIMPLEMENTED: source=B:EX8-012#1 target=B:BT17-013#2 route_index=0 cost=3": 1,
+    "BATTLE_EVOLUTION_UNIMPLEMENTED: source=B:ST7-05#1 target=B:EX8-015#1 route_index=0 cost=4": 1,
+    "PLAY_EFFECT_UNSUPPORTED: BT11-112 timing=On Play": 6,
+    "PLAY_EFFECT_UNSUPPORTED: BT19-011 timing=On Play": 2,
+    "PLAY_EFFECT_UNSUPPORTED: BT22-023 timing=On Play": 6,
+    "PLAY_EFFECT_UNSUPPORTED: BT9-092 timing=On Play": 3,
+    "PLAY_EFFECT_UNSUPPORTED: EX13-015 timing=On Play": 3,
+    "PLAY_EFFECT_UNSUPPORTED: EX13-022 timing=On Play": 6,
+    "PLAY_EFFECT_UNSUPPORTED: EX13-023 timing=On Play": 2,
+    "PLAY_EFFECT_UNSUPPORTED: EX4-006 timing=On Play": 1,
+    "PLAY_EFFECT_UNSUPPORTED: P-186 timing=On Play": 2,
+    "UNKNOWN_OPTION_ACTION: A:LM-028#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED": 2,
+    "UNKNOWN_OPTION_ACTION: A:LM-056#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED": 1,
+    "UNKNOWN_OPTION_ACTION: A:P-104#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED": 1,
+    "UNKNOWN_OPTION_ACTION: B:BT9-109#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED": 2,
+    "UNKNOWN_OPTION_ACTION: B:BT9-109#2 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED": 2,
+    "UNKNOWN_OPTION_ACTION: B:BT9-109#3 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED": 3,
+    "UNKNOWN_OPTION_ACTION: B:EX5-070#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED": 1,
+    "UNKNOWN_OPTION_ACTION: B:LM-027#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED": 2,
+    "UNKNOWN_OPTION_ACTION: B:LM-057#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED": 1,
+    "UNKNOWN_OPTION_ACTION: B:LM-061#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED": 1
+  },
+  "judge_certified_matches": 0,
+  "replays": [
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 0,
+      "replayed_record_sha256": "9718aced35c29330becd30e9db7750211023e0acc172b465895394955223c464",
+      "saved_record_sha256": "9718aced35c29330becd30e9db7750211023e0acc172b465895394955223c464"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 1,
+      "replayed_record_sha256": "173aef71ec2daf704f23424f75ca154f3e37fe9f374706e7574e5e4e4ea42f25",
+      "saved_record_sha256": "173aef71ec2daf704f23424f75ca154f3e37fe9f374706e7574e5e4e4ea42f25"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 2,
+      "replayed_record_sha256": "59deb1c29ab73ed7fa26f79fadd54f12b56ab474587f5b9d53fb39cb036aa6be",
+      "saved_record_sha256": "59deb1c29ab73ed7fa26f79fadd54f12b56ab474587f5b9d53fb39cb036aa6be"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 3,
+      "replayed_record_sha256": "df2245e11a49a73850aef79bc1dd1e6c8fc0fc092e268daecc8b17500985019d",
+      "saved_record_sha256": "df2245e11a49a73850aef79bc1dd1e6c8fc0fc092e268daecc8b17500985019d"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 4,
+      "replayed_record_sha256": "e099df3c37885dc5e34bc492740c5c6ecd9a97a5d5f08f16519ddc85f43a2a6d",
+      "saved_record_sha256": "e099df3c37885dc5e34bc492740c5c6ecd9a97a5d5f08f16519ddc85f43a2a6d"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 5,
+      "replayed_record_sha256": "6d024283f59d12dd4f7d1f1fa9f86611ebe1e147d00f90cd56d1cdb5ab3d8243",
+      "saved_record_sha256": "6d024283f59d12dd4f7d1f1fa9f86611ebe1e147d00f90cd56d1cdb5ab3d8243"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 6,
+      "replayed_record_sha256": "a09652278d9a4332496711a3279b25911dec4bd8d9c84d66ef55ce42258113fc",
+      "saved_record_sha256": "a09652278d9a4332496711a3279b25911dec4bd8d9c84d66ef55ce42258113fc"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 7,
+      "replayed_record_sha256": "0649cda57ab90ee26f76032aded724fb7c0aa1ebbc3314157090f01ff6c1d5c0",
+      "saved_record_sha256": "0649cda57ab90ee26f76032aded724fb7c0aa1ebbc3314157090f01ff6c1d5c0"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 8,
+      "replayed_record_sha256": "84df7b2f7575b0bc8ee8fd299f37c55e9c510d2c3ef4c7479582beb5db29fb94",
+      "saved_record_sha256": "84df7b2f7575b0bc8ee8fd299f37c55e9c510d2c3ef4c7479582beb5db29fb94"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 9,
+      "replayed_record_sha256": "73daa0d52b85818f3ef60d1c4e459853a3f37b9c3a157d60c7e180b529dc5250",
+      "saved_record_sha256": "73daa0d52b85818f3ef60d1c4e459853a3f37b9c3a157d60c7e180b529dc5250"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 10,
+      "replayed_record_sha256": "4fe54125b7709c65b42f0513bf072f95310146592bd16f94ed1f85546c1b9cb3",
+      "saved_record_sha256": "4fe54125b7709c65b42f0513bf072f95310146592bd16f94ed1f85546c1b9cb3"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 11,
+      "replayed_record_sha256": "e90c71ee837f72f793da35916e5b1d1dc7b6047023eb29b12fe3cdc6530cec5c",
+      "saved_record_sha256": "e90c71ee837f72f793da35916e5b1d1dc7b6047023eb29b12fe3cdc6530cec5c"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 12,
+      "replayed_record_sha256": "b169e23da45fa70c72b5a364ec510e47cfe7faeb952d990d88fbbde603964ae9",
+      "saved_record_sha256": "b169e23da45fa70c72b5a364ec510e47cfe7faeb952d990d88fbbde603964ae9"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 13,
+      "replayed_record_sha256": "dc7b9e7d16cfca9e946c5c4d090b29ee8bf4eb7e854ede1dc0ec8cbbd8e22a1a",
+      "saved_record_sha256": "dc7b9e7d16cfca9e946c5c4d090b29ee8bf4eb7e854ede1dc0ec8cbbd8e22a1a"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 14,
+      "replayed_record_sha256": "3ee902256aa83545767b03a4306d89ff6860e75666421f1d8fadc786faf512b6",
+      "saved_record_sha256": "3ee902256aa83545767b03a4306d89ff6860e75666421f1d8fadc786faf512b6"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 15,
+      "replayed_record_sha256": "97079351075f28b1b40d318ce76aef9c6b7737a8e15472db4a6cb7e65eefe2e6",
+      "saved_record_sha256": "97079351075f28b1b40d318ce76aef9c6b7737a8e15472db4a6cb7e65eefe2e6"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 16,
+      "replayed_record_sha256": "1be24e7e36dc99973ed555f55ffd90a8c585245e2c1ec1945dbd170f796ff945",
+      "saved_record_sha256": "1be24e7e36dc99973ed555f55ffd90a8c585245e2c1ec1945dbd170f796ff945"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 17,
+      "replayed_record_sha256": "fcdf92bcd749cb86121a744f9a3054cb5c54f14f99340cf977a3cf788beb9727",
+      "saved_record_sha256": "fcdf92bcd749cb86121a744f9a3054cb5c54f14f99340cf977a3cf788beb9727"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 18,
+      "replayed_record_sha256": "f15dacc14b0ed8350ca8abe664652466617690d95d0d794127b4e0f6f2036f30",
+      "saved_record_sha256": "f15dacc14b0ed8350ca8abe664652466617690d95d0d794127b4e0f6f2036f30"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 19,
+      "replayed_record_sha256": "63a6affb09de9b922e12ee8ec20cc1ed9a19aca3fce10fc81e33ec5fc80afcfd",
+      "saved_record_sha256": "63a6affb09de9b922e12ee8ec20cc1ed9a19aca3fce10fc81e33ec5fc80afcfd"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 20,
+      "replayed_record_sha256": "2b1c9f13fa430215c449b4b78b57468033ded4f5a07188e27f976d08a0c2f070",
+      "saved_record_sha256": "2b1c9f13fa430215c449b4b78b57468033ded4f5a07188e27f976d08a0c2f070"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 21,
+      "replayed_record_sha256": "657871250021710559093dcf58d8546ef241b96bf44a63dc62d7908864cabeab",
+      "saved_record_sha256": "657871250021710559093dcf58d8546ef241b96bf44a63dc62d7908864cabeab"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 22,
+      "replayed_record_sha256": "0de429e2c022e261218c915296e5b12861707102e2ff7eb318f7fbd7ae1b81d2",
+      "saved_record_sha256": "0de429e2c022e261218c915296e5b12861707102e2ff7eb318f7fbd7ae1b81d2"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 23,
+      "replayed_record_sha256": "80071c1c0fd9a35f9d1c82916152d46caf48ad84ed4d4053eb126a2e94fb269c",
+      "saved_record_sha256": "80071c1c0fd9a35f9d1c82916152d46caf48ad84ed4d4053eb126a2e94fb269c"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 24,
+      "replayed_record_sha256": "fe6d4f2ca56001230a997332fbebefde6e95af352156f5d403c0329174a07ae9",
+      "saved_record_sha256": "fe6d4f2ca56001230a997332fbebefde6e95af352156f5d403c0329174a07ae9"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 25,
+      "replayed_record_sha256": "70193e9b49b10d726f2855ab6d3dc927575e8631c546a3ca5d1561de5eada008",
+      "saved_record_sha256": "70193e9b49b10d726f2855ab6d3dc927575e8631c546a3ca5d1561de5eada008"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 26,
+      "replayed_record_sha256": "fde1b79fc3aed3a7b8ff5eb35358326cd2cfafc12cc9cbd307d28254f642973d",
+      "saved_record_sha256": "fde1b79fc3aed3a7b8ff5eb35358326cd2cfafc12cc9cbd307d28254f642973d"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 27,
+      "replayed_record_sha256": "a75790c5cf54978097cf000cd5e44d4422ba708eca24f6d0f4c6cac8da3f1923",
+      "saved_record_sha256": "a75790c5cf54978097cf000cd5e44d4422ba708eca24f6d0f4c6cac8da3f1923"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 28,
+      "replayed_record_sha256": "55fc9f98baf435e9c270ff345cf3b3d7d2d085a441d1affff8b741cb1b9dbb0d",
+      "saved_record_sha256": "55fc9f98baf435e9c270ff345cf3b3d7d2d085a441d1affff8b741cb1b9dbb0d"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 29,
+      "replayed_record_sha256": "273f561b3a083d21c2f66ad76adcaf2da3e5e192d02ee9f2568a1efd94b21173",
+      "saved_record_sha256": "273f561b3a083d21c2f66ad76adcaf2da3e5e192d02ee9f2568a1efd94b21173"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 30,
+      "replayed_record_sha256": "74d21e945524246e2728152937e2a3a73e7f084ec533ded11fec4883fe9b4897",
+      "saved_record_sha256": "74d21e945524246e2728152937e2a3a73e7f084ec533ded11fec4883fe9b4897"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 31,
+      "replayed_record_sha256": "50ed559da462cc3f8ce1edf68c1d8b4134654d20c40addf80194e54036b29ae1",
+      "saved_record_sha256": "50ed559da462cc3f8ce1edf68c1d8b4134654d20c40addf80194e54036b29ae1"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 32,
+      "replayed_record_sha256": "74e473836c6d049a045701dd6743d2aec50135dbbe70d38ae8bece7e1c75db84",
+      "saved_record_sha256": "74e473836c6d049a045701dd6743d2aec50135dbbe70d38ae8bece7e1c75db84"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 33,
+      "replayed_record_sha256": "7527d2780ce40437cbd49e7261a3adc4d524681d1d26a90d9d4305776b5ac0a3",
+      "saved_record_sha256": "7527d2780ce40437cbd49e7261a3adc4d524681d1d26a90d9d4305776b5ac0a3"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 34,
+      "replayed_record_sha256": "ecf132c1652cda21c8e3eb8e3027a6736a239ed0f534559ecd53579545f74e10",
+      "saved_record_sha256": "ecf132c1652cda21c8e3eb8e3027a6736a239ed0f534559ecd53579545f74e10"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 35,
+      "replayed_record_sha256": "c9e0c93e7e766b927a9211167c6b45ed51a849019e64095da1cd3287d88f386a",
+      "saved_record_sha256": "c9e0c93e7e766b927a9211167c6b45ed51a849019e64095da1cd3287d88f386a"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 36,
+      "replayed_record_sha256": "40e82f4f2318ab30cedd6e4c49347a4a141e4e6a9b2c8910ea161b3fd009324f",
+      "saved_record_sha256": "40e82f4f2318ab30cedd6e4c49347a4a141e4e6a9b2c8910ea161b3fd009324f"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 37,
+      "replayed_record_sha256": "db1d1a7d33c20408fbf06cb35f2acedd2a4c87cdfb495db6788184360bf3246f",
+      "saved_record_sha256": "db1d1a7d33c20408fbf06cb35f2acedd2a4c87cdfb495db6788184360bf3246f"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 38,
+      "replayed_record_sha256": "9583bee047cf5ec9557b848e9b364cabdc034656e8e24c53316ce791a92a58dc",
+      "saved_record_sha256": "9583bee047cf5ec9557b848e9b364cabdc034656e8e24c53316ce791a92a58dc"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 39,
+      "replayed_record_sha256": "4cce5e2eaf46d3bbd189184b53c34ed3f418f045afdc92e77baf27806bad43b7",
+      "saved_record_sha256": "4cce5e2eaf46d3bbd189184b53c34ed3f418f045afdc92e77baf27806bad43b7"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 40,
+      "replayed_record_sha256": "8b3384740071b38ea353f49ca022685ae3501636f7349482b739dc48e954ff5c",
+      "saved_record_sha256": "8b3384740071b38ea353f49ca022685ae3501636f7349482b739dc48e954ff5c"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 41,
+      "replayed_record_sha256": "d35fe322eb94d55c61af1227775cf51a773688b2a92c25aef98d0033d4d91e82",
+      "saved_record_sha256": "d35fe322eb94d55c61af1227775cf51a773688b2a92c25aef98d0033d4d91e82"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 42,
+      "replayed_record_sha256": "42cdbf481c3bbd17650a12676b8c6d501c1a131dce1c5ed17ad16c5844b981e1",
+      "saved_record_sha256": "42cdbf481c3bbd17650a12676b8c6d501c1a131dce1c5ed17ad16c5844b981e1"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 43,
+      "replayed_record_sha256": "142c24595a8697f0547967468c108aa11dd84bf4d5e1d50abd38e39a4d6a22f3",
+      "saved_record_sha256": "142c24595a8697f0547967468c108aa11dd84bf4d5e1d50abd38e39a4d6a22f3"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 44,
+      "replayed_record_sha256": "458cd2fda8065ff530a99cb90217601c98ef734bd8bf1abea6fd6a8067d41e9f",
+      "saved_record_sha256": "458cd2fda8065ff530a99cb90217601c98ef734bd8bf1abea6fd6a8067d41e9f"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 45,
+      "replayed_record_sha256": "9dbdc03c1fbc0a6b1a4697ac08ceed45936ad9a22a9f6d4e828dd88064a65577",
+      "saved_record_sha256": "9dbdc03c1fbc0a6b1a4697ac08ceed45936ad9a22a9f6d4e828dd88064a65577"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 46,
+      "replayed_record_sha256": "f98dc6f053fd33a5edec89227a01ee529dfbcdcbefb2638e6f80a06c996529e6",
+      "saved_record_sha256": "f98dc6f053fd33a5edec89227a01ee529dfbcdcbefb2638e6f80a06c996529e6"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 47,
+      "replayed_record_sha256": "6251785d44873ca8d7f541f5aa5d2a0a00e7942a3518fe96aacdeff465fdec87",
+      "saved_record_sha256": "6251785d44873ca8d7f541f5aa5d2a0a00e7942a3518fe96aacdeff465fdec87"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 48,
+      "replayed_record_sha256": "464ed00b3131929ffbf1f7604c08ff6f98e069526221bbf09eaedb5aaaa42a0a",
+      "saved_record_sha256": "464ed00b3131929ffbf1f7604c08ff6f98e069526221bbf09eaedb5aaaa42a0a"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 49,
+      "replayed_record_sha256": "9d6f06a1cb471c40b8bf90ae9defd76647aa78a10266e873717c5056ea9738b1",
+      "saved_record_sha256": "9d6f06a1cb471c40b8bf90ae9defd76647aa78a10266e873717c5056ea9738b1"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 50,
+      "replayed_record_sha256": "effc5cdae9e6def35d3fa58ca80031469e8e452f0ceb34d55e1b1ae6ee815fdb",
+      "saved_record_sha256": "effc5cdae9e6def35d3fa58ca80031469e8e452f0ceb34d55e1b1ae6ee815fdb"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 51,
+      "replayed_record_sha256": "f2135b4ee58f3bb42bb51dff4ddcf05666bbc7ba941de7641853ac7939e1665d",
+      "saved_record_sha256": "f2135b4ee58f3bb42bb51dff4ddcf05666bbc7ba941de7641853ac7939e1665d"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 52,
+      "replayed_record_sha256": "e74399c4c3f42cb5c78fab364cb1c4597114ee5c481a1676144aa97423642e96",
+      "saved_record_sha256": "e74399c4c3f42cb5c78fab364cb1c4597114ee5c481a1676144aa97423642e96"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 53,
+      "replayed_record_sha256": "22253f227725238233b658c0a15f3f15396f14d0fe3d008f47619d8fad3c6e81",
+      "saved_record_sha256": "22253f227725238233b658c0a15f3f15396f14d0fe3d008f47619d8fad3c6e81"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 54,
+      "replayed_record_sha256": "2fcfc4b9d7bec0e5dd92fbc0eefb593a359698fb6608642f8e51a85e726d3f0a",
+      "saved_record_sha256": "2fcfc4b9d7bec0e5dd92fbc0eefb593a359698fb6608642f8e51a85e726d3f0a"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 55,
+      "replayed_record_sha256": "98a44032889e3a90756c53740b2e49219fa6bef0a3abe3a6e26ddfe25bea8ad2",
+      "saved_record_sha256": "98a44032889e3a90756c53740b2e49219fa6bef0a3abe3a6e26ddfe25bea8ad2"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 56,
+      "replayed_record_sha256": "df35ad652e6d52cc30b185a0a1f12ee830b077360294803732c54fcf895bc090",
+      "saved_record_sha256": "df35ad652e6d52cc30b185a0a1f12ee830b077360294803732c54fcf895bc090"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 57,
+      "replayed_record_sha256": "fa1a0b3d66a70b68ab175745bec6d3703b83137030e7f3f6331328053ed473a0",
+      "saved_record_sha256": "fa1a0b3d66a70b68ab175745bec6d3703b83137030e7f3f6331328053ed473a0"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 58,
+      "replayed_record_sha256": "de69fb0f476e742b510a59e93af1a57c6a909d96feae3eac9957507ecd5626c9",
+      "saved_record_sha256": "de69fb0f476e742b510a59e93af1a57c6a909d96feae3eac9957507ecd5626c9"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 59,
+      "replayed_record_sha256": "8325c1842e7c47fad0254142d9a3545d7b2cecb622144e8dce13ac8d5fedff06",
+      "saved_record_sha256": "8325c1842e7c47fad0254142d9a3545d7b2cecb622144e8dce13ac8d5fedff06"
+    }
+  ],
+  "schema": "imported-live-diagnostic-summary-v1",
+  "software_terminal_attempts": 0,
+  "status": "DIAGNOSTIC_ONLY",
+  "status_counts": {
+    "HALT": 60
+  }
+}
