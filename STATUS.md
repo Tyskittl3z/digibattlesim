@@ -1,5 +1,26 @@
 # Verified handoff status
 
+## WIP publication: EX13 evolution — 2026-11-03
+
+Same Game0000 now reaches **turn8 /105 commands**, original seed/earlier choices
+preserved, exact replay at its archived source. The selected Rina evolution paid
+1, drew its bonus card, and queued EX13 Ulforce's two WhenDigivolving effects in
+one group. Next selected action is orientation effect34 targeting itself. Its
+suspension needs BT11Rina's AllTurns reactivation and inherited BT22Aero reactions.
+Those are the next implementation step; no effect is skipped.
+
+**WIP verification:**29 evolution/play/Rina tests passed (62.614s),9 return/pilot
+tests passed (3.596s),4 readiness tests passed; source syntax/diff checks clean.
+**Last full suite remains459 at713a513. Current full suite is unrun.** Source
+review corrected future simultaneous deck-bottom order to the action-causing
+card's owner per CR3-1-3-4; explicit complete order is now validated without
+enumerating permutations. The actual singleton trace is unchanged by that fix.
+
+Latest source-bound trace, readable turns, archive and reviews:
+`ARTIFACTS/gameplay-continuations-2026-11-03-08/`. No full current-pair games,
+approved lanes or final games exist. Keep publishing current WIP before usage
+ends, and continue the same selected action.
+
 ## Published work-in-progress checkpoint — 2026-11-03
 
 The user explicitly directs publishing current progress before usage runs out.

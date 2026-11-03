@@ -198,6 +198,12 @@ def pending_choice(runtime, seat, selected, pilot):
     from selected_mechanics import ORIENTATION_EFFECT,orientation_candidates
     if effect==ORIENTATION_EFFECT:
         return pilot.choose(view,orientation_candidates(runtime,seat,selected['source']))
+    from ex13_ulforce_effects import RETURN_EFFECT,ulforce_return_choices,ulforce_return_targets
+    if effect==RETURN_EFFECT:
+        activate=pilot.choose(view,ulforce_return_choices(runtime,seat,selected['source']))
+        targets=ulforce_return_targets(runtime,seat,selected['source']) if activate else []
+        return ({'activate':True,'bottom_order':pilot.bottom_order(targets)}
+                if activate and len(targets)>1 else activate)
     from rina_unsuspend_effects import RINA_CHOICE_EFFECTS,rina_unsuspend_choices
     if effect in RINA_CHOICE_EFFECTS:
         return pilot.choose(view,rina_unsuspend_choices(runtime,seat,selected['source'],effect))

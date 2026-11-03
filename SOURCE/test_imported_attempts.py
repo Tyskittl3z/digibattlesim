@@ -337,6 +337,29 @@ class ImportedAttemptTests(unittest.TestCase):
         self.assertIn(self.runner.pending_choice(runtime,'A',selected,pilot),
                       orientation_candidates(runtime,'A',source))
 
+    def test_optional_fewest_source_return_reaches_explicit_pilot_choice(self):
+        from effect_scheduler import pending_options
+        from test_ex13_ulforce_effects import UlforceFewestReturnTests
+        runtime,_,_,_=UlforceFewestReturnTests().fixture()
+        selected=pending_options(runtime,'B')[0]
+        pilot=self.runner.ReferencePilot(runtime.context.matchup_id,0,'B')
+        self.assertIn(self.runner.pending_choice(runtime,'B',selected,pilot),[False,True])
+
+    def test_effect_owner_pilot_supplies_one_order_for_all_tied_return_targets(self):
+        from effect_scheduler import pending_options,resolve_pending
+        from test_ex13_ulforce_effects import UlforceFewestReturnTests
+        from test_selected_mechanics import stage
+        runtime,_,target,_=UlforceFewestReturnTests().fixture()
+        other=stage(runtime,'A',['EX13-019'])
+        class Pilot:
+            def choose(self,view,choices):return True
+            def bottom_order(self,cards):return list(reversed(cards))
+        selected=pending_options(runtime,'B')[0]
+        choice=self.runner.pending_choice(runtime,'B',selected,Pilot())
+        self.assertEqual(choice,{'activate':True,'bottom_order':[other,target]})
+        resolve_pending(runtime,'B',selected['id'],choice)
+        self.assertEqual([c.key for c in runtime.state.zones['A']['deck'][:2]],[other,target])
+
     def test_attempt_replays_exactly_and_never_claims_match_credit(self):
         for index in (0, 1):
             with self.subTest(index=index):

@@ -43,14 +43,19 @@ def _play(runtime,seat,choice,root,*,within_effect=False,source_zone='hand'):
     if card.kind not in ('Digimon','Tamer'):raise RuntimeHalt('PLAY_CARD_TYPE_INVALID')
     spec=(SEARCH_SPECS.get(card.number) or ON_PLAY_SPECS.get(card.number)
           or PLAY_SPECS.get(card.number) or TAMER_PLAY_SPECS.get(card.number))
+    specs=(spec,) if spec is not None else ()
+    if card.number=='EX13-023':
+        from selected_mechanics import ORIENTATION_EFFECT,ORIENTATION_LINE
+        from ex13_ulforce_effects import RETURN_EFFECT,RETURN_LINE
+        specs=((ORIENTATION_EFFECT,ORIENTATION_LINE),(RETURN_EFFECT,RETURN_LINE))
     on_play=trigger_lines(card.effect_text('main_text'),'On Play')
-    if on_play and (spec is None or on_play!=(spec[1],)):
+    if on_play and on_play!=tuple(item[1] for item in specs):
         raise RuntimeHalt('PLAY_EFFECT_UNSUPPORTED: '+card.number+' timing=On Play')
-    if not on_play:spec=None
+    if not on_play:specs=()
     from battlefield_scope import assert_basic_board_scope
-    assert_basic_board_scope(runtime,'play_search' if spec is not None else 'play_plain',root,
+    assert_basic_board_scope(runtime,'play_search' if specs else 'play_plain',root,
         event={'seat':seat,'card_number':card.number},within_effect=within_effect)
-    if spec is not None:
+    for spec in specs:
         runtime.registry.lookup(card.number,spec[0],'main_text')
     cost=0 if within_effect else card.to_dict()['play_cost']
     if type(cost) is not int or cost<0 or cost>state.memory+10:
@@ -61,12 +66,16 @@ def _play(runtime,seat,choice,root,*,within_effect=False,source_zone='hand'):
     state.battle[seat][physical.key]=Stack([physical],instance_id='entity-'+str(state.entity_sequence),
                                          played_turn=state.turn,ready_since_turn=state.turn+1)
     effects=[]
-    if spec is not None:
+    for spec in specs:
         record={'seat':seat,'source':physical.key,'effect_id':spec[0],'field':'main_text',
                 'trigger':{'kind':'On Play','card':physical.key}}
         if card.number in TAMER_PLAY_SPECS:
             from tamer_play_effects import tamer_play_usage
             record['usage']=list(tamer_play_usage(runtime,seat,physical.key,spec[0]))
+        elif card.number=='EX13-023':
+            from selected_mechanics import ORIENTATION_EFFECT,_usage
+            record['usage']=(list(_usage(runtime,seat,physical.key,spec[0]))
+                             if spec[0]==ORIENTATION_EFFECT else [])
         effects.append(record)
     from tamer_play_effects import collect_tamer_play_reactions
     effects.extend(collect_tamer_play_reactions(runtime,seat,physical))

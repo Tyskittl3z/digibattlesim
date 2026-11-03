@@ -46,11 +46,33 @@ class MainPlayTests(unittest.TestCase):
         self.assertEqual(r.matches_played,0)
 
     def test_unknown_on_play_or_option_is_not_silently_skipped(self):
-        for number in ('EX13-023','P-104'):
-            r=self.runtime();key=hand_card(r,'A',number);before=r.snapshot()['state']
+        for seat,number in (('B','EX13-015'),('A','P-104')):
+            r=self.runtime();r.state.active=seat
+            key=hand_card(r,seat,number);before=r.snapshot()['state']
             with self.assertRaisesRegex(RuntimeHalt,'PLAY_EFFECT_UNSUPPORTED|OPTION_USE_UNIMPLEMENTED'):
-                choose_play(r,'A',key,ROOT)
+                choose_play(r,seat,key,ROOT)
             self.assertEqual(before,r.snapshot()['state'])
+
+    def test_ulforce_full_cost_play_queues_both_on_play_effects_and_shared_orientation_opt(self):
+        from selected_mechanics import ORIENTATION_EFFECT,_usage
+        from effect_scheduler import queue_effects
+        r=self.runtime();r.state.memory=2
+        key=hand_card(r,'A','EX13-023')
+        result=choose_play(r,'A',key,ROOT)
+        self.assertEqual((result['cost'],r.state.memory,r.state.phase),(12,-10,'MAIN'))
+        self.assertEqual([c.key for c in r.state.battle['A'][key].cards],[key])
+        group=pending_options(r,'A')
+        self.assertEqual([(p['effect_id'],p['depth']) for p in group],
+                         [(ORIENTATION_EFFECT,0),('EX13-023.return_fewest',0)])
+        self.assertEqual(group[0]['usage'],list(_usage(r,'A',key,ORIENTATION_EFFECT)))
+        self.assertEqual(group[1]['usage'],[])
+        for pending in group:
+            resolve_pending(r,'A',pending['id'],None if pending['effect_id']==ORIENTATION_EFFECT else False)
+        self.assertEqual((r.state.memory,r.state.phase),(-10,'END_OF_TURN'))
+        self.assertIn(_usage(r,'A',key,ORIENTATION_EFFECT),r.state.once_used)
+        queue_effects(r,[{'seat':'A','source':key,'effect_id':ORIENTATION_EFFECT,'field':'main_text',
+            'usage':list(_usage(r,'A',key,ORIENTATION_EFFECT)),'trigger':{'kind':'When Attacking'}}])
+        self.assertEqual(r.state.pending,[]);r.verify()
 
     def test_live_board_scope_wrong_actor_or_not_in_hand_fails_atomically(self):
         for case in ('board','actor','source'):

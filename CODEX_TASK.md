@@ -1,15 +1,15 @@
 # First Codex task (execute, don't just plan)
 
-> **Latest live continuation — WIP published:** User requires publishing current
-> work before usage runs out. Last full suite459 at713a513; current Ulforce
-> increment has13 focused passes, full suite unrun. Game0000 turn8 /104commands,
-> same original seed/choices, exact replay. Continue effect33 RinaAfterDraw:
-> B:BT22-023#1→B:EX13-023#1 cost1 at Bmemory2 UNSUSPEND, from
-> `ARTIFACTS/gameplay-continuations-2026-11-03-07/game-0000-segment.json.gz`.
-> Queue both actual WhenDigivolving effects, orientation +return-all fewest
-> sources, with explicit choices. Actual sole minimum A:BT12-029#2.
-> Do not reroll earlier choices, skip real reactions or claim prefixes as games.
-> Still zero valid full current-pair matches. Keep publishing truthful checkpoints.
+> **Latest live continuation — published WIP:** Game0000turn8 /105commands,
+> same original seed/choices, exact replay at archived source. Last full suite
+>459at713a513; current focused29+9+4 runs pass, full suite unrun. Continue
+> effect34 EX13-023.orientation choiceB:EX13-023#1 from
+> `ARTIFACTS/gameplay-continuations-2026-11-03-08/game-0000-segment.json.gz`.
+> Actual suspension requires BT11Rina AllTurns reactivation and inherited
+> BT22Aero unsuspend. Return effect35 remains pending. Preserve all choices.
+> Correct deck-bottom ordering controller is action-causing card owner per
+> CR3-1-3-4; latest code validates explicit order.
+> Zero valid full games. Keep publishing current work before usage ends.
 
 > **2026-11-02 current priority:** User delegated choosing the best starting
 > matchup. Use the distinct-list Ulforce mirror 123129 vs122110, not the original

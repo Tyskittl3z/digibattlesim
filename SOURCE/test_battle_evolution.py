@@ -14,6 +14,8 @@ from matchup_readiness import load_context_file
 from selected_mechanics import build_selected_registry
 from test_selected_mechanics import ROOT, stage
 
+_SEGMENT07 = None
+
 
 class BattleEvolutionTests(unittest.TestCase):
     def setUp(self):
@@ -191,6 +193,73 @@ class BattleEvolutionTests(unittest.TestCase):
         self.assertFalse(result['drew']); self.assertIsNone(result['drawn_card'])
         self.assertFalse(runtime.state.terminal); self.assertIn(target,runtime.state.battle['A'])
         runtime.verify()
+
+    def segment07(self):
+        global _SEGMENT07
+        if _SEGMENT07 is None:
+            path=ROOT/'ARTIFACTS/gameplay-continuations-2026-11-03-07/game-0000-segment.json.gz'
+            record=json.loads(gzip.decompress(path.read_bytes()))
+            context=load_context_file(ROOT/'ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json')
+            runtime=ContextRuntime(context,record['seed'],record['first'],
+                build_selected_registry(context,ROOT),allow_experimental=True)
+            for command in record['commands'][:-1]:
+                _apply(runtime,command['command'],command['seat'],command['args'],ROOT)
+            self.assertEqual(runtime.snapshot()['state'],record['halts'][-1]['before']['state'])
+            self.assertEqual(runtime.snapshot()['rng_state'],record['halts'][-1]['before']['rng_state'])
+            _SEGMENT07=runtime,record['commands'][-1]
+        return copy.deepcopy(_SEGMENT07)
+
+    def test_actual_segment07_rina_evolution_draw_precedes_both_simultaneous_triggers(self):
+        from selected_mechanics import ORIENTATION_EFFECT,_usage
+        runtime,command=self.segment07()
+        source='B:BT22-023#1';target='B:EX13-023#1'
+        old=copy.deepcopy(runtime.state.battle['B'][source])
+        drawn=runtime.state.zones['B']['deck'][-1].key
+        rng=runtime.snapshot()['rng_state']
+        result=_apply(runtime,command['command'],command['seat'],command['args'],ROOT)
+        evolved=runtime.state.battle['B'][target]
+        self.assertEqual((result['evolution']['cost'],result['evolution']['cost_reduction']), (1,2))
+        self.assertEqual((runtime.state.memory,runtime.state.phase),(1,'UNSUSPEND'))
+        self.assertEqual([c.key for c in evolved.cards],[c.key for c in old.cards]+[target])
+        self.assertEqual((evolved.instance_id,evolved.suspended,evolved.played_turn,evolved.ready_since_turn),
+                         (old.instance_id,old.suspended,old.played_turn,old.ready_since_turn))
+        self.assertTrue(runtime.state.battle['B']['B:EX13-069#4'].suspended)
+        self.assertEqual(result['evolution']['drawn_card'],drawn)
+        self.assertIn(drawn,[c.key for c in runtime.state.zones['B']['hand']])
+        group=pending_options(runtime,'B')
+        self.assertEqual([(p['effect_id'],p['source'],p['depth'],p['instance']) for p in group],
+            [(ORIENTATION_EFFECT,target,2,old.instance_id),('EX13-023.return_fewest',target,2,old.instance_id)])
+        self.assertEqual(group[0]['usage'],list(_usage(runtime,'B',target,ORIENTATION_EFFECT)))
+        self.assertEqual(group[1]['usage'],[])
+        self.assertEqual(result['evolution']['triggered_effects'],[p['effect_id'] for p in group])
+        self.assertEqual(sum(b.effect_id==ORIENTATION_EFFECT for b in runtime.registry.bindings),1)
+        self.assertEqual(runtime.snapshot()['rng_state'],rng);runtime.verify()
+
+    def test_actual_segment07_two_effects_offer_either_order_without_forcing_orientation(self):
+        from selected_mechanics import ORIENTATION_EFFECT
+        for first in (ORIENTATION_EFFECT,'EX13-023.return_fewest'):
+            with self.subTest(first=first):
+                runtime,command=self.segment07()
+                _apply(runtime,command['command'],command['seat'],command['args'],ROOT)
+                untouched=copy.deepcopy(runtime.state.battle['A']['A:BT11-032#1'])
+                for effect in (first, 'EX13-023.return_fewest' if first==ORIENTATION_EFFECT else ORIENTATION_EFFECT):
+                    pending=next(p for p in pending_options(runtime,'B') if p['effect_id']==effect)
+                    resolve_pending(runtime,'B',pending['id'],None if effect==ORIENTATION_EFFECT else True)
+                self.assertNotIn('A:BT12-029#2',runtime.state.battle['A'])
+                self.assertEqual(runtime.state.zones['A']['deck'][0].key,'A:BT12-029#2')
+                self.assertEqual(runtime.state.battle['A']['A:BT11-032#1'],untouched)
+                self.assertFalse(runtime.state.battle['B']['B:EX13-023#1'].suspended)
+                self.assertEqual((runtime.state.memory,runtime.state.phase),(1,'UNSUSPEND'));runtime.verify()
+
+    def test_actual_segment07_future_unknown_suspension_observer_halts_only_on_that_choice(self):
+        from selected_mechanics import ORIENTATION_EFFECT
+        runtime,command=self.segment07()
+        _apply(runtime,command['command'],command['seat'],command['args'],ROOT)
+        pending=next(p for p in pending_options(runtime,'B') if p['effect_id']==ORIENTATION_EFFECT)
+        before=runtime.snapshot()
+        with self.assertRaisesRegex(RuntimeHalt,'ORIENTATION_DEPENDENT_TRIGGER_UNIMPLEMENTED: BT11-112'):
+            resolve_pending(runtime,'B',pending['id'],'B:EX13-023#1')
+        self.assertEqual(runtime.snapshot(),before)
 
 
 if __name__ == '__main__':

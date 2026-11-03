@@ -286,4 +286,6 @@ def build_selected_registry(context, root):
     bindings.extend(security_tamer_bindings(context,root,rules))
     from rina_unsuspend_effects import rina_unsuspend_bindings
     bindings.extend(rina_unsuspend_bindings(context,root,rules))
+    from ex13_ulforce_effects import ulforce_return_bindings
+    bindings.extend(ulforce_return_bindings(context,root,rules))
     return MechanicRegistry(tuple(bindings))

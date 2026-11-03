@@ -3,18 +3,19 @@
 Checkpoint: November 2, 2026. This document describes the engine track. Read
 `AGENTS.md`, the newest section of `STATUS.md`, and `WORKFLOW.md` before editing.
 
-Latest publication is a **work-in-progress checkpoint** per the user's instruction
-to publish before usage runs out. Last full-suite result: **459 tests at713a513**.
-Current BT11 Ulforce increment passes13 focused Tamer tests and independent actual
-case checks; its full suite has not been run. Same original Game0000 reaches
-**turn8 /104 commands**, exact replay, zero complete-match credit. Latest record:
-`ARTIFACTS/gameplay-continuations-2026-11-03-07/game-0000-segment.json.gz`.
-Next selected Rina AfterDraw evolution is B:BT22-023#1→B:EX13-023#1, cost1
-(printed3−2), Bmemory2 in UNSUSPEND. Wire both actual WhenDigivolving effects
-as a simultaneous group: orientation and return-all fewest sources. Current
-sole minimum is A:BT12-029#2; do not invent an order for future multi-target
-returns. Preserve the selected action, all earlier choices and source evidence.
-No full games or strategic/final credits exist. See newest STATUS for limits.
+Latest publication is **WIP**, preserving the current state before usage ends.
+Same original Game0000 reaches turn8 /105commands, exact replay at its archived
+source. Last full suite:459 tests at713a513; current increment has29 focused
+evolution/play/Rina passes,9 return/pilot passes and4 readiness passes. Its full
+suite is unrun. Latest record:
+`ARTIFACTS/gameplay-continuations-2026-11-03-08/game-0000-segment.json.gz`.
+Next selected action is orientation effect34 on B:EX13-023#1, turn8/memory1 in
+UNSUSPEND. Implement the actual BT11 Rina AllTurns reactivation plus inherited
+BT22Aero suspension reaction, preserving the selected target and pending return
+effect35. EX13's paired WhenDigivolving effects now queue together after the
+bonus draw. Simultaneous return order is chosen by the action-causing card's
+owner (CR3-1-3-4); explicit orders are validated. Zero full games/strategy/final
+credits. Follow newest STATUS and keep publishing truthful checkpoints.
 
 ## Goal and ownership
 

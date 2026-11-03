@@ -73,14 +73,15 @@ class RinaUnsuspendTests(unittest.TestCase):
   self.assertTrue(any(x and x['hand_key']=='B:BT11-032#1' for x in choices))
   result=resolve_pending(r,'B',p['id'],None);self.assertIsNone(result['evolution'])
   self.assertEqual(len(pending_options(r,'B')),2);r.verify()
- def test_unknown_real_digivolving_effect_halts_only_when_postdraw_route_selected(self):
+ def test_postdraw_ulforce_route_queues_both_real_digivolving_effects(self):
   from rina_unsuspend_effects import rina_unsuspend_choices
+  from selected_mechanics import ORIENTATION_EFFECT
   r,p=self.paid();choices=rina_unsuspend_choices(r,'B',p['source'],p['effect_id'])
   selected=next(x for x in choices if x and x['source_key']=='B:EX13-022#1' and x['hand_key']=='B:EX13-023#1')
-  before=r.snapshot()
-  with self.assertRaisesRegex(RuntimeHalt,'BATTLE_DIGIVOLVING_EFFECT_UNSUPPORTED: EX13-023'):
-   resolve_pending(r,'B',p['id'],selected)
-  self.assertEqual(r.snapshot(),before)
+  resolve_pending(r,'B',p['id'],selected)
+  group=pending_options(r,'B')
+  self.assertEqual([x['effect_id'] for x in group],[ORIENTATION_EFFECT,'EX13-023.return_fewest'])
+  self.assertEqual({x['depth'] for x in group},{3});r.verify()
  def test_bound_evolution_at_negative_end_memory_uses_only_fixed_reduction_two(self):
   from rina_unsuspend_effects import EX13_DRAW_EFFECT
   r,tamer,base,target=self.isolated();stack=copy.deepcopy(r.state.battle['B'][base])
