@@ -76,13 +76,27 @@ class BattlefieldScopeTests(unittest.TestCase):
         context = selected_context()
         for seat in ('A', 'B'):
             for number, _ in context.deck(seat).main:
-                if number in PLAIN | SEARCH_TOPS | {'P-104'}:
+                from option_actions import OPTION_SPECS
+                if number in PLAIN | SEARCH_TOPS | set(OPTION_SPECS):
                     continue
                 for action in ('attack_plain',):
                     with self.subTest(seat=seat, number=number, action=action):
                         runtime = self.runtime()
                         stage(runtime, seat, [number])
                         self.assert_rejected_unchanged(runtime, 'BASIC_BOARD_TOP_UNSUPPORTED', action)
+
+    def test_verified_option_tops_are_inert_for_combat_without_broadening_digimon_support(self):
+        from option_actions import OPTION_SPECS
+        from matchup_readiness import load_context_file
+        context=load_context_file(ROOT/'ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json')
+        for number in OPTION_SPECS:
+            with self.subTest(number=number):
+                runtime=ContextRuntime(context,721,'A',allow_experimental=True)
+                runtime.state.phase='MAIN';runtime.state.turn=3
+                stage(runtime,'A',[number]);stage(runtime,'B',['EX1-013'])
+                before=self.snapshot(runtime)
+                self.guard(runtime,'attack_plain')
+                self.assertEqual(before,self.snapshot(runtime))
 
     def test_existing_self_timings_do_not_block_a_different_digimon_play(self):
         context=selected_context()

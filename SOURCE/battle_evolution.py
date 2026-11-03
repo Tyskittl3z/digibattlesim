@@ -31,11 +31,11 @@ def _digivolving_effect(runtime, target):
         effect = SEARCH_SPECS['P-138'][0]
     elif target.card_number == 'BT22-023' and lines == (RETURN_LINE,):
         effect = DIGIVOLVE_EFFECT
-    elif target.card_number == 'EX13-022':
-        from tamer_play_effects import PLAY_EFFECT,PLAY_LINE
-        if lines!=(PLAY_LINE,):
+    elif target.card_number in ('EX13-022','BT22-022'):
+        from tamer_play_effects import PLAY_SPECS
+        effect,line=PLAY_SPECS[target.card_number]
+        if lines!=(line,):
             raise RuntimeHalt('BATTLE_DIGIVOLVING_EFFECT_UNSUPPORTED: '+target.card_number)
-        effect=PLAY_EFFECT
     else:
         raise RuntimeHalt('BATTLE_DIGIVOLVING_EFFECT_UNSUPPORTED: '
                           + target.card_number + ' timing=When Digivolving source=' + target.key)
@@ -82,20 +82,20 @@ def _observer_dependencies(runtime, seat, source_key, target):
                                       + physical.card_number + ' ' + field + ' source=' + physical.key)
 
 
-def _choose(runtime, seat, choice, root):
+def _choose(runtime, seat, choice, root, *, within_effect=False):
     state = runtime.state
     locked = require_selected_context(runtime.context, root)
     if not runtime.allow_experimental:
         raise RuntimeHalt('EXPERIMENTAL_OPT_IN_REQUIRED')
     if seat != state.active:
         raise RuntimeHalt('ACTIVE_PLAYER_REQUIRED')
-    if state.phase != 'MAIN':
+    if not within_effect and state.phase != 'MAIN':
         raise RuntimeHalt('MAIN_PHASE_REQUIRED')
-    if state.memory < 0:
+    if not within_effect and state.memory < 0:
         raise RuntimeHalt('TURN_END_WINDOW_UNIMPLEMENTED')
     # Reduction is only legal inside the resolution of its own bound effect.
     # Ordinary main actions cannot request a free-standing discount.
-    if type(choice['cost_reduction']) is not int or choice['cost_reduction'] != 0:
+    if type(choice['cost_reduction']) is not int or choice['cost_reduction'] < 0 or (not within_effect and choice['cost_reduction'] != 0):
         raise RuntimeHalt('UNBOUND_EVOLUTION_COST_REDUCTION')
     source_key, target_key, index = choice['source_key'], choice['hand_key'], choice['route_index']
     stack = state.battle[seat].get(source_key)
@@ -117,18 +117,19 @@ def _choose(runtime, seat, choice, root):
     if type(index) is not int or not 0 <= index < len(routes):
         raise RuntimeHalt('ROUTE_INDEX_INVALID: ' + str(index))
     route = routes[index]
-    if type(route.cost) is not int or route.cost < 0 or route.cost > state.memory + 10:
+    cost=max(0,route.cost-choice['cost_reduction'])
+    if type(route.cost) is not int or route.cost < 0 or cost > state.memory + 10:
         raise RuntimeHalt('INSUFFICIENT_AVAILABLE_MEMORY: cost=' + str(route.cost))
     effect = _digivolving_effect(runtime, target)
     from battlefield_scope import assert_basic_board_scope
-    assert_basic_board_scope(runtime, 'battle_evolve', root)
+    assert_basic_board_scope(runtime, 'battle_evolve', root, within_effect=within_effect)
     _observer_dependencies(runtime, seat, source_key, target)
     from selected_mechanics import _source_evidence
     sources = [_source_evidence(root, runtime.context.card(seat, physical.card_number).to_dict()['official_source'],
         '#' + physical.card_number + ' printed identity, evolution conditions and active effect text').manifest()
         for physical in (source, target)]
     memory_before = state.memory
-    state.memory -= route.cost
+    state.memory -= cost
     state.zones[seat]['hand'].remove(target)
     del state.battle[seat][source_key]
     stack.cards.append(target)
@@ -146,14 +147,14 @@ def _choose(runtime, seat, choice, root):
             'field': 'main_text', 'usage':usage,'trigger': {'kind': 'When Digivolving', 'card': target.key,
                                             'previous_top': source_key}}])
     return {'source_key': source_key, 'hand_key': target_key, 'route_index': index,
-            'route': asdict(route), 'cost': route.cost, 'memory_after': state.memory,
+            'route': asdict(route), 'cost': cost, 'cost_reduction':choice['cost_reduction'], 'memory_after': state.memory,
             'drew': drawn is not None, 'drawn_card': drawn.key if drawn else None,
             'rules_source': choice['rules'], 'card_sources': sources,
             'scope_context_id': locked.matchup_id,
             'triggered_effects': [effect] if effect is not None else [],
             'steps': [{'operation': 'DECLARE_DIGIVOLUTION', 'source': source_key,
                        'target': target_key, 'route_index': index, 'route': asdict(route)},
-                      {'operation': 'PAY_DIGIVOLUTION_COST', 'cost': route.cost,
+                      {'operation': 'PAY_DIGIVOLUTION_COST', 'cost': cost,
                        'memory_before': memory_before, 'memory_after': state.memory},
                       {'operation': 'STACK_DIGIMON', 'previous_top': source_key,
                        'new_top': target_key, 'instance': stack.instance_id},
@@ -161,6 +162,22 @@ def _choose(runtime, seat, choice, root):
                       {'operation': 'TRIGGER_WHEN_DIGIVOLVING',
                        'effects': [effect] if effect is not None else []}],
             'full_match_credit': 0}
+
+
+def trusted_evolve_from_effect(runtime,seat,source_key,hand_key,route_index,root):
+    """Resolve a route using only the reduction of the active bound Option."""
+    from option_actions import OPTION_EVOLUTION_EFFECTS,validate_option_activation,option_evolution_choices
+    activated=getattr(runtime,'_activated_effect',None)
+    effect=activated[0] if isinstance(activated,tuple) and activated else None
+    spec=OPTION_EVOLUTION_EFFECTS.get(effect)
+    if spec is None:raise RuntimeHalt('OPTION_ACTIVE_BINDING_REQUIRED')
+    source=validate_option_activation(runtime,seat,(effect,),source_zone=spec['source_zone'])
+    if source.card_number!=spec['number']:raise RuntimeHalt('OPTION_ACTIVE_BINDING_REQUIRED')
+    choice={'source_key':source_key,'hand_key':hand_key,'route_index':route_index}
+    if choice not in option_evolution_choices(runtime,seat,effect):
+        raise RuntimeHalt('OPTION_EVOLUTION_CHOICE_INVALID')
+    return _choose(runtime,seat,{**choice,'cost_reduction':spec['reduction'],
+        'rules':{**_rules(root),'locator':RULE_LOCATOR}},root,within_effect=True)
 
 
 def choose_battle_evolution(runtime, seat, source_key, hand_key, route_index, root, *, cost_reduction=0):

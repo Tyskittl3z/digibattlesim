@@ -153,17 +153,17 @@ class GameContinuationTests(unittest.TestCase):
             'first_new_decision_command_index'], retry_index)
         self.assertTrue(runner.replay_attempt(continued, ROOT)['exact_match'])
 
-    def test_unimplemented_selected_option_retries_the_same_card_and_stops(self):
-        record = self.saved(12)  # LM-056 remains unsupported, rather than disappearing from the choice.
+    def test_repaired_training_option_retries_the_same_selected_physical_card(self):
+        record = self.saved(12)
         before = copy.deepcopy(record)
         continued = runner.continue_attempt(record, ROOT, max_commands=30)
         self.assertEqual(record, before)
         retry = continued['commands'][len(record['commands']) - 1]
-        self.assertEqual(retry['command'], 'UNKNOWN_OPTION_ACTION')
+        self.assertEqual(retry['command'], 'USE_OPTION')
         self.assertEqual(retry['args'], record['commands'][-1]['args'])
-        self.assertEqual(retry['status'], 'HALT')
-        self.assertEqual(continued['halt_reason'], record['halt_reason'])
-        self.assertEqual(len(continued['commands']), len(record['commands']))
+        self.assertEqual(retry['status'], 'EXPERIMENTAL_RESOLVED')
+        self.assertEqual(retry['result']['used_card'], record['commands'][-1]['args']['hand_key'])
+        self.assertGreater(len(continued['commands']), len(record['commands']))
         self.assertTrue(runner.replay_attempt(continued, ROOT)['exact_match'])
 
     def test_legacy_option_and_battle_evolution_keep_inputs_when_mapping_to_current_api(self):
@@ -224,6 +224,28 @@ class GameContinuationTests(unittest.TestCase):
                         if item['effect_id'] == tamers.OBSERVER_EFFECT)
         self.assertIn(runner.pending_choice(runtime, 'B', observer, pilot),
                       tamers.tamer_play_choices(runtime, 'B', observer['source'], tamers.OBSERVER_EFFECT))
+
+    def test_actual_veedramon_tamer_and_egg_choices_reach_the_runner(self):
+        from effect_scheduler import pending_options,resolve_pending
+        import tamer_play_effects as tamers
+        path=ROOT/'ARTIFACTS/gameplay-continuations-2026-11-03-02/game-0000-segment.json.gz'
+        record=json.loads(gzip.decompress(path.read_bytes()))
+        context,_,_=runner._load_context_selection(ROOT,record['replay_provenance']['context_file'])
+        runtime=runner.ContextRuntime(context,record['seed'],record['first'],
+            runner.build_selected_registry(context,ROOT),allow_experimental=True)
+        for command in record['commands'][:-1]:
+            runner._apply(runtime,command['command'],command['seat'],command['args'],ROOT)
+        failed=record['commands'][-1]
+        runner._apply(runtime,failed['command'],failed['seat'],failed['args'],ROOT)
+        pilot=runner.ReferencePilot(context.matchup_id,record['index'],'B')
+        selected=pending_options(runtime,'B')[0]
+        self.assertEqual(selected['effect_id'],'BT22-022.play_tamer')
+        self.assertIn(runner.pending_choice(runtime,'B',selected,pilot),
+                      tamers.tamer_play_choices(runtime,'B',selected['source'],selected['effect_id']))
+        resolve_pending(runtime,'B',selected['id'],'B:BT11-112#3')
+        egg=next(p for p in pending_options(runtime,'B')
+                 if p['effect_id']=='EX13-002.tamer_play_unsuspend')
+        self.assertIn(runner.pending_choice(runtime,'B',egg,pilot),[False,True])
 
 
 if __name__ == '__main__':

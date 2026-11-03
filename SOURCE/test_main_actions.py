@@ -114,4 +114,14 @@ class MainPlayTests(unittest.TestCase):
             self.assertEqual(result['triggered_effects'],[])
             self.assertEqual(r.state.battle[seat][key].statuses,{})
             r.verify()
+
+    def test_scramble_trash_play_cannot_be_called_without_bound_delay(self):
+        from main_actions import play_blue_scramble_from_trash
+        r=self.runtime();key=hand_card(r,'A','EX1-013')
+        physical=next(c for c in r.state.zones['A']['hand'] if c.key==key)
+        r.state.zones['A']['hand'].remove(physical);r.state.zones['A']['trash'].append(physical)
+        before=r.snapshot()
+        with self.assertRaisesRegex(RuntimeHalt,'OPTION_ACTIVE_BINDING_REQUIRED'):
+            play_blue_scramble_from_trash(r,'A',key,ROOT)
+        self.assertEqual(r.snapshot(),before)
 if __name__=='__main__':unittest.main()

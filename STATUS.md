@@ -1,5 +1,31 @@
 # Verified handoff status
 
+## Same-game checkpoint — 2026-11-03 UTC
+
+**430 tests passed** (259.488s). Game0000 retains original seed
+12017913134550805276 and all earlier choices, now **turn6 /59 recorded commands**,
+with exact full-record replay. The Blue Scramble stop is resolved; encountered
+Option searches/Delay/reduced evolution and BT22-022 conditional free-Tamer play
+now have explicit choices and source-bound handlers. The exposed EX13-002 egg
+reaction is recorded with simultaneous Tamer-play effects; already-unsuspended
+processing generates no false orientation or memory event.
+
+Saved segments02 and03 include compressed full records, exact replays, readable
+turn traces, official-source reviews and source archives/manifests under
+`ARTIFACTS/gameplay-continuations-2026-11-03-02/` and `...-03/`. Independent
+archived-source review of segment02 matched all54 successful commands,108-card
+conservation, physical state and RNG; none of its33 new resolved commands had a
+concrete identified defect. This is partial-game evidence only.
+
+The next selected action is **B:EX13-022#1 attacking PLAYER**, turn6/memory3.
+An old whole-board combat guard rejects A's BT11-112 Tamer before declaration.
+Source-backed review finds the declaration legal: unrelated Rina text does not
+trigger on the opponent's suspension. Add the actual When Attacking free-Tamer
+trigger, preserve counter/block/security timing and continue this same action.
+
+**Zero complete current-pair matches, zero approved lanes, zero final matches.**
+The60/10,000 targets remain outstanding; diagnostic prefixes are never counted.
+
 ## Gameplay-first continuation — 2026-11-02
 
 Following the user's correction, continue actual chosen actions and preserve

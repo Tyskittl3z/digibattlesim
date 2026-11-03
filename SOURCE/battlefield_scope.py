@@ -13,6 +13,7 @@ It inspects neither hidden zones nor breeding contents and never mutates state,
 events, RNG or halt flags, including on failure.
 """
 from context_runtime import PhysicalCard, PhysicalState, RuntimeHalt, Stack
+from option_actions import OPTION_SPECS
 from selected_contexts import require_selected_context
 
 
@@ -22,7 +23,7 @@ _SEARCH_TOPS = frozenset(('BT11-023','P-138','EX13-017','EX2-008','EX8-009'))
 _OTHER_TIMINGS_TOPS = frozenset(('BT12-016','BT12-029','BT17-013','BT17-016','BT19-007',
     'BT19-009','BT19-080','BT22-022','EX13-019','EX13-069','EX8-012','EX8-015'))
 _RESOLVED_PLAY_TOPS = frozenset(('BT11-112','BT22-085','BT22-023'))
-_INERT_OPTION_TOPS = frozenset(('P-104',))
+_INERT_OPTION_TOPS = frozenset(OPTION_SPECS)
 # Keep explicit schemas: a newly added effect-bearing dataclass field must not
 # silently acquire support merely because the dataclass accepted it.
 _STATE_FIELDS = frozenset(('zones', 'battle', 'breeding', 'active', 'memory', 'turn',
@@ -133,7 +134,6 @@ def assert_basic_board_scope(runtime, action, root, *, event=None, within_effect
                     raise RuntimeHalt('BASIC_BOARD_TOP_UNSUPPORTED: unexpected On Play')
                 expected_main=definition.effect_text('main_text')
             if inert_option:
-                from option_actions import OPTION_SPECS
                 if physical.card_number not in OPTION_SPECS or stack.suspended:
                     raise RuntimeHalt('BASIC_BOARD_OPTION_UNSUPPORTED')
                 expected_main=definition.effect_text('main_text')

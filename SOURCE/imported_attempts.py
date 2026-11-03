@@ -141,10 +141,10 @@ def main_candidates(runtime, seat, root=ROOT):
     for stack in own['battle'].values():
         source = stack['cards'][-1]
         if runtime.context.card(seat,_number(source)).kind=='Option':
-            from option_actions import OPTION_SPECS
-            if (_number(source) in OPTION_SPECS
-                    and (stack['played_turn'] is None or stack['played_turn']<view['turn'])):
-                choices.append({'kind':'UNKNOWN_DELAY_ACTION','source_key':source,
+            from option_actions import DELAY_SPECS
+            if (_number(source) in DELAY_SPECS and _number(source) != 'LM-028'
+                    and type(stack['played_turn']) is int and stack['played_turn']<view['turn']):
+                choices.append({'kind':'OPTION_DELAY','source_key':source,
                     'legality':'DELAY_TIMING_CANDIDATE_NOT_FULL_EFFECT_LEGALITY'})
         if runtime.context.card(seat, _number(source)).kind != 'Digimon':
             continue
@@ -165,6 +165,11 @@ def main_candidates(runtime, seat, root=ROOT):
         card = runtime.context.card(seat, _number(stack['cards'][-1]))
         if (card.kind != 'Digimon' or stack['suspended']
                 or stack['played_turn'] == view['turn']):
+            continue
+        from effect_grants import active_restriction
+        if (stack['statuses'].get('cannot_suspend',False)
+                or ('effect_grants' in stack['statuses']
+                    and active_restriction(runtime,seat,key,'cannot_suspend'))):
             continue
         ready = stack['ready_since_turn']
         if ready is None and stack['played_turn'] is None:
@@ -192,17 +197,19 @@ def pending_choice(runtime, seat, selected, pilot):
     from on_play_effects import ON_PLAY_SPECS, on_play_choices
     if effect in {spec[0] for spec in ON_PLAY_SPECS.values()}:
         return pilot.choose(view, on_play_choices(runtime, seat, selected['source']))
-    from option_actions import OPTION_SPECS, option_choices
-    if effect in {spec[0] for spec in OPTION_SPECS.values()}:
-        exposed=option_choices(runtime,seat,selected['source'])
+    from option_actions import OPTION_SPECS, DELAY_SPECS, option_choices
+    if effect in {spec[0] for spec in (*OPTION_SPECS.values(), *DELAY_SPECS.values())}:
+        exposed=option_choices(runtime,seat,selected['source'],effect)
+        if 'choices' in exposed:
+            return pilot.choose(view,exposed['choices'])
         chosen=pilot.choose(view,exposed['selections'])
         remainder=[key for key in exposed['revealed'] if key not in chosen]
         return {'selected':chosen,'bottom_order':pilot.bottom_order(remainder)}
     from aero_effects import PLAY_EFFECT,DIGIVOLVE_EFFECT,END_EFFECT,aero_choices
     if effect in (PLAY_EFFECT,DIGIVOLVE_EFFECT,END_EFFECT):
         return pilot.choose(view,aero_choices(runtime,seat,selected['source'],effect))
-    from tamer_play_effects import PLAY_EFFECT, OBSERVER_EFFECT, tamer_play_choices
-    if effect in (PLAY_EFFECT, OBSERVER_EFFECT):
+    from tamer_play_effects import TAMER_CHOICE_EFFECTS, tamer_play_choices
+    if effect in TAMER_CHOICE_EFFECTS:
         return pilot.choose(view, tamer_play_choices(runtime, seat, selected['source'], effect))
     if effect in {spec[0] for spec in SEARCH_SPECS.values()}:
         exposed = search_choices(runtime, seat, selected['source'])
@@ -231,6 +238,9 @@ def _apply(runtime, kind, seat, args, root):
                           + ' OPTION_LEGALITY_AND_EFFECT_UNVERIFIED')
     if kind == 'UNKNOWN_DELAY_ACTION':
         raise RuntimeHalt('DELAY_EFFECT_UNIMPLEMENTED: '+args['source_key'])
+    if kind == 'OPTION_DELAY':
+        from option_actions import choose_option_delay
+        return choose_option_delay(runtime,seat,args['source_key'],root)
     if kind == 'BREEDING_EVOLUTION':
         return choose_breeding_evolution(runtime, seat, args['hand_key'], args['route_index'], root)
     if kind == 'BATTLE_EVOLUTION':
@@ -474,6 +484,10 @@ def run_attempt(index, root=ROOT, max_commands=300, *, context_file=CONTEXT_FILE
                 from option_actions import OPTION_SPECS
                 if _number(args['hand_key']) in OPTION_SPECS:
                     kind = 'USE_OPTION'
+            elif kind == 'UNKNOWN_DELAY_ACTION':
+                from option_actions import DELAY_SPECS
+                if _number(args['source_key']) in DELAY_SPECS and _number(args['source_key']) != 'LM-028':
+                    kind = 'OPTION_DELAY'
             elif kind == 'UNKNOWN_BATTLE_EVOLUTION':
                 kind = 'BATTLE_EVOLUTION'
             elif kind == 'GENERATE_PENDING_CHOICES':

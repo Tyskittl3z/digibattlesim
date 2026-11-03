@@ -23,8 +23,10 @@ class ImportedAttemptTests(unittest.TestCase):
                              'The imported diagnostic runner must exist')
         self.runner = importlib.import_module('imported_attempts')
 
-    def runtime(self):
-        context = load_context_file(ROOT / 'ARTIFACTS/ex13-engine-2026-10-30/context.json')
+    def runtime(self, *, mirror=False):
+        context_file = ('ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json' if mirror
+                        else 'ARTIFACTS/ex13-engine-2026-10-30/context.json')
+        context = load_context_file(ROOT / context_file)
         runtime = ContextRuntime(context, 19, 'A', build_selected_registry(context, ROOT),
                                  allow_experimental=True)
         runtime.state.phase = 'MAIN'
@@ -82,13 +84,114 @@ class ImportedAttemptTests(unittest.TestCase):
         plain = self.take(runtime, 'A', 'EX1-013')
         unknown = self.take(runtime, 'A', 'EX13-023')
         option = self.take(runtime, 'A', 'LM-028')
+        runtime.state.breeding['A'].append(runtime.state.zones['A']['eggdeck'].pop())
         candidates = self.runner.main_candidates(runtime, 'A', ROOT)
         by_key = {c['hand_key']: c for c in candidates if 'hand_key' in c}
         self.assertEqual(set(by_key), {plain, unknown, option})
         self.assertEqual(by_key[unknown]['kind'], 'PLAY_CARD')
-        self.assertEqual(by_key[option]['kind'], 'UNKNOWN_OPTION_ACTION')
+        self.assertEqual(by_key[option]['kind'], 'USE_OPTION')
         self.assertEqual(by_key[option]['legality'], 'UNVERIFIED_OPTION_ACTION')
         self.assertTrue(any(c['kind'] == 'PASS_TURN' for c in candidates))
+
+    def test_main_delay_candidates_require_prior_placement_and_exclude_start_turn_scramble(self):
+        for number in ('P-104', 'LM-034', 'LM-056', 'LM-057', 'LM-058', 'LM-028'):
+            for placed in (None, 3, 2):
+                with self.subTest(number=number, played_turn=placed):
+                    runtime = self.runtime(mirror=True)
+                    source = self.take(runtime, 'A', number, 'battle')
+                    runtime.state.battle['A'][source].played_turn = placed
+                    before = runtime.snapshot()
+                    delays = [c for c in self.runner.main_candidates(runtime, 'A', ROOT)
+                              if c['kind'] in ('OPTION_DELAY', 'UNKNOWN_DELAY_ACTION')]
+                    self.assertEqual(runtime.snapshot(), before)
+                    expected = number != 'LM-028' and placed == 2
+                    self.assertEqual([c['source_key'] for c in delays], [source] if expected else [])
+                    self.assertTrue(all(c['kind'] == 'OPTION_DELAY' for c in delays))
+
+    def test_runner_applies_main_delay_then_uses_explicit_activation_choice(self):
+        from effect_scheduler import pending_options
+        runtime = self.runtime(mirror=True)
+        source = self.take(runtime, 'A', 'LM-034', 'battle')
+        chosen = next(c for c in self.runner.main_candidates(runtime, 'A', ROOT)
+                      if c['kind'] == 'OPTION_DELAY')
+        self.runner._apply(runtime, chosen['kind'], 'A', chosen, ROOT)
+        selected = pending_options(runtime, 'A')[0]
+        pilot = self.runner.ReferencePilot(runtime.context.matchup_id, 0, 'A')
+        with patch.object(pilot, 'choose', return_value={'activate': True}) as choose:
+            choice = self.runner.pending_choice(runtime, 'A', selected, pilot)
+        self.assertEqual(choose.call_args.args[1], [{'activate': False}, {'activate': True}])
+        runtime.state.memory = 3
+        self.runner._apply(runtime, 'RESOLVE_PENDING', 'A',
+                           {'pending_id': selected['id'], 'choice': choice}, ROOT)
+        self.assertEqual(runtime.state.memory, 5)
+        self.assertNotIn(source, runtime.state.battle['A'])
+        self.assertIn(source, [c.key for c in runtime.state.zones['A']['trash']])
+        runtime.verify()
+
+    def test_runner_handles_option_evolution_and_search_choice_schemas(self):
+        from effect_scheduler import pending_options
+        from option_actions import option_choices
+        for number in ('LM-028', 'LM-056'):
+            with self.subTest(number=number):
+                runtime = self.runtime(mirror=True)
+                source = self.take(runtime, 'A', number)
+                runtime.state.breeding['A'].append(runtime.state.zones['A']['eggdeck'].pop())
+                self.runner._apply(runtime, 'USE_OPTION', 'A', {'hand_key': source}, ROOT)
+                selected = pending_options(runtime, 'A')[0]
+                exposed = option_choices(runtime, 'A', source, selected['effect_id'])
+                pilot = self.runner.ReferencePilot(runtime.context.matchup_id, 0, 'A')
+                choice = self.runner.pending_choice(runtime, 'A', selected, pilot)
+                if number == 'LM-028':
+                    self.assertIn(choice, exposed['choices'])
+                else:
+                    self.assertIn(choice['selected'], exposed['selections'])
+                    self.assertEqual(set(choice['bottom_order']),
+                                     set(exposed['revealed']) - set(choice['selected']))
+                self.runner._apply(runtime, 'RESOLVE_PENDING', 'A',
+                                   {'pending_id': selected['id'], 'choice': choice}, ROOT)
+                self.assertIn(source, runtime.state.battle['A'])
+                runtime.verify()
+
+    def test_legacy_selected_main_delay_retries_same_source_without_rerolling_prefix(self):
+        # Synthetic compatibility fixture: retain Game0's saved decisions, then
+        # choose Wisteria's use and a later Main Delay under the legacy name.
+        saved = ROOT / 'ARTIFACTS/gameplay-continuations-2026-11-02-01/game-0000-segment-01.json.gz'
+        checkpoint = json.loads(gzip.decompress(saved.read_bytes()))
+        real_candidates = self.runner.main_candidates
+
+        def legacy_candidates(runtime, seat, root):
+            candidates = real_candidates(runtime, seat, root)
+            for candidate in candidates:
+                if candidate['kind'] == 'OPTION_DELAY':
+                    candidate['kind'] = 'UNKNOWN_DELAY_ACTION'
+            return candidates
+
+        def choose(pilot, view, candidates):
+            for candidate in candidates:
+                if isinstance(candidate, dict) and candidate.get('kind') in (
+                        'USE_OPTION', 'UNKNOWN_DELAY_ACTION'):
+                    key = candidate.get('hand_key', candidate.get('source_key', ''))
+                    if 'LM-034' in key:
+                        return candidate
+            return next((c for c in candidates if isinstance(c, dict)
+                         and c.get('kind') == 'PASS_TURN'), candidates[0])
+
+        with patch.object(self.runner, 'main_candidates', side_effect=legacy_candidates), \
+                patch.object(self.runner.ReferencePilot, 'choose', new=choose):
+            legacy = self.runner.continue_attempt(checkpoint, ROOT, max_commands=60)
+        failed = legacy['commands'][-1]
+        self.assertEqual(failed['command'], 'UNKNOWN_DELAY_ACTION')
+        self.assertEqual(failed['args']['source_key'], 'A:LM-034#1')
+        continued = self.runner.continue_attempt(legacy, ROOT, max_commands=len(legacy['commands']))
+        retried = continued['commands'][len(legacy['commands']) - 1]
+        self.assertEqual(retried['command'], 'OPTION_DELAY')
+        self.assertEqual(retried['args'], failed['args'])
+        self.assertEqual(retried['status'], 'EXPERIMENTAL_RESOLVED')
+        self.assertEqual(continued['seed'], checkpoint['seed'])
+        self.assertEqual(continued['continuation_provenance']['retry']['current_command'], 'OPTION_DELAY')
+        proof = continued['continuation_provenance']['physical_state_proof']
+        self.assertEqual(proof['original_before_sha256'], proof['revalidated_before_sha256'])
+        self.assertTrue(self.runner.replay_attempt(continued, ROOT)['exact_match'])
 
     def test_generator_does_not_validate_an_attack_before_one_is_selected(self):
         runtime = self.runtime()
@@ -140,6 +243,17 @@ class ImportedAttemptTests(unittest.TestCase):
         record = self.runner.run_attempt(0, ROOT, max_commands=1)
         self.assertEqual(record['replay_provenance']['runner_sha256'], runner_hash)
         self.assertTrue(all(value['runner_sha256'] == runner_hash for value in record['pilots'].values()))
+
+    def test_cannot_suspend_prevents_an_attack_candidate(self):
+        from effect_grants import grant_effect
+        runtime=self.runtime();runtime.state.active='B'
+        target=self.take(runtime,'B','ST7-05','battle')
+        source=self.take(runtime,'A','EX13-022','battle')
+        grant_effect(runtime,'A',target,{'restrictions':['cannot_suspend']},source,
+                     target_owner='B')
+        choices=self.runner.main_candidates(runtime,'B',ROOT)
+        self.assertFalse(any(c['kind']=='DECLARE_ATTACK' and c['attacker']==target for c in choices))
+        self.assertTrue(any(c['kind']=='PASS_TURN' for c in choices))
 
     def test_plain_attack_candidates_use_public_orientation_and_readiness(self):
         runtime = self.runtime()

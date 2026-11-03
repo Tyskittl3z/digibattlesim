@@ -26,11 +26,16 @@ def _actor(runtime,seat):
 
 def _phase_triggers(runtime,seat,timing):
     effects=[]
+    if timing=='Start of Your Turn':
+        from option_actions import collect_option_start_turn
+        effects.extend(collect_option_start_turn(runtime,seat))
     for stack in runtime.state.battle[seat].values():
         for index,card in enumerate(stack.cards):
             field='main_text' if index==len(stack.cards)-1 else 'inherited_text'
             text=runtime.context.card(seat,card.card_number).effect_text(field)
             if '['+timing+']' not in text:continue
+            if field=='main_text' and card.card_number=='LM-028' and timing=='Start of Your Turn':
+                continue
             spec=PHASE_EFFECTS.get(card.card_number)
             if field!='main_text' or not spec or spec[1]!=timing or spec[2] not in text.splitlines():
                 raise RuntimeHalt('PHASE_TRIGGER_UNSUPPORTED: '+card.card_number+' '+timing)

@@ -3,16 +3,15 @@
 Checkpoint: November 2, 2026. This document describes the engine track. Read
 `AGENTS.md`, the newest section of `STATUS.md`, and `WORKFLOW.md` before editing.
 
-Latest increment:409 full-suite tests passed (134.239s). The user directs a
-gameplay-first loop: choose an actual action, assess legality, resolve and
-record it, then continue the same game. `continue_attempt(previous_record)`
-preserves original choices/physical state/RNG, retries the selected stopped
-action and records an explicit new discovery-policy segment. Game0000 reaches
-turn3 with22commands from its original seed andexactlyreplays; nextselected
-action is Blue Scramble A:LM-028#1. See
-`ARTIFACTS/gameplay-continuations-2026-11-02-01/`. It remains unfinished and
-earns zero full-match credit. The335-test/60-HALT snapshot below is preserved
-historical context; newest STATUS and source take precedence.
+Latest increment: **430 tests passed** (259.488s). Actual same-game continuation
+now reaches turn6 /59 commands with exact replay, original seed and earlier
+choices preserved. Next selected action is B:EX13-022#1 attacking PLAYER; an
+older combat guard rejects the unrelated A:BT11-112 Tamer. Resolve the actual
+attack dependencies and When Attacking trigger, then continue the same game.
+Latest record: `ARTIFACTS/gameplay-continuations-2026-11-03-03/game-0000-segment.json.gz`.
+Segments02/03 retain source archives and official reviews. No complete current
+games or strategic/final credits exist. The older snapshots below are historical;
+newest STATUS and source take precedence.
 
 ## Goal and ownership
 

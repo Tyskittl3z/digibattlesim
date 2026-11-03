@@ -52,9 +52,10 @@ def require_inert_for_event(runtime, owner, physical, field, action, event=None)
             elif action=='use_option' and re.search(r'\buse(?:d|s)?\b',clause,re.I):
                 applies=True
             if applies:
-                from tamer_play_effects import known_play_observer,OBSERVER_EFFECT
-                if known_play_observer(physical.card_number,field,line):
-                    runtime.registry.lookup(physical.card_number,OBSERVER_EFFECT,field)
+                from tamer_play_effects import play_observer_effect
+                effect=play_observer_effect(physical.card_number,field,line)
+                if effect is not None:
+                    runtime.registry.lookup(physical.card_number,effect,field)
                     continue
                 raise RuntimeHalt('BASIC_EVENT_OBSERVER_UNIMPLEMENTED: '+physical.card_number
                                   +' '+field+' source='+physical.key+' event='+action)

@@ -155,3 +155,77 @@ class TamerPlayEffectTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeHalt, 'BASIC_EVENT_OBSERVER_UNIMPLEMENTED.*BT11-032'):
             resolve_pending(runtime, 'A', pending_options(runtime, 'A')[0]['id'], hand_key)
         self.assertEqual(runtime.snapshot(), before)
+
+
+class EncounteredVeedramonTamerTests(unittest.TestCase):
+    def actual(self):
+        path=ROOT/'ARTIFACTS/gameplay-continuations-2026-11-03-02/game-0000-segment.json.gz'
+        record=json.loads(gzip.decompress(path.read_bytes()))
+        context=load_context_file(ROOT/'ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json')
+        runtime=ContextRuntime(context,record['seed'],record['first'],
+            build_selected_registry(context,ROOT),allow_experimental=True)
+        for command in record['commands'][:-1]:
+            _apply(runtime,command['command'],command['seat'],command['args'],ROOT)
+        self.assertEqual(runtime.snapshot()['state'],record['halts'][-1]['before']['state'])
+        args=record['commands'][-1]['args']
+        choose_battle_evolution(runtime,'B',args['source_key'],args['hand_key'],args['route_index'],ROOT)
+        self.assertEqual((runtime.state.memory,runtime.state.phase),(6,'MAIN'))
+        self.assertEqual([c.key for c in runtime.state.battle['B'][args['hand_key']].cards],
+                         ['B:EX13-002#1','B:EX1-013#3','B:BT22-022#1'])
+        return runtime,args['hand_key']
+
+    def test_actual_bt22_choices_include_post_draw_tamer_and_decline_without_opt(self):
+        runtime,source=self.actual()
+        selected=pending_options(runtime,'B')[0]
+        self.assertEqual(selected['effect_id'],'BT22-022.play_tamer')
+        self.assertEqual(selected['usage'],[])
+        self.assertEqual(tamers.tamer_play_choices(runtime,'B',source,'BT22-022.play_tamer'),
+                         [None,'B:BT11-112#3','B:EX13-069#3'])
+        before=set(runtime.state.once_used)
+        result=resolve_pending(runtime,'B',selected['id'],None)
+        self.assertEqual(result['processing'],'OPTIONAL_PROCESSING_DECLINED_AFTER_ACTIVATION')
+        self.assertEqual(runtime.state.once_used,before)
+        self.assertNotIn('B:BT11-112#3',runtime.state.battle['B']);runtime.verify()
+
+    def test_bt22_condition_is_rechecked_at_activation_and_false_is_a_noop(self):
+        runtime,source=self.actual()
+        # Another simultaneous effect may have placed a second Tamer before
+        # this already triggered effect activates.
+        stage(runtime,'B',['BT22-085'])
+        self.assertEqual(tamers.tamer_play_choices(runtime,'B',source,'BT22-022.play_tamer'),[None])
+        before=copy.deepcopy(runtime.state.battle)
+        result=resolve_pending(runtime,'B',pending_options(runtime,'B')[0]['id'],None)
+        self.assertEqual(result['processing'],'CONDITION_NOT_MET')
+        self.assertEqual(runtime.state.battle,before);self.assertEqual(runtime.state.once_used,set())
+
+    def test_actual_free_rina_and_egg_emit_four_simultaneous_effects_without_orientation_event(self):
+        from on_play_effects import ON_PLAY_SPECS
+        runtime,source=self.actual()
+        result=resolve_pending(runtime,'B',pending_options(runtime,'B')[0]['id'],'B:BT11-112#3')
+        self.assertEqual((result['play']['cost'],runtime.state.memory),(0,6))
+        group=pending_options(runtime,'B')
+        self.assertEqual(sorted((p['effect_id'],p['source'],p['field']) for p in group),sorted([
+            (ON_PLAY_SPECS['BT11-112'][0],'B:BT11-112#3','main_text'),
+            (tamers.OBSERVER_EFFECT,'B:EX13-022#1','main_text'),
+            (tamers.OBSERVER_EFFECT,'B:EX13-022#3','main_text'),
+            ('EX13-002.tamer_play_unsuspend','B:EX13-002#1','inherited_text')]))
+        self.assertEqual({p['depth'] for p in group},{1})
+        self.assertEqual(len({p['id'] for p in group}),4)
+        egg=next(p for p in group if p['effect_id']=='EX13-002.tamer_play_unsuspend')
+        for choice in (False,True):
+            branch=copy.deepcopy(runtime);before=set(branch.state.once_used)
+            result=resolve_pending(branch,'B',egg['id'],choice)
+            self.assertFalse(result['changed']);self.assertFalse(branch.state.battle['B'][source].suspended)
+            self.assertEqual(len(branch.state.once_used-before),1)
+            self.assertFalse(any(p['effect_id']=='EX1-013.unsuspend_memory' for p in branch.state.pending))
+            self.assertEqual((branch.state.memory,branch.state.phase),(6,'MAIN'));branch.verify()
+
+    def test_post_draw_rina_is_playable_and_still_queues_egg_and_two_observers(self):
+        runtime,source=self.actual()
+        resolve_pending(runtime,'B',pending_options(runtime,'B')[0]['id'],'B:EX13-069#3')
+        self.assertIn('B:EX13-069#3',runtime.state.battle['B'])
+        group=pending_options(runtime,'B')
+        self.assertEqual(len(group),3)
+        self.assertEqual(sorted(p['effect_id'] for p in group),
+            sorted([tamers.OBSERVER_EFFECT,tamers.OBSERVER_EFFECT,'EX13-002.tamer_play_unsuspend']))
+        self.assertFalse(runtime.state.battle['B'][source].suspended);runtime.verify()

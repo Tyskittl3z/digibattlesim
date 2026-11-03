@@ -16,7 +16,7 @@ from selected_contexts import require_selected_context
 PLAIN_MAIN_TEXT = {'EX1-013':'','ST7-05':'','BT9-011':''}
 
 
-def _play(runtime,seat,choice,root,*,within_effect=False):
+def _play(runtime,seat,choice,root,*,within_effect=False,source_zone='hand'):
     state=runtime.state
     try:
         locked=require_selected_context(runtime.context,root)
@@ -25,9 +25,12 @@ def _play(runtime,seat,choice,root,*,within_effect=False):
     if not runtime.allow_experimental:raise RuntimeHalt('UNREVIEWED_MAIN_ACTION')
     if not within_effect and (seat!=state.active or state.phase!='MAIN' or state.memory<0):
         raise RuntimeHalt('MAIN_PLAY_WINDOW_NOT_OPEN')
-    hand=state.zones[seat]['hand']
-    physical=next((c for c in hand if c.key==choice['hand_key']),None)
-    if physical is None:raise RuntimeHalt('PLAY_CARD_NOT_IN_HAND')
+    if source_zone not in ('hand','trash') or (source_zone!='hand' and not within_effect):
+        raise RuntimeHalt('EFFECT_PLAY_SOURCE_INVALID')
+    pool=state.zones[seat][source_zone]
+    physical=next((c for c in pool if c.key==choice['hand_key']),None)
+    if physical is None:
+        raise RuntimeHalt('PLAY_CARD_NOT_IN_HAND' if source_zone=='hand' else 'PLAY_CARD_NOT_IN_TRASH')
     card=runtime.context.card(seat,physical.card_number)
     from selected_mechanics import _source_evidence
     card_evidence=_source_evidence(root,card.to_dict()['official_source'],
@@ -48,7 +51,7 @@ def _play(runtime,seat,choice,root,*,within_effect=False):
     cost=0 if within_effect else card.to_dict()['play_cost']
     if type(cost) is not int or cost<0 or cost>state.memory+10:
         raise RuntimeHalt('PLAY_COST_NOT_PAYABLE')
-    state.memory-=cost;hand.remove(physical)
+    state.memory-=cost;pool.remove(physical)
     state.entity_sequence+=1
     state.battle[seat][physical.key]=Stack([physical],instance_id='entity-'+str(state.entity_sequence),
                                          played_turn=state.turn,ready_since_turn=state.turn+1)
@@ -71,20 +74,38 @@ def _play(runtime,seat,choice,root,*,within_effect=False):
 
 def play_tamer_from_effect(runtime,seat,hand_key,root):
     """Trusted EX13-022 resolution primitive, never a nested public command."""
-    from tamer_play_effects import PLAY_EFFECT,tamer_play_choices
+    from tamer_play_effects import PLAY_SPECS,tamer_play_choices
     activated=getattr(runtime,'_activated_effect',None)
     if (runtime.halted or runtime.state.terminal or not isinstance(activated,tuple)
-            or len(activated)!=5 or activated[0]!=PLAY_EFFECT or activated[1]!=seat
+            or len(activated)!=5 or activated[0] not in {spec[0] for spec in PLAY_SPECS.values()} or activated[1]!=seat
             or activated[3]!='main_text'
             or (runtime.state.phase!='SCENARIO' and activated[4] is None)):
         raise RuntimeHalt('EFFECT_PLAY_WINDOW_REQUIRED')
     source=runtime._source(seat,activated[2],'main_text')
-    if source.card_number!='EX13-022':
+    if source.card_number not in PLAY_SPECS or PLAY_SPECS[source.card_number][0]!=activated[0]:
         raise RuntimeHalt('EFFECT_PLAY_WINDOW_REQUIRED')
-    if hand_key is None or hand_key not in tamer_play_choices(runtime,seat,source.key,PLAY_EFFECT):
+    if hand_key is None or hand_key not in tamer_play_choices(runtime,seat,source.key,activated[0]):
         raise RuntimeHalt('EFFECT_PLAY_TARGET_INVALID')
     rules={**_rules(root),'locator':'Comprehensive rules v4.3: 3-4-3; 7-1-3; 15-4; 15-9-2-2; EX13-022 Q7264'}
     return _play(runtime,seat,{'hand_key':hand_key,'rules':rules},root,within_effect=True)
+
+
+def play_blue_scramble_from_trash(runtime,seat,trash_key,root):
+    """Play the selected physical card directly from trash during LM-028 Delay."""
+    from option_actions import BLUE_SCRAMBLE_DELAY,validate_option_activation
+    validate_option_activation(runtime,seat,{BLUE_SCRAMBLE_DELAY},source_zone='trash')
+    state=runtime.state
+    if any(runtime.context.card(seat,s.cards[-1].card_number).kind=='Digimon'
+           for s in state.battle[seat].values()):
+        raise RuntimeHalt('BLUE_SCRAMBLE_PLAY_TARGET_INVALID')
+    physical=next((c for c in state.zones[seat]['trash'] if c.key==trash_key),None)
+    card=runtime.context.card(seat,physical.card_number) if physical is not None else None
+    if (card is None or card.kind!='Digimon' or 'Blue' not in card.to_dict()['colors']
+            or type(card.to_dict()['dp']) is not int or card.to_dict()['dp']>2000):
+        raise RuntimeHalt('BLUE_SCRAMBLE_PLAY_TARGET_INVALID')
+    rules={**_rules(root),'locator':'Comprehensive rules v4.3: 7-1-3; 15-8-3; LM-028 Start of Your Turn Delay'}
+    return _play(runtime,seat,{'hand_key':trash_key,'rules':rules},root,
+                 within_effect=True,source_zone='trash')
 
 
 def choose_play(runtime,seat,hand_key,root):

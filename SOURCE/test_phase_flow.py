@@ -77,12 +77,48 @@ class PhaseTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeHalt,'MAIN_ACTION_REQUIRED'):
             advance_phase(r,'A',ROOT)
 
-    def test_unknown_start_turn_option_effect_halts_before_phase_changes(self):
-        r=self.runtime();stage(r,'A',['LM-028'])
-        before=r.snapshot()['state']
-        with self.assertRaisesRegex(RuntimeHalt,'PHASE_TRIGGER_UNSUPPORTED.*LM-028'):
+    def test_start_turn_option_and_memory_triggers_share_one_simultaneous_batch(self):
+        from option_actions import BLUE_SCRAMBLE_DELAY
+        from imported_attempts import pending_choice,ReferencePilot
+        from unittest.mock import patch
+        from phase_flow import queue_effects
+        r=self.runtime();r.state.turn=3
+        option=stage(r,'A',['LM-028']);r.state.battle['A'][option].played_turn=1
+        tamer=stage(r,'A',['BT22-085'],suspended=True)
+        stage(r,'B',['ST7-05'])
+        with patch('phase_flow.queue_effects',wraps=queue_effects) as queue:
             advance_phase(r,'A',ROOT)
-        self.assertEqual(before,r.snapshot()['state'])
+        self.assertEqual(queue.call_count,1)
+        opts=pending_options(r,'A')
+        self.assertEqual({x['effect_id'] for x in opts},
+                         {BLUE_SCRAMBLE_DELAY,'BT22-085.start_turn_memory'})
+        self.assertEqual({x['depth'] for x in opts},{0})
+        self.assertTrue(r.state.battle['A'][tamer].suspended)
+        selected=next(x for x in opts if x['effect_id']==BLUE_SCRAMBLE_DELAY)
+        pilot=ReferencePilot(r.context.matchup_id,0,'A')
+        with patch.object(pilot,'choose',return_value={'activate':False}):
+            choice=pending_choice(r,'A',selected,pilot)
+        resolve_pending(r,'A',selected['id'],choice)
+        self.assertIn(option,r.state.battle['A'])
+        self.assertTrue(r.state.battle['A'][tamer].suspended)
+        resolve_pending(r,'A',pending_options(r,'A')[0]['id'],None)
+        self.assertEqual(r.state.memory,3)
+        advance_phase(r,'A',ROOT)
+        self.assertFalse(r.state.battle['A'][tamer].suspended);r.verify()
+
+    def test_start_turn_scramble_condition_false_is_still_explicit_pending_processing(self):
+        from option_actions import BLUE_SCRAMBLE_DELAY
+        from imported_attempts import pending_choice,ReferencePilot
+        r=self.runtime();r.state.turn=3
+        option=stage(r,'A',['LM-028']);r.state.battle['A'][option].played_turn=1
+        advance_phase(r,'A',ROOT)
+        selected=pending_options(r,'A')[0]
+        self.assertEqual(selected['effect_id'],BLUE_SCRAMBLE_DELAY)
+        choice=pending_choice(r,'A',selected,ReferencePilot(r.context.matchup_id,0,'A'))
+        self.assertIsNone(choice)
+        result=resolve_pending(r,'A',selected['id'],choice)
+        self.assertEqual(result['processing'],'CONDITION_NOT_MET')
+        self.assertIn(option,r.state.battle['A']);r.verify()
 
     def test_egg_cannot_promote(self):
         r=self.runtime();r.state.phase='BREEDING'

@@ -1,12 +1,13 @@
 # First Codex task (execute, don't just plan)
 
-> **Latest live continuation:** Gameplay-first per user. Read newest STATUS.
-> Source passes409 tests; recorded game0000 nowreaches turn3 with22commands,
-> originalseed+earlierchoices preserved andexactreplay. Continue the selected
-> BlueScramble A:LM-028#1 action from
-> `ARTIFACTS/gameplay-continuations-2026-11-02-01/game-0000-segment-01.json.gz`.
-> Do not call this a completed game or start a route-planning project. Resolve
-> the actual action against official text/rules, recordit, thenkeepplaying.
+> **Latest live continuation:** Gameplay-first. **430 tests pass**. Game0000
+> reaches turn6 /59commands, same original seed and earlier choices, exact replay.
+> Continue selected DECLARE_ATTACK B:EX13-022#1 targetPLAYER from
+> `ARTIFACTS/gameplay-continuations-2026-11-03-03/game-0000-segment.json.gz`.
+> Old combat scope rejects unrelated A:BT11-112. Review identifies legal attack
+> with actual Aero WhenAttacking free-Tamer trigger. Preserve all timing and
+> earlier trace; implement encountered missing behavior and keep playing.
+> Still zero full valid matches; prefixes are not the60-game cohort.
 
 > **2026-11-02 current priority:** User delegated choosing the best starting
 > matchup. Use the distinct-list Ulforce mirror 123129 vs122110, not the original
