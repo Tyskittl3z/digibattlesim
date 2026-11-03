@@ -72,6 +72,15 @@ original trace, and report complete games separately from diagnostic prefixes.
 - Do not import older deck-specific source builds to resolve these halts.
 
 ## Development practices
+
+- **User publishing instruction (2026-11-03):** “always publish wherever you are
+  at before the usage runs out.” Commit and push frequent concrete checkpoints
+  to `engine-ulforce-bootstrap`, including unfinished work clearly marked WIP,
+  with current status/handoff, saved game traces and exact verification limits.
+  Keep the last fully tested commit identifiable; do not present WIP as passing
+  or complete. Update draft PR#1. This is continuing authorization for checkpoint
+  publication; do not ask for confirmation each time. Exclude private/scratch
+  environments and preserve source/game evidence.
 - Before changing rules, identify the exact official card text/ruling and add a focused regression test for that case.
 - Keep changes minimal and load-deck-scoped, with deterministic seeds and explicit judge audit entries.
 - Run from `SOURCE/`: `python -m unittest discover -p 'test_*.py' -q`.

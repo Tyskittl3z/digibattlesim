@@ -325,6 +325,18 @@ class ImportedAttemptTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeHalt, 'PENDING_EFFECT_CHOICE_UNSUPPORTED'):
             self.runner.pending_choice(runtime, 'A', {'effect_id': 'unknown.effect'}, pilot)
 
+    def test_pending_orientation_choice_uses_own_current_digimon(self):
+        from effect_scheduler import pending_options,queue_effects
+        from selected_mechanics import ORIENTATION_EFFECT,orientation_candidates
+        runtime=self.runtime()
+        source=self.take(runtime,'A','EX13-023','battle')
+        queue_effects(runtime,[{'seat':'A','source':source,'effect_id':ORIENTATION_EFFECT,
+            'field':'main_text','trigger':{'kind':'When Digivolving'}}])
+        selected=pending_options(runtime,'A')[0]
+        pilot=self.runner.ReferencePilot(runtime.context.matchup_id,0,'A')
+        self.assertIn(self.runner.pending_choice(runtime,'A',selected,pilot),
+                      orientation_candidates(runtime,'A',source))
+
     def test_attempt_replays_exactly_and_never_claims_match_credit(self):
         for index in (0, 1):
             with self.subTest(index=index):

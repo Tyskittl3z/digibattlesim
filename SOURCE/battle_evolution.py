@@ -27,12 +27,12 @@ def _digivolving_effect(runtime, target):
         return None
     from search_effects import SEARCH_SPECS
     from aero_effects import DIGIVOLVE_EFFECT, RETURN_LINE
+    from tamer_play_effects import PLAY_SPECS
     if target.card_number == 'P-138' and lines == (SEARCH_SPECS['P-138'][1],):
         effect = SEARCH_SPECS['P-138'][0]
     elif target.card_number == 'BT22-023' and lines == (RETURN_LINE,):
         effect = DIGIVOLVE_EFFECT
-    elif target.card_number in ('EX13-022','BT22-022'):
-        from tamer_play_effects import PLAY_SPECS
+    elif target.card_number in PLAY_SPECS:
         effect,line=PLAY_SPECS[target.card_number]
         if lines!=(line,):
             raise RuntimeHalt('BATTLE_DIGIVOLVING_EFFECT_UNSUPPORTED: '+target.card_number)

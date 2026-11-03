@@ -121,6 +121,7 @@ class TamerPlayEffectTests(unittest.TestCase):
     def test_bound_free_play_allows_opponent_turn_and_negative_memory(self):
         runtime = self.runtime('A')
         source = stage(runtime, 'B', ['EX13-022'])
+        stage(runtime,'B',['BT11-032'])
         hand_key = self.hand(runtime, 'B', 'BT11-112')
         runtime.state.phase = 'END_OF_TURN'
         runtime.state.memory = -2
@@ -131,6 +132,7 @@ class TamerPlayEffectTests(unittest.TestCase):
         self.assertEqual(result['play']['cost'], 0)
         self.assertEqual((runtime.state.active, runtime.state.memory), ('A', -2))
         self.assertIn(hand_key, runtime.state.battle['B'])
+        self.assertFalse(any(p['effect_id']=='BT11-032.blue_tamer_unsuspend' for p in runtime.state.pending))
         runtime.verify()
 
     def test_internal_free_play_requires_activated_matching_source(self):
@@ -143,18 +145,21 @@ class TamerPlayEffectTests(unittest.TestCase):
             play_tamer_from_effect(runtime, 'A', runtime.state.zones['A']['hand'][0].key, ROOT)
         self.assertEqual(runtime.snapshot(), before)
 
-    def test_additional_actual_unimplemented_tamer_observer_halts_before_free_placement(self):
+    def test_future_ulforce_bounce_halts_only_if_blue_tamer_observer_actually_unsuspends(self):
         runtime = self.runtime()
         source = stage(runtime, 'A', ['EX13-022'])
-        stage(runtime, 'A', ['BT11-032'])
+        ulforce=stage(runtime, 'A', ['BT11-032'],suspended=True)
         hand_key = self.hand(runtime, 'A', 'BT11-112')
         runtime.state.phase = 'MAIN'
         queue_effects(runtime, [{'seat': 'A', 'source': source, 'effect_id': tamers.PLAY_EFFECT,
             'field': 'main_text', 'trigger': {'kind': 'When Digivolving'}}])
+        resolve_pending(runtime, 'A', pending_options(runtime, 'A')[0]['id'], hand_key)
+        observer=next(p for p in pending_options(runtime,'A') if p['effect_id']=='BT11-032.blue_tamer_unsuspend')
         before = runtime.snapshot()
-        with self.assertRaisesRegex(RuntimeHalt, 'BASIC_EVENT_OBSERVER_UNIMPLEMENTED.*BT11-032'):
-            resolve_pending(runtime, 'A', pending_options(runtime, 'A')[0]['id'], hand_key)
+        with self.assertRaisesRegex(RuntimeHalt, 'ORIENTATION_DEPENDENT_TRIGGER_UNIMPLEMENTED.*BT11-032'):
+            resolve_pending(runtime,'A',observer['id'],None)
         self.assertEqual(runtime.snapshot(), before)
+        self.assertTrue(runtime.state.battle['A'][ulforce].suspended)
 
 
 class EncounteredVeedramonTamerTests(unittest.TestCase):
@@ -229,3 +234,65 @@ class EncounteredVeedramonTamerTests(unittest.TestCase):
         self.assertEqual(sorted(p['effect_id'] for p in group),
             sorted([tamers.OBSERVER_EFFECT,tamers.OBSERVER_EFFECT,'EX13-002.tamer_play_unsuspend']))
         self.assertFalse(runtime.state.battle['B'][source].suspended);runtime.verify()
+
+
+_ULFORCE_ACTUAL=None
+class EncounteredUlforceBlueTamerTests(unittest.TestCase):
+    def actual(self):
+        global _ULFORCE_ACTUAL
+        if _ULFORCE_ACTUAL is None:
+            path=ROOT/'ARTIFACTS/gameplay-continuations-2026-11-03-06/game-0000-segment.json.gz'
+            record=json.loads(gzip.decompress(path.read_bytes()))
+            context=load_context_file(ROOT/'ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json')
+            runtime=ContextRuntime(context,record['seed'],record['first'],build_selected_registry(context,ROOT),allow_experimental=True)
+            for command in record['commands'][:-1]:_apply(runtime,command['command'],command['seat'],command['args'],ROOT)
+            self.assertEqual(runtime.snapshot()['state'],record['halts'][-1]['before']['state'])
+            self.assertEqual(runtime.snapshot()['rng_state'],record['halts'][-1]['before']['rng_state'])
+            _ULFORCE_ACTUAL=runtime
+        runtime=copy.deepcopy(_ULFORCE_ACTUAL)
+        before=copy.deepcopy(runtime.state.battle['A']['A:EX13-022#1'])
+        choose_battle_evolution(runtime,'A','A:EX13-022#1','A:BT11-032#1',0,ROOT)
+        stack=runtime.state.battle['A']['A:BT11-032#1']
+        self.assertEqual([c.key for c in stack.cards],['A:EX13-022#1','A:BT11-032#1'])
+        self.assertEqual((stack.instance_id,stack.suspended,stack.statuses),(before.instance_id,False,before.statuses))
+        self.assertEqual((runtime.state.memory,runtime.state.phase),(-1,'MAIN'))
+        return runtime,'A:BT11-032#1'
+
+    def test_actual_digivolving_blue_tamer_choices_are_post_draw_and_have_no_opt(self):
+        runtime,source=self.actual();p=pending_options(runtime,'A')[0]
+        self.assertEqual(p['effect_id'],'BT11-032.play_blue_tamer');self.assertEqual(p['usage'],[])
+        self.assertEqual(tamers.tamer_play_choices(runtime,'A',source,p['effect_id']),[None,'A:BT11-112#3'])
+        before=set(runtime.state.once_used);resolve_pending(runtime,'A',p['id'],None)
+        self.assertEqual(runtime.state.once_used,before)
+        self.assertEqual((runtime.state.memory,runtime.state.phase),(-1,'END_OF_TURN'));runtime.verify()
+
+    def played(self):
+        runtime,source=self.actual();p=pending_options(runtime,'A')[0]
+        resolve_pending(runtime,'A',p['id'],'A:BT11-112#3')
+        return runtime,source
+
+    def test_actual_blue_tamer_play_has_two_simultaneous_effects_and_both_orders_are_legal(self):
+        from on_play_effects import ON_PLAY_SPECS
+        from effect_grants import active_keyword,active_restriction
+        runtime,source=self.played();rina=ON_PLAY_SPECS['BT11-112'][0]
+        observer='BT11-032.blue_tamer_unsuspend';group=pending_options(runtime,'A')
+        self.assertEqual({p['effect_id'] for p in group},{rina,observer})
+        self.assertEqual({p['depth'] for p in group},{1});self.assertEqual(pending_options(runtime,'B'),[])
+        for order in ((rina,observer),(observer,rina)):
+            branch=copy.deepcopy(runtime);before_memory=branch.state.memory
+            for effect in order:
+                p=next(p for p in pending_options(branch,'A') if p['effect_id']==effect)
+                result=resolve_pending(branch,'A',p['id'],source if effect==rina else None)
+                if effect==observer:self.assertFalse(result['changed'])
+            self.assertFalse(branch.state.battle['A'][source].suspended)
+            self.assertTrue(active_keyword(branch,'A',source,'Blocker'));self.assertTrue(active_keyword(branch,'A',source,'Evade'))
+            self.assertTrue(active_restriction(branch,'A',source,'cannot_suspend'))
+            self.assertEqual((branch.state.memory,branch.state.phase),(before_memory,'END_OF_TURN'))
+            self.assertEqual(branch.state.pending,[]);branch.verify()
+
+    def test_mandatory_self_unsuspend_cannot_be_declined(self):
+        runtime,source=self.played();p=next(p for p in pending_options(runtime,'A') if p['effect_id']=='BT11-032.blue_tamer_unsuspend')
+        self.assertEqual(tamers.tamer_play_choices(runtime,'A',source,p['effect_id']),[None])
+        before=runtime.snapshot()
+        with self.assertRaisesRegex(RuntimeHalt,'TAMER_PLAY_TARGET_INVALID'):resolve_pending(runtime,'A',p['id'],False)
+        self.assertEqual(runtime.snapshot(),before)

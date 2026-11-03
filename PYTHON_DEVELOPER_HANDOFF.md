@@ -3,16 +3,18 @@
 Checkpoint: November 2, 2026. This document describes the engine track. Read
 `AGENTS.md`, the newest section of `STATUS.md`, and `WORKFLOW.md` before editing.
 
-Latest increment: **459 tests passed** (444.077s). Same original Game0000 now
-reaches turn7 /94 recorded commands, exact replay and preserved choices/RNG.
-Actual end-turn unsuspend/Rina reactions and the true turn transition resolve.
-Paid Draw/After branches have separate focused evidence; actual two optional
-choices were declined. Latest record:
-`ARTIFACTS/gameplay-continuations-2026-11-03-06/game-0000-segment.json.gz`.
-Next selected action is ordinary A:EX13-022#1→A:BT11-032#1 evolution, cost4 at
-memory3. Implement its blue-Tamer free play/actual triggered reactions, then
-continue this same saved game. Source archives and reviews are retained.
-No full current games or strategic/final credits exist.
+Latest publication is a **work-in-progress checkpoint** per the user's instruction
+to publish before usage runs out. Last full-suite result: **459 tests at713a513**.
+Current BT11 Ulforce increment passes13 focused Tamer tests and independent actual
+case checks; its full suite has not been run. Same original Game0000 reaches
+**turn8 /104 commands**, exact replay, zero complete-match credit. Latest record:
+`ARTIFACTS/gameplay-continuations-2026-11-03-07/game-0000-segment.json.gz`.
+Next selected Rina AfterDraw evolution is B:BT22-023#1→B:EX13-023#1, cost1
+(printed3−2), Bmemory2 in UNSUSPEND. Wire both actual WhenDigivolving effects
+as a simultaneous group: orientation and return-all fewest sources. Current
+sole minimum is A:BT12-029#2; do not invent an order for future multi-target
+returns. Preserve the selected action, all earlier choices and source evidence.
+No full games or strategic/final credits exist. See newest STATUS for limits.
 
 ## Goal and ownership
 

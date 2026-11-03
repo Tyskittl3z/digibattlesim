@@ -1,5 +1,35 @@
 # Verified handoff status
 
+## Published work-in-progress checkpoint — 2026-11-03
+
+The user explicitly directs publishing current progress before usage runs out.
+This checkpoint preserves current code/evidence even while the next interaction
+is unfinished. **Last full suite:459 passing tests at713a513** (444.077s). The
+current Ulforce increment passes13 focused Tamer tests (67.693s), an independent
+3-test actual class (21.666s), and the new orientation-choice regression. Python
+syntax and diff checks pass. **Full suite has not been run on this increment.**
+
+Same Game0000 reaches **turn8 /104 recorded commands**, seed12017913134550805276,
+all earlier choices preserved and exact full-record replay. BT11-032 evolution
+paid4, drew/played BT11 Rina, queued her grant and mandatory Ulforce unsuspend
+together, and correctly produced no new orientation event because it was already
+unsuspended. Actual Aturn7 ended; B's turn8 Rina draw then led to the next chosen
+evolution. Segment07 includes records, readable trace, source archive/manifests
+and independent93/103-command prefix reviews.
+
+**Next selected action:** resolve Rina AfterDraw effect33, evolving
+B:BT22-023#1→B:EX13-023#1, route0, cost3−2=1 at Bmemory2 in UNSUSPEND.
+The new EX13 top has two simultaneous WhenDigivolving effects: existing optional
+orientation and optional return-all-opponent-Digimon with the fewest sources.
+The actual sole minimum is A:BT12-029#2 (zero sources); A BT11 Ulforce has one.
+Implement only this encountered behavior, with actual leave-effect checks and
+explicit order/timing. If orientation later fires an unsupported real reaction,
+preserve that selected action and fix it; do not suppress it.
+
+**Zero complete valid current-pair games, zero approved lanes, zero final games.**
+Latest record:
+`ARTIFACTS/gameplay-continuations-2026-11-03-07/game-0000-segment.json.gz`.
+
 ## End-turn Rina continuation — 2026-11-03
 
 **459 tests passed** (444.077s). Same Game0000 now reaches **turn7 /94 commands**,

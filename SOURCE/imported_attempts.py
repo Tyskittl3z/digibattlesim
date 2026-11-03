@@ -195,6 +195,9 @@ def pending_choice(runtime, seat, selected, pilot):
         return pilot.choose(view, [False, True])
     if effect in memory:
         return None
+    from selected_mechanics import ORIENTATION_EFFECT,orientation_candidates
+    if effect==ORIENTATION_EFFECT:
+        return pilot.choose(view,orientation_candidates(runtime,seat,selected['source']))
     from rina_unsuspend_effects import RINA_CHOICE_EFFECTS,rina_unsuspend_choices
     if effect in RINA_CHOICE_EFFECTS:
         return pilot.choose(view,rina_unsuspend_choices(runtime,seat,selected['source'],effect))

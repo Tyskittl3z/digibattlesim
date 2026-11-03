@@ -1,13 +1,15 @@
 # First Codex task (execute, don't just plan)
 
-> **Latest live continuation:** Gameplay-first. **459 tests pass**. Game0000
-> reaches turn7 /94commands, same original seed and choices, exact replay.
-> Continue BATTLE_EVOLUTION A:EX13-022#1→A:BT11-032#1 cost4 at memory3 from
-> `ARTIFACTS/gameplay-continuations-2026-11-03-06/game-0000-segment.json.gz`.
-> Implement actual Ulforce When Digivolving blue-Tamer free play and its own
-> Tamer-play unsuspend observer. Already-unsuspended processing is not an event.
-> Preserve current grants, original choices and pending turn timing.
-> Still zero full valid matches; prefixes do not count toward60.
+> **Latest live continuation — WIP published:** User requires publishing current
+> work before usage runs out. Last full suite459 at713a513; current Ulforce
+> increment has13 focused passes, full suite unrun. Game0000 turn8 /104commands,
+> same original seed/choices, exact replay. Continue effect33 RinaAfterDraw:
+> B:BT22-023#1→B:EX13-023#1 cost1 at Bmemory2 UNSUSPEND, from
+> `ARTIFACTS/gameplay-continuations-2026-11-03-07/game-0000-segment.json.gz`.
+> Queue both actual WhenDigivolving effects, orientation +return-all fewest
+> sources, with explicit choices. Actual sole minimum A:BT12-029#2.
+> Do not reroll earlier choices, skip real reactions or claim prefixes as games.
+> Still zero valid full current-pair matches. Keep publishing truthful checkpoints.
 
 > **2026-11-02 current priority:** User delegated choosing the best starting
 > matchup. Use the distinct-list Ulforce mirror 123129 vs122110, not the original
