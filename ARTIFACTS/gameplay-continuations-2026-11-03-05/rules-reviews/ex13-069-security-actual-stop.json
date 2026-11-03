@@ -1,0 +1,249 @@
+{
+  "schema": "encountered-security-free-tamer-independent-review-v1",
+  "review_date": "2026-11-03",
+  "status": "OFFICIAL_TEXT_AND_RULES_SUPPORT_MANDATORY_FREE_SECURITY_TAMER_PLAY",
+  "scope": "Actual Game0 turn6 command78 CONFIRM_ATTACK checks A EX13-069#1 during B EX13-022#3 attack",
+  "certification": "NONE_SOURCE_BACKED_ENCOUNTER_REVIEW_ONLY",
+  "full_match_credit": 0,
+  "accepted_fact_finding_credit": 0,
+  "final_evaluation_credit": 0,
+  "source_record": "ARTIFACTS/gameplay-continuations-2026-11-03-04/game-0000-segment.json.gz",
+  "seed": 12017913134550805276,
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "prefix_verification": {
+    "method": "Replay all77 preceding saved commands from same seed, compare state and RNG to original halt before any new resolution",
+    "preceding_saved_commands_replayed": 77,
+    "exact_physical_state": true,
+    "exact_rng": true,
+    "state_sha256": "6fe46290cb358922ae80ae7978828fcfe366c5e1d81509901dcb66d2004cc3d6",
+    "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+  },
+  "actual_state": {
+    "turn": 6,
+    "active": "B",
+    "phase": "MAIN",
+    "memory": 3,
+    "attack": {
+      "attacker": "B:EX13-022#3",
+      "attacker_instance": "entity-2",
+      "block_used": false,
+      "checked": null,
+      "controller": "B",
+      "counter_used": false,
+      "defender": "A",
+      "target": "PLAYER",
+      "target_instance": "",
+      "window": "CONFIRM"
+    },
+    "checked_card": "A:EX13-069#1",
+    "checked_card_type": "Tamer",
+    "defender_security_before": 3,
+    "defender_tamers_before": [
+      "A:BT11-112#2"
+    ],
+    "A_aero": "A:EX13-022#1",
+    "A_aero_instance": "entity-9",
+    "A_aero_cannot_suspend": true,
+    "A_current_turn_opt_used": [],
+    "B_current_turn_opt_used": [
+      [
+        6,
+        "B",
+        "B:EX13-002#1",
+        "entity-10",
+        "EX13-002.tamer_play_unsuspend"
+      ],
+      [
+        6,
+        "B",
+        "B:EX13-022#1",
+        "entity-5",
+        "EX13-022.play_tamer"
+      ],
+      [
+        6,
+        "B",
+        "B:EX13-022#1",
+        "entity-5",
+        "EX13-022.tamer_play_restriction"
+      ],
+      [
+        6,
+        "B",
+        "B:EX13-022#3",
+        "entity-2",
+        "EX13-022.play_tamer"
+      ],
+      [
+        6,
+        "B",
+        "B:EX13-022#3",
+        "entity-2",
+        "EX13-022.tamer_play_restriction"
+      ]
+    ]
+  },
+  "official_effect": "[Security] Play this card without paying the cost.",
+  "required_processing": [
+    {
+      "sequence": 1,
+      "operation": "Reveal/remove A EX13-069#1 from A security; checked card is temporarily in no area",
+      "rule": "CR13-1-6;13-1-8-1"
+    },
+    {
+      "sequence": 2,
+      "operation": "Its Security effect triggers and immediately activates without pending activation; mandatory free play cannot be declined",
+      "rule": "CR15-16-10-1;15-16-10-2;15-1-5"
+    },
+    {
+      "sequence": 3,
+      "operation": "Play the same physical A EX13-069#1 directly into A battle as an unsuspended Tamer without paying cost; do not create a hand/trash detour",
+      "rule": "Printed Security text;CR3-4-3;7-1-3"
+    },
+    {
+      "sequence": 4,
+      "operation": "Actual A own-Tamer play triggers the currently available A EX13-022#1 All Turns observer; queue its ordinary derived effect after immediate Security processing, with A as controller",
+      "rule": "Printed EX13-022 main text;CR15-4-2;15-4-5;15-16-9"
+    },
+    {
+      "sequence": 5,
+      "operation": "No Security Digimon exists and no DP comparison occurs. Checked card now belongs to A battle, so security cleanup must not move it to trash",
+      "rule": "CR13-1-8-3-2;13-1-8-4"
+    },
+    {
+      "sequence": 6,
+      "operation": "Resolve all A ordinary pending effects before the next attack timing/end can advance; no new Counter/Block window or retroactive suspension event",
+      "rule": "CR11-1-4;11-6-2;15-4-2"
+    }
+  ],
+  "actual_observer": {
+    "source": "A:EX13-022#1",
+    "source_field": "main_text",
+    "effect_id": "EX13-022.tamer_play_restriction",
+    "trigger": "A Tamer played: A EX13-069#1",
+    "controller": "A",
+    "all_turns_applies_in_B_turn": true,
+    "current_turn_opt_available": true,
+    "source_current_cannot_suspend_prevents_observer": false,
+    "targets": [
+      "B:BT11-112#3",
+      "B:BT22-023#1",
+      "B:EX13-022#1",
+      "B:EX13-022#3",
+      "B:EX13-069#3",
+      "B:EX13-069#4"
+    ],
+    "target_choice_mandatory": true,
+    "None_legal": false,
+    "already_suspended_targets_legal": true,
+    "new_restriction_does_not_cancel_earlier_attack_declaration": true,
+    "expected_usage": [
+      6,
+      "A",
+      "A:EX13-022#1",
+      "entity-9",
+      "EX13-022.tamer_play_restriction"
+    ],
+    "restriction": {
+      "restrictions": [
+        "cannot_suspend"
+      ]
+    },
+    "expires": {
+      "turn": 6,
+      "controller": "B",
+      "boundary": "completed_turn_end"
+    },
+    "expiry_explanation": "The observer belongs to A, so their/opponent turn refers to current B turn6; existing B-owned grants expiring A turn7 remain unchanged."
+  },
+  "nontriggers": [
+    "New EX13-069 has no On Play effect.",
+    "Its Start of Your Main Phase timing did not occur now; no memory gain.",
+    "Its Your Turn unsuspend/draw/evolve effect is inactive in B turn and no actual unsuspend happened.",
+    "A BT11 Rina suspension observer sees no new A Digimon suspension.",
+    "B BT11 Rina cannot retroactively see prior attack suspension; playing opponent A Tamer is not suspension.",
+    "B Aero own-Tamer observers do not trigger from opponent A Tamer; their current OPT is also already consumed.",
+    "A inherited egg is in breeding and A is not active; B egg observes own B blue Tamers and does not trigger from A play.",
+    "A Aero shared OnPlay/WhenDigivolving/WhenAttacking Tamer-play effect is separate and does not trigger merely because a Tamer was played.",
+    "No DP battle, deletion, unsuspend or repeat check is created by Tamer Security free play."
+  ],
+  "expected_result_after_security_and_observer": {
+    "A_security_count": 2,
+    "A_EX13_069_1_location": "A battle only",
+    "A_EX13_069_1_unsuspended": true,
+    "A_EX13_069_1_not_in_trash": true,
+    "A_existing_trash_unchanged": [
+      "A:P-138#4",
+      "A:EX13-022#4"
+    ],
+    "attacker": "B:EX13-022#3",
+    "attacker_survives": true,
+    "attacker_remains_suspended": true,
+    "active": "B",
+    "turn": 6,
+    "phase": "MAIN",
+    "memory": 3,
+    "security_DP_battle": false,
+    "winner": null,
+    "pending_rule": "A observer must be resolved before END_ATTACK advances"
+  },
+  "implementation_constraints": [
+    "Security effect immediate priority is not an optional ordinary pending activation choice.",
+    "Free play is controlled by A even though B is active; ordinary main-action active-player requirement does not apply to this bound Security play.",
+    "Do not require own Digimon target or an On Play handler for EX13-069: it has no On Play effect.",
+    "Do not let final checked-card cleanup remove the Tamer after it reaches battle.",
+    "Do not manufacture ordinary observer effects from earlier attack suspensions or past phase-start events."
+  ],
+  "verification": {
+    "new_security_resolution_executed": false,
+    "source_only_assessment": true,
+    "source_files_edited": []
+  },
+  "sources": [
+    {
+      "file": "ARTIFACTS/gameplay-continuations-2026-11-03-04/game-0000-segment.json.gz",
+      "sha256": "bf73be75a4b3404759c6b92e6745a1e26b0a36192009a43622e1f742fba33629",
+      "locator": "Exact preserved record/context bytes"
+    },
+    {
+      "file": "ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json",
+      "sha256": "089d449edab177c4f1d31a4b2ce8414650439df4ea6459080400df45d5004484",
+      "locator": "Exact preserved record/context bytes"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-069.html",
+      "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7",
+      "locator": "#EX13-069: blue Tamer; mandatory Security free play; Start of Your Main Phase and Your Turn timings"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-022.html",
+      "sha256": "4771e6eab5218e833eebf7d1ff6cf70ad6fa51a51d556f8a404ac88f07256874",
+      "locator": "#EX13-022: All Turns Once Per Turn own-Tamer-play restriction; separate shared play effect"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-112.html",
+      "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc",
+      "locator": "#BT11-112: own-Digimon suspension and Your Turn blue-Digimon unsuspend timing"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-002.html",
+      "sha256": "9d2abc2c3a5f20aebefbcb5b89818a4559748ddbde4e20f92562092b7267cd4f",
+      "locator": "#EX13-002: inherited Your Turn blue-Tamer play observer; A copy is in breeding"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-023.html",
+      "sha256": "a184df26a6bd8c5ccaed325998c9b85a18c0c2d5c0778a20993fd2d6a01e67dd",
+      "locator": "#BT22-023: B current stacked Digimon identity and actual exposed inherited field scope"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX1-013.html",
+      "sha256": "df126caa2ee95d5f7b86008ef828291645d15204c177801eb2f73404d0611f38",
+      "locator": "#EX1-013: inherited main-phase actual-unsuspend memory; no such event occurs"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/general_rule.pdf",
+      "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+      "locator": "v4.3: 3-4-3; 3-4-7-3; 7-1-3; 11-1-4; 11-6-2; 13-1-6 through13-1-8-5; 15-1-5; 15-4-2; 15-4-3-5; 15-4-5; 15-14-1; 15-16-9; 15-16-10-1 through15-16-10-2"
+    }
+  ]
+}

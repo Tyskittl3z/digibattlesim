@@ -160,7 +160,8 @@ def main_candidates(runtime, seat, root=ROOT):
                                     'hand_key': target, 'route_index': route_index, **asdict(route),
                                     'legality': 'PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY'})
     targets = ['PLAYER'] + [key for key, stack in view['players'][other]['battle'].items()
-                            if stack['suspended']]
+                            if stack['suspended'] and runtime.context.card(
+                                other,_number(stack['cards'][-1])).kind=='Digimon']
     for key, stack in own['battle'].items():
         card = runtime.context.card(seat, _number(stack['cards'][-1]))
         if (card.kind != 'Digimon' or stack['suspended']

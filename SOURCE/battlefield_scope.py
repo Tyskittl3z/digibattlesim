@@ -3,15 +3,17 @@
 The official EX1-013, ST7-05 and BT9-011 definitions have no main effect.
 Their inherited effects do not apply while those cards are singleton tops.
 BT9-011's printed special digivolution route does not create a battlefield
-effect. Five exact search tops are also supported between their self triggers.
-Every other existing top, inherited source, status or unrecognized
-metadata remains unsupported, even when an effect might be inactive now.
+effect. Attack calls name their actual window and participants: unrelated
+self triggers remain inert, while live observers and unsupported combat
+participants remain explicit dependencies.
 
 This guard grants no rules certification or full-match credit. Callers own
 physical-state validation, legal action windows, and the new action's effects.
 It inspects neither hidden zones nor breeding contents and never mutates state,
 events, RNG or halt flags, including on failure.
 """
+import re
+
 from context_runtime import PhysicalCard, PhysicalState, RuntimeHalt, Stack
 from option_actions import OPTION_SPECS
 from selected_contexts import require_selected_context
@@ -32,18 +34,133 @@ _STATE_FIELDS = frozenset(('zones', 'battle', 'breeding', 'active', 'memory', 't
                            'resolving_option'))
 _STACK_FIELDS = frozenset(('cards', 'suspended', 'statuses', 'instance_id', 'played_turn','ready_since_turn'))
 _CARD_FIELDS = frozenset(('owner', 'card_number', 'index'))
+_ATTACK_STAGES = frozenset(('DECLARE','COUNTER','BLOCK','CONFIRM','END'))
 
 
 def _assert_selected_context(runtime, root):
     require_selected_context(runtime.context, root)
 
 
+def _attack_source_dependencies(runtime, owner, anchor, source, field, event):
+    """Inspect the actual attack/suspension, keeping unrelated self text inert.
+
+    The newly encountered combatant is a singleton EX13-022. Other stacks may
+    remain on the field, but their active observers still require a handler.
+    """
+    from printed_triggers import effect_headers, effect_body
+    definition=runtime.context.card(owner,source.card_number)
+    actor=event['seat'];attacker=event['attacker'];stage=event['stage']
+    attacker_stack=runtime.state.battle[actor].get(attacker)
+    if attacker_stack is None:
+        return
+    attacker_definition=runtime.context.card(actor,attacker_stack.cards[-1].card_number)
+    participant=(owner==actor and anchor==attacker or owner!=actor and anchor==event['target'])
+    if participant and len(runtime.state.battle[owner][anchor].cards)!=1:
+        raise RuntimeHalt('BASIC_BOARD_STACK_UNSUPPORTED: combat participant '+anchor)
+    if participant and stage=='CONFIRM' and source.card_number not in _PLAIN_TOPS | _SEARCH_TOPS | {'EX13-022'}:
+        raise RuntimeHalt('BASIC_COMBAT_TOP_UNSUPPORTED: '+source.card_number+' source='+source.key)
+    for line in definition.effect_text(field).splitlines():
+        if line.lstrip().startswith(('・','•')):
+            continue
+        headers=effect_headers(line);body=effect_body(line)
+        if ('Your Turn' in headers and owner!=runtime.state.active
+                or "Opponent's Turn" in headers and owner==runtime.state.active):
+            continue
+        if headers and not any(h in ('Your Turn',"Opponent's Turn",'All Turns') for h in headers):
+            if stage=='DECLARE' and 'When Attacking' in headers and owner==actor and anchor==attacker:
+                from tamer_play_effects import PLAY_EFFECT,PLAY_LINE
+                if source.card_number!='EX13-022' or field!='main_text' or line!=PLAY_LINE:
+                    raise RuntimeHalt('ATTACK_TRIGGER_UNSUPPORTED: '+source.card_number+' '+field+' source='+source.key)
+                runtime.registry.lookup(source.card_number,PLAY_EFFECT,field)
+            elif stage=='END' and 'End of Attack' in headers and owner==actor and anchor==attacker:
+                raise RuntimeHalt('ATTACK_END_TRIGGER_UNSUPPORTED: '+source.card_number+' '+field+' source='+source.key)
+            continue
+        clause=body.split(',',1)[0]
+        if clause.startswith('When '):
+            if stage!='DECLARE':
+                continue
+            suspension=bool(re.search(r'\bsuspend(?:s|ed)?\b',clause,re.I))
+            attacking=bool(re.search(r'\battack(?:s|ing)?\b',clause,re.I))
+            if not suspension and not attacking:
+                continue
+            if 'this Digimon' in clause and (owner!=actor or anchor!=attacker):
+                continue
+            if 'this Tamer' in clause:
+                continue
+            if 'opponent' in clause.lower():
+                if actor==owner:continue
+            elif any(p in clause for p in ('your ','you attack')) and actor!=owner:
+                continue
+            names=re.findall(r'\[([^\]]+)\]',clause)
+            if names and not any(name in attacker_definition.name for name in names):
+                continue
+            if 'blue' in clause.lower() and 'Blue' not in attacker_definition.to_dict()['colors']:
+                continue
+            reason='ATTACK_ORIENTATION_TRIGGER_UNIMPLEMENTED' if suspension else 'ATTACK_OBSERVER_UNIMPLEMENTED'
+            raise RuntimeHalt(reason+': '+source.card_number+' '+field+' source='+source.key)
+        if stage=='CONFIRM' and participant and not headers and '＜' in line:
+            raise RuntimeHalt('ATTACK_KEYWORD_UNSUPPORTED: '+source.card_number+' '+field+' source='+source.key)
+        if stage=='CONFIRM' and headers and re.search(r'\b(?:DP|attack|Digimon|security)\b',body,re.I):
+            if 'this Digimon' not in body or participant:
+                raise RuntimeHalt('ATTACK_PERSISTENT_EFFECT_UNSUPPORTED: '+source.card_number+' '+field+' source='+source.key)
+
+
+def assert_combat_consequences_scope(runtime, deletions, *, security_owner=None):
+    """Preflight the actual deletion/security footprint before any card moves.
+
+    Attack scope already verifies the pinned source bytes and metadata. Battle
+    deletion is rules processing, so an opponent-effect-only replacement does
+    not apply. A payable Evade or live unimplemented observer remains a HALT.
+    """
+    from effect_grants import active_keyword,active_restriction
+    from printed_triggers import effect_headers,effect_body
+    removed=set(deletions)
+    for owner,key in removed:
+        stack=runtime.state.battle[owner][key]
+        if (active_keyword(runtime,owner,key,'Evade') and not stack.suspended
+                and not stack.statuses.get('cannot_suspend',False)
+                and not active_restriction(runtime,owner,key,'cannot_suspend')):
+            raise RuntimeHalt('BATTLE_EVADE_CHOICE_UNIMPLEMENTED: '+key)
+    for owner in ('A','B'):
+        for anchor,stack in runtime.state.battle[owner].items():
+            for index,source in enumerate(stack.cards):
+                field='main_text' if index==len(stack.cards)-1 else 'inherited_text'
+                for line in runtime.context.card(owner,source.card_number).effect_text(field).splitlines():
+                    headers=effect_headers(line);body=effect_body(line)
+                    if ('Your Turn' in headers and owner!=runtime.state.active
+                            or "Opponent's Turn" in headers and owner==runtime.state.active):
+                        continue
+                    if 'On Deletion' in headers and (owner,anchor) in removed:
+                        raise RuntimeHalt('BATTLE_DELETION_TRIGGER_UNIMPLEMENTED: '+source.card_number+' '+field+' source='+source.key)
+                    clause=body.split(',',1)[0]
+                    if not clause.startswith('When '):continue
+                    security=security_owner is not None and bool(re.search(r'\bsecurity\b',clause,re.I))
+                    leave=bool(removed) and bool(re.search(r'\b(?:delet\w*|leav\w*)\b',clause,re.I))
+                    if not security and not leave:continue
+                    # This atomic slice performs no opponent card effect.
+                    if (('other than' not in clause.lower() and re.search(
+                            r"(?:by|from) (?:an?|your opponent's|your) effects?",clause,re.I))
+                            or re.search(r"^When (?:an?|your|your opponent's) effects?\b",clause,re.I)):
+                        continue
+                    affected={security_owner} if security else {seat for seat,_ in removed}
+                    if 'this Digimon' in clause and (owner,anchor) not in removed:continue
+                    if 'opponent' in clause.lower():
+                        if not any(seat!=owner for seat in affected):continue
+                    elif 'your ' in clause.lower() and owner not in affected:
+                        continue
+                    if 'other Digimon' in clause and not any(
+                            seat==owner and key!=anchor for seat,key in removed):continue
+                    reason='SECURITY_OBSERVER_UNIMPLEMENTED' if security else 'BATTLE_LEAVE_OBSERVER_UNIMPLEMENTED'
+                    raise RuntimeHalt(reason+': '+source.card_number+' '+field+' source='+source.key)
+
+
 def assert_basic_board_scope(runtime, action, root, *, event=None, within_effect=False):
-    """Require only original, bare singleton plain Digimon on both battle areas.
+    """Validate source metadata and dependencies at the selected action timing.
 
     ``action`` must explicitly name one supported basic action. The five search
     tops require their complete pinned main text to equal a known self-search
-    effect; inherited reactions remain outside scope when exposed under stacks.
+    effect. Attack event records limit singleton combat scope to participants;
+    unrelated inherited sources are checked against the actual event.
     ``root`` supplies the locked context and hash-bound official source bytes.
     """
     if type(action) is not str or action not in _ACTIONS:
@@ -52,6 +169,11 @@ def assert_basic_board_scope(runtime, action, root, *, event=None, within_effect
         raise RuntimeHalt('BASIC_BOARD_EXPERIMENTAL_OPT_IN_REQUIRED')
     _assert_selected_context(runtime, root)
     state = runtime.state
+    attack_event=action=='attack_plain' and event is not None
+    if attack_event and (type(event) is not dict or event.get('stage') not in _ATTACK_STAGES
+            or event.get('seat')!=state.active
+            or not all(isinstance(event.get(key),str) for key in ('attacker','target'))):
+        raise RuntimeHalt('ATTACK_EVENT_SCOPE_UNSUPPORTED')
     if type(state) is not PhysicalState or set(vars(state)) != _STATE_FIELDS:
         raise RuntimeHalt('BASIC_BOARD_METADATA_UNSUPPORTED: state')
     if type(state.battle) is not dict or set(state.battle) != {'A', 'B'}:
@@ -72,12 +194,12 @@ def assert_basic_board_scope(runtime, action, root, *, event=None, within_effect
         for anchor, stack in state.battle[owner].items():
             if type(stack) is not Stack or set(vars(stack)) != _STACK_FIELDS:
                 raise RuntimeHalt('BASIC_BOARD_METADATA_UNSUPPORTED: stack ' + owner)
-            if type(stack.cards) is not list or not stack.cards or (len(stack.cards)!=1 and action=='attack_plain'):
+            if type(stack.cards) is not list or not stack.cards or (len(stack.cards)!=1 and action=='attack_plain' and not attack_event):
                 raise RuntimeHalt('BASIC_BOARD_STACK_UNSUPPORTED: ' + owner)
             if type(stack.statuses) is not dict:
                 raise RuntimeHalt('BASIC_BOARD_STATUS_UNSUPPORTED: ' + owner)
             if stack.statuses:
-                if set(stack.statuses) != {'effect_grants'} or action == 'attack_plain':
+                if set(stack.statuses) != {'effect_grants'} or action == 'attack_plain' and not attack_event:
                     raise RuntimeHalt('BASIC_BOARD_STATUS_UNSUPPORTED: ' + owner)
                 from effect_grants import validate_grants
                 validate_grants(runtime, owner, anchor)
@@ -93,7 +215,7 @@ def assert_basic_board_scope(runtime, action, root, *, event=None, within_effect
                     or type(physical.index) is not int or physical.index < 1
                     or type(anchor) is not str or anchor != physical.key):
                 raise RuntimeHalt('BASIC_BOARD_METADATA_UNSUPPORTED: card ' + owner)
-            if action!='attack_plain':
+            if action!='attack_plain' or attack_event:
                 from basic_event_dependencies import require_inert_for_event
                 for index,source in enumerate(stack.cards):
                     if (type(source) is not PhysicalCard or set(vars(source))!=_CARD_FIELDS
@@ -101,7 +223,10 @@ def assert_basic_board_scope(runtime, action, root, *, event=None, within_effect
                         raise RuntimeHalt('BASIC_BOARD_METADATA_UNSUPPORTED: source '+owner)
                     definition=runtime.context.card(owner,source.card_number)
                     field='main_text' if index==len(stack.cards)-1 else 'inherited_text'
-                    require_inert_for_event(runtime,owner,source,field,action,event)
+                    if attack_event:
+                        _attack_source_dependencies(runtime,owner,anchor,source,field,event)
+                    else:
+                        require_inert_for_event(runtime,owner,source,field,action,event)
                     if source.card_number not in checked:
                         try:
                             _source_evidence(root,definition.to_dict()['official_source'],

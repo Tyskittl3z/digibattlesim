@@ -25,10 +25,14 @@ def _play(runtime,seat,choice,root,*,within_effect=False,source_zone='hand'):
     if not runtime.allow_experimental:raise RuntimeHalt('UNREVIEWED_MAIN_ACTION')
     if not within_effect and (seat!=state.active or state.phase!='MAIN' or state.memory<0):
         raise RuntimeHalt('MAIN_PLAY_WINDOW_NOT_OPEN')
-    if source_zone not in ('hand','trash') or (source_zone!='hand' and not within_effect):
+    if source_zone not in ('hand','trash','security_check') or (source_zone!='hand' and not within_effect):
         raise RuntimeHalt('EFFECT_PLAY_SOURCE_INVALID')
-    pool=state.zones[seat][source_zone]
-    physical=next((c for c in pool if c.key==choice['hand_key']),None)
+    pool=None if source_zone=='security_check' else state.zones[seat][source_zone]
+    if source_zone=='security_check':
+        from security_tamer import validate_security_activation
+        physical=validate_security_activation(runtime,seat,choice['hand_key'])
+    else:
+        physical=next((c for c in pool if c.key==choice['hand_key']),None)
     if physical is None:
         raise RuntimeHalt('PLAY_CARD_NOT_IN_HAND' if source_zone=='hand' else 'PLAY_CARD_NOT_IN_TRASH')
     card=runtime.context.card(seat,physical.card_number)
@@ -51,7 +55,8 @@ def _play(runtime,seat,choice,root,*,within_effect=False,source_zone='hand'):
     cost=0 if within_effect else card.to_dict()['play_cost']
     if type(cost) is not int or cost<0 or cost>state.memory+10:
         raise RuntimeHalt('PLAY_COST_NOT_PAYABLE')
-    state.memory-=cost;pool.remove(physical)
+    state.memory-=cost
+    if pool is not None:pool.remove(physical)
     state.entity_sequence+=1
     state.battle[seat][physical.key]=Stack([physical],instance_id='entity-'+str(state.entity_sequence),
                                          played_turn=state.turn,ready_since_turn=state.turn+1)
@@ -70,6 +75,14 @@ def _play(runtime,seat,choice,root,*,within_effect=False,source_zone='hand'):
             'rules_source':choice['rules'],'card_source':card_evidence,'scope_context_id':locked.matchup_id,
             'printed_trigger':'On Play','triggered_effects':[record['effect_id'] for record in effects],
             'play_method':'EFFECT_WITHOUT_PAYING_COST' if within_effect else 'MAIN_ACTION'}
+
+
+def play_tamer_from_security(runtime,seat,source_key,root):
+    """Play the checked no-area card only during its bound immediate effect."""
+    from security_tamer import validate_security_activation,RULE_LOCATOR
+    validate_security_activation(runtime,seat,source_key)
+    return _play(runtime,seat,{'hand_key':source_key,'rules':{**_rules(root),'locator':RULE_LOCATOR}},
+                 root,within_effect=True,source_zone='security_check')
 
 
 def play_tamer_from_effect(runtime,seat,hand_key,root):

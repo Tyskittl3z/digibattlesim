@@ -242,4 +242,6 @@ def build_selected_registry(context, root):
     bindings.extend(aero_bindings(context,root,rules))
     from tamer_play_effects import tamer_play_bindings
     bindings.extend(tamer_play_bindings(context,root,rules))
+    from security_tamer import security_tamer_bindings
+    bindings.extend(security_tamer_bindings(context,root,rules))
     return MechanicRegistry(tuple(bindings))

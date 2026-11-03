@@ -3,15 +3,17 @@
 Checkpoint: November 2, 2026. This document describes the engine track. Read
 `AGENTS.md`, the newest section of `STATUS.md`, and `WORKFLOW.md` before editing.
 
-Latest increment: **430 tests passed** (259.488s). Actual same-game continuation
-now reaches turn6 /59 commands with exact replay, original seed and earlier
-choices preserved. Next selected action is B:EX13-022#1 attacking PLAYER; an
-older combat guard rejects the unrelated A:BT11-112 Tamer. Resolve the actual
-attack dependencies and When Attacking trigger, then continue the same game.
-Latest record: `ARTIFACTS/gameplay-continuations-2026-11-03-03/game-0000-segment.json.gz`.
-Segments02/03 retain source archives and official reviews. No complete current
-games or strategic/final credits exist. The older snapshots below are historical;
-newest STATUS and source take precedence.
+Latest increment: **446 tests passed** (390.282s). Same original Game0000 now
+reaches turn6 /83 recorded commands, with exact replay and preserved choices/RNG.
+Attack triggers/security battles and checked-Tamer immediate Security play now
+resolve at their actual timings. Latest record:
+`ARTIFACTS/gameplay-continuations-2026-11-03-05/game-0000-segment.json.gz`.
+Next selected action is BT22-023 EndYourTurn unsuspend on B:EX13-022#3 at memory−3.
+Implement the actual Bunsuspend Tamer reactions (BT11 memory, two EX13 Draw/After
+evolutions) rather than globally rejecting unrelated orientation text.
+Source archives/reviews are retained for each segment. No complete current games
+or strategic/final credits exist. Read newest STATUS before the historical
+snapshots below.
 
 ## Goal and ownership
 
@@ -33,23 +35,22 @@ slots, manufacture outcomes, or transfer another matchup's strategy/results.
 
 ## Current state: what works and what does not
 
-- **335 Python unittest tests passed**, last full run 57.555 seconds.
-- Exact immutable card/deck/match contexts, physical card accounting,
-  transactional commands, reproducible seeds and explicit failure traces work.
-- Opening hands/redraws, initial phase progression, breeding evolution, selected
-  searches, ordinary hard plays at their real printed triggers, pending-effect
-  scheduling, some orientation/memory reactions and plain attack/security steps
-  have implementations. These are limited experimental capabilities.
-- Current mirror registry has 10 experimental bindings. Source inventory has 79
-  printed units, 69 with no full binding. These counts are not complete branch
-  coverage or rules certification.
-- Latest mirror diagnostic: 60 attempts, 30 starts per deck, 60 exact replays,
-  **all 60 HALT**, zero software-terminal games.
-- **Zero valid current-pair fact-finding matches, zero approved roadmap lanes,
-  zero final matches. No usable win rate exists.**
+- **446 Python unittest tests passed**, last full run390.282 seconds.
+- Immutable exact card/deck contexts, physical accounting, transactional commands,
+  deterministic seeds and source-bound failure/replay records work.
+- Openings, phases/breeding, selected searches/plays/evolutions, Option Main/Delay,
+  Rina/Aero grants, relevant attack triggers, ordinary Security battles and the
+  encountered checked-Tamer play have experimental implementations.
+- Active mirror registry has33 experimental bindings. This does not establish
+  complete interaction coverage or judge certification.
+- The preserved historical60-attempt mirror diagnostic has30 starts per deck,
+  60 replays and60 HALTs. Gameplay-first work now continues those original traces;
+  Game0000 is still unfinished at turn6 /83 commands.
+- **Zero valid complete current-pair fact-finding matches, zero approved roadmap
+  lanes and zero final matches. No usable win rate exists.**
 
-Passing tests and deterministic replays establish software evidence; independent
-rules evidence, complete matches and branch coverage remain separate gates.
+Passing tests and deterministic replays are software evidence. Complete games,
+independent rules review and strategic evidence remain separate requirements.
 Historical legacy-engine completion counts do not apply to this context.
 
 ## Current exact decks and why this pairing

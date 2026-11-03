@@ -268,6 +268,15 @@ class ImportedAttemptTests(unittest.TestCase):
         self.assertFalse(any(c['kind'] == 'DECLARE_ATTACK'
                              for c in self.runner.main_candidates(runtime, 'A', ROOT)))
 
+    def test_suspended_tamer_is_not_a_battle_attack_target(self):
+        runtime=self.runtime()
+        attacker=self.take(runtime,'A','EX1-013','battle')
+        tamer=self.take(runtime,'B','BT19-080','battle')
+        runtime.state.battle['B'][tamer].suspended=True
+        attacks=[c for c in self.runner.main_candidates(runtime,'A',ROOT)
+                 if c['kind']=='DECLARE_ATTACK']
+        self.assertEqual(attacks,[{'kind':'DECLARE_ATTACK','attacker':attacker,'target':'PLAYER'}])
+
     def test_hidden_opponent_order_does_not_change_candidates_or_pilot_choice(self):
         runtime = self.runtime()
         self.take(runtime, 'A', 'EX1-013')
