@@ -60,6 +60,22 @@ class PhaseTests(unittest.TestCase):
         advance_phase(r,'A',ROOT)
         self.assertEqual(r.state.phase,'DRAW')
 
+    def test_unsuspend_phase_collects_inherited_and_rina_records_in_one_batch(self):
+        from unittest.mock import patch
+        from phase_flow import queue_effects
+        r=self.runtime();r.state.turn=3;r.state.phase='TURN_START_EFFECTS'
+        target=stage(r,'A',['P-138','EX1-013','EX13-023'],suspended=True)
+        stage(r,'A',['BT11-112']);stage(r,'A',['EX13-069'])
+        with patch('phase_flow.queue_effects',wraps=queue_effects) as queue:
+            advance_phase(r,'A',ROOT)
+        self.assertEqual(queue.call_count,1)
+        self.assertFalse(r.state.battle['A'][target].suspended)
+        effects=pending_options(r,'A')
+        self.assertEqual({e['effect_id'] for e in effects},
+                         {'P-138.unsuspend_memory','BT11-112.unsuspend_memory','EX13-069.unsuspend_draw'})
+        self.assertEqual({e['depth'] for e in effects},{0})
+        self.assertEqual(r.state.phase,'UNSUSPEND');r.verify()
+
     def test_start_main_conditional_memory_uses_current_board(self):
         r=self.runtime();stage(r,'A',['EX13-069']);stage(r,'A',['BT11-023'])
         for _ in range(3):advance_phase(r,'A',ROOT)

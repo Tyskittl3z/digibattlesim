@@ -165,15 +165,22 @@ def _choose(runtime, seat, choice, root, *, within_effect=False):
 
 
 def trusted_evolve_from_effect(runtime,seat,source_key,hand_key,route_index,root):
-    """Resolve a route using only the reduction of the active bound Option."""
+    """Use only the fixed reduction of the active bound, paid card effect."""
     from option_actions import OPTION_EVOLUTION_EFFECTS,validate_option_activation,option_evolution_choices
     activated=getattr(runtime,'_activated_effect',None)
     effect=activated[0] if isinstance(activated,tuple) and activated else None
+    from rina_unsuspend_effects import EX13_EVOLVE_EFFECT,validate_rina_continuation,rina_evolution_choices
+    choice={'source_key':source_key,'hand_key':hand_key,'route_index':route_index}
+    if effect==EX13_EVOLVE_EFFECT:
+        validate_rina_continuation(runtime,seat)
+        if choice not in rina_evolution_choices(runtime,seat):
+            raise RuntimeHalt('RINA_EVOLUTION_CHOICE_INVALID')
+        return _choose(runtime,seat,{**choice,'cost_reduction':2,
+            'rules':{**_rules(root),'locator':RULE_LOCATOR}},root,within_effect=True)
     spec=OPTION_EVOLUTION_EFFECTS.get(effect)
     if spec is None:raise RuntimeHalt('OPTION_ACTIVE_BINDING_REQUIRED')
     source=validate_option_activation(runtime,seat,(effect,),source_zone=spec['source_zone'])
     if source.card_number!=spec['number']:raise RuntimeHalt('OPTION_ACTIVE_BINDING_REQUIRED')
-    choice={'source_key':source_key,'hand_key':hand_key,'route_index':route_index}
     if choice not in option_evolution_choices(runtime,seat,effect):
         raise RuntimeHalt('OPTION_EVOLUTION_CHOICE_INVALID')
     return _choose(runtime,seat,{**choice,'cost_reduction':spec['reduction'],

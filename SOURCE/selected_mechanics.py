@@ -1,6 +1,6 @@
 """First selected EX13 mechanics; experimental scenarios, never full matches.
 
-Exact orientation processing and four inherited reactions are implemented.
+Encountered orientation processing, inherited reactions and Rina reactions are implemented.
 Persistent-status rule checks, Assembly, return-to-deck and other abilities
 remain unsupported; all bindings are experimental and unreviewed.
 An encountered dependency halts before the transaction commits.
@@ -13,7 +13,7 @@ import re
 from context_runtime import MechanicBinding, MechanicRegistry, OfficialEvidence, RuntimeHalt
 from match_context import require
 from effect_scheduler import queue_effects, source_stack
-from printed_triggers import effect_body
+from printed_triggers import effect_body,effect_headers
 
 ORIENTATION_EFFECT = 'EX13-023.orientation'
 ORIENTATION_LINE = ('[On Play] [When Digivolving] [When Attacking] [Once Per Turn] '
@@ -44,23 +44,57 @@ def orientation_candidates(runtime, seat, source_key):
                           if runtime.context.card(seat, stack.cards[-1].card_number).kind == 'Digimon')
 
 
-def _orientation_dependencies(runtime):
-    # Conservative scope barrier, not a claim that each matching effect triggers
-    # in this position. Until timing/conditions are implemented, retain the
-    # precise source rather than silently suppress a potentially live reaction.
-    reaction = re.compile(r'\bwhen\b[^\n]*\b(?:unsuspend|unsuspends|suspend|suspends|suspended|unsuspended)\b', re.I)
+def _orientation_event_matches(runtime,owner,observer,line,changed_seat,changed_stack,
+                               suspended_before,suspended_after):
+    """Match only the triggering clause of this actual orientation change."""
+    if suspended_before==suspended_after:return False
+    headers=effect_headers(line)
+    if ('Your Turn' in headers and owner!=runtime.state.active
+            or "Opponent's Turn" in headers and owner==runtime.state.active):
+        return False
+    clause=effect_body(line).split(',',1)[0]
+    if not clause.startswith('When '):return False
+    word=r'\bsuspend(?:s|ed)?\b' if suspended_after else r'\bunsuspend(?:s|ed)?\b'
+    if not re.search(word,clause,re.I):return False
+    changed=runtime.context.card(changed_seat,changed_stack.cards[-1].card_number)
+    if 'Digimon' in clause and changed.kind!='Digimon':return False
+    if 'Tamer' in clause and changed.kind!='Tamer':return False
+    if ('this Digimon' in clause or 'this Tamer' in clause) and observer is not changed_stack:
+        return False
+    if 'opponent' in clause.lower():
+        if owner==changed_seat:return False
+    elif 'your ' in clause.lower() and owner!=changed_seat:
+        return False
+    if 'blue' in clause.lower() and 'Blue' not in changed.to_dict()['colors']:return False
+    if 'main phase' in clause.lower() and runtime.state.phase!='MAIN':return False
+    names=re.findall(r'\[([^\]]+)\]',clause)
+    if names and not any(name in changed.name for name in names):return False
+    return True
+
+
+def _orientation_dependencies(runtime,changed_seat,changed_stack,suspended_before,suspended_after):
+    """Require handlers only for observers of this actual entity and change."""
     for seat in ('A', 'B'):
         for stack in runtime.state.battle[seat].values():
             for index, card in enumerate(stack.cards):
                 field_ = 'main_text' if index == len(stack.cards) - 1 else 'inherited_text'
                 text = runtime.context.card(seat, card.card_number).effect_text(field_)
-                if any(reaction.search(effect_body(line)) for line in text.splitlines()):
+                for line in text.splitlines():
+                    if not _orientation_event_matches(runtime,seat,stack,line,changed_seat,
+                                                      changed_stack,suspended_before,suspended_after):
+                        continue
                     known = INHERITED_REACTIONS.get(card.card_number)
                     if field_ == 'inherited_text' and known and text == known[1]:
                         runtime.registry.lookup(card.card_number,known[0],field_)
                         continue
+                    from rina_unsuspend_effects import (known_rina_orientation_observer,
+                        BT11_MEMORY_EFFECT,EX13_DRAW_EFFECT)
+                    if known_rina_orientation_observer(card.card_number,field_,line):
+                        effect=BT11_MEMORY_EFFECT if card.card_number=='BT11-112' else EX13_DRAW_EFFECT
+                        runtime.registry.lookup(card.card_number,effect,field_)
+                        continue
                     raise RuntimeHalt('ORIENTATION_DEPENDENT_TRIGGER_UNIMPLEMENTED: '
-                                      + card.card_number + ' ' + field_)
+                                      + card.card_number + ' ' + field_+' source='+card.key)
             if set(stack.statuses) - {'cannot_suspend', 'cannot_unsuspend','effect_grants'}:
                 # Includes DP reduction: EX13-023 Q7269 says a 0-DP rule check
                 # precedes triggered effects; an unsuspend cannot rescue it.
@@ -76,13 +110,13 @@ def _usage(runtime,seat,source,effect):
     return (runtime.state.turn,seat,source,effect)
 
 
-def _orientation_reactions(runtime,seat,stack,suspended_before):
+def _collect_orientation_reactions(runtime,seat,stack,suspended_before):
     if suspended_before == stack.suspended:
-        return
+        return []
     top = stack.cards[-1]
     definition = runtime.context.card(seat,top.card_number).to_dict()
     effects = []
-    for card in stack.cards[:-1]:
+    for card in stack.cards[:-1] if definition['type']=='Digimon' else []:
         known = INHERITED_REACTIONS.get(card.card_number)
         if not known:
             continue
@@ -99,7 +133,13 @@ def _orientation_reactions(runtime,seat,stack,suspended_before):
                             'trigger':{'kind':'ORIENTATION_CHANGED','entity':top.key,
                                        'suspended_before':suspended_before,'suspended_after':stack.suspended,
                                        'name_at_trigger':definition['name'],'phase':runtime.state.phase}})
-    queue_effects(runtime,effects)
+    from rina_unsuspend_effects import collect_rina_unsuspend_reactions
+    effects.extend(collect_rina_unsuspend_reactions(runtime,seat,stack,suspended_before))
+    return effects
+
+
+def _orientation_reactions(runtime,seat,stack,suspended_before):
+    queue_effects(runtime,_collect_orientation_reactions(runtime,seat,stack,suspended_before))
 
 
 def _set_orientation(runtime,seat,stack,suspended):
@@ -110,7 +150,7 @@ def _set_orientation(runtime,seat,stack,suspended):
         or ('effect_grants' in stack.statuses
             and active_restriction(runtime,seat,stack.cards[-1].key,prohibition)))
     if before != suspended and not blocked:
-        _orientation_dependencies(runtime)
+        _orientation_dependencies(runtime,seat,stack,before,suspended)
         stack.suspended = suspended
         _orientation_reactions(runtime,seat,stack,before)
     return {'suspended_before':before,'suspended_after':stack.suspended,
@@ -244,4 +284,6 @@ def build_selected_registry(context, root):
     bindings.extend(tamer_play_bindings(context,root,rules))
     from security_tamer import security_tamer_bindings
     bindings.extend(security_tamer_bindings(context,root,rules))
+    from rina_unsuspend_effects import rina_unsuspend_bindings
+    bindings.extend(rina_unsuspend_bindings(context,root,rules))
     return MechanicRegistry(tuple(bindings))

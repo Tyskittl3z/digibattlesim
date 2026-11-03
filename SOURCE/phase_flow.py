@@ -6,7 +6,7 @@ draw-phase deckout. Unsupported timing/status interactions halt before commit.
 from context_runtime import RuntimeHalt,Stack
 from effect_scheduler import queue_effects
 from match_preparation import _rules
-from selected_mechanics import PHASE_EFFECTS,_orientation_dependencies,_orientation_reactions
+from selected_mechanics import PHASE_EFFECTS,_orientation_dependencies,_collect_orientation_reactions
 from search_effects import SEARCH_SPECS
 
 
@@ -53,11 +53,13 @@ def _advance(runtime,seat,choice):
     elif state.phase=='TURN_START_EFFECTS':
         state.phase='UNSUSPEND'
         changed=[s for s in state.battle[seat].values() if s.suspended and not s.statuses.get('cannot_unsuspend',False)]
-        if changed:_orientation_dependencies(runtime)
+        for stack in changed:_orientation_dependencies(runtime,seat,stack,True,False)
         # Rule 6-2-1: all cards unsuspend simultaneously. Collect reactions only
         # after every affected card has changed orientation.
         for stack in changed:stack.suspended=False
-        for stack in changed:_orientation_reactions(runtime,seat,stack,True)
+        effects=[]
+        for stack in changed:effects.extend(_collect_orientation_reactions(runtime,seat,stack,True))
+        queue_effects(runtime,effects)
         if not state.pending:state.phase='DRAW'
     elif state.phase=='UNSUSPEND':
         # Pending guards ensure all unsuspend processing has finished before

@@ -1,4 +1,7 @@
 import unittest
+import gzip
+import json
+from unittest.mock import patch
 
 from context_runtime import ContextRuntime,RuntimeHalt
 from effect_scheduler import pending_options,resolve_pending
@@ -85,6 +88,67 @@ class ReactionTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeHalt,'BOOLEAN_PROCESSING_CHOICE'):
             resolve_pending(r,'A',effect['id'],'yes')
         self.assertEqual(before,r.snapshot()['state'])
+
+    def test_tamer_orientation_does_not_trigger_digimon_observers_or_later_cost_words(self):
+        from selected_mechanics import _set_orientation
+        r=self.runtime();r.state.phase='END_OF_TURN'
+        tamer=stage(r,'A',['EX13-069'],suspended=True)
+        stage(r,'A',['BT11-112']);stage(r,'A',['EX13-022'])
+        result=_set_orientation(r,'A',r.state.battle['A'][tamer],False)
+        self.assertTrue(result['changed']);self.assertEqual(r.state.pending,[])
+        result=_set_orientation(r,'A',r.state.battle['A'][tamer],True)
+        self.assertTrue(result['changed']);self.assertEqual(r.state.pending,[]);r.verify()
+
+    def test_actual_unsupported_self_unsuspend_trigger_still_halts_before_change(self):
+        from selected_mechanics import _set_orientation
+        r=self.runtime();source=stage(r,'A',['BT12-029'],suspended=True)
+        before=r.snapshot()
+        with self.assertRaisesRegex(RuntimeHalt,'ORIENTATION_DEPENDENT_TRIGGER_UNIMPLEMENTED.*BT12-029'):
+            _set_orientation(r,'A',r.state.battle['A'][source],False)
+        self.assertEqual(r.snapshot(),before)
+
+
+class EncounteredEndUnsuspendTests(unittest.TestCase):
+    def actual(self):
+        from imported_attempts import _apply
+        from matchup_readiness import load_context_file
+        path=ROOT/'ARTIFACTS/gameplay-continuations-2026-11-03-05/game-0000-segment.json.gz'
+        record=json.loads(gzip.decompress(path.read_bytes()))
+        context=load_context_file(ROOT/record['replay_provenance']['context_file'])
+        r=ContextRuntime(context,record['seed'],record['first'],
+                         build_selected_registry(context,ROOT),allow_experimental=True)
+        for command in record['commands'][:-1]:
+            _apply(r,command['command'],command['seat'],command['args'],ROOT)
+        self.assertEqual(r.snapshot()['state'],record['halts'][-1]['before']['state'])
+        self.assertEqual(r.snapshot()['rng_state'],record['halts'][-1]['before']['rng_state'])
+        return r,record['commands'][-1]['args']
+
+    def test_saved_end_choice_unsuspends_only_selected_aero_and_queues_three_rinas_together(self):
+        import selected_mechanics
+        r,args=self.actual();target=args['choice']
+        self.assertEqual((r.state.turn,r.state.active,r.state.phase,r.state.memory),
+                         (6,'B','END_OF_TURN',-3))
+        before=r.snapshot()
+        with patch('selected_mechanics.queue_effects',wraps=selected_mechanics.queue_effects) as queue:
+            result=resolve_pending(r,'B',args['pending_id'],target)
+        self.assertTrue(result['changed']);self.assertFalse(r.state.battle['B'][target].suspended)
+        self.assertTrue(r.state.battle['B']['B:EX13-022#1'].suspended)
+        self.assertEqual(queue.call_count,1)
+        options=pending_options(r,'B')
+        self.assertEqual({(e['source'],e['effect_id']) for e in options},
+                         {('B:BT11-112#3','BT11-112.unsuspend_memory'),
+                          ('B:EX13-069#3','EX13-069.unsuspend_draw'),
+                          ('B:EX13-069#4','EX13-069.unsuspend_draw')})
+        self.assertEqual({e['depth'] for e in options},{1})
+        self.assertEqual(pending_options(r,'A'),[])
+        self.assertEqual(r.state.memory,-3)
+        self.assertEqual(r.snapshot()['rng_state'],before['rng_state'])
+        memory=next(e for e in options if e['effect_id']=='BT11-112.unsuspend_memory')
+        resolve_pending(r,'B',memory['id'],None)
+        self.assertEqual(r.state.memory,-2)
+        while r.state.pending:
+            resolve_pending(r,'B',pending_options(r,'B')[0]['id'],False)
+        self.assertEqual(r.state.phase,'END_OF_TURN');r.verify()
 
 
 if __name__=='__main__':unittest.main()

@@ -3,17 +3,16 @@
 Checkpoint: November 2, 2026. This document describes the engine track. Read
 `AGENTS.md`, the newest section of `STATUS.md`, and `WORKFLOW.md` before editing.
 
-Latest increment: **446 tests passed** (390.282s). Same original Game0000 now
-reaches turn6 /83 recorded commands, with exact replay and preserved choices/RNG.
-Attack triggers/security battles and checked-Tamer immediate Security play now
-resolve at their actual timings. Latest record:
-`ARTIFACTS/gameplay-continuations-2026-11-03-05/game-0000-segment.json.gz`.
-Next selected action is BT22-023 EndYourTurn unsuspend on B:EX13-022#3 at memory−3.
-Implement the actual Bunsuspend Tamer reactions (BT11 memory, two EX13 Draw/After
-evolutions) rather than globally rejecting unrelated orientation text.
-Source archives/reviews are retained for each segment. No complete current games
-or strategic/final credits exist. Read newest STATUS before the historical
-snapshots below.
+Latest increment: **459 tests passed** (444.077s). Same original Game0000 now
+reaches turn7 /94 recorded commands, exact replay and preserved choices/RNG.
+Actual end-turn unsuspend/Rina reactions and the true turn transition resolve.
+Paid Draw/After branches have separate focused evidence; actual two optional
+choices were declined. Latest record:
+`ARTIFACTS/gameplay-continuations-2026-11-03-06/game-0000-segment.json.gz`.
+Next selected action is ordinary A:EX13-022#1→A:BT11-032#1 evolution, cost4 at
+memory3. Implement its blue-Tamer free play/actual triggered reactions, then
+continue this same saved game. Source archives and reviews are retained.
+No full current games or strategic/final credits exist.
 
 ## Goal and ownership
 
@@ -35,17 +34,17 @@ slots, manufacture outcomes, or transfer another matchup's strategy/results.
 
 ## Current state: what works and what does not
 
-- **446 Python unittest tests passed**, last full run390.282 seconds.
+- **459 Python unittest tests passed**, last full run444.077 seconds.
 - Immutable exact card/deck contexts, physical accounting, transactional commands,
   deterministic seeds and source-bound failure/replay records work.
 - Openings, phases/breeding, selected searches/plays/evolutions, Option Main/Delay,
   Rina/Aero grants, relevant attack triggers, ordinary Security battles and the
   encountered checked-Tamer play have experimental implementations.
-- Active mirror registry has33 experimental bindings. This does not establish
+- Active mirror registry has36 experimental bindings. This does not establish
   complete interaction coverage or judge certification.
 - The preserved historical60-attempt mirror diagnostic has30 starts per deck,
   60 replays and60 HALTs. Gameplay-first work now continues those original traces;
-  Game0000 is still unfinished at turn6 /83 commands.
+  Game0000 is still unfinished at turn7 /94 commands.
 - **Zero valid complete current-pair fact-finding matches, zero approved roadmap
   lanes and zero final matches. No usable win rate exists.**
 

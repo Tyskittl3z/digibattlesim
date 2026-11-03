@@ -101,10 +101,10 @@ class OrientationTests(unittest.TestCase):
     def test_tamer_unsuspend_trigger_is_not_silently_skipped(self):
         r = self.runtime(); source = stage(r, 'A', ['EX13-023'], suspended=True)
         stage(r, 'A', ['EX13-069'])
-        before = r.snapshot()['state']
-        with self.assertRaisesRegex(RuntimeHalt, 'ORIENTATION_DEPENDENT_TRIGGER.*EX13-069'):
-            r.dispatch(ORIENTATION_EFFECT, 'A', source, source)
-        self.assertEqual(r.snapshot()['state'], before)
+        r.dispatch(ORIENTATION_EFFECT, 'A', source, source)
+        self.assertFalse(r.state.battle['A'][source].suspended)
+        self.assertEqual([effect['effect_id'] for effect in r.state.pending],
+                         ['EX13-069.unsuspend_draw'])
 
     def test_dp_status_requires_rule_check_before_orientation(self):
         r = self.runtime(); source = stage(r, 'A', ['EX13-023'])

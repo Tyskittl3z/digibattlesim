@@ -24,6 +24,20 @@ class SchedulerTests(unittest.TestCase):
         self.assertEqual(r.state.memory,1);self.assertEqual(r.state.pending,[])
         self.assertEqual(r.events[-1]['pending_id'],opts[0]['id'])
 
+    def test_handler_receives_validated_pending_proof_only_during_activation(self):
+        import copy
+        def capture_pending(runtime,seat,source,choice):
+            return {'proof':copy.deepcopy(runtime._activated_pending)}
+        c=context_with_effect()
+        r=ContextRuntime(c,71,'A',registry(c,capture_pending),allow_experimental=True)
+        source=put_source(r);queue_effects(r,[self.effect(source)])
+        selected=pending_options(r,'A')[0]
+        result=resolve_pending(r,'A',selected['id'],None)
+        self.assertEqual(result['proof'],selected)
+        self.assertFalse(hasattr(r,'_activated_pending'))
+        self.assertEqual(r.dispatch('test-effect','A',source,None)['proof'],None)
+        self.assertFalse(hasattr(r,'_activated_pending'))
+
     def test_direct_dispatch_cannot_bypass_pending_choice(self):
         r=self.runtime(); source=put_source(r);queue_effects(r,[self.effect(source)])
         before=r.snapshot()['state']

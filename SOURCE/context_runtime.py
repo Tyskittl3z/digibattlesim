@@ -210,7 +210,7 @@ class ContextRuntime:
                              'selected_contexts.py','matchup_readiness.py',
                              'on_play_effects.py','effect_grants.py','option_actions.py',
                              'aero_effects.py','battle_evolution.py','basic_event_dependencies.py',
-                             'tamer_play_effects.py','security_tamer.py')}
+                             'tamer_play_effects.py','security_tamer.py','rina_unsuspend_effects.py')}
         return digest({'context_id': self.context.matchup_id, 'packs': self.registry.manifest(),
                        'engine': code, 'allow_experimental': self.allow_experimental})
 
@@ -360,6 +360,7 @@ class ContextRuntime:
                 trial.state.pending = [p for p in trial.state.pending if p['id']!=pending_id]
             trial._resolution_depth = selected_pending['depth'] if selected_pending else -1
             trial._activated_effect=(effect_id,seat,source_key,field_,pending_id)
+            trial._activated_pending=copy.deepcopy(selected_pending)
             result = binding.handler(trial, seat, source_key, copy.deepcopy(choice))
             from effect_scheduler import prune_pending
             prune_pending(trial)

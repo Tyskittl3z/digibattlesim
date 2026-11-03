@@ -1,13 +1,12 @@
 # First Codex task (execute, don't just plan)
 
-> **Latest live continuation:** Gameplay-first. **446 tests pass**. Game0000
-> reaches turn6 /83commands, same original seed and choices, exact replay.
-> Continue selected RESOLVE_PENDING effect21, BT22-023 EndYourTurn unsuspend
-> targeting B:EX13-022#3 at Bmemory−3, from
-> `ARTIFACTS/gameplay-continuations-2026-11-03-05/game-0000-segment.json.gz`.
-> Replace the broad orientation guard with actual-event filtering and execute
-> B BT11Rina memory +two EX13Rina self-suspend/Draw/After evolution reactions.
-> Preserve post-Draw choices, individual−2 discounts and pending-end timing.
+> **Latest live continuation:** Gameplay-first. **459 tests pass**. Game0000
+> reaches turn7 /94commands, same original seed and choices, exact replay.
+> Continue BATTLE_EVOLUTION A:EX13-022#1→A:BT11-032#1 cost4 at memory3 from
+> `ARTIFACTS/gameplay-continuations-2026-11-03-06/game-0000-segment.json.gz`.
+> Implement actual Ulforce When Digivolving blue-Tamer free play and its own
+> Tamer-play unsuspend observer. Already-unsuspended processing is not an event.
+> Preserve current grants, original choices and pending turn timing.
 > Still zero full valid matches; prefixes do not count toward60.
 
 > **2026-11-02 current priority:** User delegated choosing the best starting

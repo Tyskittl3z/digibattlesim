@@ -178,7 +178,7 @@ class AeroEffectTests(unittest.TestCase):
         self.assertEqual((runtime.state.active, runtime.state.memory), ('B', 1))
         self.assertEqual(runtime.state.pending, [])
 
-    def test_changed_unsuspend_with_unimplemented_observer_halts_atomically(self):
+    def test_changed_unsuspend_queues_rina_optional_processing_before_end_can_finish(self):
         runtime = self.scenario()
         source = stage(runtime, 'A', ['BT22-023'])
         target = stage(runtime, 'A', ['EX1-013'], suspended=True)
@@ -186,10 +186,14 @@ class AeroEffectTests(unittest.TestCase):
         runtime.state.phase = 'END_OF_TURN'
         runtime.state.memory = -1
         turn_flow.finish_turn(runtime, 'A', ROOT)
-        before = runtime.snapshot()
-        with self.assertRaisesRegex(RuntimeHalt, 'ORIENTATION_DEPENDENT_TRIGGER_UNIMPLEMENTED.*EX13-069'):
-            resolve_pending(runtime, 'A', pending_options(runtime, 'A')[0]['id'], target)
-        self.assertEqual(runtime.snapshot(), before)
+        resolve_pending(runtime, 'A', pending_options(runtime, 'A')[0]['id'], target)
+        self.assertFalse(runtime.state.battle['A'][target].suspended)
+        pending=pending_options(runtime,'A')
+        self.assertEqual([effect['effect_id'] for effect in pending],['EX13-069.unsuspend_draw'])
+        self.assertEqual(runtime.state.memory,-1)
+        resolve_pending(runtime,'A',pending[0]['id'],False)
+        self.assertEqual(runtime.state.pending,[])
+        self.assertEqual(runtime.state.phase,'END_OF_TURN')
 
     def test_end_choices_include_own_blue_tamer_but_exclude_opponent(self):
         runtime = self.scenario()

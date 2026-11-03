@@ -247,6 +247,32 @@ class GameContinuationTests(unittest.TestCase):
                  if p['effect_id']=='EX13-002.tamer_play_unsuspend')
         self.assertIn(runner.pending_choice(runtime,'B',egg,pilot),[False,True])
 
+    def test_actual_end_unsuspend_rina_choices_route_after_the_draw(self):
+        from effect_scheduler import pending_options,resolve_pending
+        import rina_unsuspend_effects as rina
+        path=ROOT/'ARTIFACTS/gameplay-continuations-2026-11-03-05/game-0000-segment.json.gz'
+        record=json.loads(gzip.decompress(path.read_bytes()))
+        context,_,_=runner._load_context_selection(ROOT,record['replay_provenance']['context_file'])
+        runtime=runner.ContextRuntime(context,record['seed'],record['first'],
+            runner.build_selected_registry(context,ROOT),allow_experimental=True)
+        for command in record['commands'][:-1]:
+            runner._apply(runtime,command['command'],command['seat'],command['args'],ROOT)
+        failed=record['commands'][-1]
+        runner._apply(runtime,failed['command'],failed['seat'],failed['args'],ROOT)
+        pilot=runner.ReferencePilot(context.matchup_id,record['index'],'B')
+        group=pending_options(runtime,'B')
+        memory=next(p for p in group if p['effect_id']==rina.BT11_MEMORY_EFFECT)
+        self.assertIsNone(runner.pending_choice(runtime,'B',memory,pilot))
+        draw=next(p for p in group if p['effect_id']==rina.EX13_DRAW_EFFECT)
+        self.assertIn(runner.pending_choice(runtime,'B',draw,pilot),[False,True])
+        resolve_pending(runtime,'B',draw['id'],True)
+        after=pending_options(runtime,'B')
+        self.assertEqual(len(after),1)
+        self.assertEqual(after[0]['effect_id'],rina.EX13_EVOLVE_EFFECT)
+        self.assertIn('B:EX13-023#1',runtime.public_view('B')['players']['B']['hand'])
+        self.assertIn(runner.pending_choice(runtime,'B',after[0],pilot),
+                      rina.rina_unsuspend_choices(runtime,'B',after[0]['source'],after[0]['effect_id']))
+
 
 if __name__ == '__main__':
     unittest.main()
