@@ -3,6 +3,8 @@ import hashlib
 import json
 from dataclasses import replace
 import unittest
+from pathlib import Path
+from unittest.mock import patch
 
 from match_context import MatchContext
 from test_match_context import fixture
@@ -65,6 +67,18 @@ def put_source(runtime, seat='A'):
 
 
 class RuntimeTests(unittest.TestCase):
+    def test_execution_identity_binds_shared_return_dependency(self):
+        runtime = ContextRuntime(context_with_effect(), 321, 'A')
+        original = runtime.execution_id
+        read_bytes = Path.read_bytes
+
+        def changed_return_source(path):
+            body = read_bytes(path)
+            return body + b'\n# changed return dependency\n' if path.name == 'return_effects.py' else body
+
+        with patch.object(Path, 'read_bytes', changed_return_source):
+            self.assertNotEqual(runtime.execution_id, original)
+
     def test_setup_is_deterministic_and_does_not_play_a_match(self):
         c = context_with_effect()
         a, b = ContextRuntime(c, 321, 'A'), ContextRuntime(c, 321, 'A')

@@ -211,7 +211,7 @@ class ContextRuntime:
                              'on_play_effects.py','effect_grants.py','option_actions.py',
                              'aero_effects.py','battle_evolution.py','basic_event_dependencies.py',
                              'tamer_play_effects.py','security_tamer.py','rina_unsuspend_effects.py',
-                             'ex13_ulforce_effects.py','rina_reactivation.py')}
+                             'ex13_ulforce_effects.py','rina_reactivation.py','return_effects.py')}
         return digest({'context_id': self.context.matchup_id, 'packs': self.registry.manifest(),
                        'engine': code, 'allow_experimental': self.allow_experimental})
 

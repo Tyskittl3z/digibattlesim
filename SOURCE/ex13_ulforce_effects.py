@@ -2,12 +2,11 @@
 from dataclasses import replace
 import hashlib
 from pathlib import Path
-import re
 
 from context_runtime import MechanicBinding,RuntimeHalt
 from effect_scheduler import pending_options
 from match_context import require
-from printed_triggers import effect_body,effect_headers
+from return_effects import return_to_deck_bottom
 
 
 RETURN_EFFECT='EX13-023.return_fewest'
@@ -51,56 +50,6 @@ def _minimum_targets(runtime,owner):
     return [(key,stack) for key,stack in digimon if len(stack.cards)-1==minimum]
 
 
-def _return_dependencies(runtime,actor,owner,target_key):
-    """Never apply a return through an unhandled protection or leave event."""
-    from effect_grants import validate_grants
-    target=runtime.state.battle[owner][target_key]
-    target_definition=runtime.context.card(owner,target.cards[-1].card_number)
-    if target.statuses:validate_grants(runtime,owner,target_key)
-    for observer_owner in ('A','B'):
-        for observer in runtime.state.battle[observer_owner].values():
-            for index,physical in enumerate(observer.cards):
-                field='main_text' if index==len(observer.cards)-1 else 'inherited_text'
-                definition=runtime.context.card(observer_owner,physical.card_number)
-                for line in definition.effect_text(field).splitlines():
-                    headers=effect_headers(line)
-                    if ('Your Turn' in headers and observer_owner!=runtime.state.active
-                            or "Opponent's Turn" in headers and observer_owner==runtime.state.active):
-                        continue
-                    if headers and not any(h in ('Your Turn',"Opponent's Turn",'All Turns') for h in headers):
-                        continue
-                    body=effect_body(line).replace('’',"'")
-                    clause=body.split(',',1)[0]
-                    if clause.startswith('When '):
-                        if not re.search(r'\b(?:leav\w*|return\w*|trash\w*)\b',clause,re.I):continue
-                        subject=clause.split(' by ',1)[0]
-                        if 'this Digimon' in subject and observer is not target:continue
-                        if 'this Tamer' in subject:continue
-                        if 'opponent' in subject.lower():
-                            if owner==observer_owner:continue
-                        elif ('your ' in subject.lower() or 'this Digimon' in subject) and owner!=observer_owner:
-                            continue
-                        if "opponent's effects" in clause and actor==observer_owner:continue
-                        if 'by your effects' in clause and actor!=observer_owner:continue
-                        if 'other Digimon' in subject and observer is target:continue
-                        if re.search(r'digivolution cards?|sources?',subject,re.I) and len(target.cards)==1:continue
-                        names=re.findall(r'\[([^\]]+)\]',subject)
-                        if names and not any(name in target_definition.name for name in names):continue
-                        raise RuntimeHalt('ULFORCE_RETURN_LEAVE_DEPENDENCY_UNIMPLEMENTED: '
-                                          +physical.card_number+' '+field+' source='+physical.key)
-                    if physical.card_number=='EX13-023' and field=='main_text':
-                        # This is the exact pinned self protection. It cannot
-                        # protect a different Digimon being returned.
-                        if observer is not target or target.suspended:continue
-                    elif 'this ' in body.lower() and observer is not target:
-                        continue
-                    lower=body.lower()
-                    if ('effects' in lower and any(word in lower for word in ("can't",'cannot',"isn't affected",'unaffected'))
-                            and any(word in lower for word in ('return','leave','stacked cards','affected'))):
-                        raise RuntimeHalt('ULFORCE_RETURN_PROTECTION_UNIMPLEMENTED: '
-                                          +physical.card_number+' '+field+' source='+physical.key)
-
-
 def resolve_ulforce_return(runtime,seat,source_key,choice):
     ulforce_return_choices(runtime,seat,source_key)
     ordered=isinstance(choice,dict) and set(choice)=={'activate','bottom_order'} and choice['activate'] is True
@@ -121,19 +70,10 @@ def resolve_ulforce_return(runtime,seat,source_key,choice):
             or len(order)!=len(targets) or len(set(order))!=len(order)
             or set(order)!={key for key,_ in targets}):
         raise RuntimeHalt('ULFORCE_RETURN_ORDER_INVALID')
-    for key,_ in targets:_return_dependencies(runtime,seat,owner,key)
-    returned=[];trashed=[];steps=[];tops={}
-    for key,stack in targets:
-        del runtime.state.battle[owner][key]
-        top,lower=stack.cards[-1],stack.cards[:-1]
-        tops[top.key]=top
-        runtime.state.zones[owner]['trash'].extend(lower)
-        returned.append(top.key);trashed.extend(card.key for card in lower)
-        steps.append({'operation':'RETURN_DIGIMON_TO_DECK_BOTTOM','owner':owner,
-                      'card':top.key,'trashed_sources':[card.key for card in lower]})
-    runtime.state.zones[owner]['deck'][:0]=[tops[key] for key in order]
+    result=return_to_deck_bottom(runtime,seat,owner,[key for key,_ in targets],order,
+                                 halt_prefix='ULFORCE_RETURN')
     return {'processing':'RETURNED_FEWEST_SOURCE_DIGIMON' if targets else 'NO_ELIGIBLE_TARGET',
-            'returned':returned,'trashed_sources':trashed,'steps':steps,'full_match_credit':0,
+            **result,'full_match_credit':0,
             'bottom_order':order,'bottom_order_controller':seat,
             'bottom_order_convention':'first element is bottommost'}
 

@@ -33,6 +33,17 @@ User owns all deck construction, interpretation, and decisions; offer **no card/
 - Never expand toward universal Digimon card support or unsolicited feature work. Work on interactions that the **loaded two decks can actually produce**, as found during gameplay.
 
 ## Authority and integrity
+- **User constraint (2026-11-04):** Confirm player-policy identities before
+  advancing the saved game. Game0000's existing choices came from untrained
+  random reference policies, not verified as the user's two bots. Preserve that
+  history without counting it as their bots' evidence. For this increment,
+  revalidate the original seed/state/earlier choices, resolve only the already
+  selected BT22-023 return, and pause before a new decision. Do not substitute
+  reference policies, preload routes, or launch either the 60-match or
+  10,000-match cohort. Record observed actions/results without positive,
+  neutral, negative or GREEN/YELLOW/RED ratings unless scoring criteria have
+  been defined and bound to the relevant evidence. Existing legacy bot logic
+  belongs to another matchup and is not an authorized silent replacement.
 - **User clarification (2026-11-02):** Execute the actual card wording at its
   printed trigger. An unimplemented When Digivolving/When Attacking effect must
   not by itself block ordinary hard play. Do not label unfinished code or overly

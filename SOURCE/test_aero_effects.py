@@ -5,7 +5,7 @@ import json
 import unittest
 
 from context_runtime import ContextRuntime, RuntimeHalt
-from effect_scheduler import pending_options, resolve_pending
+from effect_scheduler import pending_options, resolve_pending, queue_effects
 from imported_attempts import _apply
 from main_actions import choose_play
 from matchup_readiness import load_context_file
@@ -102,12 +102,48 @@ class AeroEffectTests(unittest.TestCase):
         self.assertEqual(runtime.state.pending, [])
         runtime.verify()
 
+    def test_turn10_when_digivolving_return_uses_actual_fields_and_no_extra_events(self):
+        runtime = self.scenario()
+        source = stage(runtime, 'B', ['EX13-019', 'BT22-023'])
+        target = stage(runtime, 'A', ['EX1-013', 'BT22-022'])
+        egg = next(card for card in runtime.state.zones['A']['eggdeck']
+                   if card.card_number == 'EX13-002')
+        runtime.state.zones['A']['eggdeck'].remove(egg)
+        runtime.state.battle['A'][target].cards.insert(0, egg)
+        for number in ('BT11-112', 'BT11-112', 'EX13-069'):
+            stage(runtime, 'A', [number])
+        other = stage(runtime, 'B', ['BT22-022', 'EX13-023'])
+        runtime.state.phase = 'MAIN'
+        runtime.state.turn = 10
+        runtime.state.active = 'B'
+        runtime.state.memory = -1
+        queue_effects(runtime, [{'seat': 'B', 'source': source,
+            'effect_id': aero.DIGIVOLVE_EFFECT, 'field': 'main_text',
+            'trigger': {'kind': 'When Digivolving', 'previous_top': 'B:EX13-019#1'}}])
+        lower = [card.key for card in runtime.state.battle['A'][target].cards[:-1]]
+        before_other = copy.deepcopy(runtime.state.battle['B'][other])
+        before_rng = runtime.snapshot()['rng_state']
+        pending = pending_options(runtime, 'B')[0]
+        self.assertEqual(pending['effect_id'], aero.DIGIVOLVE_EFFECT)
+        result = resolve_pending(runtime, 'B', pending['id'], target)
+        self.assertEqual(result['trashed_sources'], lower)
+        self.assertEqual(runtime.state.zones['A']['deck'][0].key, target)
+        self.assertEqual([card.key for card in runtime.state.zones['A']['trash'][-2:]], lower)
+        self.assertNotIn(target, runtime.state.battle['A'])
+        self.assertEqual(runtime.state.battle['B'][other], before_other)
+        self.assertEqual(runtime.state.pending, [])
+        self.assertEqual((runtime.state.active, runtime.state.turn, runtime.state.memory), ('B', 10, -1))
+        self.assertEqual(runtime.state.phase, 'END_OF_TURN')
+        self.assertEqual(runtime.snapshot()['rng_state'], before_rng)
+        self.assertFalse(any(event.get('type') in ('DELETION', 'BATTLE') for event in runtime.events))
+        runtime.verify()
+
     def test_active_leave_protection_halts_without_partial_return(self):
         runtime = self.scenario()
         source = stage(runtime, 'A', ['BT22-023'])
         target = stage(runtime, 'B', ['EX13-017', 'P-138'])
         before = runtime.snapshot()
-        with self.assertRaisesRegex(RuntimeHalt, 'AERO_RETURN_DEPENDENCY_UNSUPPORTED.*EX13-017'):
+        with self.assertRaisesRegex(RuntimeHalt, 'AERO_RETURN_LEAVE_DEPENDENCY_UNIMPLEMENTED.*EX13-017'):
             runtime.dispatch(aero.PLAY_EFFECT, 'A', source, target)
         self.assertEqual(runtime.snapshot(), before)
 

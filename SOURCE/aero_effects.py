@@ -1,11 +1,10 @@
 """Encountered BT22-023 return effects and their explicit current choices."""
 import hashlib
-import re
 
 from context_runtime import MechanicBinding, RuntimeHalt
 from effect_scheduler import pending_options, source_stack
 from match_context import require
-from printed_triggers import effect_body
+from return_effects import return_to_deck_bottom
 
 
 PLAY_EFFECT = 'BT22-023.on_play_return'
@@ -15,14 +14,6 @@ RETURN_LINE = ("[On Play] [When Digivolving] Return 1 of your opponent's level 4
                'or lower Digimon to the bottom of the deck.')
 END_LINE = '[End of Your Turn] [Once Per Turn] 1 of your blue Digimon or Tamers may unsuspend.'
 PLAY_SPECS = {'BT22-023': (PLAY_EFFECT, RETURN_LINE)}
-
-# These active fields occur on the reviewed actual return targets. Lower
-# EX1-013/P-138 are also safe during removal: returning is not unsuspending.
-_RETURN_TOPS = frozenset(('P-138', 'EX1-013', 'EX13-019', 'EX13-017'))
-_RETURN_INHERITED = frozenset(('EX1-013', 'P-138', 'EX13-019'))
-_LEAVE_OBSERVER = re.compile(
-    r'\b(?:when|would)\b[^\n]*\b(?:leave|leaves|left|removed|returned|trashed)\b', re.I)
-
 
 def _source_window(runtime, seat, source_key, effect_id):
     source = runtime._source(seat, source_key, 'main_text')
@@ -59,32 +50,6 @@ def aero_choices(runtime, seat, source_key, effect_id):
     return sorted(targets) if targets else [None]
 
 
-def _return_dependencies(runtime, owner, target_key):
-    from effect_grants import validate_grants
-    stack = runtime.state.battle[owner][target_key]
-    if stack.statuses:
-        validate_grants(runtime, owner, target_key)
-    for index, card in enumerate(stack.cards):
-        field = 'main_text' if index == len(stack.cards) - 1 else 'inherited_text'
-        text = runtime.context.card(owner, card.card_number).effect_text(field)
-        supported = _RETURN_TOPS if field == 'main_text' else _RETURN_INHERITED
-        if text and card.card_number not in supported:
-            raise RuntimeHalt('AERO_RETURN_DEPENDENCY_UNSUPPORTED: ' + card.card_number + ' ' + field)
-    # Check actual active observers before moving any card. Returning the top
-    # and trashing its sources must not bypass a leave-area replacement/trigger.
-    for seat in ('A', 'B'):
-        for observer in runtime.state.battle[seat].values():
-            for index, card in enumerate(observer.cards):
-                field = 'main_text' if index == len(observer.cards) - 1 else 'inherited_text'
-                if observer is not stack and card.card_number == 'EX13-017' and field == 'inherited_text':
-                    # Its printed replacement only protects "this Digimon";
-                    # returning a different stack does not request that choice.
-                    continue
-                text = runtime.context.card(seat, card.card_number).effect_text(field)
-                if any(_LEAVE_OBSERVER.search(effect_body(line)) for line in text.splitlines()):
-                    raise RuntimeHalt('AERO_RETURN_DEPENDENCY_UNSUPPORTED: ' + card.card_number + ' ' + field)
-
-
 def resolve_aero_return(runtime, seat, source_key, choice):
     activated = getattr(runtime, '_activated_effect', None)
     effect_id = activated[0] if activated else PLAY_EFFECT
@@ -93,12 +58,10 @@ def resolve_aero_return(runtime, seat, source_key, choice):
     if choice is None:
         return {'target': None, 'processing': 'NO_ELIGIBLE_TARGET', 'full_match_credit': 0}
     opponent = 'B' if seat == 'A' else 'A'
-    _return_dependencies(runtime, opponent, choice)
-    stack = runtime.state.battle[opponent].pop(choice)
-    top, lower = stack.cards[-1], stack.cards[:-1]
-    runtime.state.zones[opponent]['deck'].insert(0, top)
-    runtime.state.zones[opponent]['trash'].extend(lower)
-    return {'target': choice, 'returned': top.key, 'trashed_sources': [card.key for card in lower],
+    result = return_to_deck_bottom(runtime, seat, opponent, [choice], [choice],
+                                   halt_prefix='AERO_RETURN')
+    return {'target': choice, 'returned': result['returned'][0],
+            'trashed_sources': result['trashed_sources'],
             'processing': 'RETURNED_TO_DECK_BOTTOM', 'full_match_credit': 0}
 
 

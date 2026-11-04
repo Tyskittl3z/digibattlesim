@@ -1,21 +1,42 @@
 # Digimon simulator: Python developer handoff
 
-Checkpoint: November 2, 2026. This document describes the engine track. Read
+Checkpoint: November 4, 2026. This document describes the engine track. Read
 `AGENTS.md`, the newest section of `STATUS.md`, and `WORKFLOW.md` before editing.
 
-Latest checkpoint: **495 full-suite tests passed** (556.480s). Same original
-Game0000 reaches turn10 /152commands, with saved choices/seed/RNG and exact
-replay at its archived source. The attack/security check now resolves A2→1
-without falsely treating another stack's self-protection as a global modifier.
-Latest record:
-`ARTIFACTS/gameplay-continuations-2026-11-03-11/game-0000-segment.json.gz`.
-Next selected effect57 is BT22Aero WhenDigivolving return, sourceB:BT22-023#2
-targetA:BT22-022#1 (egg→EX1→BT22), memory−1/MAIN. Share actual leave-event
-preflight instead of the old card whitelist; top returns deckbottom, lower2
-trash, then END_OF_TURN opens without switching active player. Source12 holds
-the official review; its fix/proof is not yet applied/executed.
-Zero full valid games, roadmap lanes and final credits. Publish checkpoints
-before usage ends and preserve the original selected action.
+Game0000 is **PAUSED_AFTER_SAVED_ACTION**: all **152 commands resolved**, B active
+on turn10, memory−1, phase END_OF_TURN. Original seed12017913134550805276,
+first playerA, all151 earlier successful commands/results/views and the complete
+pre-return physical state/RNG were preserved. The saved effect57 selection was
+retried exactly once: A:BT22-022#1 went to A deckbottom; A:EX13-002#2 and
+A:EX1-013#2 went to A trash. No later end-turn processing or player choice ran.
+
+**Policy correction:** both saved seat policies are
+`fresh-untrained-uniform-random-reference-v1`, not verified as the user's two
+bots. Their full historical identities remain preserved. The new bounded runner
+invoked no policy and made zero new decisions; the reference history earns zero
+user-bot evidence. Legacy named BotA/B code belongs to Jupitermon/Toho and has no
+current imported-context adapter. Do not silently substitute either policy set.
+
+**Verification:**62 focused tests passed (25.371s), including source-identity,
+shared return dependencies, saved-choice preservation, forbidden policy calls,
+and bounded replay tests. Independent actual-prefix/state-delta proof passed
+(24.273s), with108 unique physical cards and unchanged return RNG. The latest
+full-suite baseline remains **495 tests at aed966b**; this increment uses focused
+checks. The full suite includes legacy60-game cohort tests, which were not run
+under the user's current no-cohort instruction.
+
+Latest checkpoint/evidence:
+`ARTIFACTS/gameplay-continuations-2026-11-04-01/`. Full checkpoint exact-replay
+verification is recorded in that directory's replay.json. Source bytes are
+archived beside the saved record. No full game is complete; user-bot evidence,
+accepted fact-finding games, approved lanes and final-match credit all remain0.
+No routes were preloaded, cohorts launched, or strategic ratings assigned.
+
+**Next boundary:** leave this checkpoint paused. Actual current-context bot
+identities/adapters must be established before another player-policy decision.
+Do not use imported_attempts.continue_attempt: it constructs fresh random
+reference policies. Do not run the60/10,000 cohorts or attach positive/neutral/
+negative or GREEN/YELLOW/RED ratings without defined, applicable scoring criteria.
 
 ## Goal and ownership
 
@@ -37,7 +58,8 @@ slots, manufacture outcomes, or transfer another matchup's strategy/results.
 
 ## Current state: what works and what does not
 
-- **495 Python unittest tests passed**, last full run556.480 seconds.
+- **62 current focused tests passed** (25.371s). Latest full suite:495 tests
+  at aed966b (556.480s); no new full run or legacy cohort tests this increment.
 - Immutable exact card/deck contexts, physical accounting, transactional commands,
   deterministic seeds and source-bound failure/replay records work.
 - Openings, phases/breeding, selected searches/plays/evolutions, Option Main/Delay,
@@ -47,7 +69,8 @@ slots, manufacture outcomes, or transfer another matchup's strategy/results.
   complete interaction coverage or judge certification.
 - The preserved historical60-attempt mirror diagnostic has30 starts per deck,
   60 replays and60 HALTs. Gameplay-first work now continues those original traces;
-  Game0000 is still unfinished at turn10 /152 commands.
+  Game0000 is paused, unfinished, at turn10 /152 successful commands,
+  Bmemory−1, END_OF_TURN after the selected return.
 - **Zero valid complete current-pair fact-finding matches, zero approved roadmap
   lanes and zero final matches. No usable win rate exists.**
 
@@ -103,8 +126,11 @@ engine dependencies and should not be installed to run the simulator.
 ```bash
 git clone --branch engine-ulforce-bootstrap https://github.com/Tyskittl3z/digibattlesim.git
 cd digibattlesim/SOURCE
-python3 -m unittest discover -p 'test_*.py' -q
+python3 -m unittest test_recorded_action_checkpoint test_context_runtime test_return_effects test_aero_effects test_ex13_ulforce_effects -q
 ```
+
+This is the current bounded validation set. Full discovery also includes legacy
+60-game cohort tests; leave those out under the current user instruction.
 
 Inspect the active readiness inventory:
 
@@ -115,7 +141,8 @@ python3 matchup_readiness.py --context ../ARTIFACTS/ulforce-bootstrap-2026-11-02
 Expected: `BLOCKED`, process exit2. This currently reports unfinished gameplay
 and evidence gates; it is not a claim the input decks are illegal.
 
-Run a NEW diagnostic cohort, using an unused output directory:
+**Historical diagnostic command — do not run under the current no-cohort
+user instruction.** It uses random references, not the user's verified bots:
 
 ```bash
 python3 imported_attempts.py --context-file ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json --out ../ARTIFACTS/helper-diagnostic-01 --count 60 --max-commands 300
@@ -138,7 +165,8 @@ print(record['seed'], record['first'], record['halt_reason'])
 print(record['commands'][-1])
 ```
 
-From `SOURCE`, replay a record under its recorded context:
+For historical diagnostic records, from `SOURCE`, replay under the recorded context
+(the new paused checkpoint uses `recorded_action_checkpoint.replay_selected_action`):
 
 ```python
 from imported_attempts import replay_attempt
@@ -170,6 +198,8 @@ the pilots. The original records must be preserved when code changes.
 |`SOURCE/attack_flow.py`|Attack declaration, Counter, Block, confirmation, ending and narrow plain security handling|
 |`SOURCE/turn_flow.py`|Explicit passing and turn change; unsupported durations/end effects still stop|
 |`SOURCE/imported_attempts.py`|Fresh reference pilots, candidate generation, diagnostic loop, original records, replay and cohort writing|
+|`SOURCE/recorded_action_checkpoint.py`|Replay saved decisions and resolve only the stored pending selection, then pause without invoking policies|
+|`SOURCE/return_effects.py`|Shared actual-event return preflight and top/deck-bottom plus lower/trash movement|
 |`SOURCE/matchup_readiness.py`|Context-byte parsing, readiness inventory and blocked-gate reporting|
 |`SOURCE/frozen_evaluation.py`|Older pair's gated final-runner machinery; not integrated or eligible for this new context|
 

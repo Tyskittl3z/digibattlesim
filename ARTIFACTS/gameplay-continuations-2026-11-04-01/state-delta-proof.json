@@ -1,0 +1,30 @@
+{
+  "RNG_unchanged_by_return": true,
+  "accepted_fact_finding_credit": 0,
+  "after": {
+    "active": "B",
+    "memory": -1,
+    "pending": [],
+    "phase": "END_OF_TURN",
+    "turn": 10
+  },
+  "exact_entire_state_delta": true,
+  "exact_replay": true,
+  "final_evaluation_credit": 0,
+  "lower_to_owner_trash": [
+    "A:EX13-002#2",
+    "A:EX1-013#2"
+  ],
+  "new_policy_decisions": 0,
+  "only_saved_return_resolved": true,
+  "original_seed_preserved": true,
+  "policy_invocations": 0,
+  "previous_record_bytes_unchanged": true,
+  "ratings_assigned": false,
+  "saved_prefix_unchanged": true,
+  "saved_successful_commands_revalidated": 151,
+  "source_bytes_stable": true,
+  "status": "PASS",
+  "top_to_owner_deck_bottom": "A:BT22-022#1",
+  "user_bot_evidence_credit": 0
+}

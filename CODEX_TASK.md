@@ -1,5 +1,18 @@
 # First Codex task (execute, don't just plan)
 
+> **2026-11-04 latest user boundary:** Game0000's selected effect57 return is
+> resolved; preserve the new PAUSED_AFTER_SAVED_ACTION checkpoint at
+> `ARTIFACTS/gameplay-continuations-2026-11-04-01/game-0000-segment.json.gz`.
+> Bactive, turn10, memory−1, END_OF_TURN;152 successful commands, original seed
+> and choices. Both historical policies are untrained random references,
+> not verified as the user's bots. Zero policies were invoked for this retry;
+> zero user-bot/fact-finding/final credit. Establish the actual imported-context
+> bot identities/adapters before a new decision. Do not call the old random
+> continuation, preload routes, run60/10,000 cohorts, or assign ratings without
+> defined scoring criteria.62 focused tests pass; latest full suite495 at
+> aed966b. See STATUS and the new saved checkpoint's replay/proof files.
+> Older next-action instructions below are historical and superseded.
+
 > **Latest live continuation:**495 tests pass. Game0000turn10 /152commands,
 > original seed/choices, exact archived-source replay. Continue effect57
 > BT22-023.when_digivolving_return: sourceB:BT22-023#2,targetA:BT22-022#1,
