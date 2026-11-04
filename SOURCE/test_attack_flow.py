@@ -157,6 +157,14 @@ class AttackTests(unittest.TestCase):
             confirm_attack(r,'B',ROOT)
         self.assertEqual(r.snapshot()['state'],before)
 
+    def test_unsupported_raid_cannot_declare_and_silently_skip_its_attack_choice(self):
+        r=self.runtime('B');attacker=self.plain(r,'B','BT20-102')
+        self.plain(r,'A','EX1-013',suspended=True)
+        before=r.snapshot()
+        with self.assertRaisesRegex(RuntimeHalt,'ATTACK_KEYWORD_UNSUPPORTED: BT20-102 main_text'):
+            declare_attack(r,'B',attacker,'PLAYER',ROOT)
+        self.assertEqual(r.snapshot(),before)
+
 
 class EncounteredAeroAttackTests(unittest.TestCase):
     def actual(self):
@@ -209,10 +217,12 @@ class EncounteredAeroAttackTests(unittest.TestCase):
         r.state.zones['B']['hand'].remove(physical)
         from context_runtime import Stack
         r.state.battle['B'][physical.key]=Stack([physical],played_turn=4)
-        before=r.snapshot()['state']
-        with self.assertRaisesRegex(RuntimeHalt,'ATTACK_ORIENTATION_TRIGGER_UNIMPLEMENTED.*BT11-112'):
-            declare_attack(r,'B',attacker,'PLAYER',ROOT)
-        self.assertEqual(r.snapshot()['state'],before)
+        from effect_scheduler import pending_options
+        declare_attack(r,'B',attacker,'PLAYER',ROOT)
+        self.assertEqual({p['effect_id'] for p in pending_options(r,'B')},
+                         {'EX13-022.play_tamer','BT11-112.suspend_reactivation'})
+        self.assertEqual({p['depth'] for p in pending_options(r,'B')},{0})
+        self.assertFalse(r.state.battle['B'][physical.key].suspended);r.verify()
 
     def test_defender_with_available_granted_blocker_cannot_be_silently_omitted(self):
         from effect_grants import grant_effect
@@ -292,6 +302,118 @@ class EncounteredAeroAttackTests(unittest.TestCase):
         self.assertTrue(result['attacker_deleted'])
         self.assertNotIn(attacker,r.state.battle['B'])
         self.assertIn(checked,[c.key for c in r.state.zones['A']['trash']]);r.verify()
+
+
+
+_SEGMENT09_ATTACK=None
+class EncounteredUlforceAttackTests(unittest.TestCase):
+    def actual(self):
+        global _SEGMENT09_ATTACK
+        if _SEGMENT09_ATTACK is None:
+            from imported_attempts import _apply
+            from matchup_readiness import load_context_file
+            path=ROOT/'ARTIFACTS/gameplay-continuations-2026-11-03-09/game-0000-segment.json.gz'
+            record=json.loads(gzip.decompress(path.read_bytes()))
+            context=load_context_file(ROOT/'ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json')
+            r=ContextRuntime(context,record['seed'],record['first'],
+                build_selected_registry(context,ROOT),allow_experimental=True)
+            for command in record['commands'][:-1]:
+                _apply(r,command['command'],command['seat'],command['args'],ROOT)
+            self.assertEqual(r.snapshot()['state'],record['halts'][-1]['before']['state'])
+            self.assertEqual(r.snapshot()['rng_state'],record['halts'][-1]['before']['rng_state'])
+            _SEGMENT09_ATTACK=r,record['commands'][-1]['args']
+        return copy.deepcopy(_SEGMENT09_ATTACK)
+
+    def test_actual_two_card_ulforce_declaration_queues_two_rinas_and_inherited_together(self):
+        from unittest.mock import patch
+        import effect_scheduler
+        from effect_scheduler import pending_options
+        r,args=self.actual();attacker=args['attacker']
+        old=copy.deepcopy(r.state.battle['B'][attacker]);before=r.snapshot()
+        with patch('effect_scheduler.queue_effects',wraps=effect_scheduler.queue_effects) as queue:
+            result=declare_attack(r,'B',attacker,args['target'],ROOT)
+        self.assertEqual(queue.call_count,1)
+        stack=r.state.battle['B'][attacker]
+        self.assertTrue(stack.suspended)
+        old.suspended=True;self.assertEqual(stack,old)
+        self.assertEqual((r.state.memory,r.state.phase,r.state.attack['window']),(5,'MAIN','COUNTER'))
+        self.assertEqual(r.state.attack['attacker_instance'],'entity-5')
+        group=pending_options(r,'B')
+        self.assertEqual({(p['effect_id'],p['source'],p['depth']) for p in group},
+            {('EX13-022.inherited_unsuspend','B:EX13-022#1',0),
+             ('BT11-112.suspend_reactivation','B:BT11-112#2',0),
+             ('BT11-112.suspend_reactivation','B:BT11-112#3',0)})
+        self.assertEqual(result['triggered_effects'],[p['effect_id'] for p in group])
+        self.assertEqual(pending_options(r,'A'),[])
+        self.assertEqual(r.snapshot()['state']['zones'],before['state']['zones'])
+        self.assertEqual(r.snapshot()['rng_state'],before['rng_state']);r.verify()
+        branch=copy.deepcopy(r);state=branch.snapshot()['state']
+        with self.assertRaisesRegex(RuntimeHalt,'PENDING_EFFECTS_REQUIRE_RESOLUTION'):
+            choose_counter(branch,'A',None,ROOT)
+        self.assertEqual(branch.snapshot()['state'],state)
+
+    def test_explicit_declines_finish_triggers_before_counter_and_block_windows(self):
+        from effect_scheduler import pending_options,resolve_pending
+        from rina_reactivation import rina_reactivation_choices
+        r,args=self.actual();declare_attack(r,'B',args['attacker'],args['target'],ROOT)
+        for pending in pending_options(r,'B'):
+            if pending['effect_id']=='BT11-112.suspend_reactivation':
+                self.assertEqual(rina_reactivation_choices(r,'B',pending['source']),
+                                 [None,'BT11-032.play_blue_tamer'])
+                choice=None
+            else:choice=False
+            resolve_pending(r,'B',pending['id'],choice)
+        self.assertEqual(r.state.pending,[])
+        choose_counter(r,'A',None,ROOT);choose_blocker(r,'A',None,ROOT)
+        self.assertEqual(r.state.attack['window'],'CONFIRM')
+        self.assertTrue(r.state.battle['B'][args['attacker']].suspended);r.verify()
+
+    def test_later_inherited_unsuspend_keeps_unimplemented_ulforce_bounce_explicit(self):
+        from effect_scheduler import pending_options,resolve_pending
+        r,args=self.actual();declare_attack(r,'B',args['attacker'],args['target'],ROOT)
+        pending=next(p for p in pending_options(r,'B') if p['effect_id']=='EX13-022.inherited_unsuspend')
+        before=r.snapshot()
+        with self.assertRaisesRegex(RuntimeHalt,'ORIENTATION_DEPENDENT_TRIGGER_UNIMPLEMENTED: BT11-032'):
+            resolve_pending(r,'B',pending['id'],True)
+        self.assertEqual(r.snapshot(),before)
+
+
+_SEGMENT10_CONFIRM=None
+class EncounteredUlforceConfirmationTests(unittest.TestCase):
+    def actual(self):
+        global _SEGMENT10_CONFIRM
+        if _SEGMENT10_CONFIRM is None:
+            from imported_attempts import _apply
+            from matchup_readiness import load_context_file
+            record=json.loads(gzip.decompress((ROOT/
+                'ARTIFACTS/gameplay-continuations-2026-11-03-10/game-0000-segment.json.gz').read_bytes()))
+            context=load_context_file(ROOT/'ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json')
+            r=ContextRuntime(context,record['seed'],record['first'],
+                build_selected_registry(context,ROOT),allow_experimental=True)
+            self.assertEqual(len(record['commands'][:-1]),146)
+            for command in record['commands'][:-1]:
+                _apply(r,command['command'],command['seat'],command['args'],ROOT)
+            self.assertEqual(r.snapshot()['state'],record['halts'][-1]['before']['state'])
+            self.assertEqual(r.snapshot()['rng_state'],record['halts'][-1]['before']['rng_state'])
+            _SEGMENT10_CONFIRM=r
+        return copy.deepcopy(_SEGMENT10_CONFIRM)
+
+    def test_actual_security_battle_ignores_unrelated_self_protection_and_moves_only_checked_card(self):
+        r=self.actual();before=r.snapshot();expected=copy.deepcopy(before['state'])
+        self.assertEqual((r.state.turn,r.state.active,r.state.memory,r.state.phase),(10,'B',5,'MAIN'))
+        self.assertEqual(expected['attack']['window'],'CONFIRM')
+        self.assertEqual(expected['zones']['A']['security'],['A:EX13-069#2','A:P-138#1'])
+        actor=r.state.battle['B'][r.state.attack['attacker']]
+        self.assertEqual(r.context.card('B',actor.cards[-1].card_number).to_dict()['dp'],12000)
+        self.assertFalse(r.state.battle['B']['B:EX13-023#1'].suspended)
+        checked=expected['zones']['A']['security'].pop()
+        expected['zones']['A']['trash'].append(checked)
+        expected['attack']['checked']=checked;expected['attack']['window']='END'
+        result=confirm_attack(r,'B',ROOT)
+        self.assertEqual(result['checked_card'],'A:P-138#1')
+        self.assertFalse(result['attacker_deleted']);self.assertFalse(result['security_card_deleted'])
+        self.assertEqual(r.snapshot()['state'],expected)
+        self.assertEqual(r.snapshot()['rng_state'],before['rng_state']);r.verify()
 
 
 if __name__=='__main__':unittest.main()

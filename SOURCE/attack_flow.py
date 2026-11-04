@@ -82,7 +82,8 @@ def _declare(r,seat,c,root):
     from tamer_play_effects import PLAY_EFFECT,PLAY_LINE,tamer_play_usage
     from effect_scheduler import queue_effects
     top=stack.cards[-1]
-    effects=[]
+    from selected_mechanics import _collect_orientation_reactions
+    effects=_collect_orientation_reactions(r,seat,stack,False)
     if trigger_lines(r.context.card(seat,top.card_number).effect_text('main_text'),'When Attacking'):
         # Scope above proved this exact supported line; usage is shared with
         # the same printed effect's On Play and When Digivolving activations.

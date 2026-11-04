@@ -41,11 +41,32 @@ def _assert_selected_context(runtime, root):
     require_selected_context(runtime.context, root)
 
 
+def _persistent_field_is_self_only(body):
+    """Recognize a self modifier/protection, failing closed on other targets.
+
+    An orientation adjective does not change the affected entity. A mention of
+    that entity in a condition, however, does not make a global modifier local.
+    Unknown wording stays a dependency rather than acquiring inferred support.
+    """
+    predicate=re.sub(r'^(?:While|If)\s+[^,]+,\s*','',body, count=1, flags=re.I)
+    reference=r'\bthis\s+(?:(?:un)?suspended\s+)?Digimon(?:[\'’]s)?\b'
+    predicate,count=re.subn(reference,'SELF',predicate,flags=re.I)
+    if not count:return False
+    predicate=re.sub(r'\b(?:your opponent[\'’]s|your|opponent[\'’]s) effects?\b',
+                     'effects',predicate,flags=re.I)
+    if re.search(r'＜|\b(?:Digimon|Tamer|security|players?|you|your|opponent|their|'
+                 r'all|each|every|both|other|only|attacks?|attacking|battle|costs?|memory)\b',
+                 predicate,re.I):
+        return False
+    return bool(re.match(r'^SELF\s+(?:gets?|gains?|is|isn\'t|can\'t|cannot|may)\b',predicate,re.I)
+                or re.match(r'^effects?\s+(?:can\'t|cannot)\b[^.]*\bSELF\b',predicate,re.I))
+
+
 def _attack_source_dependencies(runtime, owner, anchor, source, field, event):
     """Inspect the actual attack/suspension, keeping unrelated self text inert.
 
-    The newly encountered combatant is a singleton EX13-022. Other stacks may
-    remain on the field, but their active observers still require a handler.
+    Every active main/inherited field is checked at its actual event. Stack
+    composition alone does not add an ability or make a known one unsupported.
     """
     from printed_triggers import effect_headers, effect_body
     definition=runtime.context.card(owner,source.card_number)
@@ -55,10 +76,13 @@ def _attack_source_dependencies(runtime, owner, anchor, source, field, event):
         return
     attacker_definition=runtime.context.card(actor,attacker_stack.cards[-1].card_number)
     participant=(owner==actor and anchor==attacker or owner!=actor and anchor==event['target'])
-    if participant and len(runtime.state.battle[owner][anchor].cards)!=1:
-        raise RuntimeHalt('BASIC_BOARD_STACK_UNSUPPORTED: combat participant '+anchor)
-    if participant and stage=='CONFIRM' and source.card_number not in _PLAIN_TOPS | _SEARCH_TOPS | {'EX13-022'}:
-        raise RuntimeHalt('BASIC_COMBAT_TOP_UNSUPPORTED: '+source.card_number+' source='+source.key)
+    if participant and stage=='CONFIRM':
+        # Printed play/evolution routes do not apply to an ordinary attack.
+        # Unknown special fields may change battle or leaving and need support.
+        for label,text in definition.to_dict()['special_conditions'].items():
+            if text and label not in ('[Special Digivolution Condition]','[Special Play Condition]'):
+                raise RuntimeHalt('ATTACK_SPECIAL_CONDITION_UNIMPLEMENTED: '+source.card_number
+                                  +' special_conditions '+label+' source='+source.key)
     for line in definition.effect_text(field).splitlines():
         if line.lstrip().startswith(('・','•')):
             continue
@@ -67,6 +91,12 @@ def _attack_source_dependencies(runtime, owner, anchor, source, field, event):
                 or "Opponent's Turn" in headers and owner==runtime.state.active):
             continue
         if headers and not any(h in ('Your Turn',"Opponent's Turn",'All Turns') for h in headers):
+            if (participant and stage=='CONFIRM' and not any(h in (
+                    'On Play','When Digivolving','When Attacking','End of Attack','On Deletion',
+                    'Start of Your Turn','End of Your Turn','Start of Your Main Phase',
+                    'When Moving','Security','Counter','Main') for h in headers)):
+                raise RuntimeHalt('ATTACK_PRINTED_FIELD_UNIMPLEMENTED: '+source.card_number
+                                  +' '+field+' source='+source.key)
             if stage=='DECLARE' and 'When Attacking' in headers and owner==actor and anchor==attacker:
                 from tamer_play_effects import PLAY_EFFECT,PLAY_LINE
                 if source.card_number!='EX13-022' or field!='main_text' or line!=PLAY_LINE:
@@ -81,7 +111,9 @@ def _attack_source_dependencies(runtime, owner, anchor, source, field, event):
                 continue
             suspension=bool(re.search(r'\bsuspend(?:s|ed)?\b',clause,re.I))
             attacking=bool(re.search(r'\battack(?:s|ing)?\b',clause,re.I))
-            if not suspension and not attacking:
+            # The shared actual-orientation preflight below owns every
+            # suspension clause, including registered Rina/inherited reactions.
+            if suspension or not attacking:
                 continue
             if 'this Digimon' in clause and (owner!=actor or anchor!=attacker):
                 continue
@@ -96,12 +128,14 @@ def _attack_source_dependencies(runtime, owner, anchor, source, field, event):
                 continue
             if 'blue' in clause.lower() and 'Blue' not in attacker_definition.to_dict()['colors']:
                 continue
-            reason='ATTACK_ORIENTATION_TRIGGER_UNIMPLEMENTED' if suspension else 'ATTACK_OBSERVER_UNIMPLEMENTED'
+            raise RuntimeHalt('ATTACK_OBSERVER_UNIMPLEMENTED: '+source.card_number+' '+field+' source='+source.key)
+        if stage in ('DECLARE','CONFIRM') and participant and not headers and line.strip():
+            # A keyword can add declaration timing (for example Raid). Do not
+            # suspend/open Counter before unsupported participant text is known.
+            reason='ATTACK_KEYWORD_UNSUPPORTED' if '＜' in line else 'ATTACK_PRINTED_FIELD_UNIMPLEMENTED'
             raise RuntimeHalt(reason+': '+source.card_number+' '+field+' source='+source.key)
-        if stage=='CONFIRM' and participant and not headers and '＜' in line:
-            raise RuntimeHalt('ATTACK_KEYWORD_UNSUPPORTED: '+source.card_number+' '+field+' source='+source.key)
         if stage=='CONFIRM' and headers and re.search(r'\b(?:DP|attack|Digimon|security)\b',body,re.I):
-            if 'this Digimon' not in body or participant:
+            if participant or not _persistent_field_is_self_only(body):
                 raise RuntimeHalt('ATTACK_PERSISTENT_EFFECT_UNSUPPORTED: '+source.card_number+' '+field+' source='+source.key)
 
 
@@ -159,7 +193,7 @@ def assert_basic_board_scope(runtime, action, root, *, event=None, within_effect
 
     ``action`` must explicitly name one supported basic action. The five search
     tops require their complete pinned main text to equal a known self-search
-    effect. Attack event records limit singleton combat scope to participants;
+    effect. Attack event records inspect participants' active combat fields;
     unrelated inherited sources are checked against the actual event.
     ``root`` supplies the locked context and hash-bound official source bytes.
     """
@@ -275,3 +309,9 @@ def assert_basic_board_scope(runtime, action, root, *, event=None, within_effect
                     raise RuntimeHalt('BASIC_BOARD_OFFICIAL_SOURCE_UNAVAILABLE: '
                                       + physical.card_number) from exc
                 checked.add(physical.card_number)
+
+    if attack_event and event['stage']=='DECLARE':
+        attacker=state.battle[event['seat']].get(event['attacker'])
+        if attacker is not None:
+            from selected_mechanics import _orientation_dependencies
+            _orientation_dependencies(runtime,event['seat'],attacker,attacker.suspended,True)

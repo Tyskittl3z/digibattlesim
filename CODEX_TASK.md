@@ -1,16 +1,15 @@
 # First Codex task (execute, don't just plan)
 
-> **Latest live continuation — WIP published:** Game0000turn10 /140commands,
-> same original seed/choices, exact replay at archived source. Continue
-> DECLARE_ATTACK B:BT11-032#1→PLAYER memory5 MAIN from
-> `ARTIFACTS/gameplay-continuations-2026-11-03-09/game-0000-segment.json.gz`.
-> Prepared unapplied patches: segment09/pending-attack-integration. Tests first,
-> then connect declaration to shared suspension/reaction batching. Two own
-> BT11Rinas plus inherited EX13Aero must be queued together; no stack-route
-> whitelist. Real later BT11 bounce stays explicit until encountered/resolved.
-> Full488-test run had1 stale error-expectation failure, now corrected; fresh
-> all-green rerun needed. Last all-green full459at713a513. Zero valid fullgames.
-> Publish current state before usage ends, including truthful WIP limits.
+> **Latest live continuation:**495 tests pass. Game0000turn10 /152commands,
+> original seed/choices, exact archived-source replay. Continue effect57
+> BT22-023.when_digivolving_return: sourceB:BT22-023#2,targetA:BT22-022#1,
+> memory−1/MAIN from
+> `ARTIFACTS/gameplay-continuations-2026-11-03-11/game-0000-segment.json.gz`.
+> Targetegg→EX1→BT22 mustreturntopdeckbottom/lower2trash. Share actual-field
+> return preflight; no whitelist or false unrelated self protection. After
+> pending clears, END_OF_TURN opens at−1 without switching B/turn10.
+> Return worker prepared work outside SOURCE; official review insegment12.
+> Zero valid full games. Publish current progress before usage ends.
 
 > **2026-11-02 current priority:** User delegated choosing the best starting
 > matchup. Use the distinct-list Ulforce mirror 123129 vs122110, not the original

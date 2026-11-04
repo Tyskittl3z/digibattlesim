@@ -3,20 +3,19 @@
 Checkpoint: November 2, 2026. This document describes the engine track. Read
 `AGENTS.md`, the newest section of `STATUS.md`, and `WORKFLOW.md` before editing.
 
-Latest publication is **WIP** at Game0000 **turn10 /140commands**. Earlier
-choices/seed/RNG are preserved with exact replay at the archived source.
+Latest checkpoint: **495 full-suite tests passed** (556.480s). Same original
+Game0000 reaches turn10 /152commands, with saved choices/seed/RNG and exact
+replay at its archived source. The attack/security check now resolves A2→1
+without falsely treating another stack's self-protection as a global modifier.
 Latest record:
-`ARTIFACTS/gameplay-continuations-2026-11-03-09/game-0000-segment.json.gz`.
-Next selected B:BT11-032#1→PLAYER attack at memory5/MAIN needs declaration
-connected to the shared suspension events (two B Rinas + inherited Aero).
-Prepared unapplied code/test patches are in segment09/pending-attack-integration.
-Rina reactivation is implemented; used OPT effects stay unavailable and the
-chosen effect completes before older siblings without an evolution/bonus draw.
-Full488-test run had one stale expected-error assertion, now corrected; a fresh
-all-green full rerun is still needed. Last all-green full suite459at713a513.
-Current focused and independent case checks pass; see verification.json/STATUS
-for exact limits. Zero full games, roadmap lanes and final evaluation credits.
-Keep publishing current WIP before usage ends.
+`ARTIFACTS/gameplay-continuations-2026-11-03-11/game-0000-segment.json.gz`.
+Next selected effect57 is BT22Aero WhenDigivolving return, sourceB:BT22-023#2
+targetA:BT22-022#1 (egg→EX1→BT22), memory−1/MAIN. Share actual leave-event
+preflight instead of the old card whitelist; top returns deckbottom, lower2
+trash, then END_OF_TURN opens without switching active player. Source12 holds
+the official review; its fix/proof is not yet applied/executed.
+Zero full valid games, roadmap lanes and final credits. Publish checkpoints
+before usage ends and preserve the original selected action.
 
 ## Goal and ownership
 
@@ -38,17 +37,17 @@ slots, manufacture outcomes, or transfer another matchup's strategy/results.
 
 ## Current state: what works and what does not
 
-- **459 Python unittest tests passed**, last full run444.077 seconds.
+- **495 Python unittest tests passed**, last full run556.480 seconds.
 - Immutable exact card/deck contexts, physical accounting, transactional commands,
   deterministic seeds and source-bound failure/replay records work.
 - Openings, phases/breeding, selected searches/plays/evolutions, Option Main/Delay,
   Rina/Aero grants, relevant attack triggers, ordinary Security battles and the
   encountered checked-Tamer play have experimental implementations.
-- Active mirror registry has36 experimental bindings. This does not establish
+- Active mirror registry has40 experimental bindings. This does not establish
   complete interaction coverage or judge certification.
 - The preserved historical60-attempt mirror diagnostic has30 starts per deck,
   60 replays and60 HALTs. Gameplay-first work now continues those original traces;
-  Game0000 is still unfinished at turn7 /94 commands.
+  Game0000 is still unfinished at turn10 /152 commands.
 - **Zero valid complete current-pair fact-finding matches, zero approved roadmap
   lanes and zero final matches. No usable win rate exists.**
 

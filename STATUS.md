@@ -1,5 +1,29 @@
 # Verified handoff status
 
+## Verified turn10 continuation — 2026-11-03
+
+**495 tests passed** (556.480s). Same Game0000 now has **152 recorded commands**,
+turn10, original seed/choices preserved and exact replay at its archived source.
+Attack declaration uses the shared suspension batch; unrelated self-protection
+no longer blocks a different combatant. The actual12000vs5000 Security check
+resolved: A security2→1, checked P138 to trash, attacker alive, memory unchanged.
+Independent state/RNG/card-conservation proofs and role checks are stored with
+segments10/11. No full game is complete yet.
+
+**Next selected action:** effect57 BT22-023.when_digivolving_return, source
+B:BT22-023#2, target A:BT22-022#1. The actual preceding evolution cost3 moved
+Bmemory2→−1; target stack is EX13egg→EX1Veemon→BT22Veedramon. Replace the old
+return whitelist with shared actual-field preflight: top to deckbottom, lower2
+to trash; egg's Tamer-play text and inactive top-inherited protection do not
+trigger. After resolution opens END_OF_TURN at−1; B stays active/turn10 until
+later end processing. Source11 is sealed; segment12 holds the pending review.
+
+Latest saved record:
+`ARTIFACTS/gameplay-continuations-2026-11-03-11/game-0000-segment.json.gz`.
+Return fix is prepared outside SOURCE while the verified checkpoint publishes.
+**Zero valid full current-pair games, zero approved lanes, zero final games.**
+Keep publishing current work before usage ends.
+
 ## Published WIP: turn10 saved — 2026-11-03
 
 Same original Game0000 reaches **turn10 /140 commands**, exact replay at its

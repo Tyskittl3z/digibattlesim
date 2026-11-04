@@ -1,0 +1,51 @@
+{
+  "A_security_after": 1,
+  "A_security_before": 2,
+  "RNG_unchanged": true,
+  "accepted_fact_finding_credit": 0,
+  "attack_window": "END",
+  "attacker_deleted": false,
+  "checked_card": "A:P-138#1",
+  "checked_security_digimon_deleted": false,
+  "execution_id": "0461e1428e3c13d6205a2c1b4077660d3f70021b043373149b5b74580230250b",
+  "final_evaluation_credit": 0,
+  "judge_certification_credit": 0,
+  "memory_unchanged": 5,
+  "new_actual_gameplay_commands": 0,
+  "new_pending_effects": 0,
+  "original_record_bytes_unchanged": true,
+  "preconfirmation_state_rng_exact": true,
+  "private_after_state_sha256": "4732bdecca4a37bbf4ac24edccd848d07ea8fce2593ccc90ccff5c41753395e5",
+  "private_branch_only": true,
+  "private_confirmation_result": {
+    "attacker_deleted": false,
+    "checked_card": "A:P-138#1",
+    "security_card_deleted": false,
+    "source": {
+      "locator": "#P-138 plain Security Digimon printed DP",
+      "sha256": "61d9574f6132911aa54a8e75990a0c829ef424521b26b97fbaca62be9f456354",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=P-138"
+    },
+    "success": true
+  },
+  "private_state_change_exact": true,
+  "record_sha256": "216bb6e8ee837e14be7380c164e6f983fbbe316c48237ad4c6aca25a9e6dd34f",
+  "saved_successful_commands_revalidated": 146,
+  "schema": "private-actual-confirmation-proof-v1",
+  "second_confirmation_guard": "ATTACK_WINDOW_NOT_OPEN: CONFIRM",
+  "second_confirmation_rolled_back": true,
+  "seconds": 34.937,
+  "seed": 12017913134550805276,
+  "source_bytes_stable": true,
+  "source_sha256": {
+    "SOURCE/attack_flow.py": "be9adb19ed1465ff32b282c0dead91bd93258ecb6ea65b8343c140a7dc29dd6a",
+    "SOURCE/battlefield_scope.py": "5843691a90cab163246218b83f210054b4e21df56c4e5ea3dd9de3018d9a18b4",
+    "SOURCE/test_attack_flow.py": "af457a0b1a05729248ff110ff878314691b036a3c7d3fdb1f4df836e83ad7cf1",
+    "SOURCE/test_battlefield_scope.py": "dd4607ee515d8650bbcb446bf5b80c546f7709d2f49d16a373d3fb6aab4d7d8a"
+  },
+  "status": "PASS",
+  "strategy_credit": 0,
+  "terminal": false,
+  "unique_physical_cards": 108,
+  "unrelated_protected_stack_unchanged": true
+}

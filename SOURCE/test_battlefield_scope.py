@@ -85,6 +85,59 @@ class BattlefieldScopeTests(unittest.TestCase):
                         stage(runtime, seat, [number])
                         self.assert_rejected_unchanged(runtime, 'BASIC_BOARD_TOP_UNSUPPORTED', action)
 
+    def test_combat_stacks_compose_known_fields_and_retain_unimplemented_keyword_guard(self):
+        from matchup_readiness import load_context_file
+        from selected_mechanics import build_selected_registry
+        context=load_context_file(ROOT/'ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json')
+        for cards in (['EX13-022','BT11-032'],['EX1-013','P-138','EX13-022','BT11-032'],
+                      ['EX13-019','EX13-022','BT11-032']):
+            runtime=ContextRuntime(context,721,'B',build_selected_registry(context,ROOT),allow_experimental=True)
+            runtime.state.phase='MAIN';runtime.state.turn=10
+            attacker=stage(runtime,'B',cards)
+            before=self.snapshot(runtime)
+            event={'stage':'DECLARE','seat':'B','attacker':attacker,'target':'PLAYER'}
+            if cards[0]=='EX13-019':
+                for event['stage'] in ('DECLARE','CONFIRM'):
+                    with self.assertRaisesRegex(RuntimeHalt,'ATTACK_KEYWORD_UNSUPPORTED: EX13-019 inherited_text'):
+                        assert_basic_board_scope(runtime,'attack_plain',ROOT,event=event)
+            else:
+                for event['stage'] in ('DECLARE','CONFIRM'):
+                    assert_basic_board_scope(runtime,'attack_plain',ROOT,event=event)
+            self.assertEqual(self.snapshot(runtime),before)
+
+    def test_persistent_fields_distinguish_self_adjectives_from_global_combat_targets(self):
+        from battlefield_scope import _attack_source_dependencies
+        protection=("Your opponent's effects can't reduce this unsuspended Digimon's DP, "
+                    "return its stacked cards to the hand or deck, or trash them.")
+        cases=[(protection,True),(protection.replace("Digimon's","Digimon’s"),True),
+               ('This suspended Digimon gets +1000 DP.',True),
+               ('All your Digimon get +1000 DP while this unsuspended Digimon is in play.',False),
+               ('Your opponent can only attack this unsuspended Digimon.',False),
+               ('This Digimon gives your other Digimon +1000 DP.',False),
+               ('While this Digimon is in play, your security Digimon get +1000 DP.',False),
+               ('This Digimon and your security gain ＜Jamming＞.',False)]
+        for body,self_only in cases:
+            for participant in (False,True):
+                with self.subTest(body=body,participant=participant):
+                    runtime=self.runtime()
+                    actor=stage(runtime,'A',['EX1-013'])
+                    observer=stage(runtime,'A',['EX13-023'])
+                    cards={card.number:card for card in runtime.context.cards}
+                    raw=cards['EX13-023'].to_dict();raw['main_text']='[All Turns] '+body
+                    cards['EX13-023']=CardDefinition.from_dict(raw)
+                    runtime.context=MatchContext.create(runtime.context.deck_a,runtime.context.deck_b,
+                        cards,runtime.context.to_dict()['rules'])
+                    source=runtime.state.battle['A'][observer].cards[-1]
+                    event={'stage':'CONFIRM','seat':'A','attacker':observer if participant else actor,
+                           'target':'PLAYER'}
+                    before=self.snapshot(runtime)
+                    if self_only and not participant:
+                        _attack_source_dependencies(runtime,'A',observer,source,'main_text',event)
+                    else:
+                        with self.assertRaisesRegex(RuntimeHalt,'ATTACK_PERSISTENT_EFFECT_UNSUPPORTED'):
+                            _attack_source_dependencies(runtime,'A',observer,source,'main_text',event)
+                    self.assertEqual(self.snapshot(runtime),before)
+
     def test_verified_option_tops_are_inert_for_combat_without_broadening_digimon_support(self):
         from option_actions import OPTION_SPECS
         from matchup_readiness import load_context_file
