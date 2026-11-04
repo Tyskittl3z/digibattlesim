@@ -251,15 +251,55 @@ class BattleEvolutionTests(unittest.TestCase):
                 self.assertFalse(runtime.state.battle['B']['B:EX13-023#1'].suspended)
                 self.assertEqual((runtime.state.memory,runtime.state.phase),(1,'UNSUSPEND'));runtime.verify()
 
-    def test_actual_segment07_future_unknown_suspension_observer_halts_only_on_that_choice(self):
+    def test_actual_segment07_selected_suspension_queues_rina_and_inherited_together(self):
         from selected_mechanics import ORIENTATION_EFFECT
         runtime,command=self.segment07()
         _apply(runtime,command['command'],command['seat'],command['args'],ROOT)
         pending=next(p for p in pending_options(runtime,'B') if p['effect_id']==ORIENTATION_EFFECT)
+        path=ROOT/'ARTIFACTS/gameplay-continuations-2026-11-03-08/game-0000-segment.json.gz'
+        record=json.loads(gzip.decompress(path.read_bytes()))
+        self.assertEqual(runtime.snapshot()['state'],record['halts'][-1]['before']['state'])
+        self.assertEqual(runtime.snapshot()['rng_state'],record['halts'][-1]['before']['rng_state'])
         before=runtime.snapshot()
-        with self.assertRaisesRegex(RuntimeHalt,'ORIENTATION_DEPENDENT_TRIGGER_UNIMPLEMENTED: BT11-112'):
-            resolve_pending(runtime,'B',pending['id'],'B:EX13-023#1')
-        self.assertEqual(runtime.snapshot(),before)
+        result=resolve_pending(runtime,'B',pending['id'],'B:EX13-023#1')
+        self.assertTrue(result['changed']);self.assertTrue(runtime.state.battle['B']['B:EX13-023#1'].suspended)
+        self.assertFalse(runtime.state.battle['B']['B:BT11-112#3'].suspended)
+        group=pending_options(runtime,'B')
+        self.assertEqual({(p['effect_id'],p['source'],p['depth']) for p in group},
+            {('BT11-112.suspend_reactivation','B:BT11-112#3',3),
+             ('BT22-023.inherited_unsuspend','B:BT22-023#1',3)})
+        self.assertEqual(pending_options(runtime,'A'),[])
+        self.assertIn((8,'B','B:EX13-023#1',ORIENTATION_EFFECT),runtime.state.once_used)
+        self.assertEqual((runtime.state.memory,runtime.state.phase),(1,'UNSUSPEND'))
+        self.assertEqual(runtime.snapshot()['rng_state'],before['rng_state']);runtime.verify()
+
+    def test_current_digivolving_effects_filter_only_the_shared_consumed_opt_keys(self):
+        import battle_evolution
+        self.assertTrue(hasattr(battle_evolution,'current_digivolving_effects'),
+                        'Rina needs current registered When Digivolving effects with shared OPT filtering')
+        self.assertTrue(hasattr(battle_evolution,'digivolving_effect_usage'))
+        from selected_mechanics import ORIENTATION_EFFECT,_usage
+        from tamer_play_effects import PLAY_EFFECT,tamer_play_usage
+        for base,target,effects,opt in (
+            ('BT22-023','EX13-023',(ORIENTATION_EFFECT,'EX13-023.return_fewest'),ORIENTATION_EFFECT),
+            ('BT22-022','EX13-022',(PLAY_EFFECT,),PLAY_EFFECT),
+            ('EX13-019','BT22-023',('BT22-023.when_digivolving_return',),None)):
+            with self.subTest(target=target):
+                runtime,source,key=self.runtime(base=base,target=target)
+                self.choose(runtime,source,key)
+                before=runtime.snapshot()
+                self.assertEqual(battle_evolution.current_digivolving_effects(runtime,'A',key),effects)
+                self.assertEqual(runtime.snapshot(),before)
+                if opt:
+                    usage=(_usage(runtime,'A',key,opt) if opt==ORIENTATION_EFFECT
+                           else tamer_play_usage(runtime,'A',key,opt))
+                    self.assertEqual(battle_evolution.digivolving_effect_usage(runtime,'A',key,opt),usage)
+                    runtime.state.once_used.add(usage)
+                self.assertEqual(battle_evolution.current_digivolving_effects(runtime,'A',key),
+                                 tuple(effect for effect in effects if effect!=opt))
+                for effect in effects:
+                    if effect!=opt:
+                        self.assertEqual(battle_evolution.digivolving_effect_usage(runtime,'A',key,effect),())
 
 
 if __name__ == '__main__':

@@ -3,19 +3,20 @@
 Checkpoint: November 2, 2026. This document describes the engine track. Read
 `AGENTS.md`, the newest section of `STATUS.md`, and `WORKFLOW.md` before editing.
 
-Latest publication is **WIP**, preserving the current state before usage ends.
-Same original Game0000 reaches turn8 /105commands, exact replay at its archived
-source. Last full suite:459 tests at713a513; current increment has29 focused
-evolution/play/Rina passes,9 return/pilot passes and4 readiness passes. Its full
-suite is unrun. Latest record:
-`ARTIFACTS/gameplay-continuations-2026-11-03-08/game-0000-segment.json.gz`.
-Next selected action is orientation effect34 on B:EX13-023#1, turn8/memory1 in
-UNSUSPEND. Implement the actual BT11 Rina AllTurns reactivation plus inherited
-BT22Aero suspension reaction, preserving the selected target and pending return
-effect35. EX13's paired WhenDigivolving effects now queue together after the
-bonus draw. Simultaneous return order is chosen by the action-causing card's
-owner (CR3-1-3-4); explicit orders are validated. Zero full games/strategy/final
-credits. Follow newest STATUS and keep publishing truthful checkpoints.
+Latest publication is **WIP** at Game0000 **turn10 /140commands**. Earlier
+choices/seed/RNG are preserved with exact replay at the archived source.
+Latest record:
+`ARTIFACTS/gameplay-continuations-2026-11-03-09/game-0000-segment.json.gz`.
+Next selected B:BT11-032#1→PLAYER attack at memory5/MAIN needs declaration
+connected to the shared suspension events (two B Rinas + inherited Aero).
+Prepared unapplied code/test patches are in segment09/pending-attack-integration.
+Rina reactivation is implemented; used OPT effects stay unavailable and the
+chosen effect completes before older siblings without an evolution/bonus draw.
+Full488-test run had one stale expected-error assertion, now corrected; a fresh
+all-green full rerun is still needed. Last all-green full suite459at713a513.
+Current focused and independent case checks pass; see verification.json/STATUS
+for exact limits. Zero full games, roadmap lanes and final evaluation credits.
+Keep publishing current WIP before usage ends.
 
 ## Goal and ownership
 

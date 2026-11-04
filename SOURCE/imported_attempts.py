@@ -207,6 +207,9 @@ def pending_choice(runtime, seat, selected, pilot):
     from rina_unsuspend_effects import RINA_CHOICE_EFFECTS,rina_unsuspend_choices
     if effect in RINA_CHOICE_EFFECTS:
         return pilot.choose(view,rina_unsuspend_choices(runtime,seat,selected['source'],effect))
+    from rina_reactivation import REACTIVATION_EFFECT,rina_reactivation_choices
+    if effect==REACTIVATION_EFFECT:
+        return pilot.choose(view,rina_reactivation_choices(runtime,seat,selected['source']))
     from on_play_effects import ON_PLAY_SPECS, on_play_choices
     if effect in {spec[0] for spec in ON_PLAY_SPECS.values()}:
         return pilot.choose(view, on_play_choices(runtime, seat, selected['source']))

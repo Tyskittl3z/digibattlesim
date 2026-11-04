@@ -1,5 +1,30 @@
 # Verified handoff status
 
+## Published WIP: turn10 saved — 2026-11-03
+
+Same original Game0000 reaches **turn10 /140 commands**, exact replay at its
+archived source, earlier choices/RNG preserved. BT11 Rina's AllTurns reaction
+now supports explicit decline, one available current WhenDigivolving effect,
+and legal payment with no effect. Used OPT effects are excluded; the selected
+effect completes before older siblings, with no new evolution or bonus draw.
+
+Next selected action: **B:BT11-032#1 attacks PLAYER**, memory5, MAIN. Its stack
+is EX13Aero→BT11Ulforce. Connect declaration to the shared suspension preflight
+and one reaction batch (two B Rinas plus inherited Aero). Prepared, unapplied
+patches are preserved under segment09/pending-attack-integration.
+
+Verification remains WIP:10 handler tests,33 integration checks (one source-hash
+interruption retried), the actual pilot test, and independent13 tests/proof
+probes pass. The full488-test run found one stale expected-error assertion in
+an empty-registry fixture; its expectation is corrected. Last entirely green
+full suite remains459at713a513. Current source has not had a fresh all-green
+full rerun; do not claim otherwise. Segment09 stores exact traces, source
+archive, rules reviews and verification limits.
+
+Zero full valid current-pair games, approved lanes or final games. Keep publishing
+current code and prepared work before usage ends. Source review09 also corrects
+a historical review's EX13-019 name: the pinned card/engine says Veedramon.
+
 ## WIP publication: EX13 evolution — 2026-11-03
 
 Same Game0000 now reaches **turn8 /105 commands**, original seed/earlier choices

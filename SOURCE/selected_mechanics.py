@@ -93,6 +93,10 @@ def _orientation_dependencies(runtime,changed_seat,changed_stack,suspended_befor
                         effect=BT11_MEMORY_EFFECT if card.card_number=='BT11-112' else EX13_DRAW_EFFECT
                         runtime.registry.lookup(card.card_number,effect,field_)
                         continue
+                    from rina_reactivation import known_rina_suspension_observer,REACTIVATION_EFFECT
+                    if known_rina_suspension_observer(card.card_number,field_,line):
+                        runtime.registry.lookup(card.card_number,REACTIVATION_EFFECT,field_)
+                        continue
                     raise RuntimeHalt('ORIENTATION_DEPENDENT_TRIGGER_UNIMPLEMENTED: '
                                       + card.card_number + ' ' + field_+' source='+card.key)
             if set(stack.statuses) - {'cannot_suspend', 'cannot_unsuspend','effect_grants'}:
@@ -135,6 +139,8 @@ def _collect_orientation_reactions(runtime,seat,stack,suspended_before):
                                        'name_at_trigger':definition['name'],'phase':runtime.state.phase}})
     from rina_unsuspend_effects import collect_rina_unsuspend_reactions
     effects.extend(collect_rina_unsuspend_reactions(runtime,seat,stack,suspended_before))
+    from rina_reactivation import collect_rina_suspension_reactions
+    effects.extend(collect_rina_suspension_reactions(runtime,seat,stack,suspended_before))
     return effects
 
 
@@ -288,4 +294,6 @@ def build_selected_registry(context, root):
     bindings.extend(rina_unsuspend_bindings(context,root,rules))
     from ex13_ulforce_effects import ulforce_return_bindings
     bindings.extend(ulforce_return_bindings(context,root,rules))
+    from rina_reactivation import rina_reactivation_bindings
+    bindings.extend(rina_reactivation_bindings(context,root,rules))
     return MechanicRegistry(tuple(bindings))

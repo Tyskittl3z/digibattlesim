@@ -109,10 +109,10 @@ class BattlefieldScopeTests(unittest.TestCase):
                         event={'seat':'A','card_number':'EX1-013'})
                     self.assertEqual(self.snapshot(runtime),before)
 
-    def test_an_actual_unimplemented_tamer_play_observer_is_not_skipped(self):
+    def test_actual_tamer_play_observer_requires_its_registered_handler(self):
         runtime=self.runtime();stage(runtime,'A',['BT11-032'])
         before=self.snapshot(runtime)
-        with self.assertRaisesRegex(RuntimeHalt,'BASIC_EVENT_OBSERVER_UNIMPLEMENTED.*BT11-032'):
+        with self.assertRaisesRegex(RuntimeHalt,'UNSUPPORTED_MECHANIC: BT11-032 main_text BT11-032.blue_tamer_unsuspend'):
             assert_basic_board_scope(runtime,'play_plain',ROOT,
                 event={'seat':'A','card_number':'BT11-112'})
         self.assertEqual(self.snapshot(runtime),before)

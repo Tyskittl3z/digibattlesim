@@ -49,6 +49,35 @@ def _digivolving_effects(runtime, target):
     return effects
 
 
+def digivolving_effect_usage(runtime,seat,source_key,effect_id):
+    """Use the printed effect's existing shared OPT key on its current top."""
+    source=runtime._source(seat,source_key,'main_text')
+    if (runtime.context.card(seat,source.card_number).kind!='Digimon'
+            or effect_id not in _digivolving_effects(runtime,source)):
+        raise RuntimeHalt('CURRENT_DIGIVOLVING_EFFECT_REQUIRED: '+str(effect_id))
+    from selected_mechanics import ORIENTATION_EFFECT,_usage
+    if effect_id==ORIENTATION_EFFECT:
+        return _usage(runtime,seat,source_key,effect_id)
+    if source.card_number=='EX13-022':
+        from tamer_play_effects import tamer_play_usage
+        return tamer_play_usage(runtime,seat,source_key,effect_id)
+    return ()
+
+
+def current_digivolving_effects(runtime,seat,source_key):
+    """Return registered current-top effects whose shared OPT is available."""
+    source=runtime._source(seat,source_key,'main_text')
+    if runtime.context.card(seat,source.card_number).kind!='Digimon':
+        raise RuntimeHalt('CURRENT_DIGIVOLVING_DIGIMON_REQUIRED')
+    effects=_digivolving_effects(runtime,source)
+    available=[]
+    for effect in effects:
+        usage=digivolving_effect_usage(runtime,seat,source_key,effect)
+        if not usage or usage not in runtime.state.once_used:
+            available.append(effect)
+    return tuple(available)
+
+
 def _observer_dependencies(runtime, seat, source_key, target):
     """Check active event clauses, excluding quoted/self-trigger timing labels.
 
@@ -146,13 +175,7 @@ def _choose(runtime, seat, choice, root, *, within_effect=False):
         state.zones[seat]['hand'].append(drawn)
     triggered=[]
     for effect in effects:
-        usage=[]
-        if target.card_number=='EX13-022':
-            from tamer_play_effects import tamer_play_usage
-            usage=list(tamer_play_usage(runtime,seat,target.key,effect))
-        elif effect=='EX13-023.orientation':
-            from selected_mechanics import _usage
-            usage=list(_usage(runtime,seat,target.key,effect))
+        usage=list(digivolving_effect_usage(runtime,seat,target.key,effect))
         triggered.append({'seat': seat, 'source': target.key, 'effect_id': effect,
             'field': 'main_text', 'usage':usage,'trigger': {'kind': 'When Digivolving', 'card': target.key,
                                             'previous_top': source_key}})

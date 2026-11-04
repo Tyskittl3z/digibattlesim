@@ -273,6 +273,33 @@ class GameContinuationTests(unittest.TestCase):
         self.assertIn(runner.pending_choice(runtime,'B',after[0],pilot),
                       rina.rina_unsuspend_choices(runtime,'B',after[0]['source'],after[0]['effect_id']))
 
+    def test_actual_suspension_rina_routes_one_immediate_effect_without_bonus_draw(self):
+        from effect_scheduler import pending_options,resolve_pending
+        from ex13_ulforce_effects import RETURN_EFFECT
+        import rina_reactivation as rina
+        path=ROOT/'ARTIFACTS/gameplay-continuations-2026-11-03-08/game-0000-segment.json.gz'
+        record=json.loads(gzip.decompress(path.read_bytes()))
+        context,_,_=runner._load_context_selection(ROOT,record['replay_provenance']['context_file'])
+        runtime=runner.ContextRuntime(context,record['seed'],record['first'],
+            runner.build_selected_registry(context,ROOT),allow_experimental=True)
+        for command in record['commands'][:-1]:
+            runner._apply(runtime,command['command'],command['seat'],command['args'],ROOT)
+        failed=record['commands'][-1]
+        runner._apply(runtime,failed['command'],failed['seat'],failed['args'],ROOT)
+        selected=next(p for p in pending_options(runtime,'B') if p['effect_id']==rina.REACTIVATION_EFFECT)
+        pilot=runner.ReferencePilot(context.matchup_id,record['index'],'B')
+        self.assertEqual(rina.rina_reactivation_choices(runtime,'B',selected['source']),[None,RETURN_EFFECT])
+        self.assertIn(runner.pending_choice(runtime,'B',selected,pilot),[None,RETURN_EFFECT])
+        zones=copy.deepcopy(runtime.state.zones);rng=runtime.snapshot()['rng_state']
+        resolve_pending(runtime,'B',selected['id'],RETURN_EFFECT)
+        self.assertTrue(runtime.state.battle['B'][selected['source']].suspended)
+        self.assertEqual(runtime.state.zones,zones);self.assertEqual(runtime.snapshot()['rng_state'],rng)
+        immediate=pending_options(runtime,'B')
+        self.assertEqual(len(immediate),1)
+        self.assertEqual((immediate[0]['effect_id'],immediate[0]['depth']),(RETURN_EFFECT,4))
+        self.assertNotEqual(immediate[0]['id'],'effect-35')
+        self.assertTrue(any(p['id']=='effect-35' and p['depth']==2 for p in runtime.state.pending))
+
 
 if __name__ == '__main__':
     unittest.main()
