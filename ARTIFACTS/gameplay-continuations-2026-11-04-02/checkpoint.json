@@ -1,0 +1,97 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "active": "A",
+  "active_pilots": {
+    "A": {
+      "bot_id": "3051db093e356d30cb042bb3bca1d948a5f3e187cadee9dbdea3f8b572cbaf87",
+      "configuration": {
+        "bottom_order": "PHYSICAL_KEY_ASCENDING",
+        "name": "Bot A",
+        "outcome_ratings": "NONE",
+        "planning_depth": 0,
+        "priorities": [
+          "zero-security player attack",
+          "security pressure",
+          "favorable printed-DP battle",
+          "development"
+        ],
+        "roadmaps": [],
+        "style": "AGGRESSIVE",
+        "tie_break": "CANONICAL_CANDIDATE_ASCENDING",
+        "training_data": [],
+        "unsuspend": [
+          "suspended Digimon",
+          "suspended Tamer"
+        ]
+      },
+      "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+      "information_policy": "PUBLIC_VIEW_OWN_HAND_AND_EXPLICIT_REVEALS_ONLY",
+      "name": "Bot A",
+      "policy_status": "FRESH_UNTRAINED_HEURISTIC_PREFERENCES",
+      "roadmap": null,
+      "seat": "A",
+      "source_sha256": "fab7f1900b8d07f02fe7030c776581a5810d74f62bea117dc129b5d83df26b1b",
+      "style": "AGGRESSIVE",
+      "training_data": [],
+      "version": "fresh-named-public-preferences-v1"
+    },
+    "B": {
+      "bot_id": "6fe75b159762009ec2fead167b1f7e2dda7125e3d9beeb83d37ef0948d46bdcd",
+      "configuration": {
+        "bottom_order": "PHYSICAL_KEY_ASCENDING",
+        "name": "Bot B",
+        "outcome_ratings": "NONE",
+        "planning_depth": 0,
+        "priorities": [
+          "zero-security player attack",
+          "favorable printed-DP battle",
+          "development and ready Blockers",
+          "security pressure"
+        ],
+        "roadmaps": [],
+        "style": "DEFENSIVE",
+        "tie_break": "CANONICAL_CANDIDATE_ASCENDING",
+        "training_data": [],
+        "unsuspend": [
+          "suspended Blocker",
+          "suspended All Turns Tamer",
+          "suspended Digimon",
+          "suspended other Tamer"
+        ]
+      },
+      "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+      "information_policy": "PUBLIC_VIEW_OWN_HAND_AND_EXPLICIT_REVEALS_ONLY",
+      "name": "Bot B",
+      "policy_status": "FRESH_UNTRAINED_HEURISTIC_PREFERENCES",
+      "roadmap": null,
+      "seat": "B",
+      "source_sha256": "fab7f1900b8d07f02fe7030c776581a5810d74f62bea117dc129b5d83df26b1b",
+      "style": "DEFENSIVE",
+      "training_data": [],
+      "version": "fresh-named-public-preferences-v1"
+    }
+  },
+  "commands": 164,
+  "date": "2026-11-04",
+  "execution_id": "64df647ab5651bf7a1438fa70684c6e7af5d08f875430344d428098a95c1cf42",
+  "final_evaluation_credit": 0,
+  "first": "A",
+  "halt_reason": null,
+  "memory": 2,
+  "mixed_history": "HISTORICAL_RANDOM_PREFIX_THEN_EXPLICIT_NAMED_BOT_SEGMENT",
+  "new_commands": 12,
+  "new_decisions": 11,
+  "original_152_command_prefix_unchanged": true,
+  "original_complete_physical_state_and_RNG_revalidated": true,
+  "outcome_ratings_assigned": false,
+  "phase": "MAIN",
+  "previous_record": "ARTIFACTS/gameplay-continuations-2026-11-04-01/game-0000-segment.json.gz",
+  "previous_record_sha256": "9c91970824f016f2f33e6f48311c7fff0f399f91dc50c24fcdc1a9be78d54044",
+  "record_sha256": "8e9f67ab71b773522775d3e3692c91374e4915e83be187dc7a3c7ef1392db6e8",
+  "seed": 12017913134550805276,
+  "status": "PAUSED_AFTER_NAMED_BOT_SEGMENT",
+  "successful_commands": 164,
+  "turn": 11,
+  "user_bot_whole_match_credit": 0,
+  "winner": null
+}

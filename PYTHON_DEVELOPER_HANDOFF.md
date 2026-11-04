@@ -1,42 +1,49 @@
 # Digimon simulator: Python developer handoff
 
-Checkpoint: November 4, 2026. This document describes the engine track. Read
-`AGENTS.md`, the newest section of `STATUS.md`, and `WORKFLOW.md` before editing.
+Checkpoint: November 4, 2026. Read AGENTS.md and the newest STATUS section.
 
-Game0000 is **PAUSED_AFTER_SAVED_ACTION**: all **152 commands resolved**, B active
-on turn10, memory−1, phase END_OF_TURN. Original seed12017913134550805276,
-first playerA, all151 earlier successful commands/results/views and the complete
-pre-return physical state/RNG were preserved. The saved effect57 selection was
-retried exactly once: A:BT22-022#1 went to A deckbottom; A:EX13-002#2 and
-A:EX1-013#2 went to A trash. No later end-turn processing or player choice ran.
+## Named Bot A/B connected — 2026-11-04
 
-**Policy correction:** both saved seat policies are
-`fresh-untrained-uniform-random-reference-v1`, not verified as the user's two
-bots. Their full historical identities remain preserved. The new bounded runner
-invoked no policy and made zero new decisions; the reference history earns zero
-user-bot evidence. Legacy named BotA/B code belongs to Jupitermon/Toho and has no
-current imported-context adapter. Do not silently substitute either policy set.
+The user confirmed project Bot A/B, one aggressive and one defensive. The
+implemented assignment is **A aggressive / B defensive**, as stated in
+commentary. Legacy code used shared decision logic, so fresh, explicit,
+untrained profiles now use current public views, own hand, explicit reveals
+and printed definitions. No old-matchup weights, routes, roadmaps or outcomes
+were imported. Bot identities bind the context, style, configuration and source.
 
-**Verification:**62 focused tests passed (25.371s), including source-identity,
-shared return dependencies, saved-choice preservation, forbidden policy calls,
-and bounded replay tests. Independent actual-prefix/state-delta proof passed
-(24.273s), with108 unique physical cards and unchanged return RNG. The latest
-full-suite baseline remains **495 tests at aed966b**; this increment uses focused
-checks. The full suite includes legacy60-game cohort tests, which were not run
-under the user's current no-cohort instruction.
+| Seat | Style | Bot ID prefix |
+|---|---|---|
+| A | AGGRESSIVE |3051db093e356d30|
+| B | DEFENSIVE |6fe75b159762009e|
 
-Latest checkpoint/evidence:
-`ARTIFACTS/gameplay-continuations-2026-11-04-01/`. Full checkpoint exact-replay
-verification is recorded in that directory's replay.json. Source bytes are
-archived beside the saved record. No full game is complete; user-bot evidence,
-accepted fact-finding games, approved lanes and final-match credit all remain0.
-No routes were preloaded, cohorts launched, or strategic ratings assigned.
+The bounded named-bot runner continued the **same Game0000** from the saved152
+successful commands. **12 new commands resolved**, producing **164 successes**,
+Aturn11, MAIN, memory2. The original seed12017913134550805276, firstA, earlier
+commands/choices/results and complete prior state/RNG were revalidated. The
+original random-policy manifests remain unchanged; active named policies are
+separate.11 new policy calls are recorded (A9/B2, including effect ordering).
+B restored BT11Rina#2; A hatched and declared BT11Ulforce's attack on PLAYER.
+No Security damage has resolved in this new attack.
 
-**Next boundary:** leave this checkpoint paused. Actual current-context bot
-identities/adapters must be established before another player-policy decision.
-Do not use imported_attempts.continue_attempt: it constructs fresh random
-reference policies. Do not run the60/10,000 cohorts or attach positive/neutral/
-negative or GREEN/YELLOW/RED ratings without defined, applicable scoring criteria.
+**82 focused tests pass** (57.599s). Independent profile13 tests (0.123s) and
+runner7 tests (30.341s) pass. Exact whole-record replay passes. Source archive
+matches102 Python files; the rules engine itself is unchanged. Latest full-suite
+baseline remains495 at aed966b; legacy cohort tests were not run this increment.
+The named policies are declared heuristic preferences, not learned strategy or
+outcome ratings. Whole mixed-history game/bot, fact-finding and final credits0;
+no cohorts, route preloading or outcome ratings.
+
+Latest record and readable trace:
+`ARTIFACTS/gameplay-continuations-2026-11-04-02/`. See bot-roster.json,
+bot-decisions.json, replay.json and the frozen source archive. Status is
+PAUSED_AFTER_NAMED_BOT_SEGMENT, not a software/rules halt or a completed game.
+
+Next actual pending effect is **effect64 BT11-032.play_blue_tamer**, A, source
+A:BT11-032#1, depth1, queued by A's second paid Rina reactivation. Older effect60
+EX13Aero inherited unsuspend remains depth0. Resolve pending effects before the
+attack's Counter window can be used. Continue from this checkpoint with
+`named_bot_continuation.continue_with_named_bots`, never the random runner.
+Preserve any actually selected unsupported action and repair that encounter.
 
 ## Goal and ownership
 
@@ -58,7 +65,7 @@ slots, manufacture outcomes, or transfer another matchup's strategy/results.
 
 ## Current state: what works and what does not
 
-- **62 current focused tests passed** (25.371s). Latest full suite:495 tests
+- **82 current focused tests passed** (57.599s). Latest full suite:495 tests
   at aed966b (556.480s); no new full run or legacy cohort tests this increment.
 - Immutable exact card/deck contexts, physical accounting, transactional commands,
   deterministic seeds and source-bound failure/replay records work.
@@ -69,8 +76,8 @@ slots, manufacture outcomes, or transfer another matchup's strategy/results.
   complete interaction coverage or judge certification.
 - The preserved historical60-attempt mirror diagnostic has30 starts per deck,
   60 replays and60 HALTs. Gameplay-first work now continues those original traces;
-  Game0000 is paused, unfinished, at turn10 /152 successful commands,
-  Bmemory−1, END_OF_TURN after the selected return.
+  Game0000 is paused after a named-bot segment at turn11 /164 successful
+  commands, A MAINmemory2, with attack-trigger effects still pending.
 - **Zero valid complete current-pair fact-finding matches, zero approved roadmap
   lanes and zero final matches. No usable win rate exists.**
 
@@ -126,7 +133,7 @@ engine dependencies and should not be installed to run the simulator.
 ```bash
 git clone --branch engine-ulforce-bootstrap https://github.com/Tyskittl3z/digibattlesim.git
 cd digibattlesim/SOURCE
-python3 -m unittest test_recorded_action_checkpoint test_context_runtime test_return_effects test_aero_effects test_ex13_ulforce_effects -q
+python3 -m unittest test_named_player_bots test_named_bot_continuation test_recorded_action_checkpoint test_context_runtime test_return_effects test_aero_effects test_ex13_ulforce_effects -q
 ```
 
 This is the current bounded validation set. Full discovery also includes legacy
@@ -152,7 +159,8 @@ Here `--context-file` is relative to repository root; `--out` is relative to
 your shell directory. Counts must be even and at least2. Output directories are
 never overwritten. Command-budget exhaustion is a diagnostic stop, not a draw
 or a valid completed game. The bots are fresh untrained uniform-random reference
-policies; there is no trained AI or approved roadmap yet.
+policies. The new explicit named profiles are untrained and use a separate
+bounded runner; do not use this historical command to control the user's bots.
 
 Read one saved attempt without launching another simulation:
 
@@ -198,6 +206,8 @@ the pilots. The original records must be preserved when code changes.
 |`SOURCE/attack_flow.py`|Attack declaration, Counter, Block, confirmation, ending and narrow plain security handling|
 |`SOURCE/turn_flow.py`|Explicit passing and turn change; unsupported durations/end effects still stop|
 |`SOURCE/imported_attempts.py`|Fresh reference pilots, candidate generation, diagnostic loop, original records, replay and cohort writing|
+|`SOURCE/named_player_bots.py`|Fresh public-view aggressive/defensive profiles, source/context-bound identities and decision rationale|
+|`SOURCE/named_bot_continuation.py`|Bounded named-policy segments with exact saved-history/state/RNG proofs and replay|
 |`SOURCE/recorded_action_checkpoint.py`|Replay saved decisions and resolve only the stored pending selection, then pause without invoking policies|
 |`SOURCE/return_effects.py`|Shared actual-event return preflight and top/deck-bottom plus lower/trash movement|
 |`SOURCE/matchup_readiness.py`|Context-byte parsing, readiness inventory and blocked-gate reporting|

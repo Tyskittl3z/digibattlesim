@@ -33,6 +33,16 @@ User owns all deck construction, interpretation, and decisions; offer **no card/
 - Never expand toward universal Digimon card support or unsolicited feature work. Work on interactions that the **loaded two decks can actually produce**, as found during gameplay.
 
 ## Authority and integrity
+- **User bot clarification (2026-11-04):** The intended players are project
+  Bot A and Bot B, one aggressive and one defensive. Use A aggressive and B
+  defensive as stated in commentary. The legacy named roster used shared
+  decision code without separate styles; implement fresh explicit profiles
+  for this context, reusing public-view/engine infrastructure. Bind identities
+  and declared heuristic preferences; do not relabel random policies or import
+  old-matchup strategy. Resume only a bounded same-game segment after prefix
+  and complete state/RNG revalidation. Keep historical random choices separate;
+  the mixed-history game earns no whole-match bot/fact-finding/final credit.
+  The no-cohort, no-route-preloading and no-outcome-rating constraints persist.
 - **User constraint (2026-11-04):** Confirm player-policy identities before
   advancing the saved game. Game0000's existing choices came from untrained
   random reference policies, not verified as the user's two bots. Preserve that

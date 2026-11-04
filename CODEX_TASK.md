@@ -1,5 +1,16 @@
 # First Codex task (execute, don't just plan)
 
+> **2026-11-04 named bots now connected:** A AGGRESSIVE/B DEFENSIVE, fresh
+> untrained profiles with explicit identities. Latest sameGame0000 checkpoint:
+> `ARTIFACTS/gameplay-continuations-2026-11-04-02/game-0000-segment.json.gz`.
+> Originalseed/first152 choices preserved;12newcommands allsuccess,164total,
+> Aturn11 MAINmemory2.82focusedtests and exactreplay pass. Nextpendingeffect64
+> is A BT11Ulforce play_blue_tamer from secondpaidRina, thenolderinherited60;
+> Counter waits until pending clears. Use named_bot_continuation, notrandom
+> continue_attempt. Keep zero wholemixedgame/factfinding/finalcredits. No
+> cohorts, preloadedroutes or outcomeratings. See STATUS/roster/decisionlogs.
+> Older paused-bot-identity instructions below are historical and superseded.
+
 > **2026-11-04 latest user boundary:** Game0000's selected effect57 return is
 > resolved; preserve the new PAUSED_AFTER_SAVED_ACTION checkpoint at
 > `ARTIFACTS/gameplay-continuations-2026-11-04-01/game-0000-segment.json.gz`.
