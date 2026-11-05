@@ -33,6 +33,14 @@ User owns all deck construction, interpretation, and decisions; offer **no card/
 - Never expand toward universal Digimon card support or unsolicited feature work. Work on interactions that the **loaded two decks can actually produce**, as found during gameplay.
 
 ## Authority and integrity
+- **Latest user pause (2026-11-04, preserved 2026-11-05):** The user requested
+  a fresh60-game learning campaign with Bot A aggressive/B defensive, Bot C
+  tracking and board-impact colors, then said "pause before u start the match".
+  Keep PAUSED_BEFORE_FIRST_MATCH: no fresh opening deal or actual match/cohort
+  may start until the user says to continue. A usage reset alone does not lift
+  this pause. Save/publish preparation checkpoints only. User-defined tempo
+  includes more cards out, bigger stacks and more completed successful Security
+  checks. New design/test drafts are not implemented gameplay or learned evidence.
 - **User bot clarification (2026-11-04):** The intended players are project
   Bot A and Bot B, one aggressive and one defensive. Use A aggressive and B
   defensive as stated in commentary. The legacy named roster used shared

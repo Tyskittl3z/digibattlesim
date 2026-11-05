@@ -1,5 +1,36 @@
 # Digimon simulator: Python developer handoff
 
+## Fresh learning setup paused before first match — 2026-11-05
+
+The user requested starting over with aggressive Bot A, defensive Bot B, Bot C
+as field tracker, judge checks, board-impact GREEN/YELLOW/RED labels and learning
+across60 fresh games. The user then said **pause before starting the match**.
+The later usage reset does not lift that pause. **No fresh match/opening deal
+has started; no learning update or rating has been produced.** No schedule is
+locked or executing.10,000 final evaluation remains off.
+
+Colors are to reflect removed/incapacitated cards, successful Security checks,
+battle-area development and actual memory efficiency. Tempo must track cards
+in play, stack sizes and cumulative completed successful Security checks.
+Declarations do not count as completed checks. Weights remain draft/unlocked;
+no probabilities, globally-cheapest claims or approved roadmaps are implied.
+
+Prepared only: design/plan,16 tracker test drafts,7 fresh-runner test drafts,
+and learning/API handoff notes. The two initial TDD checks failed as expected
+because the implementation modules are absent; no passing claim is made for
+this setup. Draft tests are parked under
+`ARTIFACTS/pre-match-setup-2026-11-05/prepared-source/SOURCE/` so the live source
+remains unchanged from220afab. Last verified focused set:82 tests at220afab;
+latest complete full suite:495 at aed966b. No new game/test run was launched
+to save this pause checkpoint.
+
+Read `ARTIFACTS/pre-match-setup-2026-11-05/pause-control.json` and README before
+resuming preparation. Tracker, learning/scoring, fresh runner and judge ledger
+implementations/integration remain pending. Keep old164-command game archived
+and exclude it from fresh training. **Do not start or advance any actual match
+until the user says to continue.** Save/publish progress without lifting pause.
+
+
 Checkpoint: November 4, 2026. Read AGENTS.md and the newest STATUS section.
 
 ## Named Bot A/B connected — 2026-11-04

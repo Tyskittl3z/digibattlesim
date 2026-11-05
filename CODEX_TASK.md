@@ -1,5 +1,15 @@
 # First Codex task (execute, don't just plan)
 
+> **PAUSED BEFORE FIRST FRESH MATCH — 2026-11-05.** User explicitly requested
+> pausing before the match. Usage reset does not resume it. No opening deal,
+> fresh game or learning update has started. Read
+> `ARTIFACTS/pre-match-setup-2026-11-05/pause-control.json` and latest STATUS.
+> Save setup only; do not call a gameplay/cohort runner until user continues.
+>23 draft tests/API notes are parked outside live SOURCE; implementation is
+> pending. Historical164-command game remains archived, excluded from fresh
+> training. The new60-game plan is authorized in principle but currently paused.
+> Older instructions below are historical and subordinate to this pause.
+
 > **2026-11-04 named bots now connected:** A AGGRESSIVE/B DEFENSIVE, fresh
 > untrained profiles with explicit identities. Latest sameGame0000 checkpoint:
 > `ARTIFACTS/gameplay-continuations-2026-11-04-02/game-0000-segment.json.gz`.
