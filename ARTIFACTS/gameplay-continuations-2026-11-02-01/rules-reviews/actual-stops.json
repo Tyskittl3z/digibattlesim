@@ -1,0 +1,1135 @@
+{
+  "scope": "Independent source-backed factual assessment of actual recorded stops only; no match credit, strategy color, or certification granted.",
+  "rules_pdf_sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+  "stops": [
+    {
+      "path": "ARTIFACTS/ulforce-bootstrap-diagnostic-2026-11-02-02/attempt-0000.json.gz",
+      "file_sha256": "6ccceaa3ae728d9fb1dd6c3944c2e26145bd63f0b82904ad5b6f56d469f824ce",
+      "seed": 12017913134550805276,
+      "command_index": 7,
+      "halt_command": {
+        "args": {
+          "hand_key": "A:BT11-112#2",
+          "kind": "PLAY_CARD",
+          "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+          "printed_cost": 3
+        },
+        "candidates": [
+          {
+            "kind": "PASS_TURN"
+          },
+          {
+            "hand_key": "A:BT11-112#2",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 3
+          },
+          {
+            "hand_key": "A:BT22-022#1",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 5
+          },
+          {
+            "hand_key": "A:LM-028#1",
+            "kind": "UNKNOWN_OPTION_ACTION",
+            "legality": "UNVERIFIED_OPTION_ACTION",
+            "printed_cost": 2
+          },
+          {
+            "hand_key": "A:LM-034#1",
+            "kind": "UNKNOWN_OPTION_ACTION",
+            "legality": "UNVERIFIED_OPTION_ACTION",
+            "printed_cost": 3
+          }
+        ],
+        "command": "PLAY_CARD",
+        "exception": "RuntimeHalt",
+        "pilot_id": "b5dc9e12973489824d3c14512eefb1f259ab7eb9100bef1269913ec79867ddcd",
+        "public_view": {
+          "active": "A",
+          "attack": null,
+          "memory": 0,
+          "phase": "MAIN",
+          "players": {
+            "A": {
+              "battle": {},
+              "breeding": [],
+              "deck": {
+                "count": 40
+              },
+              "eggdeck": {
+                "count": 4
+              },
+              "hand": [
+                "A:BT11-112#2",
+                "A:BT22-022#1",
+                "A:LM-028#1",
+                "A:LM-034#1",
+                "A:BT11-032#1"
+              ],
+              "security": {
+                "count": 5
+              },
+              "trash": []
+            },
+            "B": {
+              "battle": {},
+              "breeding": [],
+              "deck": {
+                "count": 40
+              },
+              "eggdeck": {
+                "count": 4
+              },
+              "hand": {
+                "count": 5
+              },
+              "security": {
+                "count": 5
+              },
+              "trash": []
+            }
+          },
+          "terminal": false,
+          "turn": 1,
+          "winner": null
+        },
+        "reason": "PLAY_EFFECT_UNSUPPORTED: BT11-112 timing=On Play",
+        "seat": "A",
+        "status": "HALT"
+      }
+    },
+    {
+      "path": "ARTIFACTS/ulforce-bootstrap-diagnostic-2026-11-02-02/attempt-0003.json.gz",
+      "file_sha256": "a6470b2cc06f8335d7fbf9c19b01fedb836f4cb962239e276b47b2cb7e37a3c1",
+      "seed": 10449966399963017273,
+      "command_index": 21,
+      "halt_command": {
+        "args": {
+          "hand_key": "B:BT22-085#1",
+          "kind": "PLAY_CARD",
+          "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+          "printed_cost": 4
+        },
+        "candidates": [
+          {
+            "kind": "PASS_TURN"
+          },
+          {
+            "hand_key": "B:EX13-019#2",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 6
+          },
+          {
+            "hand_key": "B:P-104#1",
+            "kind": "UNKNOWN_OPTION_ACTION",
+            "legality": "UNVERIFIED_OPTION_ACTION",
+            "printed_cost": 2
+          },
+          {
+            "hand_key": "B:BT22-023#2",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 7
+          },
+          {
+            "hand_key": "B:BT22-085#1",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 4
+          },
+          {
+            "hand_key": "B:BT12-029#1",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 12
+          },
+          {
+            "basis": "PRINTED_NORMAL",
+            "cost": 2,
+            "definition_sha256": "ad54641a89c77e77f48729f22f91b646ca3045e2cabf048570351d415e4e7d67",
+            "hand_key": "B:EX13-019#2",
+            "kind": "BREEDING_EVOLUTION",
+            "legality": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY",
+            "printed_condition": "Blue 2 from Lv.3",
+            "route_index": 0,
+            "source_key": "B:BT11-023#1",
+            "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+          }
+        ],
+        "command": "PLAY_CARD",
+        "exception": "RuntimeHalt",
+        "pilot_id": "e55e4b9ef745f08814c423872f7361a971ac2cb01a3fda9d478161cb51677b37",
+        "public_view": {
+          "active": "B",
+          "attack": null,
+          "memory": 2,
+          "phase": "MAIN",
+          "players": {
+            "A": {
+              "battle": {
+                "A:P-138#2": {
+                  "cards": [
+                    "A:P-138#2"
+                  ],
+                  "instance_id": "entity-1",
+                  "played_turn": 2,
+                  "ready_since_turn": 3,
+                  "statuses": {},
+                  "suspended": false
+                }
+              },
+              "breeding": [
+                "A:EX13-002#3"
+              ],
+              "deck": {
+                "count": 38
+              },
+              "eggdeck": {
+                "count": 3
+              },
+              "hand": {
+                "count": 6
+              },
+              "security": {
+                "count": 5
+              },
+              "trash": []
+            },
+            "B": {
+              "battle": {},
+              "breeding": [
+                "B:EX13-002#2",
+                "B:BT11-023#1"
+              ],
+              "deck": {
+                "count": 38
+              },
+              "eggdeck": {
+                "count": 3
+              },
+              "hand": [
+                "B:EX13-019#2",
+                "B:P-104#1",
+                "B:BT20-102#1",
+                "B:BT22-023#2",
+                "B:BT22-085#1",
+                "B:BT12-029#1"
+              ],
+              "security": {
+                "count": 5
+              },
+              "trash": []
+            }
+          },
+          "terminal": false,
+          "turn": 3,
+          "winner": null
+        },
+        "reason": "PLAY_EFFECT_UNSUPPORTED: BT22-085 timing=On Play",
+        "seat": "B",
+        "status": "HALT"
+      }
+    },
+    {
+      "path": "ARTIFACTS/ulforce-bootstrap-diagnostic-2026-11-02-02/attempt-0057.json.gz",
+      "file_sha256": "9023320e2a7a0ae3ef6993ebb3c9f075c5f4f0bc83c9d8527189982a6da0cef6",
+      "seed": 2859028109560468444,
+      "command_index": 27,
+      "halt_command": {
+        "args": {
+          "hand_key": "A:BT22-085#1",
+          "kind": "PLAY_CARD",
+          "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+          "printed_cost": 4
+        },
+        "candidates": [
+          {
+            "kind": "PASS_TURN"
+          },
+          {
+            "hand_key": "A:EX13-069#1",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 3
+          },
+          {
+            "hand_key": "A:P-138#1",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 5
+          },
+          {
+            "hand_key": "A:EX13-022#2",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 7
+          },
+          {
+            "hand_key": "A:BT22-023#3",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 7
+          },
+          {
+            "hand_key": "A:BT11-023#2",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 3
+          },
+          {
+            "hand_key": "A:P-138#3",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 5
+          },
+          {
+            "hand_key": "A:BT22-085#1",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 4
+          },
+          {
+            "hand_key": "A:BT11-112#3",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 3
+          },
+          {
+            "basis": "PRINTED_NORMAL",
+            "cost": 3,
+            "definition_sha256": "73cef4900ac35284738c7c875f69d7b18858c481f844ca920dce86b0d2907daf",
+            "hand_key": "A:EX13-022#2",
+            "kind": "UNKNOWN_BATTLE_EVOLUTION",
+            "legality": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY",
+            "printed_condition": "Blue 3 from Lv.4",
+            "route_index": 0,
+            "source_key": "A:P-138#2",
+            "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+          },
+          {
+            "basis": "PRINTED_NORMAL",
+            "cost": 3,
+            "definition_sha256": "65bfa05c9838899ee391c5168eff33a01cbabfc29e6611b08b8cb3b280715c85",
+            "hand_key": "A:BT22-023#3",
+            "kind": "UNKNOWN_BATTLE_EVOLUTION",
+            "legality": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY",
+            "printed_condition": "Blue 3 from Lv.4",
+            "route_index": 0,
+            "source_key": "A:P-138#2",
+            "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+          },
+          {
+            "attacker": "A:P-138#2",
+            "kind": "DECLARE_ATTACK",
+            "target": "PLAYER"
+          }
+        ],
+        "command": "PLAY_CARD",
+        "exception": "RuntimeHalt",
+        "pilot_id": "20a10d5418cf2132dd19a5943735b762933c56d2e1080d2f3faf1150703e21ff",
+        "public_view": {
+          "active": "A",
+          "attack": null,
+          "memory": 1,
+          "phase": "MAIN",
+          "players": {
+            "A": {
+              "battle": {
+                "A:P-138#2": {
+                  "cards": [
+                    "A:P-138#2"
+                  ],
+                  "instance_id": "entity-1",
+                  "played_turn": 2,
+                  "ready_since_turn": 3,
+                  "statuses": {},
+                  "suspended": false
+                }
+              },
+              "breeding": [],
+              "deck": {
+                "count": 36
+              },
+              "eggdeck": {
+                "count": 4
+              },
+              "hand": [
+                "A:EX13-069#1",
+                "A:P-138#1",
+                "A:EX13-022#2",
+                "A:BT22-023#3",
+                "A:BT11-023#2",
+                "A:P-138#3",
+                "A:BT22-085#1",
+                "A:BT11-112#3"
+              ],
+              "security": {
+                "count": 5
+              },
+              "trash": []
+            },
+            "B": {
+              "battle": {
+                "B:EX13-017#3": {
+                  "cards": [
+                    "B:EX13-017#3"
+                  ],
+                  "instance_id": "entity-2",
+                  "played_turn": 3,
+                  "ready_since_turn": 4,
+                  "statuses": {},
+                  "suspended": false
+                }
+              },
+              "breeding": [],
+              "deck": {
+                "count": 38
+              },
+              "eggdeck": {
+                "count": 4
+              },
+              "hand": {
+                "count": 6
+              },
+              "security": {
+                "count": 5
+              },
+              "trash": []
+            }
+          },
+          "terminal": false,
+          "turn": 4,
+          "winner": null
+        },
+        "reason": "PLAY_EFFECT_UNSUPPORTED: BT22-085 timing=On Play",
+        "seat": "A",
+        "status": "HALT"
+      }
+    },
+    {
+      "path": "ARTIFACTS/ulforce-bootstrap-diagnostic-2026-11-02-02/attempt-0010.json.gz",
+      "file_sha256": "d9dda9d7ad3c1e15f57780ef1549a2e5d446e1c93cfdd8ea807a4b67e2419407",
+      "seed": 5110499696458660652,
+      "command_index": 7,
+      "halt_command": {
+        "args": {
+          "hand_key": "A:BT22-023#1",
+          "kind": "PLAY_CARD",
+          "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+          "printed_cost": 7
+        },
+        "candidates": [
+          {
+            "kind": "PASS_TURN"
+          },
+          {
+            "hand_key": "A:BT22-023#1",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 7
+          },
+          {
+            "hand_key": "A:BT11-112#3",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 3
+          },
+          {
+            "hand_key": "A:EX13-019#4",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 6
+          },
+          {
+            "hand_key": "A:P-138#4",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 5
+          }
+        ],
+        "command": "PLAY_CARD",
+        "exception": "RuntimeHalt",
+        "pilot_id": "36efe1739ce39b1ce091d2ed244abc51999840ed00b5f5385f912be59d1ef51a",
+        "public_view": {
+          "active": "A",
+          "attack": null,
+          "memory": 0,
+          "phase": "MAIN",
+          "players": {
+            "A": {
+              "battle": {},
+              "breeding": [
+                "A:EX13-002#3"
+              ],
+              "deck": {
+                "count": 40
+              },
+              "eggdeck": {
+                "count": 3
+              },
+              "hand": [
+                "A:BT22-023#1",
+                "A:BT11-112#3",
+                "A:EX13-019#4",
+                "A:EX13-023#2",
+                "A:P-138#4"
+              ],
+              "security": {
+                "count": 5
+              },
+              "trash": []
+            },
+            "B": {
+              "battle": {},
+              "breeding": [],
+              "deck": {
+                "count": 40
+              },
+              "eggdeck": {
+                "count": 4
+              },
+              "hand": {
+                "count": 5
+              },
+              "security": {
+                "count": 5
+              },
+              "trash": []
+            }
+          },
+          "terminal": false,
+          "turn": 1,
+          "winner": null
+        },
+        "reason": "PLAY_EFFECT_UNSUPPORTED: BT22-023 timing=On Play",
+        "seat": "A",
+        "status": "HALT"
+      }
+    },
+    {
+      "path": "ARTIFACTS/ulforce-bootstrap-diagnostic-2026-11-02-02/attempt-0017.json.gz",
+      "file_sha256": "36e5f6e9b1a42853ba7eeb108e3ebcce59881546a237380a0f91874f345fc33c",
+      "seed": 3688996315290345728,
+      "command_index": 20,
+      "halt_command": {
+        "args": {
+          "hand_key": "B:BT22-023#1",
+          "kind": "PLAY_CARD",
+          "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+          "printed_cost": 7
+        },
+        "candidates": [
+          {
+            "kind": "PASS_TURN"
+          },
+          {
+            "hand_key": "B:EX13-069#1",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 3
+          },
+          {
+            "hand_key": "B:BT22-023#1",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 7
+          },
+          {
+            "hand_key": "B:BT11-023#3",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 3
+          },
+          {
+            "hand_key": "B:BT22-023#2",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 7
+          },
+          {
+            "hand_key": "B:P-138#1",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 5
+          },
+          {
+            "hand_key": "B:BT11-112#3",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 3
+          }
+        ],
+        "command": "PLAY_CARD",
+        "exception": "RuntimeHalt",
+        "pilot_id": "d8d1e890a563a4b4decf6cf423fab45926f50578577ce008bfc025c15646341f",
+        "public_view": {
+          "active": "B",
+          "attack": null,
+          "memory": 2,
+          "phase": "MAIN",
+          "players": {
+            "A": {
+              "battle": {
+                "A:P-138#1": {
+                  "cards": [
+                    "A:P-138#1"
+                  ],
+                  "instance_id": "entity-1",
+                  "played_turn": 2,
+                  "ready_since_turn": 3,
+                  "statuses": {},
+                  "suspended": false
+                }
+              },
+              "breeding": [],
+              "deck": {
+                "count": 38
+              },
+              "eggdeck": {
+                "count": 4
+              },
+              "hand": {
+                "count": 6
+              },
+              "security": {
+                "count": 5
+              },
+              "trash": []
+            },
+            "B": {
+              "battle": {},
+              "breeding": [],
+              "deck": {
+                "count": 39
+              },
+              "eggdeck": {
+                "count": 4
+              },
+              "hand": [
+                "B:EX13-069#1",
+                "B:BT22-023#1",
+                "B:BT11-023#3",
+                "B:BT22-023#2",
+                "B:P-138#1",
+                "B:BT11-112#3"
+              ],
+              "security": {
+                "count": 5
+              },
+              "trash": []
+            }
+          },
+          "terminal": false,
+          "turn": 3,
+          "winner": null
+        },
+        "reason": "PLAY_EFFECT_UNSUPPORTED: BT22-023 timing=On Play",
+        "seat": "B",
+        "status": "HALT"
+      }
+    },
+    {
+      "path": "ARTIFACTS/ulforce-bootstrap-diagnostic-2026-11-02-02/attempt-0045.json.gz",
+      "file_sha256": "f8e43407309c05707b174b4eaaea3e1fcce485e67965e69c430c34c4b17c801e",
+      "seed": 1639833986765908560,
+      "command_index": 20,
+      "halt_command": {
+        "args": {
+          "hand_key": "B:BT22-023#3",
+          "kind": "PLAY_CARD",
+          "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+          "printed_cost": 7
+        },
+        "candidates": [
+          {
+            "kind": "PASS_TURN"
+          },
+          {
+            "hand_key": "B:EX13-022#3",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 7
+          },
+          {
+            "hand_key": "B:P-138#4",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 5
+          },
+          {
+            "hand_key": "B:BT22-022#1",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 5
+          },
+          {
+            "hand_key": "B:LM-056#1",
+            "kind": "UNKNOWN_OPTION_ACTION",
+            "legality": "UNVERIFIED_OPTION_ACTION",
+            "printed_cost": 2
+          },
+          {
+            "hand_key": "B:BT20-102#1",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 16
+          },
+          {
+            "hand_key": "B:BT22-023#3",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 7
+          }
+        ],
+        "command": "PLAY_CARD",
+        "exception": "RuntimeHalt",
+        "pilot_id": "eccd87a0cd7de72ddd415f0ea767f4c98c8ba478669276a97e6e687c38d346f8",
+        "public_view": {
+          "active": "B",
+          "attack": null,
+          "memory": 6,
+          "phase": "MAIN",
+          "players": {
+            "A": {
+              "battle": {
+                "A:EX1-013#2": {
+                  "cards": [
+                    "A:EX1-013#2"
+                  ],
+                  "instance_id": "entity-1",
+                  "played_turn": 2,
+                  "ready_since_turn": 3,
+                  "statuses": {},
+                  "suspended": false
+                },
+                "A:EX13-019#1": {
+                  "cards": [
+                    "A:EX13-019#1"
+                  ],
+                  "instance_id": "entity-2",
+                  "played_turn": 2,
+                  "ready_since_turn": 3,
+                  "statuses": {},
+                  "suspended": false
+                }
+              },
+              "breeding": [],
+              "deck": {
+                "count": 39
+              },
+              "eggdeck": {
+                "count": 4
+              },
+              "hand": {
+                "count": 4
+              },
+              "security": {
+                "count": 5
+              },
+              "trash": []
+            },
+            "B": {
+              "battle": {},
+              "breeding": [
+                "B:EX13-002#3"
+              ],
+              "deck": {
+                "count": 39
+              },
+              "eggdeck": {
+                "count": 3
+              },
+              "hand": [
+                "B:EX13-022#3",
+                "B:P-138#4",
+                "B:BT22-022#1",
+                "B:LM-056#1",
+                "B:BT20-102#1",
+                "B:BT22-023#3"
+              ],
+              "security": {
+                "count": 5
+              },
+              "trash": []
+            }
+          },
+          "terminal": false,
+          "turn": 3,
+          "winner": null
+        },
+        "reason": "PLAY_EFFECT_UNSUPPORTED: BT22-023 timing=On Play",
+        "seat": "B",
+        "status": "HALT"
+      }
+    },
+    {
+      "path": "ARTIFACTS/ulforce-bootstrap-diagnostic-2026-11-02-02/attempt-0046.json.gz",
+      "file_sha256": "168c7579e9c9e630d52ef9ec0daa096326bd8cae9be7111b90b1073170c9d2f0",
+      "seed": 2035718192038532479,
+      "command_index": 26,
+      "halt_command": {
+        "args": {
+          "basis": "PRINTED_SPECIAL",
+          "cost": 3,
+          "definition_sha256": "65bfa05c9838899ee391c5168eff33a01cbabfc29e6611b08b8cb3b280715c85",
+          "hand_key": "B:BT22-023#2",
+          "kind": "UNKNOWN_BATTLE_EVOLUTION",
+          "legality": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY",
+          "printed_condition": "[Digivolve] Lv.4 w/[CS] trait: Cost 3",
+          "route_index": 1,
+          "source_key": "B:EX13-019#4",
+          "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+        },
+        "candidates": [
+          {
+            "kind": "PASS_TURN"
+          },
+          {
+            "hand_key": "B:EX13-023#4",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 12
+          },
+          {
+            "hand_key": "B:EX13-017#2",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 3
+          },
+          {
+            "hand_key": "B:EX13-022#2",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 7
+          },
+          {
+            "hand_key": "B:EX13-019#1",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 6
+          },
+          {
+            "hand_key": "B:EX13-069#1",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 3
+          },
+          {
+            "hand_key": "B:BT22-023#2",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 7
+          },
+          {
+            "basis": "PRINTED_NORMAL",
+            "cost": 0,
+            "definition_sha256": "e229e194366d133c0e35c8bd6773046a78c8b039e4f0185af79ef92a426d7d23",
+            "hand_key": "B:EX13-017#2",
+            "kind": "BREEDING_EVOLUTION",
+            "legality": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY",
+            "printed_condition": "Blue 0 from Lv.2",
+            "route_index": 0,
+            "source_key": "B:EX13-002#3",
+            "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+          },
+          {
+            "basis": "PRINTED_NORMAL",
+            "cost": 3,
+            "definition_sha256": "73cef4900ac35284738c7c875f69d7b18858c481f844ca920dce86b0d2907daf",
+            "hand_key": "B:EX13-022#2",
+            "kind": "UNKNOWN_BATTLE_EVOLUTION",
+            "legality": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY",
+            "printed_condition": "Blue 3 from Lv.4",
+            "route_index": 0,
+            "source_key": "B:EX13-019#4",
+            "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+          },
+          {
+            "basis": "PRINTED_SPECIAL",
+            "cost": 3,
+            "definition_sha256": "73cef4900ac35284738c7c875f69d7b18858c481f844ca920dce86b0d2907daf",
+            "hand_key": "B:EX13-022#2",
+            "kind": "UNKNOWN_BATTLE_EVOLUTION",
+            "legality": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY",
+            "printed_condition": "[Digivolve] Lv.4 w/[CS] trait: Cost 3",
+            "route_index": 1,
+            "source_key": "B:EX13-019#4",
+            "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+          },
+          {
+            "basis": "PRINTED_NORMAL",
+            "cost": 3,
+            "definition_sha256": "65bfa05c9838899ee391c5168eff33a01cbabfc29e6611b08b8cb3b280715c85",
+            "hand_key": "B:BT22-023#2",
+            "kind": "UNKNOWN_BATTLE_EVOLUTION",
+            "legality": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY",
+            "printed_condition": "Blue 3 from Lv.4",
+            "route_index": 0,
+            "source_key": "B:EX13-019#4",
+            "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+          },
+          {
+            "basis": "PRINTED_SPECIAL",
+            "cost": 3,
+            "definition_sha256": "65bfa05c9838899ee391c5168eff33a01cbabfc29e6611b08b8cb3b280715c85",
+            "hand_key": "B:BT22-023#2",
+            "kind": "UNKNOWN_BATTLE_EVOLUTION",
+            "legality": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY",
+            "printed_condition": "[Digivolve] Lv.4 w/[CS] trait: Cost 3",
+            "route_index": 1,
+            "source_key": "B:EX13-019#4",
+            "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+          },
+          {
+            "attacker": "B:EX13-019#4",
+            "kind": "DECLARE_ATTACK",
+            "target": "PLAYER"
+          }
+        ],
+        "command": "UNKNOWN_BATTLE_EVOLUTION",
+        "exception": "RuntimeHalt",
+        "pilot_id": "8ab527e748530da32cb8e2ed67caafabf0154b42672756168434c134fc06b75e",
+        "public_view": {
+          "active": "B",
+          "attack": null,
+          "memory": 3,
+          "phase": "MAIN",
+          "players": {
+            "A": {
+              "battle": {
+                "A:EX13-017#3": {
+                  "cards": [
+                    "A:EX13-017#3"
+                  ],
+                  "instance_id": "entity-1",
+                  "played_turn": 1,
+                  "ready_since_turn": 2,
+                  "statuses": {},
+                  "suspended": false
+                },
+                "A:EX13-019#4": {
+                  "cards": [
+                    "A:EX13-019#4"
+                  ],
+                  "instance_id": "entity-3",
+                  "played_turn": 3,
+                  "ready_since_turn": 4,
+                  "statuses": {},
+                  "suspended": false
+                }
+              },
+              "breeding": [],
+              "deck": {
+                "count": 38
+              },
+              "eggdeck": {
+                "count": 4
+              },
+              "hand": {
+                "count": 5
+              },
+              "security": {
+                "count": 5
+              },
+              "trash": []
+            },
+            "B": {
+              "battle": {
+                "B:EX13-019#4": {
+                  "cards": [
+                    "B:EX13-019#4"
+                  ],
+                  "instance_id": "entity-2",
+                  "played_turn": 2,
+                  "ready_since_turn": 3,
+                  "statuses": {},
+                  "suspended": false
+                }
+              },
+              "breeding": [
+                "B:EX13-002#3"
+              ],
+              "deck": {
+                "count": 38
+              },
+              "eggdeck": {
+                "count": 3
+              },
+              "hand": [
+                "B:EX13-023#4",
+                "B:EX13-017#2",
+                "B:EX13-022#2",
+                "B:EX13-019#1",
+                "B:EX13-069#1",
+                "B:BT22-023#2"
+              ],
+              "security": {
+                "count": 5
+              },
+              "trash": []
+            }
+          },
+          "terminal": false,
+          "turn": 4,
+          "winner": null
+        },
+        "reason": "BATTLE_EVOLUTION_UNIMPLEMENTED: source=B:EX13-019#4 target=B:BT22-023#2 route_index=1 cost=3",
+        "seat": "B",
+        "status": "HALT"
+      }
+    },
+    {
+      "path": "ARTIFACTS/ulforce-bootstrap-diagnostic-2026-11-02-01/attempt-0006.json.gz",
+      "file_sha256": "ea5bd9c701e273de2c70e9ef79d4ca39990aaf92db2838656864d1197e724b6f",
+      "seed": 4491315600022495233,
+      "command_index": 20,
+      "halt_command": {
+        "args": {
+          "hand_key": "A:BT22-023#1",
+          "kind": "PLAY_CARD",
+          "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+          "printed_cost": 7
+        },
+        "candidates": [
+          {
+            "kind": "PASS_TURN"
+          },
+          {
+            "hand_key": "A:BT11-112#3",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 3
+          },
+          {
+            "hand_key": "A:EX13-023#1",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 12
+          },
+          {
+            "hand_key": "A:BT12-029#3",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 12
+          },
+          {
+            "hand_key": "A:BT22-023#1",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 7
+          },
+          {
+            "hand_key": "A:LM-028#1",
+            "kind": "UNKNOWN_OPTION_ACTION",
+            "legality": "UNVERIFIED_OPTION_ACTION",
+            "printed_cost": 2
+          },
+          {
+            "hand_key": "A:BT11-023#4",
+            "kind": "PLAY_CARD",
+            "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+            "printed_cost": 3
+          },
+          {
+            "basis": "PRINTED_NORMAL",
+            "cost": 3,
+            "definition_sha256": "65bfa05c9838899ee391c5168eff33a01cbabfc29e6611b08b8cb3b280715c85",
+            "hand_key": "A:BT22-023#1",
+            "kind": "BREEDING_EVOLUTION",
+            "legality": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY",
+            "printed_condition": "Blue 3 from Lv.4",
+            "route_index": 0,
+            "source_key": "A:EX13-019#3",
+            "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+          },
+          {
+            "basis": "PRINTED_SPECIAL",
+            "cost": 3,
+            "definition_sha256": "65bfa05c9838899ee391c5168eff33a01cbabfc29e6611b08b8cb3b280715c85",
+            "hand_key": "A:BT22-023#1",
+            "kind": "BREEDING_EVOLUTION",
+            "legality": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY",
+            "printed_condition": "[Digivolve] Lv.4 w/[CS] trait: Cost 3",
+            "route_index": 1,
+            "source_key": "A:EX13-019#3",
+            "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+          }
+        ],
+        "command": "PLAY_CARD",
+        "exception": "RuntimeHalt",
+        "pilot_id": "2ee0ee6dec720d81cbb35f3de6a45e442be7e380803e739988c123054ecc6b32",
+        "public_view": {
+          "active": "A",
+          "attack": null,
+          "memory": 10,
+          "phase": "MAIN",
+          "players": {
+            "A": {
+              "battle": {},
+              "breeding": [
+                "A:EX13-002#3",
+                "A:EX13-017#4",
+                "A:EX13-019#3"
+              ],
+              "deck": {
+                "count": 37
+              },
+              "eggdeck": {
+                "count": 3
+              },
+              "hand": [
+                "A:BT11-112#3",
+                "A:EX13-023#1",
+                "A:BT12-029#3",
+                "A:BT22-023#1",
+                "A:LM-028#1",
+                "A:BT11-023#4"
+              ],
+              "security": {
+                "count": 5
+              },
+              "trash": []
+            },
+            "B": {
+              "battle": {
+                "B:BT12-029#2": {
+                  "cards": [
+                    "B:BT12-029#2"
+                  ],
+                  "instance_id": "entity-1",
+                  "played_turn": 2,
+                  "ready_since_turn": 3,
+                  "statuses": {},
+                  "suspended": false
+                }
+              },
+              "breeding": [],
+              "deck": {
+                "count": 39
+              },
+              "eggdeck": {
+                "count": 4
+              },
+              "hand": {
+                "count": 5
+              },
+              "security": {
+                "count": 5
+              },
+              "trash": []
+            }
+          },
+          "terminal": false,
+          "turn": 3,
+          "winner": null
+        },
+        "reason": "PLAY_EFFECT_UNSUPPORTED: BT22-023 timing=On Play",
+        "seat": "A",
+        "status": "HALT"
+      }
+    }
+  ]
+}

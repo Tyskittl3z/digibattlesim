@@ -1,0 +1,13 @@
+{
+  "seed": 12017913134550805276,
+  "first": "A",
+  "status": "HALT",
+  "turn": 6,
+  "commands": 78,
+  "halt_reason": "SECURITY_CARD_UNSUPPORTED: EX13-069 source=A:EX13-069#1",
+  "winner": null,
+  "record_sha256": "bf2e801417199a77bc04ce2cd07893fb90b6808110e646a31f60fe25b16b57a0",
+  "accepted_fact_finding_credit": 0,
+  "previous_record": "ARTIFACTS/gameplay-continuations-2026-11-03-03/game-0000-segment.json.gz",
+  "execution_id": "086eba7593a03070be61db9148b0cac32f1e38869954c9ff1218ed86d978555e"
+}

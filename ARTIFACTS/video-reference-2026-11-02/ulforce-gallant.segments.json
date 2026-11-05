@@ -1,0 +1,2060 @@
+{
+  "source": {
+    "key": "ulforce-gallant",
+    "label": "UlforceVeedramon vs Gallantmon",
+    "file_id": "file_00000000d93481f5bfdddc99a2b8409b",
+    "original_path": "/workspace/attachments/1d65edb1-e371-46e1-93c4-4e737509638b/Pasted text.txt",
+    "original_bytes": 18568,
+    "original_sha256": "d85431debd87be58ba65b2a97d730392a150e5e48c8e3552d54335f753722615",
+    "segments": 408,
+    "last_caption_seconds": 686,
+    "identity_basis": "USER_CONTEXT_AND_TRANSCRIPT_NOT_EXACT_DECK_CERTIFICATION",
+    "evidence_type": "USER_SUPPLIED_TRANSCRIPT",
+    "card_name_normalization": "NONE_ORIGINAL_WORDS_PRESERVED",
+    "rules_authority": false,
+    "simulated_match_credit": 0,
+    "segments_file": "ulforce-gallant.segments.json"
+  },
+  "segments": [
+    {
+      "timestamp": "0:00",
+      "start_seconds": 0,
+      "text": "Gilman will be going first. Dig the G"
+    },
+    {
+      "timestamp": "0:02",
+      "start_seconds": 2,
+      "text": "catch EX13 Yimmon which will dig evolve"
+    },
+    {
+      "timestamp": "0:05",
+      "start_seconds": 5,
+      "text": "into the EX13 Gilman for zero cost. Then"
+    },
+    {
+      "timestamp": "0:08",
+      "start_seconds": 8,
+      "text": "the option card punching training will"
+    },
+    {
+      "timestamp": "0:09",
+      "start_seconds": 9,
+      "text": "be used for two memory cost. While you"
+    },
+    {
+      "timestamp": "0:11",
+      "start_seconds": 11,
+      "text": "don't have punching training in the"
+    },
+    {
+      "timestamp": "0:12",
+      "start_seconds": 12,
+      "text": "battle area, you can ignore this card's"
+    },
+    {
+      "timestamp": "0:14",
+      "start_seconds": 14,
+      "text": "color requirements. Main effect will be"
+    },
+    {
+      "timestamp": "0:15",
+      "start_seconds": 15,
+      "text": "the top two cards of your deck. Add one"
+    },
+    {
+      "timestamp": "0:17",
+      "start_seconds": 17,
+      "text": "black or red card among them to the hand"
+    },
+    {
+      "timestamp": "0:19",
+      "start_seconds": 19,
+      "text": "which will be the BT19 ground. The turn"
+    },
+    {
+      "timestamp": "0:21",
+      "start_seconds": 21,
+      "text": "the rest of the bottom of the deck then"
+    },
+    {
+      "timestamp": "0:22",
+      "start_seconds": 22,
+      "text": "place this card in the battle area. Turn"
+    },
+    {
+      "timestamp": "0:24",
+      "start_seconds": 24,
+      "text": "pass over to all force Vimmon with two"
+    },
+    {
+      "timestamp": "0:26",
+      "start_seconds": 26,
+      "text": "memory. Draw for turn. DJ Hatch, EX13"
+    },
+    {
+      "timestamp": "0:29",
+      "start_seconds": 29,
+      "text": "Demi Vmon, which will dig evolve into"
+    },
+    {
+      "timestamp": "0:31",
+      "start_seconds": 31,
+      "text": "the EX13 Vmon for zero costs. Then the"
+    },
+    {
+      "timestamp": "0:33",
+      "start_seconds": 33,
+      "text": "option card parkour training will be"
+    },
+    {
+      "timestamp": "0:35",
+      "start_seconds": 35,
+      "text": "used for two memory cards. While you"
+    },
+    {
+      "timestamp": "0:36",
+      "start_seconds": 36,
+      "text": "don't have parkour training in the"
+    },
+    {
+      "timestamp": "0:37",
+      "start_seconds": 37,
+      "text": "battle area, you can ignore this card's"
+    },
+    {
+      "timestamp": "0:38",
+      "start_seconds": 38,
+      "text": "color requirements. This main effect"
+    },
+    {
+      "timestamp": "0:40",
+      "start_seconds": 40,
+      "text": "will be the top two cards of your deck."
+    },
+    {
+      "timestamp": "0:41",
+      "start_seconds": 41,
+      "text": "Add one blue or green card among them to"
+    },
+    {
+      "timestamp": "0:43",
+      "start_seconds": 43,
+      "text": "the hand, which will be mental training."
+    },
+    {
+      "timestamp": "0:44",
+      "start_seconds": 44,
+      "text": "Return the rest to the bottom of the"
+    },
+    {
+      "timestamp": "0:45",
+      "start_seconds": 45,
+      "text": "deck, then place this card in the battle"
+    },
+    {
+      "timestamp": "0:47",
+      "start_seconds": 47,
+      "text": "area. And if two memory cost, the option"
+    },
+    {
+      "timestamp": "0:49",
+      "start_seconds": 49,
+      "text": "card mental training will be used. For"
+    },
+    {
+      "timestamp": "0:50",
+      "start_seconds": 50,
+      "text": "his main effect, reveal the top two"
+    },
+    {
+      "timestamp": "0:51",
+      "start_seconds": 51,
+      "text": "cards of your deck. Add one blue card"
+    },
+    {
+      "timestamp": "0:53",
+      "start_seconds": 53,
+      "text": "among them to your hand, which will be"
+    },
+    {
+      "timestamp": "0:54",
+      "start_seconds": 54,
+      "text": "the promo vis. Place the rest of the"
+    },
+    {
+      "timestamp": "0:56",
+      "start_seconds": 56,
+      "text": "bottom of the deck in any order. Then"
+    },
+    {
+      "timestamp": "0:57",
+      "start_seconds": 57,
+      "text": "place this card in the battle area and"
+    },
+    {
+      "timestamp": "0:59",
+      "start_seconds": 59,
+      "text": "the turn will pass over back to"
+    },
+    {
+      "timestamp": "1:00",
+      "start_seconds": 60,
+      "text": "Gallopman with two memory. Draw for"
+    },
+    {
+      "timestamp": "1:02",
+      "start_seconds": 62,
+      "text": "turn. Gilman will move from the breeding"
+    },
+    {
+      "timestamp": "1:03",
+      "start_seconds": 63,
+      "text": "area to the battle area with his one"
+    },
+    {
+      "timestamp": "1:05",
+      "start_seconds": 65,
+      "text": "moving effect by trashing one card from"
+    },
+    {
+      "timestamp": "1:06",
+      "start_seconds": 66,
+      "text": "your hand. It may return one Digimon"
+    },
+    {
+      "timestamp": "1:08",
+      "start_seconds": 68,
+      "text": "card with Gallamon in his name or one"
+    },
+    {
+      "timestamp": "1:09",
+      "start_seconds": 69,
+      "text": "red tamer card from your trash to the"
+    },
+    {
+      "timestamp": "1:11",
+      "start_seconds": 71,
+      "text": "hand, but it'll choose not to do so"
+    },
+    {
+      "timestamp": "1:12",
+      "start_seconds": 72,
+      "text": "because there are no targets. The option"
+    },
+    {
+      "timestamp": "1:14",
+      "start_seconds": 74,
+      "text": "card punching training will use his main"
+    },
+    {
+      "timestamp": "1:15",
+      "start_seconds": 75,
+      "text": "and delay effect trash itself from the"
+    },
+    {
+      "timestamp": "1:17",
+      "start_seconds": 77,
+      "text": "battle area where one of your Digimon"
+    },
+    {
+      "timestamp": "1:18",
+      "start_seconds": 78,
+      "text": "may dig evolve into a black or red"
+    },
+    {
+      "timestamp": "1:20",
+      "start_seconds": 80,
+      "text": "Digimon card in a hand with the cost"
+    },
+    {
+      "timestamp": "1:21",
+      "start_seconds": 81,
+      "text": "reduced by two as Gilman will dig into"
+    },
+    {
+      "timestamp": "1:23",
+      "start_seconds": 83,
+      "text": "the BC19 ground for free. Ground one's"
+    },
+    {
+      "timestamp": "1:25",
+      "start_seconds": 85,
+      "text": "when diging effect. If you have one or"
+    },
+    {
+      "timestamp": "1:27",
+      "start_seconds": 87,
+      "text": "fewer tamers, you may play one takado"
+    },
+    {
+      "timestamp": "1:28",
+      "start_seconds": 88,
+      "text": "from your hand without paying the cost"
+    },
+    {
+      "timestamp": "1:30",
+      "start_seconds": 90,
+      "text": "and the EX13 Takado will be played."
+    },
+    {
+      "timestamp": "1:31",
+      "start_seconds": 91,
+      "text": "Gigimon's inherent effect activates."
+    },
+    {
+      "timestamp": "1:33",
+      "start_seconds": 93,
+      "text": "Your turn once returned when any of your"
+    },
+    {
+      "timestamp": "1:34",
+      "start_seconds": 94,
+      "text": "red tamers are played. This Digimon may"
+    },
+    {
+      "timestamp": "1:36",
+      "start_seconds": 96,
+      "text": "dig evolve into a Digimon card with"
+    },
+    {
+      "timestamp": "1:37",
+      "start_seconds": 97,
+      "text": "Grmon or Galamon in its name in the hand"
+    },
+    {
+      "timestamp": "1:39",
+      "start_seconds": 99,
+      "text": "with the cost reduced by two where Grmon"
+    },
+    {
+      "timestamp": "1:41",
+      "start_seconds": 101,
+      "text": "will digolve into the EX13 War Grammon"
+    },
+    {
+      "timestamp": "1:43",
+      "start_seconds": 103,
+      "text": "for one memory cost. War Grmons when"
+    },
+    {
+      "timestamp": "1:45",
+      "start_seconds": 105,
+      "text": "digolving effect delete one of the"
+    },
+    {
+      "timestamp": "1:46",
+      "start_seconds": 106,
+      "text": "opponent's Digimon with 5,000 DP or"
+    },
+    {
+      "timestamp": "1:48",
+      "start_seconds": 108,
+      "text": "less, but there no targets. If this"
+    },
+    {
+      "timestamp": "1:50",
+      "start_seconds": 110,
+      "text": "effect didn't delete, this Digimon gains"
+    },
+    {
+      "timestamp": "1:51",
+      "start_seconds": 111,
+      "text": "piercing an extra 3,000 DP for the turn."
+    },
+    {
+      "timestamp": "1:53",
+      "start_seconds": 113,
+      "text": "War ground will attack into security."
+    },
+    {
+      "timestamp": "1:55",
+      "start_seconds": 115,
+      "text": "when attacking effect being exactly the"
+    },
+    {
+      "timestamp": "1:57",
+      "start_seconds": 117,
+      "text": "same with his when dig evolving effect."
+    },
+    {
+      "timestamp": "1:58",
+      "start_seconds": 118,
+      "text": "They will gain another extra 3,000 DP"
+    },
+    {
+      "timestamp": "2:00",
+      "start_seconds": 120,
+      "text": "during this turn reaching up to a total"
+    },
+    {
+      "timestamp": "2:02",
+      "start_seconds": 122,
+      "text": "of 14k DP check and arrow vigor's end of"
+    },
+    {
+      "timestamp": "2:05",
+      "start_seconds": 125,
+      "text": "attack effect activates. You may play"
+    },
+    {
+      "timestamp": "2:06",
+      "start_seconds": 126,
+      "text": "one tamer card with Gilman as text from"
+    },
+    {
+      "timestamp": "2:08",
+      "start_seconds": 128,
+      "text": "your hand or trash without paying the"
+    },
+    {
+      "timestamp": "2:09",
+      "start_seconds": 129,
+      "text": "cops and the BT7 Takado will be played."
+    },
+    {
+      "timestamp": "2:11",
+      "start_seconds": 131,
+      "text": "And now it is time for the first war"
+    },
+    {
+      "timestamp": "2:13",
+      "start_seconds": 133,
+      "text": "knight to make its appearance where the"
+    },
+    {
+      "timestamp": "2:14",
+      "start_seconds": 134,
+      "text": "crimson knight and sky conquering armor"
+    },
+    {
+      "timestamp": "2:16",
+      "start_seconds": 136,
+      "text": "lancer will gather its chrome digo"
+    },
+    {
+      "timestamp": "2:17",
+      "start_seconds": 137,
+      "text": "together as war groundman dig balls into"
+    },
+    {
+      "timestamp": "2:19",
+      "start_seconds": 139,
+      "text": "EX13 gallon for three memory cards."
+    },
+    {
+      "timestamp": "2:21",
+      "start_seconds": 141,
+      "text": "Galamon's one dig evolving effect."
+    },
+    {
+      "timestamp": "2:23",
+      "start_seconds": 143,
+      "text": "Delete one of the opponents 12,000 DP or"
+    },
+    {
+      "timestamp": "2:25",
+      "start_seconds": 145,
+      "text": "higher Digimon. The effect didn't delete"
+    },
+    {
+      "timestamp": "2:26",
+      "start_seconds": 146,
+      "text": "trash their top security card."
+    },
+    {
+      "timestamp": "2:29",
+      "start_seconds": 149,
+      "text": "Gage pass over to the other side."
+    },
+    {
+      "timestamp": "2:31",
+      "start_seconds": 151,
+      "text": "Galamon will end the turn and all the DP"
+    },
+    {
+      "timestamp": "2:32",
+      "start_seconds": 152,
+      "text": "buffs will wear off. Passing to all for"
+    },
+    {
+      "timestamp": "2:34",
+      "start_seconds": 154,
+      "text": "Digimon with two memory. Offer turn."
+    },
+    {
+      "timestamp": "2:36",
+      "start_seconds": 156,
+      "text": "Beon will move from the breeding area to"
+    },
+    {
+      "timestamp": "2:38",
+      "start_seconds": 158,
+      "text": "the battle area. With one moving effect"
+    },
+    {
+      "timestamp": "2:40",
+      "start_seconds": 160,
+      "text": "will be the top three cards of your"
+    },
+    {
+      "timestamp": "2:41",
+      "start_seconds": 161,
+      "text": "deck. Add one card with Vigimon is text"
+    },
+    {
+      "timestamp": "2:43",
+      "start_seconds": 163,
+      "text": "with the Royal Nit trait among them to"
+    },
+    {
+      "timestamp": "2:45",
+      "start_seconds": 165,
+      "text": "the hand where the BT22 Reena will be"
+    },
+    {
+      "timestamp": "2:46",
+      "start_seconds": 166,
+      "text": "added and the rest will return back to"
+    },
+    {
+      "timestamp": "2:48",
+      "start_seconds": 168,
+      "text": "the bottom of the deck. parkour training"
+    },
+    {
+      "timestamp": "2:49",
+      "start_seconds": 169,
+      "text": "in the battle area will use his main and"
+    },
+    {
+      "timestamp": "2:51",
+      "start_seconds": 171,
+      "text": "delay effect which will trash itself so"
+    },
+    {
+      "timestamp": "2:52",
+      "start_seconds": 172,
+      "text": "that one of your Digimon may dig evolve"
+    },
+    {
+      "timestamp": "2:54",
+      "start_seconds": 174,
+      "text": "into a blue or green Digimon card in the"
+    },
+    {
+      "timestamp": "2:56",
+      "start_seconds": 176,
+      "text": "hand with the cost reduced by two where"
+    },
+    {
+      "timestamp": "2:57",
+      "start_seconds": 177,
+      "text": "Vmon will dig evolve into the EX13"
+    },
+    {
+      "timestamp": "2:59",
+      "start_seconds": 179,
+      "text": "Vigimon for free. Vigon will attack into"
+    },
+    {
+      "timestamp": "3:01",
+      "start_seconds": 181,
+      "text": "security with his when attacking effect."
+    },
+    {
+      "timestamp": "3:02",
+      "start_seconds": 182,
+      "text": "Once returned, you may play one tamer"
+    },
+    {
+      "timestamp": "3:04",
+      "start_seconds": 184,
+      "text": "card with Vigimon in his text from your"
+    },
+    {
+      "timestamp": "3:05",
+      "start_seconds": 185,
+      "text": "hand with the cost reduced by two and"
+    },
+    {
+      "timestamp": "3:07",
+      "start_seconds": 187,
+      "text": "the EX13 Reena will be played for one"
+    },
+    {
+      "timestamp": "3:08",
+      "start_seconds": 188,
+      "text": "memory cost. Demi Vimmon's inherent"
+    },
+    {
+      "timestamp": "3:10",
+      "start_seconds": 190,
+      "text": "effect activates. Your turn once"
+    },
+    {
+      "timestamp": "3:12",
+      "start_seconds": 192,
+      "text": "returned when any of your blue tamers"
+    },
+    {
+      "timestamp": "3:13",
+      "start_seconds": 193,
+      "text": "are played. This Digimon with Vigon in"
+    },
+    {
+      "timestamp": "3:15",
+      "start_seconds": 195,
+      "text": "his name may unsuspend. Next, Reena's"
+    },
+    {
+      "timestamp": "3:17",
+      "start_seconds": 197,
+      "text": "effect activates. Your turn. When any of"
+    },
+    {
+      "timestamp": "3:18",
+      "start_seconds": 198,
+      "text": "your Digimon unsuspend by suspending"
+    },
+    {
+      "timestamp": "3:20",
+      "start_seconds": 200,
+      "text": "this tamer, draw one. After one of your"
+    },
+    {
+      "timestamp": "3:22",
+      "start_seconds": 202,
+      "text": "Digimon may dig evolve into Digimon card"
+    },
+    {
+      "timestamp": "3:24",
+      "start_seconds": 204,
+      "text": "with Vigimon in his name from the hand,"
+    },
+    {
+      "timestamp": "3:25",
+      "start_seconds": 205,
+      "text": "the cost reduced by two or Vigimon will"
+    },
+    {
+      "timestamp": "3:27",
+      "start_seconds": 207,
+      "text": "dig evolve into the EX13 Arrow Vigimon"
+    },
+    {
+      "timestamp": "3:29",
+      "start_seconds": 209,
+      "text": "for one memory cost. Arrow Vigimon's one"
+    },
+    {
+      "timestamp": "3:31",
+      "start_seconds": 211,
+      "text": "diging effect activates. You may play"
+    },
+    {
+      "timestamp": "3:32",
+      "start_seconds": 212,
+      "text": "one tamer card with Vigon in his text"
+    },
+    {
+      "timestamp": "3:34",
+      "start_seconds": 214,
+      "text": "from your hand without paying the cost."
+    },
+    {
+      "timestamp": "3:35",
+      "start_seconds": 215,
+      "text": "A BT1 arena will be played with play"
+    },
+    {
+      "timestamp": "3:38",
+      "start_seconds": 218,
+      "text": "effect until the enemy opponent's turn."
+    },
+    {
+      "timestamp": "3:39",
+      "start_seconds": 219,
+      "text": "One of your Digimon with Vigon or"
+    },
+    {
+      "timestamp": "3:41",
+      "start_seconds": 221,
+      "text": "Vigimon in his name game blocker and"
+    },
+    {
+      "timestamp": "3:42",
+      "start_seconds": 222,
+      "text": "evade. Arrow vig's alter effect"
+    },
+    {
+      "timestamp": "3:44",
+      "start_seconds": 224,
+      "text": "activates once per turn. When any of"
+    },
+    {
+      "timestamp": "3:45",
+      "start_seconds": 225,
+      "text": "your tamers are played, one of your"
+    },
+    {
+      "timestamp": "3:46",
+      "start_seconds": 226,
+      "text": "opponent's Digimon or tamers can suspend"
+    },
+    {
+      "timestamp": "3:48",
+      "start_seconds": 228,
+      "text": "until their turn ends and the target"
+    },
+    {
+      "timestamp": "3:49",
+      "start_seconds": 229,
+      "text": "will be Gammon. With all pending effects"
+    },
+    {
+      "timestamp": "3:51",
+      "start_seconds": 231,
+      "text": "activated and resolved, we now proceed"
+    },
+    {
+      "timestamp": "3:53",
+      "start_seconds": 233,
+      "text": "towards the counter timing where Gammon"
+    },
+    {
+      "timestamp": "3:55",
+      "start_seconds": 235,
+      "text": "has a counter effect once per turn."
+    },
+    {
+      "timestamp": "3:56",
+      "start_seconds": 236,
+      "text": "Delete where your opponent's 12,000 DP"
+    },
+    {
+      "timestamp": "3:58",
+      "start_seconds": 238,
+      "text": "or higher Digimon, but there no targets."
+    },
+    {
+      "timestamp": "3:59",
+      "start_seconds": 239,
+      "text": "If this effect didn't delete, trash"
+    },
+    {
+      "timestamp": "4:01",
+      "start_seconds": 241,
+      "text": "their top security card. And now for"
+    },
+    {
+      "timestamp": "4:03",
+      "start_seconds": 243,
+      "text": "Arrow Vigimon's attack into security."
+    },
+    {
+      "timestamp": "4:05",
+      "start_seconds": 245,
+      "text": "Security check. Arrow Vigimon will"
+    },
+    {
+      "timestamp": "4:07",
+      "start_seconds": 247,
+      "text": "attack into security again. Security"
+    },
+    {
+      "timestamp": "4:10",
+      "start_seconds": 250,
+      "text": "check. Omnimon X antibody which has"
+    },
+    {
+      "timestamp": "4:12",
+      "start_seconds": 252,
+      "text": "higher DB than arrow vigimon but thanks"
+    },
+    {
+      "timestamp": "4:14",
+      "start_seconds": 254,
+      "text": "to vigimon's inher effect of jamming"
+    },
+    {
+      "timestamp": "4:16",
+      "start_seconds": 256,
+      "text": "where this Digimon can't be deleted in"
+    },
+    {
+      "timestamp": "4:17",
+      "start_seconds": 257,
+      "text": "battles against security Digimon as"
+    },
+    {
+      "timestamp": "4:19",
+      "start_seconds": 259,
+      "text": "arrow vigimon will survive mental"
+    },
+    {
+      "timestamp": "4:21",
+      "start_seconds": 261,
+      "text": "training will use his main and delay"
+    },
+    {
+      "timestamp": "4:22",
+      "start_seconds": 262,
+      "text": "effect to trash itself from the battle"
+    },
+    {
+      "timestamp": "4:23",
+      "start_seconds": 263,
+      "text": "area where one of your Digimon will dig"
+    },
+    {
+      "timestamp": "4:25",
+      "start_seconds": 265,
+      "text": "evolve into the blue Digimon card in the"
+    },
+    {
+      "timestamp": "4:26",
+      "start_seconds": 266,
+      "text": "hand with the cost reduced by two where"
+    },
+    {
+      "timestamp": "4:28",
+      "start_seconds": 268,
+      "text": "the warrior Digimon that possesses the"
+    },
+    {
+      "timestamp": "4:30",
+      "start_seconds": 270,
+      "text": "swiftest speed among all royal knights"
+    },
+    {
+      "timestamp": "4:31",
+      "start_seconds": 271,
+      "text": "will arrive as arrow vigimon will dig"
+    },
+    {
+      "timestamp": "4:33",
+      "start_seconds": 273,
+      "text": "evolve into all force Digimon for one"
+    },
+    {
+      "timestamp": "4:35",
+      "start_seconds": 275,
+      "text": "memory cost all force Digimon's when"
+    },
+    {
+      "timestamp": "4:37",
+      "start_seconds": 277,
+      "text": "digivolving effect activates one of your"
+    },
+    {
+      "timestamp": "4:38",
+      "start_seconds": 278,
+      "text": "Digimon may change orientation as it"
+    },
+    {
+      "timestamp": "4:40",
+      "start_seconds": 280,
+      "text": "will unsuspend itself. The BT11 Reena's"
+    },
+    {
+      "timestamp": "4:42",
+      "start_seconds": 282,
+      "text": "your turn effect activates. Once"
+    },
+    {
+      "timestamp": "4:44",
+      "start_seconds": 284,
+      "text": "returned, when one of your blue Digimon"
+    },
+    {
+      "timestamp": "4:45",
+      "start_seconds": 285,
+      "text": "becomes unsuspended, gain one memory."
+    },
+    {
+      "timestamp": "4:47",
+      "start_seconds": 287,
+      "text": "Now, for all four Digimon's second wind"
+    },
+    {
+      "timestamp": "4:49",
+      "start_seconds": 289,
+      "text": "diging effect, you may return all your"
+    },
+    {
+      "timestamp": "4:50",
+      "start_seconds": 290,
+      "text": "opponent's Digimon with the fierce"
+    },
+    {
+      "timestamp": "4:51",
+      "start_seconds": 291,
+      "text": "digition cards to the bottom of the"
+    },
+    {
+      "timestamp": "4:53",
+      "start_seconds": 293,
+      "text": "deck. The gallanton will be sent back to"
+    },
+    {
+      "timestamp": "4:54",
+      "start_seconds": 294,
+      "text": "the bottom. The gallon has an all turns"
+    },
+    {
+      "timestamp": "4:56",
+      "start_seconds": 296,
+      "text": "effect. Once per turn, when the Digimon"
+    },
+    {
+      "timestamp": "4:58",
+      "start_seconds": 298,
+      "text": "will leave the battle area other than by"
+    },
+    {
+      "timestamp": "4:59",
+      "start_seconds": 299,
+      "text": "your effects by deleting one of your"
+    },
+    {
+      "timestamp": "5:00",
+      "start_seconds": 300,
+      "text": "opponent's 9,000 DP or lower Digimon, it"
+    },
+    {
+      "timestamp": "5:02",
+      "start_seconds": 302,
+      "text": "doesn't leave. Thanks to inherit effect"
+    },
+    {
+      "timestamp": "5:04",
+      "start_seconds": 304,
+      "text": "of Grmon, Al turns while you have zero"
+    },
+    {
+      "timestamp": "5:05",
+      "start_seconds": 305,
+      "text": "or less memory. Add 2,000 to this"
+    },
+    {
+      "timestamp": "5:06",
+      "start_seconds": 306,
+      "text": "Digimon's DP deletion effects maximums."
+    },
+    {
+      "timestamp": "5:08",
+      "start_seconds": 308,
+      "text": "As well as Gmon's inherit effect of Al"
+    },
+    {
+      "timestamp": "5:10",
+      "start_seconds": 310,
+      "text": "turns to add another extra 2,000 DP to"
+    },
+    {
+      "timestamp": "5:12",
+      "start_seconds": 312,
+      "text": "deletion effects, meaning Gammon can"
+    },
+    {
+      "timestamp": "5:14",
+      "start_seconds": 314,
+      "text": "delete a Digimon that has 13k or less,"
+    },
+    {
+      "timestamp": "5:16",
+      "start_seconds": 316,
+      "text": "which will be O force that only has 12k"
+    },
+    {
+      "timestamp": "5:18",
+      "start_seconds": 318,
+      "text": "BP. However, O force Digimon also has a"
+    },
+    {
+      "timestamp": "5:20",
+      "start_seconds": 320,
+      "text": "keyword evade. When this Digimon will be"
+    },
+    {
+      "timestamp": "5:21",
+      "start_seconds": 321,
+      "text": "deleted by suspending it, it isn't"
+    },
+    {
+      "timestamp": "5:23",
+      "start_seconds": 323,
+      "text": "deleted because Gamon wasn't able to"
+    },
+    {
+      "timestamp": "5:24",
+      "start_seconds": 324,
+      "text": "delete a Digimon from its own effect."
+    },
+    {
+      "timestamp": "5:26",
+      "start_seconds": 326,
+      "text": "It'll end up returning to the bottom of"
+    },
+    {
+      "timestamp": "5:27",
+      "start_seconds": 327,
+      "text": "the deck. Arrow Vigimon's inherited"
+    },
+    {
+      "timestamp": "5:28",
+      "start_seconds": 328,
+      "text": "effect now activates. All turns once"
+    },
+    {
+      "timestamp": "5:30",
+      "start_seconds": 330,
+      "text": "turn when this Digimon with Vigimon in"
+    },
+    {
+      "timestamp": "5:31",
+      "start_seconds": 331,
+      "text": "his name suspends it may unsuspend. The"
+    },
+    {
+      "timestamp": "5:33",
+      "start_seconds": 333,
+      "text": "BT11 Vmon will be played for three"
+    },
+    {
+      "timestamp": "5:35",
+      "start_seconds": 335,
+      "text": "memory cards with his onplay effect."
+    },
+    {
+      "timestamp": "5:36",
+      "start_seconds": 336,
+      "text": "Reveal the top three cards of your deck."
+    },
+    {
+      "timestamp": "5:38",
+      "start_seconds": 338,
+      "text": "Add one Digimon card with Vimon in his"
+    },
+    {
+      "timestamp": "5:39",
+      "start_seconds": 339,
+      "text": "name and one blue tamer card among them"
+    },
+    {
+      "timestamp": "5:41",
+      "start_seconds": 341,
+      "text": "to your hand where the BT22 Vimon will"
+    },
+    {
+      "timestamp": "5:43",
+      "start_seconds": 343,
+      "text": "be added and place the rest back to the"
+    },
+    {
+      "timestamp": "5:44",
+      "start_seconds": 344,
+      "text": "bottom of the deck. Your pass back over"
+    },
+    {
+      "timestamp": "5:47",
+      "start_seconds": 347,
+      "text": "to Gallant three memory draw a hatch"
+    },
+    {
+      "timestamp": "5:50",
+      "start_seconds": 350,
+      "text": "Gigimon. EX13 Takado star main phase"
+    },
+    {
+      "timestamp": "5:52",
+      "start_seconds": 352,
+      "text": "effect activates by returning this"
+    },
+    {
+      "timestamp": "5:54",
+      "start_seconds": 354,
+      "text": "tamers to the bottom deck. You may play"
+    },
+    {
+      "timestamp": "5:55",
+      "start_seconds": 355,
+      "text": "one takado from your hand without paying"
+    },
+    {
+      "timestamp": "5:56",
+      "start_seconds": 356,
+      "text": "the cost, but the same tacado will be"
+    },
+    {
+      "timestamp": "5:58",
+      "start_seconds": 358,
+      "text": "played back after. If you don't have a"
+    },
+    {
+      "timestamp": "6:00",
+      "start_seconds": 360,
+      "text": "Digimon, you may play one Gilmon from"
+    },
+    {
+      "timestamp": "6:01",
+      "start_seconds": 361,
+      "text": "your trash without paying the cost. For"
+    },
+    {
+      "timestamp": "6:02",
+      "start_seconds": 362,
+      "text": "the EX13 Gilmon will be played with his"
+    },
+    {
+      "timestamp": "6:04",
+      "start_seconds": 364,
+      "text": "onplay effect by trashing one card from"
+    },
+    {
+      "timestamp": "6:06",
+      "start_seconds": 366,
+      "text": "your hand, which will be the AD1 war"
+    },
+    {
+      "timestamp": "6:07",
+      "start_seconds": 367,
+      "text": "ground. You may return one Digimon card"
+    },
+    {
+      "timestamp": "6:09",
+      "start_seconds": 369,
+      "text": "with Galamon in his name or one red"
+    },
+    {
+      "timestamp": "6:11",
+      "start_seconds": 371,
+      "text": "tamer card from the trash back to the"
+    },
+    {
+      "timestamp": "6:12",
+      "start_seconds": 372,
+      "text": "hand. However, there are no targets."
+    },
+    {
+      "timestamp": "6:14",
+      "start_seconds": 374,
+      "text": "Then the PC 17 Sakado starter main phase"
+    },
+    {
+      "timestamp": "6:16",
+      "start_seconds": 376,
+      "text": "attack activates. If you have a Digimon"
+    },
+    {
+      "timestamp": "6:17",
+      "start_seconds": 377,
+      "text": "with Gilman, Grmon, or Galamon in his"
+    },
+    {
+      "timestamp": "6:19",
+      "start_seconds": 379,
+      "text": "name, gain one memory. Gigimon will"
+    },
+    {
+      "timestamp": "6:21",
+      "start_seconds": 381,
+      "text": "digolve into the X2 Gilman for zero"
+    },
+    {
+      "timestamp": "6:22",
+      "start_seconds": 382,
+      "text": "memory cost. Hemon in the breeding area"
+    },
+    {
+      "timestamp": "6:24",
+      "start_seconds": 384,
+      "text": "will then dig evvolve into the EX13"
+    },
+    {
+      "timestamp": "6:26",
+      "start_seconds": 386,
+      "text": "groundmon for two memory card which will"
+    },
+    {
+      "timestamp": "6:27",
+      "start_seconds": 387,
+      "text": "then dig evolve into the EX13 war"
+    },
+    {
+      "timestamp": "6:29",
+      "start_seconds": 389,
+      "text": "groundmon for three memory. The merry"
+    },
+    {
+      "timestamp": "6:30",
+      "start_seconds": 390,
+      "text": "gauge pass over to the other side. The"
+    },
+    {
+      "timestamp": "6:31",
+      "start_seconds": 391,
+      "text": "BC7 takado and your turn effect"
+    },
+    {
+      "timestamp": "6:33",
+      "start_seconds": 393,
+      "text": "activates by placing this tamer and one"
+    },
+    {
+      "timestamp": "6:35",
+      "start_seconds": 395,
+      "text": "ground and one war groundmon from your"
+    },
+    {
+      "timestamp": "6:37",
+      "start_seconds": 397,
+      "text": "trash as the bottom digion cards of one"
+    },
+    {
+      "timestamp": "6:38",
+      "start_seconds": 398,
+      "text": "of your Gilmon. That Digimon will dig"
+    },
+    {
+      "timestamp": "6:40",
+      "start_seconds": 400,
+      "text": "evolve its Gammon in the hand ignoring"
+    },
+    {
+      "timestamp": "6:41",
+      "start_seconds": 401,
+      "text": "his digution requirements and without"
+    },
+    {
+      "timestamp": "6:43",
+      "start_seconds": 403,
+      "text": "paying the costs for the BT19 groundmon"
+    },
+    {
+      "timestamp": "6:45",
+      "start_seconds": 405,
+      "text": "and 81 war ground will be placed"
+    },
+    {
+      "timestamp": "6:46",
+      "start_seconds": 406,
+      "text": "underneath the EX13 Gilmon along with"
+    },
+    {
+      "timestamp": "6:48",
+      "start_seconds": 408,
+      "text": "Tcado. It's time to bio merge as the 81"
+    },
+    {
+      "timestamp": "6:51",
+      "start_seconds": 411,
+      "text": "Gallant makes his appearance. Gammon's"
+    },
+    {
+      "timestamp": "6:53",
+      "start_seconds": 413,
+      "text": "one dig evolving effect delete up to"
+    },
+    {
+      "timestamp": "6:55",
+      "start_seconds": 415,
+      "text": "10,000 DP total worth of your opponent's"
+    },
+    {
+      "timestamp": "6:56",
+      "start_seconds": 416,
+      "text": "Digimon. Once again, thanks to the"
+    },
+    {
+      "timestamp": "6:57",
+      "start_seconds": 417,
+      "text": "inherent effects of both Gilman and"
+    },
+    {
+      "timestamp": "6:59",
+      "start_seconds": 419,
+      "text": "Grmon, it will increase the deletion"
+    },
+    {
+      "timestamp": "7:00",
+      "start_seconds": 420,
+      "text": "threshold all the way to 14,000 DP,"
+    },
+    {
+      "timestamp": "7:02",
+      "start_seconds": 422,
+      "text": "which will delete both all force Vigon"
+    },
+    {
+      "timestamp": "7:04",
+      "start_seconds": 424,
+      "text": "and Vimmon. All force Vigimon will use"
+    },
+    {
+      "timestamp": "7:05",
+      "start_seconds": 425,
+      "text": "the keyword evade to suspend itself and"
+    },
+    {
+      "timestamp": "7:07",
+      "start_seconds": 427,
+      "text": "protect it from being deleted. Finishing"
+    },
+    {
+      "timestamp": "7:09",
+      "start_seconds": 429,
+      "text": "off Gallamon's first when digolving"
+    },
+    {
+      "timestamp": "7:10",
+      "start_seconds": 430,
+      "text": "effect, then the Digimon may attack,"
+    },
+    {
+      "timestamp": "7:12",
+      "start_seconds": 432,
+      "text": "which will be the security. And thanks"
+    },
+    {
+      "timestamp": "7:14",
+      "start_seconds": 434,
+      "text": "to having the keyword rush, Galamon is"
+    },
+    {
+      "timestamp": "7:15",
+      "start_seconds": 435,
+      "text": "able to attack the same turn it was"
+    },
+    {
+      "timestamp": "7:16",
+      "start_seconds": 436,
+      "text": "played. Gammon's when attacking effect"
+    },
+    {
+      "timestamp": "7:18",
+      "start_seconds": 438,
+      "text": "then activates. Once per turn, delete"
+    },
+    {
+      "timestamp": "7:20",
+      "start_seconds": 440,
+      "text": "one of your opponent's lowest DP"
+    },
+    {
+      "timestamp": "7:21",
+      "start_seconds": 441,
+      "text": "Digimon, which will be Oforce Vigimon."
+    },
+    {
+      "timestamp": "7:24",
+      "start_seconds": 444,
+      "text": "Galamon also has a your turn effect."
+    },
+    {
+      "timestamp": "7:26",
+      "start_seconds": 446,
+      "text": "Your opponent's effects don't affect"
+    },
+    {
+      "timestamp": "7:27",
+      "start_seconds": 447,
+      "text": "this Digimon with Takado and his digion"
+    },
+    {
+      "timestamp": "7:29",
+      "start_seconds": 449,
+      "text": "cards and gets extra 5,000 DP. Security"
+    },
+    {
+      "timestamp": "7:31",
+      "start_seconds": 451,
+      "text": "check promo vig pending effects and"
+    },
+    {
+      "timestamp": "7:34",
+      "start_seconds": 454,
+      "text": "battle is resolved. The turn will now"
+    },
+    {
+      "timestamp": "7:35",
+      "start_seconds": 455,
+      "text": "end passing over back to all force"
+    },
+    {
+      "timestamp": "7:37",
+      "start_seconds": 457,
+      "text": "Vigimon with only one memory and suspend"
+    },
+    {
+      "timestamp": "7:39",
+      "start_seconds": 459,
+      "text": "and draw off a turn. Dig catch demi"
+    },
+    {
+      "timestamp": "7:41",
+      "start_seconds": 461,
+      "text": "Vimmon which will dig into the BT11"
+    },
+    {
+      "timestamp": "7:43",
+      "start_seconds": 463,
+      "text": "Vimmon for zero memory costs. The EX13"
+    },
+    {
+      "timestamp": "7:46",
+      "start_seconds": 466,
+      "text": "all force Vigimon will be played with"
+    },
+    {
+      "timestamp": "7:47",
+      "start_seconds": 467,
+      "text": "assembly minus 5 that requires a level"
+    },
+    {
+      "timestamp": "7:49",
+      "start_seconds": 469,
+      "text": "five, four, and three all with Vimmon or"
+    },
+    {
+      "timestamp": "7:51",
+      "start_seconds": 471,
+      "text": "Vigimon in name. While the EX13 arrow"
+    },
+    {
+      "timestamp": "7:54",
+      "start_seconds": 474,
+      "text": "Vigimon, promo Vigimon, MPT1 Vmon will"
+    },
+    {
+      "timestamp": "7:56",
+      "start_seconds": 476,
+      "text": "be placed underneath it as the fastest"
+    },
+    {
+      "timestamp": "7:58",
+      "start_seconds": 478,
+      "text": "roaring knight with the blue digord"
+    },
+    {
+      "timestamp": "7:59",
+      "start_seconds": 479,
+      "text": "returns once again for seven memory"
+    },
+    {
+      "timestamp": "8:01",
+      "start_seconds": 481,
+      "text": "cards. All force Vigimon will use it"
+    },
+    {
+      "timestamp": "8:02",
+      "start_seconds": 482,
+      "text": "second onplay effect first to return all"
+    },
+    {
+      "timestamp": "8:04",
+      "start_seconds": 484,
+      "text": "opponent's Digimon with the fewest"
+    },
+    {
+      "timestamp": "8:05",
+      "start_seconds": 485,
+      "text": "digition cards to the bottom of the"
+    },
+    {
+      "timestamp": "8:07",
+      "start_seconds": 487,
+      "text": "deck, which will be Gallanton. The 81"
+    },
+    {
+      "timestamp": "8:09",
+      "start_seconds": 489,
+      "text": "war grounds in her effect activates. All"
+    },
+    {
+      "timestamp": "8:11",
+      "start_seconds": 491,
+      "text": "turns. When this Digimon with Galamon in"
+    },
+    {
+      "timestamp": "8:12",
+      "start_seconds": 492,
+      "text": "his name will leave the battle area"
+    },
+    {
+      "timestamp": "8:13",
+      "start_seconds": 493,
+      "text": "other than by your effects, you may play"
+    },
+    {
+      "timestamp": "8:15",
+      "start_seconds": 495,
+      "text": "one of each Takado and Gilman from his"
+    },
+    {
+      "timestamp": "8:16",
+      "start_seconds": 496,
+      "text": "digital fusion cards without paying the"
+    },
+    {
+      "timestamp": "8:18",
+      "start_seconds": 498,
+      "text": "cost. But the BT7 Takado and the EX13"
+    },
+    {
+      "timestamp": "8:20",
+      "start_seconds": 500,
+      "text": "Gilman will be played. Gilman's onplay"
+    },
+    {
+      "timestamp": "8:22",
+      "start_seconds": 502,
+      "text": "effect will be the newest trigger, but"
+    },
+    {
+      "timestamp": "8:23",
+      "start_seconds": 503,
+      "text": "it will choose not to use this effect."
+    },
+    {
+      "timestamp": "8:25",
+      "start_seconds": 505,
+      "text": "All force Digimon's first onplay effect"
+    },
+    {
+      "timestamp": "8:26",
+      "start_seconds": 506,
+      "text": "will now activate. Once returned, one of"
+    },
+    {
+      "timestamp": "8:28",
+      "start_seconds": 508,
+      "text": "your Digimon may change orientation,"
+    },
+    {
+      "timestamp": "8:29",
+      "start_seconds": 509,
+      "text": "which will suspend itself. And then now"
+    },
+    {
+      "timestamp": "8:31",
+      "start_seconds": 511,
+      "text": "for Arrow Digimon's in her effect, which"
+    },
+    {
+      "timestamp": "8:32",
+      "start_seconds": 512,
+      "text": "will allow it to unsuspend. The promo"
+    },
+    {
+      "timestamp": "8:34",
+      "start_seconds": 514,
+      "text": "Digimon's in her effect then activate."
+    },
+    {
+      "timestamp": "8:35",
+      "start_seconds": 515,
+      "text": "Your turn. Once your turn, when this"
+    },
+    {
+      "timestamp": "8:37",
+      "start_seconds": 517,
+      "text": "Digimon becomes unsuspended, gain one"
+    },
+    {
+      "timestamp": "8:38",
+      "start_seconds": 518,
+      "text": "memory as well as the BT11 Reena's your"
+    },
+    {
+      "timestamp": "8:40",
+      "start_seconds": 520,
+      "text": "turn effect to also gain a memory. Next,"
+    },
+    {
+      "timestamp": "8:42",
+      "start_seconds": 522,
+      "text": "EX13 Reena's effect activates. Since all"
+    },
+    {
+      "timestamp": "8:44",
+      "start_seconds": 524,
+      "text": "force Digimon unsuspended by suspending"
+    },
+    {
+      "timestamp": "8:46",
+      "start_seconds": 526,
+      "text": "the tamer, draw one. After one of your"
+    },
+    {
+      "timestamp": "8:47",
+      "start_seconds": 527,
+      "text": "Digimon may dig evolve into a Digimon"
+    },
+    {
+      "timestamp": "8:49",
+      "start_seconds": 529,
+      "text": "card with Vigimon in his name in the"
+    },
+    {
+      "timestamp": "8:50",
+      "start_seconds": 530,
+      "text": "hand with the cost reduced by two, which"
+    },
+    {
+      "timestamp": "8:51",
+      "start_seconds": 531,
+      "text": "will choose not to do so. Now, back to"
+    },
+    {
+      "timestamp": "8:53",
+      "start_seconds": 533,
+      "text": "the BT11 Reena's alterance effect. When"
+    },
+    {
+      "timestamp": "8:55",
+      "start_seconds": 535,
+      "text": "one of your Digimon with Digimon in his"
+    },
+    {
+      "timestamp": "8:56",
+      "start_seconds": 536,
+      "text": "name becomes suspended, where all force"
+    },
+    {
+      "timestamp": "8:58",
+      "start_seconds": 538,
+      "text": "Vigimon uses onplay effect earlier to"
+    },
+    {
+      "timestamp": "9:00",
+      "start_seconds": 540,
+      "text": "suspend itself by suspending his tamer,"
+    },
+    {
+      "timestamp": "9:01",
+      "start_seconds": 541,
+      "text": "activate one of that Digimon's when"
+    },
+    {
+      "timestamp": "9:02",
+      "start_seconds": 542,
+      "text": "digolving effects. And because all four"
+    },
+    {
+      "timestamp": "9:04",
+      "start_seconds": 544,
+      "text": "Bimon's second wind dig evolving effect"
+    },
+    {
+      "timestamp": "9:06",
+      "start_seconds": 546,
+      "text": "is not once per turn, it will return"
+    },
+    {
+      "timestamp": "9:07",
+      "start_seconds": 547,
+      "text": "Gilman back to the bottom of the deck."
+    },
+    {
+      "timestamp": "9:09",
+      "start_seconds": 549,
+      "text": "Turn will pass over back to Gallant with"
+    },
+    {
+      "timestamp": "9:10",
+      "start_seconds": 550,
+      "text": "foreign memory. Drop turn or groundmon"
+    },
+    {
+      "timestamp": "9:12",
+      "start_seconds": 552,
+      "text": "will move from the breathing area to the"
+    },
+    {
+      "timestamp": "9:14",
+      "start_seconds": 554,
+      "text": "battle area. By 17 to Kyler main phase"
+    },
+    {
+      "timestamp": "9:17",
+      "start_seconds": 557,
+      "text": "effect will gain a memory since it has a"
+    },
+    {
+      "timestamp": "9:18",
+      "start_seconds": 558,
+      "text": "Digimon with groundmon in its name. Or"
+    },
+    {
+      "timestamp": "9:20",
+      "start_seconds": 560,
+      "text": "groundmon would dig evolve back into the"
+    },
+    {
+      "timestamp": "9:21",
+      "start_seconds": 561,
+      "text": "EX13 Gallant for three memory costs as"
+    },
+    {
+      "timestamp": "9:24",
+      "start_seconds": 564,
+      "text": "the crimson knight returns once again."
+    },
+    {
+      "timestamp": "9:25",
+      "start_seconds": 565,
+      "text": "Gallant's when digolving effect will"
+    },
+    {
+      "timestamp": "9:27",
+      "start_seconds": 567,
+      "text": "delete the opponent's Digimon with"
+    },
+    {
+      "timestamp": "9:28",
+      "start_seconds": 568,
+      "text": "12,000 DP or higher which will be all"
+    },
+    {
+      "timestamp": "9:30",
+      "start_seconds": 570,
+      "text": "force vigimon. But just like before, all"
+    },
+    {
+      "timestamp": "9:31",
+      "start_seconds": 571,
+      "text": "force V1 will use the keyword evade to"
+    },
+    {
+      "timestamp": "9:33",
+      "start_seconds": 573,
+      "text": "suspend itself to protect it from being"
+    },
+    {
+      "timestamp": "9:35",
+      "start_seconds": 575,
+      "text": "deleted. Because Gammon's effect didn't"
+    },
+    {
+      "timestamp": "9:37",
+      "start_seconds": 577,
+      "text": "delete, trash the opponent's top"
+    },
+    {
+      "timestamp": "9:38",
+      "start_seconds": 578,
+      "text": "security card. Arrow vision's inherent"
+    },
+    {
+      "timestamp": "9:41",
+      "start_seconds": 581,
+      "text": "and activates. All turns point once"
+    },
+    {
+      "timestamp": "9:42",
+      "start_seconds": 582,
+      "text": "returned because all force vigil was"
+    },
+    {
+      "timestamp": "9:44",
+      "start_seconds": 584,
+      "text": "suspended. It may unsuspend. At this"
+    },
+    {
+      "timestamp": "9:45",
+      "start_seconds": 585,
+      "text": "moment, both Roy are standing"
+    },
+    {
+      "timestamp": "9:46",
+      "start_seconds": 586,
+      "text": "headto-head against each other with the"
+    },
+    {
+      "timestamp": "9:48",
+      "start_seconds": 588,
+      "text": "exact same DP. As it is time for Galamon"
+    },
+    {
+      "timestamp": "9:50",
+      "start_seconds": 590,
+      "text": "to unleash his true power with its"
+    },
+    {
+      "timestamp": "9:52",
+      "start_seconds": 592,
+      "text": "antibody by combining the red digoid,"
+    },
+    {
+      "timestamp": "9:54",
+      "start_seconds": 594,
+      "text": "blue digoid, gold digoid, and chrome"
+    },
+    {
+      "timestamp": "9:56",
+      "start_seconds": 596,
+      "text": "digzoids together. Galamon will dig"
+    },
+    {
+      "timestamp": "9:58",
+      "start_seconds": 598,
+      "text": "evolve into the EXA Galamon X, a special"
+    },
+    {
+      "timestamp": "10:00",
+      "start_seconds": 600,
+      "text": "digivolve requirement for one memory"
+    },
+    {
+      "timestamp": "10:02",
+      "start_seconds": 602,
+      "text": "cost. Galamon X's first when digolving"
+    },
+    {
+      "timestamp": "10:04",
+      "start_seconds": 604,
+      "text": "effect activates. If Galamon or"
+    },
+    {
+      "timestamp": "10:05",
+      "start_seconds": 605,
+      "text": "Xantibody is in this Digimon's digion"
+    },
+    {
+      "timestamp": "10:07",
+      "start_seconds": 607,
+      "text": "cards, this Digimon gets extra 4,000 DP"
+    },
+    {
+      "timestamp": "10:09",
+      "start_seconds": 609,
+      "text": "and one of your opponent's Digimon gets"
+    },
+    {
+      "timestamp": "10:11",
+      "start_seconds": 611,
+      "text": "minus 4,000 DP until the end of their"
+    },
+    {
+      "timestamp": "10:12",
+      "start_seconds": 612,
+      "text": "turn where the target will be all force"
+    },
+    {
+      "timestamp": "10:14",
+      "start_seconds": 614,
+      "text": "Vigimon. But all force Vigimon has an"
+    },
+    {
+      "timestamp": "10:16",
+      "start_seconds": 616,
+      "text": "altern effect. Your opponent's effects"
+    },
+    {
+      "timestamp": "10:17",
+      "start_seconds": 617,
+      "text": "can't reduce this unsuspended Digimon"
+    },
+    {
+      "timestamp": "10:19",
+      "start_seconds": 619,
+      "text": "DP, return a stack cards to the hand or"
+    },
+    {
+      "timestamp": "10:21",
+      "start_seconds": 621,
+      "text": "deck or trash them. Meaning, as long as"
+    },
+    {
+      "timestamp": "10:23",
+      "start_seconds": 623,
+      "text": "it stays unsuspended, the DP reduction"
+    },
+    {
+      "timestamp": "10:25",
+      "start_seconds": 625,
+      "text": "won't be affected. However, as soon as"
+    },
+    {
+      "timestamp": "10:26",
+      "start_seconds": 626,
+      "text": "it suspends itself, the DP reduction"
+    },
+    {
+      "timestamp": "10:28",
+      "start_seconds": 628,
+      "text": "will be applied. Gamon exits second when"
+    },
+    {
+      "timestamp": "10:30",
+      "start_seconds": 630,
+      "text": "diging effect activates. Once returned,"
+    },
+    {
+      "timestamp": "10:32",
+      "start_seconds": 632,
+      "text": "delete one of your opponent's Digimon"
+    },
+    {
+      "timestamp": "10:33",
+      "start_seconds": 633,
+      "text": "with 10,000 DP or less. Thanks to the"
+    },
+    {
+      "timestamp": "10:35",
+      "start_seconds": 635,
+      "text": "EX13 ground's inherit effect, it can add"
+    },
+    {
+      "timestamp": "10:37",
+      "start_seconds": 637,
+      "text": "extra 2,000 to it maximum deletion"
+    },
+    {
+      "timestamp": "10:39",
+      "start_seconds": 639,
+      "text": "effect, meaning that it will attempt to"
+    },
+    {
+      "timestamp": "10:40",
+      "start_seconds": 640,
+      "text": "delete all force vig which has 12,000 DP"
+    },
+    {
+      "timestamp": "10:42",
+      "start_seconds": 642,
+      "text": "or less. But offers Digimon will use the"
+    },
+    {
+      "timestamp": "10:45",
+      "start_seconds": 645,
+      "text": "keyword evade to suspend itself to"
+    },
+    {
+      "timestamp": "10:46",
+      "start_seconds": 646,
+      "text": "protect it from being deleted. Back to"
+    },
+    {
+      "timestamp": "10:48",
+      "start_seconds": 648,
+      "text": "Gallamon X antibodies effect. If this"
+    },
+    {
+      "timestamp": "10:50",
+      "start_seconds": 650,
+      "text": "didn't delete, trash your opponent's top"
+    },
+    {
+      "timestamp": "10:51",
+      "start_seconds": 651,
+      "text": "security card and this Digimon"
+    },
+    {
+      "timestamp": "10:52",
+      "start_seconds": 652,
+      "text": "unsuspends, but there are no more"
+    },
+    {
+      "timestamp": "10:54",
+      "start_seconds": 654,
+      "text": "security left to be trashed and itself"
+    },
+    {
+      "timestamp": "10:55",
+      "start_seconds": 655,
+      "text": "is already unsuspended. Gammon X will"
+    },
+    {
+      "timestamp": "10:58",
+      "start_seconds": 658,
+      "text": "attempt to attack to finish the game."
+    },
+    {
+      "timestamp": "10:59",
+      "start_seconds": 659,
+      "text": "And then it's when attacking effect will"
+    },
+    {
+      "timestamp": "11:01",
+      "start_seconds": 661,
+      "text": "activate, which is exactly the same as"
+    },
+    {
+      "timestamp": "11:02",
+      "start_seconds": 662,
+      "text": "it when dig bombing effect that is not"
+    },
+    {
+      "timestamp": "11:04",
+      "start_seconds": 664,
+      "text": "once per turn, giving itself extra 4,000"
+    },
+    {
+      "timestamp": "11:06",
+      "start_seconds": 666,
+      "text": "DP and giving all force vigimon minus"
+    },
+    {
+      "timestamp": "11:08",
+      "start_seconds": 668,
+      "text": "4,000 DP until the end of their turn."
+    },
+    {
+      "timestamp": "11:10",
+      "start_seconds": 670,
+      "text": "Unfortunately, O4's Vigma has ran out of"
+    },
+    {
+      "timestamp": "11:11",
+      "start_seconds": 671,
+      "text": "ways to further unsuspend to block once"
+    },
+    {
+      "timestamp": "11:13",
+      "start_seconds": 673,
+      "text": "more and therefore Gammon X for Seek"
+    },
+    {
+      "timestamp": "11:15",
+      "start_seconds": 675,
+      "text": "Saber will connect, winning the game."
+    },
+    {
+      "timestamp": "11:17",
+      "start_seconds": 677,
+      "text": "Make sure to check out the Evolve store"
+    },
+    {
+      "timestamp": "11:18",
+      "start_seconds": 678,
+      "text": "for all awesome TCG accessories. Here"
+    },
+    {
+      "timestamp": "11:20",
+      "start_seconds": 680,
+      "text": "are the deck lists for today's Battle"
+    },
+    {
+      "timestamp": "11:21",
+      "start_seconds": 681,
+      "text": "Vault video. Also, huge shout outs to"
+    },
+    {
+      "timestamp": "11:23",
+      "start_seconds": 683,
+      "text": "premium and deluxe members of the"
+    },
+    {
+      "timestamp": "11:25",
+      "start_seconds": 685,
+      "text": "channel and don't forget to subscribe to"
+    },
+    {
+      "timestamp": "11:26",
+      "start_seconds": 686,
+      "text": "stay tuned for more."
+    }
+  ]
+}

@@ -1,0 +1,1078 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "attempted_seeds": 60,
+  "attempts": [
+    {
+      "file": "attempt-0000.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-019",
+      "index": 0,
+      "record_sha256": "cf71e00c648a0d41caf76d7d980bf6d82ffc4ff4714a0a36cffca6537ab49de1",
+      "seed": 9868153880939325788,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0001.json.gz",
+      "first": "B",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: A:LM-057#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 1,
+      "record_sha256": "47860edca28a29d117c4de61740db862072d1c1821d8fa079e3ffc4ccd9cd180",
+      "seed": 7180933269826343563,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0002.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT22-023",
+      "index": 2,
+      "record_sha256": "70a5b1287897637a1a3fdfe60f41050ecb51507d8ed005aabff5f57245a5d193",
+      "seed": 16176122583430342000,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0003.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT19-007",
+      "index": 3,
+      "record_sha256": "57c41a5ccadf3b207d20fa5f6efed38f53f4695021e8640289a16e0a5136678c",
+      "seed": 1151579073706309854,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0004.json.gz",
+      "first": "A",
+      "halt_reason": "BATTLE_EVOLUTION_UNIMPLEMENTED: source=B:EX8-009#3 target=B:BT19-009#1 route_index=0 cost=2",
+      "index": 4,
+      "record_sha256": "8e50d0fef677b51ea8b5fde7a3653298e9b79e802eb100720f3f6ee1594a5336",
+      "seed": 12843947211272656438,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0005.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT12-016",
+      "index": 5,
+      "record_sha256": "7c56fbdc41ab0d404abc9d758133c159a5b5bfcf138bcb30aa441a77d19ff7fa",
+      "seed": 10490652261888666678,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0006.json.gz",
+      "first": "A",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: B:BT9-109#2 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 6,
+      "record_sha256": "4d55b595108edd005a4d6384e98ebecf738d6a87bbf7bbe56715a18eb2e26093",
+      "seed": 2665461681727973756,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0007.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT22-085",
+      "index": 7,
+      "record_sha256": "18efbae4426ae2b022526724c1ac834fb47c5aac6395bed34d876fcd731617ac",
+      "seed": 15452872569869899231,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0008.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-015",
+      "index": 8,
+      "record_sha256": "d745fa506579b6c9a299cd7fac482c63c18cc7d8ceb20cfc083ecb018e895b13",
+      "seed": 9696969287623374852,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0009.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT19-080",
+      "index": 9,
+      "record_sha256": "86f56a6ea864ac2e77b3054a6451f89f9ec7ab17a8534f7655b19eb233ee4b08",
+      "seed": 18298840645504356645,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0010.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT19-011",
+      "index": 10,
+      "record_sha256": "c215fe9675dbfc8386c9e6748ea5ebea2864c2621580d03be847b8e2025a5bae",
+      "seed": 8028546578389686625,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0011.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-019",
+      "index": 11,
+      "record_sha256": "bfb1ea996742b8ef66884af818b913496a3d3f542bf05ed89524e7611afea5eb",
+      "seed": 15328943115294644517,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0012.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT22-022",
+      "index": 12,
+      "record_sha256": "057607de1780b8b3c710161a349c5fb9416e07353d25b35586f648faec75fdb7",
+      "seed": 18283682758801196054,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0013.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT12-016",
+      "index": 13,
+      "record_sha256": "3bb9d2bfe74fc7354e8cf2f69f9553f008d1be98f53dd67a0f76e00b91ddfa2c",
+      "seed": 2765587413655144927,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0014.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT17-013",
+      "index": 14,
+      "record_sha256": "d47ad69a653bca0f8fed48d5030b7fb3759a2e61a145c9a32c193f8f018c22db",
+      "seed": 3363286231018775596,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0015.json.gz",
+      "first": "B",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: B:BT9-109#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 15,
+      "record_sha256": "6234310f3c4e5168d9f0f0c598bc8d04e3e7dd9d68610f0d48d52196a8fb576a",
+      "seed": 3767934774322299883,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0016.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT19-009",
+      "index": 16,
+      "record_sha256": "eb006577f560b59fb9ab9e98b66ae9c8501b2444b0184774de3badc4dab805cf",
+      "seed": 13273916988843399644,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0017.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT19-007",
+      "index": 17,
+      "record_sha256": "384146fdda14620dc0775e032175cc5dc940793c5a7e99154d74037d9c4c4c41",
+      "seed": 294421968593405907,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0018.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT19-011",
+      "index": 18,
+      "record_sha256": "8266593040217dc57596efc365e05c68993ac2f37901a64b4ffa138447e2604d",
+      "seed": 1418517683219074633,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0019.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-019",
+      "index": 19,
+      "record_sha256": "bb075665b9c271f4b77aed6c934e3fbb9d53799ed8a77612a42d35b9296f408b",
+      "seed": 3868800396733383269,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0020.json.gz",
+      "first": "A",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: A:LM-028#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 20,
+      "record_sha256": "f851e7f769a0624a293eba35ccaff76c97c588439d2c632e9e4d1651bc395948",
+      "seed": 11943492060074943188,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0021.json.gz",
+      "first": "B",
+      "halt_reason": "BATTLE_EVOLUTION_UNIMPLEMENTED: source=A:BT11-023#2 target=A:EX13-019#1 route_index=0 cost=2",
+      "index": 21,
+      "record_sha256": "fc8bdb4a216ec277caf9f20dd98f84aaa2dde426b074ad0a33a642c237ebbee9",
+      "seed": 16099447012631170531,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0022.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT9-092",
+      "index": 22,
+      "record_sha256": "1641478ced593929784a21f3dc6a44cd319920326ec9ca12240bbae3be76bb72",
+      "seed": 7320563707252884658,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0023.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT11-112",
+      "index": 23,
+      "record_sha256": "8b8b31927cc715062e911257cf7e32aa91ffdc81087d12ecdfd09a61759d1e4b",
+      "seed": 9430457564635975175,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0024.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-022",
+      "index": 24,
+      "record_sha256": "d703f3f83deb43ed7e778b6b8568845caeb4213cbcb8d23b45e1a6de35f3be03",
+      "seed": 15343123455136169348,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0025.json.gz",
+      "first": "B",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: A:P-104#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 25,
+      "record_sha256": "acff643a55ddd1bb6b16a355b9e1bec7945c10f8e1704c80b8cbc5d7162d9063",
+      "seed": 4620506677826617417,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0026.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-015",
+      "index": 26,
+      "record_sha256": "f3864c6e6a2ae25bdf4c8d8f5d24f3d30d0d2242235f29c8771f2887e41b0b24",
+      "seed": 3764708558389145788,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0027.json.gz",
+      "first": "B",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: B:BT9-109#3 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 27,
+      "record_sha256": "8b67657356a21bbc0252620d78667012392507c15026f0b62b8a4b7ce37bd2fa",
+      "seed": 7823811018897796250,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0028.json.gz",
+      "first": "A",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: A:LM-028#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 28,
+      "record_sha256": "611ade765e52f42aed32e32936f9956516f93795d0d26dab77d673faedea8ef7",
+      "seed": 5749392079553878226,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0029.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT19-011",
+      "index": 29,
+      "record_sha256": "0139be3fb31b4a1c7352695d01da68dfc95d273ea3ead68d10b93daf48eb4f98",
+      "seed": 1931283748236078854,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0030.json.gz",
+      "first": "A",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: A:P-104#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 30,
+      "record_sha256": "e6419140aa9a204b9dbc958734d0b64ab35aec2561d6dc2c3cbbfc0a9ccf2108",
+      "seed": 14360641291940641341,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0031.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT11-112",
+      "index": 31,
+      "record_sha256": "76fcd8374ffe9a220aeaac4d21559bc1bb4885814aa9cee3e5b58d98109887e8",
+      "seed": 11668027723483408774,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0032.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT17-016",
+      "index": 32,
+      "record_sha256": "b76184fbbf8023f8bd767238cfff9e2efc2f118bb623279df93ff62cdfbc08ab",
+      "seed": 4298310684869581644,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0033.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT22-023",
+      "index": 33,
+      "record_sha256": "7426cae6b6f655802d6256e38ea5767b807abe131fb1d5fa07f9bbc81d3ac93a",
+      "seed": 5770876558852780270,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0034.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT22-023",
+      "index": 34,
+      "record_sha256": "1a689aa332af722d6c3ed636054c9477c714052fd008fddc5790773f034f7e6d",
+      "seed": 11008761135982330237,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0035.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT19-009",
+      "index": 35,
+      "record_sha256": "9e06db0d1a845f96117df1f51c8f8e380c56263e4d1331a087368cd316c25194",
+      "seed": 4087916659809055287,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0036.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-019",
+      "index": 36,
+      "record_sha256": "24fb42033c0cc748625662ed23304d832c18e5d1a5bc99961665028cd553fb04",
+      "seed": 7633314804918244246,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0037.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-019",
+      "index": 37,
+      "record_sha256": "46ce2a66af7ee67513a4192af6b851fb836b9b318f13430b76fcd9c06dbb7ca0",
+      "seed": 3241061249011764357,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0038.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-019",
+      "index": 38,
+      "record_sha256": "5f5fae1495bc564dca4bcb3329df6b20493ea498b0b2e753780c7d33702833d0",
+      "seed": 1702132420231203301,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0039.json.gz",
+      "first": "B",
+      "halt_reason": "BASIC_BOARD_STACK_UNSUPPORTED: B",
+      "index": 39,
+      "record_sha256": "abbabfcb765f61722c88a75ce4d2eff4a14ffc3378021e3179bcaff41fc3315f",
+      "seed": 12098530257148709868,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0040.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT12-029",
+      "index": 40,
+      "record_sha256": "57fce0ae0fb6302d2429f897403df1ff7aaabc6a8242240ec6987b644a18bb66",
+      "seed": 15128580604449926723,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0041.json.gz",
+      "first": "B",
+      "halt_reason": "BASIC_BOARD_STACK_UNSUPPORTED: A",
+      "index": 41,
+      "record_sha256": "56e70f527ca347e6d7a3545edefb88aa3a43e40a78fb289390f324f699116fa9",
+      "seed": 12895392623896152788,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0042.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX8-012",
+      "index": 42,
+      "record_sha256": "1f7fd48e847077916d4229c62030ac7236c86d10898ecedeef5927f030ad8728",
+      "seed": 14552368107925397003,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0043.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT11-112",
+      "index": 43,
+      "record_sha256": "ad9c9780190127cac8733a7759ebd8069921b399400e3ad8ae37415315a99d51",
+      "seed": 5048416584406791733,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0044.json.gz",
+      "first": "A",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: A:LM-058#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 44,
+      "record_sha256": "a01a4eeeb5343b9c58ae6ca13a09958a201af9b5a8adc3acfdabefb7b81992b2",
+      "seed": 14820494179514914053,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0045.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX8-015",
+      "index": 45,
+      "record_sha256": "12c417513f661eccd59e609ca1851a4840f1ddca27f1e2fa6d12e7ab5c2b6031",
+      "seed": 13031414172743331943,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0046.json.gz",
+      "first": "A",
+      "halt_reason": "BATTLE_EVOLUTION_UNIMPLEMENTED: source=A:EX13-017#3 target=A:EX13-019#1 route_index=0 cost=2",
+      "index": 46,
+      "record_sha256": "d4dacccda46c8e76297a9c6340750c5582ae41cb2ea5498caf55a3c1da5819d6",
+      "seed": 10018944218727892247,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0047.json.gz",
+      "first": "B",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: A:LM-034#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 47,
+      "record_sha256": "14c53b8c6e5814bc41bb9cbbd68c86c0a1c0eb81e88656691b3104b2c450e68e",
+      "seed": 7933651009896893745,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0048.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-069",
+      "index": 48,
+      "record_sha256": "f1b695f3f807c26d9ca01354a465ae26963120ff902c3b61758b16f3332818a4",
+      "seed": 10447970964298112698,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0049.json.gz",
+      "first": "B",
+      "halt_reason": "UNKNOWN_OPTION_ACTION: A:LM-057#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+      "index": 49,
+      "record_sha256": "0ce1936dca7393ef0ca26f05f37e3fc3194f87e529ef0efe910e1d8bbef65f93",
+      "seed": 1706236455896132910,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0050.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-022",
+      "index": 50,
+      "record_sha256": "e5ee48f3027457d03140233fa87ecc272e003e90e17bcf4258a3f1747c309c74",
+      "seed": 216921621972784692,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0051.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-019",
+      "index": 51,
+      "record_sha256": "b56da224a9a26274f8b04e5609c2010d70377059dec7e00a6ba9f182602d9dd8",
+      "seed": 2618434238398208761,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0052.json.gz",
+      "first": "A",
+      "halt_reason": "BATTLE_EVOLUTION_UNIMPLEMENTED: source=B:EX2-008#2 target=B:ST7-05#3 route_index=0 cost=2",
+      "index": 52,
+      "record_sha256": "629a78c4fcc1e92ee76ee3d1aa6392c8b6e2d8bfecf8bca0b16eb4156a8e8657",
+      "seed": 9744689141544227989,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0053.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT22-023",
+      "index": 53,
+      "record_sha256": "25d0c4a85ac675f2c7608d35603b8c5c8d93b482674b3711077bc89fbd41f701",
+      "seed": 18210050433024477556,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0054.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: EX13-022",
+      "index": 54,
+      "record_sha256": "035dcc0defc899dc01aa8d5e892c4fc22dfbef55317b9b085c5357675dd6c548",
+      "seed": 3091993376248171393,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0055.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT12-016",
+      "index": 55,
+      "record_sha256": "e747af9dad72531c6e6d5e9e2225e2cd0333559f629fbf040ebfc55a3fb994a2",
+      "seed": 16806614432865590500,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0056.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT22-023",
+      "index": 56,
+      "record_sha256": "7bd7b9fabaf026ff5cc6504bd3d69aa700bce9cd7b27e9be8d6dc37aade708d3",
+      "seed": 8809793823769447594,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0057.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT17-013",
+      "index": 57,
+      "record_sha256": "f04f7c727d228af1bba23a1fd3d7a38a92603f217fe1be82802f84482343284a",
+      "seed": 15684305397654467,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0058.json.gz",
+      "first": "A",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT19-080",
+      "index": 58,
+      "record_sha256": "ba72649a96bb1ecd6cd0b640978ebcfece810ba1c5f2072abc75c5b79af82827",
+      "seed": 11155366223531230037,
+      "status": "HALT",
+      "winner": null
+    },
+    {
+      "file": "attempt-0059.json.gz",
+      "first": "B",
+      "halt_reason": "PLAY_EFFECT_UNSUPPORTED: BT19-011",
+      "index": 59,
+      "record_sha256": "de7106d8215c80af0f2b14d2698570ae53fcde3609f3b568a785c54566b8df63",
+      "seed": 12506608472261762232,
+      "status": "HALT",
+      "winner": null
+    }
+  ],
+  "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+  "exact_replay_matches": 60,
+  "experimental_terminal_winner_counts": {},
+  "final_evaluation_credit": 0,
+  "first_counts": {
+    "A": 30,
+    "B": 30
+  },
+  "halt_reason_counts": {
+    "BASIC_BOARD_STACK_UNSUPPORTED: A": 1,
+    "BASIC_BOARD_STACK_UNSUPPORTED: B": 1,
+    "BATTLE_EVOLUTION_UNIMPLEMENTED: source=A:BT11-023#2 target=A:EX13-019#1 route_index=0 cost=2": 1,
+    "BATTLE_EVOLUTION_UNIMPLEMENTED: source=A:EX13-017#3 target=A:EX13-019#1 route_index=0 cost=2": 1,
+    "BATTLE_EVOLUTION_UNIMPLEMENTED: source=B:EX2-008#2 target=B:ST7-05#3 route_index=0 cost=2": 1,
+    "BATTLE_EVOLUTION_UNIMPLEMENTED: source=B:EX8-009#3 target=B:BT19-009#1 route_index=0 cost=2": 1,
+    "PLAY_EFFECT_UNSUPPORTED: BT11-112": 3,
+    "PLAY_EFFECT_UNSUPPORTED: BT12-016": 3,
+    "PLAY_EFFECT_UNSUPPORTED: BT12-029": 1,
+    "PLAY_EFFECT_UNSUPPORTED: BT17-013": 2,
+    "PLAY_EFFECT_UNSUPPORTED: BT17-016": 1,
+    "PLAY_EFFECT_UNSUPPORTED: BT19-007": 2,
+    "PLAY_EFFECT_UNSUPPORTED: BT19-009": 2,
+    "PLAY_EFFECT_UNSUPPORTED: BT19-011": 4,
+    "PLAY_EFFECT_UNSUPPORTED: BT19-080": 2,
+    "PLAY_EFFECT_UNSUPPORTED: BT22-022": 1,
+    "PLAY_EFFECT_UNSUPPORTED: BT22-023": 5,
+    "PLAY_EFFECT_UNSUPPORTED: BT22-085": 1,
+    "PLAY_EFFECT_UNSUPPORTED: BT9-092": 1,
+    "PLAY_EFFECT_UNSUPPORTED: EX13-015": 2,
+    "PLAY_EFFECT_UNSUPPORTED: EX13-019": 7,
+    "PLAY_EFFECT_UNSUPPORTED: EX13-022": 3,
+    "PLAY_EFFECT_UNSUPPORTED: EX13-069": 1,
+    "PLAY_EFFECT_UNSUPPORTED: EX8-012": 1,
+    "PLAY_EFFECT_UNSUPPORTED: EX8-015": 1,
+    "UNKNOWN_OPTION_ACTION: A:LM-028#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED": 2,
+    "UNKNOWN_OPTION_ACTION: A:LM-034#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED": 1,
+    "UNKNOWN_OPTION_ACTION: A:LM-057#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED": 2,
+    "UNKNOWN_OPTION_ACTION: A:LM-058#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED": 1,
+    "UNKNOWN_OPTION_ACTION: A:P-104#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED": 2,
+    "UNKNOWN_OPTION_ACTION: B:BT9-109#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED": 1,
+    "UNKNOWN_OPTION_ACTION: B:BT9-109#2 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED": 1,
+    "UNKNOWN_OPTION_ACTION: B:BT9-109#3 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED": 1
+  },
+  "judge_certified_matches": 0,
+  "replays": [
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 0,
+      "replayed_record_sha256": "cf71e00c648a0d41caf76d7d980bf6d82ffc4ff4714a0a36cffca6537ab49de1",
+      "saved_record_sha256": "cf71e00c648a0d41caf76d7d980bf6d82ffc4ff4714a0a36cffca6537ab49de1"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 1,
+      "replayed_record_sha256": "47860edca28a29d117c4de61740db862072d1c1821d8fa079e3ffc4ccd9cd180",
+      "saved_record_sha256": "47860edca28a29d117c4de61740db862072d1c1821d8fa079e3ffc4ccd9cd180"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 2,
+      "replayed_record_sha256": "70a5b1287897637a1a3fdfe60f41050ecb51507d8ed005aabff5f57245a5d193",
+      "saved_record_sha256": "70a5b1287897637a1a3fdfe60f41050ecb51507d8ed005aabff5f57245a5d193"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 3,
+      "replayed_record_sha256": "57c41a5ccadf3b207d20fa5f6efed38f53f4695021e8640289a16e0a5136678c",
+      "saved_record_sha256": "57c41a5ccadf3b207d20fa5f6efed38f53f4695021e8640289a16e0a5136678c"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 4,
+      "replayed_record_sha256": "8e50d0fef677b51ea8b5fde7a3653298e9b79e802eb100720f3f6ee1594a5336",
+      "saved_record_sha256": "8e50d0fef677b51ea8b5fde7a3653298e9b79e802eb100720f3f6ee1594a5336"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 5,
+      "replayed_record_sha256": "7c56fbdc41ab0d404abc9d758133c159a5b5bfcf138bcb30aa441a77d19ff7fa",
+      "saved_record_sha256": "7c56fbdc41ab0d404abc9d758133c159a5b5bfcf138bcb30aa441a77d19ff7fa"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 6,
+      "replayed_record_sha256": "4d55b595108edd005a4d6384e98ebecf738d6a87bbf7bbe56715a18eb2e26093",
+      "saved_record_sha256": "4d55b595108edd005a4d6384e98ebecf738d6a87bbf7bbe56715a18eb2e26093"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 7,
+      "replayed_record_sha256": "18efbae4426ae2b022526724c1ac834fb47c5aac6395bed34d876fcd731617ac",
+      "saved_record_sha256": "18efbae4426ae2b022526724c1ac834fb47c5aac6395bed34d876fcd731617ac"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 8,
+      "replayed_record_sha256": "d745fa506579b6c9a299cd7fac482c63c18cc7d8ceb20cfc083ecb018e895b13",
+      "saved_record_sha256": "d745fa506579b6c9a299cd7fac482c63c18cc7d8ceb20cfc083ecb018e895b13"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 9,
+      "replayed_record_sha256": "86f56a6ea864ac2e77b3054a6451f89f9ec7ab17a8534f7655b19eb233ee4b08",
+      "saved_record_sha256": "86f56a6ea864ac2e77b3054a6451f89f9ec7ab17a8534f7655b19eb233ee4b08"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 10,
+      "replayed_record_sha256": "c215fe9675dbfc8386c9e6748ea5ebea2864c2621580d03be847b8e2025a5bae",
+      "saved_record_sha256": "c215fe9675dbfc8386c9e6748ea5ebea2864c2621580d03be847b8e2025a5bae"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 11,
+      "replayed_record_sha256": "bfb1ea996742b8ef66884af818b913496a3d3f542bf05ed89524e7611afea5eb",
+      "saved_record_sha256": "bfb1ea996742b8ef66884af818b913496a3d3f542bf05ed89524e7611afea5eb"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 12,
+      "replayed_record_sha256": "057607de1780b8b3c710161a349c5fb9416e07353d25b35586f648faec75fdb7",
+      "saved_record_sha256": "057607de1780b8b3c710161a349c5fb9416e07353d25b35586f648faec75fdb7"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 13,
+      "replayed_record_sha256": "3bb9d2bfe74fc7354e8cf2f69f9553f008d1be98f53dd67a0f76e00b91ddfa2c",
+      "saved_record_sha256": "3bb9d2bfe74fc7354e8cf2f69f9553f008d1be98f53dd67a0f76e00b91ddfa2c"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 14,
+      "replayed_record_sha256": "d47ad69a653bca0f8fed48d5030b7fb3759a2e61a145c9a32c193f8f018c22db",
+      "saved_record_sha256": "d47ad69a653bca0f8fed48d5030b7fb3759a2e61a145c9a32c193f8f018c22db"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 15,
+      "replayed_record_sha256": "6234310f3c4e5168d9f0f0c598bc8d04e3e7dd9d68610f0d48d52196a8fb576a",
+      "saved_record_sha256": "6234310f3c4e5168d9f0f0c598bc8d04e3e7dd9d68610f0d48d52196a8fb576a"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 16,
+      "replayed_record_sha256": "eb006577f560b59fb9ab9e98b66ae9c8501b2444b0184774de3badc4dab805cf",
+      "saved_record_sha256": "eb006577f560b59fb9ab9e98b66ae9c8501b2444b0184774de3badc4dab805cf"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 17,
+      "replayed_record_sha256": "384146fdda14620dc0775e032175cc5dc940793c5a7e99154d74037d9c4c4c41",
+      "saved_record_sha256": "384146fdda14620dc0775e032175cc5dc940793c5a7e99154d74037d9c4c4c41"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 18,
+      "replayed_record_sha256": "8266593040217dc57596efc365e05c68993ac2f37901a64b4ffa138447e2604d",
+      "saved_record_sha256": "8266593040217dc57596efc365e05c68993ac2f37901a64b4ffa138447e2604d"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 19,
+      "replayed_record_sha256": "bb075665b9c271f4b77aed6c934e3fbb9d53799ed8a77612a42d35b9296f408b",
+      "saved_record_sha256": "bb075665b9c271f4b77aed6c934e3fbb9d53799ed8a77612a42d35b9296f408b"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 20,
+      "replayed_record_sha256": "f851e7f769a0624a293eba35ccaff76c97c588439d2c632e9e4d1651bc395948",
+      "saved_record_sha256": "f851e7f769a0624a293eba35ccaff76c97c588439d2c632e9e4d1651bc395948"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 21,
+      "replayed_record_sha256": "fc8bdb4a216ec277caf9f20dd98f84aaa2dde426b074ad0a33a642c237ebbee9",
+      "saved_record_sha256": "fc8bdb4a216ec277caf9f20dd98f84aaa2dde426b074ad0a33a642c237ebbee9"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 22,
+      "replayed_record_sha256": "1641478ced593929784a21f3dc6a44cd319920326ec9ca12240bbae3be76bb72",
+      "saved_record_sha256": "1641478ced593929784a21f3dc6a44cd319920326ec9ca12240bbae3be76bb72"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 23,
+      "replayed_record_sha256": "8b8b31927cc715062e911257cf7e32aa91ffdc81087d12ecdfd09a61759d1e4b",
+      "saved_record_sha256": "8b8b31927cc715062e911257cf7e32aa91ffdc81087d12ecdfd09a61759d1e4b"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 24,
+      "replayed_record_sha256": "d703f3f83deb43ed7e778b6b8568845caeb4213cbcb8d23b45e1a6de35f3be03",
+      "saved_record_sha256": "d703f3f83deb43ed7e778b6b8568845caeb4213cbcb8d23b45e1a6de35f3be03"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 25,
+      "replayed_record_sha256": "acff643a55ddd1bb6b16a355b9e1bec7945c10f8e1704c80b8cbc5d7162d9063",
+      "saved_record_sha256": "acff643a55ddd1bb6b16a355b9e1bec7945c10f8e1704c80b8cbc5d7162d9063"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 26,
+      "replayed_record_sha256": "f3864c6e6a2ae25bdf4c8d8f5d24f3d30d0d2242235f29c8771f2887e41b0b24",
+      "saved_record_sha256": "f3864c6e6a2ae25bdf4c8d8f5d24f3d30d0d2242235f29c8771f2887e41b0b24"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 27,
+      "replayed_record_sha256": "8b67657356a21bbc0252620d78667012392507c15026f0b62b8a4b7ce37bd2fa",
+      "saved_record_sha256": "8b67657356a21bbc0252620d78667012392507c15026f0b62b8a4b7ce37bd2fa"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 28,
+      "replayed_record_sha256": "611ade765e52f42aed32e32936f9956516f93795d0d26dab77d673faedea8ef7",
+      "saved_record_sha256": "611ade765e52f42aed32e32936f9956516f93795d0d26dab77d673faedea8ef7"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 29,
+      "replayed_record_sha256": "0139be3fb31b4a1c7352695d01da68dfc95d273ea3ead68d10b93daf48eb4f98",
+      "saved_record_sha256": "0139be3fb31b4a1c7352695d01da68dfc95d273ea3ead68d10b93daf48eb4f98"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 30,
+      "replayed_record_sha256": "e6419140aa9a204b9dbc958734d0b64ab35aec2561d6dc2c3cbbfc0a9ccf2108",
+      "saved_record_sha256": "e6419140aa9a204b9dbc958734d0b64ab35aec2561d6dc2c3cbbfc0a9ccf2108"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 31,
+      "replayed_record_sha256": "76fcd8374ffe9a220aeaac4d21559bc1bb4885814aa9cee3e5b58d98109887e8",
+      "saved_record_sha256": "76fcd8374ffe9a220aeaac4d21559bc1bb4885814aa9cee3e5b58d98109887e8"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 32,
+      "replayed_record_sha256": "b76184fbbf8023f8bd767238cfff9e2efc2f118bb623279df93ff62cdfbc08ab",
+      "saved_record_sha256": "b76184fbbf8023f8bd767238cfff9e2efc2f118bb623279df93ff62cdfbc08ab"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 33,
+      "replayed_record_sha256": "7426cae6b6f655802d6256e38ea5767b807abe131fb1d5fa07f9bbc81d3ac93a",
+      "saved_record_sha256": "7426cae6b6f655802d6256e38ea5767b807abe131fb1d5fa07f9bbc81d3ac93a"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 34,
+      "replayed_record_sha256": "1a689aa332af722d6c3ed636054c9477c714052fd008fddc5790773f034f7e6d",
+      "saved_record_sha256": "1a689aa332af722d6c3ed636054c9477c714052fd008fddc5790773f034f7e6d"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 35,
+      "replayed_record_sha256": "9e06db0d1a845f96117df1f51c8f8e380c56263e4d1331a087368cd316c25194",
+      "saved_record_sha256": "9e06db0d1a845f96117df1f51c8f8e380c56263e4d1331a087368cd316c25194"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 36,
+      "replayed_record_sha256": "24fb42033c0cc748625662ed23304d832c18e5d1a5bc99961665028cd553fb04",
+      "saved_record_sha256": "24fb42033c0cc748625662ed23304d832c18e5d1a5bc99961665028cd553fb04"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 37,
+      "replayed_record_sha256": "46ce2a66af7ee67513a4192af6b851fb836b9b318f13430b76fcd9c06dbb7ca0",
+      "saved_record_sha256": "46ce2a66af7ee67513a4192af6b851fb836b9b318f13430b76fcd9c06dbb7ca0"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 38,
+      "replayed_record_sha256": "5f5fae1495bc564dca4bcb3329df6b20493ea498b0b2e753780c7d33702833d0",
+      "saved_record_sha256": "5f5fae1495bc564dca4bcb3329df6b20493ea498b0b2e753780c7d33702833d0"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 39,
+      "replayed_record_sha256": "abbabfcb765f61722c88a75ce4d2eff4a14ffc3378021e3179bcaff41fc3315f",
+      "saved_record_sha256": "abbabfcb765f61722c88a75ce4d2eff4a14ffc3378021e3179bcaff41fc3315f"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 40,
+      "replayed_record_sha256": "57fce0ae0fb6302d2429f897403df1ff7aaabc6a8242240ec6987b644a18bb66",
+      "saved_record_sha256": "57fce0ae0fb6302d2429f897403df1ff7aaabc6a8242240ec6987b644a18bb66"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 41,
+      "replayed_record_sha256": "56e70f527ca347e6d7a3545edefb88aa3a43e40a78fb289390f324f699116fa9",
+      "saved_record_sha256": "56e70f527ca347e6d7a3545edefb88aa3a43e40a78fb289390f324f699116fa9"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 42,
+      "replayed_record_sha256": "1f7fd48e847077916d4229c62030ac7236c86d10898ecedeef5927f030ad8728",
+      "saved_record_sha256": "1f7fd48e847077916d4229c62030ac7236c86d10898ecedeef5927f030ad8728"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 43,
+      "replayed_record_sha256": "ad9c9780190127cac8733a7759ebd8069921b399400e3ad8ae37415315a99d51",
+      "saved_record_sha256": "ad9c9780190127cac8733a7759ebd8069921b399400e3ad8ae37415315a99d51"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 44,
+      "replayed_record_sha256": "a01a4eeeb5343b9c58ae6ca13a09958a201af9b5a8adc3acfdabefb7b81992b2",
+      "saved_record_sha256": "a01a4eeeb5343b9c58ae6ca13a09958a201af9b5a8adc3acfdabefb7b81992b2"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 45,
+      "replayed_record_sha256": "12c417513f661eccd59e609ca1851a4840f1ddca27f1e2fa6d12e7ab5c2b6031",
+      "saved_record_sha256": "12c417513f661eccd59e609ca1851a4840f1ddca27f1e2fa6d12e7ab5c2b6031"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 46,
+      "replayed_record_sha256": "d4dacccda46c8e76297a9c6340750c5582ae41cb2ea5498caf55a3c1da5819d6",
+      "saved_record_sha256": "d4dacccda46c8e76297a9c6340750c5582ae41cb2ea5498caf55a3c1da5819d6"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 47,
+      "replayed_record_sha256": "14c53b8c6e5814bc41bb9cbbd68c86c0a1c0eb81e88656691b3104b2c450e68e",
+      "saved_record_sha256": "14c53b8c6e5814bc41bb9cbbd68c86c0a1c0eb81e88656691b3104b2c450e68e"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 48,
+      "replayed_record_sha256": "f1b695f3f807c26d9ca01354a465ae26963120ff902c3b61758b16f3332818a4",
+      "saved_record_sha256": "f1b695f3f807c26d9ca01354a465ae26963120ff902c3b61758b16f3332818a4"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 49,
+      "replayed_record_sha256": "0ce1936dca7393ef0ca26f05f37e3fc3194f87e529ef0efe910e1d8bbef65f93",
+      "saved_record_sha256": "0ce1936dca7393ef0ca26f05f37e3fc3194f87e529ef0efe910e1d8bbef65f93"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 50,
+      "replayed_record_sha256": "e5ee48f3027457d03140233fa87ecc272e003e90e17bcf4258a3f1747c309c74",
+      "saved_record_sha256": "e5ee48f3027457d03140233fa87ecc272e003e90e17bcf4258a3f1747c309c74"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 51,
+      "replayed_record_sha256": "b56da224a9a26274f8b04e5609c2010d70377059dec7e00a6ba9f182602d9dd8",
+      "saved_record_sha256": "b56da224a9a26274f8b04e5609c2010d70377059dec7e00a6ba9f182602d9dd8"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 52,
+      "replayed_record_sha256": "629a78c4fcc1e92ee76ee3d1aa6392c8b6e2d8bfecf8bca0b16eb4156a8e8657",
+      "saved_record_sha256": "629a78c4fcc1e92ee76ee3d1aa6392c8b6e2d8bfecf8bca0b16eb4156a8e8657"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 53,
+      "replayed_record_sha256": "25d0c4a85ac675f2c7608d35603b8c5c8d93b482674b3711077bc89fbd41f701",
+      "saved_record_sha256": "25d0c4a85ac675f2c7608d35603b8c5c8d93b482674b3711077bc89fbd41f701"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 54,
+      "replayed_record_sha256": "035dcc0defc899dc01aa8d5e892c4fc22dfbef55317b9b085c5357675dd6c548",
+      "saved_record_sha256": "035dcc0defc899dc01aa8d5e892c4fc22dfbef55317b9b085c5357675dd6c548"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 55,
+      "replayed_record_sha256": "e747af9dad72531c6e6d5e9e2225e2cd0333559f629fbf040ebfc55a3fb994a2",
+      "saved_record_sha256": "e747af9dad72531c6e6d5e9e2225e2cd0333559f629fbf040ebfc55a3fb994a2"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 56,
+      "replayed_record_sha256": "7bd7b9fabaf026ff5cc6504bd3d69aa700bce9cd7b27e9be8d6dc37aade708d3",
+      "saved_record_sha256": "7bd7b9fabaf026ff5cc6504bd3d69aa700bce9cd7b27e9be8d6dc37aade708d3"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 57,
+      "replayed_record_sha256": "f04f7c727d228af1bba23a1fd3d7a38a92603f217fe1be82802f84482343284a",
+      "saved_record_sha256": "f04f7c727d228af1bba23a1fd3d7a38a92603f217fe1be82802f84482343284a"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 58,
+      "replayed_record_sha256": "ba72649a96bb1ecd6cd0b640978ebcfece810ba1c5f2072abc75c5b79af82827",
+      "saved_record_sha256": "ba72649a96bb1ecd6cd0b640978ebcfece810ba1c5f2072abc75c5b79af82827"
+    },
+    {
+      "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+      "exact_match": true,
+      "index": 59,
+      "replayed_record_sha256": "de7106d8215c80af0f2b14d2698570ae53fcde3609f3b568a785c54566b8df63",
+      "saved_record_sha256": "de7106d8215c80af0f2b14d2698570ae53fcde3609f3b568a785c54566b8df63"
+    }
+  ],
+  "schema": "imported-live-diagnostic-summary-v1",
+  "software_terminal_attempts": 0,
+  "status": "DIAGNOSTIC_ONLY",
+  "status_counts": {
+    "HALT": 60
+  }
+}

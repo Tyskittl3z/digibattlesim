@@ -1,0 +1,564 @@
+[
+  {
+    "bot_id": "6fe75b159762009ec2fead167b1f7e2dda7125e3d9beeb83d37ef0948d46bdcd",
+    "candidates": [
+      {
+        "depth": 0,
+        "effect_id": "BT22-023.end_turn_unsuspend",
+        "field": "main_text",
+        "id": "effect-58",
+        "instance": "entity-14",
+        "seat": "B",
+        "source": "B:BT22-023#2",
+        "trigger": {
+          "kind": "End of Your Turn",
+          "phase": "END_OF_TURN",
+          "turn": 10
+        },
+        "usage": [
+          10,
+          "B",
+          "B:BT22-023#2",
+          "entity-14",
+          "BT22-023.end_turn_unsuspend"
+        ]
+      }
+    ],
+    "chosen": {
+      "depth": 0,
+      "effect_id": "BT22-023.end_turn_unsuspend",
+      "field": "main_text",
+      "id": "effect-58",
+      "instance": "entity-14",
+      "seat": "B",
+      "source": "B:BT22-023#2",
+      "trigger": {
+        "kind": "End of Your Turn",
+        "phase": "END_OF_TURN",
+        "turn": 10
+      },
+      "usage": [
+        10,
+        "B",
+        "B:BT22-023#2",
+        "entity-14",
+        "BT22-023.end_turn_unsuspend"
+      ]
+    },
+    "decision": {
+      "kind": "PENDING_EFFECT_ORDER"
+    },
+    "public_view_sha256": "76190130539738c6ae6088f664b8c52401e49df9f9662bceb4bf73bfb9a7f958",
+    "reason": "stable ordering of offered simultaneous effects"
+  },
+  {
+    "bot_id": "6fe75b159762009ec2fead167b1f7e2dda7125e3d9beeb83d37ef0948d46bdcd",
+    "candidates": [
+      null,
+      "B:BT11-023#3",
+      "B:BT11-032#1",
+      "B:BT11-112#2",
+      "B:BT11-112#3",
+      "B:BT22-023#2",
+      "B:EX13-022#3",
+      "B:EX13-023#1",
+      "B:EX13-069#3",
+      "B:EX13-069#4"
+    ],
+    "chosen": "B:BT11-112#2",
+    "decision": {
+      "effect_id": "BT22-023.end_turn_unsuspend",
+      "kind": "PENDING_CHOICE",
+      "selected_pending": {
+        "depth": 0,
+        "effect_id": "BT22-023.end_turn_unsuspend",
+        "field": "main_text",
+        "id": "effect-58",
+        "instance": "entity-14",
+        "seat": "B",
+        "source": "B:BT22-023#2",
+        "trigger": {
+          "kind": "End of Your Turn",
+          "phase": "END_OF_TURN",
+          "turn": 10
+        },
+        "usage": [
+          10,
+          "B",
+          "B:BT22-023#2",
+          "entity-14",
+          "BT22-023.end_turn_unsuspend"
+        ]
+      },
+      "source": "B:BT22-023#2"
+    },
+    "public_view_sha256": "76190130539738c6ae6088f664b8c52401e49df9f9662bceb4bf73bfb9a7f958",
+    "reason": "restore Blocker or reactive resource"
+  },
+  {
+    "bot_id": "3051db093e356d30cb042bb3bca1d948a5f3e187cadee9dbdea3f8b572cbaf87",
+    "candidates": [
+      {
+        "action": "skip",
+        "kind": "BREEDING_CHOICE"
+      },
+      {
+        "action": "hatch",
+        "kind": "BREEDING_CHOICE"
+      }
+    ],
+    "chosen": {
+      "action": "hatch",
+      "kind": "BREEDING_CHOICE"
+    },
+    "decision": {
+      "kind": "BREEDING_ACTION"
+    },
+    "public_view_sha256": "d55dbe1da9dda4c8885ded77213d93a1a0da0561322d478717fc6aef17491e75",
+    "reason": "current breeding development preference"
+  },
+  {
+    "bot_id": "3051db093e356d30cb042bb3bca1d948a5f3e187cadee9dbdea3f8b572cbaf87",
+    "candidates": [
+      {
+        "depth": 0,
+        "effect_id": "EX13-069.start_main_memory",
+        "field": "main_text",
+        "id": "effect-59",
+        "instance": "entity-13",
+        "seat": "A",
+        "source": "A:EX13-069#1",
+        "trigger": {
+          "kind": "Start of Your Main Phase",
+          "phase": "MAIN"
+        },
+        "usage": []
+      }
+    ],
+    "chosen": {
+      "depth": 0,
+      "effect_id": "EX13-069.start_main_memory",
+      "field": "main_text",
+      "id": "effect-59",
+      "instance": "entity-13",
+      "seat": "A",
+      "source": "A:EX13-069#1",
+      "trigger": {
+        "kind": "Start of Your Main Phase",
+        "phase": "MAIN"
+      },
+      "usage": []
+    },
+    "decision": {
+      "kind": "PENDING_EFFECT_ORDER"
+    },
+    "public_view_sha256": "adc039ecc115648e1a3db2503f37eb9f06b1f5a0dcee031beaef0a4c5d6cf05d",
+    "reason": "stable ordering of offered simultaneous effects"
+  },
+  {
+    "bot_id": "3051db093e356d30cb042bb3bca1d948a5f3e187cadee9dbdea3f8b572cbaf87",
+    "candidates": [
+      {
+        "kind": "PASS_TURN"
+      },
+      {
+        "hand_key": "A:P-138#2",
+        "kind": "PLAY_CARD",
+        "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+        "printed_cost": 5
+      },
+      {
+        "hand_key": "A:P-138#4",
+        "kind": "PLAY_CARD",
+        "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+        "printed_cost": 5
+      },
+      {
+        "hand_key": "A:EX13-017#3",
+        "kind": "PLAY_CARD",
+        "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+        "printed_cost": 3
+      },
+      {
+        "hand_key": "A:EX13-017#1",
+        "kind": "PLAY_CARD",
+        "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+        "printed_cost": 3
+      },
+      {
+        "hand_key": "A:EX13-023#3",
+        "kind": "PLAY_CARD",
+        "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+        "printed_cost": 12
+      },
+      {
+        "basis": "PRINTED_NORMAL",
+        "cost": 0,
+        "definition_sha256": "e229e194366d133c0e35c8bd6773046a78c8b039e4f0185af79ef92a426d7d23",
+        "hand_key": "A:EX13-017#3",
+        "kind": "BREEDING_EVOLUTION",
+        "legality": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY",
+        "printed_condition": "Blue 0 from Lv.2",
+        "route_index": 0,
+        "source_key": "A:EX13-002#3",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "basis": "PRINTED_NORMAL",
+        "cost": 0,
+        "definition_sha256": "e229e194366d133c0e35c8bd6773046a78c8b039e4f0185af79ef92a426d7d23",
+        "hand_key": "A:EX13-017#1",
+        "kind": "BREEDING_EVOLUTION",
+        "legality": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY",
+        "printed_condition": "Blue 0 from Lv.2",
+        "route_index": 0,
+        "source_key": "A:EX13-002#3",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "kind": "OPTION_DELAY",
+        "legality": "DELAY_TIMING_CANDIDATE_NOT_FULL_EFFECT_LEGALITY",
+        "source_key": "A:LM-034#1"
+      },
+      {
+        "attacker": "A:BT12-029#2",
+        "kind": "DECLARE_ATTACK",
+        "target": "PLAYER"
+      },
+      {
+        "attacker": "A:BT12-029#2",
+        "kind": "DECLARE_ATTACK",
+        "target": "B:BT11-032#1"
+      },
+      {
+        "attacker": "A:BT11-032#1",
+        "kind": "DECLARE_ATTACK",
+        "target": "PLAYER"
+      },
+      {
+        "attacker": "A:BT11-032#1",
+        "kind": "DECLARE_ATTACK",
+        "target": "B:BT11-032#1"
+      }
+    ],
+    "chosen": {
+      "attacker": "A:BT11-032#1",
+      "kind": "DECLARE_ATTACK",
+      "target": "PLAYER"
+    },
+    "decision": {
+      "kind": "MAIN_ACTION"
+    },
+    "public_view_sha256": "80aa5e8977ab624e89a09cc5ec0a15cc8f3abf22792ce973736a6a32ec803248",
+    "reason": "security pressure preference"
+  },
+  {
+    "bot_id": "3051db093e356d30cb042bb3bca1d948a5f3e187cadee9dbdea3f8b572cbaf87",
+    "candidates": [
+      {
+        "depth": 0,
+        "effect_id": "EX13-022.inherited_unsuspend",
+        "field": "inherited_text",
+        "id": "effect-60",
+        "instance": "entity-9",
+        "seat": "A",
+        "source": "A:EX13-022#1",
+        "trigger": {
+          "entity": "A:BT11-032#1",
+          "kind": "ORIENTATION_CHANGED",
+          "name_at_trigger": "UlforceVeedramon",
+          "phase": "MAIN",
+          "suspended_after": true,
+          "suspended_before": false
+        },
+        "usage": [
+          11,
+          "A",
+          "A:EX13-022#1",
+          "EX13-022.inherited_unsuspend"
+        ]
+      },
+      {
+        "depth": 0,
+        "effect_id": "BT11-112.suspend_reactivation",
+        "field": "main_text",
+        "id": "effect-61",
+        "instance": "entity-1",
+        "seat": "A",
+        "source": "A:BT11-112#2",
+        "trigger": {
+          "kind": "DIGIMON_SUSPENDED",
+          "name_at_trigger": "UlforceVeedramon",
+          "observed_instance": "entity-9",
+          "observed_source": "A:BT11-032#1",
+          "suspended_after": true,
+          "suspended_before": false
+        },
+        "usage": []
+      },
+      {
+        "depth": 0,
+        "effect_id": "BT11-112.suspend_reactivation",
+        "field": "main_text",
+        "id": "effect-62",
+        "instance": "entity-15",
+        "seat": "A",
+        "source": "A:BT11-112#3",
+        "trigger": {
+          "kind": "DIGIMON_SUSPENDED",
+          "name_at_trigger": "UlforceVeedramon",
+          "observed_instance": "entity-9",
+          "observed_source": "A:BT11-032#1",
+          "suspended_after": true,
+          "suspended_before": false
+        },
+        "usage": []
+      }
+    ],
+    "chosen": {
+      "depth": 0,
+      "effect_id": "BT11-112.suspend_reactivation",
+      "field": "main_text",
+      "id": "effect-61",
+      "instance": "entity-1",
+      "seat": "A",
+      "source": "A:BT11-112#2",
+      "trigger": {
+        "kind": "DIGIMON_SUSPENDED",
+        "name_at_trigger": "UlforceVeedramon",
+        "observed_instance": "entity-9",
+        "observed_source": "A:BT11-032#1",
+        "suspended_after": true,
+        "suspended_before": false
+      },
+      "usage": []
+    },
+    "decision": {
+      "kind": "PENDING_EFFECT_ORDER"
+    },
+    "public_view_sha256": "47f3bcd652fc8093ad4076dd815b6e12d8649f2ae0fdec72680ab12cad22ae29",
+    "reason": "stable ordering of offered simultaneous effects"
+  },
+  {
+    "bot_id": "3051db093e356d30cb042bb3bca1d948a5f3e187cadee9dbdea3f8b572cbaf87",
+    "candidates": [
+      null,
+      "BT11-032.play_blue_tamer"
+    ],
+    "chosen": "BT11-032.play_blue_tamer",
+    "decision": {
+      "effect_id": "BT11-112.suspend_reactivation",
+      "kind": "PENDING_CHOICE",
+      "selected_pending": {
+        "depth": 0,
+        "effect_id": "BT11-112.suspend_reactivation",
+        "field": "main_text",
+        "id": "effect-61",
+        "instance": "entity-1",
+        "seat": "A",
+        "source": "A:BT11-112#2",
+        "trigger": {
+          "kind": "DIGIMON_SUSPENDED",
+          "name_at_trigger": "UlforceVeedramon",
+          "observed_instance": "entity-9",
+          "observed_source": "A:BT11-032#1",
+          "suspended_after": true,
+          "suspended_before": false
+        },
+        "usage": []
+      },
+      "source": "A:BT11-112#2"
+    },
+    "public_view_sha256": "47f3bcd652fc8093ad4076dd815b6e12d8649f2ae0fdec72680ab12cad22ae29",
+    "reason": "activate one offered current effect; stable effect tie break"
+  },
+  {
+    "bot_id": "3051db093e356d30cb042bb3bca1d948a5f3e187cadee9dbdea3f8b572cbaf87",
+    "candidates": [
+      {
+        "depth": 1,
+        "effect_id": "BT11-032.play_blue_tamer",
+        "field": "main_text",
+        "id": "effect-63",
+        "instance": "entity-9",
+        "seat": "A",
+        "source": "A:BT11-032#1",
+        "trigger": {
+          "current_source": "A:BT11-032#1",
+          "kind": "RINA_REACTIVATED_WHEN_DIGIVOLVING",
+          "observed_instance": "entity-9",
+          "observed_source": "A:BT11-032#1",
+          "paid_instance": "entity-1",
+          "paid_source": "A:BT11-112#2",
+          "parent_effect": "BT11-112.suspend_reactivation",
+          "parent_pending_id": "effect-61",
+          "suspension_paid": true
+        },
+        "usage": []
+      }
+    ],
+    "chosen": {
+      "depth": 1,
+      "effect_id": "BT11-032.play_blue_tamer",
+      "field": "main_text",
+      "id": "effect-63",
+      "instance": "entity-9",
+      "seat": "A",
+      "source": "A:BT11-032#1",
+      "trigger": {
+        "current_source": "A:BT11-032#1",
+        "kind": "RINA_REACTIVATED_WHEN_DIGIVOLVING",
+        "observed_instance": "entity-9",
+        "observed_source": "A:BT11-032#1",
+        "paid_instance": "entity-1",
+        "paid_source": "A:BT11-112#2",
+        "parent_effect": "BT11-112.suspend_reactivation",
+        "parent_pending_id": "effect-61",
+        "suspension_paid": true
+      },
+      "usage": []
+    },
+    "decision": {
+      "kind": "PENDING_EFFECT_ORDER"
+    },
+    "public_view_sha256": "9e3d48ef9e5448bb24c6fc334a56e66990cf14635a51b10149cfd0111ae161bb",
+    "reason": "stable ordering of offered simultaneous effects"
+  },
+  {
+    "bot_id": "3051db093e356d30cb042bb3bca1d948a5f3e187cadee9dbdea3f8b572cbaf87",
+    "candidates": [
+      null
+    ],
+    "chosen": null,
+    "decision": {
+      "effect_id": "BT11-032.play_blue_tamer",
+      "kind": "PENDING_CHOICE",
+      "selected_pending": {
+        "depth": 1,
+        "effect_id": "BT11-032.play_blue_tamer",
+        "field": "main_text",
+        "id": "effect-63",
+        "instance": "entity-9",
+        "seat": "A",
+        "source": "A:BT11-032#1",
+        "trigger": {
+          "current_source": "A:BT11-032#1",
+          "kind": "RINA_REACTIVATED_WHEN_DIGIVOLVING",
+          "observed_instance": "entity-9",
+          "observed_source": "A:BT11-032#1",
+          "paid_instance": "entity-1",
+          "paid_source": "A:BT11-112#2",
+          "parent_effect": "BT11-112.suspend_reactivation",
+          "parent_pending_id": "effect-61",
+          "suspension_paid": true
+        },
+        "usage": []
+      },
+      "source": "A:BT11-032#1"
+    },
+    "public_view_sha256": "9e3d48ef9e5448bb24c6fc334a56e66990cf14635a51b10149cfd0111ae161bb",
+    "reason": "explicit no-target or optional decline candidate"
+  },
+  {
+    "bot_id": "3051db093e356d30cb042bb3bca1d948a5f3e187cadee9dbdea3f8b572cbaf87",
+    "candidates": [
+      {
+        "depth": 0,
+        "effect_id": "EX13-022.inherited_unsuspend",
+        "field": "inherited_text",
+        "id": "effect-60",
+        "instance": "entity-9",
+        "seat": "A",
+        "source": "A:EX13-022#1",
+        "trigger": {
+          "entity": "A:BT11-032#1",
+          "kind": "ORIENTATION_CHANGED",
+          "name_at_trigger": "UlforceVeedramon",
+          "phase": "MAIN",
+          "suspended_after": true,
+          "suspended_before": false
+        },
+        "usage": [
+          11,
+          "A",
+          "A:EX13-022#1",
+          "EX13-022.inherited_unsuspend"
+        ]
+      },
+      {
+        "depth": 0,
+        "effect_id": "BT11-112.suspend_reactivation",
+        "field": "main_text",
+        "id": "effect-62",
+        "instance": "entity-15",
+        "seat": "A",
+        "source": "A:BT11-112#3",
+        "trigger": {
+          "kind": "DIGIMON_SUSPENDED",
+          "name_at_trigger": "UlforceVeedramon",
+          "observed_instance": "entity-9",
+          "observed_source": "A:BT11-032#1",
+          "suspended_after": true,
+          "suspended_before": false
+        },
+        "usage": []
+      }
+    ],
+    "chosen": {
+      "depth": 0,
+      "effect_id": "BT11-112.suspend_reactivation",
+      "field": "main_text",
+      "id": "effect-62",
+      "instance": "entity-15",
+      "seat": "A",
+      "source": "A:BT11-112#3",
+      "trigger": {
+        "kind": "DIGIMON_SUSPENDED",
+        "name_at_trigger": "UlforceVeedramon",
+        "observed_instance": "entity-9",
+        "observed_source": "A:BT11-032#1",
+        "suspended_after": true,
+        "suspended_before": false
+      },
+      "usage": []
+    },
+    "decision": {
+      "kind": "PENDING_EFFECT_ORDER"
+    },
+    "public_view_sha256": "9e3d48ef9e5448bb24c6fc334a56e66990cf14635a51b10149cfd0111ae161bb",
+    "reason": "stable ordering of offered simultaneous effects"
+  },
+  {
+    "bot_id": "3051db093e356d30cb042bb3bca1d948a5f3e187cadee9dbdea3f8b572cbaf87",
+    "candidates": [
+      null,
+      "BT11-032.play_blue_tamer"
+    ],
+    "chosen": "BT11-032.play_blue_tamer",
+    "decision": {
+      "effect_id": "BT11-112.suspend_reactivation",
+      "kind": "PENDING_CHOICE",
+      "selected_pending": {
+        "depth": 0,
+        "effect_id": "BT11-112.suspend_reactivation",
+        "field": "main_text",
+        "id": "effect-62",
+        "instance": "entity-15",
+        "seat": "A",
+        "source": "A:BT11-112#3",
+        "trigger": {
+          "kind": "DIGIMON_SUSPENDED",
+          "name_at_trigger": "UlforceVeedramon",
+          "observed_instance": "entity-9",
+          "observed_source": "A:BT11-032#1",
+          "suspended_after": true,
+          "suspended_before": false
+        },
+        "usage": []
+      },
+      "source": "A:BT11-112#3"
+    },
+    "public_view_sha256": "9e3d48ef9e5448bb24c6fc334a56e66990cf14635a51b10149cfd0111ae161bb",
+    "reason": "activate one offered current effect; stable effect tie break"
+  }
+]

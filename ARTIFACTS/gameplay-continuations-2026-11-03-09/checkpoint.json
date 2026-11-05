@@ -1,0 +1,13 @@
+{
+  "seed": 12017913134550805276,
+  "first": "A",
+  "status": "HALT",
+  "turn": 10,
+  "commands": 140,
+  "halt_reason": "ATTACK_ORIENTATION_TRIGGER_UNIMPLEMENTED: BT11-112 main_text source=B:BT11-112#3",
+  "winner": null,
+  "record_sha256": "edba5ed4f421e6a0928d8212a3504d4f29e0f2abc776480fe6c90c7c471215a3",
+  "accepted_fact_finding_credit": 0,
+  "previous_record": "ARTIFACTS/gameplay-continuations-2026-11-03-08/game-0000-segment.json.gz",
+  "execution_id": "f1f63348a34bb689487bff3ad7e2592ca3cad1d418773b3fae48220e33700985"
+}

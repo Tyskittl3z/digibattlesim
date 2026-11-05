@@ -1,0 +1,28 @@
+{
+  "full_suite_at_publication": {
+    "status": "PASSED",
+    "tests_passed": 495,
+    "seconds": 556.48,
+    "command": "python -m unittest discover -p 'test_*.py' -q",
+    "production_source_matches_archived_execution_id": true
+  },
+  "last_fully_green_full_suite": {
+    "commit": "713a513",
+    "tests_passed": 459
+  },
+  "focused_tests": {
+    "passed": 56,
+    "seconds": 145.907
+  },
+  "independent_tests": {
+    "passed": 2,
+    "seconds": 34.387
+  },
+  "independent_strict_confirmation_delta": true,
+  "exact_replay": true,
+  "turn": 10,
+  "commands": 152,
+  "same_seed": 12017913134550805276,
+  "full_match_credit": 0,
+  "next_stop": "AERO_RETURN_DEPENDENCY_UNSUPPORTED: EX13-002 inherited_text"
+}

@@ -1,0 +1,13 @@
+{
+  "seed": 12017913134550805276,
+  "first": "A",
+  "status": "HALT",
+  "turn": 6,
+  "commands": 55,
+  "halt_reason": "BATTLE_DIGIVOLVING_EFFECT_UNSUPPORTED: BT22-022 timing=When Digivolving source=B:BT22-022#1",
+  "winner": null,
+  "record_sha256": "76cefec7423a42c1a75bf398f8491f71aaec04ed0c4584480c1a959188f55235",
+  "accepted_fact_finding_credit": 0,
+  "previous_record": "ARTIFACTS/gameplay-continuations-2026-11-02-01/game-0000-segment-01.json.gz",
+  "execution_id": "8a75c5069eafabdb536c419a953d799309ef2b955ccb2425056130fe4ef46428"
+}

@@ -1,0 +1,340 @@
+{
+  "schema": "rina-reactivation-actual-suspension-official-review-v1",
+  "date": "2026-11-03",
+  "status": "SOURCE_BACKED_ACTUAL_ENCOUNTER_RULES_CONFIRMED",
+  "certification": "NONE_ENCOUNTER_REVIEW_ONLY",
+  "scope": "Read-only official card text/Card Q&A/CR4.3 review of saved segment08 failed command105; saved snapshots inspected, no gameplay command executed and no SOURCE edits.",
+  "record": "ARTIFACTS/gameplay-continuations-2026-11-03-08/game-0000-segment.json.gz",
+  "record_sha256": "610c970fb3af48ea2ee4742a24c6a223e5f95fe2683028faab2266a921cfda91",
+  "seed": 12017913134550805276,
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "saved_command_count": 105,
+  "saved_successful_commands": 104,
+  "saved_choice": {
+    "choice": "B:EX13-023#1",
+    "pending_id": "effect-34"
+  },
+  "actual_before": {
+    "turn": 8,
+    "active": "B",
+    "phase": "UNSUSPEND",
+    "memory": 1,
+    "observed_digimon": {
+      "cards": [
+        "B:EX13-002#1",
+        "B:EX1-013#3",
+        "B:BT22-022#1",
+        "B:BT22-023#1",
+        "B:EX13-023#1"
+      ],
+      "instance_id": "entity-10",
+      "played_turn": null,
+      "ready_since_turn": 6,
+      "statuses": {},
+      "suspended": false
+    },
+    "rina": {
+      "cards": [
+        "B:BT11-112#3"
+      ],
+      "instance_id": "entity-12",
+      "played_turn": 6,
+      "ready_since_turn": 7,
+      "statuses": {},
+      "suspended": false
+    },
+    "pending": [
+      {
+        "depth": 2,
+        "effect_id": "EX13-023.orientation",
+        "field": "main_text",
+        "id": "effect-34",
+        "instance": "entity-10",
+        "seat": "B",
+        "source": "B:EX13-023#1",
+        "trigger": {
+          "card": "B:EX13-023#1",
+          "kind": "When Digivolving",
+          "previous_top": "B:BT22-023#1"
+        },
+        "usage": [
+          8,
+          "B",
+          "B:EX13-023#1",
+          "EX13-023.orientation"
+        ]
+      },
+      {
+        "depth": 2,
+        "effect_id": "EX13-023.return_fewest",
+        "field": "main_text",
+        "id": "effect-35",
+        "instance": "entity-10",
+        "seat": "B",
+        "source": "B:EX13-023#1",
+        "trigger": {
+          "card": "B:EX13-023#1",
+          "kind": "When Digivolving",
+          "previous_top": "B:BT22-023#1"
+        },
+        "usage": []
+      }
+    ],
+    "once_used": [
+      [
+        8,
+        "B",
+        "B:BT11-112#3",
+        "entity-12",
+        "BT11-112.unsuspend_memory"
+      ]
+    ],
+    "ex13_rina_suspended": {
+      "B:EX13-069#3": false,
+      "B:EX13-069#4": true
+    }
+  },
+  "findings": [
+    {
+      "id": "actual-suspension-trigger",
+      "finding": "The selected orientation activation consumes its OPT, then changes B:EX13-023#1/entity-10 from unsuspended to suspended. That actual event triggers B:BT11-112#3 All Turns and BT22-023 inherited optional unsuspend together. Both new reactions have priority over original return effect35; depth3 versus depth2 is an implementation representation, not official rules terminology.",
+      "authority": [
+        "EX13-023 printed orientation line",
+        "BT11-112 printed All Turns",
+        "BT22-023 inherited text",
+        "CR15-14-1-1",
+        "CR15-14-1-4",
+        "CR15-4-5-2"
+      ]
+    },
+    {
+      "id": "optional-payment",
+      "finding": "Rina self-suspension is an optional processing condition. Declining leaves Rina unchanged and activates no When Digivolving effect. Paying requires a real unsuspended-to-suspended transition. An already suspended Rina cannot choose/pay the condition; this does not suppress the original suspension event from triggering the Rina effect.",
+      "authority": [
+        "CR1-3-3",
+        "CR15-4-2-2",
+        "CR15-7-1",
+        "CR15-7-2",
+        "CR15-7-4"
+      ]
+    },
+    {
+      "id": "no-eligible-wd-payment",
+      "finding": "An unsuspended Rina may still pay self-suspension when the observed Digimon has no eligible When Digivolving effect. Then no such effect activates. Do not reject the payment merely because its result is unavailable. This includes having no When Digivolving text; applying the general rule also permits payment when all possible activations are prohibited, while the prohibited effect itself must remain unselectable. If one is eligible after payment, activate one as instructed.",
+      "authority": [
+        "BT11-112 Q2142",
+        "BT11-112 Q7198",
+        "BT11-112 Q7199",
+        "CR15-7-5",
+        "CR15-1-5"
+      ]
+    },
+    {
+      "id": "current-top-and-entity",
+      "finding": "Bind the observing Rina to its current Tamer entity and the originally observed Digimon entity, not a reusable physical-card key. Normal evolution preserves the Digimon identity. If another reaction evolves that Digimon first, Rina can activate one current-top When Digivolving effect even if its new name lacks Veedramon; the new actual evolution When Digivolving effects resolve first. A leave-and-return is a new card/entity and must not be substituted. Pending Rina cannot activate if its own source became a new card or lost the effect.",
+      "authority": [
+        "BT11-112 Q2143",
+        "CR3-1-3-1-1",
+        "CR3-1-3-1-2",
+        "CR3-1-3-1-3",
+        "CR3-4-5",
+        "CR15-4-4-3",
+        "CR15-4-4-4"
+      ]
+    },
+    {
+      "id": "exactly-one-eligible-effect",
+      "finding": "Rina selects one current eligible When Digivolving effect, never all such effects. Used-up OPT effects and prohibited When Digivolving activations are ineligible. At this exact newly suspended EX13-023 top, orientation has just consumed its shared OPT, so only EX13-023.return_fewest is currently eligible. Its original pending effect35 remains a separate activation; the text has no OPT. The activated return line retains its own may choice.",
+      "authority": [
+        "BT11-112 Q7198",
+        "BT11-112 Q7199",
+        "BT11-112 Q7200",
+        "EX13-023 printed separate lines",
+        "CR15-14-1-1",
+        "CR15-15-7-4"
+      ]
+    },
+    {
+      "id": "direct-activation-not-evolution",
+      "finding": "Paying Rina directly activates and processes the selected When Digivolving effect within Rina processing. It cannot be deferred as an ordinary simultaneous sibling behind Aero or effect35. It performs no evolution procedure, pays no evolution cost, draws no evolution bonus card, and does not retrigger all When Digivolving effects. Separate real evolution caused by a different effect would perform its own procedure.",
+      "authority": [
+        "CR15-4-2-1",
+        "CR15-15-7-1",
+        "CR8-1-1",
+        "CR8-1-3-2",
+        "CR8-1-3-3",
+        "CR15-16-3-1"
+      ]
+    },
+    {
+      "id": "aero-relative-order",
+      "finding": "B may choose either the derived Rina effect or the inherited Aero effect first, choosing the next after each complete resolution. If Aero is chosen first and actually unsuspends, the historical suspension event remains the event observed by Rina. New reactions caused by that unsuspend resolve before returning to the older Rina/effect35 group; subsequent real evolution may change the current eligible When Digivolving set as Q2143 directs. Aero itself has a separate OPT carried over in the stack.",
+      "authority": [
+        "BT11-112 Q2143",
+        "CR3-4-5",
+        "CR15-3-3",
+        "CR15-4-2-2",
+        "CR15-4-3-4",
+        "CR15-4-3-5-1",
+        "CR15-4-5-2"
+      ]
+    },
+    {
+      "id": "actual-unsuspend-observers",
+      "finding": "Saved turn8 already used B BT11 Rina unsuspend_memory, so a later Aero unsuspend cannot activate that OPT again this turn. EX1-013 inherited memory requires own main phase and does not trigger during UNSUSPEND. EX13 Rina has no OPT: #3 previously declining a cost does not bar payment on a new actual unsuspend; #4 is already suspended and cannot pay while still so. EX13-002 only observes blue Tamer plays, so this suspension/unsuspension does not trigger it.",
+      "authority": [
+        "saved once_used state",
+        "BT11-112 printed Your Turn Once Per Turn",
+        "EX1-013 printed inherited text",
+        "EX13-069 printed Your Turn effect",
+        "EX13-002 printed inherited text",
+        "CR15-7-4",
+        "CR15-14-1-1"
+      ]
+    }
+  ],
+  "official_qa": {
+    "BT11-112": [
+      {
+        "id": "Q2142",
+        "date": "Sep. 18, 2026",
+        "question": "When one of my Digimon with [Veedramon] in its name without a [When Digivolving] effect becomes suspended, can I activate this card's [All Turns] effect?",
+        "answer": "Yes you can.\nIf activated, suspend this Tamer and no [When Digivolving] effect will activate."
+      },
+      {
+        "id": "Q2143",
+        "date": "Sep. 18, 2026",
+        "question": "My Digimon with [Veedramon] in its name becomes suspended, and this card's [All Turns] effect and another effect trigger. At this time, the other effect is activated first, and the Digimon digivolves.\nAfterwards, if the digivolved card has a [When Digivolving] effect, can I activate this card's [All Turns] effect and activate the digivolved card's [When Digivolving] effect?",
+        "answer": "Yes, you can.\nIf activated, you must activate the digivolved card's [When Digivolving] effect before you can activate this card's [All Turns] effect.\nAdditionally, even if the digivolved card is a Digimon without [Veedramon] in its name, you can still activate that card's [When Digivolving] effect."
+      },
+      {
+        "id": "Q7198",
+        "date": "Sep. 18, 2026",
+        "question": "Can I use this card's [All Turns] effect to activate a [When Digivolving] effect on another card that was given a \"[When Digivolving] effects don't activate\" effect?",
+        "answer": "No."
+      },
+      {
+        "id": "Q7199",
+        "date": "Sep. 18, 2026",
+        "question": "Can I use this card's [All Turns] effect to activate another card's [When Digivolving] effect even if it has used up all of its [X Per Turn] uses?",
+        "answer": "No."
+      },
+      {
+        "id": "Q7200",
+        "date": "Sep. 18, 2026",
+        "question": "Can I use this card's [All Turns] effect to choose and activate one [When Digivolving] effect on another card that has multiple [When Digivolving] effects?",
+        "answer": "Yes, you can."
+      }
+    ],
+    "EX13-023": [
+      {
+        "id": "Q7266",
+        "date": "Sep. 18, 2026",
+        "question": "This card has multiple effects that trigger when it's played or when it digivolves. In what order can they be activated?",
+        "answer": "The effects trigger simultaneously, so the player can choose the activation order."
+      },
+      {
+        "id": "Q7267",
+        "date": "Sep. 18, 2026",
+        "question": "What does orientation mean?",
+        "answer": "It refers to the suspended or unsuspended state of a card."
+      }
+    ]
+  },
+  "official_rules_edition": "Comprehensive Rules Ver.4.3, 2026-09-18",
+  "official_rules_excerpts": {
+    "1-3-2": "1-3-2. If a player is requested to perform an impossible action, that action will not be carried out. If only some of those actions are impossible, the player performs as many of the required actions as possible.",
+    "1-3-3": "1-3-3. If a card in a given state is requested to be changed to that same state, the card remains in its current state. (Example: If a suspended Digimon is chosen for an \"[On Play] Suspend 1 of your opponent's Digimon\" effect, the action of suspending it isn't performed.)",
+    "3-1-3-1-1": "3-1-3-1-1. When a card is moved from one area to another, that card becomes a \"new card.\"",
+    "3-1-3-1-2": "3-1-3-1-2. A new card is considered to be a different card from the card in the previous area, and it will not carry over any of the original card's statuses, states, etc.",
+    "3-1-3-1-3": "3-1-3-1-3. Even if a card on the field becomes the bottom card in a stack due to cards being placed on top of it, it isn't considered to be a new card.",
+    "3-4-5": "3-4-5. If another card is stacked on top of a card on the field, or if the card stacked on top leaves and the card underneath is a different card, it will be considered to have changed to that Digimon or Tamer, etc. It won't be considered a different Digimon or Tamer, etc. (Example: If a player's [GrapLeomon] digivolves into [Marsmon], that [GrapLeomon] will be considered to change into [Marsmon], it won't be treated as a [Marsmon] that is newly placed onto the field.)",
+    "8-1-1": "8-1-1. Digivolution refers to a rule that allows a player to reveal a Digimon card and stack it on top of their card on the field to change that card. A player can digivolve a card on the field into their Digimon card by paying its cost as part of their main phase actions. (For details, refer to 6-5 \"Main Phase\")",
+    "8-1-3-2": "8-1-3-2. The digivolution cost specified in the chosen digivolution requirement is paid. (For details, refer to 2-3-6 \"Digivolution Requirements\")2-3-5",
+    "8-1-3-3": "8-1-3-3. The player places the Digimon for the digivolution on top of the chosen card, draws 1 card, and the digivolution process is resolved.",
+    "15-1-5": "15-1-5. If an effect is mandatory and not optional, its processing must be performed whenever possible.",
+    "15-3-3": "15-3-3. Even if a card is stacked on top of a Digimon, inherited effects gained by it will be carried over along with their states at that point in time.",
+    "15-4-2-1": "15-4-2-1. Triggering refers to when the conditions have been met for an effect to trigger. Some effects activate without triggering.",
+    "15-4-2-2": "15-4-2-2. When an effect's trigger conditions are met during a game, it will trigger no matter the circumstances, even when processing is being performed for a rule or effect.",
+    "15-4-3-4": "15-4-3-4. The activation order is determined for effects that trigger simultaneously by choosing the next pending activation effect after each effect has been resolved.",
+    "15-4-3-5-1": "15-4-3-5-1. The turn player chooses 1 of their effects to activate from among the effects that triggered simultaneously. This step is repeated until there are no more pending activation effects for the turn player.",
+    "15-4-4-3": "15-4-4-3. When a card with an effect that's pending activation becomes a new card before the effect activates, the effect can no longer be activated. (Example: When an [On Play] effect is triggered by a card being played, if the card is removed from the battle area before the effect is activated, the effect 26 can no longer be activated.)",
+    "15-4-4-4": "15-4-4-4. When a card with an effect that's pending activation loses the effect before it activates, the effect can no longer be activated. (Example: When a Digimon with the text \"[When Attacking] <Draw 1>\" and \"[When Attacking] This Digimon may digivolve into a Digimon card with the [Hybrid] trait in the hand with the digivolution cost reduced by 1\" attacks, then it digivolves from the 2nd [When Attacking] effect, the 1st [When Attacking] effect can no longer activate.)",
+    "15-4-5-2": "15-4-5-2. A derived triggering effect will activate before previously triggered effects that are pending activation.",
+    "15-7-1": "15-7-1. If an effect has optional processing conditions, its text will show the conditions for processing the effect. If the player chooses to execute the processing for the conditions and is successful, the processing after the conditions is performed. Optional processing conditions include text such as \"by X, Y.\" (Example: If an effect reads \"[On Deletion] By trashing 1 card in the hand, gain 1 memory,\" The \"by trashing 1 card in the hand\" part is an optional processing condition.",
+    "15-7-2": "15-7-2. If the content of the optional processing conditions isn't executed, the processing after the conditions can't be 27 executed. (Examples: If an effect reads \"[When Digivolving] By trashing 2 cards in your hand, this Digimon unsuspends. After, if [WereGarurumon] or [X Antibody] is in this Digimon's digivolution cards, you may return 1 Digimon card with [Garurumon] or [X Antibody] in its name from your trash to the hand,\" unless the player trashes 2 cards in their hand, \"this Digimon unsuspends\" and the content after \"After\" can't be executed.)",
+    "15-7-4": "15-7-4. If executing an optional processing condition's contents isn't possible, then the player can't choose to execute them. (Example: If an effect reads \"[When Attacking] By trashing your top security card, 1 of your opponent's Digimon gets -5000 DP for the turn,\" and the player doesn't have even 1 security card, then they can't choose to execute that condition's contents.)",
+    "15-7-5": "15-7-5. A player can choose to execute the content of optional processing conditions, regardless of whether or not the content after the conditions can be executed. (Example: If an effect reads \"[When Attacking] By trashing your top security card, 1 of your opponent's Digimon gets - 5000 DP for the turn,\" a player can choose to trash their top security card even when the opponent doesn't have any Digimon in the battle area.)",
+    "15-8-3-9-2": "15-8-3-9-2. Trigger-type effects will trigger if their trigger conditions are met, regardless of whether or not their processing conditions are met. However, the processing conditions must be met at the time of activation in order for the effect to activate.",
+    "15-14-1-1": "15-14-1-1. [X Per Turn] means that an effect can be activated a number of times during 1 turn as specified by X, and each activation counts toward 1 use of X.",
+    "15-14-1-4": "15-14-1-4. When a player chooses to activate an [X Per Turn] effect, it will count toward 1 use of [X Per Turn], even if the effect's processing can't be executed.",
+    "15-15-7-1": "15-15-7-1. During the processing of effects that activate other effects, another effect will activate and process. (Example: If an effect reads \"[When Digivolving] You may place 1 card with [Royal Knight] in its traits and a play cost of 13 or less from your hand or trash under this Digimon as its bottom digivolution card. Activate 1 of that card's [When Digivolving] effects as an effect of this Digimon. Then, <Blitz>,\" a [When Digivolving] effect on the card placed as the bottom digivolution card will activate, then <Blitz> will be processed after that effect is processed.",
+    "15-15-7-4": "15-15-7-4. Even if the effect activating another effect is mandatory, the player can still choose whether or not to processes that other effect's optional processing conditions. (Example: When activating another effect with the effect \"[When Attacking] [Once Per Turn] Activate 1 [On Play] effect on a face-up [Zaxon] trait Digimon card in your security stack as an effect of this Digimon\" and that other effect has optional processing conditions, the player can choose whether or not to process them.)",
+    "15-16-3-1": "15-16-3-1. [When Digivolving] is an effect timing where the effect is triggered at the point when the action of digivolving into a card with that effect is complete.",
+    "15-9-2-1": "15-9-2-1. Optional processing refers to text whose action is optional.",
+    "15-9-2-2": "15-9-2-2. The player can choose to execute the content of optional processing."
+  },
+  "official_source_pins": [
+    {
+      "id": "card-BT11-112",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-112",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-112.html",
+      "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc"
+    },
+    {
+      "id": "card-BT22-023",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-023",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-023.html",
+      "sha256": "a184df26a6bd8c5ccaed325998c9b85a18c0c2d5c0778a20993fd2d6a01e67dd"
+    },
+    {
+      "id": "card-EX1-013",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX1-013",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX1-013.html",
+      "sha256": "df126caa2ee95d5f7b86008ef828291645d15204c177801eb2f73404d0611f38"
+    },
+    {
+      "id": "card-EX13-023",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-023",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-023.html",
+      "sha256": "3d50f704648b02667258fceb3f3675a80141599f76ca4ad1beeb3069d8fad7aa"
+    },
+    {
+      "id": "card-EX13-069",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-069",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-069.html",
+      "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7"
+    },
+    {
+      "id": "rules",
+      "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918",
+      "file": "RULES/matchups/123129-vs-124303/sources/general_rule.pdf",
+      "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271"
+    },
+    {
+      "id": "card-EX13-002",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-002",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-002.html",
+      "sha256": "9d2abc2c3a5f20aebefbcb5b89818a4559748ddbde4e20f92562092b7267cd4f"
+    }
+  ],
+  "supplemental_hashes": {
+    "RULES/matchups/123129-vs-124303/SOURCE_INDEX.json": "09e681295ce1d005cd554fddda4464b09d46e5adeb5139ac91d090fb7defe40c",
+    "RULES/matchups/123129-vs-124303/CARD_QA.json": "6296a5a40223ffbf1ea0d2a2c803f9c9a9b8727e13674e0201f383ea4b7db92f"
+  },
+  "source_files_edited": [],
+  "new_gameplay_executed": false,
+  "full_match_credit": 0,
+  "accepted_fact_finding_credit": 0,
+  "final_evaluation_credit": 0,
+  "strategy_assessment": "NONE",
+  "limits": "Source-backed encounter review only. This does not independently replay the104 successful commands, certify new implementation or later gameplay, establish a full match, validate strategy or close branch coverage.",
+  "official_printed_card_text": {
+    "BT11-112": "BT11-112 SEC Tamer Alternative Art Rina Shinomiya Color Blue Cost 3 Card Text 1 [Effect] [On Play] Until your opponent's turn ends, 1 of your Digimon with [Veemon] or [Veedramon] in its name gains \uff1cBlocker\uff1e and \uff1cEvade\uff1e. [All Turns] When any of your Digimon with [Veedramon] in their names suspend, by suspending this Tamer, activate 1 of those Digimon's [When Digivolving] effects. [Your Turn][Once Per Turn] When any of your blue Digimon unsuspend, gain 1 memory. Card Text 2 [Security Effect] [Security] Play this card without paying the cost.",
+    "BT22-023": "BT22-023 U Digimon Lv.5 AeroVeedramon Color Blue Cost 7 DP 7000 Digivolve Cost 1 Blue 3 from Lv.4 Form Ultimate Attribute Vaccine Type Holy Dragon/CS Card Text 1 [Special Digivolution Condition] [Digivolve] Lv.4 w/[CS] trait: Cost 3 [Effect] [On Play] [When Digivolving] Return 1 of your opponent's level 4 or lower Digimon to the bottom of the deck. [End of Your Turn] [Once Per Turn] 1 of your blue Digimon or Tamers may unsuspend. Card Text 2 [Inherited Effect] [All Turns] [Once Per Turn] When this Digimon with [Veedramon] in its name suspends, if you have a blue Tamer, this Digimon may unsuspend.",
+    "EX1-013": "EX1-013 R Digimon Lv.3 Veemon Color Blue Cost 3 DP 2000 Digivolve Cost 1 Blue 0 from Lv.2 Form Rookie Attribute Free Type Mini Dragon Card Text 2 [Inherited Effect] [Your Turn][Once Per Turn] When this Digimon becomes unsuspended during your main phase, gain 1 memory.",
+    "EX13-023": "EX13-023 UR Digimon Lv.6 UlforceVeedramon Color Blue Cost 12 DP 12000 Digivolve Cost 1 Blue 3 from Lv.5 Form Mega Attribute Vaccine Type Holy Warrior/Royal Knight/CS Card Text 1 [Special Digivolution Condition] [Digivolve] Lv.5 w/[CS] trait: Cost 3 [Effect] \uff1cBlocker\uff1e \uff1cEvade\uff1e [On Play] [When Digivolving] [When Attacking] [Once Per Turn] 1 of your Digimon may change orientation. [On Play] [When Digivolving] You may return all of your opponent's Digimon with the fewest digivolution cards to the bottom of the deck. [All Turns] Your opponent's effects can't reduce this unsuspended Digimon's DP, return its stacked cards to the hand or deck, or trash them. [Special Play Condition] Assembly -5: Lv.5 \u00d7 Lv.4 \u00d7 Lv.3, all w/[Veemon]/[Veedramon] in name",
+    "EX13-069": "EX13-069 R Tamer Rina Shinomiya Color Blue Cost 3 Type CS Card Text 1 [Effect] [Start of Your Main Phase] If you have a Digimon with [Veemon] or [Veedramon] in its name, gain 1 memory. [Your Turn] When any of your Digimon unsuspend, by suspending this Tamer, \uff1cDraw 1\uff1e. After, 1 of your Digimon may digivolve into a Digimon card with [Veedramon] in its name in the hand with the cost reduced by 2. Card Text 2 [Security Effect] [Security] Play this card without paying the cost.",
+    "EX13-002": "EX13-002 U Digi-Egg Lv.2 DemiVeemon Color Blue Form In-Training Type Baby Dragon Card Text 2 [Inherited Effect] [Your Turn] [Once Per Turn] When any of your blue Tamers are played, this Digimon with [Veedramon] in its name may unsuspend."
+  }
+}

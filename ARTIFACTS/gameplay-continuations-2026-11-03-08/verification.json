@@ -1,0 +1,41 @@
+{
+  "full_suite_at_this_exact_source_checkpoint": "NOT_RUN",
+  "last_prior_full_suite": {
+    "commit": "713a513",
+    "tests_passed": 459
+  },
+  "focused_runs": [
+    {
+      "modules": [
+        "test_battle_evolution",
+        "test_main_actions",
+        "test_rina_unsuspend_effects"
+      ],
+      "tests_passed": 29,
+      "seconds": 62.614
+    },
+    {
+      "modules": [
+        "test_ex13_ulforce_effects",
+        "return_pilot_adapter_case"
+      ],
+      "tests_passed": 6,
+      "seconds": 1.863
+    }
+  ],
+  "exact_replay": true,
+  "turn": 8,
+  "commands": 105,
+  "same_seed": 12017913134550805276,
+  "full_match_credit": 0,
+  "future_order_guard_correction": "Archived unexercised tie guard labels deck owner; latest SOURCE corrects chooser to action-causing card owner per CR3-1-3-4. Actual singleton path unaffected.",
+  "post_replay_increment": {
+    "return_and_pilot_tests_passed": 9,
+    "seconds": 3.596,
+    "readiness_tests_passed": 4,
+    "all_python_ast_parse": true,
+    "diff_check": "CLEAN",
+    "full_suite": "NOT_RUN",
+    "tie_order": "Explicit effect-owner order now supported; no permutations inventoried. CR3-1-3-4. Original archived source retained for exact trace replay."
+  }
+}

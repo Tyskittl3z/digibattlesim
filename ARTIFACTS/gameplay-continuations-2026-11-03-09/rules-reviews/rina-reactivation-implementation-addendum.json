@@ -1,0 +1,110 @@
+{
+  "schema": "rina-reactivation-frozen-implementation-encounter-review-v1",
+  "date": "2026-11-03",
+  "status": "NO_CONCRETE_RULES_DEFECT_FOUND_IN_REVIEWED_ACTUAL_BRANCH",
+  "certification": "NONE_IMPLEMENTATION_ENCOUNTER_REVIEW_ONLY",
+  "scope": "Read-only review of frozen Rina handler, current-top/shared-usage helpers, collector and scheduler for actual segment08 orientation choice; focused tests only, no discovery continuation or SOURCE edits.",
+  "prior_official_review": "rina-reactivation-actual-suspension-review.json",
+  "prior_official_review_sha256": "988c9c9f8d68252bd5ad31b6581f01ad45da093a421c47a1346fa06249971111",
+  "record": "ARTIFACTS/gameplay-continuations-2026-11-03-08/game-0000-segment.json.gz",
+  "record_sha256": "610c970fb3af48ea2ee4742a24c6a223e5f95fe2683028faab2266a921cfda91",
+  "seed": 12017913134550805276,
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "source_sha256": {
+    "SOURCE/rina_reactivation.py": "5184c962f0dffde521ca32cc9619885d11df7e15bb108d65cf33086484b26f55",
+    "SOURCE/battle_evolution.py": "ca98736942d763e8d1dcd23850bb9c28a4707f6841c60b2d0538074fb476c82a",
+    "SOURCE/selected_mechanics.py": "b8c50832a61e9a2818fe8bf72da59421de186e1009cb00bc1396d6447f54fae6",
+    "SOURCE/effect_scheduler.py": "a78f067545534b302a60fa702b587bb649f5b93f45eebff26d4044e34ec69244",
+    "SOURCE/context_runtime.py": "a236dfb0c5baa1ef0a3be5c8e3d03e1caa95ddaddbac650e5543eb3ce3d7a16b",
+    "SOURCE/ex13_ulforce_effects.py": "c1a2deba21c9e0e3f0f9b69badbc2b580b3aadb2e9d1dde7996422959307a6ba",
+    "SOURCE/imported_attempts.py": "1f7d528c33c2a7da6daf9d78c18beef02992ee9f022b538ac2a9680160fd4d56",
+    "SOURCE/test_rina_reactivation.py": "d17b1a149d915b3d866525f18392aa4007f343864719b93dfeb36d44d1c3c81b",
+    "SOURCE/test_battle_evolution.py": "e67eedd485de73419d43d28f31090543c9c3b8112efbfedbc303fb54006a8798",
+    "SOURCE/test_game_continuations.py": "511c06130853d2eb805a1d9930c9f71ecdec7e292f64100f25b52812dbedfc76"
+  },
+  "findings": [
+    {
+      "id": "actual-derived-group",
+      "assessment": "MATCHES_OFFICIAL_RULES_FOR_SELECTED_EVENT",
+      "evidence": "The current selected orientation consumes its shared OPT before _set_orientation. Collector sees a real own Veedramon Digimon suspension, then queues own BT11 Rina and inherited BT22 Aero together at depth3. Original return effect35 stays at depth2. Actual state/RNG before the saved failed command match the saved segment08 snapshot in focused tests."
+    },
+    {
+      "id": "private-pending-window",
+      "assessment": "SOURCE_BOUND_AND_INDEPENDENTLY_PROBED",
+      "evidence": "dispatch copies selected pending into private _activated_pending and the handler verifies activated tuple, matching private id/effect/seat/source/field, current Tamer incarnation, exact historical trigger shape, owner/name and real orientation change. Valid private record accepted;10 malformed/unbound records rejected without physical-state mutation. Synthetic proof is saved separately."
+    },
+    {
+      "id": "payment-and-choice",
+      "assessment": "MATCHES_Q2142_AND_CR15_7",
+      "evidence": "None means decline with no cost/child effect. Already-suspended/cannot-suspend Tamer exposes only None and avoids parsing unreachable result text. PAY_NO_EFFECT is offered only with zero eligible effects and pays real Tamer suspension without child activation. If an effect is available, PAY_NO_EFFECT is rejected. This correctly separates optional payment from activating exactly one possible result."
+    },
+    {
+      "id": "current-top-continuity",
+      "assessment": "MATCHES_Q2143_FOR_REVIEWED_BRANCHES",
+      "evidence": "Collector stores observed_instance and observed_source; resolution locates current top by the incarnation, not the old physical key. Focused tests confirm current top after evolution is used, while a newly incarnated same physical copy is excluded. The Rina source itself is separately bound to its own current entity."
+    },
+    {
+      "id": "shared-opt",
+      "assessment": "MATCHES_Q7199_AND_Q7200",
+      "evidence": "current_digivolving_effects enumerates the registered current top and filters usage via the same keys used by original orientation/play handlers. Actual used orientation is absent, leaving [None,EX13-023.return_fewest]. No OPT usage is added by selecting the non-OPT return line."
+    },
+    {
+      "id": "nested-priority",
+      "assessment": "FORCED_PRIORITY_PRESERVES_ACTUAL_ORDER",
+      "evidence": "Paid return is represented by a new sole eligible depth4 pending effect with private Rina parent id, paid source/entity and observed/current source proof. pending_options exposes only this depth before Aero depth3 or original effect35 depth2. Phase/control commands remain blocked while pending. This is a command-split representation of the nested activation; it does not create a second evolution or a simultaneous sibling. The tests retain original effect35 independently and return to Aero only after resolving/declining the nested return."
+    },
+    {
+      "id": "no-extra-evolution",
+      "assessment": "CONFIRMED_BY_ACTUAL_FOCUSED_TESTS",
+      "evidence": "The handler only uses _set_orientation on Rina and queues one selected effect. The actual branch changes no zone, memory, RNG, stack, or OPT state while paying Rina; therefore it draws no card, charges no evolution cost and triggers no general evolution effects. Pilot routes only the offered result choices."
+    }
+  ],
+  "independent_test_execution": [
+    {
+      "command": "python -m unittest test_rina_reactivation -v",
+      "cwd": "SOURCE",
+      "tests": 10,
+      "result": "PASS",
+      "reported_seconds": 56.511,
+      "exit_code": 0
+    },
+    {
+      "command": "python -m unittest test_battle_evolution.BattleEvolutionTests.test_actual_segment07_selected_suspension_queues_rina_and_inherited_together test_battle_evolution.BattleEvolutionTests.test_current_digivolving_effects_filter_only_the_shared_consumed_opt_keys test_game_continuations.GameContinuationTests.test_actual_suspension_rina_routes_one_immediate_effect_without_bonus_draw -v",
+      "cwd": "SOURCE",
+      "tests": 3,
+      "result": "PASS",
+      "reported_seconds": 60.194,
+      "exit_code": 0
+    },
+    {
+      "command": "python ARTIFACTS/gameplay-continuations-2026-11-03-09/rules-reviews/rina-private-pending-proof.py",
+      "cwd": ".",
+      "valid_private_record_accepted": 1,
+      "invalid_private_records_rejected": 10,
+      "result": "PASS_SAVED_PROOF_ASSERTIONS_VERIFIED"
+    }
+  ],
+  "private_pending_proof": "rina-private-pending-proof.json",
+  "private_pending_proof_sha256": "dcd5225c50ac072219142c490d87ca53a17cfe8a8959107555946a44a656f2e7",
+  "historical_review_correction": {
+    "file": "ARTIFACTS/gameplay-continuations-2026-11-03-08/rules-reviews/ex13-ulforce-actual-stop.json",
+    "incorrect_statement": "EX13-019 is Veemon and does not match a Veedramon-only observer.",
+    "correct_statement": "EX13-019 is Lv4 Veedramon. Its actual suspension would match BT11 Rina; its lack of When Digivolving text still allows Rina payment with no activation under Q2142. The current collector and focused no-effect test handle this correctly.",
+    "official_card_pin": {
+      "id": "card-EX13-019",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-019.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-019",
+      "sha256": "0e9158139b3c4d46987c85a968f40469743a76892cba86227871ed897b1e4d5a"
+    },
+    "effect_on_selected_actual_command": "NONE: selected target was EX13-023, not EX13-019. Older review files preserved unchanged."
+  },
+  "source_files_edited": [],
+  "new_discovery_gameplay_executed": false,
+  "targeted_saved_encounter_resolutions_executed": true,
+  "full_current_suite_run": false,
+  "full_match_credit": 0,
+  "accepted_fact_finding_credit": 0,
+  "final_evaluation_credit": 0,
+  "strategy_assessment": "NONE",
+  "limits": "13 focused tests and11 private-window probes are evidence for the reviewed branch; this does not certify a full game, broader branch coverage, strategic choices, the current full suite, or any later segment09 continuation. Current helper supports pinned registered effects; this review does not claim universal activation/prohibition support."
+}

@@ -1,5 +1,77 @@
 # First Codex task (execute, don't just plan)
 
+> **PAUSED BEFORE FIRST FRESH MATCH — 2026-11-05.** User explicitly requested
+> pausing before the match. Usage reset does not resume it. No opening deal,
+> fresh game or learning update has started. Read
+> `ARTIFACTS/pre-match-setup-2026-11-05/pause-control.json` and latest STATUS.
+> Save setup only; do not call a gameplay/cohort runner until user continues.
+>23 draft tests/API notes are parked outside live SOURCE; implementation is
+> pending. Historical164-command game remains archived, excluded from fresh
+> training. The new60-game plan is authorized in principle but currently paused.
+> Older instructions below are historical and subordinate to this pause.
+
+> **2026-11-04 named bots now connected:** A AGGRESSIVE/B DEFENSIVE, fresh
+> untrained profiles with explicit identities. Latest sameGame0000 checkpoint:
+> `ARTIFACTS/gameplay-continuations-2026-11-04-02/game-0000-segment.json.gz`.
+> Originalseed/first152 choices preserved;12newcommands allsuccess,164total,
+> Aturn11 MAINmemory2.82focusedtests and exactreplay pass. Nextpendingeffect64
+> is A BT11Ulforce play_blue_tamer from secondpaidRina, thenolderinherited60;
+> Counter waits until pending clears. Use named_bot_continuation, notrandom
+> continue_attempt. Keep zero wholemixedgame/factfinding/finalcredits. No
+> cohorts, preloadedroutes or outcomeratings. See STATUS/roster/decisionlogs.
+> Older paused-bot-identity instructions below are historical and superseded.
+
+> **2026-11-04 latest user boundary:** Game0000's selected effect57 return is
+> resolved; preserve the new PAUSED_AFTER_SAVED_ACTION checkpoint at
+> `ARTIFACTS/gameplay-continuations-2026-11-04-01/game-0000-segment.json.gz`.
+> Bactive, turn10, memory−1, END_OF_TURN;152 successful commands, original seed
+> and choices. Both historical policies are untrained random references,
+> not verified as the user's bots. Zero policies were invoked for this retry;
+> zero user-bot/fact-finding/final credit. Establish the actual imported-context
+> bot identities/adapters before a new decision. Do not call the old random
+> continuation, preload routes, run60/10,000 cohorts, or assign ratings without
+> defined scoring criteria.62 focused tests pass; latest full suite495 at
+> aed966b. See STATUS and the new saved checkpoint's replay/proof files.
+> Older next-action instructions below are historical and superseded.
+
+> **Latest live continuation:**495 tests pass. Game0000turn10 /152commands,
+> original seed/choices, exact archived-source replay. Continue effect57
+> BT22-023.when_digivolving_return: sourceB:BT22-023#2,targetA:BT22-022#1,
+> memory−1/MAIN from
+> `ARTIFACTS/gameplay-continuations-2026-11-03-11/game-0000-segment.json.gz`.
+> Targetegg→EX1→BT22 mustreturntopdeckbottom/lower2trash. Share actual-field
+> return preflight; no whitelist or false unrelated self protection. After
+> pending clears, END_OF_TURN opens at−1 without switching B/turn10.
+> Return worker prepared work outside SOURCE; official review insegment12.
+> Zero valid full games. Publish current progress before usage ends.
+
+> **2026-11-02 current priority:** User delegated choosing the best starting
+> matchup. Use the distinct-list Ulforce mirror 123129 vs122110, not the original
+> pair's default CLI argument. Read `PYTHON_DEVELOPER_HANDOFF.md`, latest STATUS,
+> and `REPORTS/ULFORCE_BOOTSTRAP_PROGRESS_2026-11-02.md`. Latest source passes335
+> tests. New diagnostic version02 records60 original context-bound seeds with
+>30 starts each and60 exact replays; all60 HALT, zero valid full-match credit.
+> Finish the encountered real effects and inspect overbroad scope guards;
+> retain all evidence and the original randomized queue.
+
+> **2026-11-01 live continuation:** Read the latest STATUS section and
+> `REPORTS/EX13_LIVE_ENGINE_PROGRESS_2026-11-01.md`. The selected engine now has
+> 307 passing tests and actual balanced diagnostic attempts; both60-attempt
+> versions halted and provide zero accepted-match credit. Continue from their
+> preserved seeds and exact blockers; do not restart the project or reinterpret
+> the diagnostic cohort as the completed fact-finding requirement.
+
+> **2026-10-30 continuation:** The user expanded this engine track to selected,
+> randomized exact pairs from `DigiLab_EX13_Top_Decklists_Deduplicated.xlsx` and
+> chose English-version worldwide rules. The old two-deck-only restriction below
+> is historical and superseded for this authorized track; all integrity,
+> no-advice, source-evidence, fresh-matchup and freeze requirements remain.
+> Read `REPORTS/EX13_ENGINE_PROGRESS_2026-10-30.md` before continuing. The current
+> explicit-context foundation has 193 passing tests but no full-game simulator
+> support or valid matches for the first imported pairing. Continue implementing
+> its remaining scoped mechanics and full gameplay, then the 60/roadmap/10,000
+> gates. The other chat owns catalog/import/comparison/storage/browser work.
+
 ## Goal
 Bring the **Jupitermon (A) vs Amaterasumon/Toho (B)** two-deck simulator to at least 60 **fully completed, judge-verified** fact-finding games with balanced starts, then evidence-backed GREEN/YELLOW/RED roadmap readiness. Sixty is the minimum, not proof that all encountered branches were covered. Keep the 10,000-match final evaluation as a later gate. Apply the accepted verification adjustments in `WORKFLOW.md`.
 

@@ -1,0 +1,359 @@
+{
+  "path": "ARTIFACTS/ulforce-bootstrap-diagnostic-2026-11-02-02/attempt-0059.json.gz",
+  "sha256": "50442b579fefb5979576832f256ab25470b482f1f7df45bd1e5240054406a7a5",
+  "seed": 7068922568811995332,
+  "command_index": 19,
+  "command": {
+    "args": {
+      "basis": "PRINTED_NORMAL",
+      "cost": 3,
+      "definition_sha256": "73cef4900ac35284738c7c875f69d7b18858c481f844ca920dce86b0d2907daf",
+      "hand_key": "B:EX13-022#4",
+      "kind": "UNKNOWN_BATTLE_EVOLUTION",
+      "legality": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY",
+      "printed_condition": "Blue 3 from Lv.4",
+      "route_index": 0,
+      "source_key": "B:EX13-019#1",
+      "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+    },
+    "candidates": [
+      {
+        "kind": "PASS_TURN"
+      },
+      {
+        "hand_key": "B:BT12-029#1",
+        "kind": "PLAY_CARD",
+        "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+        "printed_cost": 12
+      },
+      {
+        "hand_key": "B:P-138#3",
+        "kind": "PLAY_CARD",
+        "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+        "printed_cost": 5
+      },
+      {
+        "hand_key": "B:BT11-112#2",
+        "kind": "PLAY_CARD",
+        "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+        "printed_cost": 3
+      },
+      {
+        "hand_key": "B:BT22-022#1",
+        "kind": "PLAY_CARD",
+        "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+        "printed_cost": 5
+      },
+      {
+        "hand_key": "B:EX13-022#4",
+        "kind": "PLAY_CARD",
+        "legality": "PRINTED_PAYABLE_NOT_FULL_LEGALITY",
+        "printed_cost": 7
+      },
+      {
+        "basis": "PRINTED_NORMAL",
+        "cost": 3,
+        "definition_sha256": "73cef4900ac35284738c7c875f69d7b18858c481f844ca920dce86b0d2907daf",
+        "hand_key": "B:EX13-022#4",
+        "kind": "UNKNOWN_BATTLE_EVOLUTION",
+        "legality": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY",
+        "printed_condition": "Blue 3 from Lv.4",
+        "route_index": 0,
+        "source_key": "B:EX13-019#1",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "basis": "PRINTED_SPECIAL",
+        "cost": 3,
+        "definition_sha256": "73cef4900ac35284738c7c875f69d7b18858c481f844ca920dce86b0d2907daf",
+        "hand_key": "B:EX13-022#4",
+        "kind": "UNKNOWN_BATTLE_EVOLUTION",
+        "legality": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY",
+        "printed_condition": "[Digivolve] Lv.4 w/[CS] trait: Cost 3",
+        "route_index": 1,
+        "source_key": "B:EX13-019#1",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "attacker": "B:EX13-019#1",
+        "kind": "DECLARE_ATTACK",
+        "target": "PLAYER"
+      }
+    ],
+    "command": "UNKNOWN_BATTLE_EVOLUTION",
+    "exception": "RuntimeHalt",
+    "pilot_id": "6e85868a1f94f5193c0ed88bf7dd8ba062adbd0b23d6396c15b3324d59f44873",
+    "public_view": {
+      "active": "B",
+      "attack": null,
+      "memory": 6,
+      "phase": "MAIN",
+      "players": {
+        "A": {
+          "battle": {
+            "A:BT11-032#1": {
+              "cards": [
+                "A:BT11-032#1"
+              ],
+              "instance_id": "entity-2",
+              "played_turn": 2,
+              "ready_since_turn": 3,
+              "statuses": {},
+              "suspended": false
+            }
+          },
+          "breeding": [
+            "A:EX13-002#4"
+          ],
+          "deck": {
+            "count": 39
+          },
+          "eggdeck": {
+            "count": 3
+          },
+          "hand": {
+            "count": 5
+          },
+          "security": {
+            "count": 5
+          },
+          "trash": []
+        },
+        "B": {
+          "battle": {
+            "B:EX13-019#1": {
+              "cards": [
+                "B:EX13-019#1"
+              ],
+              "instance_id": "entity-1",
+              "played_turn": 1,
+              "ready_since_turn": 2,
+              "statuses": {},
+              "suspended": false
+            }
+          },
+          "breeding": [
+            "B:EX13-002#1"
+          ],
+          "deck": {
+            "count": 39
+          },
+          "eggdeck": {
+            "count": 3
+          },
+          "hand": [
+            "B:BT12-029#1",
+            "B:P-138#3",
+            "B:BT11-112#2",
+            "B:BT22-022#1",
+            "B:EX13-022#4"
+          ],
+          "security": {
+            "count": 5
+          },
+          "trash": []
+        }
+      },
+      "terminal": false,
+      "turn": 3,
+      "winner": null
+    },
+    "reason": "BATTLE_EVOLUTION_UNIMPLEMENTED: source=B:EX13-019#1 target=B:EX13-022#4 route_index=0 cost=3",
+    "seat": "B",
+    "status": "HALT"
+  },
+  "state": {
+    "active": "B",
+    "attack": null,
+    "battle": {
+      "A": {
+        "A:BT11-032#1": {
+          "cards": [
+            "A:BT11-032#1"
+          ],
+          "instance_id": "entity-2",
+          "played_turn": 2,
+          "ready_since_turn": 3,
+          "statuses": {},
+          "suspended": false
+        }
+      },
+      "B": {
+        "B:EX13-019#1": {
+          "cards": [
+            "B:EX13-019#1"
+          ],
+          "instance_id": "entity-1",
+          "played_turn": 1,
+          "ready_since_turn": 2,
+          "statuses": {},
+          "suspended": false
+        }
+      }
+    },
+    "breeding": {
+      "A": [
+        "A:EX13-002#4"
+      ],
+      "B": [
+        "B:EX13-002#1"
+      ]
+    },
+    "effect_sequence": 0,
+    "entity_sequence": 2,
+    "memory": 6,
+    "once_used": [],
+    "pending": [],
+    "phase": "MAIN",
+    "preparation": {
+      "choices": [
+        {
+          "redraw": true,
+          "seat": "B"
+        },
+        {
+          "redraw": false,
+          "seat": "A"
+        }
+      ],
+      "rules_source": {
+        "locator": "Comprehensive rules v4.3: 5-2-1-1 through 5-2-1-8",
+        "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+        "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918"
+      },
+      "started": true
+    },
+    "terminal": false,
+    "terminal_reason": null,
+    "turn": 3,
+    "winner": null,
+    "zones": {
+      "A": {
+        "deck": [
+          "A:P-138#2",
+          "A:EX13-023#2",
+          "A:EX13-017#2",
+          "A:EX13-022#3",
+          "A:EX13-022#1",
+          "A:BT11-112#1",
+          "A:EX13-019#3",
+          "A:BT12-029#2",
+          "A:EX13-017#3",
+          "A:EX13-017#4",
+          "A:BT22-085#1",
+          "A:EX13-023#3",
+          "A:EX13-022#4",
+          "A:BT12-029#1",
+          "A:EX13-069#4",
+          "A:EX13-069#1",
+          "A:EX13-023#4",
+          "A:LM-028#1",
+          "A:LM-058#1",
+          "A:EX13-019#1",
+          "A:BT12-029#3",
+          "A:EX13-019#4",
+          "A:BT22-023#2",
+          "A:LM-056#1",
+          "A:P-104#1",
+          "A:EX13-069#2",
+          "A:BT22-023#3",
+          "A:EX13-019#2",
+          "A:BT11-023#3",
+          "A:BT22-023#1",
+          "A:BT11-023#1",
+          "A:EX13-022#2",
+          "A:EX13-017#1",
+          "A:P-138#3",
+          "A:BT11-023#2",
+          "A:EX13-069#3",
+          "A:EX1-013#2",
+          "A:EX1-013#1",
+          "A:EX1-013#3"
+        ],
+        "eggdeck": [
+          "A:EX13-002#3",
+          "A:EX13-002#2",
+          "A:EX13-002#1"
+        ],
+        "hand": [
+          "A:BT11-112#3",
+          "A:LM-057#1",
+          "A:EX13-023#1",
+          "A:P-138#1",
+          "A:BT22-022#1"
+        ],
+        "security": [
+          "A:BT11-112#2",
+          "A:BT11-112#4",
+          "A:P-138#4",
+          "A:LM-034#1",
+          "A:BT11-023#4"
+        ],
+        "trash": []
+      },
+      "B": {
+        "deck": [
+          "B:BT22-085#2",
+          "B:BT12-029#2",
+          "B:EX13-017#4",
+          "B:BT11-023#3",
+          "B:EX13-023#4",
+          "B:LM-057#1",
+          "B:EX13-022#1",
+          "B:EX13-019#2",
+          "B:BT22-023#2",
+          "B:BT22-023#3",
+          "B:BT11-112#4",
+          "B:BT11-023#4",
+          "B:LM-056#1",
+          "B:EX13-023#2",
+          "B:EX13-022#2",
+          "B:BT11-023#2",
+          "B:EX1-013#3",
+          "B:LM-028#1",
+          "B:EX13-017#1",
+          "B:EX1-013#2",
+          "B:EX13-069#2",
+          "B:EX13-017#2",
+          "B:P-138#1",
+          "B:BT20-102#1",
+          "B:P-138#2",
+          "B:EX13-022#3",
+          "B:EX13-069#1",
+          "B:BT22-023#1",
+          "B:EX13-069#3",
+          "B:EX13-023#3",
+          "B:BT22-085#1",
+          "B:EX13-017#3",
+          "B:P-104#1",
+          "B:BT11-112#1",
+          "B:EX13-069#4",
+          "B:EX1-013#1",
+          "B:LM-058#1",
+          "B:EX13-019#4",
+          "B:BT11-023#1"
+        ],
+        "eggdeck": [
+          "B:EX13-002#3",
+          "B:EX13-002#4",
+          "B:EX13-002#2"
+        ],
+        "hand": [
+          "B:BT12-029#1",
+          "B:P-138#3",
+          "B:BT11-112#2",
+          "B:BT22-022#1",
+          "B:EX13-022#4"
+        ],
+        "security": [
+          "B:P-138#4",
+          "B:EX13-019#3",
+          "B:EX13-023#1",
+          "B:BT11-112#3",
+          "B:BT11-032#1"
+        ],
+        "trash": []
+      }
+    }
+  }
+}

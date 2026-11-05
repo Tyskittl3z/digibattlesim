@@ -1,0 +1,45 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "date": "2026-11-04",
+  "exact_full_record_replay": {
+    "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+    "exact_match": true,
+    "index": 0,
+    "replayed_record_sha256": "9c91970824f016f2f33e6f48311c7fff0f399f91dc50c24fcdc1a9be78d54044",
+    "saved_record_sha256": "9c91970824f016f2f33e6f48311c7fff0f399f91dc50c24fcdc1a9be78d54044"
+  },
+  "final_evaluation_credit": 0,
+  "focused_tests": {
+    "command": "python -m unittest test_recorded_action_checkpoint test_context_runtime test_return_effects test_aero_effects test_ex13_ulforce_effects -q",
+    "passed": 62,
+    "seconds": 25.371,
+    "status": "PASS"
+  },
+  "full_suite_this_increment": "NOT_RUN_USER_REQUESTED_NO_COHORTS_LEGACY_FULL_SUITE_RUNS_60_GAME_COHORT_TESTS",
+  "git_diff_check": "PASS",
+  "independent_actual_state_rng_proof": {
+    "path": "ARTIFACTS/gameplay-continuations-2026-11-03-12/rules-reviews/turn10-private-return-proof.json",
+    "seconds": 24.273,
+    "status": "PASS",
+    "successful_commands_revalidated": 151,
+    "unique_physical_cards": 108
+  },
+  "independent_return_tests": {
+    "passed": 38,
+    "seconds": 17.858
+  },
+  "last_full_suite": {
+    "commit": "aed966b",
+    "passed": 495,
+    "seconds": 556.48
+  },
+  "new_policy_decisions": 0,
+  "policy_invocations": 0,
+  "ratings_assigned": false,
+  "schema": "selected-return-verification-v1",
+  "source_archive_matches_current_source": true,
+  "source_execution_id": "64df647ab5651bf7a1438fa70684c6e7af5d08f875430344d428098a95c1cf42",
+  "source_files": 98,
+  "syntax_check": "PASS",
+  "user_bot_evidence_credit": 0
+}

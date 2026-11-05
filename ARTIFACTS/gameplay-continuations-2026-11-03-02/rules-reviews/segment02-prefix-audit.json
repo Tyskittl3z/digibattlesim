@@ -1,0 +1,671 @@
+{
+  "schema": "encountered-prefix-rules-audit-v1",
+  "date": "2026-11-03",
+  "scope": "33 newly resolved commands21 through53; command54 is unresolved and excluded",
+  "status": "NO_CONCRETE_DEFECT_FOUND_IN_REVIEWED_PREFIX",
+  "certification": "NONE_SOURCE_BACKED_PREFIX_REVIEW_AND_SOFTWARE_VERIFICATION_ONLY",
+  "full_match_credit": 0,
+  "accepted_fact_finding_credit": 0,
+  "final_evaluation_credit": 0,
+  "seed": 12017913134550805276,
+  "first": "A",
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "findings": [],
+  "rules_assessment": [
+    {
+      "commands": [
+        21,
+        22
+      ],
+      "cards": [
+        "LM-028",
+        "BT11-112"
+      ],
+      "assessment": "Blue Tamer pays Option color requirement; no Digimon base exists; pay2, optional evolution omitted, then mandatory placement.",
+      "rules": [
+        "CR4-22-2",
+        "CR9-1-4",
+        "CR1-3-2",
+        "LM-028 Q4040"
+      ]
+    },
+    {
+      "commands": [
+        23
+      ],
+      "cards": [
+        "BT12-029"
+      ],
+      "assessment": "Hardplay12 from memory2 is payable to memory-10; When Digivolving and becomes-unsuspended effects do not trigger on an unsuspended hardplay.",
+      "rules": [
+        "CR1-4-2",
+        "CR6-5-1-1",
+        "CR7-1",
+        "CR15-16-3"
+      ]
+    },
+    {
+      "commands": [
+        30,
+        31,
+        46,
+        47
+      ],
+      "cards": [
+        "EX13-022"
+      ],
+      "assessment": "Actual On Play was queued and resolved with explicit optional free-Tamer decline; per-copy once-per-turn activation was counted.",
+      "rules": [
+        "CR15-4",
+        "CR15-7",
+        "CR15-14-1"
+      ]
+    },
+    {
+      "commands": [
+        32,
+        33,
+        34
+      ],
+      "cards": [
+        "EX13-069",
+        "EX13-022"
+      ],
+      "assessment": "Playing own Tamer triggers each of two B Aero copies; B chooses activation order; both effects may choose same opposing Ulforce and expire at end of A turn5.",
+      "rules": [
+        "CR15-4-3",
+        "CR15-10-2-1",
+        "CR15-14-1-3"
+      ]
+    },
+    {
+      "commands": [
+        35,
+        36
+      ],
+      "cards": [
+        "BT11-023",
+        "BT22-023",
+        "BT11-112"
+      ],
+      "assessment": "Search resolves while memory is negative; chooses one Veedramon-named Digimon and one blue Tamer; exact remaining physical card goes to deck bottom.",
+      "rules": [
+        "CR6-1-3",
+        "CR6-1-4-1",
+        "CR15-10-2-1",
+        "CR15-15-3"
+      ]
+    },
+    {
+      "commands": [
+        38,
+        39,
+        40
+      ],
+      "cards": [
+        "LM-028"
+      ],
+      "assessment": "At start of A turn5 opponent has Digimon and Option was placed turn3; Delay is explicitly declined before unsuspend and Option remains.",
+      "rules": [
+        "CR6-2-1-1",
+        "CR15-8-3-9",
+        "CR16-17-1",
+        "CR16-17-2",
+        "CR16-17-3"
+      ]
+    },
+    {
+      "commands": [
+        43,
+        44
+      ],
+      "cards": [
+        "LM-034"
+      ],
+      "assessment": "Blue Tamer/Digimon meet color requirement; pay3 to memory0; reveal actual top3, take one blue Digimon, bottom exact other2 in recorded order, place Option; no same-turn Delay candidate.",
+      "rules": [
+        "CR3-1-3-4",
+        "CR4-22-2",
+        "CR9-1-4",
+        "CR15-10-2-1",
+        "CR15-15-3",
+        "CR16-17-3"
+      ]
+    },
+    {
+      "commands": [
+        29,
+        45,
+        52,
+        53
+      ],
+      "cards": [
+        "EX1-013",
+        "EX13-002",
+        "EX13-069"
+      ],
+      "assessment": "Both breeding evolutions meet Blue Lv2/cost0 and draw actual deck top; B promotes Lv3; start-Main Rina condition met by battle Veemon/AeroVeedramon and memory7 becomes8.",
+      "rules": [
+        "CR6-4",
+        "CR8-1-3-1",
+        "CR8-1-3-2",
+        "CR8-1-3-3",
+        "CR15-16-13"
+      ]
+    }
+  ],
+  "verification": {
+    "archived_source_files_verified": 86,
+    "successful_saved_commands_reapplied": 54,
+    "new_resolved_commands_reviewed": 33,
+    "saved_public_views_equal": true,
+    "saved_results_equal": true,
+    "runtime_verify_after_every_command": true,
+    "independent_physical_inventory": "108 unique original cards after every command",
+    "unchanged_rng_for_33_new_commands": true,
+    "before_halt_state_and_rng_equal_saved": true,
+    "turn": 6,
+    "memory": 8,
+    "before_halt_physical_sha256": "84a8b17d1ddc283cf64b6151dc9116510f56202eed32b5f89bcd7c3bcedd83f3",
+    "source_code_edited": false,
+    "command": "python work/prefix_audit_segment02.py"
+  },
+  "commands": [
+    {
+      "command_index_zero_based": 21,
+      "command": "USE_OPTION",
+      "seat": "A",
+      "turn": 3,
+      "phase_before": "MAIN",
+      "memory_before": 4,
+      "memory_after": 2,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true
+    },
+    {
+      "command_index_zero_based": 22,
+      "command": "RESOLVE_PENDING",
+      "seat": "A",
+      "turn": 3,
+      "phase_before": "MAIN",
+      "memory_before": 2,
+      "memory_after": 2,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true,
+      "effect_id": "LM-028.main_evolve",
+      "effect_source": "A:LM-028#1"
+    },
+    {
+      "command_index_zero_based": 23,
+      "command": "PLAY_CARD",
+      "seat": "A",
+      "turn": 3,
+      "phase_before": "MAIN",
+      "memory_before": 2,
+      "memory_after": -10,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true
+    },
+    {
+      "command_index_zero_based": 24,
+      "command": "FINISH_TURN",
+      "seat": "A",
+      "turn": 3,
+      "phase_before": "END_OF_TURN",
+      "memory_before": -10,
+      "memory_after": 10,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true
+    },
+    {
+      "command_index_zero_based": 25,
+      "command": "ADVANCE_PHASE",
+      "seat": "B",
+      "turn": 4,
+      "phase_before": "START_OF_TURN",
+      "memory_before": 10,
+      "memory_after": 10,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true
+    },
+    {
+      "command_index_zero_based": 26,
+      "command": "ADVANCE_PHASE",
+      "seat": "B",
+      "turn": 4,
+      "phase_before": "TURN_START_EFFECTS",
+      "memory_before": 10,
+      "memory_after": 10,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true
+    },
+    {
+      "command_index_zero_based": 27,
+      "command": "ADVANCE_PHASE",
+      "seat": "B",
+      "turn": 4,
+      "phase_before": "DRAW",
+      "memory_before": 10,
+      "memory_after": 10,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true,
+      "normal_draw": "B:EX13-069#4"
+    },
+    {
+      "command_index_zero_based": 28,
+      "command": "BREEDING_CHOICE",
+      "seat": "B",
+      "turn": 4,
+      "phase_before": "BREEDING",
+      "memory_before": 10,
+      "memory_after": 10,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true
+    },
+    {
+      "command_index_zero_based": 29,
+      "command": "BREEDING_EVOLUTION",
+      "seat": "B",
+      "turn": 4,
+      "phase_before": "MAIN",
+      "memory_before": 10,
+      "memory_after": 10,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true,
+      "digivolution_draw": "B:BT11-023#2"
+    },
+    {
+      "command_index_zero_based": 30,
+      "command": "PLAY_CARD",
+      "seat": "B",
+      "turn": 4,
+      "phase_before": "MAIN",
+      "memory_before": 10,
+      "memory_after": 3,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true
+    },
+    {
+      "command_index_zero_based": 31,
+      "command": "RESOLVE_PENDING",
+      "seat": "B",
+      "turn": 4,
+      "phase_before": "MAIN",
+      "memory_before": 3,
+      "memory_after": 3,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true,
+      "effect_id": "EX13-022.play_tamer",
+      "effect_source": "B:EX13-022#1"
+    },
+    {
+      "command_index_zero_based": 32,
+      "command": "PLAY_CARD",
+      "seat": "B",
+      "turn": 4,
+      "phase_before": "MAIN",
+      "memory_before": 3,
+      "memory_after": 0,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true
+    },
+    {
+      "command_index_zero_based": 33,
+      "command": "RESOLVE_PENDING",
+      "seat": "B",
+      "turn": 4,
+      "phase_before": "MAIN",
+      "memory_before": 0,
+      "memory_after": 0,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true,
+      "effect_id": "EX13-022.tamer_play_restriction",
+      "effect_source": "B:EX13-022#1"
+    },
+    {
+      "command_index_zero_based": 34,
+      "command": "RESOLVE_PENDING",
+      "seat": "B",
+      "turn": 4,
+      "phase_before": "MAIN",
+      "memory_before": 0,
+      "memory_after": 0,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true,
+      "effect_id": "EX13-022.tamer_play_restriction",
+      "effect_source": "B:EX13-022#3"
+    },
+    {
+      "command_index_zero_based": 35,
+      "command": "PLAY_CARD",
+      "seat": "B",
+      "turn": 4,
+      "phase_before": "MAIN",
+      "memory_before": 0,
+      "memory_after": -3,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true
+    },
+    {
+      "command_index_zero_based": 36,
+      "command": "RESOLVE_PENDING",
+      "seat": "B",
+      "turn": 4,
+      "phase_before": "MAIN",
+      "memory_before": -3,
+      "memory_after": -3,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true,
+      "effect_id": "BT11-023.on_play_search",
+      "effect_source": "B:BT11-023#2",
+      "search_partition_and_bottom_order_verified": true
+    },
+    {
+      "command_index_zero_based": 37,
+      "command": "FINISH_TURN",
+      "seat": "B",
+      "turn": 4,
+      "phase_before": "END_OF_TURN",
+      "memory_before": -3,
+      "memory_after": 3,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true
+    },
+    {
+      "command_index_zero_based": 38,
+      "command": "ADVANCE_PHASE",
+      "seat": "A",
+      "turn": 5,
+      "phase_before": "START_OF_TURN",
+      "memory_before": 3,
+      "memory_after": 3,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true
+    },
+    {
+      "command_index_zero_based": 39,
+      "command": "RESOLVE_PENDING",
+      "seat": "A",
+      "turn": 5,
+      "phase_before": "TURN_START_EFFECTS",
+      "memory_before": 3,
+      "memory_after": 3,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true,
+      "effect_id": "LM-028.start_turn_delay",
+      "effect_source": "A:LM-028#1",
+      "delay_decline_preserves_option": true
+    },
+    {
+      "command_index_zero_based": 40,
+      "command": "ADVANCE_PHASE",
+      "seat": "A",
+      "turn": 5,
+      "phase_before": "TURN_START_EFFECTS",
+      "memory_before": 3,
+      "memory_after": 3,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true
+    },
+    {
+      "command_index_zero_based": 41,
+      "command": "ADVANCE_PHASE",
+      "seat": "A",
+      "turn": 5,
+      "phase_before": "DRAW",
+      "memory_before": 3,
+      "memory_after": 3,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true,
+      "normal_draw": "A:EX1-013#2"
+    },
+    {
+      "command_index_zero_based": 42,
+      "command": "BREEDING_CHOICE",
+      "seat": "A",
+      "turn": 5,
+      "phase_before": "BREEDING",
+      "memory_before": 3,
+      "memory_after": 3,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true
+    },
+    {
+      "command_index_zero_based": 43,
+      "command": "USE_OPTION",
+      "seat": "A",
+      "turn": 5,
+      "phase_before": "MAIN",
+      "memory_before": 3,
+      "memory_after": 0,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true
+    },
+    {
+      "command_index_zero_based": 44,
+      "command": "RESOLVE_PENDING",
+      "seat": "A",
+      "turn": 5,
+      "phase_before": "MAIN",
+      "memory_before": 0,
+      "memory_after": 0,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true,
+      "effect_id": "LM-034.main_search",
+      "effect_source": "A:LM-034#1",
+      "search_partition_and_bottom_order_verified": true
+    },
+    {
+      "command_index_zero_based": 45,
+      "command": "BREEDING_EVOLUTION",
+      "seat": "A",
+      "turn": 5,
+      "phase_before": "MAIN",
+      "memory_before": 0,
+      "memory_after": 0,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true,
+      "digivolution_draw": "A:P-138#2"
+    },
+    {
+      "command_index_zero_based": 46,
+      "command": "PLAY_CARD",
+      "seat": "A",
+      "turn": 5,
+      "phase_before": "MAIN",
+      "memory_before": 0,
+      "memory_after": -7,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true
+    },
+    {
+      "command_index_zero_based": 47,
+      "command": "RESOLVE_PENDING",
+      "seat": "A",
+      "turn": 5,
+      "phase_before": "MAIN",
+      "memory_before": -7,
+      "memory_after": -7,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true,
+      "effect_id": "EX13-022.play_tamer",
+      "effect_source": "A:EX13-022#1"
+    },
+    {
+      "command_index_zero_based": 48,
+      "command": "FINISH_TURN",
+      "seat": "A",
+      "turn": 5,
+      "phase_before": "END_OF_TURN",
+      "memory_before": -7,
+      "memory_after": 7,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true
+    },
+    {
+      "command_index_zero_based": 49,
+      "command": "ADVANCE_PHASE",
+      "seat": "B",
+      "turn": 6,
+      "phase_before": "START_OF_TURN",
+      "memory_before": 7,
+      "memory_after": 7,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true
+    },
+    {
+      "command_index_zero_based": 50,
+      "command": "ADVANCE_PHASE",
+      "seat": "B",
+      "turn": 6,
+      "phase_before": "TURN_START_EFFECTS",
+      "memory_before": 7,
+      "memory_after": 7,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true
+    },
+    {
+      "command_index_zero_based": 51,
+      "command": "ADVANCE_PHASE",
+      "seat": "B",
+      "turn": 6,
+      "phase_before": "DRAW",
+      "memory_before": 7,
+      "memory_after": 7,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true,
+      "normal_draw": "B:BT22-022#1"
+    },
+    {
+      "command_index_zero_based": 52,
+      "command": "BREEDING_CHOICE",
+      "seat": "B",
+      "turn": 6,
+      "phase_before": "BREEDING",
+      "memory_before": 7,
+      "memory_after": 7,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true
+    },
+    {
+      "command_index_zero_based": 53,
+      "command": "RESOLVE_PENDING",
+      "seat": "B",
+      "turn": 6,
+      "phase_before": "MAIN",
+      "memory_before": 7,
+      "memory_after": 8,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "result_equal_saved": true,
+      "rng_unchanged": true,
+      "effect_id": "EX13-069.start_main_memory",
+      "effect_source": "B:EX13-069#4"
+    }
+  ],
+  "source_evidence": [
+    {
+      "file": "ARTIFACTS/gameplay-continuations-2026-11-03-02/game-0000-segment.json.gz",
+      "sha256": "e79bae69e8fbccf3a16526efc823db9f8308bb477c9e525676aa88e0bc0a101a"
+    },
+    {
+      "file": "ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json",
+      "sha256": "089d449edab177c4f1d31a4b2ce8414650439df4ea6459080400df45d5004484"
+    },
+    {
+      "file": "ARTIFACTS/gameplay-continuations-2026-11-03-02/source-checkpoint.tar.gz",
+      "sha256": "2a922c23fefb549f1c7ba5604cb1042513bd635ebae1d82287c4c6fc3cecb260"
+    },
+    {
+      "file": "ARTIFACTS/gameplay-continuations-2026-11-03-02/source-manifest.json",
+      "sha256": "2efc8448093b83145f5cda7a5f5a310bb6e1a5f05f386495ac9ef7b9540b47d1"
+    },
+    {
+      "file": "work/prefix_audit_segment02.py",
+      "sha256": "84fdcda3580ed2ef013ddc3d7bac39680958311c1ee71194cfefd54f6bc98131"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/general_rule.pdf",
+      "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-LM-028.html",
+      "sha256": "add30c8ec48a6972ae26bc56af14b6faaab06af29d1b032151662b8e3723c0ee"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-LM-034.html",
+      "sha256": "2917e45cc7c729ffe78ae583a7c4f4b12778a51e9c8d68b25dd532f5b96c10f1"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT12-029.html",
+      "sha256": "4815904431fc1ad0c54a6185aa3269fe75b844cae57da5dc68b72eca0654d505"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-022.html",
+      "sha256": "4771e6eab5218e833eebf7d1ff6cf70ad6fa51a51d556f8a404ac88f07256874"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-069.html",
+      "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-023.html",
+      "sha256": "8a0641a7b790f34271ee55cfac8b183f29ce2f546bfd62b704069952e5001e23"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-112.html",
+      "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-023.html",
+      "sha256": "a184df26a6bd8c5ccaed325998c9b85a18c0c2d5c0778a20993fd2d6a01e67dd"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX1-013.html",
+      "sha256": "df126caa2ee95d5f7b86008ef828291645d15204c177801eb2f73404d0611f38"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-002.html",
+      "sha256": "9d2abc2c3a5f20aebefbcb5b89818a4559748ddbde4e20f92562092b7267cd4f"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/LM-028.png",
+      "sha256": "f26e919328151f9ee595ea160a2949274ca1d30eb4ae6e0dacde5aef78460c8e"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/LM-034.png",
+      "sha256": "dfcf39cb2e036a148e9438ea00699f9909d0b93b07c72239822fd0f2cf2868a9"
+    }
+  ]
+}

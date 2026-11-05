@@ -1,0 +1,203 @@
+{
+  "source": "User message 2026-11-02",
+  "decks": [
+    {
+      "label": "SeitenGokuumon DeckList",
+      "cards": [
+        {
+          "quantity": 4,
+          "supplied_name": "Mococomon",
+          "card_number": "EX12-002"
+        },
+        {
+          "quantity": 4,
+          "supplied_name": "Kakamon",
+          "card_number": "EX12-006"
+        },
+        {
+          "quantity": 4,
+          "supplied_name": "Kamemon",
+          "card_number": "EX12-022"
+        },
+        {
+          "quantity": 3,
+          "supplied_name": "Takinmon",
+          "card_number": "EX12-039"
+        },
+        {
+          "quantity": 4,
+          "supplied_name": "Apemon",
+          "card_number": "EX12-012"
+        },
+        {
+          "quantity": 1,
+          "supplied_name": "Gawappamon",
+          "card_number": "EX12-025"
+        },
+        {
+          "quantity": 4,
+          "supplied_name": "Hakubamon",
+          "card_number": "EX12-043"
+        },
+        {
+          "quantity": 2,
+          "supplied_name": "Gokuumon",
+          "card_number": "EX12-015"
+        },
+        {
+          "quantity": 2,
+          "supplied_name": "Sagomon",
+          "card_number": "EX12-029"
+        },
+        {
+          "quantity": 4,
+          "supplied_name": "Sanzomon",
+          "card_number": "EX12-045"
+        },
+        {
+          "quantity": 3,
+          "supplied_name": "Cho-Hakkaimon",
+          "card_number": "EX12-056"
+        },
+        {
+          "quantity": 3,
+          "supplied_name": "SeitenGokuumon",
+          "card_number": "EX12-048"
+        },
+        {
+          "quantity": 3,
+          "supplied_name": "Nezhamon",
+          "card_number": "EX12-019"
+        },
+        {
+          "quantity": 2,
+          "supplied_name": "Erlangmon",
+          "card_number": "EX12-034"
+        },
+        {
+          "quantity": 2,
+          "supplied_name": "Takutoumon",
+          "card_number": "EX12-057"
+        },
+        {
+          "quantity": 4,
+          "supplied_name": "Saneiketsu Invitation",
+          "card_number": "EX12-071"
+        },
+        {
+          "quantity": 3,
+          "supplied_name": "Genshi Continent & Ashino Island",
+          "card_number": "EX12-074"
+        },
+        {
+          "quantity": 2,
+          "supplied_name": "Kunlun's Imperial Decree",
+          "card_number": "EX12-075"
+        }
+      ],
+      "egg_row_card_number": "EX12-002",
+      "listed_eggs": 4,
+      "listed_main": 50,
+      "status": "REFERENCE_ONLY_NOT_IMPORTED_OR_LEGALITY_CERTIFIED"
+    },
+    {
+      "label": "Gammamon DeckList",
+      "cards": [
+        {
+          "quantity": 4,
+          "supplied_name": "Gurimon",
+          "card_number": "RB1-001"
+        },
+        {
+          "quantity": 4,
+          "supplied_name": "Gammamon",
+          "card_number": "RB1-005"
+        },
+        {
+          "quantity": 4,
+          "supplied_name": "Gammamon",
+          "card_number": "EX12-007"
+        },
+        {
+          "quantity": 3,
+          "supplied_name": "Gammamon",
+          "card_number": "LM-016"
+        },
+        {
+          "quantity": 2,
+          "supplied_name": "BetelGammamon",
+          "card_number": "EX12-013"
+        },
+        {
+          "quantity": 3,
+          "supplied_name": "GulusGammamon",
+          "card_number": "RB1-029"
+        },
+        {
+          "quantity": 2,
+          "supplied_name": "GulusGammamon",
+          "card_number": "BT21-069"
+        },
+        {
+          "quantity": 3,
+          "supplied_name": "GulusGammamon",
+          "card_number": "EX10-042"
+        },
+        {
+          "quantity": 3,
+          "supplied_name": "Canoweissmon",
+          "card_number": "EX12-014"
+        },
+        {
+          "quantity": 4,
+          "supplied_name": "Regulusmon",
+          "card_number": "RB1-030"
+        },
+        {
+          "quantity": 1,
+          "supplied_name": "Regulusmon",
+          "card_number": "EX10-053"
+        },
+        {
+          "quantity": 3,
+          "supplied_name": "Siriusmon/Planet Punch",
+          "card_number": "EX12-018"
+        },
+        {
+          "quantity": 4,
+          "supplied_name": "Arcturusmon",
+          "card_number": "P-240"
+        },
+        {
+          "quantity": 3,
+          "supplied_name": "Proximamon",
+          "card_number": "EX12-077"
+        },
+        {
+          "quantity": 3,
+          "supplied_name": "Hiro Amanokawa",
+          "card_number": "EX12-066"
+        },
+        {
+          "quantity": 3,
+          "supplied_name": "Hiro Amanokawa",
+          "card_number": "BT21-080"
+        },
+        {
+          "quantity": 4,
+          "supplied_name": "The Strongest of Brothers",
+          "card_number": "BT21-090"
+        },
+        {
+          "quantity": 1,
+          "supplied_name": "Calling From the Darkness",
+          "card_number": "BT7-107"
+        }
+      ],
+      "egg_row_card_number": "RB1-001",
+      "listed_eggs": 4,
+      "listed_main": 50,
+      "status": "REFERENCE_ONLY_NOT_IMPORTED_OR_LEGALITY_CERTIFIED"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "test_command": "python -m unittest discover -p 'test_*.py' -q",
+  "tests_passed": 335,
+  "tests_failed": 0,
+  "duration_seconds": 57.555,
+  "diagnostic_context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "diagnostic_attempts": 60,
+  "starts_each": 30,
+  "exact_replays": 60,
+  "halts": 60,
+  "software_terminal_games": 0,
+  "accepted_fact_finding_credit": 0,
+  "final_evaluation_credit": 0,
+  "rules_certification": "NONE_EXPERIMENTAL",
+  "original_queue_unchanged": true,
+  "source_checks": 22,
+  "all_card_sources_hash_match": true,
+  "independent_review": "One material replay boundary finding, reproduced RED and fixed GREEN with single-byte snapshot plus expected identity/hash before runtime; no other material findings."
+}

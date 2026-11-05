@@ -1,0 +1,106 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "after_declines_window_sequence": [
+    "COUNTER",
+    "BLOCK",
+    "CONFIRM"
+  ],
+  "declaration_pending": [
+    {
+      "depth": 0,
+      "effect_id": "EX13-022.inherited_unsuspend",
+      "field": "inherited_text",
+      "id": "effect-52",
+      "instance": "entity-5",
+      "seat": "B",
+      "source": "B:EX13-022#1",
+      "trigger": {
+        "entity": "B:BT11-032#1",
+        "kind": "ORIENTATION_CHANGED",
+        "name_at_trigger": "UlforceVeedramon",
+        "phase": "MAIN",
+        "suspended_after": true,
+        "suspended_before": false
+      },
+      "usage": [
+        10,
+        "B",
+        "B:EX13-022#1",
+        "EX13-022.inherited_unsuspend"
+      ]
+    },
+    {
+      "depth": 0,
+      "effect_id": "BT11-112.suspend_reactivation",
+      "field": "main_text",
+      "id": "effect-53",
+      "instance": "entity-12",
+      "seat": "B",
+      "source": "B:BT11-112#3",
+      "trigger": {
+        "kind": "DIGIMON_SUSPENDED",
+        "name_at_trigger": "UlforceVeedramon",
+        "observed_instance": "entity-5",
+        "observed_source": "B:BT11-032#1",
+        "suspended_after": true,
+        "suspended_before": false
+      },
+      "usage": []
+    },
+    {
+      "depth": 0,
+      "effect_id": "BT11-112.suspend_reactivation",
+      "field": "main_text",
+      "id": "effect-54",
+      "instance": "entity-16",
+      "seat": "B",
+      "source": "B:BT11-112#2",
+      "trigger": {
+        "kind": "DIGIMON_SUSPENDED",
+        "name_at_trigger": "UlforceVeedramon",
+        "observed_instance": "entity-5",
+        "observed_source": "B:BT11-032#1",
+        "suspended_after": true,
+        "suspended_before": false
+      },
+      "usage": []
+    }
+  ],
+  "declaration_preserves_zones_rng_memory_entity": true,
+  "declaration_queue_calls": 1,
+  "execution_id": "15a4097494a855a574ab66abb63a8032dbf53cb521812405f416e47ffbcdc54b",
+  "explicit_decline_order": [
+    "B:BT11-112#3",
+    "B:EX13-022#1",
+    "B:BT11-112#2"
+  ],
+  "final_evaluation_credit": 0,
+  "judge_certification_credit": 0,
+  "new_actual_gameplay_commands": 0,
+  "opponent_pending_count": 0,
+  "original_record_bytes_unchanged": true,
+  "pending_window_guards": {
+    "BLOCK": "PENDING_EFFECTS_REQUIRE_RESOLUTION",
+    "CONFIRM": "PENDING_EFFECTS_REQUIRE_RESOLUTION",
+    "COUNTER": "PENDING_EFFECTS_REQUIRE_RESOLUTION"
+  },
+  "private_branch_testing_only": true,
+  "record_sha256": "edba5ed4f421e6a0928d8212a3504d4f29e0f2abc776480fe6c90c7c471215a3",
+  "saved_successful_commands_revalidated": 139,
+  "schema": "private-actual-declaration-proof-v1",
+  "seconds": 39.352,
+  "security_checks_executed": 0,
+  "seed": 12017913134550805276,
+  "source_bytes_stable_during_execution": true,
+  "source_sha256": {
+    "SOURCE/attack_flow.py": "be9adb19ed1465ff32b282c0dead91bd93258ecb6ea65b8343c140a7dc29dd6a",
+    "SOURCE/battlefield_scope.py": "4557deea84a28683b9f04c497a1b9c7d8a5df96a77a5e2b81826fd80b79c8f7e",
+    "SOURCE/test_attack_flow.py": "e31533d33373845cc7ed0ed1d73b091d77b45dd2e8ebc8438261bd2ea4580dbf",
+    "SOURCE/test_battlefield_scope.py": "fc175d270cbcb39b57173c7bda3372922bc6252f33754e118b3438f4fdfe0a29"
+  },
+  "state_and_rng_match_original_before_halt": true,
+  "status": "PASS",
+  "strategy_credit": 0,
+  "unsupported_true_unsuspend_reason": "ORIENTATION_DEPENDENT_TRIGGER_UNIMPLEMENTED: BT11-032 main_text source=B:BT11-032#1",
+  "unsupported_true_unsuspend_rolled_back": true
+}

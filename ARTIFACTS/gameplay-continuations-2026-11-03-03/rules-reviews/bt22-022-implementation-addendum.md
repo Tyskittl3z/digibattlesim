@@ -1,0 +1,7 @@
+# BT22-022 implementation review addendum
+
+No concrete validity gap found for the actual BT22-022/EX13-002 encounter in commit `778452d41513c74f106d65c5d7f231ebd7a0646a`. The three reviewed files (`tamer_play_effects.py`, `main_actions.py`, `battle_evolution.py`) match that commit exactly. The earlier missing inherited egg trigger is addressed for this actual state.
+
+Four focused existing tests passed (`EncounteredVeedramonTamerTests`, 25.331s). Independently replayed the preserved seed/prefix to an exact physical-state/RNG match, executed the selected cost2 evolution/draw, and completed four diagnostic alternatives: each of the two eligible Rinas with each explicit egg boolean choice, using opposite simultaneous activation orders. All closed without pending effects, kept memory6 and all existing orientations/RNG unchanged, consumed exactly the egg and two separate Aero observer OPT usages, and produced the expected targets/grants expiring at A turn7 end. BT22 itself correctly has no OPT.
+
+The review covers the actual already-unsuspended egg host, exact after-draw choices, trusted matching source/effect play, and simultaneous groups. It does not certify unencountered future routes or full matches. No SOURCE edits or match credit. Detailed observed branch outputs, reviewed source hashes and original source-review reference are in [bt22-022-implementation-addendum.json](bt22-022-implementation-addendum.json).
