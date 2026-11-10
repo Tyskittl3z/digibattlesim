@@ -1,5 +1,83 @@
 # Digimon simulator: Python developer handoff
 
+## Current integration checkpoint — 2026-11-10
+
+The fresh runner now connects named Bot A aggressive/B defensive, Bot C's
+redacted views, board/tempo scoring, automated judge receipts and persistent
+learning. **Actual matches remain paused.** No production campaign, deal,
+training update or live rating has run. Test fixtures and historical prefixes
+count as zero completed fact-finding/final matches. Older sections below are
+historical where they describe these modules as pending.
+
+### Source and APIs
+
+- `SOURCE/field_tracker.py`: `FieldTracker.start/observe/player_view/public_metrics`.
+  Private audit data is for verification, never a player/learner feature.
+- `SOURCE/interaction_scoring.py`: `score_transition(...)` and
+  `criteria_manifest()`. Provisional board-impact weights are pinned in
+  `RULES/learning-2026-11-10/INTERACTION_CRITERIA.json`; canonical criterion SHA
+  is `84de51952609311beadcbec58f9c8252e1aea2c9eae96689eaf5aad4711fcdaf`.
+  Actual procedural changes retain measured colors but are ineligible for
+  learning; failed/unresolved commands are UNRATED. Tempo reports separate
+  cards/stack/check axes, including CONTESTED or UNKNOWN when appropriate.
+- `SOURCE/judge_ledger.py`: `judge_action(..., tracker=tracker)` requires
+  Bot C's anchored predecessor state, live engine events, action/effect binding,
+  physical conservation and pinned official sources. Accepted receipts mean
+  RUNTIME_VALIDATED, with EXPERIMENTAL_NOT_INDEPENDENTLY_CERTIFIED status;
+  independent semantic certification is false. Software gaps are not automatic
+  illegal/RED judgments.
+- `SOURCE/interaction_learning.py`: `LearningState.export/from_dict/state_id`,
+  `update_completed(...)`, `LearningPlayerBot(...)`, and pure saved-decision
+  input/RNG verification. Model snapshots freeze within a game. Completed-game
+  updates are atomic and deduplicated by logical game identity; action evidence
+  counts once per game. Three independent games are required for learned
+  preferences; explicit exploration is 0.10. Win association is separate from
+  the primary observed-board reward. No historical training is loaded.
+- `SOURCE/fresh_learning_campaign.py`: `make_schedule(context_id,campaign_id)`,
+  `run_game(index, root, *, context_file, campaign_id, learning_state,
+  max_commands=2000, previous_record=None)`, `replay_game(record, root)` and
+  `commit_completed_game(record, learning_state, root)`. The last function is
+  the explicit between-game update path; it rejects incomplete games. There is
+  no automatic cohort launcher in this increment. Do not invoke production
+  gameplay while the pause remains active.
+
+The runner pins source/context/criteria/model/player identities, saves engine
+and policy RNG plus selected commands/pending choices, and replays stored
+commands without invoking player choice again. Audit failure preserves changed
+state with an explicit failure status. **Resume supports identical builds only.**
+Any on-disk engine repair changes source pins and currently rejects the old
+record. Implement an explicit, verified repair-migration lineage before claiming
+same-seed resumption across repairs; preserve the original record and selected
+action. Tests mocking runtime availability do not prove cross-build migration.
+
+### Verification and evidence
+
+From `SOURCE/`, the final combined command was:
+
+```sh
+python -m unittest test_interaction_scoring test_interaction_learning test_judge_ledger test_fresh_learning_campaign test_field_tracker test_named_player_bots test_context_runtime test_match_context test_match_preparation -q
+```
+
+Result: **155 tests passed in 35.346 seconds** (21 scorer, 32 learner, 8 judge,
+20 runner, 30 tracker, 13 named-player, 18 runtime, 8 context, 5 preparation).
+Independent component review also passed. This is a focused run, not the full
+suite: discovery includes legacy gameplay/cohort tests and was not run during
+the pause. Latest complete historical baseline remains 495 tests at aed966b.
+
+`ARTIFACTS/learning-integration-2026-11-10/` contains the exact 112-file source
+archive/manifest, criterion manifest, private opening and resumed fixture,
+replay reports, verification and current pause control. The extra private proof
+used five commands only: opening, named redraw choices and automatic phase
+transitions. It proves saved choices/RNG and exact replay, unchanged model,
+rejection of a paused-game training commit, and unchanged historical game bytes.
+It uses no random reference player and earns zero production evidence credit.
+
+Next development gap is verified repair migration, followed by gameplay-first
+repairs of only encountered selected-card behavior once the user resumes.
+Keep production games and the 60/10,000 cohorts off until the pause is lifted;
+do not preload routes or claim complete rules/interaction coverage. Continue
+publishing honest checkpoints on `engine-ulforce-bootstrap` and draft PR #1.
+
 ## Bot C verified; matches remain paused — 2026-11-10
 
 User authorized Bot C only. **SOURCE/field_tracker.py is implemented**, with 30

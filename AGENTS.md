@@ -33,6 +33,19 @@ User owns all deck construction, interpretation, and decisions; offer **no card/
 - Never expand toward universal Digimon card support or unsolicited feature work. Work on interactions that the **loaded two decks can actually produce**, as found during gameplay.
 
 ## Authority and integrity
+- **Verified integration checkpoint (2026-11-10):** Named A aggressive/B
+  defensive, Bot C, board/tempo scorer, automated judge receipts, learner and
+  fresh runner are connected and verified in private fixtures only. 155 focused
+  tests passed; see `ARTIFACTS/learning-integration-2026-11-10/` and its current
+  pause-control.json. No production game/update/rating or cohort has run.
+  Earlier Bot-C-only pending-module restrictions describe historical scope and
+  are superseded by the authorized integration work. Actual matches remain
+  PAUSED_BEFORE_FIRST_MATCH; usage reset alone never lifts it. Resume currently
+  requires identical sources; repair migration remains unsupported. Preserve
+  failed selections/seed/history and add verified migration rather than
+  weakening pins or rerolling. Judge receipts are experimental automated checks,
+  not independent semantic certification. Keep old mixed-policy history out of
+  fresh training and the 10,000 evaluation off.
 - **Current integration preparation (2026-11-10):** After Bot C was verified,
   user said to go from here. Continue preparation of the fresh-game runner,
   board/tempo scoring, persistent learning and accurately labelled judge receipts.

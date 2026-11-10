@@ -1,5 +1,41 @@
 # Verified handoff status
 
+## Fresh learning integration verified in private tests; matches paused — 2026-11-10
+
+Bot A (aggressive), Bot B (defensive), Bot C, board/tempo scoring, automated
+judge receipts and persistent learning are connected in the fresh runner.
+**155 focused tests passed in 35.346 seconds**, including the final learner
+grammar hardening. Independent component review found no remaining blockers.
+A separate five-command private opening/phase fixture passed exact replay and
+same-build resume without choosing again, changing the model or using random
+reference players. All 112 Python sources are saved in a verified archive.
+
+Evidence: `ARTIFACTS/learning-integration-2026-11-10/`. Its pause-control.json is
+the current control record. **PAUSED_BEFORE_FIRST_MATCH remains active:** zero
+production fresh games, learning updates, live ratings, accepted fact-finding
+matches or final evaluation matches. Private test fixtures receive no match
+credit. The historical 164-command mixed-policy game is unchanged and excluded
+from fresh training. No production schedule is locked or running.
+
+Player inputs contain their own hand and Bot C's public field view/metrics.
+The learner freezes its model within each game, updates explicitly after an
+eligible completed game, deduplicates by logical game identity and requires
+three independent games before a learned preference is used. GREEN/YELLOW/RED
+measure observed board changes under the pinned provisional criteria; they are
+not win probabilities or approved roadmaps. Procedural/forced choices receive
+no strategic learning credit. Judge receipts remain experimental automated
+checks, without independent semantic or whole-game certification.
+
+**Resume currently requires the same software build.** A verified migration
+step is still needed to preserve and resume a stopped game across an engine
+repair. Source checks reject a changed build; do not weaken them or reroll a
+halted game's seed. Selected-card coverage and the existing rules/freeze gates
+also remain incomplete. This checkpoint does not certify readiness for 60 or
+10,000 valid games. Actual gameplay stays paused pending the user's continuation.
+
+The dated entries below describe earlier checkpoints and are historical where
+they conflict with this integration status.
+
 ## Scoring and judge components verified; integration in progress — 2026-11-10
 
 Board/tempo scoring and accurately labelled automated judge receipts are now

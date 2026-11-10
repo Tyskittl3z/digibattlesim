@@ -1,5 +1,18 @@
 # First Codex task (execute, don't just plan)
 
+> **Integration checkpoint verified — 2026-11-10; actual matches paused.**
+> Named A aggressive/B defensive, Bot C, board scoring, judge receipts and
+> persistent learning are connected. 155 focused tests passed (35.346s), plus
+> exact replay/resume of a five-command private fixture. Read latest STATUS,
+> PYTHON_DEVELOPER_HANDOFF.md and
+> `ARTIFACTS/learning-integration-2026-11-10/pause-control.json`.
+> Zero production games, learning updates, live ratings or match credit.
+> No production schedule is locked. Preserve the old mixed-policy game without
+> training from it. Resume is same-build only; verified repair migration is
+> still unsupported. Do not start actual games/cohorts on a usage reset, weaken
+> source pins, substitute reference players or imply independent certification.
+> All older pending-module instructions below are historical and superseded.
+
 > **Integration in progress — 2026-11-10.** Scorer/criteria and judge ledger
 > pass 59 focused checks with Bot C. See the scoring-judge milestone artifact.
 > Learner and fresh runner are still in progress; actual matches remain paused.
