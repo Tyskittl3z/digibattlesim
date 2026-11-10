@@ -33,6 +33,12 @@ User owns all deck construction, interpretation, and decisions; offer **no card/
 - Never expand toward universal Digimon card support or unsolicited feature work. Work on interactions that the **loaded two decks can actually produce**, as found during gameplay.
 
 ## Authority and integrity
+- **Current authorized preparation (2026-11-10):** User asked to work on Bot C.
+  Implement and test the field tracker only; the pre-match pause remains active.
+  Private unit fixtures and read-only replay of stored commands are verification,
+  not new match starts. Do not implement learning/ratings/judge/fresh-runner work
+  or start actual games/cohorts under this component request. Preserve all old
+  records and publish the tracker with precise verification and privacy limits.
 - **Latest user pause (2026-11-04, preserved 2026-11-05):** The user requested
   a fresh60-game learning campaign with Bot A aggressive/B defensive, Bot C
   tracking and board-impact colors, then said "pause before u start the match".

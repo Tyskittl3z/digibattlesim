@@ -1,0 +1,26 @@
+{
+  "bot_c": "IMPLEMENTED_VERIFIED_STANDALONE",
+  "bot_c_fresh_runner_integrated": false,
+  "date": "2026-11-10",
+  "final_10000_run_enabled": false,
+  "fresh_matches_completed": 0,
+  "fresh_matches_started": 0,
+  "historical_game_used_for_training": false,
+  "learning_updates": 0,
+  "opening_deal_started": false,
+  "pending_modules": [
+    "SOURCE/interaction_learning.py",
+    "SOURCE/fresh_learning_campaign.py",
+    "SOURCE/judge_ledger.py"
+  ],
+  "planned_matches": 60,
+  "player_A": "AGGRESSIVE",
+  "player_B": "DEFENSIVE",
+  "rating_weights": "DRAFT_NOT_LOCKED",
+  "run_enabled": false,
+  "schedule_created": false,
+  "status": "PAUSED_BEFORE_FIRST_MATCH",
+  "strategic_ratings": 0,
+  "tracker_id": "a110a3c963b7f50fc1a7e45ae062771643ebcf76c1541ad98df04b8fd1d23e75",
+  "user_continue_required_before_match": true
+}

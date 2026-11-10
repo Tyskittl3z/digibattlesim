@@ -1,5 +1,14 @@
 # First Codex task (execute, don't just plan)
 
+> **Bot C verified — 2026-11-10; actual games still paused.** FieldTracker is
+> implemented with 30 regression tests, 74 focused checks, independent review and
+> exact observer replay of the 164 stored commands. See
+> `ARTIFACTS/bot-c-2026-11-10/verification.json` and pause-control.json.
+> No fresh game/deal, player decision, learning update or rating ran. Bot C is
+> standalone; learner/scorer, judge ledger and fresh runner/integration remain
+> pending. Do not start an actual match/cohort until user continues. Old records
+> remain immutable and excluded from fresh training.
+
 > **PAUSED BEFORE FIRST FRESH MATCH — 2026-11-05.** User explicitly requested
 > pausing before the match. Usage reset does not resume it. No opening deal,
 > fresh game or learning update has started. Read

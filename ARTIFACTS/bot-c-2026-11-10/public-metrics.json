@@ -1,0 +1,26 @@
+{
+  "board": {
+    "A": {
+      "battle_card_count": 6,
+      "digimon_count": 2,
+      "digivolution_card_count": 1,
+      "largest_stack_size": 2,
+      "option_count": 1,
+      "tamer_count": 3,
+      "total_stack_cards": 7
+    },
+    "B": {
+      "battle_card_count": 9,
+      "digimon_count": 5,
+      "digivolution_card_count": 6,
+      "largest_stack_size": 5,
+      "option_count": 0,
+      "tamer_count": 4,
+      "total_stack_cards": 15
+    }
+  },
+  "successful_security_checks": {
+    "A": 0,
+    "B": 4
+  }
+}
