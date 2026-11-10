@@ -1,5 +1,26 @@
 # Verified handoff status
 
+## Scoring and judge components verified; integration in progress — 2026-11-10
+
+Board/tempo scoring and accurately labelled automated judge receipts are now
+implemented. 59 focused tests pass (4.781 seconds): 21 scorer, 8 judge and 30
+Bot C checks. Criteria explicitly measure board resources, disabled threats,
+completed checks and actual memory costs/refunds. Procedural changes retain
+actual measured colors but receive no learning credit. The source/criteria are
+saved at `ARTIFACTS/scoring-judge-milestone-2026-11-10/`.
+
+Judge receipts match actual engine events, required action arguments, Bot C's
+trusted predecessor checkpoint, live state/card conservation and official source
+pins. They remain experimental automated checks, not independent semantic or
+whole-game certificates. Unsupported behavior is a software gap, not an automatic
+illegal/RED ruling.
+
+The learner and fresh-game runner are still in progress. Do not claim the whole
+new pipeline is complete from these component tests. Actual matches remain
+PAUSED_BEFORE_FIRST_MATCH: zero fresh matches, production learning updates or
+live-game ratings. Old game records remain immutable and excluded from training.
+
+
 ## Bot C verified; matches remain paused — 2026-11-10
 
 User authorized Bot C only. **SOURCE/field_tracker.py is implemented**, with 30

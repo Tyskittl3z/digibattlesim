@@ -33,6 +33,14 @@ User owns all deck construction, interpretation, and decisions; offer **no card/
 - Never expand toward universal Digimon card support or unsolicited feature work. Work on interactions that the **loaded two decks can actually produce**, as found during gameplay.
 
 ## Authority and integrity
+- **Current integration preparation (2026-11-10):** After Bot C was verified,
+  user said to go from here. Continue preparation of the fresh-game runner,
+  board/tempo scoring, persistent learning and accurately labelled judge receipts.
+  Use private unit fixtures and stored-log verification; actual fresh matches
+  remain paused as stated in commentary. Do not run the 60-game campaign or
+  final evaluation in this integration increment. Old records remain immutable
+  and excluded from new training. Defined colors measure actual board changes;
+  procedural and forced choices must not receive strategic learning credit.
 - **Current authorized preparation (2026-11-10):** User asked to work on Bot C.
   Implement and test the field tracker only; the pre-match pause remains active.
   Private unit fixtures and read-only replay of stored commands are verification,

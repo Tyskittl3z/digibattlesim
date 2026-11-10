@@ -1,5 +1,12 @@
 # First Codex task (execute, don't just plan)
 
+> **Integration in progress — 2026-11-10.** Scorer/criteria and judge ledger
+> pass 59 focused checks with Bot C. See the scoring-judge milestone artifact.
+> Learner and fresh runner are still in progress; actual matches remain paused.
+> No fresh-game, production-training or live-rating credit exists. Continue
+> preparation/verification only, preserving old archives and saved choices.
+> Older Bot-C-only instructions below are superseded by current integration work.
+
 > **Bot C verified — 2026-11-10; actual games still paused.** FieldTracker is
 > implemented with 30 regression tests, 74 focused checks, independent review and
 > exact observer replay of the 164 stored commands. See
