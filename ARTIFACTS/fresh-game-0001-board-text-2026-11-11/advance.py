@@ -21,6 +21,10 @@ import fresh_repair_migration as migration
 from interaction_learning import LearningState
 from match_context import canonical
 
+# This standalone process compiles SOURCE bytes directly through DirectSource.
+# Avoid a second worker and its fixed timeout for long, nested lineage replay.
+migration._SOURCE_ONLY_WORKER = True
+
 CAMPAIGN = 'ULFORCE_MIRROR_BOARD_TEXT_HISTORY_2026_11_11_V1'
 CONTEXT = 'ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json'
 HISTORY = 'ARTIFACTS/fresh-game-0000-2026-11-11/game-0000-report.md'
@@ -52,7 +56,13 @@ def main():
             raise RuntimeError('ORIGINAL_SOURCE_MAP_MISMATCH')
         changes = {key: {'before': old.get(key), 'after': new.get(key)}
                    for key in sorted(old.keys() | new.keys()) if old.get(key) != new.get(key)}
-        if 'ULFORCE_RETURN_LEAVE_DEPENDENCY_UNIMPLEMENTED: EX13-017' in (previous['halt_reason'] or ''):
+        if 'BT12_RETURN_PROTECTION_UNIMPLEMENTED: EX13-023' in (previous['halt_reason'] or ''):
+            repair = 'EX13-023 direct Digimon return under Q7265'
+            note = ('The saved BT12-029 return encountered EX13-023 stacked-card protection. '
+                'Official Q7265 explicitly permits an effect to return the Digimon itself. '
+                'The return preflight now distinguishes that direct return from processing stacked cards. '
+                'Earlier seed, selections, state, and Bot C observations stay fixed.')
+        elif 'ULFORCE_RETURN_LEAVE_DEPENDENCY_UNIMPLEMENTED: EX13-017' in (previous['halt_reason'] or ''):
             repair = 'EX13-017 inherited return replacement'
             note = ('The saved EX13-023 return encountered EX13-017 inherited protection. '
                 'The defender now receives an explicit printed once-per-turn suspend choice. '

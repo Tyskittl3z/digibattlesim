@@ -87,11 +87,12 @@ class UlforceFewestReturnTests(unittest.TestCase):
             self.resolve(r,True)
         self.assertEqual(r.snapshot(),before)
 
-    def test_unsuspended_target_protection_is_not_silently_skipped(self):
-        r,_,_,_=self.fixture('protected');before=r.snapshot()
-        with self.assertRaisesRegex(RuntimeHalt,'ULFORCE_RETURN_PROTECTION_UNIMPLEMENTED.*EX13-023'):
-            self.resolve(r,True)
-        self.assertEqual(r.snapshot(),before)
+    def test_q7265_stacked_card_protection_allows_direct_digimon_return(self):
+        r,_,target,_=self.fixture('protected')
+        result=self.resolve(r,True)
+        self.assertEqual(result['returned'],[target])
+        self.assertNotIn(target,r.state.battle['A'])
+        r.verify()
 
 
 if __name__=='__main__':unittest.main()

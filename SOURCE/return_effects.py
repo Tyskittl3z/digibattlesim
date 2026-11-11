@@ -23,6 +23,8 @@ _OTHER_TIMINGS = frozenset(('On Play', 'When Digivolving', 'When Attacking',
 REPLACEMENT_EFFECT = 'EX13-017.return_replacement'
 REPLACEMENT_LINE = ('[All Turns] [Once Per Turn] When this Digimon with [Veedramon] in its name '
     "would leave the battle area by your opponent's effects, by suspending it, it doesn't leave.")
+STACKED_CARDS_PROTECTION_LINE = ("[All Turns] Your opponent's effects can't reduce this unsuspended "
+    "Digimon's DP, return its stacked cards to the hand or deck, or trash them.")
 
 
 def replacement_usage(runtime, owner, source_key, stack):
@@ -149,6 +151,12 @@ def preflight_deck_bottom_return(runtime, actor, owner, target_key, *, halt_pref
                         ("can't", 'cannot', "isn't affected", 'unaffected', "doesn't leave", 'does not leave'))
                         and (_LEAVE.search(body) or 'affect' in lower))
                     if not protection:
+                        continue
+                    # EX13-023 Q7265: this wording protects processing its
+                    # stacked cards, but expressly permits returning the
+                    # Digimon itself. Both callers here return the Digimon.
+                    if (observer is target and physical.card_number == 'EX13-023'
+                            and field == 'main_text' and line == STACKED_CARDS_PROTECTION_LINE):
                         continue
                     if _self_only(body):
                         if observer is not target:

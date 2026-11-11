@@ -40,16 +40,17 @@ class ReturnReplacementTests(unittest.TestCase):
         self.assertTrue(runtime.state.battle['B'][target].suspended)
         runtime.verify()
 
-    def test_declined_replacement_keeps_unresolved_self_protection_explicit(self):
+    def test_declined_replacement_allows_direct_return_under_q7265(self):
         runtime = self.recorded()
         target = 'B:EX13-023#4'
         pending = pending_options(runtime, 'A')
         resolve_pending(runtime, 'A', pending[0]['id'], True)
         defender = pending_options(runtime, 'B')
-        before = runtime.snapshot()
-        with self.assertRaisesRegex(RuntimeHalt, 'ULFORCE_RETURN_PROTECTION_UNIMPLEMENTED'):
-            resolve_pending(runtime, 'B', defender[0]['id'], False)
-        self.assertEqual(runtime.snapshot()['state'], before['state'])
+        result = resolve_pending(runtime, 'B', defender[0]['id'], False)
+        self.assertFalse(result['prevented_return'])
+        self.assertNotIn(target, runtime.state.battle['B'])
+        self.assertEqual(runtime.state.zones['B']['deck'][0].key, target)
+        runtime.verify()
         runtime.verify()
 
 
