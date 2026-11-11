@@ -9,17 +9,21 @@ of 60). Neither seat constructs the old named aggressive/defensive prior or
 uses random exploration. The latest new game artifacts are in
 `ARTIFACTS/fresh-game-0001-board-text-2026-11-11/`.
 
-This new Game 0001 keeps seed 17795081213137388177 and first player B. The
-latest `segment-0007.json.gz` has 106 accepted, judged, Bot C observed commands
-and a saved command-107 halt. Exact replay passes. A checked LM-056 Security
-Option was repaired from its printed text: Bot A chose LM-034 from two revealed
-cards, bottomed P-104, and placed LM-056. Its engine and input-validator
-repairs have explicit source-only migration lineages. The next unresolved
-interaction is the opponent's EX13-017 inherited replacement during A's
-EX13-023 return effect. The attempted return did not move a card. No new
-learning-model commit has occurred for this unfinished game, and it earns no
-accepted fact-finding or final-evaluation credit. The 60- and 10,000-game
-cohorts remain off.
+This new Game 0001 kept seed 17795081213137388177 and first player B. Bot B
+won by successful direct attack on turn 7. `segment-0012.json.gz` contains
+132 accepted, judged, Bot C observed commands and exact replay. A checked
+LM-056 Security Option followed its printed search: Bot A chose LM-034 from
+two revealed cards, bottomed P-104, and placed LM-056. Bot B then chose to
+suspend its Veedramon stack using EX13-017's inherited replacement, preventing
+A's return. Later, BT12-029 returned A's EX13-023 Digimon to hand under
+official ruling Q7265. The repair lineages preserve every earlier halt,
+source change, and accepted prefix.
+
+`game-0001-report.md` and `game-0001-actions.csv` summarize the completed game.
+`game-0001-learning-model-after.json` holds two committed game histories for
+the next matchup; both players can load the same report/model. This remains
+an experimental software result with zero independently accepted fact-finding
+or final-evaluation credit. The 60- and 10,000-game cohorts remain off.
 
 ## Player-policy correction and Game 0001 stop — 2026-11-11
 
