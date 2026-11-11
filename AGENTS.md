@@ -1,5 +1,18 @@
 # Permanent Codex instructions — Digimon Battle Simulator
 
+## Latest user decision-policy instruction — 2026-11-11
+- The user wants each Bot A/B choice based on the current visible battle state,
+  that bot's own hand and printed card text, with the fresh prior match report
+  referenced as history. Do not use predefined deck routes or present the old
+  aggressive/defensive preference code as this corrected policy. If a matchup
+  has no match history, its first game is game 1 of the 60-game learning
+  sequence. Game 0000 is the only completed prior game for this Ulforce pair.
+- Stop attempted Game 0001 at saved exact-replay segment 0016: 222 accepted
+  actions followed by a HALT. It was played using the previous named policy
+  and is diagnostic only, excluded from the corrected learning sequence. Do
+  not update the learning model from it. Preserve all raw records, source
+  repair lineages, seed and prior choices. The 60/10,000 cohorts remain off.
+
 ## Current first-game completion boundary — 2026-11-11
 - The user authorized **only the first fully logged fresh game** after the
   earlier pre-match pause. Game 0000 uses named A aggressive, B defensive,

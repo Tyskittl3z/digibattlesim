@@ -1,5 +1,24 @@
 # Verified handoff status
 
+## Player-policy correction and Game 0001 stop — 2026-11-11
+
+The user clarified that player decisions must come from the current visible
+battlefield, each player's own hand and printed card text, with the fresh prior
+match report consulted as history. A matchup with no history begins at game 1
+of its 60-game learning sequence. The completed Game 0000 report and learning
+model are the only prior match history for this Ulforce pairing. The old named
+aggressive/defensive preference code must not be presented as the corrected
+decision policy.
+
+The attempted Game 0001 is therefore stopped as diagnostic evidence at
+`ARTIFACTS/fresh-game-0001-2026-11-11/game-0001-segment-0016.json.gz`:
+222 accepted actions and Bot C observations, exact replay, then a saved HALT
+on an EX13-017 inherited return dependency. The run used the old named
+preferences and is **excluded from the corrected learning sequence**. No
+between-game model update was made. The 60-game and 10,000-game cohorts remain
+off. Rebuild and verify the decision policy before opening a new match. Keep
+this diagnostic run and its repair lineages intact.
+
 ## First fresh Bot A versus Bot B game completed in software — 2026-11-11
 
 The user lifted the pre-match pause for **Game 0000 only** by requesting the
