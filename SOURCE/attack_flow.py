@@ -227,6 +227,11 @@ def _confirm(r,seat,c,root):
         from battlefield_scope import assert_combat_consequences_scope
         assert_combat_consequences_scope(r,[],security_owner=other)
         return resolve_checked_tamer(r,other,checked,root)
+    from option_actions import security_option_spec, resolve_checked_security_option
+    if security_option_spec(definition) is not None:
+        from battlefield_scope import assert_combat_consequences_scope
+        assert_combat_consequences_scope(r,[],security_owner=other)
+        return resolve_checked_security_option(r,other,checked,root)
     from printed_triggers import trigger_lines
     # CR13/14: a checked Digimon battles using printed DP. Its ordinary battle
     # area abilities do not become Security effects merely because it has text.

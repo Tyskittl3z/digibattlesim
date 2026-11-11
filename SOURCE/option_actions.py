@@ -25,6 +25,9 @@ OPTION_SPECS = {
 _SEARCH_COLORS = {'P-104': ('Blue',), 'LM-034': ('Blue','Red'),
     'LM-056': ('Purple','Blue'), 'LM-057': ('Red','Blue'), 'LM-058': ('Blue','Green')}
 _TRAINING_NAMES = {'LM-056':'Image Training','LM-057':'Wall Training','LM-058':'Parkour Training'}
+SECURITY_OPTION_SPECS = {number: (OPTION_SPECS[number][0],
+    OPTION_SPECS[number][1].replace('[Main]', '[Security]', 1))
+    for number in _TRAINING_NAMES}
 BLUE_SCRAMBLE_DELAY = 'LM-028.start_turn_delay'
 DELAY_SPECS = {
     'P-104': ('P-104.main_delay', '[Main] ＜Delay＞', '・1 of your Digimon may digivolve into a blue Digimon card in your hand for its digivolution cost. When it would digivolve by this effect, reduce the cost by 2.'),
@@ -217,6 +220,9 @@ def _scramble_delay_choices(runtime,seat):
 
 
 def option_choices(runtime, seat, source_key, effect_id=None):
+    if (runtime.state.attack is not None and runtime.state.attack['checked'] == source_key
+            and runtime.state.resolving_option is not None):
+        return security_option_choices(runtime, seat, source_key)
     source,effect,initial=_window(runtime,seat,source_key,effect_id)
     if not initial:
         _delay_turn(runtime,seat,source_key)
@@ -246,6 +252,91 @@ def _place_option(runtime,seat,source_key):
         raise RuntimeHalt('OPTION_RESOLVING_SOURCE_REQUIRED')
     stack=current['stack'];stack.played_turn=runtime.state.turn
     runtime.state.battle[seat][source_key]=stack;runtime.state.resolving_option=None
+
+
+def security_option_spec(definition):
+    spec = SECURITY_OPTION_SPECS.get(definition.number)
+    return spec if (definition.kind == 'Option' and spec is not None and
+                    definition.effect_text('security_text') == spec[1]) else None
+
+
+def resolve_checked_security_option(runtime, seat, physical, root):
+    """A checked Training Option starts its printed Security search at zero cost."""
+    attack = runtime.state.attack
+    if (attack is None or attack['window'] != 'CONFIRM' or attack['target'] != 'PLAYER'
+            or attack['defender'] != seat or attack['checked'] is not None
+            or not runtime.state.zones[seat]['security']
+            or runtime.state.zones[seat]['security'][-1] != physical
+            or runtime.state.resolving_option is not None):
+        raise RuntimeHalt('SECURITY_OPTION_WINDOW_REQUIRED')
+    definition = runtime.context.card(seat, physical.card_number)
+    spec = security_option_spec(definition)
+    if spec is None:
+        raise RuntimeHalt('SECURITY_OPTION_TEXT_UNSUPPORTED')
+    runtime.registry.lookup(physical.card_number, spec[0], 'security_text')
+    from selected_mechanics import _source_evidence
+    evidence = _source_evidence(root, definition.to_dict()['official_source'],
+        '#' + physical.card_number + ' exact printed Security search and placement').manifest()
+    runtime.state.zones[seat]['security'].pop()
+    runtime.state.entity_sequence += 1
+    runtime.state.resolving_option = {'seat': seat,
+        'stack': Stack([physical], instance_id='entity-' + str(runtime.state.entity_sequence))}
+    attack['checked'], attack['window'] = physical.key, 'END'
+    queue_effects(runtime, [{'seat': seat, 'source': physical.key,
+        'effect_id': spec[0], 'field': 'security_text',
+        'trigger': {'kind': 'Security Check', 'card': physical.key}}])
+    return {'success': True, 'checked_card': physical.key, 'security_effect': spec[0],
+        'attacker_deleted': False, 'security_card_deleted': False,
+        'source': evidence, 'full_match_credit': 0}
+
+
+def security_option_choices(runtime, seat, source_key):
+    source = runtime._source(seat, source_key, 'security_text')
+    spec = security_option_spec(runtime.context.card(seat, source.card_number))
+    attack = runtime.state.attack
+    if (spec is None or attack is None or attack['window'] != 'END'
+            or attack['checked'] != source_key):
+        raise RuntimeHalt('SECURITY_OPTION_CHOICE_WINDOW_REQUIRED')
+    activated = getattr(runtime, '_activated_effect', None)
+    expected = (spec[0], seat, source_key, 'security_text')
+    if activated is None or activated[:4] != expected or activated[4] is None:
+        from effect_scheduler import pending_options
+        if not any(tuple(p[k] for k in ('effect_id','seat','source','field')) == expected
+                   for p in pending_options(runtime, seat)):
+            raise RuntimeHalt('SECURITY_OPTION_CHOICE_WINDOW_REQUIRED')
+    count = OPTION_SPECS[source.card_number][2]
+    revealed = list(reversed(runtime.state.zones[seat]['deck'][-count:]))
+    selections = [[card.key] for card in revealed if
+        set(_SEARCH_COLORS[source.card_number]).intersection(
+            runtime.context.card(seat, card.card_number).to_dict()['colors'])]
+    return {'revealed': [card.key for card in revealed],
+        'selections': sorted(selections) or [[]],
+        'bottom_order_convention': 'first element is bottommost'}
+
+
+def resolve_security_option(runtime, seat, source_key, choice):
+    exposed = security_option_choices(runtime, seat, source_key)
+    if not isinstance(choice, dict) or set(choice) != {'selected', 'bottom_order'}:
+        raise RuntimeHalt('SECURITY_OPTION_CHOICE_INVALID')
+    selected, bottom = choice['selected'], choice['bottom_order']
+    if (not isinstance(selected, list) or not isinstance(bottom, list)
+            or selected not in exposed['selections']
+            or any(not isinstance(key, str) for key in selected + bottom)
+            or len(set(bottom)) != len(bottom)
+            or set(bottom) != set(exposed['revealed']) - set(selected)):
+        raise RuntimeHalt('SECURITY_OPTION_CHOICE_INVALID')
+    deck = runtime.state.zones[seat]['deck']
+    count = len(exposed['revealed'])
+    cards = {card.key: card for card in deck[-count:]} if count else {}
+    if count:
+        del deck[-count:]
+    runtime.state.zones[seat]['hand'].extend(cards[key] for key in selected)
+    deck[:0] = [cards[key] for key in bottom]
+    _place_option(runtime, seat, source_key)
+    return {'revealed': exposed['revealed'], 'selected': selected,
+        'bottom_order': bottom, 'placed_option': source_key,
+        'bottom_order_convention': exposed['bottom_order_convention'],
+        'status': 'EXPERIMENTAL', 'full_match_credit': 0}
 
 
 def resolve_option(runtime,seat,source_key,choice):
@@ -382,4 +473,10 @@ def option_bindings(context,root,rules_evidence):
             bindings.append(MechanicBinding(card.number,effect,'main_text',card.definition_sha256,
                 hashlib.sha256(card.effect_text('main_text').encode()).hexdigest(),
                 (evidence,replace(rules_evidence,locator=_RULES_LOCATOR)),handler))
+        security = security_option_spec(card)
+        if card.number in _TRAINING_NAMES:
+            require(security is not None, 'Exact Security Option text changed: ' + card.number)
+            bindings.append(MechanicBinding(card.number, security[0], 'security_text',
+                card.definition_sha256, hashlib.sha256(card.effect_text('security_text').encode()).hexdigest(),
+                (evidence, replace(rules_evidence, locator=_RULES_LOCATOR)), resolve_security_option))
     return tuple(bindings)

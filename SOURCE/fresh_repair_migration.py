@@ -36,6 +36,7 @@ _IDENTITY = ('schema', 'index', 'seed', 'first', 'campaign_id', 'context_id', 'c
     'context_file_sha256', 'schedule', 'criteria', 'learning_state_id', 'learning_state_before',
     'learning_state_after', 'pilots', 'policy_rng_initial', 'certification',
     'accepted_fact_finding_credit', 'final_evaluation_credit', 'player_policy', 'history_report')
+_SECURITY_POLICY_EXTENSION_BASE = '489f93f21debe54046b2d8512c7b24ed4fe1c8e08696a27b71337158764604bb'
 
 
 def _same(left, right, label):
@@ -153,6 +154,8 @@ def _differences(before, after, approved, *, bootstrap_sources=None):
     choice_router_extension = (before.get('fresh_repair_migration.py') == _CHOICE_ROUTER_BASE
                                and 'imported_attempts.py' in actual
                                and 'fresh_repair_migration.py' in actual)
+    security_policy_extension = (before.get('fresh_repair_migration.py') == _SECURITY_POLICY_EXTENSION_BASE
+                                 and {'interaction_learning.py', 'fresh_repair_migration.py'} <= set(actual))
     allowed = _ENGINE | ({'fresh_learning_campaign.py', 'fresh_repair_migration.py'} if bootstrap else set())
     if tracker_extension:
         allowed |= {'fresh_repair_migration.py'}
@@ -160,6 +163,8 @@ def _differences(before, after, approved, *, bootstrap_sources=None):
         allowed |= {'named_bot_continuation.py', 'fresh_repair_migration.py'}
     if choice_router_extension:
         allowed |= {'imported_attempts.py', 'fresh_repair_migration.py'}
+    if security_policy_extension:
+        allowed |= {'interaction_learning.py', 'fresh_repair_migration.py'}
     if set(actual) - allowed or any(before.get(k) is None or after.get(k) is None
                                     for k in actual if k in _ENGINE):
         raise RuntimeHalt('REPAIR_PROTECTED_SOURCE_CHANGE')

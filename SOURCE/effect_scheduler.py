@@ -14,7 +14,7 @@ from match_context import canonical
 def source_stack(runtime, seat, source, field):
     runtime._source(seat, source, field)
     resolving = runtime.state.resolving_option
-    if resolving is not None and resolving['seat'] == seat and field == 'main_text':
+    if resolving is not None and resolving['seat'] == seat and field in ('main_text', 'security_text'):
         if resolving['stack'].cards[-1].key == source:
             return resolving['stack']
     for stack in runtime.state.battle[seat].values():
@@ -35,7 +35,7 @@ def validate_pending(runtime):
                 'id','seat','source','effect_id','field','instance','depth','trigger','usage'}:
             raise RuntimeHalt('PENDING_SCHEMA_INVALID')
         if (not isinstance(effect['id'], str) or effect['id'] in seen
-                or effect['seat'] not in ('A','B') or effect['field'] not in ('main_text','inherited_text')
+                or effect['seat'] not in ('A','B') or effect['field'] not in ('main_text','inherited_text','security_text')
                 or not all(isinstance(effect[k], str) and effect[k] for k in ('source','effect_id','instance'))
                 or type(effect['depth']) is not int or effect['depth'] < 0
                 or not isinstance(effect['trigger'], dict) or not isinstance(effect['usage'], list)

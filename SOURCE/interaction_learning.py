@@ -82,7 +82,7 @@ def _pending(value):
     for key, item in value.items():
         if key == 'depth': valid = type(item) is int and item >= 0
         elif key == 'seat': valid = item in ('A', 'B')
-        elif key == 'field': valid = item in ('main_text', 'inherited_text')
+        elif key == 'field': valid = item in ('main_text', 'inherited_text', 'security_text')
         elif key == 'source': valid = isinstance(item, str) and _PHYSICAL.fullmatch(item) is not None
         elif key == 'effect_id': valid = isinstance(item, str) and _EFFECT.fullmatch(item) is not None
         else: valid = isinstance(item, str) and bool(item)

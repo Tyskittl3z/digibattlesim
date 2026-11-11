@@ -10,6 +10,14 @@ from test_selected_mechanics import ROOT, stage
 
 
 class BoardTextPlayerTests(unittest.TestCase):
+    def test_printed_security_effect_is_an_offered_pending_choice(self):
+        from interaction_learning import _decision
+        pending = {'id': 'effect-1', 'seat': 'A', 'source': 'A:LM-056#1',
+                   'effect_id': 'LM-056.main_search', 'field': 'security_text',
+                   'instance': 'entity-1', 'depth': 0}
+        self.assertEqual(_decision({'kind': 'PENDING_EFFECT_ORDER',
+                                    'selected_pending': pending})['selected_pending'], pending)
+
     def test_no_history_starts_at_game_one_and_never_constructs_named_prior(self):
         from fresh_learning_campaign import run_game, replay_game
         with patch('interaction_learning.NamedPlayerBot', side_effect=AssertionError('named prior used')):

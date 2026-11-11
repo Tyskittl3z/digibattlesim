@@ -300,14 +300,13 @@ class ContextRuntime:
 
     def _source(self, seat, source_key, field_):
         self.context.deck(seat)
-        if field_ == 'security_text':
-            raise RuntimeHalt('SECURITY_WINDOW_UNIMPLEMENTED')
-        if field_ not in ('main_text', 'inherited_text'):
+        if field_ not in ('main_text', 'inherited_text', 'security_text'):
             raise RuntimeHalt('UNKNOWN_EFFECT_FIELD')
         resolving = self.state.resolving_option
-        if resolving is not None and resolving['seat'] == seat and field_ == 'main_text':
+        if resolving is not None and resolving['seat'] == seat and field_ in ('main_text', 'security_text'):
             physical = resolving['stack'].cards[-1]
-            if physical.key == source_key:
+            if physical.key == source_key and (field_ != 'security_text' or
+                    (self.state.attack is not None and self.state.attack['checked'] == source_key)):
                 return physical
         for stack in self.state.battle[seat].values():
             pool = stack.cards[:-1] if field_ == 'inherited_text' else stack.cards[-1:]
