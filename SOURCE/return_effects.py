@@ -147,3 +147,15 @@ def return_to_deck_bottom(runtime, actor, owner, target_keys, bottom_order, *, h
                       'card': top.key, 'trashed_sources': [card.key for card in lower]})
     runtime.state.zones[owner]['deck'][:0] = [tops[key] for key in bottom_order]
     return {'returned': returned, 'trashed_sources': trashed, 'steps': steps}
+
+
+def return_to_hand(runtime, actor, owner, target_key, *, halt_prefix='RETURN'):
+    """Return one selected Digimon's top card to hand and trash its sources."""
+    preflight_deck_bottom_return(runtime, actor, owner, target_key, halt_prefix=halt_prefix)
+    stack = runtime.state.battle[owner].pop(target_key)
+    top, lower = stack.cards[-1], stack.cards[:-1]
+    runtime.state.zones[owner]['hand'].append(top)
+    runtime.state.zones[owner]['trash'].extend(lower)
+    return {'returned': top.key, 'trashed_sources': [card.key for card in lower],
+            'steps': [{'operation': 'RETURN_DIGIMON_TO_HAND', 'owner': owner,
+                       'card': top.key, 'trashed_sources': [card.key for card in lower]}]}

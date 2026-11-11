@@ -39,11 +39,16 @@ RINA_JAMMING_LINE = ('[Your Turn] When one of your Digimon with [Veedramon] in i
                      'by returning this Tamer to the hand, that Digimon gains ＜Jamming＞ for the turn.')
 BT12_UNSUSPEND_EFFECT = 'BT12-029.when_digivolving_unsuspend'
 BT12_UNSUSPEND_LINE = '[When Digivolving] Unsuspend this Digimon or 1 of your blue Tamers.'
+BT12_RETURN_EFFECT = 'BT12-029.unsuspend_return_lowest'
+BT12_RETURN_LINE = ('[All Turns][Once Per Turn] When this Digimon becomes unsuspended, '
+                    'if you have a blue Tamer in play or this Digimon has [UlforceVeedramon] '
+                    'in its digivolution cards, return 1 of your opponent’s Digimon with the '
+                    'lowest level to its owner’s hand.')
 
 
 def bt12_unsuspend_choices(runtime, seat, source_key):
     source = runtime._source(seat, source_key, 'main_text')
-    if source.card_number != 'BT12-029' or runtime.state.active != seat:
+    if source.card_number != 'BT12-029':
         raise RuntimeHalt('BT12_UNSUSPEND_SOURCE_INVALID')
     expected = (BT12_UNSUSPEND_EFFECT, seat, source_key, 'main_text')
     activated = getattr(runtime, '_activated_effect', None)
@@ -54,8 +59,14 @@ def bt12_unsuspend_choices(runtime, seat, source_key):
         record = next((p for p in pending_options(runtime, seat)
                        if tuple(p[k] for k in ('effect_id','seat','source','field')) == expected), None)
     stack = source_stack(runtime, seat, source_key, 'main_text')
+    trigger = record['trigger'] if record is not None else {}
+    reactivated = (trigger.get('kind') == 'RINA_REACTIVATED_WHEN_DIGIVOLVING'
+        and trigger.get('parent_effect') == 'BT11-112.suspend_reactivation'
+        and trigger.get('suspension_paid') is True
+        and trigger.get('current_source') == source_key
+        and trigger.get('observed_instance') == stack.instance_id)
     if (record is None or record['instance'] != stack.instance_id
-            or record['trigger'].get('kind') != 'When Digivolving'):
+            or not (trigger.get('kind') == 'When Digivolving' or reactivated)):
         raise RuntimeHalt('BT12_UNSUSPEND_WINDOW_REQUIRED')
     tamers = sorted(key for key, item in runtime.state.battle[seat].items()
                     if runtime.context.card(seat, item.cards[-1].card_number).kind == 'Tamer'
@@ -72,10 +83,68 @@ def resolve_bt12_unsuspend(runtime, seat, source_key, choice):
     return {'target':choice, **result, 'processing':'UNSUSPEND_PRINTED_CHOICE'}
 
 
+def bt12_return_choices(runtime, seat, source_key):
+    source = runtime._source(seat, source_key, 'main_text')
+    if source.card_number != 'BT12-029':
+        raise RuntimeHalt('BT12_RETURN_SOURCE_INVALID')
+    expected = (BT12_RETURN_EFFECT, seat, source_key, 'main_text')
+    activated = getattr(runtime, '_activated_effect', None)
+    if activated is not None and activated[:4] == expected and activated[4] is not None:
+        record = getattr(runtime, '_activated_pending', None)
+    else:
+        from effect_scheduler import pending_options
+        record = next((p for p in pending_options(runtime, seat)
+                       if tuple(p[k] for k in ('effect_id','seat','source','field')) == expected), None)
+    stack = source_stack(runtime, seat, source_key, 'main_text')
+    trigger = record['trigger'] if record is not None else {}
+    if (record is None or record['instance'] != stack.instance_id
+            or trigger.get('kind') != 'ORIENTATION_CHANGED'
+            or trigger.get('entity') != source_key
+            or trigger.get('suspended_before') is not True
+            or trigger.get('suspended_after') is not False):
+        raise RuntimeHalt('BT12_RETURN_WINDOW_REQUIRED')
+    blue_tamer = any(runtime.context.card(seat, item.cards[-1].card_number).kind == 'Tamer'
+        and 'Blue' in runtime.context.card(seat, item.cards[-1].card_number).to_dict()['colors']
+        for item in runtime.state.battle[seat].values())
+    ulforce_source = any('UlforceVeedramon' in runtime.context.card(seat, card.card_number).name
+                         for card in stack.cards[:-1])
+    if not (blue_tamer or ulforce_source):
+        return [None]
+    other = 'B' if seat == 'A' else 'A'
+    targets = [(key, runtime.context.card(other, item.cards[-1].card_number).to_dict()['level'])
+               for key, item in runtime.state.battle[other].items()
+               if runtime.context.card(other, item.cards[-1].card_number).kind == 'Digimon']
+    if not targets:
+        return [None]
+    if any(type(level) is not int for _, level in targets):
+        raise RuntimeHalt('BT12_RETURN_LEVEL_UNVERIFIED')
+    minimum = min(level for _, level in targets)
+    return sorted(key for key, level in targets if level == minimum)
+
+
+def resolve_bt12_return(runtime, seat, source_key, choice):
+    if choice not in bt12_return_choices(runtime, seat, source_key):
+        raise RuntimeHalt('BT12_RETURN_TARGET_INVALID')
+    usage = _usage(runtime, seat, source_key, BT12_RETURN_EFFECT)
+    if usage in runtime.state.once_used:
+        raise RuntimeHalt('ONCE_PER_TURN_ALREADY_USED: ' + source_key)
+    runtime.state.once_used.add(usage)
+    if choice is None:
+        return {'processing': 'CONDITION_OR_TARGET_UNAVAILABLE', 'returned': None,
+                'trashed_sources': [], 'once_per_turn_consumed': True, 'full_match_credit': 0}
+    from return_effects import return_to_hand
+    other = 'B' if seat == 'A' else 'A'
+    moved = return_to_hand(runtime, seat, other, choice, halt_prefix='BT12_RETURN')
+    return {'processing': 'RETURN_LOWEST_LEVEL_DIGIMON_TO_HAND', **moved,
+            'once_per_turn_consumed': True, 'full_match_credit': 0}
+
+
 def selected_pending_choices(runtime, seat, selected):
     """Choice grammar for encountered registered mechanics outside older packs."""
     if selected['effect_id'] == BT12_UNSUSPEND_EFFECT:
         return bt12_unsuspend_choices(runtime, seat, selected['source'])
+    if selected['effect_id'] == BT12_RETURN_EFFECT:
+        return bt12_return_choices(runtime, seat, selected['source'])
     return None
 
 
@@ -203,6 +272,10 @@ def _orientation_dependencies(runtime,changed_seat,changed_stack,suspended_befor
                     if known_rina_suspension_observer(card.card_number,field_,line):
                         runtime.registry.lookup(card.card_number,REACTIVATION_EFFECT,field_)
                         continue
+                    if (card.card_number=='BT12-029' and field_=='main_text'
+                            and line==BT12_RETURN_LINE):
+                        runtime.registry.lookup(card.card_number,BT12_RETURN_EFFECT,field_)
+                        continue
                     raise RuntimeHalt('ORIENTATION_DEPENDENT_TRIGGER_UNIMPLEMENTED: '
                                       + card.card_number + ' ' + field_+' source='+card.key)
             if set(stack.statuses) - {'cannot_suspend', 'cannot_unsuspend','effect_grants'}:
@@ -247,6 +320,13 @@ def _collect_orientation_reactions(runtime,seat,stack,suspended_before):
     effects.extend(collect_rina_unsuspend_reactions(runtime,seat,stack,suspended_before))
     from rina_reactivation import collect_rina_suspension_reactions
     effects.extend(collect_rina_suspension_reactions(runtime,seat,stack,suspended_before))
+    if (suspended_before is True and stack.suspended is False
+            and top.card_number == 'BT12-029'):
+        runtime.registry.lookup('BT12-029', BT12_RETURN_EFFECT, 'main_text')
+        effects.append({'seat': seat, 'source': top.key, 'effect_id': BT12_RETURN_EFFECT,
+            'field': 'main_text', 'usage': list(_usage(runtime, seat, top.key, BT12_RETURN_EFFECT)),
+            'trigger': {'kind': 'ORIENTATION_CHANGED', 'entity': top.key,
+                'suspended_before': True, 'suspended_after': False}})
     return effects
 
 
@@ -375,7 +455,8 @@ def build_selected_registry(context, root):
         (number,effect,'main_text',line,resolve_phase_memory)
         for number,(effect,timing,line) in PHASE_EFFECTS.items()] + [
         ('BT22-085',RINA_JAMMING_EFFECT,'main_text',RINA_JAMMING_LINE,resolve_rina_attack_jamming),
-        ('BT12-029',BT12_UNSUSPEND_EFFECT,'main_text',BT12_UNSUSPEND_LINE,resolve_bt12_unsuspend)]
+        ('BT12-029',BT12_UNSUSPEND_EFFECT,'main_text',BT12_UNSUSPEND_LINE,resolve_bt12_unsuspend),
+        ('BT12-029',BT12_RETURN_EFFECT,'main_text',BT12_RETURN_LINE,resolve_bt12_return)]
     bindings = []
     for number,effect,field,line,handler in specs:
         if number not in cards:
