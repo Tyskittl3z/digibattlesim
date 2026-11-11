@@ -155,6 +155,9 @@ def _resolve_decisions(command):
 def _revalidate(record, root, context, context_file, context_hash, learning_input, schedule, sources):
     """Replay saved successes and prove the complete audit checkpoint first."""
     _same(record.get('record_sha256'), digest({k: v for k, v in record.items() if k != 'record_sha256'}), 'RECORD_HASH')
+    if 'repair_lineage' in record:
+        from fresh_repair_migration import verify_repair_lineage
+        verify_repair_lineage(record, root)
     if record.get('schema') != SCHEMA:
         raise RuntimeHalt('FRESH_SCHEMA_MISMATCH')
     for key, value in {'context_id': context.matchup_id, 'context_file': context_file,
@@ -273,6 +276,16 @@ def run_game(index, root=ROOT, *, context_file=CONTEXT_FILE, campaign_id,
     if type(max_commands) is not int or max_commands < 1:
         raise ValueError('Positive command budget required')
     root = Path(root).resolve()
+    if previous_record is not None and 'repair_lineage' in previous_record:
+        from fresh_repair_migration import _SOURCE_ONLY_WORKER, _current_source_worker
+        if not _SOURCE_ONLY_WORKER:
+            frozen = _clone(learning_state.export())
+            result = _current_source_worker('resume', root, {'index': index,
+                'context_file': str(context_file), 'campaign_id': campaign_id,
+                'learning_state': frozen, 'max_commands': max_commands,
+                'previous_record': previous_record})
+            _same(learning_state.export(), frozen, 'MODEL_MUTATION')
+            return result
     context, context_file, context_hash = _load_context_selection(root, context_file)
     schedule, sources = make_schedule(context.matchup_id, campaign_id), _sources(root)
     frozen = _clone(learning_state.export())
@@ -447,12 +460,18 @@ def run_game(index, root=ROOT, *, context_file=CONTEXT_FILE, campaign_id,
         'terminal_reason': runtime.state.terminal_reason, 'max_commands': max_commands,
         'accepted_fact_finding_credit': 0, 'final_evaluation_credit': 0,
         'certification': 'EXPERIMENTAL_NOT_INDEPENDENTLY_CERTIFIED'}
+    if previous is not None and 'repair_lineage' in previous:
+        record['repair_lineage'] = copy.deepcopy(previous['repair_lineage'])
     return _clone({**record, 'record_sha256': digest(record)})
 
 
 def replay_game(record, root=ROOT):
     """Read-only replay of saved commands; never invoke a player policy."""
     root = Path(root).resolve()
+    if 'repair_lineage' in record:
+        from fresh_repair_migration import _SOURCE_ONLY_WORKER, _current_source_worker
+        if not _SOURCE_ONLY_WORKER:
+            return _current_source_worker('replay', root, {'record': record})
     context, context_file, context_hash = _load_context_selection(root, record['context_file'])
     schedule = make_schedule(context.matchup_id, record['campaign_id'])
     _revalidate(record, root, context, context_file, context_hash,

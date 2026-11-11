@@ -1,5 +1,44 @@
 # Verified handoff status
 
+## Explicit engine repair migration verified; matches paused — 2026-11-10
+
+Fresh-runner records can now cross an explicitly reviewed engine repair while
+preserving the original seed, complete saved state/RNG and earlier choices.
+**173 focused tests passed in 73.877 seconds** (18 migration +155 integration).
+Independent review's cached-code defect was reproduced, fixed and independently
+rechecked; no publication blocker remains. Both original and repaired execution
+load verified source directly, including dynamic handlers. Migrated replay and
+continuation use that same source-only worker path.
+
+A separate durable private proof passed in 4.920 seconds. An original build with
+an injected private redraw gap stopped after a successful opening and selected
+redraw. Migration preserved its full checkpoint and embedded untouched parent;
+then a one-command private retry resolved the exact selected redraw without
+choosing again. Both records replay exactly. The model, historical production
+record and all source bytes stayed unchanged. Evidence and the 114-file source
+archive: `ARTIFACTS/repair-migration-2026-11-10/`.
+
+The new pause-control.json is current. **Actual matches remain
+PAUSED_BEFORE_FIRST_MATCH:** zero production fresh games, learning updates, live
+ratings or accepted fact-finding/final matches. No production schedule is locked.
+Bot A remains aggressive, B defensive, C the field tracker; no reference player
+substitution or historical training occurred. The old mixed-policy 164-command
+game remains immutable and excluded from new training.
+
+Migration requires original source files, exact reviewed source differences,
+unchanged rules/context/model/players/criteria and identical earlier outcomes.
+It supports the declared engine-file surface and a pinned one-time framework
+bootstrap, not arbitrary source or data changes. Migration itself never retries
+a failure; it retains the failed selection and original evidence. Unknown action
+aliases are preserved literally. Failed post-commit audits and terminal records
+are rejected. Earlier-result changes require separate evidence repair.
+
+Selected-card coverage, independent rules certification, valid fact-finding
+matches, approved roadmaps and final freeze/evaluation remain incomplete. The
+next gameplay step is one bounded, fully logged fresh game when the match pause
+is lifted. The 60/10,000 cohorts remain off. Older same-build-only status below
+describes earlier checkpoints and is superseded by this explicit migration path.
+
 ## Fresh learning integration verified in private tests; matches paused — 2026-11-10
 
 Bot A (aggressive), Bot B (defensive), Bot C, board/tempo scoring, automated

@@ -1,5 +1,18 @@
 # First Codex task (execute, don't just plan)
 
+> **Engine repair migration verified — 2026-11-10; matches still paused.**
+> 173 focused tests pass (73.877s), independent review is clean after the cached
+> code fix, and a durable cross-build private proof passes exact migration and
+> saved-action retry. Read latest STATUS/handoff and
+> `ARTIFACTS/repair-migration-2026-11-10/pause-control.json`.
+> Use `fresh_repair_migration.migrate_repaired_game` explicitly with original
+> sources and exact reviewed differences; never replace source hashes manually.
+> Earlier results, full state/RNG, named players, rules and model must agree.
+> Migration does not retry a failure or train. Ordinary migrated replay/resume
+> loads source directly. Zero production games/updates/ratings/match credit;
+> do not launch gameplay/cohorts on a usage reset. The older same-build-only
+> restriction is superseded by this narrow verified repair path.
+
 > **Integration checkpoint verified — 2026-11-10; actual matches paused.**
 > Named A aggressive/B defensive, Bot C, board scoring, judge receipts and
 > persistent learning are connected. 155 focused tests passed (35.346s), plus

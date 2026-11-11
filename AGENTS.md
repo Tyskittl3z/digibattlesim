@@ -33,6 +33,21 @@ User owns all deck construction, interpretation, and decisions; offer **no card/
 - Never expand toward universal Digimon card support or unsolicited feature work. Work on interactions that the **loaded two decks can actually produce**, as found during gameplay.
 
 ## Authority and integrity
+- **Verified engine repair migration (2026-11-10):** The current setup checkpoint
+  adds `fresh_repair_migration.migrate_repaired_game` for fresh-schema paused/HALT
+  records. 173 focused tests and a durable real cross-build private proof pass;
+  see `ARTIFACTS/repair-migration-2026-11-10/` and current pause-control.json.
+  Preserve original source/record, exact approved engine differences, seed/full
+  state/RNG/choices and unchanged rules/context/model/policies. Verify original
+  and repaired execution from source-only workers; never replace source pins or
+  trust cached-code equivalence. Migration does not retry, choose or train.
+  Retain failed selections and all parent lineage; explicit later continuation
+  retries selected actions. Reject changed earlier outcomes and protected-file
+  changes. Older same-build-only status is superseded by this narrow repair path,
+  not by arbitrary source/data migration. Actual matches/cohorts remain paused
+  during this setup continuation; no production games/updates/ratings or credit
+  exist. Keep archived mixed-policy history out of fresh training and all final
+  evaluation disabled.
 - **Verified integration checkpoint (2026-11-10):** Named A aggressive/B
   defensive, Bot C, board/tempo scorer, automated judge receipts, learner and
   fresh runner are connected and verified in private fixtures only. 155 focused

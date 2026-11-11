@@ -1,5 +1,95 @@
 # Digimon simulator: Python developer handoff
 
+## Engine repair migration checkpoint — 2026-11-10
+
+The earlier same-build-only limitation now has an explicit verified engine-repair
+path for fresh-runner records. This is setup work: actual games/cohorts remain
+paused. The old mixed-policy 164-command record is unchanged and is not an input
+to fresh training or this fresh-schema migration.
+
+### API and provenance
+
+`SOURCE/fresh_repair_migration.py` exposes:
+
+```python
+migrate_repaired_game(record, *, root, original_source_root,
+                     approved_changes, repair_note)
+verify_repair_lineage(record, root)
+```
+
+`approved_changes` maps exact source basenames to `{before: hash_or_none,
+after: hash_or_none}`. It must be supplied from a reviewed patch, not inferred
+and automatically approved from whatever changed. Preserve a full original
+SOURCE tree and matching rules/context/non-Python source assets. The Python
+archives plus manifests supply exact source bytes; retain the associated input
+files too. The API verifies original sources and their original replay in a
+separate source-only interpreter, then replays successes under current verified
+source. No failed command is applied by migration, no LearningPlayerBot actor
+is constructed, and no choice or model update occurs.
+
+The returned record retains its failed selection, arguments, decisions and
+post-choice policy RNG. It embeds the complete parent in `repair_lineage` with
+source/dependency maps, original replay receipt, exact differences, checkpoint/
+RNG/selection hashes, execution identities and experimental zero-credit limits.
+Only documented execution/binding source stamps and dependent receipt/observer
+hashes are rebound. Full state, outcomes, views, choices, ratings and policy
+identities must agree. Ordinary replay verifies lineage; later continuation
+retains it, including a second engine-only repair.
+
+Both sides load `.py` bytes directly, bypassing cached bytecode and already
+imported modules. The source-only finder remains active for dynamic handler
+imports. `run_game`/`replay_game` delegate migrated records to the same verified
+worker; ordinary nonmigrated behavior and strict source pins remain unchanged.
+Worker guards forbid actor/choice calls during migration/replay. A one-command
+retry of a fully selected failed direct action forbids new choices inside the
+worker. Partially generated pending choices retain their saved order/values;
+only unresolved values may require a later decision. Caller and worker each
+verify that the learning model stays frozen. Parent-process mocks do not control
+these workers and must not be represented as doing so.
+
+Migration permits only the declared existing engine files. Policies, scorer,
+judge, tracker, context and learning infrastructure are protected. A pinned
+bootstrap recognizes the published pre-lineage runner; later framework changes
+need separately versioned support. Rules/context/source-asset bytes must agree.
+Terminal and post-commit audit-failure records, changed earlier results, and
+unlisted differences fail. UNKNOWN aliases are never silently remapped. These
+are content-addressed software checks, not independent signatures or semantic
+rules certification.
+
+### Verification and delivery
+
+Final command from `SOURCE/`:
+
+```sh
+python -m unittest test_fresh_repair_migration test_fresh_learning_campaign test_field_tracker test_interaction_scoring test_interaction_learning test_judge_ledger test_named_player_bots test_context_runtime test_match_context test_match_preparation -q
+```
+
+**173 tests passed in 73.877 seconds:** 18 migration plus the existing 155 focused
+integration checks. Real distinct on-disk builds cover direct and pending saved
+retries, mechanic binding/receipt/observer-chain rebinding, repeated repairs,
+changed outcomes/dependencies/protected files, and deeply rehashed lineage
+tampering. Independent review found a repaired-cache defect; three RED tests
+reproduced it before the source-worker fix, and scoped review confirmed the
+original reproduction now rejects both cached and uncached changed prefixes.
+Dynamic handler cache and already imported module cases are covered too.
+
+`ARTIFACTS/repair-migration-2026-11-10/` contains a separate 4.920-second private
+proof, separately pinned exact three-file repair map, original gap source and
+current 114-file archives, stopped/migrated/retried logs, exact replay receipts,
+review summary, verification and current disabled-run control. The fixture's
+deliberate engine gap exists only in its archived old source. Its exact selected
+redraw was retried once with no reselection. Model, original parent, source bytes
+and historical production record remained unchanged. This earns zero production
+training or match credit. Full discovery remains excluded during the pause
+because it includes legacy gameplay/cohort tests; full historical baseline is
+still 495 at aed966b.
+
+Keep the first actual fresh game paused until user continuation of gameplay.
+Once authorized, use the explicit active Ulforce context and named A/B profiles,
+record each encountered action and halt, and repair only that encounter. Do not
+preload routes, silently skip effects or start the 60/10,000 cohorts as part of
+this setup checkpoint. Publish via `engine-ulforce-bootstrap`, draft PR #1.
+
 ## Current integration checkpoint — 2026-11-10
 
 The fresh runner now connects named Bot A aggressive/B defensive, Bot C's
