@@ -1,20 +1,22 @@
 # Permanent Codex instructions — Digimon Battle Simulator
 
-## Current live game boundary — 2026-11-11
+## Current first-game completion boundary — 2026-11-11
 - The user authorized **only the first fully logged fresh game** after the
   earlier pre-match pause. Game 0000 uses named A aggressive, B defensive,
   Bot C, the Federico Nine/Bern lists and the locked seed in
   `ARTIFACTS/fresh-game-0000-2026-11-11/`. Latest saved exact-replay segment:
-  `game-0000-segment-0019.json.gz`, 156 accepted actions, status HALT at A's
-  attack confirmation against B's Blocker. The EX13-019 inherited Jamming
-  fix has a focused test; migrate/retry that saved action. Continue this game from its actual
-  saved choices; never substitute random reference policies, reroll its seed,
+  `game-0000-segment-0023.json.gz`, 182 accepted actions, status
+  EXPERIMENTAL_SOFTWARE_TERMINAL, A direct-attack winner on turn 13. Read the
+  CSV/report and exact replay receipt in the same artifact directory. Never
+  substitute random reference policies, reroll its seed,
   or use old mixed-policy history as training data.
 - Earlier HALTs and a Bot C audit rejection remain preserved. Their exact
   source-repair lineages are part of the record. Source pins, the model and
   prior choices must remain intact. A rejected audit is not a valid action or
-  a red play. Complete Game 0000 before any completed-game learning update or
-  valid fact-finding credit. The 60-game and 10,000-game cohorts remain off.
+  a red play. One explicitly committed learning update is experimental. The
+  game has zero valid 60-match fact-finding/final-evaluation credit; independent
+  semantic certification remains absent. Game 0001 and the 60-game and
+  10,000-game cohorts remain off under this one-game authorization.
 - The 2026-11-10 pre-first-match pause instructions below are historical for
   Game 0000. Keep publishing progress on the draft branch as requested.
 

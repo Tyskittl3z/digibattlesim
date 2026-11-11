@@ -232,6 +232,10 @@ def pending_choice(runtime, seat, selected, pilot):
         chosen = pilot.choose(view, exposed['selections'])
         remainder = [key for key in exposed['revealed'] if key not in chosen]
         return {'selected': chosen, 'bottom_order': pilot.bottom_order(remainder)}
+    from selected_mechanics import selected_pending_choices
+    offered = selected_pending_choices(runtime, seat, selected)
+    if offered is not None:
+        return pilot.choose(view, offered)
     raise RuntimeHalt('PENDING_EFFECT_CHOICE_UNSUPPORTED: ' + effect)
 
 

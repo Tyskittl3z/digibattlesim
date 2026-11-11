@@ -1,6 +1,6 @@
 # Verified handoff status
 
-## First fresh Bot A versus Bot B game in progress — 2026-11-11
+## First fresh Bot A versus Bot B game completed in software — 2026-11-11
 
 The user lifted the pre-match pause for **Game 0000 only** by requesting the
 first fully logged Bot A versus Bot B game. The distinct Federico Nine 123129
@@ -9,28 +9,33 @@ English-worldwide context. Bot C tracks every physical field change. Seed
 4851742998504393566, first player A, and the empty learning model are locked
 in `ARTIFACTS/fresh-game-0000-2026-11-11/game-0000-lock.json`.
 
-The latest saved record is `ARTIFACTS/fresh-game-0000-2026-11-11/game-0000-segment-0019.json.gz`:
-156 accepted commands and a saved HALT at Bot A's turn-9 attack confirmation
-against Bot B's Blocker. The record replays exactly. The newly encountered
-EX13-019 inherited Jamming line has a focused passing test; its exact-prefix
-migration and saved-action retry are the next step.
+The final saved record is `ARTIFACTS/fresh-game-0000-2026-11-11/game-0000-segment-0023.json.gz`:
+**Bot A won by direct attack on turn 13.** All 182 final-ledger actions have
+accepted automated judge receipts, Bot C observations and exact replay.
+Bot A completed five Security checks; Bot B completed none. The provisional
+board-impact labels are 71 GREEN, 87 YELLOW and 24 RED. A readable 182-row
+CSV and turn summary are `game-0000-actions.csv` and `game-0000-report.md` in
+the same directory.
 Earlier HALTs are preserved in the segment chain; the BT22-085 Rina attack
 trigger, Bot C's Jamming schema, applied DP in battle, and EX13-023's printed
-Blocker/Evade, its When Attacking trigger, and a real Blocker choice were repaired using official text and
-exact-prefix migrations. An intermediate Jamming tracker-audit failure is
+Blocker/Evade, its When Attacking trigger, a real Blocker choice, inherited
+EX13-019 Jamming, and BT12-029's evolution choice were repaired using official
+text and exact-prefix migrations. An intermediate Jamming tracker-audit failure is
 preserved separately as `game-0000-audit-failure-0006.json.gz`; it received no
 rating or training credit. No source, seed, prior choice, opponent hand, or
 historical mixed-policy game was substituted.
 
-The game is **not finished**, so completed-game learning updates, valid
-fact-finding matches, best/medium/worst roadmaps and final evaluation remain
-zero. The 60- and 10,000-match cohorts are still off. GREEN/YELLOW/RED in the
-live command ledger are provisional observed board-change labels, not
-independent strategic or rules certification. The judge is an experimental
-automated transaction checker. Continue Game 0000 from the latest segment and
-repair only actual encountered gaps, preserving every original record and
-verified migration lineage. The 2026-11-10 pause entries below are historical
-for this one authorized game.
+The first explicit between-game learning update is saved as
+`game-0000-learning-commit.json` with its resulting model. It is labelled
+**experimental and not independently certified**. One completed game supplies
+observations, but the policy requires three independent games before a learned
+preference can override its named prior. Valid 60-match fact-finding credit,
+best/medium/worst roadmaps and final-evaluation credit remain zero. The 60-
+and 10,000-match cohorts are still off. GREEN/YELLOW/RED are provisional
+observed board changes, not strategic or rules certification; the judge is an
+experimental automated transaction checker. Do not start Game 0001 from this
+first-game authorization. The 2026-11-10 pause entries below are historical
+for Game 0000.
 
 ## Explicit engine repair migration verified; matches paused — 2026-11-10
 

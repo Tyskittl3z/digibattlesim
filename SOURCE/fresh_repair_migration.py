@@ -21,6 +21,7 @@ _LINEAGE_RUNNER = '395d0822e362ad5ee856cb01c3632c33fe90e5b4769b55da337f4ed8128f2
 _BOOTSTRAP_RUNNER = 'dd5cd17e718097c69e391c09e9b9d9c7c62b8021cc261b696f57543320889718'
 _TRACKER_EXTENSION_BASE = 'fc3fcdcc639b5551729f8d752131661a468028ffe3de66b8345e18151e292a4e'
 _BLOCKER_EXTENSION_BASE = 'a9cfc58ba2499d8aed6438dfc9f3d3cddb12378f41927429e39add20a34b42dc'
+_CHOICE_ROUTER_BASE = '13402f5987663e0df17c64453328d218b3574a6babc0390df8b02f448fc4f0d4'
 # Explicit engine surface. Context, policies, schedule, judge, scorer, tracker and
 # evidence/freeze tooling are intentionally outside this list.
 _ENGINE = frozenset(('context_runtime.py', 'effect_scheduler.py', 'match_preparation.py',
@@ -149,11 +150,16 @@ def _differences(before, after, approved, *, bootstrap_sources=None):
     blocker_extension = (before.get('fresh_repair_migration.py') == _BLOCKER_EXTENSION_BASE
                          and 'named_bot_continuation.py' in actual
                          and 'fresh_repair_migration.py' in actual)
+    choice_router_extension = (before.get('fresh_repair_migration.py') == _CHOICE_ROUTER_BASE
+                               and 'imported_attempts.py' in actual
+                               and 'fresh_repair_migration.py' in actual)
     allowed = _ENGINE | ({'fresh_learning_campaign.py', 'fresh_repair_migration.py'} if bootstrap else set())
     if tracker_extension:
         allowed |= {'fresh_repair_migration.py'}
     if blocker_extension:
         allowed |= {'named_bot_continuation.py', 'fresh_repair_migration.py'}
+    if choice_router_extension:
+        allowed |= {'imported_attempts.py', 'fresh_repair_migration.py'}
     if set(actual) - allowed or any(before.get(k) is None or after.get(k) is None
                                     for k in actual if k in _ENGINE):
         raise RuntimeHalt('REPAIR_PROTECTED_SOURCE_CHANGE')

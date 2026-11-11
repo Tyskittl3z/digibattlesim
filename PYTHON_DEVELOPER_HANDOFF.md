@@ -1,19 +1,22 @@
 # Digimon simulator: Python developer handoff
 
-## Live Game 0000 checkpoint — 2026-11-11
+## First full Game 0000 software record — 2026-11-11
 
-The first fresh game is active with locked seed 4851742998504393566, A first,
+The first fresh game completed with locked seed 4851742998504393566, A first,
 aggressive Bot A, defensive Bot B, and Bot C. `ARTIFACTS/fresh-game-0000-2026-11-11/`
 contains the lock, cumulative gzipped action/state/RNG/decision/judge/tracker
 segments, exact replay receipts and the bounded continuation scripts. Latest
-segment 0019 has 156 accepted commands and a HALT at A's attack confirmation
-against B's Blocker; the inherited Jamming fix has a focused passing test and
-still needs migration/retry. Earlier engine gaps were repaired via exact-prefix source
+segment 0023 is terminal: A won by direct attack on turn 13, 182 accepted
+actions, 182 Bot C observations and exact final replay. `game-0000-actions.csv`
+contains every action in spreadsheet form, and `game-0000-report.md` has the
+turn summary. Earlier engine gaps were repaired via exact-prefix source
 migrations; inspect each embedded `repair_lineage` before changing an action.
 The separate `game-0000-audit-failure-0006.json.gz` records a rejected Bot C
 status audit and has no training/rating credit. The historical 164-command
-mixed-policy record remains excluded. No completed fresh game or cohort credit
-exists yet. Continue this one game only; 60 and 10,000 matches remain off.
+mixed-policy record remains excluded. The tally is 1 experimental completed
+software game, 1 explicit experimental model update, and 0 accepted
+fact-finding/final matches. Game 0001 and the 60/10,000
+cohorts remain off under this one-game authorization.
 
 The repair surface now includes Bot C's narrowly reviewed Jamming/own-turn
 grant schema. A one-time hash-gated migration-tool extension rebounded Bot C's

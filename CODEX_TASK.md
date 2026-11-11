@@ -1,16 +1,15 @@
 # First Codex task (execute, don't just plan)
 
-> **Game 0000 active — 2026-11-11.** The user authorized the first fully
-> logged Bot A (aggressive) versus Bot B (defensive) game. Latest exact-replay
-> checkpoint: `ARTIFACTS/fresh-game-0000-2026-11-11/game-0000-segment-0019.json.gz`,
-> 156 accepted commands, A turn 9, saved HALT at Blocker battle confirmation.
-> The EX13-019 inherited Jamming fix has a passing focused test; migrate/retry
-> that exact saved confirmation, then continue only this game
-> with its seed, choices, policy identities, frozen empty model and Bot C ledger.
-> The formal repair lineage and earlier HALTs are retained; use the next actual
-> action, verify replay, and save a new segment. Do not launch the 60/10,000
-> cohorts or credit an unfinished game. The old pre-first-match pause below is
-> superseded only for Game 0000. Publish progress on the draft branch.
+> **Game 0000 completed in software — 2026-11-11.** The user authorized the
+> first fully logged Bot A (aggressive) versus Bot B (defensive) game. Final
+> exact-replay record: `ARTIFACTS/fresh-game-0000-2026-11-11/game-0000-segment-0023.json.gz`.
+> Bot A won by direct attack on turn 13 after 182 accepted actions; Bot C logged
+> all 182. A readable CSV, turn report, repair lineage and experimental
+> between-game learning update are in that directory. Preserve its seed,
+> choices, full records and original mixed-policy exclusion. No independent
+> semantic certification or valid 60-match credit exists. Game 0001 and the
+> 60/10,000 cohorts remain off under this one-game authorization. Publish the
+> final checkpoint on the draft branch without merging it.
 
 > **Engine repair migration verified — 2026-11-10; matches still paused.**
 > 173 focused tests pass (73.877s), independent review is clean after the cached

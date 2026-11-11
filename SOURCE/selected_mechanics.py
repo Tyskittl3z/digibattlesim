@@ -37,6 +37,46 @@ PHASE_EFFECTS = {
 RINA_JAMMING_EFFECT = 'BT22-085.attack_jamming'
 RINA_JAMMING_LINE = ('[Your Turn] When one of your Digimon with [Veedramon] in its name attacks, '
                      'by returning this Tamer to the hand, that Digimon gains ＜Jamming＞ for the turn.')
+BT12_UNSUSPEND_EFFECT = 'BT12-029.when_digivolving_unsuspend'
+BT12_UNSUSPEND_LINE = '[When Digivolving] Unsuspend this Digimon or 1 of your blue Tamers.'
+
+
+def bt12_unsuspend_choices(runtime, seat, source_key):
+    source = runtime._source(seat, source_key, 'main_text')
+    if source.card_number != 'BT12-029' or runtime.state.active != seat:
+        raise RuntimeHalt('BT12_UNSUSPEND_SOURCE_INVALID')
+    expected = (BT12_UNSUSPEND_EFFECT, seat, source_key, 'main_text')
+    activated = getattr(runtime, '_activated_effect', None)
+    if activated is not None and activated[:4] == expected and activated[4] is not None:
+        record = getattr(runtime, '_activated_pending', None)
+    else:
+        from effect_scheduler import pending_options
+        record = next((p for p in pending_options(runtime, seat)
+                       if tuple(p[k] for k in ('effect_id','seat','source','field')) == expected), None)
+    stack = source_stack(runtime, seat, source_key, 'main_text')
+    if (record is None or record['instance'] != stack.instance_id
+            or record['trigger'].get('kind') != 'When Digivolving'):
+        raise RuntimeHalt('BT12_UNSUSPEND_WINDOW_REQUIRED')
+    tamers = sorted(key for key, item in runtime.state.battle[seat].items()
+                    if runtime.context.card(seat, item.cards[-1].card_number).kind == 'Tamer'
+                    and 'Blue' in runtime.context.card(seat,item.cards[-1].card_number).to_dict()['colors'])
+    return [source_key, *tamers]
+
+
+def resolve_bt12_unsuspend(runtime, seat, source_key, choice):
+    options = bt12_unsuspend_choices(runtime, seat, source_key)
+    if choice not in options:
+        raise RuntimeHalt('BT12_UNSUSPEND_TARGET_INVALID')
+    target = runtime.state.battle[seat][choice]
+    result = _set_orientation(runtime, seat, target, False)
+    return {'target':choice, **result, 'processing':'UNSUSPEND_PRINTED_CHOICE'}
+
+
+def selected_pending_choices(runtime, seat, selected):
+    """Choice grammar for encountered registered mechanics outside older packs."""
+    if selected['effect_id'] == BT12_UNSUSPEND_EFFECT:
+        return bt12_unsuspend_choices(runtime, seat, selected['source'])
+    return None
 
 
 def collect_rina_attack_jamming(runtime, seat, attacker_key):
@@ -334,7 +374,8 @@ def build_selected_registry(context, root):
         for number,(effect,line) in INHERITED_REACTIONS.items()] + [
         (number,effect,'main_text',line,resolve_phase_memory)
         for number,(effect,timing,line) in PHASE_EFFECTS.items()] + [
-        ('BT22-085',RINA_JAMMING_EFFECT,'main_text',RINA_JAMMING_LINE,resolve_rina_attack_jamming)]
+        ('BT22-085',RINA_JAMMING_EFFECT,'main_text',RINA_JAMMING_LINE,resolve_rina_attack_jamming),
+        ('BT12-029',BT12_UNSUSPEND_EFFECT,'main_text',BT12_UNSUSPEND_LINE,resolve_bt12_unsuspend)]
     bindings = []
     for number,effect,field,line,handler in specs:
         if number not in cards:
