@@ -1,0 +1,1690 @@
+{
+  "authorized_games": [
+    0,
+    1
+  ],
+  "campaign_id": "ULFORCE_MIRROR_FACT_FINDING_2026_11_11_V1",
+  "cohort_running": false,
+  "context_file": "ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json",
+  "context_file_sha256": "089d449edab177c4f1d31a4b2ce8414650439df4ea6459080400df45d5004484",
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "criteria": {
+    "binding": "LOADED_ARTIFACTS_AT_MODULE_IMPORT",
+    "criteria": {
+      "breeding": "Each physical card in breeding contributes 0.5; breeding cards are excluded from battle body/source/DP components.",
+      "definitions": {
+        "GREEN": "Positive observed net impact above the neutral threshold under these declared weights.",
+        "RED": "Negative observed net impact below the neutral threshold under these declared weights.",
+        "UNRATED": "The action did not resolve successfully. No reward is assigned.",
+        "YELLOW": "Near-zero observed net impact within the neutral threshold under these declared weights."
+      },
+      "disabled": "Cannot-suspend, or suspended and cannot-unsuspend. Threat units are 1 + 0.5 per source + 0.25 per level + 0.1 per 1000 known DP; this is a declared heuristic, not combat legality.",
+      "efficiency": "Positive net non-memory board benefit divided by evidenced paid memory. Explicit zero-cost development is FREE with no division. Missing payment evidence remains UNVERIFIED. This is not a globally-cheapest claim.",
+      "known_dp": "Printed DP plus active typed positive DP grants only. No inference of unimplemented continuous card text.",
+      "limitations": "Immediate command-boundary measurements do not establish causation, optimal play, calibrated win probabilities or approved roadmap lanes. Later effects can change a play's overall result.",
+      "memory_payment": "Use canonical PAY_* result steps. Traverse a steps tree instead of duplicated sibling result aliases; without steps prefer result, then named evolution/play subresults. A node's direct cost summarizes its canonical subtree and is a fallback only when no nested payment evidence exists. Equal-cost distinct PAY steps remain distinct. Independent payments must appear as separate canonical sibling steps or subresults. If no explicit evidence exists, a same-active actor-relative gauge decrease is an estimate only for explicit spend commands.",
+      "memory_resource_residual": "When the active player is unchanged, actor-relative gauge change plus explicit/estimated paid cost records observed other resource gains or losses. It is separate from actual paid cost. Turn flips create neither payment nor residual. This credits observed capped gains/refunds without using nominal printed gains.",
+      "neutral_absolute_threshold": 0.25,
+      "objective": "Observed public board impact, memory efficiency and tempo from the scoring player's perspective.",
+      "position_components": "Each position component is own amount minus opponent amount. Delta is after minus before; contribution is delta times its declared weight.",
+      "procedural_commands": [
+        "BEGIN_PREPARATION",
+        "REDRAW_CHOICE",
+        "ADVANCE_PHASE",
+        "FINISH_TURN",
+        "END_ATTACK",
+        "SETTLE_PENDING"
+      ],
+      "procedural_policy": "Preserve the actual signed observed components, reward and color at every successfully resolved boundary. Mark procedural commands as learning_eligible=false and decision_type=PROCEDURAL: automatic deals/draws or phase-boundary effects are observations, not learned strategic choices. Learning also excludes forced singleton choices, as enforced by the decision recorder and learner.",
+      "ready": "An unsuspended Digimon or Tamer that is not prevented from suspending. Options receive no readiness bonus.",
+      "schema": "observed-board-impact-criteria-v1",
+      "security_checks": "Cumulative completed checks supplied by Bot C. Missing history is unknown and is never reconstructed from remaining security or attack declarations.",
+      "status": "DEFINED_HEURISTIC_NOT_APPROVED_STRATEGY",
+      "tempo": "Show per-player cards in play, source depth, largest stack and completed check totals, plus per-axis leader. An overall leader requires dominance across all known axes; conflicting leads are CONTESTED and missing check history is UNKNOWN. No weights or win probabilities are implied by this dominance summary.",
+      "terminal_outcomes": "Recorded separately. A winner flag alone does not make an interaction green and is not included in this board reward.",
+      "version": 1,
+      "weights": {
+        "battle_units": 2.0,
+        "breeding_cards": 0.5,
+        "disabled_threat": -0.5,
+        "hand_cards": 0.5,
+        "known_dp_thousands": 0.1,
+        "levels": 0.25,
+        "memory_paid": -0.5,
+        "memory_resource_residual": 0.5,
+        "ready_blockers": 1.0,
+        "ready_cards": 0.5,
+        "security_checks": 2.0,
+        "security_remaining": 2.0,
+        "sources": 0.5
+      }
+    },
+    "criterion_sha256": "84de51952609311beadcbec58f9c8252e1aea2c9eae96689eaf5aad4711fcdaf",
+    "file": "RULES/learning-2026-11-10/INTERACTION_CRITERIA.json",
+    "file_sha256": "90e68db01b5644693f5403eb5d7d5fd6a30059e0b01f465c9cb2729df26a5ba4",
+    "probability_claim": false,
+    "scorer_source_sha256": "c9e09123fc1666d36624a7e41e4aab7ac09c671e354b54aa77d2517a5db2992c",
+    "strategic_approval": "NONE"
+  },
+  "date": "2026-11-11",
+  "final_evaluation_running": false,
+  "game": {
+    "first": "B",
+    "index": 1,
+    "seed": 4331348820189008048
+  },
+  "game_0000_learning_model_sha256": "1dd028b80b93b5635f60d012fb386d02ecf67701bf5aee73a3a356766cbd13de",
+  "game_0000_learning_receipt": {
+    "certification": "EXPERIMENTAL_NOT_INDEPENDENTLY_CERTIFIED",
+    "game_id": "b90e9029b96f8c5c31297a8a7cebe6bdc4a4d66926b7c0c3c1af6dde4bf36e79",
+    "learning_state_id": "e39a510a19f770eb0abeb30b9c48c6cf49a62009e9bcaf037ac1ca4640eb0167",
+    "record_sha256": "20622d967c7843f4e6c8e6a6d924c7491c7607b2fd76ed9e7ab0a116c71589cc",
+    "schema": "fresh-learning-commit-v1",
+    "updated": true
+  },
+  "game_0000_report_sha256": "9e62a62789bf75fcbd943bd8fe0091bace271c36549489909cb1fb9de27a6c82",
+  "game_index": 1,
+  "historical_mixed_game_raw_sha256": "5e9d23e2c52b9f98a86d020f3181e261ba5722fb39dd78a7cc0961385bac6e61",
+  "learning_state_before": {
+    "configuration": {
+      "epsilon": 0.1,
+      "future_return": null,
+      "keys": "WHITELISTED_OWN_PUBLIC_FEATURES_WITHOUT_PHYSICAL_COPY_OR_TRANSIENT_IDS",
+      "minimum_independent_games": 3,
+      "outcome_association": "SEPARATE_WINS_LOSSES",
+      "reward": "PER_GAME_MEAN_IMMEDIATE_OBSERVED_BOARD_REWARD"
+    },
+    "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+    "criterion_sha256": "84de51952609311beadcbec58f9c8252e1aea2c9eae96689eaf5aad4711fcdaf",
+    "games": {
+      "b90e9029b96f8c5c31297a8a7cebe6bdc4a4d66926b7c0c3c1af6dde4bf36e79": {
+        "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+        "input_state_id": "66db6c6c425dc5e897ce2e6d360805a499b9b60937ab697c855e9a4c6f5cb034",
+        "observations": [
+          {
+            "action_key": "e0cf89d6dbf25ccdb604f4e02cef27850ddab3ccf6421efed4c5ac2bcd42d181",
+            "mean_reward": -0.5,
+            "seat": "A",
+            "state_key": "0c7b27ce3063b240207a399cb720c9fe0d916fb89eb77e1903a2a876cc2ed001"
+          },
+          {
+            "action_key": "6eef3d00e869431951d407b5f12667447912a4a8ac3ac7615a834e7abc511e6f",
+            "mean_reward": 1.5,
+            "seat": "A",
+            "state_key": "0f05cb3f97b2ad3c7371259a4e021fdd12044754140fafa290189583d1e0178a"
+          },
+          {
+            "action_key": "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e",
+            "mean_reward": 0.5,
+            "seat": "A",
+            "state_key": "156564e340862476ea00968fa0d836c9e52a766e31c7d5cf7bac33f6b51f66b2"
+          },
+          {
+            "action_key": "633017f4a40180137c4b7486ed099da166226848b96924305b85c611bad86f62",
+            "mean_reward": -0.5,
+            "seat": "A",
+            "state_key": "2052b5597d9c5a9d0c49e0384520745b6f1c534c2282e1bf02a22978fe029ef9"
+          },
+          {
+            "action_key": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+            "mean_reward": 0.0,
+            "seat": "A",
+            "state_key": "244f4f72293ac5836605e60e58a4242968708d3bae9061603db9a22df41a7fbd"
+          },
+          {
+            "action_key": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "mean_reward": 0.0,
+            "seat": "A",
+            "state_key": "28a7e0244057aa846e0b91bfee60758a1cc26ea9df914f45f917212b6fb8c6c4"
+          },
+          {
+            "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+            "mean_reward": 3.5,
+            "seat": "A",
+            "state_key": "2e73169fe245e9f5c1685cdc0e60f3dd98c441be806c14b56ec3d797dfccc963"
+          },
+          {
+            "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+            "mean_reward": 0.0,
+            "seat": "A",
+            "state_key": "32617076e08d966885c2d2c67844d80c43f66316865375b850d296381f189cc0"
+          },
+          {
+            "action_key": "09711973848b5308adefc6d35ce9e09f142c548775c3a0c9c0b592533c805a70",
+            "mean_reward": 0.5,
+            "seat": "A",
+            "state_key": "3454431ced3ab92cb039d654db3b76b8e45cf76c67fc5b754c5f3677971c1f03"
+          },
+          {
+            "action_key": "67087d04f01c9a205c6175fc519e838296bae776a43ce1fe7e0ab338f373a1d7",
+            "mean_reward": -0.5,
+            "seat": "A",
+            "state_key": "35a5a5b4d46749dcd95269b45c572b585eef7c9a47a1a9a93707aaf6e81346ef"
+          },
+          {
+            "action_key": "23bf53456fa69ad0cd034776051add46f5222989c0ef30baa3b21f25564a2712",
+            "mean_reward": 3.95,
+            "seat": "A",
+            "state_key": "397e54aa9f1e3021279ea910b8013430de156f4c8d1dc0c437cf0b322d4766e2"
+          },
+          {
+            "action_key": "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e",
+            "mean_reward": 0.5,
+            "seat": "A",
+            "state_key": "3e208be2e1e49c80da1797e3824d223feca297edb20cc897421cb836f0fea535"
+          },
+          {
+            "action_key": "b23819836deda2c86a63976e9285773e6653f7a2fb9f5bee45875948abbfe0c6",
+            "mean_reward": -0.25,
+            "seat": "A",
+            "state_key": "3fd3dd4fcd75a685bcce4aa527c74f5bb108e772d3e1b177def6157630633def"
+          },
+          {
+            "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+            "mean_reward": 1.5,
+            "seat": "A",
+            "state_key": "5043506a3a8d50dc42f1f8d408c9e6b16a458001974722b6cb9d3c74949f863c"
+          },
+          {
+            "action_key": "faffe40cc622bd0c09414d781d891ace618619877a968a3102ecf347d33f38a4",
+            "mean_reward": -2.5,
+            "seat": "A",
+            "state_key": "508cac42431e705ce494a820ffa321a37d9041dd921b61b2c27b285613e8c396"
+          },
+          {
+            "action_key": "e93cdef73a15e90eaf1e6e170c0d568b0292e21b5f57f7507a7e60a394425ab1",
+            "mean_reward": -1.5,
+            "seat": "A",
+            "state_key": "67078197de9eba4d4b01aad0e904bc9f573f07074f783f3d95ee0055917ffe5f"
+          },
+          {
+            "action_key": "b6c4906f077211f768c778d291db56ac83c45576b67e81b345f8c99c938db957",
+            "mean_reward": -1.0,
+            "seat": "A",
+            "state_key": "6b36bca5be09e4416eadca76a69be16b795a19baf132d6ca2b9bc814bd6657fd"
+          },
+          {
+            "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+            "mean_reward": 0.0,
+            "seat": "A",
+            "state_key": "72f9c3032c684c95515cf1599a402a2d3e55500c51249269f46a07d8c0dbce14"
+          },
+          {
+            "action_key": "fce34d0c163a9d4a3e9a402f4b74b595da187b9bfde853ac95d4c203ce949b93",
+            "mean_reward": 1.5,
+            "seat": "A",
+            "state_key": "75a703033d9b84e3eb959e21ea0f09a7d61f574989cd869cc73bfb67619b876c"
+          },
+          {
+            "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+            "mean_reward": 0.0,
+            "seat": "A",
+            "state_key": "8ca977826b5afd95d6cbe5e03a18df2d9d5e0584ac00392031e20fb71360239b"
+          },
+          {
+            "action_key": "808df2a50029d99d6d95a276b49086352e66e7e4816bf04067779444cb227368",
+            "mean_reward": -1.3,
+            "seat": "A",
+            "state_key": "8f13fd0791dc91b05c40eb09c55fc372ae5b9d7cf3f9c152e0687f8981e6b8bb"
+          },
+          {
+            "action_key": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "mean_reward": 0.0,
+            "seat": "A",
+            "state_key": "9381841b2c4645a5cb3519e560ab7aceac2191e24f4b2ed8717a20d5b6325f63"
+          },
+          {
+            "action_key": "8242be5a7b22d041a6d91bf523b3b8dd62f1a5e8759cb8050749c7181f89245e",
+            "mean_reward": 2.0,
+            "seat": "A",
+            "state_key": "93a88f1d907590ac83e4c357b6a349f27db6ce205b23375e15c3a166f63253da"
+          },
+          {
+            "action_key": "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e",
+            "mean_reward": 0.5,
+            "seat": "A",
+            "state_key": "9ce09ac29e9c52875afbd84fbfda04f7d1e659e6719321a9e659d3b9e09cb546"
+          },
+          {
+            "action_key": "23bf53456fa69ad0cd034776051add46f5222989c0ef30baa3b21f25564a2712",
+            "mean_reward": 2.95,
+            "seat": "A",
+            "state_key": "9efff682558828921638c90779bdaa2beced1edc26004068e9d59ae871974bc7"
+          },
+          {
+            "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+            "mean_reward": 0.0,
+            "seat": "A",
+            "state_key": "a457db8660169348ad27772c72dd78392bb2f4637d27a9467951a80aa53062a9"
+          },
+          {
+            "action_key": "13db5864db772d309b03c9f3a7bd83d108339394fb5e3e54c8be5f0ae623dc53",
+            "mean_reward": -0.5,
+            "seat": "A",
+            "state_key": "aaf9858cc37b640b003e471e489a0178b30970a1ad11b35a1243fb358176e1b7"
+          },
+          {
+            "action_key": "0e04d7500488acabfd8228d74e0dea7482d8a900689a73cacc01fc574c69f676",
+            "mean_reward": 0.5,
+            "seat": "A",
+            "state_key": "acbb46e5bee6a74526d750eeb7fe79edad6639f6aef89677a53bf90601f158c6"
+          },
+          {
+            "action_key": "e93cdef73a15e90eaf1e6e170c0d568b0292e21b5f57f7507a7e60a394425ab1",
+            "mean_reward": -1.5,
+            "seat": "A",
+            "state_key": "b95ff46b12e86ab71e396d732d0a49d8c9fe5cb1080065700be152543552c121"
+          },
+          {
+            "action_key": "c76fd3a8097a1a926bf472348a75ac9925e5ed7781d779c316c0dce2659e6e71",
+            "mean_reward": 1.5,
+            "seat": "A",
+            "state_key": "bf57a3f6c84b74bd92678e316c8a4e728c41d206dff2efd8f255bb51ab969dec"
+          },
+          {
+            "action_key": "325769b5b2b31c78c441f1ad8676bed8feb2dfd29cd3b71c24048b0e33d2e0d7",
+            "mean_reward": 0.45,
+            "seat": "A",
+            "state_key": "c5c4edca71c82a712f8c1c6774163d5bd265ec6619def4cf0accac6899cefc08"
+          },
+          {
+            "action_key": "5e2517eda3bcd275b1caa6231a58b9d3c0445b5248fc3301b3d87c0d382b3b80",
+            "mean_reward": 0.5,
+            "seat": "A",
+            "state_key": "ca956a38181f1ca076fcb1295fc71e6dfa7c7e17d73c8e5c836799ce786983e7"
+          },
+          {
+            "action_key": "3e99f9597c0daf7b8e2ca131e60d2f7acb7cb5b63630192754f7474a536fa86a",
+            "mean_reward": -0.5,
+            "seat": "A",
+            "state_key": "cd3b65f1c6fd3f19fb691ec6b373d1604b6eb20e955e7a82995915db7b504b4c"
+          },
+          {
+            "action_key": "d646125c5d41ff7b96a691f4cab9d06d7a492012c25bd96cfb81d8731574dd6a",
+            "mean_reward": 0.5,
+            "seat": "A",
+            "state_key": "d21d3775b9b41a33f00fe0ce442c4d339b693486465ccba64ede93f1957f9266"
+          },
+          {
+            "action_key": "8242be5a7b22d041a6d91bf523b3b8dd62f1a5e8759cb8050749c7181f89245e",
+            "mean_reward": 2.0,
+            "seat": "A",
+            "state_key": "d8d9b8493a49422e125ed723d4cf71729120d258d640e7f8a6752e45a86599c0"
+          },
+          {
+            "action_key": "0df6f236981529831ded65fc64f7d396386c645adf92bf5fed251c818ca60f68",
+            "mean_reward": 1.35,
+            "seat": "A",
+            "state_key": "dc001ff484a785ab7e8055633153cf0deaedba7d0e8e802c8c521f1a0d01563b"
+          },
+          {
+            "action_key": "65d604947ffd78833f736cade10095f65a6b62fe84acdc6d19e8720892377367",
+            "mean_reward": -0.5,
+            "seat": "A",
+            "state_key": "e25dced460d9672664ba5f16ad3c8871c4c82188abc611e2c363b7b50e3d5930"
+          },
+          {
+            "action_key": "12078d61b7da082f2da36810f8171485e091d9ea0344f0d7f0ca6cbb839b9200",
+            "mean_reward": 2.5,
+            "seat": "A",
+            "state_key": "feb968648ca0f083fde94939be9d342fca688179951a5939888c9f16d066cd7d"
+          },
+          {
+            "action_key": "65f7dea958fda51b202fd9cc107d8e9803d4da73e28e840588d825204a485047",
+            "mean_reward": -0.65,
+            "seat": "B",
+            "state_key": "0f6ba4e0b24b8c68441ba5921463c2d85ac47d4b2874ba9223c11bd7ff090fde"
+          },
+          {
+            "action_key": "6eef3d00e869431951d407b5f12667447912a4a8ac3ac7615a834e7abc511e6f",
+            "mean_reward": 1.5,
+            "seat": "B",
+            "state_key": "1201f60873cfaf2f9b29c11ae5885e09c8b292015fb68d5ea4525a515b69c571"
+          },
+          {
+            "action_key": "5653cd87e2940b25f88e3335b85798fd777962ada9320273bfe0f264c73c3000",
+            "mean_reward": 2.0,
+            "seat": "B",
+            "state_key": "156f752ed23dc5fb6a32320a9f312fefdf712f940d2a316aeff521f0206ff4ce"
+          },
+          {
+            "action_key": "7c54b5b68c435d147b2b611e95631e27996e1a5d1034915e01a05d5f673c37f7",
+            "mean_reward": -0.75,
+            "seat": "B",
+            "state_key": "227fff3a0011bc2c1cbdfc0311493d513ddb09e6f781f237c9cd8ecf385f3c0a"
+          },
+          {
+            "action_key": "dd080623965450327101bf4fe0be51f1311a89171c7e03a9cf960146752b27c1",
+            "mean_reward": 0.5,
+            "seat": "B",
+            "state_key": "24531d98fe72730a86e24a5756fcad4495886e7c94b728e42780248753c1aa5c"
+          },
+          {
+            "action_key": "0dd6ca2e30ddfd0177f6b3c4d9004abf3b9034e2fbeedb8fe42b2a4f0d28d699",
+            "mean_reward": -1.5,
+            "seat": "B",
+            "state_key": "277e328353e851a7ee5b7aa9cd73ec1ac64f2d2c9fbdbe129972cbac724fc4b6"
+          },
+          {
+            "action_key": "7eafdbe7fb745058742250b8eb3dc583c5c7b4e973e39c072294851983e6becd",
+            "mean_reward": 0.3,
+            "seat": "B",
+            "state_key": "2a38d5f8fd99a474a50883ca6cdae7278ad7af91954dd78acf93e8a65f2a7b1b"
+          },
+          {
+            "action_key": "0e04d7500488acabfd8228d74e0dea7482d8a900689a73cacc01fc574c69f676",
+            "mean_reward": 0.5,
+            "seat": "B",
+            "state_key": "2a6a2a5118158358775a269e2558e2793c8180c26b06d9163cfaad205712f624"
+          },
+          {
+            "action_key": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+            "mean_reward": 0.0,
+            "seat": "B",
+            "state_key": "306b8cbb14daf0c03211100538a55ccbc7bb6c70a2ebad15c4e7d4088e45a938"
+          },
+          {
+            "action_key": "e339899d08b66a1b269f13e12efed6245f6dd8301e63df8902fcc6eb3aaa6b6e",
+            "mean_reward": -0.5,
+            "seat": "B",
+            "state_key": "31924078f0371d635c09617124df33827d8a039c02b3e06b83a838683edac9c3"
+          },
+          {
+            "action_key": "5f80969640733f8fd042bf48c021d6eef56c3e13313b1edcf6a1d91b5dc6b52e",
+            "mean_reward": 1.975,
+            "seat": "B",
+            "state_key": "3758ac0a4e801834b18cf28b026770c08a6966194500fa19806699f3824db872"
+          },
+          {
+            "action_key": "5e2517eda3bcd275b1caa6231a58b9d3c0445b5248fc3301b3d87c0d382b3b80",
+            "mean_reward": 0.5,
+            "seat": "B",
+            "state_key": "394f32a3ad5d22a089c47fac1b61d385106f80b35b9e7d1291945d666a17e406"
+          },
+          {
+            "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+            "mean_reward": 5.2,
+            "seat": "B",
+            "state_key": "39dc7c4f070407bffbf389d78fba5d8b1d2e31f19120a948a0bc22953eb7f7b3"
+          },
+          {
+            "action_key": "83441a3e8c59c12534ac69e579263168d6a7141f354f0bc6223cecfa8f4a0a94",
+            "mean_reward": -1.0,
+            "seat": "B",
+            "state_key": "3bdd2fb97fb423ae0ab56f68f9ae5f955a9dce1875c7e6382212fc342fbe5244"
+          },
+          {
+            "action_key": "45a544c8505d59c701afe959fe8cdcd5a10ed1af22d2ae4f75881504ca26c814",
+            "mean_reward": -0.5,
+            "seat": "B",
+            "state_key": "4e8558861dd27c5e47595ab55f9df3949397646eba01d952fd38914d5028bec2"
+          },
+          {
+            "action_key": "1a9489ec19fa1f938ffe30ede7172b2248e87672bdf89dff11570b2d4c303e65",
+            "mean_reward": -0.5,
+            "seat": "B",
+            "state_key": "53b3d7a39279e4011250c453dd640a7a76c056aa24962b36318a9f1958d307bb"
+          },
+          {
+            "action_key": "b68649876546dac1fdb627bbee687ee959840906a2296aa0bd1a8f29841fe1bc",
+            "mean_reward": -1.0,
+            "seat": "B",
+            "state_key": "6b68a58d37396a921e8dfd427bee2c83cf97b4b3cec81fb0b731fedce6293548"
+          },
+          {
+            "action_key": "26ea60742b6e0b472febd8b14ebfacebb6384d63e0395733e1460bd13210d06a",
+            "mean_reward": -2.0,
+            "seat": "B",
+            "state_key": "6ca0c8645759ab3477049bb0fb96db0bd1aa690504223021e855679ee0f74e3d"
+          },
+          {
+            "action_key": "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e",
+            "mean_reward": 0.5,
+            "seat": "B",
+            "state_key": "75177b9cad9725a0c9588ee942ebc1765368d81ccbc381145182faab370a7478"
+          },
+          {
+            "action_key": "c4ecf1b1604d9ac213b93c1353b28d048d887cc86289d22da40b2c305c1bc38e",
+            "mean_reward": 0.75,
+            "seat": "B",
+            "state_key": "782140009b322e467003fddb9dd2ea92ddce713c34a47d8a6ea714c53d7c6a3d"
+          },
+          {
+            "action_key": "7f5d2234060866872ca23b9fdf76642e5c5c938c9d58ebcbaf0d862aaa3fdf86",
+            "mean_reward": 0.0,
+            "seat": "B",
+            "state_key": "7e119fc15a98079f2505ec5a62a06b0c0bf76e719335c31da6b859c8a94854f6"
+          },
+          {
+            "action_key": "86624447f7e1492ca9cf96e6f093168ad1c328fa77e3f0b2be5b6de60a28ca86",
+            "mean_reward": -0.5,
+            "seat": "B",
+            "state_key": "8390596af3213c90c4f5c0e3edcd53660327c4cd359fa984cece8e26fddbc599"
+          },
+          {
+            "action_key": "4873320fc3348940132ee9d109a385befa36bd8231d1812f6b4750bdc2427fbf",
+            "mean_reward": -0.5,
+            "seat": "B",
+            "state_key": "85a779709a76bc1da875581e6eb665d76d6815e44469d800cd78df48614f157c"
+          },
+          {
+            "action_key": "8ddf33dae57bff3aa029789790bab379dab31aeb400f42a69e25e276ce34dd56",
+            "mean_reward": 1.425,
+            "seat": "B",
+            "state_key": "98079770719d1af714a44cd225c73ada6a54362ac19cdfc754f8bf52584092ee"
+          },
+          {
+            "action_key": "f646cd9625f10367b5280c183b3c7e692c5a09c46f85fce759da930da965df9e",
+            "mean_reward": 1.0,
+            "seat": "B",
+            "state_key": "9a297fd1f4e9d642e496f7ed9a1027537a04e22b9289e2853382e1ab25e2bd63"
+          },
+          {
+            "action_key": "5653cd87e2940b25f88e3335b85798fd777962ada9320273bfe0f264c73c3000",
+            "mean_reward": 2.0,
+            "seat": "B",
+            "state_key": "9f8057bae0f6d6a9160c2c604fb80da2531b2da6b6f803d4e82c9ee3a64dc8b1"
+          },
+          {
+            "action_key": "23bf53456fa69ad0cd034776051add46f5222989c0ef30baa3b21f25564a2712",
+            "mean_reward": 3.6,
+            "seat": "B",
+            "state_key": "b4af723198322e7af2b917912bf0d17927906cfe6fc885747c3bd26b661f5a4b"
+          },
+          {
+            "action_key": "808df2a50029d99d6d95a276b49086352e66e7e4816bf04067779444cb227368",
+            "mean_reward": -1.3,
+            "seat": "B",
+            "state_key": "b80f5f6134f0a1b11a909c17e8b3aa73104d7cee4bf8afb1c7c38ce370f31ac4"
+          },
+          {
+            "action_key": "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e",
+            "mean_reward": 0.5,
+            "seat": "B",
+            "state_key": "c93aa758d4d5f748619988c80450d681dbb840f4d2bdc626a7fb067c829986dc"
+          },
+          {
+            "action_key": "7eafdbe7fb745058742250b8eb3dc583c5c7b4e973e39c072294851983e6becd",
+            "mean_reward": 0.3,
+            "seat": "B",
+            "state_key": "cd3934f0325613005a2bced099a92f66cca70d123bee20233d45ffeef5c65dbb"
+          },
+          {
+            "action_key": "a0bb0e722edf2abc9e40ef6d8c3ea0b602c8de8f7b2ad2e15eeba02413998a8e",
+            "mean_reward": -0.55,
+            "seat": "B",
+            "state_key": "d577a8ee50d270a37c1b62e356d8f560ee97ba9ce5952ecd7f31332883349c7d"
+          },
+          {
+            "action_key": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "mean_reward": 0.0,
+            "seat": "B",
+            "state_key": "dd7ddffcc65cc40bf05f24cf8caf691a3ab4ccb833d3fed693010d262bbc6c9b"
+          },
+          {
+            "action_key": "5653cd87e2940b25f88e3335b85798fd777962ada9320273bfe0f264c73c3000",
+            "mean_reward": -2.0,
+            "seat": "B",
+            "state_key": "e2c3e8e0afd8eb4cd0e38d72c7e7e408afbe12b85accced1a7d6971b732254af"
+          },
+          {
+            "action_key": "fce34d0c163a9d4a3e9a402f4b74b595da187b9bfde853ac95d4c203ce949b93",
+            "mean_reward": 0.0,
+            "seat": "B",
+            "state_key": "e94d087100d9a7ad1729a2bc48ef3ba14830e1cd047f5416d85ce687585ec5e5"
+          }
+        ],
+        "ordinal": 0,
+        "payload_sha256": "e5f83d212004157c72437d343966dda5605bef85a24fbd058080b3db23e8c97d",
+        "winner": "A"
+      }
+    },
+    "state_id": "e39a510a19f770eb0abeb30b9c48c6cf49a62009e9bcaf037ac1ca4640eb0167",
+    "tables": {
+      "A": {
+        "0c7b27ce3063b240207a399cb720c9fe0d916fb89eb77e1903a2a876cc2ed001": {
+          "e0cf89d6dbf25ccdb604f4e02cef27850ddab3ccf6421efed4c5ac2bcd42d181": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": -0.5,
+            "reward_sum": -0.5,
+            "wins": 1
+          }
+        },
+        "0f05cb3f97b2ad3c7371259a4e021fdd12044754140fafa290189583d1e0178a": {
+          "6eef3d00e869431951d407b5f12667447912a4a8ac3ac7615a834e7abc511e6f": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 1.5,
+            "reward_sum": 1.5,
+            "wins": 1
+          }
+        },
+        "156564e340862476ea00968fa0d836c9e52a766e31c7d5cf7bac33f6b51f66b2": {
+          "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 0.5,
+            "reward_sum": 0.5,
+            "wins": 1
+          }
+        },
+        "2052b5597d9c5a9d0c49e0384520745b6f1c534c2282e1bf02a22978fe029ef9": {
+          "633017f4a40180137c4b7486ed099da166226848b96924305b85c611bad86f62": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": -0.5,
+            "reward_sum": -0.5,
+            "wins": 1
+          }
+        },
+        "244f4f72293ac5836605e60e58a4242968708d3bae9061603db9a22df41a7fbd": {
+          "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 0.0,
+            "reward_sum": 0.0,
+            "wins": 1
+          }
+        },
+        "28a7e0244057aa846e0b91bfee60758a1cc26ea9df914f45f917212b6fb8c6c4": {
+          "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 0.0,
+            "reward_sum": 0.0,
+            "wins": 1
+          }
+        },
+        "2e73169fe245e9f5c1685cdc0e60f3dd98c441be806c14b56ec3d797dfccc963": {
+          "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 3.5,
+            "reward_sum": 3.5,
+            "wins": 1
+          }
+        },
+        "32617076e08d966885c2d2c67844d80c43f66316865375b850d296381f189cc0": {
+          "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 0.0,
+            "reward_sum": 0.0,
+            "wins": 1
+          }
+        },
+        "3454431ced3ab92cb039d654db3b76b8e45cf76c67fc5b754c5f3677971c1f03": {
+          "09711973848b5308adefc6d35ce9e09f142c548775c3a0c9c0b592533c805a70": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 0.5,
+            "reward_sum": 0.5,
+            "wins": 1
+          }
+        },
+        "35a5a5b4d46749dcd95269b45c572b585eef7c9a47a1a9a93707aaf6e81346ef": {
+          "67087d04f01c9a205c6175fc519e838296bae776a43ce1fe7e0ab338f373a1d7": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": -0.5,
+            "reward_sum": -0.5,
+            "wins": 1
+          }
+        },
+        "397e54aa9f1e3021279ea910b8013430de156f4c8d1dc0c437cf0b322d4766e2": {
+          "23bf53456fa69ad0cd034776051add46f5222989c0ef30baa3b21f25564a2712": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 3.95,
+            "reward_sum": 3.95,
+            "wins": 1
+          }
+        },
+        "3e208be2e1e49c80da1797e3824d223feca297edb20cc897421cb836f0fea535": {
+          "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 0.5,
+            "reward_sum": 0.5,
+            "wins": 1
+          }
+        },
+        "3fd3dd4fcd75a685bcce4aa527c74f5bb108e772d3e1b177def6157630633def": {
+          "b23819836deda2c86a63976e9285773e6653f7a2fb9f5bee45875948abbfe0c6": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": -0.25,
+            "reward_sum": -0.25,
+            "wins": 1
+          }
+        },
+        "5043506a3a8d50dc42f1f8d408c9e6b16a458001974722b6cb9d3c74949f863c": {
+          "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 1.5,
+            "reward_sum": 1.5,
+            "wins": 1
+          }
+        },
+        "508cac42431e705ce494a820ffa321a37d9041dd921b61b2c27b285613e8c396": {
+          "faffe40cc622bd0c09414d781d891ace618619877a968a3102ecf347d33f38a4": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": -2.5,
+            "reward_sum": -2.5,
+            "wins": 1
+          }
+        },
+        "67078197de9eba4d4b01aad0e904bc9f573f07074f783f3d95ee0055917ffe5f": {
+          "e93cdef73a15e90eaf1e6e170c0d568b0292e21b5f57f7507a7e60a394425ab1": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": -1.5,
+            "reward_sum": -1.5,
+            "wins": 1
+          }
+        },
+        "6b36bca5be09e4416eadca76a69be16b795a19baf132d6ca2b9bc814bd6657fd": {
+          "b6c4906f077211f768c778d291db56ac83c45576b67e81b345f8c99c938db957": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": -1.0,
+            "reward_sum": -1.0,
+            "wins": 1
+          }
+        },
+        "72f9c3032c684c95515cf1599a402a2d3e55500c51249269f46a07d8c0dbce14": {
+          "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 0.0,
+            "reward_sum": 0.0,
+            "wins": 1
+          }
+        },
+        "75a703033d9b84e3eb959e21ea0f09a7d61f574989cd869cc73bfb67619b876c": {
+          "fce34d0c163a9d4a3e9a402f4b74b595da187b9bfde853ac95d4c203ce949b93": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 1.5,
+            "reward_sum": 1.5,
+            "wins": 1
+          }
+        },
+        "8ca977826b5afd95d6cbe5e03a18df2d9d5e0584ac00392031e20fb71360239b": {
+          "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 0.0,
+            "reward_sum": 0.0,
+            "wins": 1
+          }
+        },
+        "8f13fd0791dc91b05c40eb09c55fc372ae5b9d7cf3f9c152e0687f8981e6b8bb": {
+          "808df2a50029d99d6d95a276b49086352e66e7e4816bf04067779444cb227368": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": -1.3,
+            "reward_sum": -1.3,
+            "wins": 1
+          }
+        },
+        "9381841b2c4645a5cb3519e560ab7aceac2191e24f4b2ed8717a20d5b6325f63": {
+          "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 0.0,
+            "reward_sum": 0.0,
+            "wins": 1
+          }
+        },
+        "93a88f1d907590ac83e4c357b6a349f27db6ce205b23375e15c3a166f63253da": {
+          "8242be5a7b22d041a6d91bf523b3b8dd62f1a5e8759cb8050749c7181f89245e": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 2.0,
+            "reward_sum": 2.0,
+            "wins": 1
+          }
+        },
+        "9ce09ac29e9c52875afbd84fbfda04f7d1e659e6719321a9e659d3b9e09cb546": {
+          "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 0.5,
+            "reward_sum": 0.5,
+            "wins": 1
+          }
+        },
+        "9efff682558828921638c90779bdaa2beced1edc26004068e9d59ae871974bc7": {
+          "23bf53456fa69ad0cd034776051add46f5222989c0ef30baa3b21f25564a2712": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 2.95,
+            "reward_sum": 2.95,
+            "wins": 1
+          }
+        },
+        "a457db8660169348ad27772c72dd78392bb2f4637d27a9467951a80aa53062a9": {
+          "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 0.0,
+            "reward_sum": 0.0,
+            "wins": 1
+          }
+        },
+        "aaf9858cc37b640b003e471e489a0178b30970a1ad11b35a1243fb358176e1b7": {
+          "13db5864db772d309b03c9f3a7bd83d108339394fb5e3e54c8be5f0ae623dc53": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": -0.5,
+            "reward_sum": -0.5,
+            "wins": 1
+          }
+        },
+        "acbb46e5bee6a74526d750eeb7fe79edad6639f6aef89677a53bf90601f158c6": {
+          "0e04d7500488acabfd8228d74e0dea7482d8a900689a73cacc01fc574c69f676": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 0.5,
+            "reward_sum": 0.5,
+            "wins": 1
+          }
+        },
+        "b95ff46b12e86ab71e396d732d0a49d8c9fe5cb1080065700be152543552c121": {
+          "e93cdef73a15e90eaf1e6e170c0d568b0292e21b5f57f7507a7e60a394425ab1": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": -1.5,
+            "reward_sum": -1.5,
+            "wins": 1
+          }
+        },
+        "bf57a3f6c84b74bd92678e316c8a4e728c41d206dff2efd8f255bb51ab969dec": {
+          "c76fd3a8097a1a926bf472348a75ac9925e5ed7781d779c316c0dce2659e6e71": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 1.5,
+            "reward_sum": 1.5,
+            "wins": 1
+          }
+        },
+        "c5c4edca71c82a712f8c1c6774163d5bd265ec6619def4cf0accac6899cefc08": {
+          "325769b5b2b31c78c441f1ad8676bed8feb2dfd29cd3b71c24048b0e33d2e0d7": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 0.45,
+            "reward_sum": 0.45,
+            "wins": 1
+          }
+        },
+        "ca956a38181f1ca076fcb1295fc71e6dfa7c7e17d73c8e5c836799ce786983e7": {
+          "5e2517eda3bcd275b1caa6231a58b9d3c0445b5248fc3301b3d87c0d382b3b80": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 0.5,
+            "reward_sum": 0.5,
+            "wins": 1
+          }
+        },
+        "cd3b65f1c6fd3f19fb691ec6b373d1604b6eb20e955e7a82995915db7b504b4c": {
+          "3e99f9597c0daf7b8e2ca131e60d2f7acb7cb5b63630192754f7474a536fa86a": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": -0.5,
+            "reward_sum": -0.5,
+            "wins": 1
+          }
+        },
+        "d21d3775b9b41a33f00fe0ce442c4d339b693486465ccba64ede93f1957f9266": {
+          "d646125c5d41ff7b96a691f4cab9d06d7a492012c25bd96cfb81d8731574dd6a": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 0.5,
+            "reward_sum": 0.5,
+            "wins": 1
+          }
+        },
+        "d8d9b8493a49422e125ed723d4cf71729120d258d640e7f8a6752e45a86599c0": {
+          "8242be5a7b22d041a6d91bf523b3b8dd62f1a5e8759cb8050749c7181f89245e": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 2.0,
+            "reward_sum": 2.0,
+            "wins": 1
+          }
+        },
+        "dc001ff484a785ab7e8055633153cf0deaedba7d0e8e802c8c521f1a0d01563b": {
+          "0df6f236981529831ded65fc64f7d396386c645adf92bf5fed251c818ca60f68": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 1.35,
+            "reward_sum": 1.35,
+            "wins": 1
+          }
+        },
+        "e25dced460d9672664ba5f16ad3c8871c4c82188abc611e2c363b7b50e3d5930": {
+          "65d604947ffd78833f736cade10095f65a6b62fe84acdc6d19e8720892377367": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": -0.5,
+            "reward_sum": -0.5,
+            "wins": 1
+          }
+        },
+        "feb968648ca0f083fde94939be9d342fca688179951a5939888c9f16d066cd7d": {
+          "12078d61b7da082f2da36810f8171485e091d9ea0344f0d7f0ca6cbb839b9200": {
+            "independent_games": 1,
+            "losses": 0,
+            "mean_reward": 2.5,
+            "reward_sum": 2.5,
+            "wins": 1
+          }
+        }
+      },
+      "B": {
+        "0f6ba4e0b24b8c68441ba5921463c2d85ac47d4b2874ba9223c11bd7ff090fde": {
+          "65f7dea958fda51b202fd9cc107d8e9803d4da73e28e840588d825204a485047": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": -0.65,
+            "reward_sum": -0.65,
+            "wins": 0
+          }
+        },
+        "1201f60873cfaf2f9b29c11ae5885e09c8b292015fb68d5ea4525a515b69c571": {
+          "6eef3d00e869431951d407b5f12667447912a4a8ac3ac7615a834e7abc511e6f": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 1.5,
+            "reward_sum": 1.5,
+            "wins": 0
+          }
+        },
+        "156f752ed23dc5fb6a32320a9f312fefdf712f940d2a316aeff521f0206ff4ce": {
+          "5653cd87e2940b25f88e3335b85798fd777962ada9320273bfe0f264c73c3000": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 2.0,
+            "reward_sum": 2.0,
+            "wins": 0
+          }
+        },
+        "227fff3a0011bc2c1cbdfc0311493d513ddb09e6f781f237c9cd8ecf385f3c0a": {
+          "7c54b5b68c435d147b2b611e95631e27996e1a5d1034915e01a05d5f673c37f7": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": -0.75,
+            "reward_sum": -0.75,
+            "wins": 0
+          }
+        },
+        "24531d98fe72730a86e24a5756fcad4495886e7c94b728e42780248753c1aa5c": {
+          "dd080623965450327101bf4fe0be51f1311a89171c7e03a9cf960146752b27c1": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 0.5,
+            "reward_sum": 0.5,
+            "wins": 0
+          }
+        },
+        "277e328353e851a7ee5b7aa9cd73ec1ac64f2d2c9fbdbe129972cbac724fc4b6": {
+          "0dd6ca2e30ddfd0177f6b3c4d9004abf3b9034e2fbeedb8fe42b2a4f0d28d699": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": -1.5,
+            "reward_sum": -1.5,
+            "wins": 0
+          }
+        },
+        "2a38d5f8fd99a474a50883ca6cdae7278ad7af91954dd78acf93e8a65f2a7b1b": {
+          "7eafdbe7fb745058742250b8eb3dc583c5c7b4e973e39c072294851983e6becd": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 0.3,
+            "reward_sum": 0.3,
+            "wins": 0
+          }
+        },
+        "2a6a2a5118158358775a269e2558e2793c8180c26b06d9163cfaad205712f624": {
+          "0e04d7500488acabfd8228d74e0dea7482d8a900689a73cacc01fc574c69f676": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 0.5,
+            "reward_sum": 0.5,
+            "wins": 0
+          }
+        },
+        "306b8cbb14daf0c03211100538a55ccbc7bb6c70a2ebad15c4e7d4088e45a938": {
+          "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 0.0,
+            "reward_sum": 0.0,
+            "wins": 0
+          }
+        },
+        "31924078f0371d635c09617124df33827d8a039c02b3e06b83a838683edac9c3": {
+          "e339899d08b66a1b269f13e12efed6245f6dd8301e63df8902fcc6eb3aaa6b6e": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": -0.5,
+            "reward_sum": -0.5,
+            "wins": 0
+          }
+        },
+        "3758ac0a4e801834b18cf28b026770c08a6966194500fa19806699f3824db872": {
+          "5f80969640733f8fd042bf48c021d6eef56c3e13313b1edcf6a1d91b5dc6b52e": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 1.975,
+            "reward_sum": 1.975,
+            "wins": 0
+          }
+        },
+        "394f32a3ad5d22a089c47fac1b61d385106f80b35b9e7d1291945d666a17e406": {
+          "5e2517eda3bcd275b1caa6231a58b9d3c0445b5248fc3301b3d87c0d382b3b80": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 0.5,
+            "reward_sum": 0.5,
+            "wins": 0
+          }
+        },
+        "39dc7c4f070407bffbf389d78fba5d8b1d2e31f19120a948a0bc22953eb7f7b3": {
+          "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 5.2,
+            "reward_sum": 5.2,
+            "wins": 0
+          }
+        },
+        "3bdd2fb97fb423ae0ab56f68f9ae5f955a9dce1875c7e6382212fc342fbe5244": {
+          "83441a3e8c59c12534ac69e579263168d6a7141f354f0bc6223cecfa8f4a0a94": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": -1.0,
+            "reward_sum": -1.0,
+            "wins": 0
+          }
+        },
+        "4e8558861dd27c5e47595ab55f9df3949397646eba01d952fd38914d5028bec2": {
+          "45a544c8505d59c701afe959fe8cdcd5a10ed1af22d2ae4f75881504ca26c814": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": -0.5,
+            "reward_sum": -0.5,
+            "wins": 0
+          }
+        },
+        "53b3d7a39279e4011250c453dd640a7a76c056aa24962b36318a9f1958d307bb": {
+          "1a9489ec19fa1f938ffe30ede7172b2248e87672bdf89dff11570b2d4c303e65": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": -0.5,
+            "reward_sum": -0.5,
+            "wins": 0
+          }
+        },
+        "6b68a58d37396a921e8dfd427bee2c83cf97b4b3cec81fb0b731fedce6293548": {
+          "b68649876546dac1fdb627bbee687ee959840906a2296aa0bd1a8f29841fe1bc": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": -1.0,
+            "reward_sum": -1.0,
+            "wins": 0
+          }
+        },
+        "6ca0c8645759ab3477049bb0fb96db0bd1aa690504223021e855679ee0f74e3d": {
+          "26ea60742b6e0b472febd8b14ebfacebb6384d63e0395733e1460bd13210d06a": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": -2.0,
+            "reward_sum": -2.0,
+            "wins": 0
+          }
+        },
+        "75177b9cad9725a0c9588ee942ebc1765368d81ccbc381145182faab370a7478": {
+          "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 0.5,
+            "reward_sum": 0.5,
+            "wins": 0
+          }
+        },
+        "782140009b322e467003fddb9dd2ea92ddce713c34a47d8a6ea714c53d7c6a3d": {
+          "c4ecf1b1604d9ac213b93c1353b28d048d887cc86289d22da40b2c305c1bc38e": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 0.75,
+            "reward_sum": 0.75,
+            "wins": 0
+          }
+        },
+        "7e119fc15a98079f2505ec5a62a06b0c0bf76e719335c31da6b859c8a94854f6": {
+          "7f5d2234060866872ca23b9fdf76642e5c5c938c9d58ebcbaf0d862aaa3fdf86": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 0.0,
+            "reward_sum": 0.0,
+            "wins": 0
+          }
+        },
+        "8390596af3213c90c4f5c0e3edcd53660327c4cd359fa984cece8e26fddbc599": {
+          "86624447f7e1492ca9cf96e6f093168ad1c328fa77e3f0b2be5b6de60a28ca86": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": -0.5,
+            "reward_sum": -0.5,
+            "wins": 0
+          }
+        },
+        "85a779709a76bc1da875581e6eb665d76d6815e44469d800cd78df48614f157c": {
+          "4873320fc3348940132ee9d109a385befa36bd8231d1812f6b4750bdc2427fbf": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": -0.5,
+            "reward_sum": -0.5,
+            "wins": 0
+          }
+        },
+        "98079770719d1af714a44cd225c73ada6a54362ac19cdfc754f8bf52584092ee": {
+          "8ddf33dae57bff3aa029789790bab379dab31aeb400f42a69e25e276ce34dd56": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 1.425,
+            "reward_sum": 1.425,
+            "wins": 0
+          }
+        },
+        "9a297fd1f4e9d642e496f7ed9a1027537a04e22b9289e2853382e1ab25e2bd63": {
+          "f646cd9625f10367b5280c183b3c7e692c5a09c46f85fce759da930da965df9e": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 1.0,
+            "reward_sum": 1.0,
+            "wins": 0
+          }
+        },
+        "9f8057bae0f6d6a9160c2c604fb80da2531b2da6b6f803d4e82c9ee3a64dc8b1": {
+          "5653cd87e2940b25f88e3335b85798fd777962ada9320273bfe0f264c73c3000": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 2.0,
+            "reward_sum": 2.0,
+            "wins": 0
+          }
+        },
+        "b4af723198322e7af2b917912bf0d17927906cfe6fc885747c3bd26b661f5a4b": {
+          "23bf53456fa69ad0cd034776051add46f5222989c0ef30baa3b21f25564a2712": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 3.6,
+            "reward_sum": 3.6,
+            "wins": 0
+          }
+        },
+        "b80f5f6134f0a1b11a909c17e8b3aa73104d7cee4bf8afb1c7c38ce370f31ac4": {
+          "808df2a50029d99d6d95a276b49086352e66e7e4816bf04067779444cb227368": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": -1.3,
+            "reward_sum": -1.3,
+            "wins": 0
+          }
+        },
+        "c93aa758d4d5f748619988c80450d681dbb840f4d2bdc626a7fb067c829986dc": {
+          "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 0.5,
+            "reward_sum": 0.5,
+            "wins": 0
+          }
+        },
+        "cd3934f0325613005a2bced099a92f66cca70d123bee20233d45ffeef5c65dbb": {
+          "7eafdbe7fb745058742250b8eb3dc583c5c7b4e973e39c072294851983e6becd": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 0.3,
+            "reward_sum": 0.3,
+            "wins": 0
+          }
+        },
+        "d577a8ee50d270a37c1b62e356d8f560ee97ba9ce5952ecd7f31332883349c7d": {
+          "a0bb0e722edf2abc9e40ef6d8c3ea0b602c8de8f7b2ad2e15eeba02413998a8e": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": -0.55,
+            "reward_sum": -0.55,
+            "wins": 0
+          }
+        },
+        "dd7ddffcc65cc40bf05f24cf8caf691a3ab4ccb833d3fed693010d262bbc6c9b": {
+          "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 0.0,
+            "reward_sum": 0.0,
+            "wins": 0
+          }
+        },
+        "e2c3e8e0afd8eb4cd0e38d72c7e7e408afbe12b85accced1a7d6971b732254af": {
+          "5653cd87e2940b25f88e3335b85798fd777962ada9320273bfe0f264c73c3000": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": -2.0,
+            "reward_sum": -2.0,
+            "wins": 0
+          }
+        },
+        "e94d087100d9a7ad1729a2bc48ef3ba14830e1cd047f5416d85ce687585ec5e5": {
+          "fce34d0c163a9d4a3e9a402f4b74b595da187b9bfde853ac95d4c203ce949b93": {
+            "independent_games": 1,
+            "losses": 1,
+            "mean_reward": 0.0,
+            "reward_sum": 0.0,
+            "wins": 0
+          }
+        }
+      }
+    },
+    "version": "fresh-observed-board-learning-v1"
+  },
+  "learning_state_id": "e39a510a19f770eb0abeb30b9c48c6cf49a62009e9bcaf037ac1ca4640eb0167",
+  "pilots": {
+    "A": {
+      "bot_id": "8292020eddeefc51ea98693551b571fbfacf32452008f3658d5d9f6a970590eb",
+      "configuration": {
+        "epsilon": 0.1,
+        "future_return": null,
+        "keys": "WHITELISTED_OWN_PUBLIC_FEATURES_WITHOUT_PHYSICAL_COPY_OR_TRANSIENT_IDS",
+        "minimum_independent_games": 3,
+        "outcome_association": "SEPARATE_WINS_LOSSES",
+        "reward": "PER_GAME_MEAN_IMMEDIATE_OBSERVED_BOARD_REWARD"
+      },
+      "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+      "criterion_sha256": "84de51952609311beadcbec58f9c8252e1aea2c9eae96689eaf5aad4711fcdaf",
+      "information_policy": "PUBLIC_VIEW_OWN_HAND_AND_EXPLICIT_REVEALS_ONLY",
+      "input_state_id": "e39a510a19f770eb0abeb30b9c48c6cf49a62009e9bcaf037ac1ca4640eb0167",
+      "name": "Bot A",
+      "policy_seed": 1752045913268350426,
+      "policy_status": "EXPERIMENTAL_OBSERVED_BOARD_LEARNING",
+      "prior": {
+        "bot_id": "3051db093e356d30cb042bb3bca1d948a5f3e187cadee9dbdea3f8b572cbaf87",
+        "configuration": {
+          "bottom_order": "PHYSICAL_KEY_ASCENDING",
+          "name": "Bot A",
+          "outcome_ratings": "NONE",
+          "planning_depth": 0,
+          "priorities": [
+            "zero-security player attack",
+            "security pressure",
+            "favorable printed-DP battle",
+            "development"
+          ],
+          "roadmaps": [],
+          "style": "AGGRESSIVE",
+          "tie_break": "CANONICAL_CANDIDATE_ASCENDING",
+          "training_data": [],
+          "unsuspend": [
+            "suspended Digimon",
+            "suspended Tamer"
+          ]
+        },
+        "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+        "information_policy": "PUBLIC_VIEW_OWN_HAND_AND_EXPLICIT_REVEALS_ONLY",
+        "name": "Bot A",
+        "policy_status": "FRESH_UNTRAINED_HEURISTIC_PREFERENCES",
+        "roadmap": null,
+        "seat": "A",
+        "source_sha256": "fab7f1900b8d07f02fe7030c776581a5810d74f62bea117dc129b5d83df26b1b",
+        "style": "AGGRESSIVE",
+        "training_data": [],
+        "version": "fresh-named-public-preferences-v1"
+      },
+      "probability_claim": false,
+      "seat": "A",
+      "source_sha256": "1f61d2e7e9e552926cdd7fc188bad2b883729aed135bacb5867ab27ddca109a5",
+      "strategic_approval": "NONE",
+      "style": "AGGRESSIVE",
+      "version": "fresh-observed-board-learning-v1"
+    },
+    "B": {
+      "bot_id": "df875f4a2b7a61f390f48bb0df900e019ea004d1bf64a7b96e06daf9ba1b7c70",
+      "configuration": {
+        "epsilon": 0.1,
+        "future_return": null,
+        "keys": "WHITELISTED_OWN_PUBLIC_FEATURES_WITHOUT_PHYSICAL_COPY_OR_TRANSIENT_IDS",
+        "minimum_independent_games": 3,
+        "outcome_association": "SEPARATE_WINS_LOSSES",
+        "reward": "PER_GAME_MEAN_IMMEDIATE_OBSERVED_BOARD_REWARD"
+      },
+      "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+      "criterion_sha256": "84de51952609311beadcbec58f9c8252e1aea2c9eae96689eaf5aad4711fcdaf",
+      "information_policy": "PUBLIC_VIEW_OWN_HAND_AND_EXPLICIT_REVEALS_ONLY",
+      "input_state_id": "e39a510a19f770eb0abeb30b9c48c6cf49a62009e9bcaf037ac1ca4640eb0167",
+      "name": "Bot B",
+      "policy_seed": 18166698761315465963,
+      "policy_status": "EXPERIMENTAL_OBSERVED_BOARD_LEARNING",
+      "prior": {
+        "bot_id": "6fe75b159762009ec2fead167b1f7e2dda7125e3d9beeb83d37ef0948d46bdcd",
+        "configuration": {
+          "bottom_order": "PHYSICAL_KEY_ASCENDING",
+          "name": "Bot B",
+          "outcome_ratings": "NONE",
+          "planning_depth": 0,
+          "priorities": [
+            "zero-security player attack",
+            "favorable printed-DP battle",
+            "development and ready Blockers",
+            "security pressure"
+          ],
+          "roadmaps": [],
+          "style": "DEFENSIVE",
+          "tie_break": "CANONICAL_CANDIDATE_ASCENDING",
+          "training_data": [],
+          "unsuspend": [
+            "suspended Blocker",
+            "suspended All Turns Tamer",
+            "suspended Digimon",
+            "suspended other Tamer"
+          ]
+        },
+        "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+        "information_policy": "PUBLIC_VIEW_OWN_HAND_AND_EXPLICIT_REVEALS_ONLY",
+        "name": "Bot B",
+        "policy_status": "FRESH_UNTRAINED_HEURISTIC_PREFERENCES",
+        "roadmap": null,
+        "seat": "B",
+        "source_sha256": "fab7f1900b8d07f02fe7030c776581a5810d74f62bea117dc129b5d83df26b1b",
+        "style": "DEFENSIVE",
+        "training_data": [],
+        "version": "fresh-named-public-preferences-v1"
+      },
+      "probability_claim": false,
+      "seat": "B",
+      "source_sha256": "1f61d2e7e9e552926cdd7fc188bad2b883729aed135bacb5867ab27ddca109a5",
+      "strategic_approval": "NONE",
+      "style": "DEFENSIVE",
+      "version": "fresh-observed-board-learning-v1"
+    }
+  },
+  "production_learning_updates_before_game": 1,
+  "schedule": {
+    "campaign_id": "ULFORCE_MIRROR_FACT_FINDING_2026_11_11_V1",
+    "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+    "count": 60,
+    "games": [
+      {
+        "first": "A",
+        "index": 0,
+        "seed": 4851742998504393566
+      },
+      {
+        "first": "B",
+        "index": 1,
+        "seed": 4331348820189008048
+      },
+      {
+        "first": "A",
+        "index": 2,
+        "seed": 6141209402564835413
+      },
+      {
+        "first": "B",
+        "index": 3,
+        "seed": 12280921650984587234
+      },
+      {
+        "first": "A",
+        "index": 4,
+        "seed": 4190105074021731860
+      },
+      {
+        "first": "B",
+        "index": 5,
+        "seed": 11698581636430464639
+      },
+      {
+        "first": "A",
+        "index": 6,
+        "seed": 3782896538655634788
+      },
+      {
+        "first": "B",
+        "index": 7,
+        "seed": 5711523175583742167
+      },
+      {
+        "first": "A",
+        "index": 8,
+        "seed": 16800548605191004295
+      },
+      {
+        "first": "B",
+        "index": 9,
+        "seed": 17309462193351784050
+      },
+      {
+        "first": "A",
+        "index": 10,
+        "seed": 12153033987204347447
+      },
+      {
+        "first": "B",
+        "index": 11,
+        "seed": 5851394806360889948
+      },
+      {
+        "first": "A",
+        "index": 12,
+        "seed": 2101950198887642284
+      },
+      {
+        "first": "B",
+        "index": 13,
+        "seed": 16981006676455617676
+      },
+      {
+        "first": "A",
+        "index": 14,
+        "seed": 18400414162281782985
+      },
+      {
+        "first": "B",
+        "index": 15,
+        "seed": 10571307730640987862
+      },
+      {
+        "first": "A",
+        "index": 16,
+        "seed": 17013134093388047074
+      },
+      {
+        "first": "B",
+        "index": 17,
+        "seed": 104838844531001091
+      },
+      {
+        "first": "A",
+        "index": 18,
+        "seed": 14011128032084789953
+      },
+      {
+        "first": "B",
+        "index": 19,
+        "seed": 4531923671338437447
+      },
+      {
+        "first": "A",
+        "index": 20,
+        "seed": 17600249931390198423
+      },
+      {
+        "first": "B",
+        "index": 21,
+        "seed": 15647513270363614215
+      },
+      {
+        "first": "A",
+        "index": 22,
+        "seed": 2751608414997627486
+      },
+      {
+        "first": "B",
+        "index": 23,
+        "seed": 10420302291037810674
+      },
+      {
+        "first": "A",
+        "index": 24,
+        "seed": 1175951372416534671
+      },
+      {
+        "first": "B",
+        "index": 25,
+        "seed": 7973094963158883888
+      },
+      {
+        "first": "A",
+        "index": 26,
+        "seed": 6767385135482324298
+      },
+      {
+        "first": "B",
+        "index": 27,
+        "seed": 13770085322408169249
+      },
+      {
+        "first": "A",
+        "index": 28,
+        "seed": 14848822263446686493
+      },
+      {
+        "first": "B",
+        "index": 29,
+        "seed": 4386650330264855434
+      },
+      {
+        "first": "A",
+        "index": 30,
+        "seed": 13227026682131638372
+      },
+      {
+        "first": "B",
+        "index": 31,
+        "seed": 4874638604255616621
+      },
+      {
+        "first": "A",
+        "index": 32,
+        "seed": 15637870255421039232
+      },
+      {
+        "first": "B",
+        "index": 33,
+        "seed": 16711287850744816468
+      },
+      {
+        "first": "A",
+        "index": 34,
+        "seed": 4231965213441521759
+      },
+      {
+        "first": "B",
+        "index": 35,
+        "seed": 13564119233319086969
+      },
+      {
+        "first": "A",
+        "index": 36,
+        "seed": 8958763726205178809
+      },
+      {
+        "first": "B",
+        "index": 37,
+        "seed": 1507610394915651315
+      },
+      {
+        "first": "A",
+        "index": 38,
+        "seed": 12522546608096614328
+      },
+      {
+        "first": "B",
+        "index": 39,
+        "seed": 17476234376075537058
+      },
+      {
+        "first": "A",
+        "index": 40,
+        "seed": 10068278721543439701
+      },
+      {
+        "first": "B",
+        "index": 41,
+        "seed": 6257539791635444623
+      },
+      {
+        "first": "A",
+        "index": 42,
+        "seed": 13132693033162282669
+      },
+      {
+        "first": "B",
+        "index": 43,
+        "seed": 12938985791913619996
+      },
+      {
+        "first": "A",
+        "index": 44,
+        "seed": 3396209666414848040
+      },
+      {
+        "first": "B",
+        "index": 45,
+        "seed": 7919453585903926291
+      },
+      {
+        "first": "A",
+        "index": 46,
+        "seed": 13496838506188737104
+      },
+      {
+        "first": "B",
+        "index": 47,
+        "seed": 14481575766525658740
+      },
+      {
+        "first": "A",
+        "index": 48,
+        "seed": 10614178331662486357
+      },
+      {
+        "first": "B",
+        "index": 49,
+        "seed": 8810319347949272410
+      },
+      {
+        "first": "A",
+        "index": 50,
+        "seed": 3509932071250769025
+      },
+      {
+        "first": "B",
+        "index": 51,
+        "seed": 13616133125272833428
+      },
+      {
+        "first": "A",
+        "index": 52,
+        "seed": 13263575762867982475
+      },
+      {
+        "first": "B",
+        "index": 53,
+        "seed": 13066148559834555941
+      },
+      {
+        "first": "A",
+        "index": 54,
+        "seed": 16099941939602584906
+      },
+      {
+        "first": "B",
+        "index": 55,
+        "seed": 16547495813563154801
+      },
+      {
+        "first": "A",
+        "index": 56,
+        "seed": 2783848444218627888
+      },
+      {
+        "first": "B",
+        "index": 57,
+        "seed": 13402610595372772195
+      },
+      {
+        "first": "A",
+        "index": 58,
+        "seed": 3490113076231998883
+      },
+      {
+        "first": "B",
+        "index": 59,
+        "seed": 15638302707920978558
+      }
+    ],
+    "schedule_sha256": "50127a808b655efb86be91101ef999e6f862373e52af6996c32d202093966eb7",
+    "schema": "fresh-learning-schedule-v1"
+  },
+  "schema": "fresh-game-0001-lock-v1",
+  "source_git_commit": "26149371e154e421a69d45fa3103067c78bea535",
+  "sources": {
+    "aero_effects.py": "c6615bd53485646549c1845b5e3b04edcbac2aeb1cc11e36d7cc9cb1750a10c7",
+    "attack_flow.py": "d1d16c1a70294b0277e11e09b370dfef7e715dfd50cbf45fa08ffa75380d4050",
+    "basic_event_dependencies.py": "d1cd66f6f442f275247bf904a8042e132875cf696b7e0a84ceeabfdd67951593",
+    "battle_evolution.py": "44546a4f47362c583e99e3ca009d542fbccfd2657044b7342a730592705c8216",
+    "battlefield_scope.py": "db94138bccb21d0a6ce89a786a2a62456160c857a517c4d811474153c1b22df6",
+    "breeding_evolution.py": "129186ef5525238cf1981cf8a56e57fbfeae54c14612ea593d1a2763b32c6986",
+    "context_evolution.py": "5c4bc2291dc368a3957720ae7257b1bd9a6da3bc2f423fab8daf1c8472005b54",
+    "context_runtime.py": "ccc140502af45f119410ce32b16a59636623b6f059ed7d016f04f750ce726e31",
+    "effect_grants.py": "36b7b505a338fa8b2d80348f7d477b12742bd169d3fb998e120879aff8a03b32",
+    "effect_scheduler.py": "a78f067545534b302a60fa702b587bb649f5b93f45eebff26d4044e34ec69244",
+    "evaluation_gate.py": "f3392c24f30d03c8c9fd87f35657bba59032c3a15c6d9ebbdeef32c95610aef4",
+    "ex13_ulforce_effects.py": "50bb3549d47b64c33fcda0962ef235cb7723bedc554e6113caaf48961dd06aa0",
+    "field_tracker.py": "847bb8198ffdf2a8fca48475d73cb0c8d03262f0bdef730c736a77a3502218fb",
+    "fresh_learning_campaign.py": "395d0822e362ad5ee856cb01c3632c33fe90e5b4769b55da337f4ed8128f2344",
+    "fresh_repair_migration.py": "f1d4ba379405af6d1452b84b0be2c4dae6fd025f1679d1fcd268d6270c04e939",
+    "frozen_evaluation.py": "bbb3d78d775eb6597e92c0cdcb90cb5a7b60e6d731662d31308a698528fbff8d",
+    "full_game_integrity.py": "ea32b0bf1e6bdd74aac2e5f2a30a3121732f315faebbb6dff7f24118767ecc01",
+    "full_match_attempt.py": "6d43ac60796246f2eeb53f9269cc7961ccee77c82f7ca404c73e72a718f15f9a",
+    "imported_attempts.py": "24f03d5b16d4cf4ae44319de14ffc210bb005392837ad06995845867e143a80e",
+    "interaction_learning.py": "1f61d2e7e9e552926cdd7fc188bad2b883729aed135bacb5867ab27ddca109a5",
+    "interaction_scoring.py": "c9e09123fc1666d36624a7e41e4aab7ac09c671e354b54aa77d2517a5db2992c",
+    "judge_ledger.py": "e9da34fec4b11dbe10906a04c76425051c6aeaf8b70a40cd0c1db20fe2bda382",
+    "loaded_digivolution.py": "4ae853d35b5d068ab9eb405e9871825e20d9fa3f973125e984ca4bc03309fb83",
+    "loaded_effects.py": "609a0d42e26d1eb3c600498d25ade94279706d5e100b5b012bcb0aeb4ce668ab",
+    "main_actions.py": "02b083f288eaf382569c98e30f163832e60d27fafab4b2df1fa1dcf20145477e",
+    "match_context.py": "140c9e1442d1f646a1bea724d2f01141a701fd729586c4072bbaaed45a2f0cd3",
+    "match_evidence.py": "d6f7c751880e4a26b671b4b9e7461d9df12dda848e60c375d243202b9f134b32",
+    "match_preparation.py": "31da31a26c80a2aaf23b7287cb515bec9c7b9799907f39c14e3efb501fd3a6b6",
+    "matchup_readiness.py": "1c42e03cdb6aef049472b34f13f7e381fe50a41fe9e85e9b14f1cfca57bcdb3f",
+    "matchup_v10_active_choices.py": "2223ec232807ab91cb2588dac0e8b2da856efd8d4b3b221a3f9d040e2f282b4f",
+    "matchup_v11_endturn_choices.py": "543709af32eca7f3bf1e5534db1b64ae1fadd00998dcb4c398aee3fe4331fff8",
+    "matchup_v12_attack_sources.py": "d10150d48bf9698485eb5231e3abe3ec3fef39fa999d96403b2b34db2fd83b45",
+    "matchup_v5.py": "b1fd7954fa34fe641960527f907b2f31dd205b5ff14a9f922390ee91dbe8ef94",
+    "matchup_v6.py": "eaba3254258c95774cb284f0886d1cde48fec7b8a8435365d00b2e36738d1c20",
+    "matchup_v7.py": "77050d3dd72252f0ee35655672db2620dc6b6b0639e3a79977dfe09def2738f3",
+    "matchup_v8.py": "830e471a46d2f9f5b10ea21d166bd2c5e59243d4f94c96bb6d21a22602130afd",
+    "matchup_v9_decision_policy.py": "a863dd658503111d979a325f49b5f716766ecdb8d3a598bc784ae30d68d37a64",
+    "named_bot_continuation.py": "45583bd1523a22030e5ca21e4e2a3beb7c4c80962cf1172772d2060654143538",
+    "named_player_bots.py": "fab7f1900b8d07f02fe7030c776581a5810d74f62bea117dc129b5d83df26b1b",
+    "on_play_effects.py": "9f7674332feeb05a43e08a4285b6340000db752cc44d18ad2f79b1a4ef84b05e",
+    "option_actions.py": "89a2c0b6999c3a793832140734da0ba79ade83e5bff205419a3cff475069adb0",
+    "phase_flow.py": "0ea66f83b22c43a826ff9419866e19cf00935726a7b8a8a582294119f21145e7",
+    "printed_triggers.py": "ec5c85443ade73d2428d5751fbb99a4fe95ec98d78e3249ae71b082c6f256621",
+    "recorded_action_checkpoint.py": "8008887595fc23e3f0ae2aa687a183be52cde09f793c837a93f07b476b896753",
+    "return_effects.py": "a7dc0f6fa25a65ae12bbcfa876760446b3e9c79275a67e49cec85d8747477459",
+    "rina_reactivation.py": "5184c962f0dffde521ca32cc9619885d11df7e15bb108d65cf33086484b26f55",
+    "rina_unsuspend_effects.py": "5dddf87be2046d7e4982a26bce14905fec8796f67e508a79cb4aab713cc55dd0",
+    "search_effects.py": "a9b50a9f6107908087577a85e31551b9f60b8f1277a4d6c563cf16a6d540e10f",
+    "security_attack_layer.py": "22373be7d01c67967f570a36a2c5c17f5134eceb816f29fd984b390ea8f65501",
+    "security_tamer.py": "61276a23878fc1a13cdb88b8fd9e3c63d11a9bba659abedad252cbf45f5a2844",
+    "seeded_opening_probe.py": "d106c287eb100f9f9f6bec3a6dce240be2a5643d943bdda137003cd7b429c586",
+    "selected_contexts.py": "657b901c23725c4187ecb7c29cf411709aee7a3f4bd7af76612b7cbc2b86fb2a",
+    "selected_mechanics.py": "d116752eeb321f85025386b30e1bd0d7abb61d321727e74fc6a4f91632987f75",
+    "tamer_play_effects.py": "182d0b4464b471b1a6a6eceba6b8df6c06a580bd4359e5658a16234b3b30d1c5",
+    "turn_flow.py": "b274b9558bd4da3ffc4f7aacb4a7c509f0eeb0656ec5e013c209ff43362b43fc",
+    "two_player_prefix.py": "c3b7d29500795a35938673ac1ab5f9c41e1ac6fdcfc200ac7e014bc3bbe1e518",
+    "verified_full_match.py": "945d21a9f43c423f5eb3a4c1cf35433dc086091a1e5ae4a6d5b1e092c4ceb16e",
+    "workflow_policy.py": "b7b871332a8eac9756caa70ae3695aac45adcc48677778c1f7d9b5f1bf80c6ae"
+  }
+}
