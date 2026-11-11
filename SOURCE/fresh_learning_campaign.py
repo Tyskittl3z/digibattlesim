@@ -14,6 +14,7 @@ from field_tracker import FieldTracker
 from imported_attempts import (ROOT, _apply, _load_context_selection, breeding_candidates,
                                counter_options, main_candidates, pending_choice, pending_options)
 from interaction_learning import LearningPlayerBot, LearningState, verify_decision_rng, verify_decision_input, learning_player_manifest
+from board_text_player import BoardTextPlayerBot, board_text_player_manifest
 from interaction_scoring import criteria_manifest, score_transition
 from match_context import canonical, digest
 from named_bot_continuation import _plain_block_options
@@ -69,6 +70,22 @@ def _policy_seeds(context_id, campaign_id, index, state_id):
     return {seat: int(digest({'domain': 'fresh-learning-policy-v1', 'context_id': context_id,
         'campaign_id': campaign_id, 'index': index, 'seat': seat,
         'input_state_id': state_id})[:16], 16) for seat in ('A', 'B')}
+
+
+def _history_binding(root, player_policy, history_report):
+    if player_policy not in ('NAMED_LEGACY', 'BOARD_TEXT_HISTORY'):
+        raise ValueError('Unknown player policy')
+    if player_policy == 'NAMED_LEGACY':
+        if history_report is not None:
+            raise ValueError('Legacy policy does not bind a match report')
+        return None
+    if history_report is None:
+        return None
+    path = (root / history_report).resolve()
+    if not path.is_relative_to(root) or not path.is_file():
+        raise RuntimeHalt('FRESH_HISTORY_REPORT_MISSING')
+    return {'file': str(path.relative_to(root)),
+            'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
 
 
 def _initial_rng(context_id, seat, seed, state_id):
@@ -152,7 +169,8 @@ def _resolve_decisions(command):
             'learning_eligible': bool(eligible and decision['learning'].get('eligible_choice', False))})
 
 
-def _revalidate(record, root, context, context_file, context_hash, learning_input, schedule, sources):
+def _revalidate(record, root, context, context_file, context_hash, learning_input, schedule, sources,
+                player_policy='NAMED_LEGACY', history_binding=None):
     """Replay saved successes and prove the complete audit checkpoint first."""
     _same(record.get('record_sha256'), digest({k: v for k, v in record.items() if k != 'record_sha256'}), 'RECORD_HASH')
     if 'repair_lineage' in record:
@@ -167,6 +185,8 @@ def _revalidate(record, root, context, context_file, context_hash, learning_inpu
         'learning_state_before': learning_input,
         'learning_state_after': learning_input, 'learning_state_id': LearningState.from_dict(learning_input).state_id}.items():
         _same(record.get(key), value, key.upper())
+    _same(record.get('player_policy', 'NAMED_LEGACY'), player_policy, 'PLAYER_POLICY')
+    _same(record.get('history_report'), history_binding, 'HISTORY_REPORT')
     game = schedule['games'][record['index']]
     for key in ('index', 'seed', 'first'):
         _same(record.get(key), game[key], key.upper())
@@ -175,8 +195,11 @@ def _revalidate(record, root, context, context_file, context_hash, learning_inpu
     seeds = _policy_seeds(context.matchup_id, schedule['campaign_id'], game['index'], model_id)
     rng = {s: _initial_rng(context.matchup_id, s, seeds[s], model_id) for s in seeds}
     _same(record.get('policy_rng_initial'), rng, 'INITIAL_POLICY_RNG')
-    _same(record.get('pilots'), {s: learning_player_manifest(context, s, model_id, seeds[s])
-                                for s in seeds}, 'PILOTS')
+    report_sha = history_binding['sha256'] if history_binding else None
+    expected_pilots = {s: (board_text_player_manifest(context, s, model_id, seeds[s], report_sha)
+        if player_policy == 'BOARD_TEXT_HISTORY' else learning_player_manifest(context, s, model_id, seeds[s]))
+        for s in seeds}
+    _same(record.get('pilots'), expected_pilots, 'PILOTS')
     runtime = ContextRuntime(context, game['seed'], game['first'], build_selected_registry(context, root),
                              allow_experimental=True)
     initial = runtime.snapshot()
@@ -269,13 +292,15 @@ class _Adapter:
 
 
 def run_game(index, root=ROOT, *, context_file=CONTEXT_FILE, campaign_id,
-             learning_state, max_commands=2000, previous_record=None):
+             learning_state, max_commands=2000, previous_record=None,
+             player_policy='NAMED_LEGACY', history_report=None):
     """Run a bounded private/authorized game segment; never update the model."""
     if type(index) is not int or index < 0 or index >= 60:
         raise ValueError('Schedule index 0..59 required')
     if type(max_commands) is not int or max_commands < 1:
         raise ValueError('Positive command budget required')
     root = Path(root).resolve()
+    history_binding = _history_binding(root, player_policy, history_report)
     if previous_record is not None and 'repair_lineage' in previous_record:
         from fresh_repair_migration import _SOURCE_ONLY_WORKER, _current_source_worker
         if not _SOURCE_ONLY_WORKER:
@@ -283,12 +308,16 @@ def run_game(index, root=ROOT, *, context_file=CONTEXT_FILE, campaign_id,
             result = _current_source_worker('resume', root, {'index': index,
                 'context_file': str(context_file), 'campaign_id': campaign_id,
                 'learning_state': frozen, 'max_commands': max_commands,
-                'previous_record': previous_record})
+                'previous_record': previous_record, 'player_policy': player_policy,
+                'history_report': history_report})
             _same(learning_state.export(), frozen, 'MODEL_MUTATION')
             return result
     context, context_file, context_hash = _load_context_selection(root, context_file)
     schedule, sources = make_schedule(context.matchup_id, campaign_id), _sources(root)
     frozen = _clone(learning_state.export())
+    if player_policy == 'BOARD_TEXT_HISTORY' and history_binding is None:
+        if index != 0 or LearningState.from_dict(frozen)._games:
+            raise RuntimeHalt('FRESH_NO_HISTORY_IS_GAME_ONE')
     state_id, game = LearningState.from_dict(frozen).state_id, schedule['games'][index]
     seeds = _policy_seeds(context.matchup_id, campaign_id, index, state_id)
     initial_rng = {s: _initial_rng(context.matchup_id, s, seeds[s], state_id) for s in seeds}
@@ -296,7 +325,7 @@ def run_game(index, root=ROOT, *, context_file=CONTEXT_FILE, campaign_id,
     if previous is not None:
         _same(previous.get('index'), index, 'INDEX')
         runtime, tracker, initial = _revalidate(previous, root, context, context_file, context_hash,
-                                                frozen, schedule, sources)
+                                                frozen, schedule, sources, player_policy, history_binding)
         if previous['status'] not in ('PAUSED', 'HALT', 'DIAGNOSTIC_SOFTWARE_ERROR') or runtime.state.terminal:
             raise RuntimeHalt('FRESH_RESUMABLE_STATUS_MISMATCH')
         history = copy.deepcopy(previous['commands'])
@@ -311,7 +340,10 @@ def run_game(index, root=ROOT, *, context_file=CONTEXT_FILE, campaign_id,
         tracker.start(initial)
         history, final_rng = [], initial_rng
     # No player exists until replay, input/model and engine/policy RNG proofs pass.
-    bots = {s: LearningPlayerBot(context, s, LearningState.from_dict(frozen), seeds[s]) for s in seeds}
+    bots = {s: (BoardTextPlayerBot(context, s, LearningState.from_dict(frozen), seeds[s],
+                                  history_binding['sha256'] if history_binding else None)
+                if player_policy == 'BOARD_TEXT_HISTORY' else
+                LearningPlayerBot(context, s, LearningState.from_dict(frozen), seeds[s])) for s in seeds}
     for seat, bot in bots.items():
         bot.restore_rng(final_rng[seat])
     manifests = {s: bot.manifest() for s, bot in bots.items()}
@@ -450,6 +482,7 @@ def run_game(index, root=ROOT, *, context_file=CONTEXT_FILE, campaign_id,
             history.append(current)
     _same(learning_state.export(), frozen, 'MODEL_MUTATION')
     record = {'schema': SCHEMA, **game, 'campaign_id': campaign_id, 'context_id': context.matchup_id,
+        'player_policy': player_policy, 'history_report': history_binding,
         'context_file': context_file, 'context_file_sha256': context_hash, 'schedule': schedule,
         'sources': sources, 'criteria': criteria_manifest(), 'learning_state_id': state_id,
         'learning_state_before': frozen, 'learning_state_after': frozen,
@@ -474,8 +507,11 @@ def replay_game(record, root=ROOT):
             return _current_source_worker('replay', root, {'record': record})
     context, context_file, context_hash = _load_context_selection(root, record['context_file'])
     schedule = make_schedule(context.matchup_id, record['campaign_id'])
+    player_policy = record.get('player_policy', 'NAMED_LEGACY')
+    history = record.get('history_report')
+    history_binding = _history_binding(root, player_policy, history['file'] if history else None)
     _revalidate(record, root, context, context_file, context_hash,
-                record['learning_state_before'], schedule, _sources(root))
+                record['learning_state_before'], schedule, _sources(root), player_policy, history_binding)
     return {'exact_match': True, 'record_sha256': digest(record),
             'certification': 'NONE_SOFTWARE_REPLAY_ONLY'}
 

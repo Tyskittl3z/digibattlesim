@@ -35,7 +35,7 @@ _ENGINE = frozenset(('context_runtime.py', 'effect_scheduler.py', 'match_prepara
 _IDENTITY = ('schema', 'index', 'seed', 'first', 'campaign_id', 'context_id', 'context_file',
     'context_file_sha256', 'schedule', 'criteria', 'learning_state_id', 'learning_state_before',
     'learning_state_after', 'pilots', 'policy_rng_initial', 'certification',
-    'accepted_fact_finding_credit', 'final_evaluation_credit')
+    'accepted_fact_finding_credit', 'final_evaluation_credit', 'player_policy', 'history_report')
 
 
 def _same(left, right, label):
@@ -349,7 +349,9 @@ try:
         state=LearningState.from_dict(data['learning_state'])
         result=runner.run_game(data['index'],root,context_file=data['context_file'],
             campaign_id=data['campaign_id'],learning_state=state,
-            max_commands=data['max_commands'],previous_record=previous)
+            max_commands=data['max_commands'],previous_record=previous,
+            player_policy=data.get('player_policy','NAMED_LEGACY'),
+            history_report=data.get('history_report'))
         runner._same(state.export(),data['learning_state'],'MODEL_MUTATION')
     else:
         raise RuntimeHalt('REPAIR_WORKER_OPERATION_INVALID')

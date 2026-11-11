@@ -42,7 +42,8 @@ _METRIC_BOARD = frozenset(('battle_card_count', 'digimon_count', 'tamer_count', 
 _BASE_RECORD = frozenset(('decision', 'public_view_sha256', 'candidates', 'chosen', 'reason', 'bot_id'))
 _LEARNING = frozenset(('context_id', 'seat', 'state_key', 'action_key', 'input_state_id', 'mode',
                       'support', 'epsilon', 'eligible_choice', 'rng_before', 'rng_after', 'rng_draw_protocol'))
-_MODES = frozenset(('NAMED_PRIOR', 'LEARNED_BOARD_REWARD', 'EXPLORATION', 'FIXED_BOTTOM_ORDER'))
+_MODES = frozenset(('NAMED_PRIOR', 'LEARNED_BOARD_REWARD', 'EXPLORATION',
+                    'FIXED_BOTTOM_ORDER', 'PUBLIC_STATE_TEXT'))
 _PROCEDURAL = frozenset(('BEGIN_PREPARATION', 'REDRAW_CHOICE', 'ADVANCE_PHASE', 'FINISH_TURN',
                         'END_ATTACK', 'SETTLE_PENDING', 'BOTTOM_ORDER'))
 
@@ -240,7 +241,8 @@ def verify_decision_rng(record, before_rng=None):
     _require(isinstance(record, dict) and isinstance(record.get('learning'), dict), 'RNG_RECORD')
     learning = record['learning']
     _require(set(learning) == _LEARNING and isinstance(learning['mode'], str) and learning['mode'] in _MODES
-             and type(learning['epsilon']) is float and learning['epsilon'] == EPSILON
+             and type(learning['epsilon']) is float and learning['epsilon'] ==
+             (0.0 if learning['mode'] == 'PUBLIC_STATE_TEXT' else EPSILON)
              and type(learning['support']) is int and learning['support'] >= 0
              and type(learning['eligible_choice']) is bool
              and all(_hash(learning[k]) for k in ('context_id', 'state_key', 'action_key', 'input_state_id')),
@@ -258,7 +260,7 @@ def verify_decision_rng(record, before_rng=None):
     _require(isinstance(choices, list) and (fixed or bool(choices)), 'RNG_CANDIDATES')
     for candidate in choices:
         _action(candidate, learning['seat'])
-    draw = len(choices) > 1 and not fixed
+    draw = len(choices) > 1 and not fixed and learning['mode'] != 'PUBLIC_STATE_TEXT'
     explored = generator.random() < EPSILON if draw else False
     index = generator.randrange(len(choices)) if explored else None
     protocol = {'random': draw, 'randrange': len(choices) if explored else None,
@@ -575,13 +577,13 @@ class LearningPlayerBot:
         self._random.setstate(generator.getstate())
 
     def _log(self, view_hash, candidates, chosen, decision, state_key, action_key, mode, support,
-             eligible_choice, before_rng, protocol, reason):
+             eligible_choice, before_rng, protocol, reason, *, epsilon=EPSILON):
         self.decision_log.append({'decision': copy.deepcopy(decision), 'public_view_sha256': view_hash,
             'candidates': copy.deepcopy(candidates), 'chosen': copy.deepcopy(chosen), 'reason': reason,
             'bot_id': self._manifest['bot_id'], 'learning': {'context_id': self.context.matchup_id,
                 'seat': self.seat, 'state_key': state_key, 'action_key': action_key,
                 'input_state_id': self._input_state_id, 'mode': mode, 'support': support,
-                'epsilon': EPSILON, 'eligible_choice': eligible_choice,
+                'epsilon': epsilon, 'eligible_choice': eligible_choice,
                 'rng_before': before_rng, 'rng_after': self.export_rng(), 'rng_draw_protocol': protocol}})
 
     def choose(self, view, candidates, decision=None):
@@ -652,8 +654,14 @@ def verify_decision_input(record, view, context, expected_manifest):
              and learning['context_id'] == context.matchup_id and learning['seat'] == seat
              and learning['input_state_id'] == expected_manifest.get('input_state_id')
              and record['bot_id'] == expected_manifest.get('bot_id') and _hash(record['bot_id']), 'INPUT_PROOF_IDENTITY')
-    _require(expected_manifest == learning_player_manifest(context, seat,
-             expected_manifest['input_state_id'], expected_manifest.get('policy_seed')), 'INPUT_PROOF_MANIFEST')
+    if expected_manifest.get('policy_status') == 'PUBLIC_STATE_TEXT_WITH_HISTORY':
+        from board_text_player import board_text_player_manifest
+        rebuilt = board_text_player_manifest(context, seat, expected_manifest['input_state_id'],
+            expected_manifest.get('policy_seed'), expected_manifest.get('history_report_sha256'))
+    else:
+        rebuilt = learning_player_manifest(context, seat, expected_manifest['input_state_id'],
+            expected_manifest.get('policy_seed'))
+    _require(expected_manifest == rebuilt, 'INPUT_PROOF_MANIFEST')
     decision = _decision(record['decision'])
     features = _PublicFeatures(context, seat)
     _require(record['public_view_sha256'] == digest(view)
