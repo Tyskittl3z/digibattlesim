@@ -18,7 +18,8 @@ EX13_EVOLVE_EFFECT = 'EX13-069.unsuspend_evolve'
 BT11_MEMORY_LINE = '[Your Turn][Once Per Turn] When one of your blue Digimon becomes unsuspended, gain 1 memory.'
 EX13_DRAW_LINE = ('[Your Turn] When any of your Digimon unsuspend, by suspending this Tamer, ＜Draw 1＞. '
     'After, 1 of your Digimon may digivolve into a Digimon card with [Veedramon] in its name in the hand with the cost reduced by 2.')
-RINA_CHOICE_EFFECTS = frozenset((BT11_MEMORY_EFFECT,EX13_DRAW_EFFECT,EX13_EVOLVE_EFFECT))
+RINA_CHOICE_EFFECTS = frozenset((BT11_MEMORY_EFFECT,EX13_DRAW_EFFECT,EX13_EVOLVE_EFFECT,
+    'BT22-085.attack_jamming'))
 
 
 def known_rina_orientation_observer(number,field,line):
@@ -127,6 +128,9 @@ def rina_evolution_choices(runtime,seat,source_key=None):
 
 
 def rina_unsuspend_choices(runtime,seat,source_key,effect_id):
+    if effect_id=='BT22-085.attack_jamming':
+        from selected_mechanics import rina_jamming_choices
+        return rina_jamming_choices(runtime,seat,source_key)
     _source_window(runtime,seat,source_key,effect_id)
     if effect_id==BT11_MEMORY_EFFECT:return [None]
     if effect_id==EX13_DRAW_EFFECT:return [False,True] if _cost_payable(runtime,seat,source_key) else [False]

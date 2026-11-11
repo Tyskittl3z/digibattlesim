@@ -34,6 +34,72 @@ PHASE_EFFECTS = {
     'EX13-069': ('EX13-069.start_main_memory','Start of Your Main Phase',
                  '[Start of Your Main Phase] If you have a Digimon with [Veemon] or [Veedramon] in its name, gain 1 memory.'),
 }
+RINA_JAMMING_EFFECT = 'BT22-085.attack_jamming'
+RINA_JAMMING_LINE = ('[Your Turn] When one of your Digimon with [Veedramon] in its name attacks, '
+                     'by returning this Tamer to the hand, that Digimon gains ＜Jamming＞ for the turn.')
+
+
+def collect_rina_attack_jamming(runtime, seat, attacker_key):
+    """Collect each live Rina's printed attack trigger without choosing its cost."""
+    stack = runtime.state.battle[seat][attacker_key]
+    definition = runtime.context.card(seat, stack.cards[-1].card_number)
+    if definition.kind != 'Digimon' or 'Veedramon' not in definition.name:
+        return []
+    effects = []
+    for key, tamer in runtime.state.battle[seat].items():
+        source = tamer.cards[-1]
+        if source.card_number != 'BT22-085':
+            continue
+        if runtime.context.card(seat, source.card_number).effect_text('main_text').splitlines()[-1] != RINA_JAMMING_LINE:
+            raise RuntimeHalt('RINA_JAMMING_TEXT_CHANGED')
+        runtime.registry.lookup(source.card_number, RINA_JAMMING_EFFECT, 'main_text')
+        effects.append({'seat':seat, 'source':key, 'effect_id':RINA_JAMMING_EFFECT,
+                        'field':'main_text', 'trigger':{'kind':'WHEN_ATTACKING',
+                        'attacker':attacker_key, 'attacker_instance':stack.instance_id}})
+    return effects
+
+
+def rina_jamming_choices(runtime, seat, source_key):
+    pending = next((p for p in runtime.state.pending if p['seat']==seat
+                    and p['source']==source_key and p['effect_id']==RINA_JAMMING_EFFECT), None)
+    if pending is None:
+        pending = getattr(runtime, '_activated_pending', None)
+    if pending is None or pending['effect_id'] != RINA_JAMMING_EFFECT:
+        raise RuntimeHalt('RINA_JAMMING_WINDOW_REQUIRED')
+    source = runtime._source(seat, source_key, 'main_text')
+    if source.card_number != 'BT22-085' or runtime.state.active != seat:
+        raise RuntimeHalt('RINA_JAMMING_SOURCE_INVALID')
+    attack = runtime.state.attack
+    if attack is None or attack['controller'] != seat:
+        return [None]
+    trigger = pending['trigger']
+    attacker = runtime.state.battle[seat].get(trigger.get('attacker'))
+    if (attacker is None or attacker.instance_id != trigger.get('attacker_instance')
+            or attack['attacker_instance'] != attacker.instance_id):
+        return [None]
+    return [None, source_key]
+
+
+def resolve_rina_attack_jamming(runtime, seat, source_key, choice):
+    options = rina_jamming_choices(runtime, seat, source_key)
+    if choice not in options:
+        raise RuntimeHalt('RINA_JAMMING_CHOICE_INVALID')
+    if choice is None:
+        return {'processing':'OPTIONAL_COST_DECLINED', 'returned':None, 'granted':False}
+    pending = getattr(runtime, '_activated_pending', None)
+    if pending is None or pending['source'] != source_key:
+        raise RuntimeHalt('RINA_JAMMING_PENDING_REQUIRED')
+    attacker_key = pending['trigger']['attacker']
+    tamer = runtime.state.battle[seat][source_key]
+    if len(tamer.cards) != 1 or runtime.context.card(seat,tamer.cards[-1].card_number).kind != 'Tamer':
+        raise RuntimeHalt('RINA_JAMMING_RETURN_SOURCE_INVALID')
+    from effect_grants import grant_effect
+    grant = grant_effect(runtime, seat, attacker_key, {'keywords':['Jamming']}, source_key,
+                         duration='end_of_controller_turn')
+    runtime.state.battle[seat].pop(source_key)
+    runtime.state.zones[seat]['hand'].append(tamer.cards[-1])
+    return {'processing':'RETURN_THIS_TAMER_FOR_JAMMING', 'returned':source_key,
+            'attacker':attacker_key, 'grant':grant, 'granted':True}
 
 
 def orientation_candidates(runtime, seat, source_key):
@@ -267,7 +333,8 @@ def build_selected_registry(context, root):
          resolve_inherited_unsuspend if number in ('EX13-022','BT22-023') else resolve_unsuspend_memory)
         for number,(effect,line) in INHERITED_REACTIONS.items()] + [
         (number,effect,'main_text',line,resolve_phase_memory)
-        for number,(effect,timing,line) in PHASE_EFFECTS.items()]
+        for number,(effect,timing,line) in PHASE_EFFECTS.items()] + [
+        ('BT22-085',RINA_JAMMING_EFFECT,'main_text',RINA_JAMMING_LINE,resolve_rina_attack_jamming)]
     bindings = []
     for number,effect,field,line,handler in specs:
         if number not in cards:

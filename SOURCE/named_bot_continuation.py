@@ -47,9 +47,10 @@ class _BoundAdapter:
 
 
 def _plain_block_options(runtime, seat):
-    """Do not turn a missing Blocker-choice implementation into a decline."""
+    """Offer the encountered live Blocker and an explicit legal decline."""
     from effect_grants import active_keyword, active_restriction
     from printed_triggers import effect_headers
+    blockers = []
     for key, stack in runtime.state.battle[seat].items():
         if (runtime.context.card(seat, stack.cards[-1].card_number).kind != 'Digimon'
                 or stack.suspended or stack.statuses.get('cannot_suspend', False)
@@ -59,9 +60,13 @@ def _plain_block_options(runtime, seat):
                       for index, card in enumerate(stack.cards)
                       for line in runtime.context.card(seat, card.card_number).effect_text(
                           'main_text' if index == len(stack.cards) - 1 else 'inherited_text').splitlines())
-        if printed or active_keyword(runtime, seat, key, 'Blocker'):
+        granted_or_known = active_keyword(runtime, seat, key, 'Blocker')
+        if printed and not granted_or_known:
             raise RuntimeHalt('NAMED_BOT_BLOCK_CHOICES_UNIMPLEMENTED: ' + key)
-    return [{'card': None, 'status': 'NO_ELIGIBLE_BLOCKER'}]
+        if granted_or_known:
+            blockers.append({'card':key, 'status':'READY_BLOCKER'})
+    return ([{'card': None, 'status': 'EXPLICIT_DECLINE'}, *blockers] if blockers
+            else [{'card': None, 'status': 'NO_ELIGIBLE_BLOCKER'}])
 
 
 def continue_with_named_bots(previous_record, root=ROOT, max_new_commands=12):

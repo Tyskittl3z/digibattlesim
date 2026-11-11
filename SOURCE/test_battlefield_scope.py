@@ -85,7 +85,7 @@ class BattlefieldScopeTests(unittest.TestCase):
                         stage(runtime, seat, [number])
                         self.assert_rejected_unchanged(runtime, 'BASIC_BOARD_TOP_UNSUPPORTED', action)
 
-    def test_combat_stacks_compose_known_fields_and_retain_unimplemented_keyword_guard(self):
+    def test_combat_stacks_compose_known_fields_including_inherited_jamming(self):
         from matchup_readiness import load_context_file
         from selected_mechanics import build_selected_registry
         context=load_context_file(ROOT/'ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json')
@@ -96,13 +96,8 @@ class BattlefieldScopeTests(unittest.TestCase):
             attacker=stage(runtime,'B',cards)
             before=self.snapshot(runtime)
             event={'stage':'DECLARE','seat':'B','attacker':attacker,'target':'PLAYER'}
-            if cards[0]=='EX13-019':
-                for event['stage'] in ('DECLARE','CONFIRM'):
-                    with self.assertRaisesRegex(RuntimeHalt,'ATTACK_KEYWORD_UNSUPPORTED: EX13-019 inherited_text'):
-                        assert_basic_board_scope(runtime,'attack_plain',ROOT,event=event)
-            else:
-                for event['stage'] in ('DECLARE','CONFIRM'):
-                    assert_basic_board_scope(runtime,'attack_plain',ROOT,event=event)
+            for event['stage'] in ('DECLARE','CONFIRM'):
+                assert_basic_board_scope(runtime,'attack_plain',ROOT,event=event)
             self.assertEqual(self.snapshot(runtime),before)
 
     def test_persistent_fields_distinguish_self_adjectives_from_global_combat_targets(self):

@@ -227,15 +227,21 @@ class EncounteredAeroAttackTests(unittest.TestCase):
     def test_defender_with_available_granted_blocker_cannot_be_silently_omitted(self):
         from effect_grants import grant_effect
         from effect_scheduler import pending_options,resolve_pending
+        from named_bot_continuation import _plain_block_options
         r,attacker=self.actual()
         grant_effect(r,'A','A:EX13-022#1',{'keywords':['Blocker']},'A:BT11-112#2')
         declare_attack(r,'B',attacker,'PLAYER',ROOT)
         pending=pending_options(r,'B')[0]
         resolve_pending(r,'B',pending['id'],None)
-        choose_counter(r,'A',None,ROOT);before=r.snapshot()['state']
-        with self.assertRaisesRegex(RuntimeHalt,'BLOCKER_CHOICE_UNIMPLEMENTED.*A:EX13-022#1'):
-            choose_blocker(r,'A',None,ROOT)
-        self.assertEqual(r.snapshot()['state'],before)
+        choose_counter(r,'A',None,ROOT)
+        options=_plain_block_options(r,'A')
+        self.assertIn({'card':None,'status':'EXPLICIT_DECLINE'},options)
+        self.assertIn({'card':'A:EX13-022#1','status':'READY_BLOCKER'},options)
+        result=choose_blocker(r,'A','A:EX13-022#1',ROOT)
+        self.assertEqual(result['blocker'],'A:EX13-022#1')
+        self.assertTrue(r.state.attack['block_used'])
+        self.assertEqual(r.state.attack['target'],'A:EX13-022#1')
+        r.verify()
 
     def test_free_rina_play_after_declaration_does_not_retrotrigger_suspension(self):
         from effect_scheduler import pending_options,resolve_pending

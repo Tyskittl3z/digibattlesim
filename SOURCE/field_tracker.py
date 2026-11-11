@@ -86,7 +86,7 @@ class FieldTracker:
             if isinstance(effect, dict):
                 if set(effect) == {'dp_bonus'}:
                     valid = type(effect['dp_bonus']) is int and effect['dp_bonus'] > 0
-                for key, allowed in (('keywords', ('Blocker', 'Evade')),
+                for key, allowed in (('keywords', ('Blocker', 'Evade', 'Jamming')),
                                      ('restrictions', ('cannot_suspend',))):
                     if set(effect) == {key}:
                         values = effect[key]
@@ -99,7 +99,10 @@ class FieldTracker:
             if (not isinstance(expiry, dict) or set(expiry) != {'turn', 'controller', 'boundary'}
                     or type(expiry['turn']) is not int
                     or expiry['turn'] not in (record['created_turn'], record['created_turn'] + 1)
-                    or expiry['controller'] != ('B' if record['controller'] == 'A' else 'A')
+                    or expiry['controller'] not in (record['controller'],
+                        'B' if record['controller'] == 'A' else 'A')
+                    or (expiry['controller'] == record['controller']
+                        and expiry['turn'] != record['created_turn'])
                     or expiry['boundary'] != 'turn_end'):
                 raise RuntimeHalt('TRACKER_PUBLIC_GRANT_EXPIRY_INVALID')
 

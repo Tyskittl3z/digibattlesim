@@ -35,6 +35,18 @@ _STATE_FIELDS = frozenset(('zones', 'battle', 'breeding', 'active', 'memory', 't
 _STACK_FIELDS = frozenset(('cards', 'suspended', 'statuses', 'instance_id', 'played_turn','ready_since_turn'))
 _CARD_FIELDS = frozenset(('owner', 'card_number', 'index'))
 _ATTACK_STAGES = frozenset(('DECLARE','COUNTER','BLOCK','CONFIRM','END'))
+_AERO_KEYWORD_LINE = '＜Blocker＞ ＜Evade＞'
+_AERO_PROTECTION_LINE = ("[All Turns] Your opponent's effects can't reduce this unsuspended "
+                         "Digimon's DP, return its stacked cards to the hand or deck, or trash them.")
+_EX13_019_INHERITED_JAMMING = "＜Jamming＞ (This Digimon can't be deleted in battles against Security Digimon.)"
+_EX13_019_MAIN_JAMMING = '＜Jamming＞'
+
+
+def _exact_aero_main(definition):
+    from selected_mechanics import ORIENTATION_LINE
+    from ex13_ulforce_effects import RETURN_LINE
+    return definition.effect_text('main_text').splitlines() == [
+        _AERO_KEYWORD_LINE, ORIENTATION_LINE, RETURN_LINE, _AERO_PROTECTION_LINE]
 
 
 def _assert_selected_context(runtime, root):
@@ -99,9 +111,13 @@ def _attack_source_dependencies(runtime, owner, anchor, source, field, event):
                                   +' '+field+' source='+source.key)
             if stage=='DECLARE' and 'When Attacking' in headers and owner==actor and anchor==attacker:
                 from tamer_play_effects import PLAY_EFFECT,PLAY_LINE
-                if source.card_number!='EX13-022' or field!='main_text' or line!=PLAY_LINE:
+                from selected_mechanics import ORIENTATION_EFFECT,ORIENTATION_LINE
+                if source.card_number=='EX13-022' and field=='main_text' and line==PLAY_LINE:
+                    runtime.registry.lookup(source.card_number,PLAY_EFFECT,field)
+                elif source.card_number=='EX13-023' and field=='main_text' and line==ORIENTATION_LINE:
+                    runtime.registry.lookup(source.card_number,ORIENTATION_EFFECT,field)
+                else:
                     raise RuntimeHalt('ATTACK_TRIGGER_UNSUPPORTED: '+source.card_number+' '+field+' source='+source.key)
-                runtime.registry.lookup(source.card_number,PLAY_EFFECT,field)
             elif stage=='END' and 'End of Attack' in headers and owner==actor and anchor==attacker:
                 raise RuntimeHalt('ATTACK_END_TRIGGER_UNSUPPORTED: '+source.card_number+' '+field+' source='+source.key)
             continue
@@ -128,13 +144,34 @@ def _attack_source_dependencies(runtime, owner, anchor, source, field, event):
                 continue
             if 'blue' in clause.lower() and 'Blue' not in attacker_definition.to_dict()['colors']:
                 continue
+            from selected_mechanics import RINA_JAMMING_EFFECT,RINA_JAMMING_LINE
+            if (source.card_number=='BT22-085' and field=='main_text' and line==RINA_JAMMING_LINE
+                    and owner==actor and 'Veedramon' in attacker_definition.name):
+                runtime.registry.lookup(source.card_number,RINA_JAMMING_EFFECT,field)
+                continue
             raise RuntimeHalt('ATTACK_OBSERVER_UNIMPLEMENTED: '+source.card_number+' '+field+' source='+source.key)
         if stage in ('DECLARE','CONFIRM') and participant and not headers and line.strip():
+            if (source.card_number=='EX13-023' and field=='main_text'
+                    and line==_AERO_KEYWORD_LINE and _exact_aero_main(definition)):
+                continue
+            if (source.card_number=='EX13-019' and field=='inherited_text'
+                    and line==_EX13_019_INHERITED_JAMMING
+                    and definition.effect_text(field)==line):
+                continue
+            if (source.card_number=='EX13-019' and field=='main_text'
+                    and line==_EX13_019_MAIN_JAMMING
+                    and definition.effect_text(field).splitlines()[:1]==[line]):
+                continue
             # A keyword can add declaration timing (for example Raid). Do not
             # suspend/open Counter before unsupported participant text is known.
             reason='ATTACK_KEYWORD_UNSUPPORTED' if '＜' in line else 'ATTACK_PRINTED_FIELD_UNIMPLEMENTED'
             raise RuntimeHalt(reason+': '+source.card_number+' '+field+' source='+source.key)
         if stage=='CONFIRM' and headers and re.search(r'\b(?:DP|attack|Digimon|security)\b',body,re.I):
+            if (source.card_number=='EX13-023' and field=='main_text'
+                    and line==_AERO_PROTECTION_LINE and _exact_aero_main(definition)):
+                # A plain attack is not an opponent effect that reduces DP or
+                # returns/trashes sources. Counter effects remain unsupported.
+                continue
             if participant or not _persistent_field_is_self_only(body):
                 raise RuntimeHalt('ATTACK_PERSISTENT_EFFECT_UNSUPPORTED: '+source.card_number+' '+field+' source='+source.key)
 

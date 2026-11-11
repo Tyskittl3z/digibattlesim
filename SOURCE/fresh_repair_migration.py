@@ -19,6 +19,8 @@ SCHEMA = 'fresh-repair-lineage-v1'
 _SOURCE_ONLY_WORKER = False
 _LINEAGE_RUNNER = '395d0822e362ad5ee856cb01c3632c33fe90e5b4769b55da337f4ed8128f2344'
 _BOOTSTRAP_RUNNER = 'dd5cd17e718097c69e391c09e9b9d9c7c62b8021cc261b696f57543320889718'
+_TRACKER_EXTENSION_BASE = 'fc3fcdcc639b5551729f8d752131661a468028ffe3de66b8345e18151e292a4e'
+_BLOCKER_EXTENSION_BASE = 'a9cfc58ba2499d8aed6438dfc9f3d3cddb12378f41927429e39add20a34b42dc'
 # Explicit engine surface. Context, policies, schedule, judge, scorer, tracker and
 # evidence/freeze tooling are intentionally outside this list.
 _ENGINE = frozenset(('context_runtime.py', 'effect_scheduler.py', 'match_preparation.py',
@@ -27,10 +29,11 @@ _ENGINE = frozenset(('context_runtime.py', 'effect_scheduler.py', 'match_prepara
     'attack_flow.py', 'printed_triggers.py', 'on_play_effects.py', 'effect_grants.py',
     'option_actions.py', 'aero_effects.py', 'battle_evolution.py', 'basic_event_dependencies.py',
     'tamer_play_effects.py', 'security_tamer.py', 'rina_unsuspend_effects.py',
-    'ex13_ulforce_effects.py', 'rina_reactivation.py', 'return_effects.py'))
+    'ex13_ulforce_effects.py', 'rina_reactivation.py', 'return_effects.py',
+    'field_tracker.py'))
 _IDENTITY = ('schema', 'index', 'seed', 'first', 'campaign_id', 'context_id', 'context_file',
     'context_file_sha256', 'schedule', 'criteria', 'learning_state_id', 'learning_state_before',
-    'learning_state_after', 'pilots', 'policy_rng_initial', 'tracker', 'certification',
+    'learning_state_after', 'pilots', 'policy_rng_initial', 'certification',
     'accepted_fact_finding_credit', 'final_evaluation_credit')
 
 
@@ -63,6 +66,8 @@ def _judge(value):
     result.pop('receipt_sha256', None)
     if isinstance(result.get('binding'), dict):
         result['binding'].pop('handler_module_sha256', None)
+    if isinstance(result.get('predecessor_binding'), dict):
+        result['predecessor_binding'].pop('tracker_id', None)
     return result
 
 
@@ -135,7 +140,20 @@ def _differences(before, after, approved, *, bootstrap_sources=None):
     if bootstrap and bootstrap_sources is not None:
         for name in ('fresh_learning_campaign.py', 'fresh_repair_migration.py'):
             _same(after.get(name), bootstrap_sources[name], 'BOOTSTRAP_SOURCE')
+    # One reviewed tracker-schema extension may update this migration tool.
+    # Subsequent infrastructure edits remain protected; exact older command,
+    # policy, judge, color and Bot C evidence must still replay unchanged.
+    tracker_extension = (before.get('fresh_repair_migration.py') == _TRACKER_EXTENSION_BASE
+                         and 'field_tracker.py' in actual
+                         and 'fresh_repair_migration.py' in actual)
+    blocker_extension = (before.get('fresh_repair_migration.py') == _BLOCKER_EXTENSION_BASE
+                         and 'named_bot_continuation.py' in actual
+                         and 'fresh_repair_migration.py' in actual)
     allowed = _ENGINE | ({'fresh_learning_campaign.py', 'fresh_repair_migration.py'} if bootstrap else set())
+    if tracker_extension:
+        allowed |= {'fresh_repair_migration.py'}
+    if blocker_extension:
+        allowed |= {'named_bot_continuation.py', 'fresh_repair_migration.py'}
     if set(actual) - allowed or any(before.get(k) is None or after.get(k) is None
                                     for k in actual if k in _ENGINE):
         raise RuntimeHalt('REPAIR_PROTECTED_SOURCE_CHANGE')
@@ -187,6 +205,16 @@ def _relationship(record, line):
     _same(count, line['successful_prefix_count'], 'PREFIX_COUNT')
     for key in _IDENTITY:
         _same(parent.get(key), record.get(key), 'IDENTITY_' + key.upper())
+    if parent['tracker'] == record['tracker']:
+        _same(line.get('original_tracker'), None, 'UNCHANGED_TRACKER_LINEAGE')
+    else:
+        _same(line.get('original_tracker'), parent['tracker'], 'ORIGINAL_TRACKER')
+        _same(line.get('repaired_tracker'), record['tracker'], 'REPAIRED_TRACKER')
+        _same({k:v for k,v in parent['tracker'].items() if k not in ('source_sha256','tracker_id')},
+              {k:v for k,v in record['tracker'].items() if k not in ('source_sha256','tracker_id')},
+              'TRACKER_CONTRACT')
+        if 'field_tracker.py' not in line['approved_changes']:
+            raise RuntimeHalt('REPAIR_TRACKER_SOURCE_UNAPPROVED')
     _same(_snapshot(parent['initial']), _snapshot(record['initial']), 'INITIAL')
     if len(record['commands']) < count:
         raise RuntimeHalt('REPAIR_SHORT_PREFIX')
@@ -417,7 +445,7 @@ def migrate_repaired_game(record, *, root, original_source_root, approved_change
         tracker = FieldTracker(context)
         tracker.start(initial)
         migrated = copy.deepcopy(parent)
-        migrated.update({'sources': after, 'initial': initial})
+        migrated.update({'sources': after, 'initial': initial, 'tracker': tracker.manifest()})
         commands = []
         for saved in parent['commands'][:count]:
             current = copy.deepcopy(saved)
@@ -467,6 +495,8 @@ def migrate_repaired_game(record, *, root, original_source_root, approved_change
             'engine_rng_sha256': digest(parent['final']['rng_state']), 'policy_rng_sha256': digest(parent['policy_rng_final']),
             'certification': 'EXPERIMENTAL_NOT_INDEPENDENTLY_CERTIFIED',
             'accepted_fact_finding_credit': 0, 'final_evaluation_credit': 0}
+        if parent['tracker'] != migrated['tracker']:
+            line.update({'original_tracker':parent['tracker'], 'repaired_tracker':migrated['tracker']})
         migrated['repair_lineage'] = {**line, 'lineage_sha256': digest(line)}
         migrated['record_sha256'] = digest({k: v for k, v in migrated.items() if k != 'record_sha256'})
         runner.replay_game(migrated, root)

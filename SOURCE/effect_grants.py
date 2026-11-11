@@ -15,7 +15,7 @@ from effect_scheduler import source_stack
 
 
 GRANT_STATUS = 'effect_grants'
-_KEYWORDS = frozenset(('Blocker', 'Evade'))
+_KEYWORDS = frozenset(('Blocker', 'Evade', 'Jamming'))
 _RESTRICTIONS = frozenset(('cannot_suspend',))
 _FIELDS = frozenset(('controller', 'source', 'source_instance', 'source_field',
     'source_kind', 'source_definition_sha256', 'source_text_sha256', 'target',
@@ -90,9 +90,10 @@ def validate_grants(runtime, target_owner, target_key):
         _effect(record['effect'])
         expiry = record['expires']
         if (type(expiry) is not dict or set(expiry) != {'turn', 'controller', 'boundary'}
-                or expiry['controller'] != ('B' if controller == 'A' else 'A')
+                or expiry['controller'] not in (controller, 'B' if controller == 'A' else 'A')
                 or expiry['boundary'] != 'turn_end' or type(expiry['turn']) is not int
-                or expiry['turn'] not in (record['created_turn'], record['created_turn'] + 1)):
+                or expiry['turn'] not in (record['created_turn'], record['created_turn'] + 1)
+                or (expiry['controller'] == controller and expiry['turn'] != record['created_turn'])):
             raise RuntimeHalt('GRANT_SCHEMA_INVALID: ' + target_key)
     return copy.deepcopy(records)
 
@@ -106,7 +107,7 @@ def grant_effect(runtime, controller, target_key, effect, source_key,
     """
     if runtime.halted or runtime.state.terminal:
         raise RuntimeHalt('GRANT_AFTER_HALT_OR_TERMINAL')
-    if duration != 'end_of_opponent_turn':
+    if duration not in ('end_of_opponent_turn','end_of_controller_turn'):
         raise RuntimeHalt('GRANT_DURATION_UNSUPPORTED: ' + str(duration))
     effect = _effect(effect)
     target_owner = controller if target_owner is None else target_owner
@@ -131,8 +132,10 @@ def grant_effect(runtime, controller, target_key, effect, source_key,
         'source_text_sha256': hashlib.sha256(definition.effect_text(source_field).encode()).hexdigest(),
         'target': target_key, 'target_owner': target_owner, 'target_instance': target_entity.instance_id,
         'effect': effect, 'created_turn': runtime.state.turn,
-        'expires': {'turn': runtime.state.turn + (runtime.state.active != opponent),
-                    'controller': opponent, 'boundary': 'turn_end'}}
+        'expires': {'turn': runtime.state.turn if duration=='end_of_controller_turn'
+                    else runtime.state.turn + (runtime.state.active != opponent),
+                    'controller': controller if duration=='end_of_controller_turn' else opponent,
+                    'boundary': 'turn_end'}}
     target_entity.statuses.setdefault(GRANT_STATUS, []).append(record)
     return copy.deepcopy(record)
 
@@ -146,8 +149,28 @@ def _active(runtime, controller, target_key):
 
 def active_keyword(runtime, controller, target_key, keyword):
     """Whether an active applied grant gives this entity the named keyword."""
-    return any(keyword in record['effect'].get('keywords', [])
-               for record in _active(runtime, controller, target_key))
+    granted = any(keyword in record['effect'].get('keywords', [])
+                  for record in _active(runtime, controller, target_key))
+    if granted:
+        return True
+    # The encountered EX13-023 prints both keywords in one exact main-text
+    # line. They remain active on that Digimon even without an applied grant.
+    stack = _target(runtime, controller, target_key)
+    top = stack.cards[-1]
+    if keyword == 'Jamming':
+        inherited = '＜Jamming＞ (This Digimon can\'t be deleted in battles against Security Digimon.)'
+        if any(card.card_number == 'EX13-019' and runtime.context.card(
+                controller, card.card_number).effect_text('inherited_text') == inherited
+               for card in stack.cards[:-1]):
+            return True
+        if (top.card_number == 'EX13-019'
+                and runtime.context.card(controller, top.card_number).effect_text('main_text') ==
+                ('＜Jamming＞\n[When Attacking] [Once Per Turn] You may play 1 Tamer card '
+                 'with [Veedramon] in its text from your hand with the cost reduced by 2.')):
+            return True
+    return (top.card_number == 'EX13-023' and keyword in ('Blocker', 'Evade')
+            and '＜Blocker＞ ＜Evade＞' in runtime.context.card(
+                controller, top.card_number).effect_text('main_text').splitlines())
 
 
 def active_dp_bonus(runtime, controller, target_key):

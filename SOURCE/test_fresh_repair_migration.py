@@ -133,7 +133,7 @@ print(json.dumps(result))
 
     def test_approved_protected_policy_changes_are_rejected(self):
         for name in ('interaction_learning.py', 'named_player_bots.py', 'interaction_scoring.py',
-                     'judge_ledger.py', 'field_tracker.py', 'match_context.py', 'imported_attempts.py'):
+                     'judge_ledger.py', 'match_context.py', 'imported_attempts.py'):
             path = self.new / 'SOURCE' / name
             original = path.read_bytes()
             path.write_bytes(original + b'\n# forbidden fixture change\n')

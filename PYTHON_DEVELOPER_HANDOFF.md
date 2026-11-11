@@ -1,5 +1,26 @@
 # Digimon simulator: Python developer handoff
 
+## Live Game 0000 checkpoint — 2026-11-11
+
+The first fresh game is active with locked seed 4851742998504393566, A first,
+aggressive Bot A, defensive Bot B, and Bot C. `ARTIFACTS/fresh-game-0000-2026-11-11/`
+contains the lock, cumulative gzipped action/state/RNG/decision/judge/tracker
+segments, exact replay receipts and the bounded continuation scripts. Latest
+segment 0019 has 156 accepted commands and a HALT at A's attack confirmation
+against B's Blocker; the inherited Jamming fix has a focused passing test and
+still needs migration/retry. Earlier engine gaps were repaired via exact-prefix source
+migrations; inspect each embedded `repair_lineage` before changing an action.
+The separate `game-0000-audit-failure-0006.json.gz` records a rejected Bot C
+status audit and has no training/rating credit. The historical 164-command
+mixed-policy record remains excluded. No completed fresh game or cohort credit
+exists yet. Continue this one game only; 60 and 10,000 matches remain off.
+
+The repair surface now includes Bot C's narrowly reviewed Jamming/own-turn
+grant schema. A one-time hash-gated migration-tool extension rebounded Bot C's
+source identity while proving all prior observations, choices, state and
+outcomes unchanged. Exact replay verifies the current checkpoint, but these
+checks remain experimental software evidence, not independent rules approval.
+
 ## Engine repair migration checkpoint — 2026-11-10
 
 The earlier same-build-only limitation now has an explicit verified engine-repair

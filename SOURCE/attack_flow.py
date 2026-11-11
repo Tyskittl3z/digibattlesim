@@ -82,16 +82,25 @@ def _declare(r,seat,c,root):
     from tamer_play_effects import PLAY_EFFECT,PLAY_LINE,tamer_play_usage
     from effect_scheduler import queue_effects
     top=stack.cards[-1]
-    from selected_mechanics import _collect_orientation_reactions
+    from selected_mechanics import _collect_orientation_reactions,collect_rina_attack_jamming
     effects=_collect_orientation_reactions(r,seat,stack,False)
+    effects.extend(collect_rina_attack_jamming(r,seat,c['attacker']))
     if trigger_lines(r.context.card(seat,top.card_number).effect_text('main_text'),'When Attacking'):
-        # Scope above proved this exact supported line; usage is shared with
-        # the same printed effect's On Play and When Digivolving activations.
-        if top.card_number!='EX13-022' or PLAY_LINE not in r.context.card(seat,top.card_number).effect_text('main_text').splitlines():
+        # Scope above proved the exact printed line. Shared once-per-turn
+        # usage covers the same effect's other printed activation windows.
+        if top.card_number=='EX13-022' and PLAY_LINE in r.context.card(seat,top.card_number).effect_text('main_text').splitlines():
+            effects.append({'seat':seat,'source':top.key,'effect_id':PLAY_EFFECT,'field':'main_text',
+                'usage':list(tamer_play_usage(r,seat,top.key,PLAY_EFFECT)),
+                'trigger':{'kind':'When Attacking','attacker':top.key,'target':target}})
+        elif top.card_number=='EX13-023':
+            from selected_mechanics import ORIENTATION_EFFECT,ORIENTATION_LINE
+            if ORIENTATION_LINE not in r.context.card(seat,top.card_number).effect_text('main_text').splitlines():
+                raise RuntimeHalt('ATTACK_TRIGGER_UNSUPPORTED: '+top.card_number+' source='+top.key)
+            effects.append({'seat':seat,'source':top.key,'effect_id':ORIENTATION_EFFECT,'field':'main_text',
+                'usage':[s.turn,seat,top.key,ORIENTATION_EFFECT],
+                'trigger':{'kind':'When Attacking','attacker':top.key,'target':target}})
+        else:
             raise RuntimeHalt('ATTACK_TRIGGER_UNSUPPORTED: '+top.card_number+' source='+top.key)
-        effects.append({'seat':seat,'source':top.key,'effect_id':PLAY_EFFECT,'field':'main_text',
-            'usage':list(tamer_play_usage(r,seat,top.key,PLAY_EFFECT)),
-            'trigger':{'kind':'When Attacking','attacker':top.key,'target':target}})
     before=len(s.pending);queue_effects(r,effects)
     result={'attacker':c['attacker'],'target':target,'window':'COUNTER','full_match_credit':0}
     if len(s.pending)>before:result['triggered_effects']=[e['effect_id'] for e in s.pending[before:]]
@@ -137,20 +146,23 @@ def choose_counter(runtime,seat,card,root):
 
 def _block(r,seat,c,root):
     a=_window(r,seat,'BLOCK',True);_scope(r,root,'BLOCK')
-    if c['card'] is not None:raise RuntimeHalt('BLOCKER_NOT_LEGAL_IN_PLAIN_SCOPE')
-    from printed_triggers import effect_headers
     from effect_grants import active_keyword,active_restriction
-    for key,stack in r.state.battle[seat].items():
-        if (r.context.card(seat,stack.cards[-1].card_number).kind!='Digimon' or stack.suspended
-                or stack.statuses.get('cannot_suspend',False)
-                or active_restriction(r,seat,key,'cannot_suspend')):
-            continue
-        printed=any(not effect_headers(line) and '＜Blocker＞' in line
-            for index,source in enumerate(stack.cards)
-            for line in r.context.card(seat,source.card_number).effect_text(
-                'main_text' if index==len(stack.cards)-1 else 'inherited_text').splitlines())
-        if printed or active_keyword(r,seat,key,'Blocker'):
-            raise RuntimeHalt('BLOCKER_CHOICE_UNIMPLEMENTED: '+key)
+    if c['card'] is not None:
+        key = c['card']
+        stack = r.state.battle[seat].get(key)
+        if (stack is None or r.context.card(seat,stack.cards[-1].card_number).kind!='Digimon'
+                or stack.suspended or stack.statuses.get('cannot_suspend',False)
+                or active_restriction(r,seat,key,'cannot_suspend')
+                or not active_keyword(r,seat,key,'Blocker')):
+            raise RuntimeHalt('BLOCKER_NOT_LEGAL: '+str(key))
+        from selected_mechanics import _set_orientation
+        changed = _set_orientation(r,seat,stack,True)
+        if not changed['changed']:
+            raise RuntimeHalt('BLOCKER_SUSPENSION_FAILED: '+key)
+        a['target']=key;a['target_instance']=_instance(r,stack);a['block_used']=True
+        a['window']='CONFIRM'
+        return {'choice':'BLOCK_WITH_DIGIMON','blocker':key,'window':'CONFIRM',
+                'target':key,'suspended':True}
     a['window']='CONFIRM'
     return {'choice':'EXPLICIT_NO_BLOCK','window':'CONFIRM'}
 
@@ -175,11 +187,11 @@ def _delete(r,seat,key):
 
 
 def _dp(r,seat,stack):
+    printed = r.context.card(seat,stack.cards[-1].card_number).to_dict()['dp']
     if 'effect_grants' in stack.statuses:
         from effect_grants import active_dp_bonus
-        if active_dp_bonus(r,seat,stack.cards[-1].key):
-            raise RuntimeHalt('BATTLE_DP_GRANT_UNSUPPORTED: '+stack.cards[-1].key)
-    return r.context.card(seat,stack.cards[-1].card_number).to_dict()['dp']
+        return printed + active_dp_bonus(r,seat,stack.cards[-1].key)
+    return printed
 
 
 def _confirm(r,seat,c,root):
@@ -222,6 +234,9 @@ def _confirm(r,seat,c,root):
     # The checked card is temporarily in no area (13-1-6). No unsupported
     # processing occurs in this atomic slice; it is conserved again on commit.
     losses=battle_losers(_dp(r,seat,attacker),definition.to_dict()['dp'],security=True)
+    from effect_grants import active_keyword
+    if 'ATTACKER' in losses and active_keyword(r,seat,a['attacker'],'Jamming'):
+        losses.remove('ATTACKER')
     from battlefield_scope import assert_combat_consequences_scope
     assert_combat_consequences_scope(r,[(seat,a['attacker'])] if 'ATTACKER' in losses else [],
                                      security_owner=other)
