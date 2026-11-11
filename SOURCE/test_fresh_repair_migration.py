@@ -48,6 +48,11 @@ class RepairMigrationTests(unittest.TestCase):
                     target = cls.old / member.name
                     target.parent.mkdir(parents=True, exist_ok=True)
                     target.write_bytes(archive.extractfile(member).read())
+        # This fixture isolates an old-only engine gap. These subsequently
+        # extended observer/choice adapters are protected by migration, so
+        # both private builds must use the current identical source bytes.
+        for name in ('field_tracker.py','imported_attempts.py','named_bot_continuation.py'):
+            shutil.copy2(ROOT / 'SOURCE' / name, cls.old / 'SOURCE' / name)
         for asset in (ROOT / 'SOURCE').iterdir():
             if asset.is_file() and asset.suffix != '.py':
                 shutil.copy2(asset, cls.old / 'SOURCE' / asset.name)
