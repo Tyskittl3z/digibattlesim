@@ -136,7 +136,7 @@ class ReturnDependencyTests(unittest.TestCase):
         runtime, target = self.fixture()
         second = stage(runtime, 'A', ['EX13-017', 'BT22-023'])
         before = runtime.snapshot()
-        with self.assertRaisesRegex(RuntimeHalt, 'RETURN_LEAVE_DEPENDENCY_UNIMPLEMENTED'):
+        with self.assertRaisesRegex(RuntimeHalt, 'RETURN_REPLACEMENT_CHOICE_REQUIRED'):
             return_to_deck_bottom(runtime, 'B', 'A', [target, second], [target, second])
         self.assertEqual(runtime.snapshot(), before)
 

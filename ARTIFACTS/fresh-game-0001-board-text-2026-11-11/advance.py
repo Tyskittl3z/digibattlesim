@@ -52,10 +52,20 @@ def main():
             raise RuntimeError('ORIGINAL_SOURCE_MAP_MISMATCH')
         changes = {key: {'before': old.get(key), 'after': new.get(key)}
                    for key in sorted(old.keys() | new.keys()) if old.get(key) != new.get(key)}
+        if 'ULFORCE_RETURN_LEAVE_DEPENDENCY_UNIMPLEMENTED: EX13-017' in (previous['halt_reason'] or ''):
+            repair = 'EX13-017 inherited return replacement'
+            note = ('The saved EX13-023 return encountered EX13-017 inherited protection. '
+                'The defender now receives an explicit printed once-per-turn suspend choice. '
+                'No earlier seed, selection, engine state, or Bot C observation changes.')
+        else:
+            repair = 'LM-056 Security search'
+            note = ('The saved turn-five LM-056 Security check halted. The printed Security search '
+                'now reveals two, offers the defender an eligible card choice, bottoms the rest, '
+                'and places the Option. Earlier game choices and state are replayed exactly.')
         migration._SOURCE_ONLY_WORKER = True
         migrated = migration.migrate_repaired_game(previous, root=ROOT,
             original_source_root=old_root, approved_changes=changes,
-            repair_note='The saved turn-five LM-056 Security check halted. The printed Security search now reveals two, offers the defender an eligible card choice, bottoms the rest, and places the Option. Earlier game choices and state are replayed exactly.')
+            repair_note=note)
         number = len(paths)
         path = OUT / f'segment-{number:04d}.json.gz'
         with path.open('xb') as handle:
@@ -64,7 +74,7 @@ def main():
         replay = replay_game(migrated, ROOT)
         summary = {'segment': number, 'record_file': path.name,
             'record_sha256': migrated['record_sha256'], 'status': migrated['status'],
-            'commands': len(migrated['commands']), 'repair': 'LM-056 Security search',
+            'commands': len(migrated['commands']), 'repair': repair,
             'changed_source_files': sorted(changes), 'exact_replay': replay['exact_match'],
             'accepted_fact_finding_credit': 0}
         (OUT / f'summary-{number:04d}.json').write_text(json.dumps(summary, indent=2, sort_keys=True) + '\n')

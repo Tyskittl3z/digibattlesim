@@ -4,9 +4,10 @@ import hashlib
 from pathlib import Path
 
 from context_runtime import MechanicBinding,RuntimeHalt
-from effect_scheduler import pending_options
+from effect_scheduler import pending_options, queue_effects
 from match_context import require
-from return_effects import return_to_deck_bottom
+from return_effects import (REPLACEMENT_EFFECT, inherited_return_replacement,
+                            return_to_deck_bottom)
 
 
 RETURN_EFFECT='EX13-023.return_fewest'
@@ -70,6 +71,19 @@ def resolve_ulforce_return(runtime,seat,source_key,choice):
             or len(order)!=len(targets) or len(set(order))!=len(order)
             or set(order)!={key for key,_ in targets}):
         raise RuntimeHalt('ULFORCE_RETURN_ORDER_INVALID')
+    if len(targets) == 1:
+        target_key, stack = targets[0]
+        replacement = inherited_return_replacement(runtime, seat, owner, target_key)
+        if replacement is not None:
+            source, usage = replacement
+            queue_effects(runtime, [{'seat': owner, 'source': source,
+                'effect_id': REPLACEMENT_EFFECT, 'field': 'inherited_text',
+                'trigger': {'kind': 'OPPONENT_EFFECT_RETURN', 'actor': seat,
+                    'target': target_key, 'target_instance': stack.instance_id,
+                    'source_effect': RETURN_EFFECT}}])
+            return {'processing': 'RETURN_REPLACEMENT_PENDING', 'target': target_key,
+                'replacement_source': source, 'returned': [], 'trashed_sources': [],
+                'full_match_credit': 0}
     result=return_to_deck_bottom(runtime,seat,owner,[key for key,_ in targets],order,
                                  halt_prefix='ULFORCE_RETURN')
     return {'processing':'RETURNED_FEWEST_SOURCE_DIGIMON' if targets else 'NO_ELIGIBLE_TARGET',

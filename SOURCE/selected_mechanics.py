@@ -141,6 +141,9 @@ def resolve_bt12_return(runtime, seat, source_key, choice):
 
 def selected_pending_choices(runtime, seat, selected):
     """Choice grammar for encountered registered mechanics outside older packs."""
+    from return_effects import REPLACEMENT_EFFECT, return_replacement_choices
+    if selected['effect_id'] == REPLACEMENT_EFFECT:
+        return return_replacement_choices(runtime, seat, selected['source'])
     if selected['effect_id'] == BT12_UNSUSPEND_EFFECT:
         return bt12_unsuspend_choices(runtime, seat, selected['source'])
     if selected['effect_id'] == BT12_RETURN_EFFECT:
@@ -483,6 +486,8 @@ def build_selected_registry(context, root):
     bindings.extend(rina_unsuspend_bindings(context,root,rules))
     from ex13_ulforce_effects import ulforce_return_bindings
     bindings.extend(ulforce_return_bindings(context,root,rules))
+    from return_effects import inherited_return_replacement_bindings
+    bindings.extend(inherited_return_replacement_bindings(context,root,rules))
     from rina_reactivation import rina_reactivation_bindings
     bindings.extend(rina_reactivation_bindings(context,root,rules))
     return MechanicRegistry(tuple(bindings))
