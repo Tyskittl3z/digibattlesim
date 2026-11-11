@@ -1,5 +1,26 @@
 # Verified handoff status
 
+## Current corrected Bot A/B game — 2026-11-11
+
+Bot A and Bot B now use the same deterministic public-board, own-hand, printed-text
+policy. The prior Game 0000 report and learning model are pinned as history; if
+there is no prior history for a matchup, the policy starts at index 0 (game 1
+of 60). Neither seat constructs the old named aggressive/defensive prior or
+uses random exploration. The latest new game artifacts are in
+`ARTIFACTS/fresh-game-0001-board-text-2026-11-11/`.
+
+This new Game 0001 keeps seed 17795081213137388177 and first player B. The
+latest `segment-0007.json.gz` has 106 accepted, judged, Bot C observed commands
+and a saved command-107 halt. Exact replay passes. A checked LM-056 Security
+Option was repaired from its printed text: Bot A chose LM-034 from two revealed
+cards, bottomed P-104, and placed LM-056. Its engine and input-validator
+repairs have explicit source-only migration lineages. The next unresolved
+interaction is the opponent's EX13-017 inherited replacement during A's
+EX13-023 return effect. The attempted return did not move a card. No new
+learning-model commit has occurred for this unfinished game, and it earns no
+accepted fact-finding or final-evaluation credit. The 60- and 10,000-game
+cohorts remain off.
+
 ## Player-policy correction and Game 0001 stop — 2026-11-11
 
 The user clarified that player decisions must come from the current visible
