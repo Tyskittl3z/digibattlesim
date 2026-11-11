@@ -110,10 +110,12 @@ def _attack_source_dependencies(runtime, owner, anchor, source, field, event):
                 raise RuntimeHalt('ATTACK_PRINTED_FIELD_UNIMPLEMENTED: '+source.card_number
                                   +' '+field+' source='+source.key)
             if stage=='DECLARE' and 'When Attacking' in headers and owner==actor and anchor==attacker:
-                from tamer_play_effects import PLAY_EFFECT,PLAY_LINE
+                from tamer_play_effects import PLAY_EFFECT,PLAY_LINE,ATTACK_TAMER_EFFECT,ATTACK_TAMER_LINE
                 from selected_mechanics import ORIENTATION_EFFECT,ORIENTATION_LINE
                 if source.card_number=='EX13-022' and field=='main_text' and line==PLAY_LINE:
                     runtime.registry.lookup(source.card_number,PLAY_EFFECT,field)
+                elif source.card_number=='EX13-019' and field=='main_text' and line==ATTACK_TAMER_LINE:
+                    runtime.registry.lookup(source.card_number,ATTACK_TAMER_EFFECT,field)
                 elif source.card_number=='EX13-023' and field=='main_text' and line==ORIENTATION_LINE:
                     runtime.registry.lookup(source.card_number,ORIENTATION_EFFECT,field)
                 else:

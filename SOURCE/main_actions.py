@@ -16,7 +16,7 @@ from selected_contexts import require_selected_context
 PLAIN_MAIN_TEXT = {'EX1-013':'','ST7-05':'','BT9-011':''}
 
 
-def _play(runtime,seat,choice,root,*,within_effect=False,source_zone='hand'):
+def _play(runtime,seat,choice,root,*,within_effect=False,source_zone='hand',cost_override=None):
     state=runtime.state
     try:
         locked=require_selected_context(runtime.context,root)
@@ -57,7 +57,10 @@ def _play(runtime,seat,choice,root,*,within_effect=False,source_zone='hand'):
         event={'seat':seat,'card_number':card.number},within_effect=within_effect)
     for spec in specs:
         runtime.registry.lookup(card.number,spec[0],'main_text')
-    cost=0 if within_effect else card.to_dict()['play_cost']
+    if cost_override is not None and not within_effect:
+        raise RuntimeHalt('PLAY_COST_OVERRIDE_WINDOW_INVALID')
+    cost=(cost_override if cost_override is not None else 0 if within_effect
+          else card.to_dict()['play_cost'])
     if type(cost) is not int or cost<0 or cost>state.memory+10:
         raise RuntimeHalt('PLAY_COST_NOT_PAYABLE')
     state.memory-=cost
@@ -96,20 +99,25 @@ def play_tamer_from_security(runtime,seat,source_key,root):
 
 def play_tamer_from_effect(runtime,seat,hand_key,root):
     """Trusted EX13-022 resolution primitive, never a nested public command."""
-    from tamer_play_effects import PLAY_SPECS,tamer_play_choices
+    from tamer_play_effects import PLAY_SPECS,ATTACK_TAMER_EFFECT,tamer_play_choices
     activated=getattr(runtime,'_activated_effect',None)
     if (runtime.halted or runtime.state.terminal or not isinstance(activated,tuple)
-            or len(activated)!=5 or activated[0] not in {spec[0] for spec in PLAY_SPECS.values()} or activated[1]!=seat
+            or len(activated)!=5 or activated[0] not in ({spec[0] for spec in PLAY_SPECS.values()} | {ATTACK_TAMER_EFFECT}) or activated[1]!=seat
             or activated[3]!='main_text'
             or (runtime.state.phase!='SCENARIO' and activated[4] is None)):
         raise RuntimeHalt('EFFECT_PLAY_WINDOW_REQUIRED')
     source=runtime._source(seat,activated[2],'main_text')
-    if source.card_number not in PLAY_SPECS or PLAY_SPECS[source.card_number][0]!=activated[0]:
+    if not ((source.card_number in PLAY_SPECS and PLAY_SPECS[source.card_number][0]==activated[0])
+            or (source.card_number=='EX13-019' and activated[0]==ATTACK_TAMER_EFFECT)):
         raise RuntimeHalt('EFFECT_PLAY_WINDOW_REQUIRED')
     if hand_key is None or hand_key not in tamer_play_choices(runtime,seat,source.key,activated[0]):
         raise RuntimeHalt('EFFECT_PLAY_TARGET_INVALID')
     rules={**_rules(root),'locator':'Comprehensive rules v4.3: 3-4-3; 7-1-3; 15-4; 15-9-2-2; EX13-022 Q7264'}
-    return _play(runtime,seat,{'hand_key':hand_key,'rules':rules},root,within_effect=True)
+    cost_override = (max(0, runtime.context.card(seat, next(card.card_number
+                    for card in runtime.state.zones[seat]['hand'] if card.key == hand_key)).to_dict()['play_cost'] - 2)
+                     if activated[0] == ATTACK_TAMER_EFFECT else None)
+    return _play(runtime,seat,{'hand_key':hand_key,'rules':rules},root,
+                 within_effect=True,cost_override=cost_override)
 
 
 def play_blue_scramble_from_trash(runtime,seat,trash_key,root):

@@ -19,6 +19,9 @@ ULFORCE_PLAY_EFFECT = 'BT11-032.play_blue_tamer'
 ULFORCE_PLAY_LINE = '[When Digivolving] You may play 1 blue Tamer card from your hand without paying the cost.'
 ULFORCE_TAMER_EFFECT = 'BT11-032.blue_tamer_unsuspend'
 ULFORCE_TAMER_LINE = '[Your Turn] When you play a blue Tamer, unsuspend this Digimon.'
+ATTACK_TAMER_EFFECT = 'EX13-019.attack_play_tamer'
+ATTACK_TAMER_LINE = ('[When Attacking] [Once Per Turn] You may play 1 Tamer card with '
+                     '[Veedramon] in its text from your hand with the cost reduced by 2.')
 EGG_LINE = ('[Your Turn] [Once Per Turn] When any of your blue Tamers are played, this '
             'Digimon with [Veedramon] in its name may unsuspend.')
 PLAY_LINE = ('[On Play] [When Digivolving] [When Attacking] [Once Per Turn] You may play 1 '
@@ -29,8 +32,8 @@ PLAY_SPECS = {'EX13-022': (PLAY_EFFECT, PLAY_LINE),
               'BT22-022': (VEEDRAMON_PLAY_EFFECT, VEEDRAMON_PLAY_LINE),
               'BT11-032': (ULFORCE_PLAY_EFFECT,ULFORCE_PLAY_LINE)}
 PLAY_FILTERS = {PLAY_EFFECT:{'text':'Veedramon'},VEEDRAMON_PLAY_EFFECT:{'text':'Veedramon'},
-               ULFORCE_PLAY_EFFECT:{'colors':('Blue',)}}
-TAMER_CHOICE_EFFECTS = frozenset([spec[0] for spec in PLAY_SPECS.values()]+[OBSERVER_EFFECT,EGG_EFFECT,ULFORCE_TAMER_EFFECT,VEEMON_MEMORY_EFFECT])
+               ULFORCE_PLAY_EFFECT:{'colors':('Blue',)},ATTACK_TAMER_EFFECT:{'text':'Veedramon'}}
+TAMER_CHOICE_EFFECTS = frozenset([spec[0] for spec in PLAY_SPECS.values()]+[OBSERVER_EFFECT,EGG_EFFECT,ULFORCE_TAMER_EFFECT,VEEMON_MEMORY_EFFECT,ATTACK_TAMER_EFFECT])
 
 
 def play_observer_effect(source_number, field, line):
@@ -80,7 +83,8 @@ def _source_window(runtime, seat, source_key, effect_id):
     source = runtime._source(seat, source_key, field)
     expected_number = 'EX13-002' if effect_id == EGG_EFFECT else 'BT11-023' if effect_id == VEEMON_MEMORY_EFFECT else (
         'BT22-022' if effect_id == VEEDRAMON_PLAY_EFFECT else 'BT11-032'
-        if effect_id in (ULFORCE_PLAY_EFFECT,ULFORCE_TAMER_EFFECT) else 'EX13-022')
+        if effect_id in (ULFORCE_PLAY_EFFECT,ULFORCE_TAMER_EFFECT) else 'EX13-019'
+        if effect_id == ATTACK_TAMER_EFFECT else 'EX13-022')
     if source.card_number != expected_number or effect_id not in TAMER_CHOICE_EFFECTS:
         raise RuntimeHalt('TAMER_PLAY_SOURCE_OR_EFFECT_INVALID')
     if runtime.halted or runtime.state.terminal:
@@ -102,6 +106,9 @@ def tamer_play_choices(runtime, seat, source_key, effect_id):
     if effect_id in (ULFORCE_TAMER_EFFECT, VEEMON_MEMORY_EFFECT):
         return [None]
     if effect_id in PLAY_FILTERS:
+        if effect_id == ATTACK_TAMER_EFFECT and (runtime.state.attack is None
+                or runtime.state.attack['controller'] != seat):
+            return [None]
         if effect_id == VEEDRAMON_PLAY_EFFECT and sum(
                 runtime.context.card(seat,s.cards[-1].card_number).kind == 'Tamer'
                 for s in runtime.state.battle[seat].values()) > 1:
@@ -119,6 +126,7 @@ def tamer_play_usage(runtime, seat, source_key, effect_id):
     source = runtime._source(seat, source_key, field)
     if not ((source.card_number == 'EX13-022' and effect_id in (PLAY_EFFECT,OBSERVER_EFFECT))
             or (source.card_number == 'EX13-002' and effect_id == EGG_EFFECT)
+            or (source.card_number == 'EX13-019' and effect_id == ATTACK_TAMER_EFFECT)
             or (source.card_number == 'BT11-023' and effect_id == VEEMON_MEMORY_EFFECT)):
         raise RuntimeHalt('TAMER_PLAY_SOURCE_OR_EFFECT_INVALID')
     stack = source_stack(runtime, seat, source_key, field)
@@ -187,14 +195,16 @@ def resolve_tamer_play(runtime, seat, source_key, choice):
             runtime.context.card(seat,s.cards[-1].card_number).kind=='Tamer'
             for s in runtime.state.battle[seat].values())>1:
         return {'played_card':None,'processing':'CONDITION_NOT_MET','full_match_credit':0}
-    opt = effect == PLAY_EFFECT
-    if opt:_consume(runtime, seat, source_key, PLAY_EFFECT)
+    opt = effect in (PLAY_EFFECT, ATTACK_TAMER_EFFECT)
+    if opt:_consume(runtime, seat, source_key, effect)
     if choice is None:
         return {'played_card': None, 'processing': 'OPTIONAL_PROCESSING_DECLINED_AFTER_ACTIVATION',
                 'once_per_turn_consumed': opt, 'full_match_credit': 0}
     from main_actions import play_tamer_from_effect
     play = play_tamer_from_effect(runtime, seat, choice, Path(__file__).resolve().parents[1])
-    return {'played_card': choice, 'play': play, 'processing': 'TAMER_PLAYED_WITHOUT_PAYING_COST',
+    processing = ('TAMER_PLAYED_WITH_COST_REDUCED_BY_2' if effect == ATTACK_TAMER_EFFECT
+                  else 'TAMER_PLAYED_WITHOUT_PAYING_COST')
+    return {'played_card': choice, 'play': play, 'processing': processing,
             'once_per_turn_consumed': opt, 'full_match_credit': 0}
 
 
@@ -248,7 +258,7 @@ def tamer_play_bindings(context, root, rules):
     from selected_mechanics import _source_evidence
     bindings = []
     for card in context.cards:
-        if card.number not in ('EX13-022','BT22-022','EX13-002','BT11-032','BT11-023'):
+        if card.number not in ('EX13-022','BT22-022','EX13-002','BT11-032','BT11-023','EX13-019'):
             continue
         field='inherited_text' if card.number in ('EX13-002','BT11-023') else 'main_text'
         text = card.effect_text(field)
@@ -257,7 +267,8 @@ def tamer_play_bindings(context, root, rules):
             if card.number=='BT22-022' else [(ULFORCE_PLAY_EFFECT,ULFORCE_PLAY_LINE,resolve_tamer_play),
                 (ULFORCE_TAMER_EFFECT,ULFORCE_TAMER_LINE,resolve_ulforce_tamer_unsuspend)]
             if card.number=='BT11-032' else [(VEEMON_MEMORY_EFFECT,VEEMON_MEMORY_LINE,resolve_veemon_tamer_memory)]
-            if card.number=='BT11-023' else [(EGG_EFFECT,EGG_LINE,resolve_egg_unsuspend)])
+            if card.number=='BT11-023' else [(ATTACK_TAMER_EFFECT,ATTACK_TAMER_LINE,resolve_tamer_play)]
+            if card.number=='EX13-019' else [(EGG_EFFECT,EGG_LINE,resolve_egg_unsuspend)])
         require(all(line in text.splitlines() for _,line,_ in specs),card.number+' Tamer-play wording changed')
         evidence = _source_evidence(root, card.to_dict()['official_source'],
             '#'+card.number+' actual Tamer-play text; EX13-022 Q7264 where applicable; '

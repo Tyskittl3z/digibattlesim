@@ -79,7 +79,8 @@ def _declare(r,seat,c,root):
               'target_instance':target_instance,'controller':seat,'defender':other,
               'window':'COUNTER','counter_used':False,'block_used':False,'checked':None}
     from printed_triggers import trigger_lines
-    from tamer_play_effects import PLAY_EFFECT,PLAY_LINE,tamer_play_usage
+    from tamer_play_effects import (PLAY_EFFECT,PLAY_LINE,ATTACK_TAMER_EFFECT,
+                                    ATTACK_TAMER_LINE,tamer_play_usage)
     from effect_scheduler import queue_effects
     top=stack.cards[-1]
     from selected_mechanics import _collect_orientation_reactions,collect_rina_attack_jamming
@@ -91,6 +92,11 @@ def _declare(r,seat,c,root):
         if top.card_number=='EX13-022' and PLAY_LINE in r.context.card(seat,top.card_number).effect_text('main_text').splitlines():
             effects.append({'seat':seat,'source':top.key,'effect_id':PLAY_EFFECT,'field':'main_text',
                 'usage':list(tamer_play_usage(r,seat,top.key,PLAY_EFFECT)),
+                'trigger':{'kind':'When Attacking','attacker':top.key,'target':target}})
+        elif (top.card_number=='EX13-019' and ATTACK_TAMER_LINE in
+              r.context.card(seat,top.card_number).effect_text('main_text').splitlines()):
+            effects.append({'seat':seat,'source':top.key,'effect_id':ATTACK_TAMER_EFFECT,
+                'field':'main_text','usage':list(tamer_play_usage(r,seat,top.key,ATTACK_TAMER_EFFECT)),
                 'trigger':{'kind':'When Attacking','attacker':top.key,'target':target}})
         elif top.card_number=='EX13-023':
             from selected_mechanics import ORIENTATION_EFFECT,ORIENTATION_LINE
