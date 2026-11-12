@@ -1,0 +1,18 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "commands": 169,
+  "exact_replay": true,
+  "first": "B",
+  "game_index": 5,
+  "halt_reason": "ORIENTATION_DEPENDENT_TRIGGER_UNIMPLEMENTED: BT11-032 main_text source=A:BT11-032#1",
+  "history_report": {
+    "file": "ARTIFACTS/board-text-60-2026-11-11/game-0004/report.md",
+    "sha256": "f5bb92de40fd118c5f17d93c0631847e17b9f4ae4130ca3f43e322ebda19dfe5"
+  },
+  "model_games_before": 7,
+  "record_sha256": "a35c5f868f56bd17c8bbc015cde7296850a480d1521b2111036446e0c59e99e7",
+  "seed": 12054344170171514003,
+  "segment": 0,
+  "status": "HALT",
+  "winner": null
+}
