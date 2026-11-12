@@ -10,9 +10,10 @@
     "sha256": "2e2881801a84d71877adf353da3ee70eb1a77059898b9cb08633a5117150dfc6"
   },
   "model_games_before": 3,
-  "record_sha256": "0577135650a5fca9ddd3ef1ca6f8e4700912f183e97e51b48b5c87c52145a0e9",
+  "record_sha256": "0792d5059fc875bc09dde5388f37dceaa8b25711c4bf50656f1190f0b37a0e98",
+  "repair": "The saved BT20-102 When Digivolving action has no Omnimon or X Antibody among its underlying cards, so its printed If clause makes no board change. The repair resolves this false condition and retains a strict halt if the condition is true. The saved seed and choices remain unchanged.",
   "seed": 15362257287162317678,
-  "segment": 0,
+  "segment": 1,
   "status": "HALT",
   "winner": null
 }

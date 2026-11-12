@@ -17,9 +17,12 @@ from selected_contexts import require_selected_context
 
 RULE_LOCATOR = ('Comprehensive rules v4.3: 1-3-11-1; 3-4-5; 4-2-2; 6-5-1-2; '
                 '8-1-1 through 8-1-3-3; 15-3-1; 15-4; 15-11-1; 15-13; 15-16-3-1')
+BT20_102_DIGIVOLVE_LINE = ('[On Play] [When Digivolving] If [Omnimon] or [X Antibody] '
+    "is in this Digimon's digivolution cards, choose 1 of both players' Digimon and "
+    'delete all other Digimon. Then, return 1 of your opponent\'s Digimon to the bottom of the deck.')
 
 
-def _digivolving_effects(runtime, target):
+def _digivolving_effects(runtime, target, source_stack=None):
     """Require a handler for every actual new-top trigger before payment."""
     definition = runtime.context.card(target.owner, target.card_number)
     lines = trigger_lines(definition.effect_text('main_text'), 'When Digivolving')
@@ -39,6 +42,18 @@ def _digivolving_effects(runtime, target):
         effects = (ORIENTATION_EFFECT,RETURN_EFFECT)
     elif target.card_number == 'BT12-029' and lines == (BT12_UNSUSPEND_LINE,):
         effects = (BT12_UNSUSPEND_EFFECT,)
+    elif target.card_number == 'BT20-102' and lines == (BT20_102_DIGIVOLVE_LINE,):
+        # A false printed If clause has no card action to resolve. Preserve
+        # the strict halt when the clause is true until that board wipe is bound.
+        stack = source_stack or runtime.state.battle[target.owner].get(target.key)
+        if stack is None:
+            raise RuntimeHalt('BT20_102_DIGIVOLUTION_STACK_REQUIRED')
+        underneath = stack.cards[:-1] if stack.cards[-1].key == target.key else stack.cards
+        if any('Omnimon' in runtime.context.card(target.owner, card.card_number).name
+               or runtime.context.card(target.owner, card.card_number).name == 'X Antibody'
+               for card in underneath):
+            raise RuntimeHalt('BT20_102_CONDITIONAL_BOARD_WIPE_UNSUPPORTED: ' + target.key)
+        effects = ()
     elif target.card_number in PLAY_SPECS:
         effect,line=PLAY_SPECS[target.card_number]
         if lines!=(line,):
@@ -158,7 +173,7 @@ def _choose(runtime, seat, choice, root, *, within_effect=False):
     cost=max(0,route.cost-choice['cost_reduction'])
     if type(route.cost) is not int or route.cost < 0 or cost > state.memory + 10:
         raise RuntimeHalt('INSUFFICIENT_AVAILABLE_MEMORY: cost=' + str(route.cost))
-    effects = _digivolving_effects(runtime, target)
+    effects = _digivolving_effects(runtime, target, stack)
     from battlefield_scope import assert_basic_board_scope
     assert_basic_board_scope(runtime, 'battle_evolve', root, within_effect=within_effect)
     _observer_dependencies(runtime, seat, source_key, target)
