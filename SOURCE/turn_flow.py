@@ -53,7 +53,14 @@ def _end_dependencies(runtime, seat):
                             and field == 'main_text' and trigger == 'End of Your Turn'
                             and lines == (END_LINE,)):
                         runtime.registry.lookup(card.card_number, END_EFFECT, field)
-                        sources.append((owner, card.key))
+                        sources.append((owner, card.key, END_EFFECT))
+                        continue
+                    from selected_mechanics import OMNIMON_END_EFFECT, OMNIMON_END_LINE
+                    if (owner == seat and card.card_number == 'BT20-102'
+                            and field == 'main_text' and trigger == 'End of Your Turn'
+                            and lines == (OMNIMON_END_LINE,)):
+                        runtime.registry.lookup(card.card_number, OMNIMON_END_EFFECT, field)
+                        sources.append((owner, card.key, OMNIMON_END_EFFECT))
                         continue
                     raise RuntimeHalt('TURN_END_TRIGGER_UNSUPPORTED: ' + card.card_number
                                       + ' ' + field + ' ' + trigger + ' source=' + card.key)
@@ -62,10 +69,12 @@ def _end_dependencies(runtime, seat):
 
 def _queue_end_effects(runtime, sources):
     before = len(runtime.state.pending)
-    queue_effects(runtime, [{'seat': owner, 'source': source, 'effect_id': END_EFFECT,
-        'field': 'main_text', 'usage': list(end_turn_usage(runtime, owner, source)),
+    from selected_mechanics import OMNIMON_END_EFFECT, _usage
+    queue_effects(runtime, [{'seat': owner, 'source': source, 'effect_id': effect,
+        'field': 'main_text', 'usage': list(_usage(runtime, owner, source, effect)
+            if effect == OMNIMON_END_EFFECT else end_turn_usage(runtime, owner, source)),
         'trigger': {'kind': 'End of Your Turn', 'phase': runtime.state.phase,
-                    'turn': runtime.state.turn}} for owner, source in sources])
+                    'turn': runtime.state.turn}} for owner, source, effect in sources])
     return len(runtime.state.pending) - before
 
 

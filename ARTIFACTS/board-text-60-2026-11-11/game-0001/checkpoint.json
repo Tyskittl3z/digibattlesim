@@ -10,9 +10,10 @@
     "sha256": "2e2881801a84d71877adf353da3ee70eb1a77059898b9cb08633a5117150dfc6"
   },
   "model_games_before": 3,
-  "record_sha256": "de2c8465cd532dffb1f52b9453484734cb2864a94dc0cf6c75b41a77e9127467",
+  "record_sha256": "2fe186ae7fdc3b120acc0c4912863f127925ae954494e2472a4e8bfde00d9d38",
+  "repair": "The saved BT20-102 End of Your Turn trigger now queues an optional player choice. If selected, it gives the chosen Digimon Rush for this turn and declares the selected attack without suspending. The saved prior actions, seed and policy choices are unchanged; unsupported Raid interactions still halt.",
   "seed": 15362257287162317678,
-  "segment": 2,
+  "segment": 3,
   "status": "HALT",
   "winner": null
 }

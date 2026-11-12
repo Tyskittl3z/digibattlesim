@@ -101,20 +101,20 @@ class TurnFlowTests(unittest.TestCase):
                                  'a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271')
                 self.assertIn('6-6', event['choice']['rules']['locator'])
 
-    def test_exact_optional_end_effects_halt_before_pass_or_finish_mutates(self):
+    def test_bt20_102_end_effect_queues_without_automatic_decline(self):
         for seat, number in (('B', 'BT20-102'),):
             for command in (turn_flow.pass_turn, turn_flow.finish_turn):
                 with self.subTest(card=number, command=command.__name__):
                     phase = 'MAIN' if command == turn_flow.pass_turn else 'END_OF_TURN'
                     r = self.runtime(seat, phase=phase, memory=2 if phase == 'MAIN' else -3)
                     source = stage(r, seat, [number])
-                    before = r.snapshot()
-                    with self.assertRaisesRegex(RuntimeHalt, 'TURN_END_TRIGGER_UNSUPPORTED.*' + number):
-                        command(r, seat, ROOT)
-                    self.assertEqual(r.snapshot(), before)
+                    result = command(r, seat, ROOT)
+                    pending = pending_options(r, seat)
+                    self.assertEqual(result['pending_end_effects'], 1)
+                    self.assertEqual(len(pending), 1)
+                    self.assertEqual(pending[0]['source'], source)
+                    self.assertEqual(pending[0]['effect_id'], 'BT20-102.end_turn_rush_attack')
                     self.assertEqual(r.state.once_used, set())
-                    self.assertEqual(r.events[-1]['before'], before)
-                    self.assertIn(source, r.events[-1]['reason'])
 
     def test_opponent_your_turn_and_hidden_main_effect_do_not_trigger(self):
         r = self.runtime()

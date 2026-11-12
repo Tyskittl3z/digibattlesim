@@ -15,7 +15,7 @@ from effect_scheduler import source_stack
 
 
 GRANT_STATUS = 'effect_grants'
-_KEYWORDS = frozenset(('Blocker', 'Evade', 'Jamming'))
+_KEYWORDS = frozenset(('Blocker', 'Evade', 'Jamming', 'Rush'))
 _RESTRICTIONS = frozenset(('cannot_suspend',))
 _FIELDS = frozenset(('controller', 'source', 'source_instance', 'source_field',
     'source_kind', 'source_definition_sha256', 'source_text_sha256', 'target',

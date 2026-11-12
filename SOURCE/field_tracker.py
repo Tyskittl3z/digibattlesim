@@ -86,7 +86,7 @@ class FieldTracker:
             if isinstance(effect, dict):
                 if set(effect) == {'dp_bonus'}:
                     valid = type(effect['dp_bonus']) is int and effect['dp_bonus'] > 0
-                for key, allowed in (('keywords', ('Blocker', 'Evade', 'Jamming')),
+                for key, allowed in (('keywords', ('Blocker', 'Evade', 'Jamming', 'Rush')),
                                      ('restrictions', ('cannot_suspend',))):
                     if set(effect) == {key}:
                         values = effect[key]

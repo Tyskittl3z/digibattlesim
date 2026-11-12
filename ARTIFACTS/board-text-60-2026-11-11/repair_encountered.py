@@ -15,7 +15,7 @@ def main():
     parser.add_argument('--game-index', type=int, required=True)
     parser.add_argument('--old-root', type=Path, required=True)
     parser.add_argument('--expected-halt', required=True)
-    parser.add_argument('--changed-source', required=True)
+    parser.add_argument('--changed-source', action='append', required=True)
     parser.add_argument('--repair-note', required=True)
     args = parser.parse_args()
     if not 0 <= args.game_index < 60:
@@ -32,7 +32,7 @@ def main():
         raise RuntimeError('ORIGINAL_SOURCE_MAP_CHANGED')
     changed = {key: {'before': old.get(key), 'after': new.get(key)}
         for key in sorted(old.keys() | new.keys()) if old.get(key) != new.get(key)}
-    if set(changed) != {args.changed_source}:
+    if set(changed) != set(args.changed_source) or len(args.changed_source) != len(changed):
         raise RuntimeError('REPAIR_SOURCE_SCOPE_CHANGED: ' + str(sorted(changed)))
     migrated = migrate_repaired_game(previous, root=ROOT,
         original_source_root=args.old_root.resolve(), approved_changes=changed,

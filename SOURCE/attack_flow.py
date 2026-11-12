@@ -46,26 +46,37 @@ def _instance(r,stack):
     return stack.instance_id
 
 
-def _declare(r,seat,c,root):
+def _declare(r,seat,c,root,*,from_end_effect=False):
     s=r.state
-    if seat!=s.active or s.phase!='MAIN' or s.memory<0:
+    if from_end_effect:
+        from selected_mechanics import OMNIMON_END_EFFECT
+        activated = getattr(r, '_activated_effect', None)
+        if (activated is None or activated[0] != OMNIMON_END_EFFECT
+                or activated[1] != seat or activated[4] is None
+                or s.phase != 'END_OF_TURN' or s.attack is not None):
+            raise RuntimeHalt('OMNIMON_END_ATTACK_WINDOW_REQUIRED')
+    elif seat!=s.active or s.phase!='MAIN' or s.memory<0:
         raise RuntimeHalt('ATTACK_DECLARATION_WINDOW_NOT_OPEN')
+    if seat != s.active:
+        raise RuntimeHalt('ACTIVE_PLAYER_REQUIRED')
     stack=s.battle[seat].get(c['attacker'])
-    if stack is None or stack.suspended:raise RuntimeHalt('ATTACKER_NOT_READY')
+    if stack is None or (stack.suspended and not from_end_effect):raise RuntimeHalt('ATTACKER_NOT_READY')
     if r.context.card(seat,stack.cards[-1].card_number).kind!='Digimon':
         raise RuntimeHalt('ATTACKER_NOT_DIGIMON')
     from effect_grants import active_restriction
-    if stack.statuses.get('cannot_suspend',False) or ('effect_grants' in stack.statuses
-            and active_restriction(r,seat,c['attacker'],'cannot_suspend')):
+    if not from_end_effect and (stack.statuses.get('cannot_suspend',False) or ('effect_grants' in stack.statuses
+            and active_restriction(r,seat,c['attacker'],'cannot_suspend'))):
         raise RuntimeHalt('ATTACKER_CANNOT_SUSPEND')
     _scope(r,root,'DECLARE',attacker=c['attacker'],target=c['target'])
+    from effect_grants import active_keyword
+    rush = active_keyword(r, seat, c['attacker'], 'Rush')
     if stack.played_turn is not None and (stack.played_turn>s.turn or
-            (stack.ready_since_turn is not None and stack.ready_since_turn<=stack.played_turn)):
+            (not rush and stack.ready_since_turn is not None and stack.ready_since_turn<=stack.played_turn)):
         raise RuntimeHalt('ATTACK_HISTORY_UNVERIFIED')
-    if stack.played_turn==s.turn:raise RuntimeHalt('ATTACKER_PLAYED_THIS_TURN')
+    if stack.played_turn==s.turn and not rush:raise RuntimeHalt('ATTACKER_PLAYED_THIS_TURN')
     if stack.ready_since_turn is None:
         if stack.played_turn is None:raise RuntimeHalt('ATTACK_HISTORY_UNVERIFIED')
-    elif stack.ready_since_turn>s.turn:raise RuntimeHalt('ATTACKER_NOT_READY_THIS_TURN')
+    elif stack.ready_since_turn>s.turn and not rush:raise RuntimeHalt('ATTACKER_NOT_READY_THIS_TURN')
     other='B' if seat=='A' else 'A';target=c['target'];target_instance=''
     if target!='PLAYER':
         defender=s.battle[other].get(target)
@@ -74,7 +85,9 @@ def _declare(r,seat,c,root):
             raise RuntimeHalt('ATTACK_TARGET_NOT_DIGIMON')
         target_instance=_instance(r,defender)
     instance=_instance(r,stack)
-    stack.suspended=True
+    suspended_before = stack.suspended
+    if not from_end_effect:
+        stack.suspended=True
     s.attack={'attacker':c['attacker'],'attacker_instance':instance,'target':target,
               'target_instance':target_instance,'controller':seat,'defender':other,
               'window':'COUNTER','counter_used':False,'block_used':False,'checked':None}
@@ -84,7 +97,7 @@ def _declare(r,seat,c,root):
     from effect_scheduler import queue_effects
     top=stack.cards[-1]
     from selected_mechanics import _collect_orientation_reactions,collect_rina_attack_jamming
-    effects=_collect_orientation_reactions(r,seat,stack,False)
+    effects=_collect_orientation_reactions(r,seat,stack,suspended_before)
     effects.extend(collect_rina_attack_jamming(r,seat,c['attacker']))
     if trigger_lines(r.context.card(seat,top.card_number).effect_text('main_text'),'When Attacking'):
         # Scope above proved the exact printed line. Shared once-per-turn
@@ -109,6 +122,8 @@ def _declare(r,seat,c,root):
             raise RuntimeHalt('ATTACK_TRIGGER_UNSUPPORTED: '+top.card_number+' source='+top.key)
     before=len(s.pending);queue_effects(r,effects)
     result={'attacker':c['attacker'],'target':target,'window':'COUNTER','full_match_credit':0}
+    if from_end_effect:
+        result['suspended_to_attack'] = False
     if len(s.pending)>before:result['triggered_effects']=[e['effect_id'] for e in s.pending[before:]]
     return result
 
@@ -117,6 +132,12 @@ def declare_attack(runtime,seat,attacker,target,root):
     return runtime._control_command('DECLARE_ATTACK',seat,
         {'attacker':attacker,'target':target,'rules':_evidence(root)},
         lambda r,s,c:_declare(r,s,c,root))
+
+
+def trusted_end_attack(runtime, seat, attacker, target, root):
+    """The bound BT20-102 handler declares its chosen immediate attack."""
+    return _declare(runtime, seat, {'attacker': attacker, 'target': target}, root,
+        from_end_effect=True)
 
 
 def _window(r,seat,window,defending=False):

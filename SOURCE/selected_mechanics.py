@@ -16,6 +16,9 @@ from effect_scheduler import queue_effects, source_stack
 from printed_triggers import effect_body,effect_headers
 
 ORIENTATION_EFFECT = 'EX13-023.orientation'
+OMNIMON_END_EFFECT = 'BT20-102.end_turn_rush_attack'
+OMNIMON_END_LINE = ('[End of Your Turn] [Once Per Turn] 1 of your Digimon may gain '
+    '＜Rush＞ for the turn and attack without suspending.')
 ORIENTATION_LINE = ('[On Play] [When Digivolving] [When Attacking] [Once Per Turn] '
                     '1 of your Digimon may change orientation.')
 INHERITED_REACTIONS = {
@@ -148,7 +151,52 @@ def selected_pending_choices(runtime, seat, selected):
         return bt12_unsuspend_choices(runtime, seat, selected['source'])
     if selected['effect_id'] == BT12_RETURN_EFFECT:
         return bt12_return_choices(runtime, seat, selected['source'])
+    if selected['effect_id'] == OMNIMON_END_EFFECT:
+        return omnimon_end_choices(runtime, seat, selected['source'])
     return None
+
+
+def omnimon_end_choices(runtime, seat, source_key):
+    source = runtime._source(seat, source_key, 'main_text')
+    if (source.card_number != 'BT20-102' or seat != runtime.state.active
+            or runtime.state.phase != 'END_OF_TURN'):
+        raise RuntimeHalt('OMNIMON_END_WINDOW_REQUIRED')
+    from effect_scheduler import pending_options
+    expected = (OMNIMON_END_EFFECT, seat, source_key, 'main_text')
+    activated = getattr(runtime, '_activated_effect', None)
+    if activated is None or activated[:4] != expected or activated[4] is None:
+        if not any(tuple(p[k] for k in ('effect_id', 'seat', 'source', 'field')) == expected
+                   for p in pending_options(runtime, seat)):
+            raise RuntimeHalt('OMNIMON_END_PENDING_REQUIRED')
+    opponent = 'B' if seat == 'A' else 'A'
+    targets = ['PLAYER'] + [key for key, stack in runtime.state.battle[opponent].items()
+        if stack.suspended and runtime.context.card(opponent, stack.cards[-1].card_number).kind == 'Digimon']
+    return [None] + [
+        {'kind': 'DECLARE_ATTACK', 'attacker': key, 'target': target}
+        for key, stack in sorted(runtime.state.battle[seat].items())
+        if runtime.context.card(seat, stack.cards[-1].card_number).kind == 'Digimon'
+        for target in targets]
+
+
+def resolve_omnimon_end(runtime, seat, source_key, choice, root):
+    if choice not in omnimon_end_choices(runtime, seat, source_key):
+        raise RuntimeHalt('OMNIMON_END_ATTACK_CHOICE_INVALID')
+    usage = _usage(runtime, seat, source_key, OMNIMON_END_EFFECT)
+    if usage in runtime.state.once_used:
+        raise RuntimeHalt('OMNIMON_END_ALREADY_USED')
+    runtime.state.once_used.add(usage)
+    if choice is None:
+        return {'processing': 'OPTIONAL_ATTACK_DECLINED', 'attacker': None,
+                'once_per_turn_consumed': True, 'full_match_credit': 0}
+    from effect_grants import grant_effect
+    grant = grant_effect(runtime, seat, choice['attacker'], {'keywords': ['Rush']},
+        source_key, duration='end_of_controller_turn')
+    from attack_flow import trusted_end_attack
+    attack = trusted_end_attack(runtime, seat, choice['attacker'], choice['target'], root)
+    return {'processing': 'RUSH_AND_ATTACK_WITHOUT_SUSPENDING',
+        'attacker': choice['attacker'], 'target': choice['target'],
+        'rush_grant': grant, 'attack': attack, 'once_per_turn_consumed': True,
+        'full_match_credit': 0}
 
 
 def collect_rina_attack_jamming(runtime, seat, attacker_key):
@@ -451,7 +499,10 @@ def build_selected_registry(context, root):
     index = json.loads((Path(root) / 'RULES/matchups/123129-vs-124303/SOURCE_INDEX.json').read_bytes())
     source = next(d for d in index['sources'] if d['id'] == 'rules')
     rules = _source_evidence(root,source,'Comprehensive rules v4.3: 4-13; 15-3; 15-4; 15-14-1; memory cap 1-4-2')
-    specs = [('EX13-023',ORIENTATION_EFFECT,'main_text',ORIENTATION_LINE,resolve_orientation)] + [
+    def bound_omnimon_end(runtime, seat, source_key, choice):
+        return resolve_omnimon_end(runtime, seat, source_key, choice, root)
+    specs = [('EX13-023',ORIENTATION_EFFECT,'main_text',ORIENTATION_LINE,resolve_orientation),
+        ('BT20-102',OMNIMON_END_EFFECT,'main_text',OMNIMON_END_LINE,bound_omnimon_end)] + [
         (number,effect,'inherited_text',line,
          resolve_inherited_unsuspend if number in ('EX13-022','BT22-023') else resolve_unsuspend_memory)
         for number,(effect,line) in INHERITED_REACTIONS.items()] + [
