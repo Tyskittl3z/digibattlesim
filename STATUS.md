@@ -9,16 +9,15 @@ seat, the board-and-card-text policy for both seats, and exact replay before
 each terminal model update. This authorization supersedes older one-game and
 pre-match pauses below. It does not authorize the 10,000-match evaluation.
 
-Additional games 0, 1 and 2 are complete in software. Bot B won all three,
-after 139, 150 and 125 accepted judge actions respectively; Bot C observed
-every action and every final segment passed exact replay. Game 0's LM-034
-Security placement and Game 1's BT20-102 conditional digivolution and chosen
-end-turn Rush attack were repaired through explicit source-only migrations.
-Their earlier seeds, choices and states remain in the gzipped repair lineages.
-Game 3 is saved after 110 accepted actions at a BT11-112 Security Tamer halt.
-The cumulative model contains five completed games and game index 4 has not
-started. Accepted fact-finding and final-evaluation credit remain zero pending
-independent certification.
+Additional games 0 through 3 are complete in software: Bot B won the first
+three and Bot A won game 3. They contain 139, 150, 125 and 217 accepted judge
+actions respectively, each observed by Bot C, and every final segment passed
+exact replay. The printed LM-034 Security placement, BT20-102 conditional
+digivolution and end-turn attack, and BT11-112 Security play were repaired
+through source-only migrations that preserved earlier seeds and choices. Game
+4 is saved after 152 accepted actions at BT20-102's optional Raid preflight.
+The cumulative model contains six completed games. Accepted fact-finding and
+final-evaluation credit remain zero pending independent certification.
 
 ## Current corrected Bot A/B game — 2026-11-11
 

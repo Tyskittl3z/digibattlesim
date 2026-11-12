@@ -10,9 +10,10 @@
     "sha256": "70a15ce60b9f3a014a1d082d8f26c30665c6584c53ecf6b4085b0cf4c8f14c20"
   },
   "model_games_before": 6,
-  "record_sha256": "215ce295c31ab93cdfa3c0a8699c047b16a113e2b802ee5495d305e50af43be7",
+  "record_sha256": "223ae4431b57aec435e25a005b9b2b883bae949bc61b81e8f564a678aef1a31e",
+  "repair": "The saved BT20-102 end-turn attack explicitly targets the player. Comprehensive rule 16-23-3 makes Raid optional, so this choice declines its retargeting. Piercing is inactive without a Digimon battle, and Blocker is defensive. The printed keyword line is allowed only for this player-target case; previous seed and selections are fixed.",
   "seed": 7804549089509846733,
-  "segment": 0,
+  "segment": 1,
   "status": "HALT",
   "winner": null
 }

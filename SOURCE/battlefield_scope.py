@@ -166,12 +166,9 @@ def _attack_source_dependencies(runtime, owner, anchor, source, field, event):
                 continue
             if (source.card_number == 'BT20-102' and field == 'main_text'
                     and line == '＜Raid＞ ＜Piercing＞ ＜Blocker＞'
-                    and event['target'] == 'PLAYER'
-                    and not any(runtime.context.card('B' if actor == 'A' else 'A',
-                        stack.cards[-1].card_number).kind == 'Digimon'
-                        for stack in runtime.state.battle['B' if actor == 'A' else 'A'].values())):
-                # No opponent Digimon can be retargeted by Raid; Piercing
-                # needs a Digimon battle, and Blocker is defensive.
+                    and event['target'] == 'PLAYER'):
+                # The selected player target declines optional Raid (16-23-3).
+                # Piercing needs a Digimon battle; Blocker is defensive.
                 continue
             # A keyword can add declaration timing (for example Raid). Do not
             # suspend/open Counter before unsupported participant text is known.
