@@ -10,9 +10,10 @@
     "sha256": "5291c44168436982d4174e69e7500fa5cb995a2658a86d70e659fb38b5b8133a"
   },
   "model_games_before": 5,
-  "record_sha256": "a7632549fa1d21ddd4fc3e8a73c52b036aabc413628e085fdef4e3ff7093760e",
+  "record_sha256": "f04ca99745c78ce7bbf2e37f4ecea68504be5b83eeed743f9af903c26118f181",
+  "repair": "The saved BT11-112 checked Tamer has the exact printed Security wording Play this card without paying its memory cost. The existing immediate Security Tamer play now accepts this wording, with no memory payment and normal On Play timing. Earlier seed, actions and choices remain fixed.",
   "seed": 884428971674423381,
-  "segment": 0,
+  "segment": 1,
   "status": "HALT",
   "winner": null
 }

@@ -12,14 +12,16 @@ from context_runtime import MechanicBinding,PhysicalCard,RuntimeHalt
 from match_context import require
 
 SECURITY_TAMER_LINE = '[Security] Play this card without paying the cost.'
+SECURITY_TAMER_MEMORY_LINE = '[Security] Play this card without paying its memory cost.'
 RULE_LOCATOR = ('Comprehensive rules v4.3: 3-4-3; 7-1-3; 13-1-6; 13-1-8-1; '
                 '13-1-8-2; 13-1-8-4; 15-4; 15-16-2-1; 15-16-10-1 through 15-16-10-2')
 
 
 def security_tamer_spec(definition):
     """One pinned wording template, scoped to the selected context's Tamers."""
-    if definition.kind=='Tamer' and definition.effect_text('security_text')==SECURITY_TAMER_LINE:
-        return definition.number+'.security_play',SECURITY_TAMER_LINE
+    text = definition.effect_text('security_text')
+    if definition.kind=='Tamer' and text in (SECURITY_TAMER_LINE, SECURITY_TAMER_MEMORY_LINE):
+        return definition.number+'.security_play',text
     return None
 
 

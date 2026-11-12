@@ -54,10 +54,27 @@ class SecurityTamerTests(unittest.TestCase):
   r,k=self.fixture();before=r.snapshot()
   with self.assertRaisesRegex(RuntimeHalt,'SECURITY_TAMER_WINDOW_REQUIRED'):main_actions.play_tamer_from_security(r,'A',k,ROOT)
   self.assertEqual(r.snapshot(),before)
- def test_other_tamer_security_stays_unsupported_and_atomic(self):
-  r,k=self.fixture('BT11-112');before=r.snapshot()
-  with self.assertRaisesRegex(RuntimeHalt,'SECURITY_CARD_UNSUPPORTED: BT11-112'):confirm_attack(r,'B',ROOT)
-  self.assertEqual(r.snapshot(),before);self.assertEqual(r.state.zones['A']['security'][-1].key,k)
+ def test_bt11_112_memory_cost_wording_plays_from_security(self):
+  r,k=self.fixture('BT11-112');before=r.snapshot();result=confirm_attack(r,'B',ROOT)
+  self.assertEqual(result['security_effect'],'BT11-112.security_play')
+  self.assertEqual(result['checked_card'],k)
+  self.assertIn(k,r.state.battle['A'])
+  self.assertEqual(r.state.memory,before['state']['memory'])
+  self.assertEqual(r.state.attack['window'],'END')
+  self.assertEqual(len(r.state.zones['A']['security']),len(before['state']['zones']['A']['security'])-1)
+  r.verify()
+ def test_recorded_bt11_112_security_play(self):
+  with gzip.open(ROOT/'ARTIFACTS/board-text-60-2026-11-11/game-0003/segment-0000.json.gz','rt') as handle:
+   record=json.load(handle)
+  context=load_context_file(ROOT/record['context_file'])
+  r=ContextRuntime(context,record['seed'],record['first'],build_selected_registry(context,ROOT),allow_experimental=True)
+  for command in record['commands'][:-1]:_apply(r,command['command'],command['seat'],command['args'],ROOT)
+  self.assertEqual(r.snapshot()['state'],record['commands'][-1]['before']['state'])
+  result=confirm_attack(r,'B',ROOT)
+  self.assertEqual(result['checked_card'],'A:BT11-112#3')
+  self.assertIn('A:BT11-112#3',r.state.battle['A'])
+  self.assertEqual(r.state.attack['window'],'END')
+  r.verify()
  def test_same_printed_security_template_plays_bt22_rina_and_queues_on_play_with_observer(self):
   from on_play_effects import ON_PLAY_SPECS
   from tamer_play_effects import OBSERVER_EFFECT
