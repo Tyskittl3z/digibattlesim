@@ -217,7 +217,8 @@ def advance_once(out=DEFAULT_OUT, index=0, *, budget=256):
             return {'game_index': index, 'status': previous['status'],
                 'commands': len(previous['commands']), 'exact_replay': True,
                 'model_games_before': 2 + index, 'winner': previous['winner']}
-        if previous['status'] != 'PAUSED':
+        if previous['status'] != 'PAUSED' and not (previous['status'] == 'HALT'
+                and 'repair_lineage' in previous):
             _campaign_status(out, index, previous['status'])
             return {'game_index': index, 'status': previous['status'],
                 'commands': len(previous['commands']), 'exact_replay': True,
@@ -232,7 +233,8 @@ def advance_once(out=DEFAULT_OUT, index=0, *, budget=256):
                    for p in record['pilots'].values())
             or record['seed'] != lock['schedule']['games'][index]['seed']):
         raise RuntimeError('SEQUENTIAL_GAME_IDENTITY_CHANGED')
-    if previous is not None and record['commands'][:len(previous['commands'])] != previous['commands']:
+    accepted_prefix = len(previous['commands']) - int(previous['status'] == 'HALT') if previous else 0
+    if previous is not None and record['commands'][:accepted_prefix] != previous['commands'][:accepted_prefix]:
         raise RuntimeError('SEQUENTIAL_GAME_PREFIX_CHANGED')
     number = len(paths)
     _save(game_dir / f'segment-{number:04d}.json.gz',

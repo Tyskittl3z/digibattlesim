@@ -10,12 +10,13 @@ each terminal model update. This authorization supersedes older one-game and
 pre-match pauses below. It does not authorize the 10,000-match evaluation.
 
 The first additional game, index 0, seed 16664364153905075627 with A first,
-is saved at `game-0000/segment-0000.json.gz`: 77 accepted commands followed by
-an atomic HALT on checked LM-034 Security text at command 78. Exact replay
-passed. The cumulative model still contains two games; no new game has started
-and accepted fact-finding/final-evaluation credit remains zero. Repair this
-encountered printed Security placement, migrate the saved prefix, and resume
-the same selected action and seed.
+is complete at `game-0000/segment-0002.json.gz`: Bot B won after 139 accepted
+judge actions, each observed by Bot C, and exact replay passed. An LM-034
+Security check initially halted at command 78. The printed Security placement
+was implemented, and `segment-0001.json.gz` preserves the exact earlier seed,
+choices, states and source repair lineage. The cumulative model now contains
+three completed games; game index 1 is next. Accepted fact-finding and final
+evaluation credit remain zero pending independent certification.
 
 ## Current corrected Bot A/B game — 2026-11-11
 

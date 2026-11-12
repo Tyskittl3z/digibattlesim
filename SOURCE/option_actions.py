@@ -28,6 +28,8 @@ _TRAINING_NAMES = {'LM-056':'Image Training','LM-057':'Wall Training','LM-058':'
 SECURITY_OPTION_SPECS = {number: (OPTION_SPECS[number][0],
     OPTION_SPECS[number][1].replace('[Main]', '[Security]', 1))
     for number in _TRAINING_NAMES}
+SECURITY_OPTION_SPECS['LM-034'] = ('LM-034.security_place',
+    '[Security] Place this card in the battle area.')
 BLUE_SCRAMBLE_DELAY = 'LM-028.start_turn_delay'
 DELAY_SPECS = {
     'P-104': ('P-104.main_delay', '[Main] ＜Delay＞', '・1 of your Digimon may digivolve into a blue Digimon card in your hand for its digivolution cost. When it would digivolve by this effect, reduce the cost by 2.'),
@@ -261,7 +263,7 @@ def security_option_spec(definition):
 
 
 def resolve_checked_security_option(runtime, seat, physical, root):
-    """A checked Training Option starts its printed Security search at zero cost."""
+    """Resolve the checked Option's exact printed Security processing."""
     attack = runtime.state.attack
     if (attack is None or attack['window'] != 'CONFIRM' or attack['target'] != 'PLAYER'
             or attack['defender'] != seat or attack['checked'] is not None
@@ -275,10 +277,20 @@ def resolve_checked_security_option(runtime, seat, physical, root):
         raise RuntimeHalt('SECURITY_OPTION_TEXT_UNSUPPORTED')
     runtime.registry.lookup(physical.card_number, spec[0], 'security_text')
     from selected_mechanics import _source_evidence
-    evidence = _source_evidence(root, definition.to_dict()['official_source'],
-        '#' + physical.card_number + ' exact printed Security search and placement').manifest()
+    locator = ('#' + physical.card_number + ' exact printed Security placement'
+        if physical.card_number == 'LM-034' else
+        '#' + physical.card_number + ' exact printed Security search and placement')
+    evidence = _source_evidence(root, definition.to_dict()['official_source'], locator).manifest()
     runtime.state.zones[seat]['security'].pop()
     runtime.state.entity_sequence += 1
+    if physical.card_number == 'LM-034':
+        stack = Stack([physical], instance_id='entity-' + str(runtime.state.entity_sequence))
+        stack.played_turn = runtime.state.turn
+        runtime.state.battle[seat][physical.key] = stack
+        attack['checked'], attack['window'] = physical.key, 'END'
+        return {'success': True, 'checked_card': physical.key, 'security_effect': spec[0],
+            'attacker_deleted': False, 'security_card_deleted': False,
+            'source': evidence, 'placed_option': physical.key, 'full_match_credit': 0}
     runtime.state.resolving_option = {'seat': seat,
         'stack': Stack([physical], instance_id='entity-' + str(runtime.state.entity_sequence))}
     attack['checked'], attack['window'] = physical.key, 'END'
@@ -337,6 +349,10 @@ def resolve_security_option(runtime, seat, source_key, choice):
         'bottom_order': bottom, 'placed_option': source_key,
         'bottom_order_convention': exposed['bottom_order_convention'],
         'status': 'EXPERIMENTAL', 'full_match_credit': 0}
+
+
+def resolve_security_place(runtime, seat, source_key, choice):
+    raise RuntimeHalt('SECURITY_PLACE_IS_IMMEDIATE_CHECK_PROCESSING')
 
 
 def resolve_option(runtime,seat,source_key,choice):
@@ -474,9 +490,10 @@ def option_bindings(context,root,rules_evidence):
                 hashlib.sha256(card.effect_text('main_text').encode()).hexdigest(),
                 (evidence,replace(rules_evidence,locator=_RULES_LOCATOR)),handler))
         security = security_option_spec(card)
-        if card.number in _TRAINING_NAMES:
+        if card.number in _TRAINING_NAMES or card.number == 'LM-034':
             require(security is not None, 'Exact Security Option text changed: ' + card.number)
             bindings.append(MechanicBinding(card.number, security[0], 'security_text',
                 card.definition_sha256, hashlib.sha256(card.effect_text('security_text').encode()).hexdigest(),
-                (evidence, replace(rules_evidence, locator=_RULES_LOCATOR)), resolve_security_option))
+                (evidence, replace(rules_evidence, locator=_RULES_LOCATOR)),
+                resolve_security_place if card.number == 'LM-034' else resolve_security_option))
     return tuple(bindings)
