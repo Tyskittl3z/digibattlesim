@@ -1,19 +1,18 @@
 {
   "accepted_fact_finding_credit": 0,
-  "commands": 111,
+  "commands": 217,
   "exact_replay": true,
   "first": "B",
   "game_index": 3,
-  "halt_reason": "SECURITY_CARD_UNSUPPORTED: BT11-112 source=A:BT11-112#3",
+  "halt_reason": null,
   "history_report": {
     "file": "ARTIFACTS/board-text-60-2026-11-11/game-0002/report.md",
     "sha256": "5291c44168436982d4174e69e7500fa5cb995a2658a86d70e659fb38b5b8133a"
   },
   "model_games_before": 5,
-  "record_sha256": "f04ca99745c78ce7bbf2e37f4ecea68504be5b83eeed743f9af903c26118f181",
-  "repair": "The saved BT11-112 checked Tamer has the exact printed Security wording Play this card without paying its memory cost. The existing immediate Security Tamer play now accepts this wording, with no memory payment and normal On Play timing. Earlier seed, actions and choices remain fixed.",
+  "record_sha256": "ca5780a6b57a35e8a86c7f7fae0e2e7e8a9a37e26db36b5af8c437200a92648d",
   "seed": 884428971674423381,
-  "segment": 1,
-  "status": "HALT",
-  "winner": null
+  "segment": 2,
+  "status": "EXPERIMENTAL_SOFTWARE_TERMINAL",
+  "winner": "A"
 }
