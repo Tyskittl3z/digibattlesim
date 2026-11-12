@@ -10,9 +10,10 @@
     "sha256": "f5bb92de40fd118c5f17d93c0631847e17b9f4ae4130ca3f43e322ebda19dfe5"
   },
   "model_games_before": 7,
-  "record_sha256": "0b97b27fd2a6324e0a35a0e9b246412ecdcadd30855a626947c7ac65c0760459",
+  "record_sha256": "8be1278d0fca4e4c24e91d708e0bd969d79acce237d2d2aabff16c52dc55b62c",
+  "repair": "The saved checked P-104 Option has exact printed Security text Place this card in the battle area. It uses the same immediate placement as LM-034 without Main search, memory cost or deck movement. The earlier game seed and choices remain fixed.",
   "seed": 12054344170171514003,
-  "segment": 2,
+  "segment": 3,
   "status": "HALT",
   "winner": null
 }
