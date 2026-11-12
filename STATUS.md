@@ -9,14 +9,15 @@ seat, the board-and-card-text policy for both seats, and exact replay before
 each terminal model update. This authorization supersedes older one-game and
 pre-match pauses below. It does not authorize the 10,000-match evaluation.
 
-The first additional game, index 0, seed 16664364153905075627 with A first,
-is complete at `game-0000/segment-0002.json.gz`: Bot B won after 139 accepted
-judge actions, each observed by Bot C, and exact replay passed. An LM-034
-Security check initially halted at command 78. The printed Security placement
-was implemented, and `segment-0001.json.gz` preserves the exact earlier seed,
-choices, states and source repair lineage. The cumulative model now contains
-three completed games; game index 1 is next. Accepted fact-finding and final
-evaluation credit remain zero pending independent certification.
+Additional games 0 and 1 are complete in software. Bot B won both, after 139
+and 150 accepted judge actions respectively; Bot C observed every action and
+both final segments passed exact replay. Game 0's LM-034 Security placement and
+Game 1's BT20-102 false digivolution condition and chosen end-turn Rush attack
+were repaired through explicit source-only migrations. Their earlier seeds,
+choices and states remain in the gzipped repair lineages. The cumulative model
+now contains four completed games and game index 2 is next. Accepted
+fact-finding and final-evaluation credit remain zero pending independent
+certification.
 
 ## Current corrected Bot A/B game — 2026-11-11
 

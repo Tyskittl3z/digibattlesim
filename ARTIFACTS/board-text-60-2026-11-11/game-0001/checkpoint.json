@@ -1,19 +1,18 @@
 {
   "accepted_fact_finding_credit": 0,
-  "commands": 146,
+  "commands": 150,
   "exact_replay": true,
   "first": "B",
   "game_index": 1,
-  "halt_reason": "TURN_END_TRIGGER_UNSUPPORTED: BT20-102 main_text End of Your Turn source=B:BT20-102#1",
+  "halt_reason": null,
   "history_report": {
     "file": "ARTIFACTS/board-text-60-2026-11-11/game-0000/report.md",
     "sha256": "2e2881801a84d71877adf353da3ee70eb1a77059898b9cb08633a5117150dfc6"
   },
   "model_games_before": 3,
-  "record_sha256": "2fe186ae7fdc3b120acc0c4912863f127925ae954494e2472a4e8bfde00d9d38",
-  "repair": "The saved BT20-102 End of Your Turn trigger now queues an optional player choice. If selected, it gives the chosen Digimon Rush for this turn and declares the selected attack without suspending. The saved prior actions, seed and policy choices are unchanged; unsupported Raid interactions still halt.",
+  "record_sha256": "e90a611905c9d1dafed65c70eafdd8e399fc9ae0f17073c7493d386f709a8cd1",
   "seed": 15362257287162317678,
-  "segment": 3,
-  "status": "HALT",
-  "winner": null
+  "segment": 4,
+  "status": "EXPERIMENTAL_SOFTWARE_TERMINAL",
+  "winner": "B"
 }
