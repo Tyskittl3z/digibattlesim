@@ -1,0 +1,18 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "commands": 118,
+  "exact_replay": true,
+  "first": "A",
+  "game_index": 6,
+  "halt_reason": "SECURITY_CARD_UNSUPPORTED: LM-028 source=B:LM-028#1",
+  "history_report": {
+    "file": "ARTIFACTS/board-text-60-2026-11-11/game-0005/report.md",
+    "sha256": "850f648c20961a4aeed4b0aad7ac26ec70f84ff4c245707f09aff6a08330161e"
+  },
+  "model_games_before": 8,
+  "record_sha256": "a7eee1e9da1a1742ea6fad0b4f3ecfb405dea80a4c87fe7e7066483ab36b86f9",
+  "seed": 17142806856446729578,
+  "segment": 0,
+  "status": "HALT",
+  "winner": null
+}
