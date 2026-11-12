@@ -1,5 +1,22 @@
 # Verified handoff status
 
+## Additional sequential 60-game run — current checkpoint
+
+The user authorized 60 additional sequential games for the selected Ulforce
+pairing. `ARTIFACTS/board-text-60-2026-11-11/campaign.py` uses the two completed
+games as initial history, a deterministic 60-seed schedule with 30 starts per
+seat, the board-and-card-text policy for both seats, and exact replay before
+each terminal model update. This authorization supersedes older one-game and
+pre-match pauses below. It does not authorize the 10,000-match evaluation.
+
+The first additional game, index 0, seed 16664364153905075627 with A first,
+is saved at `game-0000/segment-0000.json.gz`: 77 accepted commands followed by
+an atomic HALT on checked LM-034 Security text at command 78. Exact replay
+passed. The cumulative model still contains two games; no new game has started
+and accepted fact-finding/final-evaluation credit remains zero. Repair this
+encountered printed Security placement, migrate the saved prefix, and resume
+the same selected action and seed.
+
 ## Current corrected Bot A/B game — 2026-11-11
 
 Bot A and Bot B now use the same deterministic public-board, own-hand, printed-text
