@@ -1,11 +1,11 @@
 {
   "accepted_fact_finding_credit": 0,
   "campaign_id": "ULFORCE_BOARD_TEXT_ADDITIONAL_60_2026_11_11_V1",
-  "completed_software_games": 4,
+  "completed_software_games": 5,
   "current_game_index": 4,
-  "current_status": "HALT",
+  "current_status": "EXPERIMENTAL_SOFTWARE_TERMINAL",
   "final_evaluation_credit": 0,
-  "next_game_index": 4,
+  "next_game_index": 5,
   "schema": "board-text-sequential-60-status-v1",
   "target_additional_games": 60
 }
