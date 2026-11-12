@@ -1,0 +1,18 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "commands": 145,
+  "exact_replay": true,
+  "first": "B",
+  "game_index": 1,
+  "halt_reason": "BATTLE_DIGIVOLVING_EFFECT_UNSUPPORTED: BT20-102 timing=When Digivolving source=B:BT20-102#1",
+  "history_report": {
+    "file": "ARTIFACTS/board-text-60-2026-11-11/game-0000/report.md",
+    "sha256": "2e2881801a84d71877adf353da3ee70eb1a77059898b9cb08633a5117150dfc6"
+  },
+  "model_games_before": 3,
+  "record_sha256": "0577135650a5fca9ddd3ef1ca6f8e4700912f183e97e51b48b5c87c52145a0e9",
+  "seed": 15362257287162317678,
+  "segment": 0,
+  "status": "HALT",
+  "winner": null
+}
