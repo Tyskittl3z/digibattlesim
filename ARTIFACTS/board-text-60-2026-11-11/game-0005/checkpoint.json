@@ -10,9 +10,10 @@
     "sha256": "f5bb92de40fd118c5f17d93c0631847e17b9f4ae4130ca3f43e322ebda19dfe5"
   },
   "model_games_before": 7,
-  "record_sha256": "a35c5f868f56bd17c8bbc015cde7296850a480d1521b2111036446e0c59e99e7",
+  "record_sha256": "74d9af552ec46dee605196b735c22e9f37feea1de39326b7b5b03de35fe974c0",
+  "repair": "The saved blue Tamer play unsuspends BT11-032. Its exact printed Your Turn once-per-turn trigger queues a return, with maximum level 3 plus one per blue Tamer in play. The bot chooses the eligible opposing Digimon when the queued effect resolves; previous seed, actions and choices are unchanged.",
   "seed": 12054344170171514003,
-  "segment": 0,
+  "segment": 1,
   "status": "HALT",
   "winner": null
 }

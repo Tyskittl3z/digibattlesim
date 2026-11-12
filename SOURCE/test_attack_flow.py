@@ -379,14 +379,13 @@ class EncounteredUlforceAttackTests(unittest.TestCase):
         self.assertEqual(r.state.attack['window'],'CONFIRM')
         self.assertTrue(r.state.battle['B'][args['attacker']].suspended);r.verify()
 
-    def test_later_inherited_unsuspend_keeps_unimplemented_ulforce_bounce_explicit(self):
+    def test_later_inherited_unsuspend_queues_ulforce_return(self):
         from effect_scheduler import pending_options,resolve_pending
         r,args=self.actual();declare_attack(r,'B',args['attacker'],args['target'],ROOT)
         pending=next(p for p in pending_options(r,'B') if p['effect_id']=='EX13-022.inherited_unsuspend')
-        before=r.snapshot()
-        with self.assertRaisesRegex(RuntimeHalt,'ORIENTATION_DEPENDENT_TRIGGER_UNIMPLEMENTED: BT11-032'):
-            resolve_pending(r,'B',pending['id'],True)
-        self.assertEqual(r.snapshot(),before)
+        resolve_pending(r,'B',pending['id'],True)
+        self.assertTrue(any(p['effect_id']=='BT11-032.unsuspend_return'
+            for p in pending_options(r,'B')))
 
 
 _SEGMENT10_CONFIRM=None

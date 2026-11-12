@@ -99,13 +99,14 @@ class ReactionTests(unittest.TestCase):
         result=_set_orientation(r,'A',r.state.battle['A'][tamer],True)
         self.assertTrue(result['changed']);self.assertEqual(r.state.pending,[]);r.verify()
 
-    def test_actual_unsupported_self_unsuspend_trigger_still_halts_before_change(self):
+    def test_bt12_self_unsuspend_queues_its_registered_return(self):
         from selected_mechanics import _set_orientation
         r=self.runtime();source=stage(r,'A',['BT12-029'],suspended=True)
-        before=r.snapshot()
-        with self.assertRaisesRegex(RuntimeHalt,'ORIENTATION_DEPENDENT_TRIGGER_UNIMPLEMENTED.*BT12-029'):
-            _set_orientation(r,'A',r.state.battle['A'][source],False)
-        self.assertEqual(r.snapshot(),before)
+        result=_set_orientation(r,'A',r.state.battle['A'][source],False)
+        self.assertTrue(result['changed'])
+        self.assertFalse(r.state.battle['A'][source].suspended)
+        self.assertTrue(any(p['effect_id']=='BT12-029.unsuspend_return_lowest'
+            for p in pending_options(r,'A')))
 
 
 class EncounteredEndUnsuspendTests(unittest.TestCase):

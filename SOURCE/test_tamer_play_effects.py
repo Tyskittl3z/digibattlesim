@@ -145,7 +145,7 @@ class TamerPlayEffectTests(unittest.TestCase):
             play_tamer_from_effect(runtime, 'A', runtime.state.zones['A']['hand'][0].key, ROOT)
         self.assertEqual(runtime.snapshot(), before)
 
-    def test_future_ulforce_bounce_halts_only_if_blue_tamer_observer_actually_unsuspends(self):
+    def test_blue_tamer_unsuspends_ulforce_and_queues_its_return(self):
         runtime = self.runtime()
         source = stage(runtime, 'A', ['EX13-022'])
         ulforce=stage(runtime, 'A', ['BT11-032'],suspended=True)
@@ -155,11 +155,10 @@ class TamerPlayEffectTests(unittest.TestCase):
             'field': 'main_text', 'trigger': {'kind': 'When Digivolving'}}])
         resolve_pending(runtime, 'A', pending_options(runtime, 'A')[0]['id'], hand_key)
         observer=next(p for p in pending_options(runtime,'A') if p['effect_id']=='BT11-032.blue_tamer_unsuspend')
-        before = runtime.snapshot()
-        with self.assertRaisesRegex(RuntimeHalt, 'ORIENTATION_DEPENDENT_TRIGGER_UNIMPLEMENTED.*BT11-032'):
-            resolve_pending(runtime,'A',observer['id'],None)
-        self.assertEqual(runtime.snapshot(), before)
-        self.assertTrue(runtime.state.battle['A'][ulforce].suspended)
+        resolve_pending(runtime,'A',observer['id'],None)
+        self.assertFalse(runtime.state.battle['A'][ulforce].suspended)
+        self.assertTrue(any(p['effect_id']=='BT11-032.unsuspend_return'
+            for p in pending_options(runtime,'A')))
 
 
 class EncounteredVeedramonTamerTests(unittest.TestCase):

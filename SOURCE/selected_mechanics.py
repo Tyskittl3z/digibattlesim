@@ -19,6 +19,10 @@ ORIENTATION_EFFECT = 'EX13-023.orientation'
 OMNIMON_END_EFFECT = 'BT20-102.end_turn_rush_attack'
 OMNIMON_END_LINE = ('[End of Your Turn] [Once Per Turn] 1 of your Digimon may gain '
     '＜Rush＞ for the turn and attack without suspending.')
+ULFORCE_UNSUSPEND_RETURN_EFFECT = 'BT11-032.unsuspend_return'
+ULFORCE_UNSUSPEND_RETURN_LINE = ("[Your Turn][Once Per Turn] When this Digimon becomes unsuspended, "
+    "return 1 of your opponent's level 3 or lower Digimon to its owner's hand. "
+    'For every blue Tamer you have in play, add 1 to the max level of the Digimon you can choose with this effect.')
 ORIENTATION_LINE = ('[On Play] [When Digivolving] [When Attacking] [Once Per Turn] '
                     '1 of your Digimon may change orientation.')
 INHERITED_REACTIONS = {
@@ -153,7 +157,48 @@ def selected_pending_choices(runtime, seat, selected):
         return bt12_return_choices(runtime, seat, selected['source'])
     if selected['effect_id'] == OMNIMON_END_EFFECT:
         return omnimon_end_choices(runtime, seat, selected['source'])
+    if selected['effect_id'] == ULFORCE_UNSUSPEND_RETURN_EFFECT:
+        return ulforce_unsuspend_return_choices(runtime, seat, selected['source'])
     return None
+
+
+def ulforce_unsuspend_return_choices(runtime, seat, source_key):
+    source = runtime._source(seat, source_key, 'main_text')
+    if source.card_number != 'BT11-032' or runtime.state.active != seat:
+        raise RuntimeHalt('ULFORCE_UNSUSPEND_RETURN_SOURCE_INVALID')
+    expected = (ULFORCE_UNSUSPEND_RETURN_EFFECT, seat, source_key, 'main_text')
+    activated = getattr(runtime, '_activated_effect', None)
+    if activated is None or activated[:4] != expected or activated[4] is None:
+        from effect_scheduler import pending_options
+        if not any(tuple(p[k] for k in ('effect_id', 'seat', 'source', 'field')) == expected
+                   for p in pending_options(runtime, seat)):
+            raise RuntimeHalt('ULFORCE_UNSUSPEND_RETURN_PENDING_REQUIRED')
+    blue_tamers = sum(runtime.context.card(seat, stack.cards[-1].card_number).kind == 'Tamer'
+        and 'Blue' in runtime.context.card(seat, stack.cards[-1].card_number).to_dict()['colors']
+        for stack in runtime.state.battle[seat].values())
+    opponent = 'B' if seat == 'A' else 'A'
+    targets = sorted(key for key, stack in runtime.state.battle[opponent].items()
+        if runtime.context.card(opponent, stack.cards[-1].card_number).kind == 'Digimon'
+        and type(runtime.context.card(opponent, stack.cards[-1].card_number).to_dict()['level']) is int
+        and runtime.context.card(opponent, stack.cards[-1].card_number).to_dict()['level'] <= 3 + blue_tamers)
+    return targets if targets else [None]
+
+
+def resolve_ulforce_unsuspend_return(runtime, seat, source_key, choice):
+    if choice not in ulforce_unsuspend_return_choices(runtime, seat, source_key):
+        raise RuntimeHalt('ULFORCE_UNSUSPEND_RETURN_TARGET_INVALID')
+    usage = _usage(runtime, seat, source_key, ULFORCE_UNSUSPEND_RETURN_EFFECT)
+    if usage in runtime.state.once_used:
+        raise RuntimeHalt('ULFORCE_UNSUSPEND_RETURN_ALREADY_USED')
+    runtime.state.once_used.add(usage)
+    if choice is None:
+        return {'processing': 'NO_ELIGIBLE_DIGIMON', 'returned': None,
+                'once_per_turn_consumed': True, 'full_match_credit': 0}
+    from return_effects import return_to_hand
+    opponent = 'B' if seat == 'A' else 'A'
+    moved = return_to_hand(runtime, seat, opponent, choice, halt_prefix='ULFORCE_UNSUSPEND_RETURN')
+    return {'processing': 'RETURN_LEVEL_LIMIT_DIGIMON_TO_HAND', **moved,
+            'once_per_turn_consumed': True, 'full_match_credit': 0}
 
 
 def omnimon_end_choices(runtime, seat, source_key):
@@ -327,6 +372,10 @@ def _orientation_dependencies(runtime,changed_seat,changed_stack,suspended_befor
                             and line==BT12_RETURN_LINE):
                         runtime.registry.lookup(card.card_number,BT12_RETURN_EFFECT,field_)
                         continue
+                    if (card.card_number == 'BT11-032' and field_ == 'main_text'
+                            and line == ULFORCE_UNSUSPEND_RETURN_LINE):
+                        runtime.registry.lookup(card.card_number, ULFORCE_UNSUSPEND_RETURN_EFFECT, field_)
+                        continue
                     raise RuntimeHalt('ORIENTATION_DEPENDENT_TRIGGER_UNIMPLEMENTED: '
                                       + card.card_number + ' ' + field_+' source='+card.key)
             if set(stack.statuses) - {'cannot_suspend', 'cannot_unsuspend','effect_grants'}:
@@ -378,6 +427,15 @@ def _collect_orientation_reactions(runtime,seat,stack,suspended_before):
             'field': 'main_text', 'usage': list(_usage(runtime, seat, top.key, BT12_RETURN_EFFECT)),
             'trigger': {'kind': 'ORIENTATION_CHANGED', 'entity': top.key,
                 'suspended_before': True, 'suspended_after': False}})
+    if (suspended_before is True and stack.suspended is False
+            and top.card_number == 'BT11-032' and runtime.state.active == seat):
+        usage = _usage(runtime, seat, top.key, ULFORCE_UNSUSPEND_RETURN_EFFECT)
+        if usage not in runtime.state.once_used:
+            runtime.registry.lookup('BT11-032', ULFORCE_UNSUSPEND_RETURN_EFFECT, 'main_text')
+            effects.append({'seat': seat, 'source': top.key,
+                'effect_id': ULFORCE_UNSUSPEND_RETURN_EFFECT, 'field': 'main_text',
+                'usage': list(usage), 'trigger': {'kind': 'ORIENTATION_CHANGED',
+                    'entity': top.key, 'suspended_before': True, 'suspended_after': False}})
     return effects
 
 
@@ -502,7 +560,9 @@ def build_selected_registry(context, root):
     def bound_omnimon_end(runtime, seat, source_key, choice):
         return resolve_omnimon_end(runtime, seat, source_key, choice, root)
     specs = [('EX13-023',ORIENTATION_EFFECT,'main_text',ORIENTATION_LINE,resolve_orientation),
-        ('BT20-102',OMNIMON_END_EFFECT,'main_text',OMNIMON_END_LINE,bound_omnimon_end)] + [
+        ('BT20-102',OMNIMON_END_EFFECT,'main_text',OMNIMON_END_LINE,bound_omnimon_end),
+        ('BT11-032',ULFORCE_UNSUSPEND_RETURN_EFFECT,'main_text',
+         ULFORCE_UNSUSPEND_RETURN_LINE,resolve_ulforce_unsuspend_return)] + [
         (number,effect,'inherited_text',line,
          resolve_inherited_unsuspend if number in ('EX13-022','BT22-023') else resolve_unsuspend_memory)
         for number,(effect,line) in INHERITED_REACTIONS.items()] + [
