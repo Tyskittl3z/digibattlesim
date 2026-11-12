@@ -168,6 +168,10 @@ def active_keyword(runtime, controller, target_key, keyword):
                 ('＜Jamming＞\n[When Attacking] [Once Per Turn] You may play 1 Tamer card '
                  'with [Veedramon] in its text from your hand with the cost reduced by 2.')):
             return True
+    if (keyword == 'Blocker' and top.card_number == 'BT20-102'
+            and runtime.context.card(controller, top.card_number).effect_text('main_text').splitlines()[0]
+                == '＜Raid＞ ＜Piercing＞ ＜Blocker＞'):
+        return True
     return (top.card_number == 'EX13-023' and keyword in ('Blocker', 'Evade')
             and '＜Blocker＞ ＜Evade＞' in runtime.context.card(
                 controller, top.card_number).effect_text('main_text').splitlines())

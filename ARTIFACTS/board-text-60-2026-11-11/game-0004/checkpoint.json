@@ -10,9 +10,10 @@
     "sha256": "70a15ce60b9f3a014a1d082d8f26c30665c6584c53ecf6b4085b0cf4c8f14c20"
   },
   "model_games_before": 6,
-  "record_sha256": "b3e7881e21f0ea38a50eea14681a58b27b7c310a79f9599012c9a124013854e0",
+  "record_sha256": "57017f139ce64689c24c132949b65cea12ed6612e21bd42a4c9d497fccd175f1",
+  "repair": "The saved B:BT20-102#1 has exact printed Blocker and is unsuspended during the opponent attack. The shared keyword check now offers it as a defensive choice and permits its Blocker battle while keeping Raid and Piercing inactive as defender. No named-policy decision is used; the current board/text bot chooses. Seed and accepted prefix are fixed.",
   "seed": 7804549089509846733,
-  "segment": 2,
+  "segment": 3,
   "status": "HALT",
   "winner": null
 }

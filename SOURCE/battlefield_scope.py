@@ -166,9 +166,10 @@ def _attack_source_dependencies(runtime, owner, anchor, source, field, event):
                 continue
             if (source.card_number == 'BT20-102' and field == 'main_text'
                     and line == '＜Raid＞ ＜Piercing＞ ＜Blocker＞'
-                    and event['target'] == 'PLAYER'):
-                # The selected player target declines optional Raid (16-23-3).
-                # Piercing needs a Digimon battle; Blocker is defensive.
+                    and (event['target'] == 'PLAYER'
+                         or owner != actor and anchor == event['target'])):
+                # A player target declines optional Raid (16-23-3). As a
+                # defender, only Blocker applies; Raid and Piercing do not.
                 continue
             # A keyword can add declaration timing (for example Raid). Do not
             # suspend/open Counter before unsupported participant text is known.

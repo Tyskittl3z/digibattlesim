@@ -157,12 +157,17 @@ class AttackTests(unittest.TestCase):
             confirm_attack(r,'B',ROOT)
         self.assertEqual(r.snapshot()['state'],before)
 
-    def test_unsupported_raid_cannot_declare_and_silently_skip_its_attack_choice(self):
+    def test_player_attack_declines_raid_but_digimon_battle_stays_scoped(self):
         r=self.runtime('B');attacker=self.plain(r,'B','BT20-102')
         self.plain(r,'A','EX1-013',suspended=True)
+        result=declare_attack(r,'B',attacker,'PLAYER',ROOT)
+        self.assertEqual(result['target'],'PLAYER')
+        self.assertEqual(r.state.attack['target'],'PLAYER')
+        r=self.runtime('B');attacker=self.plain(r,'B','BT20-102')
+        defender=self.plain(r,'A','EX1-013',suspended=True)
         before=r.snapshot()
         with self.assertRaisesRegex(RuntimeHalt,'ATTACK_KEYWORD_UNSUPPORTED: BT20-102 main_text'):
-            declare_attack(r,'B',attacker,'PLAYER',ROOT)
+            declare_attack(r,'B',attacker,defender,ROOT)
         self.assertEqual(r.snapshot(),before)
 
 
