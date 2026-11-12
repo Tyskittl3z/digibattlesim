@@ -1,19 +1,18 @@
 {
   "accepted_fact_finding_credit": 0,
-  "commands": 179,
+  "commands": 198,
   "exact_replay": true,
   "first": "B",
   "game_index": 5,
-  "halt_reason": "SECURITY_CARD_UNSUPPORTED: P-104 source=B:P-104#1",
+  "halt_reason": null,
   "history_report": {
     "file": "ARTIFACTS/board-text-60-2026-11-11/game-0004/report.md",
     "sha256": "f5bb92de40fd118c5f17d93c0631847e17b9f4ae4130ca3f43e322ebda19dfe5"
   },
   "model_games_before": 7,
-  "record_sha256": "8be1278d0fca4e4c24e91d708e0bd969d79acce237d2d2aabff16c52dc55b62c",
-  "repair": "The saved checked P-104 Option has exact printed Security text Place this card in the battle area. It uses the same immediate placement as LM-034 without Main search, memory cost or deck movement. The earlier game seed and choices remain fixed.",
+  "record_sha256": "050b73f9ac4a027e43d90c23eea48e28705c15f8bff487a5d26af88b44450cb1",
   "seed": 12054344170171514003,
-  "segment": 3,
-  "status": "HALT",
-  "winner": null
+  "segment": 4,
+  "status": "EXPERIMENTAL_SOFTWARE_TERMINAL",
+  "winner": "A"
 }

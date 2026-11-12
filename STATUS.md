@@ -16,8 +16,12 @@ segment passed exact replay. Encountered printed effects for LM-034, BT20-102
 and BT11-112 were repaired through source-only migrations that preserved
 earlier seeds and choices. The cumulative model contains seven completed games
 including the two initial history games. Additional game 5 is saved after 168
-accepted actions at a BT11-032 unsuspend return trigger. Accepted fact-finding
-and final-evaluation credit remain zero pending independent certification.
+accepted actions at a BT11-032 unsuspend return trigger. That trigger and a
+later P-104 Security placement were repaired through exact-prefix migrations;
+game 5 is now complete with 198 accepted actions and a Bot A win. The
+cumulative model contains eight completed games including the two initial
+history games. Accepted fact-finding and final-evaluation credit remain zero
+pending independent certification.
 
 ## Current corrected Bot A/B game — 2026-11-11
 
