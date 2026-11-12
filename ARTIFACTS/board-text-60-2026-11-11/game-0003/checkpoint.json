@@ -1,0 +1,18 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "commands": 111,
+  "exact_replay": true,
+  "first": "B",
+  "game_index": 3,
+  "halt_reason": "SECURITY_CARD_UNSUPPORTED: BT11-112 source=A:BT11-112#3",
+  "history_report": {
+    "file": "ARTIFACTS/board-text-60-2026-11-11/game-0002/report.md",
+    "sha256": "5291c44168436982d4174e69e7500fa5cb995a2658a86d70e659fb38b5b8133a"
+  },
+  "model_games_before": 5,
+  "record_sha256": "a7632549fa1d21ddd4fc3e8a73c52b036aabc413628e085fdef4e3ff7093760e",
+  "seed": 884428971674423381,
+  "segment": 0,
+  "status": "HALT",
+  "winner": null
+}
