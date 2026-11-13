@@ -1,18 +1,18 @@
 {
   "accepted_fact_finding_credit": 0,
-  "commands": 55,
+  "commands": 86,
   "exact_replay": true,
   "first": "A",
   "game_index": 12,
-  "halt_reason": "BATTLE_EVADE_CHOICE_UNIMPLEMENTED: A:EX13-023#2",
+  "halt_reason": "BATTLE_EVADE_CHOICE_UNIMPLEMENTED: B:EX13-019#4",
   "history_report": {
     "file": "ARTIFACTS/board-text-60-2026-11-11/game-0011/report.md",
     "sha256": "a9ebddb49903b6b6d894e7062be8dff60b10de69d7f564c95aa886067144e21f"
   },
   "model_games_before": 14,
-  "record_sha256": "ab3c9c67de3e25da9420e95f2b38bfa92badcad08ba9f592f562c43678c2a846",
+  "record_sha256": "146830ee1b2cc1aa6f95797f04ba53f2b10312f2239ca1051706005b11152b57",
   "seed": 12975361446898795440,
-  "segment": 0,
+  "segment": 2,
   "status": "HALT",
   "winner": null
 }

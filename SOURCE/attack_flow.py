@@ -221,7 +221,67 @@ def _dp(r,seat,stack):
     return printed
 
 
-def _confirm(r,seat,c,root):
+def _offer_printed_evade(r, deletions, decision):
+    """Pause one witnessed EX13-023 deletion for its owner's Evade choice."""
+    from effect_grants import active_keyword, active_restriction
+    from effect_scheduler import queue_effects
+    from selected_mechanics import EVADE_EFFECT, EVADE_LINE
+    payable = []
+    for owner, key in deletions:
+        stack = r.state.battle[owner][key]
+        if ((owner, key) == (decision[:2] if decision is not None else (None, None))
+                or stack.suspended or stack.statuses.get('cannot_suspend', False)
+                or active_restriction(r, owner, key, 'cannot_suspend')
+                or not active_keyword(r, owner, key, 'Evade')):
+            continue
+        top = stack.cards[-1]
+        if (top.card_number != 'EX13-023' or EVADE_LINE not in
+                r.context.card(owner, top.card_number).effect_text('main_text').splitlines()):
+            raise RuntimeHalt('BATTLE_EVADE_CHOICE_UNIMPLEMENTED: ' + key)
+        payable.append((owner, key, stack, top))
+    if not payable:
+        return None
+    if len(payable) != 1:
+        raise RuntimeHalt('BATTLE_MULTIPLE_EVADE_CHOICES_UNIMPLEMENTED')
+    owner, key, stack, top = payable[0]
+    queue_effects(r, [{'seat': owner, 'source': top.key, 'effect_id': EVADE_EFFECT,
+        'field': 'main_text', 'trigger': {'kind': 'WOULD_BE_DELETED',
+            'target': key, 'target_instance': stack.instance_id,
+            'attack': dict(r.state.attack)}}])
+    return {'processing': 'EVADE_CHOICE_PENDING', 'target': key,
+            'evade_owner': owner, 'full_match_credit': 0}
+
+
+def resolve_printed_evade(runtime, seat, source_key, choice, root):
+    """Resolve the optional immediate Evade, then finish the paused battle."""
+    from selected_mechanics import EVADE_EFFECT, EVADE_LINE, _set_orientation
+    if type(choice) is not bool:
+        raise RuntimeHalt('EVADE_CHOICE_INVALID')
+    record = getattr(runtime, '_activated_pending', None)
+    attack = runtime.state.attack
+    if (record is None or record['effect_id'] != EVADE_EFFECT
+            or record['seat'] != seat or record['source'] != source_key
+            or record['field'] != 'main_text' or attack is None
+            or attack['window'] != 'CONFIRM' or record['trigger'].get('attack') != attack
+            or record['trigger'].get('kind') != 'WOULD_BE_DELETED'):
+        raise RuntimeHalt('EVADE_WINDOW_REQUIRED')
+    key = record['trigger']['target']
+    stack = runtime.state.battle[seat].get(key)
+    if (stack is None or stack.instance_id != record['trigger']['target_instance']
+            or stack.cards[-1].key != source_key or stack.suspended
+            or EVADE_LINE not in runtime.context.card(seat, 'EX13-023').effect_text('main_text').splitlines()):
+        raise RuntimeHalt('EVADE_TARGET_CHANGED')
+    if choice:
+        changed = _set_orientation(runtime, seat, stack, True)
+        if not changed['changed']:
+            raise RuntimeHalt('EVADE_SUSPEND_FAILED')
+    finished = _confirm(runtime, attack['controller'], {}, root,
+                        evade_decision=(seat, key, choice))
+    return {'prevented_deletion': choice, 'evade_target': key,
+            'battle': finished, 'full_match_credit': 0}
+
+
+def _confirm(r,seat,c,root,*,evade_decision=None):
     a=_window(r,seat,'CONFIRM');_scope(r,root,'CONFIRM');s=r.state;other=a['defender']
     attacker=s.battle[seat].get(a['attacker'])
     if attacker is None or attacker.instance_id!=a['attacker_instance']:
@@ -232,8 +292,17 @@ def _confirm(r,seat,c,root):
             a['window']='END';return {'success':False,'reason':'TARGET_LEFT_BATTLE'}
         losses=battle_losers(_dp(r,seat,attacker),_dp(r,other,defender))
         from battlefield_scope import assert_combat_consequences_scope
-        assert_combat_consequences_scope(r,[(owner,key) for label,owner,key in (
-            ('ATTACKER',seat,a['attacker']),('DEFENDER',other,a['target'])) if label in losses])
+        deletions = [(owner,key) for label,owner,key in (
+            ('ATTACKER',seat,a['attacker']),('DEFENDER',other,a['target'])) if label in losses]
+        offered = _offer_printed_evade(r, deletions, evade_decision)
+        if offered is not None:
+            return offered
+        if evade_decision is not None and evade_decision[2]:
+            label = 'ATTACKER' if evade_decision[:2] == (seat,a['attacker']) else 'DEFENDER'
+            losses.remove(label)
+            deletions = [item for item in deletions if item != evade_decision[:2]]
+        assert_combat_consequences_scope(r,deletions,
+            evade_declined=[evade_decision[:2]] if evade_decision is not None and not evade_decision[2] else ())
         if 'ATTACKER' in losses:_delete(r,seat,a['attacker'])
         if 'DEFENDER' in losses:_delete(r,other,a['target'])
         a['window']='END'
@@ -282,8 +351,15 @@ def _confirm(r,seat,c,root):
     if 'ATTACKER' in losses and active_keyword(r,seat,a['attacker'],'Jamming'):
         losses.remove('ATTACKER')
     from battlefield_scope import assert_combat_consequences_scope
-    assert_combat_consequences_scope(r,[(seat,a['attacker'])] if 'ATTACKER' in losses else [],
-                                     security_owner=other)
+    deletions = [(seat,a['attacker'])] if 'ATTACKER' in losses else []
+    offered = _offer_printed_evade(r, deletions, evade_decision)
+    if offered is not None:
+        return offered
+    if evade_decision is not None and evade_decision[2]:
+        losses.remove('ATTACKER')
+        deletions = []
+    assert_combat_consequences_scope(r,deletions, security_owner=other,
+        evade_declined=[evade_decision[:2]] if evade_decision is not None and not evade_decision[2] else ())
     s.zones[other]['security'].pop()
     if 'ATTACKER' in losses:_delete(r,seat,a['attacker'])
     s.zones[other]['trash'].append(checked)

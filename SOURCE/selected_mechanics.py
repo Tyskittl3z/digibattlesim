@@ -16,6 +16,8 @@ from effect_scheduler import queue_effects, source_stack
 from printed_triggers import effect_body,effect_headers
 
 ORIENTATION_EFFECT = 'EX13-023.orientation'
+EVADE_EFFECT = 'EX13-023.evade'
+EVADE_LINE = '＜Blocker＞ ＜Evade＞'
 OMNIMON_END_EFFECT = 'BT20-102.end_turn_rush_attack'
 OMNIMON_END_LINE = ('[End of Your Turn] [Once Per Turn] 1 of your Digimon may gain '
     '＜Rush＞ for the turn and attack without suspending.')
@@ -164,6 +166,8 @@ def resolve_bt12_return(runtime, seat, source_key, choice):
 def selected_pending_choices(runtime, seat, selected):
     """Choice grammar for encountered registered mechanics outside older packs."""
     from return_effects import REPLACEMENT_EFFECT, return_replacement_choices
+    if selected['effect_id'] == EVADE_EFFECT:
+        return [False, True]
     if selected['effect_id'] == REPLACEMENT_EFFECT:
         return return_replacement_choices(runtime, seat, selected['source'])
     if selected['effect_id'] == BT12_UNSUSPEND_EFFECT:
@@ -615,7 +619,11 @@ def build_selected_registry(context, root):
         return resolve_omnimon_end(runtime, seat, source_key, choice, root)
     def bound_omnimon_piercing(runtime, seat, source_key, choice):
         return resolve_omnimon_piercing(runtime, seat, source_key, choice, root)
+    from attack_flow import resolve_printed_evade
+    def bound_evade(runtime, seat, source_key, choice):
+        return resolve_printed_evade(runtime, seat, source_key, choice, root)
     specs = [('EX13-023',ORIENTATION_EFFECT,'main_text',ORIENTATION_LINE,resolve_orientation),
+        ('EX13-023',EVADE_EFFECT,'main_text',EVADE_LINE,bound_evade),
         ('BT20-102',OMNIMON_END_EFFECT,'main_text',OMNIMON_END_LINE,bound_omnimon_end),
         ('BT20-102',OMNIMON_PIERCE_EFFECT,'main_text',OMNIMON_KEYWORDS_LINE,bound_omnimon_piercing),
         ('BT11-032',ULFORCE_UNSUSPEND_RETURN_EFFECT,'main_text',

@@ -187,7 +187,8 @@ def _attack_source_dependencies(runtime, owner, anchor, source, field, event):
                 raise RuntimeHalt('ATTACK_PERSISTENT_EFFECT_UNSUPPORTED: '+source.card_number+' '+field+' source='+source.key)
 
 
-def assert_combat_consequences_scope(runtime, deletions, *, security_owner=None):
+def assert_combat_consequences_scope(runtime, deletions, *, security_owner=None,
+                                     evade_declined=()):
     """Preflight the actual deletion/security footprint before any card moves.
 
     Attack scope already verifies the pinned source bytes and metadata. Battle
@@ -199,7 +200,8 @@ def assert_combat_consequences_scope(runtime, deletions, *, security_owner=None)
     removed=set(deletions)
     for owner,key in removed:
         stack=runtime.state.battle[owner][key]
-        if (active_keyword(runtime,owner,key,'Evade') and not stack.suspended
+        if (active_keyword(runtime,owner,key,'Evade') and (owner,key) not in evade_declined
+                and not stack.suspended
                 and not stack.statuses.get('cannot_suspend',False)
                 and not active_restriction(runtime,owner,key,'cannot_suspend')):
             raise RuntimeHalt('BATTLE_EVADE_CHOICE_UNIMPLEMENTED: '+key)
