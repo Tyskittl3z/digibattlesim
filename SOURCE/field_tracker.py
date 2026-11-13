@@ -19,7 +19,7 @@ _STACK_FIELDS = frozenset(('cards', 'suspended', 'statuses', 'instance_id',
                           'played_turn', 'ready_since_turn'))
 _ATTACK_FIELDS = frozenset(('attacker', 'attacker_instance', 'target', 'target_instance',
                            'controller', 'defender', 'window', 'counter_used', 'block_used', 'checked',
-                           'deferred_depth'))
+                           'deferred_depth', 'evade_decisions'))
 _GRANT_FIELDS = frozenset(('controller', 'source', 'source_instance', 'source_field',
     'source_kind', 'source_definition_sha256', 'source_text_sha256', 'target',
     'target_owner', 'target_instance', 'effect', 'created_turn', 'expires'))
@@ -137,6 +137,11 @@ class FieldTracker:
                     valid = type(item) is bool
                 elif name == 'deferred_depth':
                     valid = type(item) is int and item >= 0
+                elif name == 'evade_decisions':
+                    valid = isinstance(item, list) and len(item) <= 2 and all(
+                        isinstance(decision, dict) and set(decision) == {'owner', 'target', 'prevented'}
+                        and decision['owner'] in _SEATS and isinstance(decision['target'], str)
+                        and type(decision['prevented']) is bool for decision in item)
                 elif name == 'checked':
                     valid = item is None or isinstance(item, str)
                 else:
@@ -228,6 +233,7 @@ class FieldTracker:
                 'attack', 'terminal', 'resolving_option', 'winner')}
         if public['attack'] is not None:
             public['attack'].pop('deferred_depth', None)
+            public['attack'].pop('evade_decisions', None)
         return {**public, 'players': players}
 
     def _metrics(self, snapshot, checks):

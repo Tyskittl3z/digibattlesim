@@ -239,7 +239,8 @@ class ContextRuntime:
         return {'active': self.state.active, 'memory': self.state.memory, 'turn': self.state.turn,
                 'phase':self.state.phase,
                 'attack':({k: state_value(v) for k, v in self.state.attack.items()
-                           if k != 'deferred_depth'} if self.state.attack is not None else None),
+                           if k not in ('deferred_depth', 'evade_decisions')}
+                          if self.state.attack is not None else None),
                 'terminal':self.state.terminal,
                 'resolving_option':state_value(self.state.resolving_option),
                 'winner':self.state.winner,

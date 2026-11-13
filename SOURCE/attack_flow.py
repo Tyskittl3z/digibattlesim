@@ -20,7 +20,8 @@ def _evidence(root):
 def validate_attack(state):
     a=state.attack
     if a is None:return
-    if (not isinstance(a,dict) or set(a) not in (ATTACK_FIELDS, ATTACK_FIELDS | {'deferred_depth'})
+    if (not isinstance(a,dict) or not ATTACK_FIELDS <= set(a)
+            or set(a) - ATTACK_FIELDS - {'deferred_depth', 'evade_decisions'}
             or a['controller'] not in ('A','B') or a['defender'] not in ('A','B')
             or a['controller']==a['defender'] or a['controller']!=state.active
             or a['window'] not in ('COUNTER','BLOCK','CONFIRM','END')
@@ -29,7 +30,14 @@ def validate_attack(state):
             or type(a['counter_used']) is not bool or type(a['block_used']) is not bool
             or (a['checked'] is not None and not isinstance(a['checked'],str))
             or ('deferred_depth' in a and (type(a['deferred_depth']) is not int
-                or a['deferred_depth'] < 0 or state.phase != 'END_OF_TURN'))):
+                or a['deferred_depth'] < 0 or state.phase != 'END_OF_TURN'))
+            or ('evade_decisions' in a and (not isinstance(a['evade_decisions'], list)
+                or len(a['evade_decisions']) > 2
+                or any(not isinstance(item, dict) or set(item) != {'owner', 'target', 'prevented'}
+                    or item['owner'] not in ('A', 'B') or not isinstance(item['target'], str)
+                    or type(item['prevented']) is not bool for item in a['evade_decisions'])
+                or len({(item['owner'], item['target']) for item in a['evade_decisions']})
+                    != len(a['evade_decisions'])))):
         raise RuntimeHalt('ATTACK_SCHEMA_INVALID')
 
 
@@ -238,9 +246,13 @@ def _offer_printed_evade(r, deletions, decision):
     from selected_mechanics import (EVADE_EFFECT, EVADE_LINE,
         GRANTED_EVADE_EFFECT, GRANTED_EVADE_LINE)
     payable = []
+    handled = {(item['owner'], item['target']) for item in
+               (r.state.attack or {}).get('evade_decisions', [])}
+    if decision is not None:
+        handled.add(decision[:2])
     for owner, key in deletions:
         stack = r.state.battle[owner][key]
-        if ((owner, key) == (decision[:2] if decision is not None else (None, None))
+        if ((owner, key) in handled
                 or stack.suspended or stack.statuses.get('cannot_suspend', False)
                 or active_restriction(r, owner, key, 'cannot_suspend')
                 or not active_keyword(r, owner, key, 'Evade')):
@@ -266,8 +278,9 @@ def _offer_printed_evade(r, deletions, decision):
         payable.append((owner, key, stack, source.key, GRANTED_EVADE_EFFECT))
     if not payable:
         return None
-    if len(payable) != 1:
-        raise RuntimeHalt('BATTLE_MULTIPLE_EVADE_CHOICES_UNIMPLEMENTED')
+    if len(payable) > 1 and 'evade_decisions' not in r.state.attack:
+        r.state.attack['evade_decisions'] = []
+    payable.sort(key=lambda item: (item[0] != r.state.active, item[0], item[1]))
     owner, key, stack, source_key, effect_id = payable[0]
     queue_effects(r, [{'seat': owner, 'source': source_key, 'effect_id': effect_id,
         'field': 'main_text', 'trigger': {'kind': 'WOULD_BE_DELETED',
@@ -304,6 +317,8 @@ def resolve_printed_evade(runtime, seat, source_key, choice, root):
     elif not any(item['source'] == source_key and 'Evade' in item['effect'].get('keywords', [])
                  for item in _active(runtime, seat, key)):
         raise RuntimeHalt('EVADE_GRANT_EXPIRED')
+    if 'evade_decisions' in attack:
+        attack['evade_decisions'].append({'owner': seat, 'target': key, 'prevented': choice})
     if choice:
         changed = _set_orientation(runtime, seat, stack, True)
         if not changed['changed']:
@@ -330,12 +345,18 @@ def _confirm(r,seat,c,root,*,evade_decision=None):
         offered = _offer_printed_evade(r, deletions, evade_decision)
         if offered is not None:
             return offered
-        if evade_decision is not None and evade_decision[2]:
-            label = 'ATTACKER' if evade_decision[:2] == (seat,a['attacker']) else 'DEFENDER'
-            losses.remove(label)
-            deletions = [item for item in deletions if item != evade_decision[:2]]
+        decisions = ([(item['owner'], item['target'], item['prevented'])
+                      for item in a.get('evade_decisions', [])]
+                     if 'evade_decisions' in a else
+                     [evade_decision] if evade_decision is not None else [])
+        for owner, key, prevented in decisions:
+            if prevented:
+                label = 'ATTACKER' if (owner, key) == (seat, a['attacker']) else 'DEFENDER'
+                if label in losses:
+                    losses.remove(label)
+                deletions = [item for item in deletions if item != (owner, key)]
         assert_combat_consequences_scope(r,deletions,
-            evade_declined=[evade_decision[:2]] if evade_decision is not None and not evade_decision[2] else ())
+            evade_declined=[(owner, key) for owner, key, prevented in decisions if not prevented])
         if 'ATTACKER' in losses:_delete(r,seat,a['attacker'])
         if 'DEFENDER' in losses:_delete(r,other,a['target'])
         a['window']='END'
