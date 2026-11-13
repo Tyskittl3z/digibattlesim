@@ -1,0 +1,17 @@
+{
+  "tests_passed": 446,
+  "duration_seconds": 390.282,
+  "full_suite_command": "python -m unittest discover -p 'test_*.py' -q",
+  "same_original_game_seed": 12017913134550805276,
+  "game_index": 0,
+  "game_turn": 6,
+  "command_count": 83,
+  "exact_replay": true,
+  "next_selected_action": "RESOLVE_PENDING effect-21 BT22-023.end_turn_unsuspend target B:EX13-022#3",
+  "next_software_blocker": "ORIENTATION_DEPENDENT_TRIGGER_UNIMPLEMENTED: BT11-112 main_text",
+  "software_terminal_matches": 0,
+  "valid_completed_matches": 0,
+  "approved_lanes": 0,
+  "final_matches": 0,
+  "execution_id": "2001f5739db282bc7d2fc40d0d11156895bda30ad8a9bb3a6dbabe81b057a472"
+}

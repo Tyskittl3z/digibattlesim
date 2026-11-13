@@ -1,0 +1,273 @@
+{
+  "schema": "bt11-ulforce-actual-saved-encounter-independent-review-v1",
+  "date": "2026-11-03",
+  "status": "LEGAL_SAVED_EVOLUTION_REQUIRES_ACTUAL_POST_DRAW_WHEN_DIGIVOLVING_CHOICE",
+  "certification": "NONE_SOURCE_BACKED_ENCOUNTER_REVIEW_ONLY",
+  "full_match_credit": 0,
+  "accepted_fact_finding_credit": 0,
+  "final_evaluation_credit": 0,
+  "source_record": "ARTIFACTS/gameplay-continuations-2026-11-03-06/game-0000-segment.json.gz",
+  "seed": 12017913134550805276,
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "prefix_proof": "bt11-ulforce-actual-prefix-proof.json",
+  "prefix_result": {
+    "commands": 93,
+    "all_saved_public_views_and_results_match": true,
+    "all_commands_conserve_108_cards": true,
+    "exact_final_physical_state_and_rng": true
+  },
+  "review_scope": "Official-source assessment of actual saved command94 and newly resolved commands83-93; prefix replay does not establish full-game certification or historical universal branch coverage.",
+  "actual_state": {
+    "turn": 7,
+    "active": "A",
+    "phase": "MAIN",
+    "memory": 3,
+    "source": "A:EX13-022#1",
+    "source_instance": "entity-9",
+    "source_suspended": false,
+    "target_in_hand": "A:BT11-032#1",
+    "route_index": 0,
+    "printed_route": "Blue4 fromLv5",
+    "pending_effects": [],
+    "once_used": [],
+    "source_restriction": {
+      "controller": "B",
+      "source": "B:EX13-022#1",
+      "source_instance": "entity-5",
+      "source_field": "main_text",
+      "source_kind": "Digimon",
+      "source_definition_sha256": "73cef4900ac35284738c7c875f69d7b18858c481f844ca920dce86b0d2907daf",
+      "source_text_sha256": "940a51450db0683baadac8c351221e699240ff2391a3b5fd51b212460008e740",
+      "target": "A:EX13-022#1",
+      "target_owner": "A",
+      "target_instance": "entity-9",
+      "effect": {
+        "restrictions": [
+          "cannot_suspend"
+        ]
+      },
+      "created_turn": 6,
+      "expires": {
+        "turn": 7,
+        "controller": "A",
+        "boundary": "turn_end"
+      }
+    }
+  },
+  "new_prefix_commands_83_to_93": [
+    {
+      "commands": [
+        83
+      ],
+      "assessment": "BT22 optional EndYourTurn effect legally unsuspends selected own blue B:EX13-022#3, true->false, while cannot_suspend remains. Consume this BT22 source-incarnation OPT. Three B Rina effects trigger simultaneously."
+    },
+    {
+      "commands": [
+        84
+      ],
+      "assessment": "B chooses BT11Rina memory effect first; mandatory gain1 takes-3 to-2 and consumes its current-turn OPT."
+    },
+    {
+      "commands": [
+        85,
+        86
+      ],
+      "assessment": "B explicitly declines each EX13Rina optional self-suspension. Both Tamers remain unsuspended; no Draw, no After evolution, no invented EX13Rina OPT. Q7437 applies."
+    },
+    {
+      "commands": [
+        87
+      ],
+      "assessment": "With effects complete and memory-2, actual Bturn6 ends; Aturn7 starts at2. Clear old-turn OPT. Expire A restriction on BEX13#3 at actual Bturn6 end; retain BBlocker/Evade through Aturn7 and B restrictions on A entities through Aturn7."
+    },
+    {
+      "commands": [
+        88,
+        89
+      ],
+      "assessment": "A StartYourTurn BlueScramble Delay can activate: B has Digimon. Trash Option; return selected blue A:P-138#4 from trash to deck top. A has battle Digimon, so no optional trash play is available."
+    },
+    {
+      "commands": [
+        90,
+        91
+      ],
+      "assessment": "A reaches Draw and draws the actual just-returned A:P-138#4; all A field cards were already unsuspended, so phase progression causes no actual orientation change and no unsuspend reactions."
+    },
+    {
+      "commands": [
+        92
+      ],
+      "assessment": "A explicitly skips breeding; existing breeding stack remains. Enter Main and trigger actual EX13Rina StartMain memory condition."
+    },
+    {
+      "commands": [
+        93
+      ],
+      "assessment": "A has Veedramon-name battle Digimon; existing EX13Rina mandatory gain1 takes2 to3. No further pending effects or current-turn OPT uses remain."
+    }
+  ],
+  "selected_command94_assessment": {
+    "legality": "LEGAL",
+    "requirement": "Source is own BlueLv5; hand target requires BlueLv5 cost4; no unresolved effect or rule prevents ordinary Main digivolution.",
+    "procedure": [
+      "Pay4: memory3->-1",
+      "Place A:BT11-032#1 on A:EX13-022#1",
+      "Preserve entity-9, orientation, play history and individual restriction",
+      "Draw actual next card as mandatory digivolution bonus",
+      "Queue new-top BT11-032 actual When Digivolving effect; choose from actual post-draw hand"
+    ],
+    "no_premature_turn_change": "Finish pending/derived processing before actual end-turn boundary despite memory-1."
+  },
+  "judge_only_post_draw_expectation": {
+    "information_policy": "Hidden deck order is audit-only; never supply this review or pre-draw identity to pilot input. Recompute choices only after bonus draw actually executes.",
+    "bonus_draw_if_no_other_action_intervenes": "A:BT11-112#3",
+    "actual_post_bonus_free_play_choices": [
+      null,
+      "A:BT11-112#3"
+    ],
+    "decline": "Legal explicit decline; no Tamer play or play observers occur; memory stays-1.",
+    "play": "Play selected blue Tamer from own actual hand for0 cost; memory stays-1. Queue its mandatory OnPlay grant and Ulforce mandatory self-unsuspend as simultaneous derived effects controlled by A.",
+    "rina_on_play_targets": [
+      "A:BT11-032#1",
+      "A:BT12-029#2"
+    ],
+    "rina_on_play_choice": "Mandatory choose1 of these field Digimon; both names contain Veedramon. No optional None when a legal target exists. Breeding Veemon is ineligible.",
+    "rina_grant_duration": {
+      "controller": "B",
+      "turn": 8,
+      "boundary": "turn_end"
+    },
+    "simultaneous_order": "A explicitly chooses the next pending effect after each resolution; grant and mandatory self-unsuspend both resolve before turn completion.",
+    "already_unsuspended": "Ulforce remains unsuspended; no actual unsuspend event, memory gain, EX13Rina Draw/After evolution, or Ulforce bounce occurs merely from this self-unsuspend processing.",
+    "unrelated_your_turn_sources": "B sources are not in their YourTurn timing; A egg/EX1 are in breeding; no egg/EX1 is under the new Ulforce."
+  },
+  "carryover_and_nontriggers": [
+    "The cannot_suspend restriction on entity-9 expires only at actual Aturn7 end and survives ordinary evolution; it does not prohibit evolution or attempted unsuspend processing.",
+    "Ordinary evolution changes no orientation and is not a Tamer play. No suspension, unsuspension, Tamer-play observer, Rina AllTurns activation or inherited Aero unsuspend fires just from evolution.",
+    "After evolution, EX13-022 main-text Tamer-play restriction is not active under Ulforce. It cannot retroactively observe the later Rina play. Its inherited self-suspension effect is active but sees no suspension.",
+    "BT11-032 own blue-Tamer-play self-unsuspend has no printed OPT. Resolve it mandatorily, even already unsuspended. Its separate bounce OPT does not trigger or consume a use without a genuine suspended->unsuspended change.",
+    "Neither existing nor newly played BT11Rina memory OPT is consumed by processing an already-unsuspended Digimon. EX13Rina has no printed OPT.",
+    "A current-turn restriction also remains on BT12-029 through actual Aturn7 end; BBlocker/Evade remains on BEX13#3 through that same boundary. A new Rina grant would instead remain through actual Bturn8 end."
+  ],
+  "official_rules_excerpts": [
+    {
+      "locator": "CR1-3-3",
+      "text": "If a card in a given state is requested to be changed to that same state, the card remains in its current state."
+    },
+    {
+      "locator": "CR3-1-3-1-3",
+      "text": "Even if a card on the field becomes the bottom card in a stack due to cards being placed on top of it, it isn't considered to be a new card."
+    },
+    {
+      "locator": "CR8-1-2-3",
+      "text": "A digivolved Digimon carries over its orientation from before the digivolution."
+    },
+    {
+      "locator": "CR8-1-3-3",
+      "text": "The player places the Digimon for the digivolution on top of the chosen card, draws 1 card, and the digivolution process is resolved."
+    },
+    {
+      "locator": "CR15-13-2",
+      "text": "When an effect is gained, the effect and the state of the effect at that time will be carried over, even if a card is placed on top of that card or a card is removed from its stack."
+    },
+    {
+      "locator": "EX1-013 Q3203",
+      "text": "The Digimon is already unsuspended, so this card\u2019s inherited effect doesn\u2019t activate. The Digimon must go from suspended to unsuspended for the effect to activate."
+    }
+  ],
+  "verification": {
+    "new_ulforce_resolution_executed": false,
+    "source_files_edited": [],
+    "strategy_assessment": "NONE",
+    "complete_game_assessment": "NONE",
+    "findings": "No concrete rules defect identified in newly resolved saved commands83-93; actual command94 is a legal evolution halted by missing printed-trigger implementation."
+  },
+  "sources": [
+    {
+      "id": "card-BT11-032",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-032.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-032",
+      "sha256": "82c0b74c599cb27d0784d93959057b2504e97c4e593af5ee0a0fce51db30d50e",
+      "locator": "#BT11-032 printed Blue Lv5 evolution cost4; When Digivolving optional blue-Tamer play; Your Turn mandatory self-unsuspend on own blue-Tamer play; separate actual-unsuspend OPT bounce"
+    },
+    {
+      "id": "card-BT11-112",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-112.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-112",
+      "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc",
+      "locator": "#BT11-112 On Play name-eligible Digimon Blocker/Evade through opponent turn end; All Turns own Veedramon suspension; Your Turn blue-Digimon actual-unsuspend OPT memory"
+    },
+    {
+      "id": "card-EX13-022",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-022.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-022",
+      "sha256": "4771e6eab5218e833eebf7d1ff6cf70ad6fa51a51d556f8a404ac88f07256874",
+      "locator": "#EX13-022 Lv5 Blue; top-only Tamer-play restriction; inherited actual self-suspension optional unsuspend"
+    },
+    {
+      "id": "card-EX13-069",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-069.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-069",
+      "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7",
+      "locator": "#EX13-069 Start of Your Main Phase memory; optional self-suspension on own Digimon actual-unsuspend; Q7437-Q7439"
+    },
+    {
+      "id": "card-EX13-002",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-002.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-002",
+      "sha256": "9d2abc2c3a5f20aebefbcb5b89818a4559748ddbde4e20f92562092b7267cd4f",
+      "locator": "#EX13-002 inherited own-blue-Tamer-play timing, only active beneath appropriate field Digimon"
+    },
+    {
+      "id": "card-BT12-029",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT12-029.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT12-029",
+      "sha256": "4815904431fc1ad0c54a6185aa3269fe75b844cae57da5dc68b72eca0654d505",
+      "locator": "#BT12-029 self actual-unsuspend timing; its existing top is a name-eligible Rina On Play target"
+    },
+    {
+      "id": "card-EX1-013",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX1-013.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX1-013",
+      "sha256": "df126caa2ee95d5f7b86008ef828291645d15204c177801eb2f73404d0611f38",
+      "locator": "#EX1-013 Q3203: already-unsuspended processing does not activate an actual-unsuspend trigger"
+    },
+    {
+      "id": "card-BT22-023",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-023.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-023",
+      "sha256": "a184df26a6bd8c5ccaed325998c9b85a18c0c2d5c0778a20993fd2d6a01e67dd",
+      "locator": "#BT22-023 End of Your Turn OPT optional own-blue-Digimon-or-Tamer unsuspend"
+    },
+    {
+      "id": "card-LM-028",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-LM-028.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-028",
+      "sha256": "add30c8ec48a6972ae26bc56af14b6faaab06af29d1b032151662b8e3723c0ee",
+      "locator": "#LM-028 Start of Your Turn Delay return blue trash Digimon to deck top; optional play only without own Digimon; Q4041-Q4042"
+    },
+    {
+      "id": "rules",
+      "file": "RULES/matchups/123129-vs-124303/sources/general_rule.pdf",
+      "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918",
+      "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+      "locator": "Cover: Ver4.3 last updated2026/09/18; 1-3-3;1-3-11-1;3-1-2;3-1-3-1-3;3-4-3;4-2;6-3;6-4;6-5-1;6-6-2 through6-6-4;8-1-2-3;8-1-3-1 through8-1-3-3;15-3;15-4;15-7;15-11-1;15-13-2;15-14-1;15-16-2;15-16-3;15-16-8"
+    },
+    {
+      "file": "ARTIFACTS/gameplay-continuations-2026-11-03-06/game-0000-segment.json.gz",
+      "sha256": "0dfe656ec952fb6537bb06f209e694ca8dda21891e31eb566d9801f0d2363e2e",
+      "locator": "Preserved saved gameplay/context/source-index bytes"
+    },
+    {
+      "file": "ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json",
+      "sha256": "089d449edab177c4f1d31a4b2ce8414650439df4ea6459080400df45d5004484",
+      "locator": "Preserved saved gameplay/context/source-index bytes"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/SOURCE_INDEX.json",
+      "sha256": "09e681295ce1d005cd554fddda4464b09d46e5adeb5139ac91d090fb7defe40c",
+      "locator": "Preserved saved gameplay/context/source-index bytes"
+    }
+  ]
+}

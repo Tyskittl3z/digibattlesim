@@ -1,0 +1,46 @@
+{
+  "status": "EXPERIMENTAL_PARTIAL_GAME",
+  "full_suite_at_this_exact_source_checkpoint": "NOT_RUN",
+  "last_prior_full_suite": {
+    "commit": "5c83796",
+    "tests_passed": 409
+  },
+  "focused_runs": [
+    {
+      "modules": [
+        "test_option_actions",
+        "test_battle_evolution",
+        "test_breeding_evolution",
+        "test_aero_effects"
+      ],
+      "tests_passed": 52,
+      "seconds": 41.024
+    },
+    {
+      "modules": [
+        "test_imported_attempts",
+        "test_phase_flow",
+        "test_battlefield_scope"
+      ],
+      "tests_passed": 46,
+      "seconds": 42.164
+    },
+    {
+      "case": "legacy Delay continuation regression",
+      "tests_passed": 1,
+      "seconds": 11.666
+    },
+    {
+      "module": "test_main_actions",
+      "tests_passed": 9,
+      "seconds": 4.071
+    }
+  ],
+  "focused_counts_may_overlap": true,
+  "exact_replay": true,
+  "turn": 6,
+  "commands": 55,
+  "same_seed": 12017913134550805276,
+  "full_match_credit": 0,
+  "source_checkpoint": "source-checkpoint.tar.gz"
+}

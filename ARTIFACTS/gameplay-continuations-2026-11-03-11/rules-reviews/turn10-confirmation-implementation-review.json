@@ -1,0 +1,95 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "baseline_source_manifest": "ARTIFACTS/gameplay-continuations-2026-11-03-10/source-manifest.json",
+  "concrete_unresolved_defects_found": [],
+  "diff_findings": [
+    {
+      "area": "new _persistent_field_is_self_only",
+      "finding": "Normalizes an orientation adjective and apostrophe variants in the self entity reference. Requires a local modifier/protection predicate and fails closed on foreign/global targets, mixed self/global targets, security/keyword effects, attack redirection/restriction and unknown phrasing."
+    },
+    {
+      "area": "CONFIRM persistent field guard",
+      "finding": "Unrelated self-only fields are inert; a participant persistent field remains an explicit dependency. Genuinely global or mixed fields remain guarded. No card-specific whitelist or blanket exclusion is added."
+    },
+    {
+      "area": "unchanged attack flow",
+      "finding": "attack_flow matches sealed segment10 bytes exactly. Counter/Block/Confirm sequence, source identity, checked card processing and rule battle procedure are unchanged."
+    },
+    {
+      "area": "new regression cases",
+      "finding": "Actual146-success encounter fixture verifies the exact full state change and RNG. Eight semantic wordings exercise unrelated versus participant roles, including mixed clauses and only-attack restrictions."
+    }
+  ],
+  "executed_independent_validation": [
+    {
+      "command": "python -m unittest test_attack_flow.EncounteredUlforceConfirmationTests test_battlefield_scope.BattlefieldScopeTests.test_persistent_fields_distinguish_self_adjectives_from_global_combat_targets -v",
+      "cwd": "SOURCE",
+      "evidence": "turn10-independent-confirmation-tests.txt",
+      "exit_code": 0,
+      "result": "OK",
+      "seconds": 34.387,
+      "tests": 2
+    },
+    {
+      "checks": [
+        "146 saved successes preserve each public view/result and final state/RNG under current source",
+        "private confirmation changes only checkedP138 Security\u2192trash plus attackchecked/END fields",
+        "printed12000vs5000 battle leaves attacker alive/suspended; Security Digimon is not deleted",
+        "A security2\u21921; no terminal; no new pending effects; memory5/RNG unchanged",
+        "separate B EX13 protected entity10/stack entirely unchanged",
+        "108 unique physical cards; repeatCONFIRM rejected with exact rollback",
+        "source bytes stable and saved source10record unchanged"
+      ],
+      "command": "python ARTIFACTS/gameplay-continuations-2026-11-03-11/rules-reviews/turn10-private-confirmation-proof.py",
+      "evidence": "turn10-private-confirmation-proof.json",
+      "exit_code": 0,
+      "result": "PASS",
+      "seconds": 34.937
+    },
+    {
+      "checks": [
+        "94 archived source members match94-entry manifest",
+        "146 exact saved successes and initial/final/beforeHALT snapshots/RNG",
+        "108 unique cards54/54",
+        "halted147thCONFIRM deliberately unexecuted"
+      ],
+      "command": "python ARTIFACTS/gameplay-continuations-2026-11-03-11/rules-reviews/archive10-prefix-proof.py",
+      "evidence": "archive10-prefix-proof.json",
+      "executor": "archive09_prefix independent subagent",
+      "exit_code": 0,
+      "result": "PASS",
+      "seconds": 21.533
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "clean"
+    }
+  ],
+  "execution_id": "0461e1428e3c13d6205a2c1b4077660d3f70021b043373149b5b74580230250b",
+  "final_evaluation_credit": 0,
+  "incremental_diff": {
+    "file": "confirmation-diff-from-segment10.patch",
+    "sha256": "4345a856c3281004dfa56bb0dc5906317c079a96cd51869e68bd7739c6d14273"
+  },
+  "judge_certification_credit": 0,
+  "limits": [
+    "Review and targeted private scenarios cover this encountered confirmation only",
+    "Full suite not independently rerun by this reviewer",
+    "Unknown participant/global effects remain explicit dependencies; no universal combat/protection support claimed",
+    "Saved actual game record is not extended by these private checks",
+    "Software proof and official-wording assessment are not complete-game judge certification"
+  ],
+  "new_actual_gameplay_commands": 0,
+  "reviewer": "turn10_attack_judge",
+  "schema": "actual-confirmation-implementation-review-v1",
+  "source_edits": 0,
+  "source_sha256": {
+    "SOURCE/attack_flow.py": "be9adb19ed1465ff32b282c0dead91bd93258ecb6ea65b8343c140a7dc29dd6a",
+    "SOURCE/battlefield_scope.py": "5843691a90cab163246218b83f210054b4e21df56c4e5ea3dd9de3018d9a18b4",
+    "SOURCE/test_attack_flow.py": "af457a0b1a05729248ff110ff878314691b036a3c7d3fdb1f4df836e83ad7cf1",
+    "SOURCE/test_battlefield_scope.py": "dd4607ee515d8650bbcb446bf5b80c546f7709d2f49d16a373d3fb6aab4d7d8a"
+  },
+  "status": "NO_CONCRETE_DEFECT_FOUND_IN_SELECTED_CONFIRMATION_INCREMENT",
+  "strategy_credit": 0
+}

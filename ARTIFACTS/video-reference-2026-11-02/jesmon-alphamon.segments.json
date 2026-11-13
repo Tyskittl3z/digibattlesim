@@ -1,0 +1,3520 @@
+{
+  "source": {
+    "key": "jesmon-alphamon",
+    "label": "Jesmon vs Alphamon",
+    "file_id": "file_00000000779081f5afc0cb0f5ee73c29",
+    "original_path": "/workspace/attachments/ccdce49c-a3d1-4193-ac02-49d863b78c69/Pasted text.txt",
+    "original_bytes": 31971,
+    "original_sha256": "e014f9c3b2dbc28b7c77ff99d8e7e122d48151b316e7ee913213e7a78bd55e5a",
+    "segments": 700,
+    "last_caption_seconds": 1208,
+    "identity_basis": "USER_CONTEXT_AND_TRANSCRIPT_NOT_EXACT_DECK_CERTIFICATION",
+    "evidence_type": "USER_SUPPLIED_TRANSCRIPT",
+    "card_name_normalization": "NONE_ORIGINAL_WORDS_PRESERVED",
+    "rules_authority": false,
+    "simulated_match_credit": 0,
+    "segments_file": "jesmon-alphamon.segments.json"
+  },
+  "segments": [
+    {
+      "timestamp": "0:00",
+      "start_seconds": 0,
+      "text": "Despon going first. DGA catch BT8"
+    },
+    {
+      "timestamp": "0:03",
+      "start_seconds": 3,
+      "text": "Gurimmon which will dig evolve into the"
+    },
+    {
+      "timestamp": "0:04",
+      "start_seconds": 4,
+      "text": "EX13 Huckman for zero costs. The option"
+    },
+    {
+      "timestamp": "0:07",
+      "start_seconds": 7,
+      "text": "card from Master the Disciple will be"
+    },
+    {
+      "timestamp": "0:08",
+      "start_seconds": 8,
+      "text": "used for two memory cops. The main"
+    },
+    {
+      "timestamp": "0:10",
+      "start_seconds": 10,
+      "text": "effect reveal top three cards of your"
+    },
+    {
+      "timestamp": "0:11",
+      "start_seconds": 11,
+      "text": "deck. Add one card with Huckman or"
+    },
+    {
+      "timestamp": "0:13",
+      "start_seconds": 13,
+      "text": "System in his name or ROI trait among"
+    },
+    {
+      "timestamp": "0:15",
+      "start_seconds": 15,
+      "text": "them to your hand which will be the BT23"
+    },
+    {
+      "timestamp": "0:16",
+      "start_seconds": 16,
+      "text": "Huckmon. Cash the rest then place this"
+    },
+    {
+      "timestamp": "0:18",
+      "start_seconds": 18,
+      "text": "card in battle area. In the turn we'll"
+    },
+    {
+      "timestamp": "0:20",
+      "start_seconds": 20,
+      "text": "pass over to Alphammon and Chronicle"
+    },
+    {
+      "timestamp": "0:22",
+      "start_seconds": 22,
+      "text": "with two memory. Drop your turn. Digi"
+    },
+    {
+      "timestamp": "0:24",
+      "start_seconds": 24,
+      "text": "hatch promo dorimmon which will dig"
+    },
+    {
+      "timestamp": "0:26",
+      "start_seconds": 26,
+      "text": "evolve into the EX13 Dorommon with the"
+    },
+    {
+      "timestamp": "0:28",
+      "start_seconds": 28,
+      "text": "special digivolve requirements for zero"
+    },
+    {
+      "timestamp": "0:29",
+      "start_seconds": 29,
+      "text": "cost. The option card release of the"
+    },
+    {
+      "timestamp": "0:31",
+      "start_seconds": 31,
+      "text": "sealed knight will be used for three"
+    },
+    {
+      "timestamp": "0:32",
+      "start_seconds": 32,
+      "text": "memory cost. His main effect by trashing"
+    },
+    {
+      "timestamp": "0:34",
+      "start_seconds": 34,
+      "text": "one card with X antibody or chronicle"
+    },
+    {
+      "timestamp": "0:36",
+      "start_seconds": 36,
+      "text": "trait from your hand which will be the"
+    },
+    {
+      "timestamp": "0:37",
+      "start_seconds": 37,
+      "text": "EX13 Alphalon. Draw two. Then place his"
+    },
+    {
+      "timestamp": "0:40",
+      "start_seconds": 40,
+      "text": "card in the battle area. In a turn will"
+    },
+    {
+      "timestamp": "0:42",
+      "start_seconds": 42,
+      "text": "pass over back to Jon with one memory."
+    },
+    {
+      "timestamp": "0:44",
+      "start_seconds": 44,
+      "text": "Draw for turn. Hakman will move from the"
+    },
+    {
+      "timestamp": "0:46",
+      "start_seconds": 46,
+      "text": "breeding area to the battle area and"
+    },
+    {
+      "timestamp": "0:48",
+      "start_seconds": 48,
+      "text": "Digivolve into the EX13 Bow Hakman for"
+    },
+    {
+      "timestamp": "0:50",
+      "start_seconds": 50,
+      "text": "two memory costs. File Hammonds when dig"
+    },
+    {
+      "timestamp": "0:52",
+      "start_seconds": 52,
+      "text": "evolving effect. If you have one or few"
+    },
+    {
+      "timestamp": "0:53",
+      "start_seconds": 53,
+      "text": "retainers, you may play one Mon from"
+    },
+    {
+      "timestamp": "0:55",
+      "start_seconds": 55,
+      "text": "your hand without paying the cost. Mons"
+    },
+    {
+      "timestamp": "0:56",
+      "start_seconds": 56,
+      "text": "on play effect activates. Reveal top"
+    },
+    {
+      "timestamp": "0:58",
+      "start_seconds": 58,
+      "text": "three cards of your deck. Add one card"
+    },
+    {
+      "timestamp": "1:00",
+      "start_seconds": 60,
+      "text": "with Pokemon in his text among them to"
+    },
+    {
+      "timestamp": "1:01",
+      "start_seconds": 61,
+      "text": "the hand, which will be another copy of"
+    },
+    {
+      "timestamp": "1:03",
+      "start_seconds": 63,
+      "text": "your master to disciple. Return the rest"
+    },
+    {
+      "timestamp": "1:04",
+      "start_seconds": 64,
+      "text": "back to the bottom of the deck. Turn"
+    },
+    {
+      "timestamp": "1:06",
+      "start_seconds": 66,
+      "text": "pass over back to Alphammon with one"
+    },
+    {
+      "timestamp": "1:08",
+      "start_seconds": 68,
+      "text": "memory. Draw for turn. Second copy of"
+    },
+    {
+      "timestamp": "1:10",
+      "start_seconds": 70,
+      "text": "the option card release of the seal"
+    },
+    {
+      "timestamp": "1:12",
+      "start_seconds": 72,
+      "text": "knight will be used for three memory"
+    },
+    {
+      "timestamp": "1:13",
+      "start_seconds": 73,
+      "text": "cops. Then trashing Gimroon, which has"
+    },
+    {
+      "timestamp": "1:15",
+      "start_seconds": 75,
+      "text": "both X antibody and a chronic control"
+    },
+    {
+      "timestamp": "1:16",
+      "start_seconds": 76,
+      "text": "trait from the hand. Draw two. Passing a"
+    },
+    {
+      "timestamp": "1:18",
+      "start_seconds": 78,
+      "text": "turn back to Jmon with two memory."
+    },
+    {
+      "timestamp": "1:20",
+      "start_seconds": 80,
+      "text": "Payment card monster start of your turn"
+    },
+    {
+      "timestamp": "1:21",
+      "start_seconds": 81,
+      "text": "effect activates. If you have two or"
+    },
+    {
+      "timestamp": "1:23",
+      "start_seconds": 83,
+      "text": "less memory, set it to three and draw"
+    },
+    {
+      "timestamp": "1:24",
+      "start_seconds": 84,
+      "text": "off for turn catch rem which will dig"
+    },
+    {
+      "timestamp": "1:28",
+      "start_seconds": 88,
+      "text": "evolve into the BT23 Hmon for zero cost."
+    },
+    {
+      "timestamp": "1:31",
+      "start_seconds": 91,
+      "text": "Using the main and delay effect of the"
+    },
+    {
+      "timestamp": "1:32",
+      "start_seconds": 92,
+      "text": "option card from master the disciple to"
+    },
+    {
+      "timestamp": "1:34",
+      "start_seconds": 94,
+      "text": "trash this card from the battle area."
+    },
+    {
+      "timestamp": "1:35",
+      "start_seconds": 95,
+      "text": "Next time one of your Digimon will"
+    },
+    {
+      "timestamp": "1:37",
+      "start_seconds": 97,
+      "text": "digolve this turn, reduce the digolution"
+    },
+    {
+      "timestamp": "1:38",
+      "start_seconds": 98,
+      "text": "cost by one. Sphmon will dig evolve into"
+    },
+    {
+      "timestamp": "1:41",
+      "start_seconds": 101,
+      "text": "the EX13 Savior Huckbond for two memory"
+    },
+    {
+      "timestamp": "1:43",
+      "start_seconds": 103,
+      "text": "costs. Savior Huckm's one dig evolving"
+    },
+    {
+      "timestamp": "1:45",
+      "start_seconds": 105,
+      "text": "effect. Once per turn, you may play or"
+    },
+    {
+      "timestamp": "1:47",
+      "start_seconds": 107,
+      "text": "use one white card from the huff funance"
+    },
+    {
+      "timestamp": "1:48",
+      "start_seconds": 108,
+      "text": "text from your hand with a cost reduced"
+    },
+    {
+      "timestamp": "1:50",
+      "start_seconds": 110,
+      "text": "by three. For the BT23 system on block"
+    },
+    {
+      "timestamp": "1:52",
+      "start_seconds": 112,
+      "text": "will be played with his onplay effect."
+    },
+    {
+      "timestamp": "1:54",
+      "start_seconds": 114,
+      "text": "Add your top security card to the hand."
+    },
+    {
+      "timestamp": "1:55",
+      "start_seconds": 115,
+      "text": "Then recover one. To place the top card"
+    },
+    {
+      "timestamp": "1:57",
+      "start_seconds": 117,
+      "text": "of the deck, the top of the security"
+    },
+    {
+      "timestamp": "1:59",
+      "start_seconds": 119,
+      "text": "stack. EX13 Hmon's inherit effect"
+    },
+    {
+      "timestamp": "2:01",
+      "start_seconds": 121,
+      "text": "activates. Your turn once returned. When"
+    },
+    {
+      "timestamp": "2:02",
+      "start_seconds": 122,
+      "text": "any of your white Digimon are played,"
+    },
+    {
+      "timestamp": "2:04",
+      "start_seconds": 124,
+      "text": "gain one memory. Davia Huffman will"
+    },
+    {
+      "timestamp": "2:06",
+      "start_seconds": 126,
+      "text": "attack into security. Gurimman's inherit"
+    },
+    {
+      "timestamp": "2:08",
+      "start_seconds": 128,
+      "text": "effect activates. When attacking once"
+    },
+    {
+      "timestamp": "2:09",
+      "start_seconds": 129,
+      "text": "per turn, if this Digimon has 6,000 DP"
+    },
+    {
+      "timestamp": "2:11",
+      "start_seconds": 131,
+      "text": "or more, draw one. Davia Huffman has a"
+    },
+    {
+      "timestamp": "2:13",
+      "start_seconds": 133,
+      "text": "keyword alliance. When this Digimon"
+    },
+    {
+      "timestamp": "2:14",
+      "start_seconds": 134,
+      "text": "attacks by suspending one of your other"
+    },
+    {
+      "timestamp": "2:16",
+      "start_seconds": 136,
+      "text": "Digimon, which will be the Sismon Blanc,"
+    },
+    {
+      "timestamp": "2:18",
+      "start_seconds": 138,
+      "text": "this Digimon gain secret attack plus one"
+    },
+    {
+      "timestamp": "2:19",
+      "start_seconds": 139,
+      "text": "and the suspended Digimon's DP for the"
+    },
+    {
+      "timestamp": "2:21",
+      "start_seconds": 141,
+      "text": "attack. System Bong's your turn effect"
+    },
+    {
+      "timestamp": "2:23",
+      "start_seconds": 143,
+      "text": "activates. When this Digimon suspends,"
+    },
+    {
+      "timestamp": "2:24",
+      "start_seconds": 144,
+      "text": "one of your other Digimon may dig evolve"
+    },
+    {
+      "timestamp": "2:26",
+      "start_seconds": 146,
+      "text": "into a Digimon card with Huckmon in his"
+    },
+    {
+      "timestamp": "2:27",
+      "start_seconds": 147,
+      "text": "name or the Royal Knight trait or CS"
+    },
+    {
+      "timestamp": "2:29",
+      "start_seconds": 149,
+      "text": "trait in the hand or trash with the"
+    },
+    {
+      "timestamp": "2:30",
+      "start_seconds": 150,
+      "text": "digion cost reduced by one. And now it"
+    },
+    {
+      "timestamp": "2:32",
+      "start_seconds": 152,
+      "text": "is time for the first warrior knight to"
+    },
+    {
+      "timestamp": "2:34",
+      "start_seconds": 154,
+      "text": "appear where Savior Huckmon will dig"
+    },
+    {
+      "timestamp": "2:35",
+      "start_seconds": 155,
+      "text": "evolve into the holy warrior Digimon of"
+    },
+    {
+      "timestamp": "2:37",
+      "start_seconds": 157,
+      "text": "Salvation being Jasmine from EX13 for"
+    },
+    {
+      "timestamp": "2:40",
+      "start_seconds": 160,
+      "text": "two memory costs. Jasmmon's one dig"
+    },
+    {
+      "timestamp": "2:41",
+      "start_seconds": 161,
+      "text": "evolving effect. Once per turn, you may"
+    },
+    {
+      "timestamp": "2:43",
+      "start_seconds": 163,
+      "text": "use one cost five or lower Hutmon text"
+    },
+    {
+      "timestamp": "2:45",
+      "start_seconds": 165,
+      "text": "option card from your hand or this"
+    },
+    {
+      "timestamp": "2:46",
+      "start_seconds": 166,
+      "text": "Digimon's digion cards without paying"
+    },
+    {
+      "timestamp": "2:48",
+      "start_seconds": 168,
+      "text": "the cost. For the option side of the"
+    },
+    {
+      "timestamp": "2:50",
+      "start_seconds": 170,
+      "text": "gold card, divine pierce awaken will be"
+    },
+    {
+      "timestamp": "2:51",
+      "start_seconds": 171,
+      "text": "used for free. As main effect, you may"
+    },
+    {
+      "timestamp": "2:53",
+      "start_seconds": 173,
+      "text": "play one play cost four or lower card"
+    },
+    {
+      "timestamp": "2:55",
+      "start_seconds": 175,
+      "text": "for system in its name from your hand or"
+    },
+    {
+      "timestamp": "2:56",
+      "start_seconds": 176,
+      "text": "trash without paying the cost. With the"
+    },
+    {
+      "timestamp": "2:58",
+      "start_seconds": 178,
+      "text": "BT6 system will be played then to one of"
+    },
+    {
+      "timestamp": "3:00",
+      "start_seconds": 180,
+      "text": "your opponent's Digimon. Give minus"
+    },
+    {
+      "timestamp": "3:02",
+      "start_seconds": 182,
+      "text": "3,000 DP for a turn for each of your"
+    },
+    {
+      "timestamp": "3:03",
+      "start_seconds": 183,
+      "text": "Digimon, but there are no targets."
+    },
+    {
+      "timestamp": "3:05",
+      "start_seconds": 185,
+      "text": "Afterwards, it will arts Digimon."
+    },
+    {
+      "timestamp": "3:07",
+      "start_seconds": 187,
+      "text": "Instead of trashing after use, your"
+    },
+    {
+      "timestamp": "3:08",
+      "start_seconds": 188,
+      "text": "cards may dig evolve into this card"
+    },
+    {
+      "timestamp": "3:09",
+      "start_seconds": 189,
+      "text": "without paying the cost or system on"
+    },
+    {
+      "timestamp": "3:11",
+      "start_seconds": 191,
+      "text": "block in the battle area or arts dig"
+    },
+    {
+      "timestamp": "3:12",
+      "start_seconds": 192,
+      "text": "evolve into its awakened form with the"
+    },
+    {
+      "timestamp": "3:14",
+      "start_seconds": 194,
+      "text": "special dig requirements for free."
+    },
+    {
+      "timestamp": "3:16",
+      "start_seconds": 196,
+      "text": "System sales on play effect will gain a"
+    },
+    {
+      "timestamp": "3:17",
+      "start_seconds": 197,
+      "text": "memory. It also has an alternate effect"
+    },
+    {
+      "timestamp": "3:19",
+      "start_seconds": 199,
+      "text": "where all of your Digimon with Pokemon"
+    },
+    {
+      "timestamp": "3:20",
+      "start_seconds": 200,
+      "text": "in their name or Royal Knight trait gain"
+    },
+    {
+      "timestamp": "3:22",
+      "start_seconds": 202,
+      "text": "extra 2,000 DP. And now Jaspawn's altern"
+    },
+    {
+      "timestamp": "3:24",
+      "start_seconds": 204,
+      "text": "activates once returned. When any of"
+    },
+    {
+      "timestamp": "3:26",
+      "start_seconds": 206,
+      "text": "your Digimon are played, you may delete"
+    },
+    {
+      "timestamp": "3:27",
+      "start_seconds": 207,
+      "text": "one of your opponent's lowest DP"
+    },
+    {
+      "timestamp": "3:29",
+      "start_seconds": 209,
+      "text": "Digimon. But there are no targets to"
+    },
+    {
+      "timestamp": "3:30",
+      "start_seconds": 210,
+      "text": "delete. Then if you don't have ethyl"
+    },
+    {
+      "timestamp": "3:32",
+      "start_seconds": 212,
+      "text": "Renee Empor, you may play one Ethyl"
+    },
+    {
+      "timestamp": "3:34",
+      "start_seconds": 214,
+      "text": "Renee Empor token, which is a white"
+    },
+    {
+      "timestamp": "3:35",
+      "start_seconds": 215,
+      "text": "Digimon card with 6,000 DP with the"
+    },
+    {
+      "timestamp": "3:37",
+      "start_seconds": 217,
+      "text": "keyword reboot and blocker as well as"
+    },
+    {
+      "timestamp": "3:39",
+      "start_seconds": 219,
+      "text": "decoy for red and black. While pending"
+    },
+    {
+      "timestamp": "3:40",
+      "start_seconds": 220,
+      "text": "effects activated and resolved, we now"
+    },
+    {
+      "timestamp": "3:42",
+      "start_seconds": 222,
+      "text": "resume back to initial attack into"
+    },
+    {
+      "timestamp": "3:43",
+      "start_seconds": 223,
+      "text": "security. With all the combined DP buffs"
+    },
+    {
+      "timestamp": "3:45",
+      "start_seconds": 225,
+      "text": "gained from the alliance attack with"
+    },
+    {
+      "timestamp": "3:46",
+      "start_seconds": 226,
+      "text": "extra 3,000 system on se to give another"
+    },
+    {
+      "timestamp": "3:49",
+      "start_seconds": 229,
+      "text": "extra 2,000 as well as bow hmons and"
+    },
+    {
+      "timestamp": "3:50",
+      "start_seconds": 230,
+      "text": "hurt effect of your turn, this Digimon"
+    },
+    {
+      "timestamp": "3:52",
+      "start_seconds": 232,
+      "text": "gets extra 2,000 DP. This one will be"
+    },
+    {
+      "timestamp": "3:54",
+      "start_seconds": 234,
+      "text": "swinging in with a total of 19k DP with"
+    },
+    {
+      "timestamp": "3:56",
+      "start_seconds": 236,
+      "text": "two security checks. First security"
+    },
+    {
+      "timestamp": "3:57",
+      "start_seconds": 237,
+      "text": "check, EX13 domon."
+    },
+    {
+      "timestamp": "4:00",
+      "start_seconds": 240,
+      "text": "Second security check, Kota and Yuji,"
+    },
+    {
+      "timestamp": "4:03",
+      "start_seconds": 243,
+      "text": "which has a security effect to play this"
+    },
+    {
+      "timestamp": "4:04",
+      "start_seconds": 244,
+      "text": "card without paying the costs. The"
+    },
+    {
+      "timestamp": "4:05",
+      "start_seconds": 245,
+      "text": "option card punching training will be"
+    },
+    {
+      "timestamp": "4:07",
+      "start_seconds": 247,
+      "text": "used for two memory cards. While you"
+    },
+    {
+      "timestamp": "4:08",
+      "start_seconds": 248,
+      "text": "don't have punching training in the"
+    },
+    {
+      "timestamp": "4:09",
+      "start_seconds": 249,
+      "text": "battle area, you can ignore this card's"
+    },
+    {
+      "timestamp": "4:11",
+      "start_seconds": 251,
+      "text": "color requirements of his main effect"
+    },
+    {
+      "timestamp": "4:12",
+      "start_seconds": 252,
+      "text": "will be the top two cards of the deck."
+    },
+    {
+      "timestamp": "4:14",
+      "start_seconds": 254,
+      "text": "Add one black or red card among them to"
+    },
+    {
+      "timestamp": "4:15",
+      "start_seconds": 255,
+      "text": "the hand with the EX13 Genkum will be"
+    },
+    {
+      "timestamp": "4:17",
+      "start_seconds": 257,
+      "text": "added as a black card. Return the rest"
+    },
+    {
+      "timestamp": "4:19",
+      "start_seconds": 259,
+      "text": "to the bottom of the deck. Then place"
+    },
+    {
+      "timestamp": "4:20",
+      "start_seconds": 260,
+      "text": "this card in the battle area. After turn"
+    },
+    {
+      "timestamp": "4:22",
+      "start_seconds": 262,
+      "text": "pass back over to Alphaman, one memory"
+    },
+    {
+      "timestamp": "4:24",
+      "start_seconds": 264,
+      "text": "and Yuji start of your turn effect"
+    },
+    {
+      "timestamp": "4:26",
+      "start_seconds": 266,
+      "text": "activates. If you have two or less"
+    },
+    {
+      "timestamp": "4:27",
+      "start_seconds": 267,
+      "text": "memory, set it to three. Draw a for"
+    },
+    {
+      "timestamp": "4:29",
+      "start_seconds": 269,
+      "text": "turn. Thormont will move to the battle"
+    },
+    {
+      "timestamp": "4:30",
+      "start_seconds": 270,
+      "text": "area. This when moving effect reveal top"
+    },
+    {
+      "timestamp": "4:32",
+      "start_seconds": 272,
+      "text": "three cards of your deck. Add one card"
+    },
+    {
+      "timestamp": "4:34",
+      "start_seconds": 274,
+      "text": "with X antibody or chronicle trait among"
+    },
+    {
+      "timestamp": "4:36",
+      "start_seconds": 276,
+      "text": "them to the hand or the EX13 Raptor will"
+    },
+    {
+      "timestamp": "4:38",
+      "start_seconds": 278,
+      "text": "be added. Return the rest to the top of"
+    },
+    {
+      "timestamp": "4:39",
+      "start_seconds": 279,
+      "text": "the bottom of the deck which will choose"
+    },
+    {
+      "timestamp": "4:41",
+      "start_seconds": 281,
+      "text": "to return it back to the bottom. Thoron"
+    },
+    {
+      "timestamp": "4:43",
+      "start_seconds": 283,
+      "text": "will dig evolve into the BT20 raptor"
+    },
+    {
+      "timestamp": "4:45",
+      "start_seconds": 285,
+      "text": "with the special dig requirements for"
+    },
+    {
+      "timestamp": "4:46",
+      "start_seconds": 286,
+      "text": "two memory cards. Raptor Dramon's one"
+    },
+    {
+      "timestamp": "4:48",
+      "start_seconds": 288,
+      "text": "digolving effect. If you have one or"
+    },
+    {
+      "timestamp": "4:49",
+      "start_seconds": 289,
+      "text": "fewer retainers, you may play one coda"
+    },
+    {
+      "timestamp": "4:50",
+      "start_seconds": 290,
+      "text": "from your hand without paying the cops"
+    },
+    {
+      "timestamp": "4:52",
+      "start_seconds": 292,
+      "text": "where the EX13 kod will be played."
+    },
+    {
+      "timestamp": "4:54",
+      "start_seconds": 294,
+      "text": "Raptor dramon will attack into security."
+    },
+    {
+      "timestamp": "4:56",
+      "start_seconds": 296,
+      "text": "Dormon's inherited effect activates when"
+    },
+    {
+      "timestamp": "4:58",
+      "start_seconds": 298,
+      "text": "attacking. Once returned, one of your"
+    },
+    {
+      "timestamp": "4:59",
+      "start_seconds": 299,
+      "text": "opponent's Digimon gets minus 2,000 DP"
+    },
+    {
+      "timestamp": "5:01",
+      "start_seconds": 301,
+      "text": "for the turn and the target will be"
+    },
+    {
+      "timestamp": "5:02",
+      "start_seconds": 302,
+      "text": "Sister Mlong awaken. The dual tamer Koda"
+    },
+    {
+      "timestamp": "5:04",
+      "start_seconds": 304,
+      "text": "and Yuji's your turn effect activates."
+    },
+    {
+      "timestamp": "5:06",
+      "start_seconds": 306,
+      "text": "One of your Chronicle trait Digimon"
+    },
+    {
+      "timestamp": "5:07",
+      "start_seconds": 307,
+      "text": "attacks by suspending this tamer. One of"
+    },
+    {
+      "timestamp": "5:09",
+      "start_seconds": 309,
+      "text": "the Digimon on the field may dig evolve"
+    },
+    {
+      "timestamp": "5:10",
+      "start_seconds": 310,
+      "text": "into a level six or lower Chronicle"
+    },
+    {
+      "timestamp": "5:12",
+      "start_seconds": 312,
+      "text": "trait Digimon card from the hand with"
+    },
+    {
+      "timestamp": "5:13",
+      "start_seconds": 313,
+      "text": "the digution cost reduced by one. What"
+    },
+    {
+      "timestamp": "5:14",
+      "start_seconds": 314,
+      "text": "digolve into the EX13 grade bun with a"
+    },
+    {
+      "timestamp": "5:17",
+      "start_seconds": 317,
+      "text": "special digivolve requirements with two"
+    },
+    {
+      "timestamp": "5:18",
+      "start_seconds": 318,
+      "text": "memory cards. Grade runs when digolving"
+    },
+    {
+      "timestamp": "5:20",
+      "start_seconds": 320,
+      "text": "effect activates until your opponent"
+    },
+    {
+      "timestamp": "5:21",
+      "start_seconds": 321,
+      "text": "turn ends. One of your ex anti-body or"
+    },
+    {
+      "timestamp": "5:23",
+      "start_seconds": 323,
+      "text": "chronicle trait Digimon gains reboot and"
+    },
+    {
+      "timestamp": "5:24",
+      "start_seconds": 324,
+      "text": "blocker. If during an attack, it also"
+    },
+    {
+      "timestamp": "5:26",
+      "start_seconds": 326,
+      "text": "isn't affected by their Digimon effects"
+    },
+    {
+      "timestamp": "5:28",
+      "start_seconds": 328,
+      "text": "and gets extra 5,000 DP where the target"
+    },
+    {
+      "timestamp": "5:30",
+      "start_seconds": 330,
+      "text": "will be Greymon itself. Then Kod does"
+    },
+    {
+      "timestamp": "5:32",
+      "start_seconds": 332,
+      "text": "your turn effect activate. When one of"
+    },
+    {
+      "timestamp": "5:33",
+      "start_seconds": 333,
+      "text": "your chronicle trait Digimon attacks by"
+    },
+    {
+      "timestamp": "5:35",
+      "start_seconds": 335,
+      "text": "suspending his tamer, you may use one X"
+    },
+    {
+      "timestamp": "5:37",
+      "start_seconds": 337,
+      "text": "antibody or one option card with the"
+    },
+    {
+      "timestamp": "5:38",
+      "start_seconds": 338,
+      "text": "Chronicle trait from your hand cost"
+    },
+    {
+      "timestamp": "5:40",
+      "start_seconds": 340,
+      "text": "reduced by one. The third copy of the"
+    },
+    {
+      "timestamp": "5:42",
+      "start_seconds": 342,
+      "text": "release of the seal knight will be used"
+    },
+    {
+      "timestamp": "5:43",
+      "start_seconds": 343,
+      "text": "for two memory costs. His main effect go"
+    },
+    {
+      "timestamp": "5:45",
+      "start_seconds": 345,
+      "text": "Trash Raptor Jan from the hand to draw"
+    },
+    {
+      "timestamp": "5:46",
+      "start_seconds": 346,
+      "text": "two cards. Then place this card in the"
+    },
+    {
+      "timestamp": "5:48",
+      "start_seconds": 348,
+      "text": "battle area. Both pending effects"
+    },
+    {
+      "timestamp": "5:50",
+      "start_seconds": 350,
+      "text": "activated and resolved. We now enter the"
+    },
+    {
+      "timestamp": "5:51",
+      "start_seconds": 351,
+      "text": "blocker timing where Ethel Rene for has"
+    },
+    {
+      "timestamp": "5:53",
+      "start_seconds": 353,
+      "text": "a keyword blocker which can redirect"
+    },
+    {
+      "timestamp": "5:55",
+      "start_seconds": 355,
+      "text": "Raidmon's attack into itself instead and"
+    },
+    {
+      "timestamp": "5:57",
+      "start_seconds": 357,
+      "text": "the token will be deleted by battle."
+    },
+    {
+      "timestamp": "5:58",
+      "start_seconds": 358,
+      "text": "Gradmon's end of attack effect activates"
+    },
+    {
+      "timestamp": "6:00",
+      "start_seconds": 360,
+      "text": "once per turned. The Digimon may dig"
+    },
+    {
+      "timestamp": "6:02",
+      "start_seconds": 362,
+      "text": "evolve into a Digimon card with"
+    },
+    {
+      "timestamp": "6:03",
+      "start_seconds": 363,
+      "text": "chronicle trait in the hand or trash"
+    },
+    {
+      "timestamp": "6:04",
+      "start_seconds": 364,
+      "text": "where the warrior Digimon and the"
+    },
+    {
+      "timestamp": "6:06",
+      "start_seconds": 366,
+      "text": "carrier of X antibody from the Royal"
+    },
+    {
+      "timestamp": "6:07",
+      "start_seconds": 367,
+      "text": "Knights will make its appearance as"
+    },
+    {
+      "timestamp": "6:09",
+      "start_seconds": 369,
+      "text": "Gramon will dig evolve into the EX13"
+    },
+    {
+      "timestamp": "6:11",
+      "start_seconds": 371,
+      "text": "Alphammon from the trash and special"
+    },
+    {
+      "timestamp": "6:12",
+      "start_seconds": 372,
+      "text": "digolve requirements before memory"
+    },
+    {
+      "timestamp": "6:14",
+      "start_seconds": 374,
+      "text": "costs. Alphammons when digolving effect"
+    },
+    {
+      "timestamp": "6:16",
+      "start_seconds": 376,
+      "text": "activates. One of the opponent's"
+    },
+    {
+      "timestamp": "6:17",
+      "start_seconds": 377,
+      "text": "Digimonite gets minus 8,000 DP until"
+    },
+    {
+      "timestamp": "6:19",
+      "start_seconds": 379,
+      "text": "their turn ends, but the target will be"
+    },
+    {
+      "timestamp": "6:21",
+      "start_seconds": 381,
+      "text": "Jmon. Then, if they have five or more"
+    },
+    {
+      "timestamp": "6:23",
+      "start_seconds": 383,
+      "text": "memory, you gain two memory. The memory"
+    },
+    {
+      "timestamp": "6:25",
+      "start_seconds": 385,
+      "text": "gauge pass over onto the opponent's"
+    },
+    {
+      "timestamp": "6:26",
+      "start_seconds": 386,
+      "text": "side. Alphammon's end of your turn"
+    },
+    {
+      "timestamp": "6:28",
+      "start_seconds": 388,
+      "text": "effect also activates. Once per turn,"
+    },
+    {
+      "timestamp": "6:29",
+      "start_seconds": 389,
+      "text": "you may play one Chronicle Trade card"
+    },
+    {
+      "timestamp": "6:31",
+      "start_seconds": 391,
+      "text": "without Alphammon in his name from your"
+    },
+    {
+      "timestamp": "6:32",
+      "start_seconds": 392,
+      "text": "hand with the cost reduced by six and it"
+    },
+    {
+      "timestamp": "6:34",
+      "start_seconds": 394,
+      "text": "gains rush for the turn. For the EX13"
+    },
+    {
+      "timestamp": "6:36",
+      "start_seconds": 396,
+      "text": "Raptor Jamon will be played for free."
+    },
+    {
+      "timestamp": "6:38",
+      "start_seconds": 398,
+      "text": "It's on play effect activates. Only your"
+    },
+    {
+      "timestamp": "6:40",
+      "start_seconds": 400,
+      "text": "opponent's Digimon gets minus 3,000 DP"
+    },
+    {
+      "timestamp": "6:42",
+      "start_seconds": 402,
+      "text": "for the turn. for the target will be"
+    },
+    {
+      "timestamp": "6:43",
+      "start_seconds": 403,
+      "text": "system on blanc awaken putting it down"
+    },
+    {
+      "timestamp": "6:45",
+      "start_seconds": 405,
+      "text": "to zero DP which will delete it by a"
+    },
+    {
+      "timestamp": "6:47",
+      "start_seconds": 407,
+      "text": "game mechanics. The system on blanc"
+    },
+    {
+      "timestamp": "6:49",
+      "start_seconds": 409,
+      "text": "awaken has the keyword decode for system"
+    },
+    {
+      "timestamp": "6:51",
+      "start_seconds": 411,
+      "text": "on block. When this Digimon will leave"
+    },
+    {
+      "timestamp": "6:52",
+      "start_seconds": 412,
+      "text": "the battle area other than by battle you"
+    },
+    {
+      "timestamp": "6:54",
+      "start_seconds": 414,
+      "text": "may play one specified Digimon card from"
+    },
+    {
+      "timestamp": "6:55",
+      "start_seconds": 415,
+      "text": "its digion cards without paying the cost"
+    },
+    {
+      "timestamp": "6:57",
+      "start_seconds": 417,
+      "text": "which will play back the BT23 system on"
+    },
+    {
+      "timestamp": "6:59",
+      "start_seconds": 419,
+      "text": "block. System on blanc on play effect"
+    },
+    {
+      "timestamp": "7:01",
+      "start_seconds": 421,
+      "text": "will activate. Add your top security to"
+    },
+    {
+      "timestamp": "7:03",
+      "start_seconds": 423,
+      "text": "the hand then recover one. Alphammon's"
+    },
+    {
+      "timestamp": "7:04",
+      "start_seconds": 424,
+      "text": "your turn effect and activate. Once per"
+    },
+    {
+      "timestamp": "7:06",
+      "start_seconds": 426,
+      "text": "turn, when any of your chronicle trait"
+    },
+    {
+      "timestamp": "7:08",
+      "start_seconds": 428,
+      "text": "Digimon or tamers are played, one of"
+    },
+    {
+      "timestamp": "7:09",
+      "start_seconds": 429,
+      "text": "your Digimon may attack where Rap"
+    },
+    {
+      "timestamp": "7:11",
+      "start_seconds": 431,
+      "text": "Digimon will attack into security. Then"
+    },
+    {
+      "timestamp": "7:13",
+      "start_seconds": 433,
+      "text": "you may activate one of these Digimons"
+    },
+    {
+      "timestamp": "7:14",
+      "start_seconds": 434,
+      "text": "when digolving effects, which will"
+    },
+    {
+      "timestamp": "7:15",
+      "start_seconds": 435,
+      "text": "reduce the DP of system on seal by"
+    },
+    {
+      "timestamp": "7:17",
+      "start_seconds": 437,
+      "text": "8,000. And since the opponent has five"
+    },
+    {
+      "timestamp": "7:19",
+      "start_seconds": 439,
+      "text": "or more memory, gain two. And with"
+    },
+    {
+      "timestamp": "7:20",
+      "start_seconds": 440,
+      "text": "system on sale's DP going down to zero,"
+    },
+    {
+      "timestamp": "7:22",
+      "start_seconds": 442,
+      "text": "it will be deleted by game mechanics."
+    },
+    {
+      "timestamp": "7:24",
+      "start_seconds": 444,
+      "text": "Therefore, Jeson also loses his extra"
+    },
+    {
+      "timestamp": "7:26",
+      "start_seconds": 446,
+      "text": "2,000 DP. Then the first copy of the"
+    },
+    {
+      "timestamp": "7:28",
+      "start_seconds": 448,
+      "text": "release sealed knight that's in the"
+    },
+    {
+      "timestamp": "7:29",
+      "start_seconds": 449,
+      "text": "battle area will use his all turns"
+    },
+    {
+      "timestamp": "7:30",
+      "start_seconds": 450,
+      "text": "effect. The Digimon attack players delay"
+    },
+    {
+      "timestamp": "7:32",
+      "start_seconds": 452,
+      "text": "trash from the battle area. one of your"
+    },
+    {
+      "timestamp": "7:34",
+      "start_seconds": 454,
+      "text": "grademon or Digimon with the chronicle"
+    },
+    {
+      "timestamp": "7:36",
+      "start_seconds": 456,
+      "text": "trait may dig evolve into alphammon or"
+    },
+    {
+      "timestamp": "7:37",
+      "start_seconds": 457,
+      "text": "level six or lower Digimon card with the"
+    },
+    {
+      "timestamp": "7:39",
+      "start_seconds": 459,
+      "text": "chronicle trait in the hand without"
+    },
+    {
+      "timestamp": "7:40",
+      "start_seconds": 460,
+      "text": "paying the cost or rapid dig into BC20"
+    },
+    {
+      "timestamp": "7:43",
+      "start_seconds": 463,
+      "text": "grademon for free. Grademons when diging"
+    },
+    {
+      "timestamp": "7:45",
+      "start_seconds": 465,
+      "text": "effect activates you may play one Dormon"
+    },
+    {
+      "timestamp": "7:47",
+      "start_seconds": 467,
+      "text": "or Rudmon from your hand to your empty"
+    },
+    {
+      "timestamp": "7:49",
+      "start_seconds": 469,
+      "text": "breeding area without paying the cost or"
+    },
+    {
+      "timestamp": "7:51",
+      "start_seconds": 471,
+      "text": "the BT20 dormon will be played in the"
+    },
+    {
+      "timestamp": "7:53",
+      "start_seconds": 473,
+      "text": "breeding area. Then if during an attack"
+    },
+    {
+      "timestamp": "7:55",
+      "start_seconds": 475,
+      "text": "until the end of opponent's turn, one of"
+    },
+    {
+      "timestamp": "7:56",
+      "start_seconds": 476,
+      "text": "your Digimon isn't affected by your"
+    },
+    {
+      "timestamp": "7:57",
+      "start_seconds": 477,
+      "text": "opponent's Digimon effects and gets"
+    },
+    {
+      "timestamp": "7:59",
+      "start_seconds": 479,
+      "text": "extra 5,000 DP or the target will be"
+    },
+    {
+      "timestamp": "8:01",
+      "start_seconds": 481,
+      "text": "Greymon itself. Then the other copy of"
+    },
+    {
+      "timestamp": "8:03",
+      "start_seconds": 483,
+      "text": "the release of the sealed knight will"
+    },
+    {
+      "timestamp": "8:04",
+      "start_seconds": 484,
+      "text": "also do the same using its delay effect"
+    },
+    {
+      "timestamp": "8:06",
+      "start_seconds": 486,
+      "text": "to dig into a level six or lower Digimon"
+    },
+    {
+      "timestamp": "8:08",
+      "start_seconds": 488,
+      "text": "card with the chronog trait in the hand"
+    },
+    {
+      "timestamp": "8:10",
+      "start_seconds": 490,
+      "text": "without paying the cost for the beast"
+    },
+    {
+      "timestamp": "8:11",
+      "start_seconds": 491,
+      "text": "dragon Digimon that is also a natural"
+    },
+    {
+      "timestamp": "8:13",
+      "start_seconds": 493,
+      "text": "carrier of the X antibody will come"
+    },
+    {
+      "timestamp": "8:15",
+      "start_seconds": 495,
+      "text": "towards Alphammon's a being the BT20"
+    },
+    {
+      "timestamp": "8:17",
+      "start_seconds": 497,
+      "text": "Oreo orans when digolving effect digol"
+    },
+    {
+      "timestamp": "8:20",
+      "start_seconds": 500,
+      "text": "opponent's Digimon and the target will"
+    },
+    {
+      "timestamp": "8:22",
+      "start_seconds": 502,
+      "text": "be Jasmine dig evolving it back to"
+    },
+    {
+      "timestamp": "8:24",
+      "start_seconds": 504,
+      "text": "Bhakma. Then if during an attack, one of"
+    },
+    {
+      "timestamp": "8:26",
+      "start_seconds": 506,
+      "text": "your Digimon in the breeding area will"
+    },
+    {
+      "timestamp": "8:28",
+      "start_seconds": 508,
+      "text": "be digolved into a level six or lower"
+    },
+    {
+      "timestamp": "8:29",
+      "start_seconds": 509,
+      "text": "chronicle trade Digimon card in the hand"
+    },
+    {
+      "timestamp": "8:31",
+      "start_seconds": 511,
+      "text": "or trash without paying the cost. But"
+    },
+    {
+      "timestamp": "8:33",
+      "start_seconds": 513,
+      "text": "the Dormon in the breeding area will dig"
+    },
+    {
+      "timestamp": "8:34",
+      "start_seconds": 514,
+      "text": "evolve into the EX13 Raptor Dramon from"
+    },
+    {
+      "timestamp": "8:36",
+      "start_seconds": 516,
+      "text": "the trash for free. Check will now apply"
+    },
+    {
+      "timestamp": "8:38",
+      "start_seconds": 518,
+      "text": "as Bow Hakma will be deleted by game"
+    },
+    {
+      "timestamp": "8:39",
+      "start_seconds": 519,
+      "text": "mechanics since it has zero DP. All"
+    },
+    {
+      "timestamp": "8:41",
+      "start_seconds": 521,
+      "text": "pending effects activated and resolve"
+    },
+    {
+      "timestamp": "8:43",
+      "start_seconds": 523,
+      "text": "will now resume back to the security"
+    },
+    {
+      "timestamp": "8:44",
+      "start_seconds": 524,
+      "text": "check which will be bowhma. Orian's"
+    },
+    {
+      "timestamp": "8:46",
+      "start_seconds": 526,
+      "text": "alternative effect activates once per"
+    },
+    {
+      "timestamp": "8:48",
+      "start_seconds": 528,
+      "text": "turn when security stacks are removed"
+    },
+    {
+      "timestamp": "8:49",
+      "start_seconds": 529,
+      "text": "from delete one of your opponent's"
+    },
+    {
+      "timestamp": "8:50",
+      "start_seconds": 530,
+      "text": "Digimon with the lowest DP which will be"
+    },
+    {
+      "timestamp": "8:52",
+      "start_seconds": 532,
+      "text": "system on Blanc. What a crazy board"
+    },
+    {
+      "timestamp": "8:54",
+      "start_seconds": 534,
+      "text": "clear combo and clapback play from"
+    },
+    {
+      "timestamp": "8:55",
+      "start_seconds": 535,
+      "text": "Alphammon as it perfectly passes the"
+    },
+    {
+      "timestamp": "8:57",
+      "start_seconds": 537,
+      "text": "turn back to Jeson with only three"
+    },
+    {
+      "timestamp": "8:58",
+      "start_seconds": 538,
+      "text": "memory and will also reboot during the"
+    },
+    {
+      "timestamp": "9:00",
+      "start_seconds": 540,
+      "text": "unsuspend phase."
+    },
+    {
+      "timestamp": "9:02",
+      "start_seconds": 542,
+      "text": "Draw for turn. Hakman will move from the"
+    },
+    {
+      "timestamp": "9:05",
+      "start_seconds": 545,
+      "text": "breeding area to the battle area."
+    },
+    {
+      "timestamp": "9:06",
+      "start_seconds": 546,
+      "text": "Punching training will use his main and"
+    },
+    {
+      "timestamp": "9:08",
+      "start_seconds": 548,
+      "text": "delay effect by trashing itself from the"
+    },
+    {
+      "timestamp": "9:09",
+      "start_seconds": 549,
+      "text": "battle area where one of your Digimon"
+    },
+    {
+      "timestamp": "9:11",
+      "start_seconds": 551,
+      "text": "may digolve into a black or red Digimon"
+    },
+    {
+      "timestamp": "9:13",
+      "start_seconds": 553,
+      "text": "card in a hand with the cost reduced by"
+    },
+    {
+      "timestamp": "9:14",
+      "start_seconds": 554,
+      "text": "two as huckbon will dig evolve into the"
+    },
+    {
+      "timestamp": "9:16",
+      "start_seconds": 556,
+      "text": "BT3 bow huckmon for free. The ST12"
+    },
+    {
+      "timestamp": "9:18",
+      "start_seconds": 558,
+      "text": "system on Blanc will be played for three"
+    },
+    {
+      "timestamp": "9:20",
+      "start_seconds": 560,
+      "text": "memory cops. With his onplay effect by"
+    },
+    {
+      "timestamp": "9:22",
+      "start_seconds": 562,
+      "text": "trashing one card from your hand, draw"
+    },
+    {
+      "timestamp": "9:23",
+      "start_seconds": 563,
+      "text": "two. Hakon's inherit effect activates."
+    },
+    {
+      "timestamp": "9:25",
+      "start_seconds": 565,
+      "text": "Your turn once was returned. It will"
+    },
+    {
+      "timestamp": "9:26",
+      "start_seconds": 566,
+      "text": "gain a memory since the white Digimon"
+    },
+    {
+      "timestamp": "9:28",
+      "start_seconds": 568,
+      "text": "was played. Bhakmon's your turn effect"
+    },
+    {
+      "timestamp": "9:29",
+      "start_seconds": 569,
+      "text": "activates. When you play a Digimon with"
+    },
+    {
+      "timestamp": "9:31",
+      "start_seconds": 571,
+      "text": "system on his name, this Digimon may dig"
+    },
+    {
+      "timestamp": "9:32",
+      "start_seconds": 572,
+      "text": "evolve into Savior Hmon in the hand for"
+    },
+    {
+      "timestamp": "9:34",
+      "start_seconds": 574,
+      "text": "the digolution cost. When this Digimon"
+    },
+    {
+      "timestamp": "9:35",
+      "start_seconds": 575,
+      "text": "will dig by this effect, reduce the"
+    },
+    {
+      "timestamp": "9:37",
+      "start_seconds": 577,
+      "text": "digolution cost by two as Bhukmon will"
+    },
+    {
+      "timestamp": "9:39",
+      "start_seconds": 579,
+      "text": "dig evolve into the BT20 Savior Huckm"
+    },
+    {
+      "timestamp": "9:41",
+      "start_seconds": 581,
+      "text": "for one memory cost. Savior Huckmon's"
+    },
+    {
+      "timestamp": "9:43",
+      "start_seconds": 583,
+      "text": "one diging effect will delete one of the"
+    },
+    {
+      "timestamp": "9:44",
+      "start_seconds": 584,
+      "text": "opponent's Digimon with 5,000 DP or"
+    },
+    {
+      "timestamp": "9:46",
+      "start_seconds": 586,
+      "text": "less, but they're no targets. With a"
+    },
+    {
+      "timestamp": "9:47",
+      "start_seconds": 587,
+      "text": "dire situation, the master of Jasmine"
+    },
+    {
+      "timestamp": "9:50",
+      "start_seconds": 590,
+      "text": "being Genkuman, which is also another"
+    },
+    {
+      "timestamp": "9:51",
+      "start_seconds": 591,
+      "text": "royal knight, will come to assist, which"
+    },
+    {
+      "timestamp": "9:53",
+      "start_seconds": 593,
+      "text": "will be played out with assembly minus"
+    },
+    {
+      "timestamp": "9:55",
+      "start_seconds": 595,
+      "text": "five along with three Huckmong text"
+    },
+    {
+      "timestamp": "9:56",
+      "start_seconds": 596,
+      "text": "Digimon cards with different names by"
+    },
+    {
+      "timestamp": "9:58",
+      "start_seconds": 598,
+      "text": "placing one copy of each system on block"
+    },
+    {
+      "timestamp": "10:00",
+      "start_seconds": 600,
+      "text": "awaken BT3 bow hakon and an EX13"
+    },
+    {
+      "timestamp": "10:03",
+      "start_seconds": 603,
+      "text": "Huckmong to reduce the play cost by"
+    },
+    {
+      "timestamp": "10:04",
+      "start_seconds": 604,
+      "text": "five, paying eight memory. Yank's onplay"
+    },
+    {
+      "timestamp": "10:07",
+      "start_seconds": 607,
+      "text": "effect, you may play one Hinukamui"
+    },
+    {
+      "timestamp": "10:09",
+      "start_seconds": 609,
+      "text": "token, which is a white Digimon with"
+    },
+    {
+      "timestamp": "10:10",
+      "start_seconds": 610,
+      "text": "6,000 DP that also has the keyword"
+    },
+    {
+      "timestamp": "10:12",
+      "start_seconds": 612,
+      "text": "alliance, reboot, and blocker. Then"
+    },
+    {
+      "timestamp": "10:14",
+      "start_seconds": 614,
+      "text": "until your opponent turn ends, their"
+    },
+    {
+      "timestamp": "10:15",
+      "start_seconds": 615,
+      "text": "Digimon effects don't affect one of your"
+    },
+    {
+      "timestamp": "10:17",
+      "start_seconds": 617,
+      "text": "white Digimon where Genkuman will"
+    },
+    {
+      "timestamp": "10:18",
+      "start_seconds": 618,
+      "text": "protect itself. Hakman's and her effect"
+    },
+    {
+      "timestamp": "10:20",
+      "start_seconds": 620,
+      "text": "activates your turn. When it's turn,"
+    },
+    {
+      "timestamp": "10:22",
+      "start_seconds": 622,
+      "text": "when any of your white Digimon are"
+    },
+    {
+      "timestamp": "10:23",
+      "start_seconds": 623,
+      "text": "played, gain one memory with the memory"
+    },
+    {
+      "timestamp": "10:25",
+      "start_seconds": 625,
+      "text": "gauge pass over to the opponent's side."
+    },
+    {
+      "timestamp": "10:26",
+      "start_seconds": 626,
+      "text": "Save your Huckmong can now use his end"
+    },
+    {
+      "timestamp": "10:27",
+      "start_seconds": 627,
+      "text": "of your turn effect by suspending one of"
+    },
+    {
+      "timestamp": "10:29",
+      "start_seconds": 629,
+      "text": "your other Digimon, which will be the"
+    },
+    {
+      "timestamp": "10:30",
+      "start_seconds": 630,
+      "text": "Hino Kamway token. This Digimon may dig"
+    },
+    {
+      "timestamp": "10:32",
+      "start_seconds": 632,
+      "text": "evolve into a Digimon card with Jasmine"
+    },
+    {
+      "timestamp": "10:33",
+      "start_seconds": 633,
+      "text": "in his name from the hand without paying"
+    },
+    {
+      "timestamp": "10:35",
+      "start_seconds": 635,
+      "text": "the cost as a royal knight with the"
+    },
+    {
+      "timestamp": "10:36",
+      "start_seconds": 636,
+      "text": "judgment of the blade returns. The BT23"
+    },
+    {
+      "timestamp": "10:39",
+      "start_seconds": 639,
+      "text": "goes when Digi evolving effect"
+    },
+    {
+      "timestamp": "10:40",
+      "start_seconds": 640,
+      "text": "activates. You may play one Ethel,"
+    },
+    {
+      "timestamp": "10:42",
+      "start_seconds": 642,
+      "text": "Renee, and Poor token or from your hand"
+    },
+    {
+      "timestamp": "10:43",
+      "start_seconds": 643,
+      "text": "or trash, one Digimon card with the"
+    },
+    {
+      "timestamp": "10:45",
+      "start_seconds": 645,
+      "text": "system in his name without paying the"
+    },
+    {
+      "timestamp": "10:46",
+      "start_seconds": 646,
+      "text": "cost. However, this effect can play"
+    },
+    {
+      "timestamp": "10:48",
+      "start_seconds": 648,
+      "text": "cards with the same names as any of your"
+    },
+    {
+      "timestamp": "10:49",
+      "start_seconds": 649,
+      "text": "Digimon, which will play out the BT6"
+    },
+    {
+      "timestamp": "10:51",
+      "start_seconds": 651,
+      "text": "system from the trash for free. System"
+    },
+    {
+      "timestamp": "10:53",
+      "start_seconds": 653,
+      "text": "C's on play effect will gain a memory,"
+    },
+    {
+      "timestamp": "10:55",
+      "start_seconds": 655,
+      "text": "which will also give both Jon and Genkon"
+    },
+    {
+      "timestamp": "10:57",
+      "start_seconds": 657,
+      "text": "extra 2,000 DP all turns. Both BT13"
+    },
+    {
+      "timestamp": "10:59",
+      "start_seconds": 659,
+      "text": "Bhawkman underneath Jmon and Genkman's"
+    },
+    {
+      "timestamp": "11:01",
+      "start_seconds": 661,
+      "text": "in her effect will activate. Your turn"
+    },
+    {
+      "timestamp": "11:03",
+      "start_seconds": 663,
+      "text": "once returned when you play a Digimon"
+    },
+    {
+      "timestamp": "11:04",
+      "start_seconds": 664,
+      "text": "with System in his name gain one memory."
+    },
+    {
+      "timestamp": "11:06",
+      "start_seconds": 666,
+      "text": "Jesson's effect activates once per turn."
+    },
+    {
+      "timestamp": "11:09",
+      "start_seconds": 669,
+      "text": "When any of your other Digimon are"
+    },
+    {
+      "timestamp": "11:10",
+      "start_seconds": 670,
+      "text": "played, this Digimon may attack which"
+    },
+    {
+      "timestamp": "11:12",
+      "start_seconds": 672,
+      "text": "will be the security. Gurimon's inherent"
+    },
+    {
+      "timestamp": "11:14",
+      "start_seconds": 674,
+      "text": "effect will draw one card and then"
+    },
+    {
+      "timestamp": "11:15",
+      "start_seconds": 675,
+      "text": "Jmon's when attacking effect, which is"
+    },
+    {
+      "timestamp": "11:17",
+      "start_seconds": 677,
+      "text": "exactly the same as his when Digiv"
+    },
+    {
+      "timestamp": "11:18",
+      "start_seconds": 678,
+      "text": "evolving effect will activate that is"
+    },
+    {
+      "timestamp": "11:20",
+      "start_seconds": 680,
+      "text": "not once per turn, which will then play"
+    },
+    {
+      "timestamp": "11:21",
+      "start_seconds": 681,
+      "text": "out Ath Renee and poor token. Jmon has"
+    },
+    {
+      "timestamp": "11:23",
+      "start_seconds": 683,
+      "text": "the keyword alliance, which will suspend"
+    },
+    {
+      "timestamp": "11:25",
+      "start_seconds": 685,
+      "text": "the Ath and Renee poor token to give it"
+    },
+    {
+      "timestamp": "11:27",
+      "start_seconds": 687,
+      "text": "extra 6,000 DP and security attack plus"
+    },
+    {
+      "timestamp": "11:29",
+      "start_seconds": 689,
+      "text": "one. Savior Hutmon's inherit effect."
+    },
+    {
+      "timestamp": "11:31",
+      "start_seconds": 691,
+      "text": "Your turn. This Digimon with the Royal"
+    },
+    {
+      "timestamp": "11:32",
+      "start_seconds": 692,
+      "text": "Knight trait gains alliance as well,"
+    },
+    {
+      "timestamp": "11:34",
+      "start_seconds": 694,
+      "text": "which will suspend Genkan to give it"
+    },
+    {
+      "timestamp": "11:35",
+      "start_seconds": 695,
+      "text": "extra DP and another additional security"
+    },
+    {
+      "timestamp": "11:37",
+      "start_seconds": 697,
+      "text": "attack plus one. Genko's all turns"
+    },
+    {
+      "timestamp": "11:39",
+      "start_seconds": 699,
+      "text": "effect will activate once returned. When"
+    },
+    {
+      "timestamp": "11:41",
+      "start_seconds": 701,
+      "text": "any of your white Digimon suspend, you"
+    },
+    {
+      "timestamp": "11:42",
+      "start_seconds": 702,
+      "text": "may use one use cost five or lower"
+    },
+    {
+      "timestamp": "11:44",
+      "start_seconds": 704,
+      "text": "option card with Puffman and his text"
+    },
+    {
+      "timestamp": "11:46",
+      "start_seconds": 706,
+      "text": "from your hand or this Digimon's"
+    },
+    {
+      "timestamp": "11:47",
+      "start_seconds": 707,
+      "text": "digution cards without paying the costs"
+    },
+    {
+      "timestamp": "11:49",
+      "start_seconds": 709,
+      "text": "or the option side of the dual card"
+    },
+    {
+      "timestamp": "11:50",
+      "start_seconds": 710,
+      "text": "divine pierce awaken will be used from"
+    },
+    {
+      "timestamp": "11:52",
+      "start_seconds": 712,
+      "text": "underneath Gangum for free. With his"
+    },
+    {
+      "timestamp": "11:53",
+      "start_seconds": 713,
+      "text": "main effect, it will play out the BT6"
+    },
+    {
+      "timestamp": "11:55",
+      "start_seconds": 715,
+      "text": "system on CL from the hand for free."
+    },
+    {
+      "timestamp": "11:57",
+      "start_seconds": 717,
+      "text": "then to one of your opponent's Digimon."
+    },
+    {
+      "timestamp": "11:58",
+      "start_seconds": 718,
+      "text": "Give minus 3,000 DP for the turn for"
+    },
+    {
+      "timestamp": "12:00",
+      "start_seconds": 720,
+      "text": "each of your Digimon with a total of"
+    },
+    {
+      "timestamp": "12:01",
+      "start_seconds": 721,
+      "text": "seven Digimon on both Jon and Genkon's"
+    },
+    {
+      "timestamp": "12:03",
+      "start_seconds": 723,
+      "text": "side. It will DP reduce Alphammon by 21k"
+    },
+    {
+      "timestamp": "12:06",
+      "start_seconds": 726,
+      "text": "and then it will ar Digivolve from the"
+    },
+    {
+      "timestamp": "12:07",
+      "start_seconds": 727,
+      "text": "SC12 System Blanc into its awaken form."
+    },
+    {
+      "timestamp": "12:10",
+      "start_seconds": 730,
+      "text": "Rule check now happens as Alphammon's DP"
+    },
+    {
+      "timestamp": "12:12",
+      "start_seconds": 732,
+      "text": "has been reduced down to zero which will"
+    },
+    {
+      "timestamp": "12:13",
+      "start_seconds": 733,
+      "text": "be deleted by game mechanics. System"
+    },
+    {
+      "timestamp": "12:16",
+      "start_seconds": 736,
+      "text": "sales on play effect will gain a memory"
+    },
+    {
+      "timestamp": "12:17",
+      "start_seconds": 737,
+      "text": "which will also give extra 2,000 DP to"
+    },
+    {
+      "timestamp": "12:19",
+      "start_seconds": 739,
+      "text": "both Jon and Genkuman all turns. The"
+    },
+    {
+      "timestamp": "12:21",
+      "start_seconds": 741,
+      "text": "BTC20 grade one run underneath Oryman in"
+    },
+    {
+      "timestamp": "12:23",
+      "start_seconds": 743,
+      "text": "her effect will activate. Upon"
+    },
+    {
+      "timestamp": "12:24",
+      "start_seconds": 744,
+      "text": "opponent's turn once per turn, when one"
+    },
+    {
+      "timestamp": "12:26",
+      "start_seconds": 746,
+      "text": "of your opponent's Digimon attacks, you"
+    },
+    {
+      "timestamp": "12:27",
+      "start_seconds": 747,
+      "text": "may change the attack target to this"
+    },
+    {
+      "timestamp": "12:28",
+      "start_seconds": 748,
+      "text": "Digimon. With all pending effects"
+    },
+    {
+      "timestamp": "12:29",
+      "start_seconds": 749,
+      "text": "activated and resolve will now proceed"
+    },
+    {
+      "timestamp": "12:31",
+      "start_seconds": 751,
+      "text": "towards the counter timing as Chronicle"
+    },
+    {
+      "timestamp": "12:33",
+      "start_seconds": 753,
+      "text": "will showcase the maximum power of the X"
+    },
+    {
+      "timestamp": "12:35",
+      "start_seconds": 755,
+      "text": "antibiot"
+    },
+    {
+      "timestamp": "12:38",
+      "start_seconds": 758,
+      "text": "together with Alphaman from the hand"
+    },
+    {
+      "timestamp": "12:39",
+      "start_seconds": 759,
+      "text": "into Alphaman Oyuken Ace. Alphaman"
+    },
+    {
+      "timestamp": "12:42",
+      "start_seconds": 762,
+      "text": "Oryans when digolving effect activates,"
+    },
+    {
+      "timestamp": "12:44",
+      "start_seconds": 764,
+      "text": "one of your opponent's Digimon gets"
+    },
+    {
+      "timestamp": "12:45",
+      "start_seconds": 765,
+      "text": "minus 15,000 DP until the end of their"
+    },
+    {
+      "timestamp": "12:47",
+      "start_seconds": 767,
+      "text": "turn and the target will be the"
+    },
+    {
+      "timestamp": "12:48",
+      "start_seconds": 768,
+      "text": "Hinakamui token. Then if DNA dig"
+    },
+    {
+      "timestamp": "12:50",
+      "start_seconds": 770,
+      "text": "evolving, trash your opponent's top"
+    },
+    {
+      "timestamp": "12:52",
+      "start_seconds": 772,
+      "text": "security card and recover one. And since"
+    },
+    {
+      "timestamp": "12:54",
+      "start_seconds": 774,
+      "text": "the Hin Kami tokens DP is reduced down"
+    },
+    {
+      "timestamp": "12:56",
+      "start_seconds": 776,
+      "text": "to zero, it will be deleted via game"
+    },
+    {
+      "timestamp": "12:57",
+      "start_seconds": 777,
+      "text": "mechanics. Next, Alpham Oran's alter"
+    },
+    {
+      "timestamp": "13:00",
+      "start_seconds": 780,
+      "text": "effect activates once per turn. When"
+    },
+    {
+      "timestamp": "13:01",
+      "start_seconds": 781,
+      "text": "security stacks are removed from gain"
+    },
+    {
+      "timestamp": "13:03",
+      "start_seconds": 783,
+      "text": "three memory because Alphaman Oran Ace"
+    },
+    {
+      "timestamp": "13:05",
+      "start_seconds": 785,
+      "text": "was blast DNA digivol, which is"
+    },
+    {
+      "timestamp": "13:07",
+      "start_seconds": 787,
+      "text": "considered as a new Digimon. Therefore,"
+    },
+    {
+      "timestamp": "13:08",
+      "start_seconds": 788,
+      "text": "Jesson's attack that was redirected with"
+    },
+    {
+      "timestamp": "13:10",
+      "start_seconds": 790,
+      "text": "Greymon's inherit effect where Orium is"
+    },
+    {
+      "timestamp": "13:12",
+      "start_seconds": 792,
+      "text": "no longer on the board. There are no"
+    },
+    {
+      "timestamp": "13:13",
+      "start_seconds": 793,
+      "text": "targets to attack. As the attack process"
+    },
+    {
+      "timestamp": "13:15",
+      "start_seconds": 795,
+      "text": "will reach towards its end step with all"
+    },
+    {
+      "timestamp": "13:16",
+      "start_seconds": 796,
+      "text": "pending effects and attacks fully"
+    },
+    {
+      "timestamp": "13:17",
+      "start_seconds": 797,
+      "text": "resolved, the turn will now pass over"
+    },
+    {
+      "timestamp": "13:19",
+      "start_seconds": 799,
+      "text": "back to alpha one with six memory."
+    },
+    {
+      "timestamp": "13:20",
+      "start_seconds": 800,
+      "text": "Unsuspend which includes the Athl Rene"
+    },
+    {
+      "timestamp": "13:22",
+      "start_seconds": 802,
+      "text": "and Por as well as Genkuman since they"
+    },
+    {
+      "timestamp": "13:24",
+      "start_seconds": 804,
+      "text": "have the keyword reboot. Draw for turn."
+    },
+    {
+      "timestamp": "13:26",
+      "start_seconds": 806,
+      "text": "Raptor Dan will remove from the"
+    },
+    {
+      "timestamp": "13:27",
+      "start_seconds": 807,
+      "text": "breathing area to the battle area. Total"
+    },
+    {
+      "timestamp": "13:29",
+      "start_seconds": 809,
+      "text": "star main phase effect will trashan from"
+    },
+    {
+      "timestamp": "13:31",
+      "start_seconds": 811,
+      "text": "the hand which has the chronicle trait"
+    },
+    {
+      "timestamp": "13:32",
+      "start_seconds": 812,
+      "text": "to draw one and gain a memory. Alphaman"
+    },
+    {
+      "timestamp": "13:34",
+      "start_seconds": 814,
+      "text": "Ouran will attack into security."
+    },
+    {
+      "timestamp": "13:36",
+      "start_seconds": 816,
+      "text": "Oroman's inherent effect activates. If"
+    },
+    {
+      "timestamp": "13:38",
+      "start_seconds": 818,
+      "text": "this Digimon is Alphaman Oran, trash"
+    },
+    {
+      "timestamp": "13:40",
+      "start_seconds": 820,
+      "text": "your opponent's top security card."
+    },
+    {
+      "timestamp": "13:41",
+      "start_seconds": 821,
+      "text": "Alphaman Orican's altern activates once"
+    },
+    {
+      "timestamp": "13:43",
+      "start_seconds": 823,
+      "text": "per turn. When security stacks are"
+    },
+    {
+      "timestamp": "13:44",
+      "start_seconds": 824,
+      "text": "removed from gain three memory. The dual"
+    },
+    {
+      "timestamp": "13:46",
+      "start_seconds": 826,
+      "text": "tamer coda and Yuji's your turn effect"
+    },
+    {
+      "timestamp": "13:48",
+      "start_seconds": 828,
+      "text": "activates. When one of your chronic"
+    },
+    {
+      "timestamp": "13:50",
+      "start_seconds": 830,
+      "text": "trait Digimon attacks by suspending this"
+    },
+    {
+      "timestamp": "13:51",
+      "start_seconds": 831,
+      "text": "tamer, one of your Digimon on the field"
+    },
+    {
+      "timestamp": "13:53",
+      "start_seconds": 833,
+      "text": "may dig evolve into a level six or lower"
+    },
+    {
+      "timestamp": "13:54",
+      "start_seconds": 834,
+      "text": "Chronicle trait Digimon card in the hand"
+    },
+    {
+      "timestamp": "13:56",
+      "start_seconds": 836,
+      "text": "with the dig evolution cost reduced by"
+    },
+    {
+      "timestamp": "13:57",
+      "start_seconds": 837,
+      "text": "one. As rap Digimon will dig evolve into"
+    },
+    {
+      "timestamp": "13:59",
+      "start_seconds": 839,
+      "text": "the EX13 grade one with the special dig"
+    },
+    {
+      "timestamp": "14:01",
+      "start_seconds": 841,
+      "text": "evolve requirement, but two memory"
+    },
+    {
+      "timestamp": "14:02",
+      "start_seconds": 842,
+      "text": "costs. Raid ones when diging effect will"
+    },
+    {
+      "timestamp": "14:04",
+      "start_seconds": 844,
+      "text": "give itself reboot and blocker. And"
+    },
+    {
+      "timestamp": "14:05",
+      "start_seconds": 845,
+      "text": "since it was digital during an attack,"
+    },
+    {
+      "timestamp": "14:06",
+      "start_seconds": 846,
+      "text": "it is also unaffected by the opponent's"
+    },
+    {
+      "timestamp": "14:08",
+      "start_seconds": 848,
+      "text": "Digimon effects and gets extra 5,000 VP"
+    },
+    {
+      "timestamp": "14:10",
+      "start_seconds": 850,
+      "text": "until their turn ends with no other"
+    },
+    {
+      "timestamp": "14:12",
+      "start_seconds": 852,
+      "text": "pending effects that will activate."
+    },
+    {
+      "timestamp": "14:13",
+      "start_seconds": 853,
+      "text": "Author Renee and Por will block the"
+    },
+    {
+      "timestamp": "14:14",
+      "start_seconds": 854,
+      "text": "attack during the blocker timing which"
+    },
+    {
+      "timestamp": "14:16",
+      "start_seconds": 856,
+      "text": "will trigger Genkobon's all turns"
+    },
+    {
+      "timestamp": "14:17",
+      "start_seconds": 857,
+      "text": "effect. To use a use cost five or lower"
+    },
+    {
+      "timestamp": "14:19",
+      "start_seconds": 859,
+      "text": "option card with Huckman in his text"
+    },
+    {
+      "timestamp": "14:20",
+      "start_seconds": 860,
+      "text": "from the hand or this Digimon's digion"
+    },
+    {
+      "timestamp": "14:22",
+      "start_seconds": 862,
+      "text": "cards for free with the option side of"
+    },
+    {
+      "timestamp": "14:24",
+      "start_seconds": 864,
+      "text": "the dual card bullet awaken will be used"
+    },
+    {
+      "timestamp": "14:26",
+      "start_seconds": 866,
+      "text": "with his main effect. You may play one"
+    },
+    {
+      "timestamp": "14:27",
+      "start_seconds": 867,
+      "text": "play cost four or lower with system in"
+    },
+    {
+      "timestamp": "14:29",
+      "start_seconds": 869,
+      "text": "its name from your hand or trash without"
+    },
+    {
+      "timestamp": "14:30",
+      "start_seconds": 870,
+      "text": "paying the cost which will play out the"
+    },
+    {
+      "timestamp": "14:32",
+      "start_seconds": 872,
+      "text": "BT23 system on blong from the trash."
+    },
+    {
+      "timestamp": "14:34",
+      "start_seconds": 874,
+      "text": "Then to one of your opponent's Digimon,"
+    },
+    {
+      "timestamp": "14:35",
+      "start_seconds": 875,
+      "text": "Digimon one for each of your Digimon."
+    },
+    {
+      "timestamp": "14:37",
+      "start_seconds": 877,
+      "text": "With a total of seven Digimon on Jon's"
+    },
+    {
+      "timestamp": "14:39",
+      "start_seconds": 879,
+      "text": "side, it will dig Alphon Orican Ace all"
+    },
+    {
+      "timestamp": "14:42",
+      "start_seconds": 882,
+      "text": "the way back down to Raptor Dramon. And"
+    },
+    {
+      "timestamp": "14:43",
+      "start_seconds": 883,
+      "text": "because Alphamar or Ace has overflow"
+    },
+    {
+      "timestamp": "14:45",
+      "start_seconds": 885,
+      "text": "minus 5 as this card moves from the"
+    },
+    {
+      "timestamp": "14:47",
+      "start_seconds": 887,
+      "text": "field or under a card to an area other"
+    },
+    {
+      "timestamp": "14:49",
+      "start_seconds": 889,
+      "text": "than those, lose five memory. Vicky"
+    },
+    {
+      "timestamp": "14:51",
+      "start_seconds": 891,
+      "text": "Bullet awaken will now perform arts"
+    },
+    {
+      "timestamp": "14:52",
+      "start_seconds": 892,
+      "text": "digol instead of trashing after use."
+    },
+    {
+      "timestamp": "14:54",
+      "start_seconds": 894,
+      "text": "Your cards may dig evolve into this card"
+    },
+    {
+      "timestamp": "14:55",
+      "start_seconds": 895,
+      "text": "without paying the cost. As a BC23"
+    },
+    {
+      "timestamp": "14:57",
+      "start_seconds": 897,
+      "text": "system blanc will arch digol into system"
+    },
+    {
+      "timestamp": "14:59",
+      "start_seconds": 899,
+      "text": "mono awaken with the special digolve"
+    },
+    {
+      "timestamp": "15:01",
+      "start_seconds": 901,
+      "text": "requirements for free. Simmona awakens"
+    },
+    {
+      "timestamp": "15:03",
+      "start_seconds": 903,
+      "text": "when Digimon effect activates. Delete"
+    },
+    {
+      "timestamp": "15:04",
+      "start_seconds": 904,
+      "text": "one of your opponent's Digimon with play"
+    },
+    {
+      "timestamp": "15:06",
+      "start_seconds": 906,
+      "text": "cost four or less, but there no targets."
+    },
+    {
+      "timestamp": "15:08",
+      "start_seconds": 908,
+      "text": "And now the battle between Raptoron and"
+    },
+    {
+      "timestamp": "15:09",
+      "start_seconds": 909,
+      "text": "Ethyl Reneor will resume as raptoron"
+    },
+    {
+      "timestamp": "15:12",
+      "start_seconds": 912,
+      "text": "will be deleted as a result. The option"
+    },
+    {
+      "timestamp": "15:13",
+      "start_seconds": 913,
+      "text": "card replaces demon will be used for one"
+    },
+    {
+      "timestamp": "15:15",
+      "start_seconds": 915,
+      "text": "memory cost. His main effect until the"
+    },
+    {
+      "timestamp": "15:17",
+      "start_seconds": 917,
+      "text": "end of your opponent's turn. When your"
+    },
+    {
+      "timestamp": "15:18",
+      "start_seconds": 918,
+      "text": "opponent's Digimon gains starter main"
+    },
+    {
+      "timestamp": "15:20",
+      "start_seconds": 920,
+      "text": "phase, this Digimon attacks for the"
+    },
+    {
+      "timestamp": "15:21",
+      "start_seconds": 921,
+      "text": "target will be one of the system seals."
+    },
+    {
+      "timestamp": "15:23",
+      "start_seconds": 923,
+      "text": "Vmon will attack into Ethel, Renee, and"
+    },
+    {
+      "timestamp": "15:25",
+      "start_seconds": 925,
+      "text": "P. Using Koda's your turn effect by"
+    },
+    {
+      "timestamp": "15:27",
+      "start_seconds": 927,
+      "text": "sustaining his tamer, it will use the"
+    },
+    {
+      "timestamp": "15:28",
+      "start_seconds": 928,
+      "text": "option card release of the steel knight"
+    },
+    {
+      "timestamp": "15:30",
+      "start_seconds": 930,
+      "text": "from the hand with the cost reduced by"
+    },
+    {
+      "timestamp": "15:31",
+      "start_seconds": 931,
+      "text": "one, paying only two members. And with"
+    },
+    {
+      "timestamp": "15:32",
+      "start_seconds": 932,
+      "text": "his main effect, it will trash raptor"
+    },
+    {
+      "timestamp": "15:34",
+      "start_seconds": 934,
+      "text": "Juman from the hand to draw two. Then"
+    },
+    {
+      "timestamp": "15:35",
+      "start_seconds": 935,
+      "text": "place his card in the battle area."
+    },
+    {
+      "timestamp": "15:37",
+      "start_seconds": 937,
+      "text": "Yankan will block the attack. And"
+    },
+    {
+      "timestamp": "15:38",
+      "start_seconds": 938,
+      "text": "because it has higher DP than Gramon, it"
+    },
+    {
+      "timestamp": "15:40",
+      "start_seconds": 940,
+      "text": "will win the battle. But Raptor Dummon's"
+    },
+    {
+      "timestamp": "15:42",
+      "start_seconds": 942,
+      "text": "inherent effect gives the keyword"
+    },
+    {
+      "timestamp": "15:43",
+      "start_seconds": 943,
+      "text": "barrier. When his Digimon will be"
+    },
+    {
+      "timestamp": "15:44",
+      "start_seconds": 944,
+      "text": "deleted in battle by casting the top"
+    },
+    {
+      "timestamp": "15:46",
+      "start_seconds": 946,
+      "text": "security card, it isn't deleted."
+    },
+    {
+      "timestamp": "15:47",
+      "start_seconds": 947,
+      "text": "Gramon's end of attack effect activates,"
+    },
+    {
+      "timestamp": "15:49",
+      "start_seconds": 949,
+      "text": "which will dig into the X13 Alphammon"
+    },
+    {
+      "timestamp": "15:51",
+      "start_seconds": 951,
+      "text": "from the trash with the regular five"
+    },
+    {
+      "timestamp": "15:52",
+      "start_seconds": 952,
+      "text": "memory cost. for the aloopermit of the"
+    },
+    {
+      "timestamp": "15:54",
+      "start_seconds": 954,
+      "text": "NPC returns once again. Alphammon's when"
+    },
+    {
+      "timestamp": "15:56",
+      "start_seconds": 956,
+      "text": "dig evolving effect will reduce system"
+    },
+    {
+      "timestamp": "15:58",
+      "start_seconds": 958,
+      "text": "on seio's DP by 8,000 and since the"
+    },
+    {
+      "timestamp": "16:00",
+      "start_seconds": 960,
+      "text": "opponent has five or more memory, it"
+    },
+    {
+      "timestamp": "16:01",
+      "start_seconds": 961,
+      "text": "will gain two. System will be deleted by"
+    },
+    {
+      "timestamp": "16:04",
+      "start_seconds": 964,
+      "text": "game mechanics since his DP is now zero."
+    },
+    {
+      "timestamp": "16:06",
+      "start_seconds": 966,
+      "text": "And because one of the system on seals"
+    },
+    {
+      "timestamp": "16:07",
+      "start_seconds": 967,
+      "text": "is no longer on the board, both Genkan"
+    },
+    {
+      "timestamp": "16:09",
+      "start_seconds": 969,
+      "text": "and Jeson will also lose the extra 2,000"
+    },
+    {
+      "timestamp": "16:11",
+      "start_seconds": 971,
+      "text": "DP. If the memory gauge pass over the"
+    },
+    {
+      "timestamp": "16:13",
+      "start_seconds": 973,
+      "text": "opponent's side, Alammon's end of your"
+    },
+    {
+      "timestamp": "16:14",
+      "start_seconds": 974,
+      "text": "turn effect, which will play off the EX1"
+    },
+    {
+      "timestamp": "16:16",
+      "start_seconds": 976,
+      "text": "rapigon, which has a cardigle trait from"
+    },
+    {
+      "timestamp": "16:17",
+      "start_seconds": 977,
+      "text": "the hand for free as it will gain rush"
+    },
+    {
+      "timestamp": "16:19",
+      "start_seconds": 979,
+      "text": "for the turn as well. Its onplay effect"
+    },
+    {
+      "timestamp": "16:21",
+      "start_seconds": 981,
+      "text": "activates when your opponent's Digimon"
+    },
+    {
+      "timestamp": "16:22",
+      "start_seconds": 982,
+      "text": "gets minus 3,000 DP for the turn and the"
+    },
+    {
+      "timestamp": "16:24",
+      "start_seconds": 984,
+      "text": "target will be system blown awaken."
+    },
+    {
+      "timestamp": "16:26",
+      "start_seconds": 986,
+      "text": "Alphammon's your turn effect then"
+    },
+    {
+      "timestamp": "16:27",
+      "start_seconds": 987,
+      "text": "activates since the coral trait Digimon"
+    },
+    {
+      "timestamp": "16:29",
+      "start_seconds": 989,
+      "text": "is played. One of the Digimon may attack"
+    },
+    {
+      "timestamp": "16:31",
+      "start_seconds": 991,
+      "text": "as rap Digimon will attack into"
+    },
+    {
+      "timestamp": "16:33",
+      "start_seconds": 993,
+      "text": "security. Then you may activate one of"
+    },
+    {
+      "timestamp": "16:34",
+      "start_seconds": 994,
+      "text": "this Digimon's when dig evolving effects"
+    },
+    {
+      "timestamp": "16:36",
+      "start_seconds": 996,
+      "text": "which will reduce Genkon's DP by 8,000"
+    },
+    {
+      "timestamp": "16:38",
+      "start_seconds": 998,
+      "text": "until the end opponent's turn. Even"
+    },
+    {
+      "timestamp": "16:39",
+      "start_seconds": 999,
+      "text": "though Genkan is currently unaffected by"
+    },
+    {
+      "timestamp": "16:41",
+      "start_seconds": 1001,
+      "text": "the opponent's Digimon effects, the DP"
+    },
+    {
+      "timestamp": "16:42",
+      "start_seconds": 1002,
+      "text": "reduction effect lingers until the end"
+    },
+    {
+      "timestamp": "16:44",
+      "start_seconds": 1004,
+      "text": "of opponent's turn, meaning it will"
+    },
+    {
+      "timestamp": "16:45",
+      "start_seconds": 1005,
+      "text": "still be applied as soon as it loses its"
+    },
+    {
+      "timestamp": "16:46",
+      "start_seconds": 1006,
+      "text": "protection effect. Digimon's when"
+    },
+    {
+      "timestamp": "16:48",
+      "start_seconds": 1008,
+      "text": "attacking effect activates. This Digimon"
+    },
+    {
+      "timestamp": "16:50",
+      "start_seconds": 1010,
+      "text": "may dig evolve into a Digimon card with"
+    },
+    {
+      "timestamp": "16:51",
+      "start_seconds": 1011,
+      "text": "the chronicle trait in the hand or"
+    },
+    {
+      "timestamp": "16:52",
+      "start_seconds": 1012,
+      "text": "trash. Will dig evolve into DX13 grade"
+    },
+    {
+      "timestamp": "16:54",
+      "start_seconds": 1014,
+      "text": "one from the trash with the special"
+    },
+    {
+      "timestamp": "16:56",
+      "start_seconds": 1016,
+      "text": "digivolve requirements for three memory"
+    },
+    {
+      "timestamp": "16:57",
+      "start_seconds": 1017,
+      "text": "costs. Gramons when digolving effect"
+    },
+    {
+      "timestamp": "16:59",
+      "start_seconds": 1019,
+      "text": "will once again gain reboot, blocker,"
+    },
+    {
+      "timestamp": "17:01",
+      "start_seconds": 1021,
+      "text": "Digimon effect immunity, and extra 5,000"
+    },
+    {
+      "timestamp": "17:03",
+      "start_seconds": 1023,
+      "text": "DP until the opponent turns ends. Now,"
+    },
+    {
+      "timestamp": "17:05",
+      "start_seconds": 1025,
+      "text": "the option card release of the seal net"
+    },
+    {
+      "timestamp": "17:06",
+      "start_seconds": 1026,
+      "text": "will use it all turns and delay effect,"
+    },
+    {
+      "timestamp": "17:08",
+      "start_seconds": 1028,
+      "text": "which will dig evolve Greymon into"
+    },
+    {
+      "timestamp": "17:09",
+      "start_seconds": 1029,
+      "text": "Alphammon from the hand for free."
+    },
+    {
+      "timestamp": "17:10",
+      "start_seconds": 1030,
+      "text": "Alpham's when digolving effect will"
+    },
+    {
+      "timestamp": "17:12",
+      "start_seconds": 1032,
+      "text": "reduce Genkon's DP by another 8,000."
+    },
+    {
+      "timestamp": "17:14",
+      "start_seconds": 1034,
+      "text": "Since the opponent has five or more"
+    },
+    {
+      "timestamp": "17:16",
+      "start_seconds": 1036,
+      "text": "memory, it will gain two check system on"
+    },
+    {
+      "timestamp": "17:19",
+      "start_seconds": 1039,
+      "text": "CF and the turn will now end passing"
+    },
+    {
+      "timestamp": "17:21",
+      "start_seconds": 1041,
+      "text": "over to Jimmon with four memory. As"
+    },
+    {
+      "timestamp": "17:23",
+      "start_seconds": 1043,
+      "text": "Raptor Juan's DP reduction effect on"
+    },
+    {
+      "timestamp": "17:25",
+      "start_seconds": 1045,
+      "text": "system blond awaken will now wear off"
+    },
+    {
+      "timestamp": "17:27",
+      "start_seconds": 1047,
+      "text": "and because Genkum's protection effect"
+    },
+    {
+      "timestamp": "17:28",
+      "start_seconds": 1048,
+      "text": "is no longer there, it will have his DP"
+    },
+    {
+      "timestamp": "17:30",
+      "start_seconds": 1050,
+      "text": "reduced by a total of 16,000 putting it"
+    },
+    {
+      "timestamp": "17:32",
+      "start_seconds": 1052,
+      "text": "down to zero as it will be deleted via"
+    },
+    {
+      "timestamp": "17:34",
+      "start_seconds": 1054,
+      "text": "game mechanics. Jmon as well as Athal"
+    },
+    {
+      "timestamp": "17:36",
+      "start_seconds": 1056,
+      "text": "Rene and Port will unsuspend. And the"
+    },
+    {
+      "timestamp": "17:37",
+      "start_seconds": 1057,
+      "text": "same goes for both Alphammons since they"
+    },
+    {
+      "timestamp": "17:39",
+      "start_seconds": 1059,
+      "text": "have reboot."
+    },
+    {
+      "timestamp": "17:43",
+      "start_seconds": 1063,
+      "text": "[music]"
+    },
+    {
+      "timestamp": "17:46",
+      "start_seconds": 1066,
+      "text": "Draw for turn. DJ Hatch Gurima at the"
+    },
+    {
+      "timestamp": "17:49",
+      "start_seconds": 1069,
+      "text": "start of main phase. System must attack"
+    },
+    {
+      "timestamp": "17:51",
+      "start_seconds": 1071,
+      "text": "which will declare into security. And"
+    },
+    {
+      "timestamp": "17:53",
+      "start_seconds": 1073,
+      "text": "now for the counter timing where Alphon"
+    },
+    {
+      "timestamp": "17:55",
+      "start_seconds": 1075,
+      "text": "in the battle area and Oreo from the"
+    },
+    {
+      "timestamp": "17:57",
+      "start_seconds": 1077,
+      "text": "hand will blast DNA digivolve together"
+    },
+    {
+      "timestamp": "17:58",
+      "start_seconds": 1078,
+      "text": "into Alphaman Oreo ace once again with"
+    },
+    {
+      "timestamp": "18:01",
+      "start_seconds": 1081,
+      "text": "his one dig evolving effect. One of the"
+    },
+    {
+      "timestamp": "18:02",
+      "start_seconds": 1082,
+      "text": "opponent's Digimon gets minus 15,000 DP"
+    },
+    {
+      "timestamp": "18:04",
+      "start_seconds": 1084,
+      "text": "until the end of their turn. Target will"
+    },
+    {
+      "timestamp": "18:06",
+      "start_seconds": 1086,
+      "text": "be Jmon. Then if DNA dig evolving, trash"
+    },
+    {
+      "timestamp": "18:08",
+      "start_seconds": 1088,
+      "text": "your opponent's top three cards and"
+    },
+    {
+      "timestamp": "18:09",
+      "start_seconds": 1089,
+      "text": "recover one. and Jesus will be deleted"
+    },
+    {
+      "timestamp": "18:11",
+      "start_seconds": 1091,
+      "text": "from game mechanics since his DP was"
+    },
+    {
+      "timestamp": "18:13",
+      "start_seconds": 1093,
+      "text": "reduced down to zero because the"
+    },
+    {
+      "timestamp": "18:15",
+      "start_seconds": 1095,
+      "text": "security stack was removed from Alphon"
+    },
+    {
+      "timestamp": "18:16",
+      "start_seconds": 1096,
+      "text": "or can ace altern effect will gain three"
+    },
+    {
+      "timestamp": "18:18",
+      "start_seconds": 1098,
+      "text": "memory with all pending effects"
+    },
+    {
+      "timestamp": "18:20",
+      "start_seconds": 1100,
+      "text": "activated and resolved will now proceed"
+    },
+    {
+      "timestamp": "18:21",
+      "start_seconds": 1101,
+      "text": "to the blocker timing where Alphon will"
+    },
+    {
+      "timestamp": "18:23",
+      "start_seconds": 1103,
+      "text": "block system on CL's attack which will"
+    },
+    {
+      "timestamp": "18:24",
+      "start_seconds": 1104,
+      "text": "also delete it from the battle will"
+    },
+    {
+      "timestamp": "18:26",
+      "start_seconds": 1106,
+      "text": "digolve into the BT23 Hmon for zero cost"
+    },
+    {
+      "timestamp": "18:30",
+      "start_seconds": 1110,
+      "text": "Renee and port will attack into security"
+    },
+    {
+      "timestamp": "18:33",
+      "start_seconds": 1113,
+      "text": "check Rapid which is also 6,000 DP and"
+    },
+    {
+      "timestamp": "18:36",
+      "start_seconds": 1116,
+      "text": "the token will be deleted no awaken will"
+    },
+    {
+      "timestamp": "18:39",
+      "start_seconds": 1119,
+      "text": "also attack into Security security champ"
+    },
+    {
+      "timestamp": "18:41",
+      "start_seconds": 1121,
+      "text": "Thorman. And now Jasmine will be played"
+    },
+    {
+      "timestamp": "18:44",
+      "start_seconds": 1124,
+      "text": "with assembly minus 5 which requires a"
+    },
+    {
+      "timestamp": "18:46",
+      "start_seconds": 1126,
+      "text": "level five four and three Digimon all"
+    },
+    {
+      "timestamp": "18:48",
+      "start_seconds": 1128,
+      "text": "with Huckman in their texts. Placing the"
+    },
+    {
+      "timestamp": "18:50",
+      "start_seconds": 1130,
+      "text": "EX13 Savior Huckman BT3 Bow Huckman and"
+    },
+    {
+      "timestamp": "18:53",
+      "start_seconds": 1133,
+      "text": "EX13 Huckman from the trash underneath"
+    },
+    {
+      "timestamp": "18:55",
+      "start_seconds": 1135,
+      "text": "it. It will reduce the play quest by"
+    },
+    {
+      "timestamp": "18:56",
+      "start_seconds": 1136,
+      "text": "five. Ping seven memory to play it out."
+    },
+    {
+      "timestamp": "18:59",
+      "start_seconds": 1139,
+      "text": "Dash's alter effect activates. When any"
+    },
+    {
+      "timestamp": "19:01",
+      "start_seconds": 1141,
+      "text": "of your Digimon are played, which"
+    },
+    {
+      "timestamp": "19:02",
+      "start_seconds": 1142,
+      "text": "includes itself, you may delete one of"
+    },
+    {
+      "timestamp": "19:03",
+      "start_seconds": 1143,
+      "text": "your opponent's lowest DP Digimon, which"
+    },
+    {
+      "timestamp": "19:05",
+      "start_seconds": 1145,
+      "text": "will be Alphammon or you can ace. But"
+    },
+    {
+      "timestamp": "19:07",
+      "start_seconds": 1147,
+      "text": "the grade months in her effect from"
+    },
+    {
+      "timestamp": "19:08",
+      "start_seconds": 1148,
+      "text": "underneath it activates all turns on"
+    },
+    {
+      "timestamp": "19:10",
+      "start_seconds": 1150,
+      "text": "must return when any of your chronicle"
+    },
+    {
+      "timestamp": "19:11",
+      "start_seconds": 1151,
+      "text": "trait Digimon will leave the battle area"
+    },
+    {
+      "timestamp": "19:13",
+      "start_seconds": 1153,
+      "text": "by charging the top security card. They"
+    },
+    {
+      "timestamp": "19:15",
+      "start_seconds": 1155,
+      "text": "don't leave. Then if you don't have a"
+    },
+    {
+      "timestamp": "19:16",
+      "start_seconds": 1156,
+      "text": "Tho Renee and poor, you may play one"
+    },
+    {
+      "timestamp": "19:18",
+      "start_seconds": 1158,
+      "text": "token out. The EX13 Huckmon's inherit"
+    },
+    {
+      "timestamp": "19:20",
+      "start_seconds": 1160,
+      "text": "effect will then activate. Your turn on"
+    },
+    {
+      "timestamp": "19:22",
+      "start_seconds": 1162,
+      "text": "return when any of your white Digimon"
+    },
+    {
+      "timestamp": "19:23",
+      "start_seconds": 1163,
+      "text": "are played. Gain one memory and the turn"
+    },
+    {
+      "timestamp": "19:25",
+      "start_seconds": 1165,
+      "text": "will pass over to Alphammon's side with"
+    },
+    {
+      "timestamp": "19:26",
+      "start_seconds": 1166,
+      "text": "five memory as the DP buff and the"
+    },
+    {
+      "timestamp": "19:28",
+      "start_seconds": 1168,
+      "text": "protection effect from grade one will"
+    },
+    {
+      "timestamp": "19:29",
+      "start_seconds": 1169,
+      "text": "now wear off. Unsuspend and drop for"
+    },
+    {
+      "timestamp": "19:32",
+      "start_seconds": 1172,
+      "text": "turning hatch promo Dory. Thor star main"
+    },
+    {
+      "timestamp": "19:35",
+      "start_seconds": 1175,
+      "text": "phase effect will trashon from the hand"
+    },
+    {
+      "timestamp": "19:37",
+      "start_seconds": 1177,
+      "text": "to draw one and gain a memory. Thorimmon"
+    },
+    {
+      "timestamp": "19:39",
+      "start_seconds": 1179,
+      "text": "will dig evolve into rimon with the"
+    },
+    {
+      "timestamp": "19:40",
+      "start_seconds": 1180,
+      "text": "special digivolve requirements for zero"
+    },
+    {
+      "timestamp": "19:42",
+      "start_seconds": 1182,
+      "text": "cost. Alphaman will attempt to make the"
+    },
+    {
+      "timestamp": "19:44",
+      "start_seconds": 1184,
+      "text": "final attack but author and port will"
+    },
+    {
+      "timestamp": "19:46",
+      "start_seconds": 1186,
+      "text": "use blocker to stop the attack which"
+    },
+    {
+      "timestamp": "19:48",
+      "start_seconds": 1188,
+      "text": "will also be deleted from the battle and"
+    },
+    {
+      "timestamp": "19:50",
+      "start_seconds": 1190,
+      "text": "then alpham or ace will also attempt to"
+    },
+    {
+      "timestamp": "19:52",
+      "start_seconds": 1192,
+      "text": "make the final attack with no more cards"
+    },
+    {
+      "timestamp": "19:53",
+      "start_seconds": 1193,
+      "text": "left on Jon and Genkum's side to defend"
+    },
+    {
+      "timestamp": "19:55",
+      "start_seconds": 1195,
+      "text": "against it. The final attack will"
+    },
+    {
+      "timestamp": "19:56",
+      "start_seconds": 1196,
+      "text": "connect and Alphon and Chronicle will"
+    },
+    {
+      "timestamp": "19:58",
+      "start_seconds": 1198,
+      "text": "win the game. Make sure to check out the"
+    },
+    {
+      "timestamp": "20:00",
+      "start_seconds": 1200,
+      "text": "evolve store for all awesome TCG"
+    },
+    {
+      "timestamp": "20:02",
+      "start_seconds": 1202,
+      "text": "accessories. Here are the deck lists for"
+    },
+    {
+      "timestamp": "20:03",
+      "start_seconds": 1203,
+      "text": "today's Battle Vault video. Also, huge"
+    },
+    {
+      "timestamp": "20:05",
+      "start_seconds": 1205,
+      "text": "shouts to premium and deluxe members of"
+    },
+    {
+      "timestamp": "20:07",
+      "start_seconds": 1207,
+      "text": "the channel. And don't forget to"
+    },
+    {
+      "timestamp": "20:08",
+      "start_seconds": 1208,
+      "text": "subscribe to stay tuned for more."
+    }
+  ]
+}

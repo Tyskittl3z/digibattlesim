@@ -1,0 +1,12 @@
+Command: python -m unittest test_attack_flow.EncounteredUlforceAttackTests -v
+Cwd: SOURCE
+Exit code: 0
+
+test_actual_two_card_ulforce_declaration_queues_two_rinas_and_inherited_together (test_attack_flow.EncounteredUlforceAttackTests.test_actual_two_card_ulforce_declaration_queues_two_rinas_and_inherited_together) ... ok
+test_explicit_declines_finish_triggers_before_counter_and_block_windows (test_attack_flow.EncounteredUlforceAttackTests.test_explicit_declines_finish_triggers_before_counter_and_block_windows) ... ok
+test_later_inherited_unsuspend_keeps_unimplemented_ulforce_bounce_explicit (test_attack_flow.EncounteredUlforceAttackTests.test_later_inherited_unsuspend_keeps_unimplemented_ulforce_bounce_explicit) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 42.224s
+
+OK

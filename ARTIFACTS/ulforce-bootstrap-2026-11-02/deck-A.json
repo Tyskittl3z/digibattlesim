@@ -1,0 +1,96 @@
+{
+  "deck": {
+    "label": "UlforceVeedramon — Federico Nine",
+    "source_id": "123129",
+    "main": [
+      {
+        "card_number": "BT11-023",
+        "quantity": 4
+      },
+      {
+        "card_number": "BT11-032",
+        "quantity": 1
+      },
+      {
+        "card_number": "BT11-112",
+        "quantity": 4
+      },
+      {
+        "card_number": "BT12-029",
+        "quantity": 3
+      },
+      {
+        "card_number": "BT22-022",
+        "quantity": 1
+      },
+      {
+        "card_number": "BT22-023",
+        "quantity": 3
+      },
+      {
+        "card_number": "BT22-085",
+        "quantity": 1
+      },
+      {
+        "card_number": "EX1-013",
+        "quantity": 3
+      },
+      {
+        "card_number": "EX13-017",
+        "quantity": 4
+      },
+      {
+        "card_number": "EX13-019",
+        "quantity": 4
+      },
+      {
+        "card_number": "EX13-022",
+        "quantity": 4
+      },
+      {
+        "card_number": "EX13-023",
+        "quantity": 4
+      },
+      {
+        "card_number": "EX13-069",
+        "quantity": 4
+      },
+      {
+        "card_number": "LM-028",
+        "quantity": 1
+      },
+      {
+        "card_number": "LM-034",
+        "quantity": 1
+      },
+      {
+        "card_number": "LM-056",
+        "quantity": 1
+      },
+      {
+        "card_number": "LM-057",
+        "quantity": 1
+      },
+      {
+        "card_number": "LM-058",
+        "quantity": 1
+      },
+      {
+        "card_number": "P-104",
+        "quantity": 1
+      },
+      {
+        "card_number": "P-138",
+        "quantity": 4
+      }
+    ],
+    "eggs": [
+      {
+        "card_number": "EX13-002",
+        "quantity": 4
+      }
+    ]
+  },
+  "composition_sha256": "f9c8261b83e908e13c6bf5770faf5809649543b5d3494081c8ec5eae8d7965c7",
+  "status": "EXACT_COUNTS_FROM_CACHED_SOURCE_NOT_LEGALITY_CERTIFIED"
+}

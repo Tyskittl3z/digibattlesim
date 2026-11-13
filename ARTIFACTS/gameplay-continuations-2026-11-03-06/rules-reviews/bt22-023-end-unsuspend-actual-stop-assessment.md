@@ -1,0 +1,11 @@
+# End-turn Aero unsuspend / Rina actual-stop review
+
+All82 prior saved commands replayed from the same seed with exact physical-state/RNG match. At turn6 END_OF_TURN/memory−3, selected BT22 Aero effect21 may legally unsuspend B:EX13-022#3. Its cannot-suspend restriction prohibits the opposite orientation change; it remains active. The actual unsuspend triggers one simultaneous B-controlled group: **BT11 Rina#3 mandatory gain1 memory**, and **EX13 Rina#3 / #4 each optional self-suspend -> Draw1 -> optional reduced2 evolution**. B chooses their activation order. Neither A Tamers nor A BT12 has its triggering event.
+
+Each EX13 Rina has no printed OPT. Both can currently pay their own self-suspension, including the turn6-played Rina. Q7437 requires actual self-suspension for both Draw and After; declining payment skips both. After paying, Draw is mandatory and evolving may still be declined. Draw then expose the post-draw own-hand choice within that same resolving effect, without sibling interleaving. Q7439 forbids combining both reductions on one evolution.
+
+Source-review deck evidence makes the first draw EX13-023#1. First post-draw legal routes are None, or each of the three own Lv5 Aero stacks into existing BT11-032#1 for2, or drawn EX13-023#1 for1 (normal/CS routes): nine route records/six source-target pairs. END timing and negative memory do not bar effect-authorized evolution, which still needs its cost, evolution draw and actual new-top When Digivolving processing. Unsupported selected continuation must precisely HALT. Hidden draw order is reviewer evidence only; later draws depend on whether an evolution bonus draw occurred.
+
+Do not expire current-turn grants while end effects remain pending or if memory recovery postpones ending the turn. Current cannot-suspend survives normal evolution of the same entity. With both Rinas declined, mandatory memory gain leaves−2 and actual completed B turn passes to A turn7/memory2; only then remove grants expiring Bturn6, retaining those through Aturn7.
+
+No SOURCE edits or new resolution executed by reviewer; no full-match certification or credit. Exact triggers, rules/Q&A locators, source hashes, after-draw routes and private judge-only draw audit are in [bt22-023-end-unsuspend-actual-stop.json](bt22-023-end-unsuspend-actual-stop.json).

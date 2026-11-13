@@ -1,0 +1,58 @@
+{
+  "binding": "LOADED_ARTIFACTS_AT_MODULE_IMPORT",
+  "criteria": {
+    "breeding": "Each physical card in breeding contributes 0.5; breeding cards are excluded from battle body/source/DP components.",
+    "definitions": {
+      "GREEN": "Positive observed net impact above the neutral threshold under these declared weights.",
+      "RED": "Negative observed net impact below the neutral threshold under these declared weights.",
+      "UNRATED": "The action did not resolve successfully. No reward is assigned.",
+      "YELLOW": "Near-zero observed net impact within the neutral threshold under these declared weights."
+    },
+    "disabled": "Cannot-suspend, or suspended and cannot-unsuspend. Threat units are 1 + 0.5 per source + 0.25 per level + 0.1 per 1000 known DP; this is a declared heuristic, not combat legality.",
+    "efficiency": "Positive net non-memory board benefit divided by evidenced paid memory. Explicit zero-cost development is FREE with no division. Missing payment evidence remains UNVERIFIED. This is not a globally-cheapest claim.",
+    "known_dp": "Printed DP plus active typed positive DP grants only. No inference of unimplemented continuous card text.",
+    "limitations": "Immediate command-boundary measurements do not establish causation, optimal play, calibrated win probabilities or approved roadmap lanes. Later effects can change a play's overall result.",
+    "memory_payment": "Use canonical PAY_* result steps. Traverse a steps tree instead of duplicated sibling result aliases; without steps prefer result, then named evolution/play subresults. A node's direct cost summarizes its canonical subtree and is a fallback only when no nested payment evidence exists. Equal-cost distinct PAY steps remain distinct. Independent payments must appear as separate canonical sibling steps or subresults. If no explicit evidence exists, a same-active actor-relative gauge decrease is an estimate only for explicit spend commands.",
+    "memory_resource_residual": "When the active player is unchanged, actor-relative gauge change plus explicit/estimated paid cost records observed other resource gains or losses. It is separate from actual paid cost. Turn flips create neither payment nor residual. This credits observed capped gains/refunds without using nominal printed gains.",
+    "neutral_absolute_threshold": 0.25,
+    "objective": "Observed public board impact, memory efficiency and tempo from the scoring player's perspective.",
+    "position_components": "Each position component is own amount minus opponent amount. Delta is after minus before; contribution is delta times its declared weight.",
+    "procedural_commands": [
+      "BEGIN_PREPARATION",
+      "REDRAW_CHOICE",
+      "ADVANCE_PHASE",
+      "FINISH_TURN",
+      "END_ATTACK",
+      "SETTLE_PENDING"
+    ],
+    "procedural_policy": "Preserve the actual signed observed components, reward and color at every successfully resolved boundary. Mark procedural commands as learning_eligible=false and decision_type=PROCEDURAL: automatic deals/draws or phase-boundary effects are observations, not learned strategic choices. Learning also excludes forced singleton choices, as enforced by the decision recorder and learner.",
+    "ready": "An unsuspended Digimon or Tamer that is not prevented from suspending. Options receive no readiness bonus.",
+    "schema": "observed-board-impact-criteria-v1",
+    "security_checks": "Cumulative completed checks supplied by Bot C. Missing history is unknown and is never reconstructed from remaining security or attack declarations.",
+    "status": "DEFINED_HEURISTIC_NOT_APPROVED_STRATEGY",
+    "tempo": "Show per-player cards in play, source depth, largest stack and completed check totals, plus per-axis leader. An overall leader requires dominance across all known axes; conflicting leads are CONTESTED and missing check history is UNKNOWN. No weights or win probabilities are implied by this dominance summary.",
+    "terminal_outcomes": "Recorded separately. A winner flag alone does not make an interaction green and is not included in this board reward.",
+    "version": 1,
+    "weights": {
+      "battle_units": 2.0,
+      "breeding_cards": 0.5,
+      "disabled_threat": -0.5,
+      "hand_cards": 0.5,
+      "known_dp_thousands": 0.1,
+      "levels": 0.25,
+      "memory_paid": -0.5,
+      "memory_resource_residual": 0.5,
+      "ready_blockers": 1.0,
+      "ready_cards": 0.5,
+      "security_checks": 2.0,
+      "security_remaining": 2.0,
+      "sources": 0.5
+    }
+  },
+  "criterion_sha256": "84de51952609311beadcbec58f9c8252e1aea2c9eae96689eaf5aad4711fcdaf",
+  "file": "RULES/learning-2026-11-10/INTERACTION_CRITERIA.json",
+  "file_sha256": "90e68db01b5644693f5403eb5d7d5fd6a30059e0b01f465c9cb2729df26a5ba4",
+  "probability_claim": false,
+  "scorer_source_sha256": "c9e09123fc1666d36624a7e41e4aab7ac09c671e354b54aa77d2517a5db2992c",
+  "strategic_approval": "NONE"
+}

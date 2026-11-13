@@ -1,0 +1,261 @@
+{
+  "schema": "encountered-option-independent-review-v1",
+  "review_date": "2026-11-03",
+  "scope": "Actual preserved Game0 selected LM-028 Main use plus narrow shared Delay/effect-helper correctness review",
+  "status": "NO_CONCRETE_DEFECT_FOUND_IN_REVIEWED_SCOPE",
+  "certification": "NONE_INDEPENDENT_SOURCE_AND_SOFTWARE_REVIEW_ONLY",
+  "full_match_credit": 0,
+  "accepted_fact_finding_credit": 0,
+  "final_evaluation_credit": 0,
+  "source_record": "ARTIFACTS/gameplay-continuations-2026-11-02-01/game-0000-segment-01.json.gz",
+  "seed": 12017913134550805276,
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "findings": [],
+  "actual_encounter": {
+    "turn": 3,
+    "active": "A",
+    "phase": "MAIN",
+    "memory": 4,
+    "selected_card": "A:LM-028#1",
+    "own_battle": [
+      "A:BT11-112#2"
+    ],
+    "opponent_battle": [
+      "B:EX13-022#3"
+    ],
+    "own_breeding": [],
+    "use_legality": "LEGAL: blue Tamer satisfies color requirement; evolution is optional and no Digimon base is available",
+    "evolution_choices": {
+      "kind": "evolution",
+      "choices": [
+        null
+      ]
+    },
+    "expected_resolution": "Pay2; no evolution; place LM-028 in battle area with played_turn3; memory2; remain MAIN",
+    "preserved_seed": true,
+    "revalidated_physical_state_exact": true,
+    "revalidated_rng_exact": true,
+    "before_state_sha256": "7ff867b6ca0ecf51fdf1b330f0a9817f61155d3ccd74e101ebeb91c5a1e7a548",
+    "before_rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c",
+    "observed_use_result": {
+      "card_source": {
+        "locator": "#LM-028 printed Option type, use cost, color conditions and first Main",
+        "sha256": "add30c8ec48a6972ae26bc56af14b6faaab06af29d1b032151662b8e3723c0ee",
+        "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-028"
+      },
+      "cost": 2,
+      "full_match_credit": 0,
+      "memory_after": 2,
+      "rules_source": {
+        "locator": "Comprehensive rules v4.3: 3-4-6; 4-3-1; 4-22-1 through 4-22-4; 6-5-1-3; 8-1; 9-1-1 through 9-1-9; 15-8-3-9; 15-10-2-1; 15-15-3; 16-17-1 through 16-17-3",
+        "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+        "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918"
+      },
+      "scope_context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+      "steps": [
+        {
+          "card": "A:LM-028#1",
+          "operation": "DECLARE_USE"
+        },
+        {
+          "cost": 2,
+          "memory_after": 2,
+          "memory_before": 4,
+          "operation": "PAY_USE_COST"
+        },
+        {
+          "effect_id": "LM-028.main_evolve",
+          "operation": "ACTIVATE_FIRST_MAIN",
+          "source_area": null
+        }
+      ],
+      "triggered_effects": [
+        "LM-028.main_evolve"
+      ],
+      "used_card": "A:LM-028#1"
+    },
+    "observed_resolution_result": {
+      "evolution": null,
+      "full_match_credit": 0,
+      "placed_option": "A:LM-028#1",
+      "steps": [
+        {
+          "choice": null,
+          "operation": "OPTIONAL_EVOLUTION",
+          "result": null
+        },
+        {
+          "card": "A:LM-028#1",
+          "operation": "PLACE_OPTION_IN_BATTLE"
+        }
+      ]
+    },
+    "observed_after_public_view": {
+      "active": "A",
+      "memory": 2,
+      "turn": 3,
+      "phase": "MAIN",
+      "attack": null,
+      "terminal": false,
+      "resolving_option": null,
+      "winner": null,
+      "players": {
+        "A": {
+          "hand": [
+            "A:BT22-022#1",
+            "A:LM-034#1",
+            "A:BT11-032#1",
+            "A:BT12-029#2"
+          ],
+          "deck": {
+            "count": 39
+          },
+          "eggdeck": {
+            "count": 4
+          },
+          "security": {
+            "count": 5
+          },
+          "trash": [],
+          "battle": {
+            "A:BT11-112#2": {
+              "cards": [
+                "A:BT11-112#2"
+              ],
+              "suspended": false,
+              "statuses": {},
+              "instance_id": "entity-1",
+              "played_turn": 1,
+              "ready_since_turn": 2
+            },
+            "A:LM-028#1": {
+              "cards": [
+                "A:LM-028#1"
+              ],
+              "suspended": false,
+              "statuses": {},
+              "instance_id": "entity-3",
+              "played_turn": 3,
+              "ready_since_turn": null
+            }
+          },
+          "breeding": []
+        },
+        "B": {
+          "hand": {
+            "count": 5
+          },
+          "deck": {
+            "count": 39
+          },
+          "eggdeck": {
+            "count": 4
+          },
+          "security": {
+            "count": 5
+          },
+          "trash": [],
+          "battle": {
+            "B:EX13-022#3": {
+              "cards": [
+                "B:EX13-022#3"
+              ],
+              "suspended": false,
+              "statuses": {},
+              "instance_id": "entity-2",
+              "played_turn": 2,
+              "ready_since_turn": 3
+            }
+          },
+          "breeding": []
+        }
+      }
+    },
+    "rng_unchanged_by_use_and_resolution": true
+  },
+  "rules_assessment": [
+    "Official HTML incorrectly calls LM-028 Digimon; inspected official PNG explicitly says OPTION and supports the existing context correction.",
+    "CR4-22-2 permits a blue Tamer to satisfy blue Option use requirements.",
+    "Q4040 rules out treating Rina as the required Digimon evolution base; Main optional evolution does not prevent mandatory subsequent placement. CR1-3-2 performs possible remainder.",
+    "A used Option is outside areas until first Main resolves (CR9-1-4); resolve_option places it after optional evolution processing.",
+    "Trusted evolution validates active bound effect, source zone, exact binding hashes and enumerated legal route; Q4038 still requires digivolution conditions. No defect identified in this narrow helper review.",
+    "Delay is optional and cannot activate during its placement turn (CR16-17). Opponent Digimon processing condition is checked when processing Start of Your Turn effect (CR15-8-3-9).",
+    "Q4041 permits Delay activation without blue Digimon trash; Q4042 requires returning one whenever possible. Current choices force that return, then optional trash play only if own battle area has no Digimon. Returned physical copy cannot also be played.",
+    "play_blue_scramble_from_trash validates active bound LM-028 Delay in trash, absence of own battle Digimon, blue Digimon type, printed DP at most2000, and effect play at zero cost. No defect found within the loaded contexts."
+  ],
+  "verification": {
+    "command": "python -m unittest test_option_actions.OptionContinuationTests.test_latest_selected_blue_scramble_has_no_digimon_and_still_places test_option_actions.OptionContinuationTests.test_scramble_start_delay_has_condition_omission_explicit_activation_and_ordered_recovery test_option_actions.OptionContinuationTests.test_scramble_evolves_with_reduction_in_negative_memory_and_places_before_derived_search test_main_actions.MainPlayTests.test_scramble_trash_play_cannot_be_called_without_bound_delay -v",
+    "working_directory": "SOURCE",
+    "exit_code": 0,
+    "tests_run": 4,
+    "result": "OK",
+    "earlier_runner_errors": "Two preliminary invocations used nonexistent test class names; corrected invocation above passed all four. No test implementation failure observed.",
+    "independent_actual_replay": "Same saved seed and every preceding command; exact state/RNG checked before using selected LM-028 and resolving None; runtime.verify passed."
+  },
+  "source_evidence": [
+    {
+      "file": "ARTIFACTS/gameplay-continuations-2026-11-02-01/game-0000-segment-01.json.gz",
+      "sha256": "12fc86cc97aaebdabd740844c0e324f1d5d8db0eca05706116935f4e3d7f361b",
+      "locator": "Exact file bytes as reviewed"
+    },
+    {
+      "file": "ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json",
+      "sha256": "089d449edab177c4f1d31a4b2ce8414650439df4ea6459080400df45d5004484",
+      "locator": "Exact file bytes as reviewed"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-LM-028.html",
+      "sha256": "add30c8ec48a6972ae26bc56af14b6faaab06af29d1b032151662b8e3723c0ee",
+      "locator": "#LM-028: printed blue color/cost2/Main/Start of Your Turn Delay; Q4038-Q4042"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/LM-028.png",
+      "sha256": "f26e919328151f9ee595ea160a2949274ca1d30eb4ae6e0dacde5aef78460c8e",
+      "locator": "Printed OPTION header, blue border, use cost2, Main and Delay wording"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-112.html",
+      "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc",
+      "locator": "#BT11-112: blue Tamer Rina Shinomiya; main effects"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-022.html",
+      "sha256": "4771e6eab5218e833eebf7d1ff6cf70ad6fa51a51d556f8a404ac88f07256874",
+      "locator": "#EX13-022: Digimon AeroVeedramon; main effects"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/general_rule.pdf",
+      "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+      "locator": "v4.3: 1-3-2; 3-4-6; 4-22-1 through 4-22-4; 9-1-1 through 9-1-5; 9-1-9; 15-8-3-9; 15-9; 15-10-2-1; 16-17-1 through 16-17-3"
+    },
+    {
+      "file": "SOURCE/option_actions.py",
+      "sha256": "89a2c0b6999c3a793832140734da0ba79ade83e5bff205419a3cff475069adb0",
+      "locator": "Exact file bytes as reviewed"
+    },
+    {
+      "file": "SOURCE/main_actions.py",
+      "sha256": "c6efac1f55b5ec5f07f08bd18c617c242357bc420dd5bfa37af40163d89e51a8",
+      "locator": "Exact file bytes as reviewed"
+    },
+    {
+      "file": "SOURCE/battle_evolution.py",
+      "sha256": "9e18175c1ac73230d99631e64077ed83a8a1f6ed3d7ab40a5c386bf65d0e9221",
+      "locator": "Exact file bytes as reviewed"
+    },
+    {
+      "file": "SOURCE/test_option_actions.py",
+      "sha256": "d0230a6fb386e3bd3e79fac44e7f1c3dd448695eae74e7ff76eb7f63bbeb4f37",
+      "locator": "Exact file bytes as reviewed"
+    },
+    {
+      "file": "SOURCE/test_main_actions.py",
+      "sha256": "38bc2885576de3c5f8f4350edb7dba87c9ca09079b0aeaa45e8a268d873decf5",
+      "locator": "Exact file bytes as reviewed"
+    }
+  ],
+  "limitations": [
+    "Read-only code review and focused software checks do not certify a complete match, pilot strategy, or all Option/security interactions.",
+    "No SOURCE files edited by this reviewer."
+  ]
+}

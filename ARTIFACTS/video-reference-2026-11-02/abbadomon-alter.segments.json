@@ -1,0 +1,2940 @@
+{
+  "source": {
+    "key": "abbadomon-alter",
+    "label": "Abbadomon vs Omnimon Alter (narrative identification)",
+    "file_id": "file_000000004aa081f582f6feb3315e569f",
+    "original_path": "/workspace/attachments/c5b90dd6-ecc7-4a29-b6f1-3e5d70ccceaa/Pasted text.txt",
+    "original_bytes": 26532,
+    "original_sha256": "27baed9046d31f417c85fabcda22a037079b04427e133e0fb51a6e6dd94dba6d",
+    "segments": 584,
+    "last_caption_seconds": 1008,
+    "identity_basis": "USER_CONTEXT_AND_TRANSCRIPT_NOT_EXACT_DECK_CERTIFICATION",
+    "evidence_type": "USER_SUPPLIED_TRANSCRIPT",
+    "card_name_normalization": "NONE_ORIGINAL_WORDS_PRESERVED",
+    "rules_authority": false,
+    "simulated_match_credit": 0,
+    "segments_file": "abbadomon-alter.segments.json"
+  },
+  "segments": [
+    {
+      "timestamp": "0:00",
+      "start_seconds": 0,
+      "text": "Battleman will be going first. Dig hatch"
+    },
+    {
+      "timestamp": "0:02",
+      "start_seconds": 2,
+      "text": "negon which has a breeding area all"
+    },
+    {
+      "timestamp": "0:04",
+      "start_seconds": 4,
+      "text": "turns effect. This Digimon can't dig"
+    },
+    {
+      "timestamp": "0:06",
+      "start_seconds": 6,
+      "text": "evolve and effects can't delete it or"
+    },
+    {
+      "timestamp": "0:08",
+      "start_seconds": 8,
+      "text": "trash it. But a battle man can utilize"
+    },
+    {
+      "timestamp": "0:09",
+      "start_seconds": 9,
+      "text": "this egg with its other breeding main"
+    },
+    {
+      "timestamp": "0:11",
+      "start_seconds": 11,
+      "text": "effect. Once returned, you may play one"
+    },
+    {
+      "timestamp": "0:12",
+      "start_seconds": 12,
+      "text": "Digimon card with negon as text from"
+    },
+    {
+      "timestamp": "0:14",
+      "start_seconds": 14,
+      "text": "your hand with the play cost reduced by"
+    },
+    {
+      "timestamp": "0:15",
+      "start_seconds": 15,
+      "text": "two or each negons in your trash or your"
+    },
+    {
+      "timestamp": "0:17",
+      "start_seconds": 17,
+      "text": "Digimon's digolution cards further"
+    },
+    {
+      "timestamp": "0:18",
+      "start_seconds": 18,
+      "text": "reduce it by one. Then place this"
+    },
+    {
+      "timestamp": "0:20",
+      "start_seconds": 20,
+      "text": "Digimon as the play Digimon's bottom"
+    },
+    {
+      "timestamp": "0:21",
+      "start_seconds": 21,
+      "text": "digolution card where soundboard mod"
+    },
+    {
+      "timestamp": "0:23",
+      "start_seconds": 23,
+      "text": "will be played for one memory cost."
+    },
+    {
+      "timestamp": "0:24",
+      "start_seconds": 24,
+      "text": "Sound mons on play effect. Reveal the"
+    },
+    {
+      "timestamp": "0:26",
+      "start_seconds": 26,
+      "text": "top three cards of the deck. Add one"
+    },
+    {
+      "timestamp": "0:28",
+      "start_seconds": 28,
+      "text": "card with Negamon in his text and one"
+    },
+    {
+      "timestamp": "0:29",
+      "start_seconds": 29,
+      "text": "Digimon card with Abatamon in its name"
+    },
+    {
+      "timestamp": "0:31",
+      "start_seconds": 31,
+      "text": "among them to the hand. The EX9"
+    },
+    {
+      "timestamp": "0:32",
+      "start_seconds": 32,
+      "text": "Eismonong will be added and the rest"
+    },
+    {
+      "timestamp": "0:34",
+      "start_seconds": 34,
+      "text": "will return back to the bottom of the"
+    },
+    {
+      "timestamp": "0:35",
+      "start_seconds": 35,
+      "text": "deck. Turn passes over to Omnimon Alter"
+    },
+    {
+      "timestamp": "0:37",
+      "start_seconds": 37,
+      "text": "with one memory. Draw for turn. DJ egg"
+    },
+    {
+      "timestamp": "0:39",
+      "start_seconds": 39,
+      "text": "hatch EX4s will digolve into the EX4"
+    },
+    {
+      "timestamp": "0:42",
+      "start_seconds": 42,
+      "text": "Gobmon for zero cost. The option card"
+    },
+    {
+      "timestamp": "0:44",
+      "start_seconds": 44,
+      "text": "midnight memory boost will be used for"
+    },
+    {
+      "timestamp": "0:46",
+      "start_seconds": 46,
+      "text": "three memory costs. Main will be the top"
+    },
+    {
+      "timestamp": "0:48",
+      "start_seconds": 48,
+      "text": "three cards of the deck. Add one black"
+    },
+    {
+      "timestamp": "0:49",
+      "start_seconds": 49,
+      "text": "or blue Digimon card among them to the"
+    },
+    {
+      "timestamp": "0:51",
+      "start_seconds": 51,
+      "text": "hand. The EX9 wear Guruman Sagittarius"
+    },
+    {
+      "timestamp": "0:53",
+      "start_seconds": 53,
+      "text": "mode will be added and the rest will"
+    },
+    {
+      "timestamp": "0:54",
+      "start_seconds": 54,
+      "text": "return back to the bottom of the deck."
+    },
+    {
+      "timestamp": "0:55",
+      "start_seconds": 55,
+      "text": "Turn passes over back to Abadamon with"
+    },
+    {
+      "timestamp": "0:57",
+      "start_seconds": 57,
+      "text": "two memory. Draw off a turn. DJ a catch"
+    },
+    {
+      "timestamp": "0:59",
+      "start_seconds": 59,
+      "text": "negon with his breathing main effect."
+    },
+    {
+      "timestamp": "1:01",
+      "start_seconds": 61,
+      "text": "We'll play out soundmon once again, but"
+    },
+    {
+      "timestamp": "1:03",
+      "start_seconds": 63,
+      "text": "this time reducing a total cost of three"
+    },
+    {
+      "timestamp": "1:05",
+      "start_seconds": 65,
+      "text": "thanks to having another negon"
+    },
+    {
+      "timestamp": "1:07",
+      "start_seconds": 67,
+      "text": "underneath the other soundbird in the"
+    },
+    {
+      "timestamp": "1:08",
+      "start_seconds": 68,
+      "text": "battle area. Sounds on play effect will"
+    },
+    {
+      "timestamp": "1:10",
+      "start_seconds": 70,
+      "text": "search the top three cards of the deck"
+    },
+    {
+      "timestamp": "1:12",
+      "start_seconds": 72,
+      "text": "adding scatter mode and a bottom core to"
+    },
+    {
+      "timestamp": "1:14",
+      "start_seconds": 74,
+      "text": "the hand with the rest return back to"
+    },
+    {
+      "timestamp": "1:15",
+      "start_seconds": 75,
+      "text": "the bottom of the deck."
+    },
+    {
+      "timestamp": "1:18",
+      "start_seconds": 78,
+      "text": "Next, the ST15 tie will be played for"
+    },
+    {
+      "timestamp": "1:20",
+      "start_seconds": 80,
+      "text": "four memory costs. A bottom's goal is to"
+    },
+    {
+      "timestamp": "1:22",
+      "start_seconds": 82,
+      "text": "build up a big board along with"
+    },
+    {
+      "timestamp": "1:23",
+      "start_seconds": 83,
+      "text": "Negamon's inherit effect. it can"
+    },
+    {
+      "timestamp": "1:25",
+      "start_seconds": 85,
+      "text": "redirect the opponent's attacks. That"
+    },
+    {
+      "timestamp": "1:26",
+      "start_seconds": 86,
+      "text": "way, it wants to slow the game down and"
+    },
+    {
+      "timestamp": "1:28",
+      "start_seconds": 88,
+      "text": "cycle through as many Digi Eggs as"
+    },
+    {
+      "timestamp": "1:29",
+      "start_seconds": 89,
+      "text": "possible to eventually ramp up for"
+    },
+    {
+      "timestamp": "1:31",
+      "start_seconds": 91,
+      "text": "bigger plays. But it looks like Omnimon"
+    },
+    {
+      "timestamp": "1:33",
+      "start_seconds": 93,
+      "text": "Altter S hasn't made any big moves just"
+    },
+    {
+      "timestamp": "1:35",
+      "start_seconds": 95,
+      "text": "yet, as it's also trying to set up for"
+    },
+    {
+      "timestamp": "1:36",
+      "start_seconds": 96,
+      "text": "late game combos. In the turn, we'll"
+    },
+    {
+      "timestamp": "1:38",
+      "start_seconds": 98,
+      "text": "pass over with two memory. Draw for"
+    },
+    {
+      "timestamp": "1:40",
+      "start_seconds": 100,
+      "text": "turn. The option card, Our Courage"
+    },
+    {
+      "timestamp": "1:41",
+      "start_seconds": 101,
+      "text": "United, will be used for three memory"
+    },
+    {
+      "timestamp": "1:42",
+      "start_seconds": 102,
+      "text": "costs. With his main effect, draw two,"
+    },
+    {
+      "timestamp": "1:44",
+      "start_seconds": 104,
+      "text": "then place this card in the battle area."
+    },
+    {
+      "timestamp": "1:46",
+      "start_seconds": 106,
+      "text": "Passing the turn over back to Aboton"
+    },
+    {
+      "timestamp": "1:48",
+      "start_seconds": 108,
+      "text": "with one memory, but the ST15 tie has a"
+    },
+    {
+      "timestamp": "1:50",
+      "start_seconds": 110,
+      "text": "start of your turn effect. If you have"
+    },
+    {
+      "timestamp": "1:51",
+      "start_seconds": 111,
+      "text": "two or less memory, set it to three."
+    },
+    {
+      "timestamp": "1:53",
+      "start_seconds": 113,
+      "text": "draw for turn and Digi Egg hatch."
+    },
+    {
+      "timestamp": "1:55",
+      "start_seconds": 115,
+      "text": "Negamon will use his breeding effect"
+    },
+    {
+      "timestamp": "1:56",
+      "start_seconds": 116,
+      "text": "once again to play out another Digimon"
+    },
+    {
+      "timestamp": "1:58",
+      "start_seconds": 118,
+      "text": "with Negamon as text. This time reducing"
+    },
+    {
+      "timestamp": "2:00",
+      "start_seconds": 120,
+      "text": "the play cost by four and Eismon"
+    },
+    {
+      "timestamp": "2:02",
+      "start_seconds": 122,
+      "text": "Scattermo from EX9 will be played for"
+    },
+    {
+      "timestamp": "2:04",
+      "start_seconds": 124,
+      "text": "one memory cost with Negamon being"
+    },
+    {
+      "timestamp": "2:06",
+      "start_seconds": 126,
+      "text": "placed under it. Eyes scatter on play"
+    },
+    {
+      "timestamp": "2:08",
+      "start_seconds": 128,
+      "text": "effect by trashing one card with Negamon"
+    },
+    {
+      "timestamp": "2:10",
+      "start_seconds": 130,
+      "text": "and his text from your hand draw two and"
+    },
+    {
+      "timestamp": "2:11",
+      "start_seconds": 131,
+      "text": "a bottom on core will be trashed. Emon"
+    },
+    {
+      "timestamp": "2:14",
+      "start_seconds": 134,
+      "text": "scatter mode will dig evolve into rare"
+    },
+    {
+      "timestamp": "2:15",
+      "start_seconds": 135,
+      "text": "Rammon for three memory cost with his"
+    },
+    {
+      "timestamp": "2:17",
+      "start_seconds": 137,
+      "text": "when digivolving effect digivolve one of"
+    },
+    {
+      "timestamp": "2:19",
+      "start_seconds": 139,
+      "text": "the opponent's Digimon but there are no"
+    },
+    {
+      "timestamp": "2:20",
+      "start_seconds": 140,
+      "text": "targets. and a turn will pass over to"
+    },
+    {
+      "timestamp": "2:22",
+      "start_seconds": 142,
+      "text": "Omnimon Alter with one memory. Draw off"
+    },
+    {
+      "timestamp": "2:24",
+      "start_seconds": 144,
+      "text": "a turn. The tamer card Nokia from BT22"
+    },
+    {
+      "timestamp": "2:26",
+      "start_seconds": 146,
+      "text": "will be played for five memory costs."
+    },
+    {
+      "timestamp": "2:28",
+      "start_seconds": 148,
+      "text": "With the onplay effect, if you have one"
+    },
+    {
+      "timestamp": "2:29",
+      "start_seconds": 149,
+      "text": "or fewer Digimon, you may play one"
+    },
+    {
+      "timestamp": "2:31",
+      "start_seconds": 151,
+      "text": "Agamon or Gobammon from your hand"
+    },
+    {
+      "timestamp": "2:32",
+      "start_seconds": 152,
+      "text": "without paying the cost. Agaman from EX4"
+    },
+    {
+      "timestamp": "2:35",
+      "start_seconds": 155,
+      "text": "will be played for free with its onplay"
+    },
+    {
+      "timestamp": "2:36",
+      "start_seconds": 156,
+      "text": "effect revealed the top three cards of"
+    },
+    {
+      "timestamp": "2:38",
+      "start_seconds": 158,
+      "text": "your deck. Add one Digimon card with"
+    },
+    {
+      "timestamp": "2:39",
+      "start_seconds": 159,
+      "text": "Greymon in its name and one Digimon card"
+    },
+    {
+      "timestamp": "2:41",
+      "start_seconds": 161,
+      "text": "with Gobon, Guruman or Amiman and its"
+    },
+    {
+      "timestamp": "2:43",
+      "start_seconds": 163,
+      "text": "name among them to your hand. The AD1"
+    },
+    {
+      "timestamp": "2:45",
+      "start_seconds": 165,
+      "text": "Greymon will be added. Place the rest on"
+    },
+    {
+      "timestamp": "2:46",
+      "start_seconds": 166,
+      "text": "the top of your deck in any order. Nokia"
+    },
+    {
+      "timestamp": "2:48",
+      "start_seconds": 168,
+      "text": "has a all turns effect where all your"
+    },
+    {
+      "timestamp": "2:50",
+      "start_seconds": 170,
+      "text": "Digimon with Greymon, Guruman or Omnimon"
+    },
+    {
+      "timestamp": "2:52",
+      "start_seconds": 172,
+      "text": "in their names get extra thousand DP."
+    },
+    {
+      "timestamp": "2:54",
+      "start_seconds": 174,
+      "text": "Turn passes over to Abadamon with four"
+    },
+    {
+      "timestamp": "2:56",
+      "start_seconds": 176,
+      "text": "memory. Draw for turn. Digi egg hatch."
+    },
+    {
+      "timestamp": "2:58",
+      "start_seconds": 178,
+      "text": "The option card black scramble will be"
+    },
+    {
+      "timestamp": "3:00",
+      "start_seconds": 180,
+      "text": "used for two memory costs. For his main"
+    },
+    {
+      "timestamp": "3:01",
+      "start_seconds": 181,
+      "text": "effect, one of your black Digimon may"
+    },
+    {
+      "timestamp": "3:03",
+      "start_seconds": 183,
+      "text": "dig evolve into a black Digimon card in"
+    },
+    {
+      "timestamp": "3:04",
+      "start_seconds": 184,
+      "text": "the hand with the digion cost reduced by"
+    },
+    {
+      "timestamp": "3:06",
+      "start_seconds": 186,
+      "text": "three. Sound Burmon will dig evolve into"
+    },
+    {
+      "timestamp": "3:08",
+      "start_seconds": 188,
+      "text": "Emon for zero cost. Then place this card"
+    },
+    {
+      "timestamp": "3:10",
+      "start_seconds": 190,
+      "text": "in the battle area. Eismon will attack"
+    },
+    {
+      "timestamp": "3:12",
+      "start_seconds": 192,
+      "text": "into security which has collision during"
+    },
+    {
+      "timestamp": "3:14",
+      "start_seconds": 194,
+      "text": "this Digimon's attack or your opponent's"
+    },
+    {
+      "timestamp": "3:15",
+      "start_seconds": 195,
+      "text": "Digimon gain blocker and the opponent"
+    },
+    {
+      "timestamp": "3:17",
+      "start_seconds": 197,
+      "text": "blocks. if able, where Agaman will be"
+    },
+    {
+      "timestamp": "3:19",
+      "start_seconds": 199,
+      "text": "forced to block against Eizmon's attack."
+    },
+    {
+      "timestamp": "3:20",
+      "start_seconds": 200,
+      "text": "The ST-15 tie effect will activate. All"
+    },
+    {
+      "timestamp": "3:23",
+      "start_seconds": 203,
+      "text": "turns. When an attack target is switched"
+    },
+    {
+      "timestamp": "3:24",
+      "start_seconds": 204,
+      "text": "by suspending this tamer, draw one, and"
+    },
+    {
+      "timestamp": "3:26",
+      "start_seconds": 206,
+      "text": "one of your Digimon gets extra 2,000 DP"
+    },
+    {
+      "timestamp": "3:28",
+      "start_seconds": 208,
+      "text": "for the turn, which will be Eismon with"
+    },
+    {
+      "timestamp": "3:30",
+      "start_seconds": 210,
+      "text": "Sound Burmon's in her effect to also"
+    },
+    {
+      "timestamp": "3:31",
+      "start_seconds": 211,
+      "text": "give it another extra,000 DP all turns."
+    },
+    {
+      "timestamp": "3:33",
+      "start_seconds": 213,
+      "text": "Emon's scannable will be at tanky DP,"
+    },
+    {
+      "timestamp": "3:35",
+      "start_seconds": 215,
+      "text": "taking down Agamon through the battle."
+    },
+    {
+      "timestamp": "3:37",
+      "start_seconds": 217,
+      "text": "Negamon will use his breeding main"
+    },
+    {
+      "timestamp": "3:38",
+      "start_seconds": 218,
+      "text": "effect to play out a Digimon card with"
+    },
+    {
+      "timestamp": "3:40",
+      "start_seconds": 220,
+      "text": "Negamon as text, and this time reducing"
+    },
+    {
+      "timestamp": "3:42",
+      "start_seconds": 222,
+      "text": "the play cost by five. with the BT25"
+    },
+    {
+      "timestamp": "3:44",
+      "start_seconds": 224,
+      "text": "Gulmon will be played which also has an"
+    },
+    {
+      "timestamp": "3:46",
+      "start_seconds": 226,
+      "text": "effect when this card will be played by"
+    },
+    {
+      "timestamp": "3:48",
+      "start_seconds": 228,
+      "text": "deleting one of your play cost 11 or"
+    },
+    {
+      "timestamp": "3:49",
+      "start_seconds": 229,
+      "text": "lower Digimon with Negamon and his dig"
+    },
+    {
+      "timestamp": "3:51",
+      "start_seconds": 231,
+      "text": "evolution cards and Negamon and his text"
+    },
+    {
+      "timestamp": "3:53",
+      "start_seconds": 233,
+      "text": "reduce the cost by the deleted Digimon's"
+    },
+    {
+      "timestamp": "3:54",
+      "start_seconds": 234,
+      "text": "play cost. [music] Rare Raremon will be"
+    },
+    {
+      "timestamp": "3:56",
+      "start_seconds": 236,
+      "text": "deleted to further reduce it by seven"
+    },
+    {
+      "timestamp": "3:58",
+      "start_seconds": 238,
+      "text": "with a total of 12 cost reduction of"
+    },
+    {
+      "timestamp": "3:59",
+      "start_seconds": 239,
+      "text": "Negamon's breeding effect where Gouma"
+    },
+    {
+      "timestamp": "4:01",
+      "start_seconds": 241,
+      "text": "will be played for absolutely free."
+    },
+    {
+      "timestamp": "4:03",
+      "start_seconds": 243,
+      "text": "Afterwards, the Neaman and breeding area"
+    },
+    {
+      "timestamp": "4:05",
+      "start_seconds": 245,
+      "text": "will be placed underneath it. Gulman has"
+    },
+    {
+      "timestamp": "4:06",
+      "start_seconds": 246,
+      "text": "an onplay effect. Delete one of the"
+    },
+    {
+      "timestamp": "4:08",
+      "start_seconds": 248,
+      "text": "opponent's Digimon with the lowest play"
+    },
+    {
+      "timestamp": "4:09",
+      "start_seconds": 249,
+      "text": "cost. If this effect didn't delete,"
+    },
+    {
+      "timestamp": "4:11",
+      "start_seconds": 251,
+      "text": "trash your opponent's top security card."
+    },
+    {
+      "timestamp": "4:12",
+      "start_seconds": 252,
+      "text": "Rare Rammon has a ondeion effect which"
+    },
+    {
+      "timestamp": "4:14",
+      "start_seconds": 254,
+      "text": "can play a level four or lower Digimon"
+    },
+    {
+      "timestamp": "4:16",
+      "start_seconds": 256,
+      "text": "card with negamon as text from your hand"
+    },
+    {
+      "timestamp": "4:18",
+      "start_seconds": 258,
+      "text": "without paying the cost. For every two"
+    },
+    {
+      "timestamp": "4:19",
+      "start_seconds": 259,
+      "text": "negon in the trash or your Digimon's"
+    },
+    {
+      "timestamp": "4:21",
+      "start_seconds": 261,
+      "text": "digolution cards, add one to this"
+    },
+    {
+      "timestamp": "4:23",
+      "start_seconds": 263,
+      "text": "effects level maximum with a total of"
+    },
+    {
+      "timestamp": "4:25",
+      "start_seconds": 265,
+      "text": "four negons on the board and in trash."
+    },
+    {
+      "timestamp": "4:27",
+      "start_seconds": 267,
+      "text": "The level six a bottom will be played"
+    },
+    {
+      "timestamp": "4:28",
+      "start_seconds": 268,
+      "text": "for free. A bottom on play effect. If"
+    },
+    {
+      "timestamp": "4:30",
+      "start_seconds": 270,
+      "text": "there are four or more total negon in"
+    },
+    {
+      "timestamp": "4:32",
+      "start_seconds": 272,
+      "text": "your trash and your Digimon's digolution"
+    },
+    {
+      "timestamp": "4:34",
+      "start_seconds": 274,
+      "text": "cards, you may play one a bottom core"
+    },
+    {
+      "timestamp": "4:36",
+      "start_seconds": 276,
+      "text": "from your hand or trash to your empty"
+    },
+    {
+      "timestamp": "4:38",
+      "start_seconds": 278,
+      "text": "breeding area without paying the cost."
+    },
+    {
+      "timestamp": "4:39",
+      "start_seconds": 279,
+      "text": "where the unidentified Digimon that"
+    },
+    {
+      "timestamp": "4:41",
+      "start_seconds": 281,
+      "text": "turns everything into nothingness"
+    },
+    {
+      "timestamp": "4:42",
+      "start_seconds": 282,
+      "text": "finally appears. Guman has rush which"
+    },
+    {
+      "timestamp": "4:45",
+      "start_seconds": 285,
+      "text": "can attack the same turn it was played"
+    },
+    {
+      "timestamp": "4:46",
+      "start_seconds": 286,
+      "text": "and it will attack into security with"
+    },
+    {
+      "timestamp": "4:48",
+      "start_seconds": 288,
+      "text": "its when attacking effect which is"
+    },
+    {
+      "timestamp": "4:49",
+      "start_seconds": 289,
+      "text": "exactly the same as his onplay effect to"
+    },
+    {
+      "timestamp": "4:51",
+      "start_seconds": 291,
+      "text": "delete the opponent's Digimon with the"
+    },
+    {
+      "timestamp": "4:52",
+      "start_seconds": 292,
+      "text": "lowest play cost since nothing was"
+    },
+    {
+      "timestamp": "4:54",
+      "start_seconds": 294,
+      "text": "deleted. A security will be trashed. And"
+    },
+    {
+      "timestamp": "4:56",
+      "start_seconds": 296,
+      "text": "now for the security checkummon"
+    },
+    {
+      "timestamp": "4:59",
+      "start_seconds": 299,
+      "text": "scatter mode will be played for full"
+    },
+    {
+      "timestamp": "5:01",
+      "start_seconds": 301,
+      "text": "five memory cost. It's on play effect"
+    },
+    {
+      "timestamp": "5:03",
+      "start_seconds": 303,
+      "text": "will trash another scatter mode from the"
+    },
+    {
+      "timestamp": "5:04",
+      "start_seconds": 304,
+      "text": "hand to draw two cards. A bottom has a"
+    },
+    {
+      "timestamp": "5:07",
+      "start_seconds": 307,
+      "text": "end of all turns effect once per turn by"
+    },
+    {
+      "timestamp": "5:09",
+      "start_seconds": 309,
+      "text": "placing one level six or lower Digimon"
+    },
+    {
+      "timestamp": "5:10",
+      "start_seconds": 310,
+      "text": "card with negamon in his text from the"
+    },
+    {
+      "timestamp": "5:12",
+      "start_seconds": 312,
+      "text": "trash as this Digimon's top dig"
+    },
+    {
+      "timestamp": "5:14",
+      "start_seconds": 314,
+      "text": "evolution card. Delete one of the"
+    },
+    {
+      "timestamp": "5:15",
+      "start_seconds": 315,
+      "text": "opponent's Digimon with the same level"
+    },
+    {
+      "timestamp": "5:16",
+      "start_seconds": 316,
+      "text": "as the place card. Eyeson scatter mode"
+    },
+    {
+      "timestamp": "5:18",
+      "start_seconds": 318,
+      "text": "will be placed underneath it but there"
+    },
+    {
+      "timestamp": "5:19",
+      "start_seconds": 319,
+      "text": "are no level four Digimon to delete"
+    },
+    {
+      "timestamp": "5:21",
+      "start_seconds": 321,
+      "text": "passing the turn to Omnimon Alter with"
+    },
+    {
+      "timestamp": "5:23",
+      "start_seconds": 323,
+      "text": "three memory. Gummon has rev which will"
+    },
+    {
+      "timestamp": "5:24",
+      "start_seconds": 324,
+      "text": "unsuspend itself during the opponent's"
+    },
+    {
+      "timestamp": "5:26",
+      "start_seconds": 326,
+      "text": "unsuspend phase where itself also has"
+    },
+    {
+      "timestamp": "5:28",
+      "start_seconds": 328,
+      "text": "blocker which can potentially redirect"
+    },
+    {
+      "timestamp": "5:29",
+      "start_seconds": 329,
+      "text": "an attack. Abottoman has flooded the"
+    },
+    {
+      "timestamp": "5:31",
+      "start_seconds": 331,
+      "text": "board with a ton of Digimon, threatening"
+    },
+    {
+      "timestamp": "5:33",
+      "start_seconds": 333,
+      "text": "lethal against Omnimon's Altru remaining"
+    },
+    {
+      "timestamp": "5:36",
+      "start_seconds": 336,
+      "text": "two security in the following turn,"
+    },
+    {
+      "timestamp": "5:37",
+      "start_seconds": 337,
+      "text": "forcing Omnimon Alterus into the corner"
+    },
+    {
+      "timestamp": "5:39",
+      "start_seconds": 339,
+      "text": "where it has no choice but to do"
+    },
+    {
+      "timestamp": "5:41",
+      "start_seconds": 341,
+      "text": "something this turn. Will it be able to"
+    },
+    {
+      "timestamp": "5:42",
+      "start_seconds": 342,
+      "text": "turn this dire situation around? Draw"
+    },
+    {
+      "timestamp": "5:44",
+      "start_seconds": 344,
+      "text": "for turn. Guman will move to the battle"
+    },
+    {
+      "timestamp": "5:46",
+      "start_seconds": 346,
+      "text": "area with Nokia starter main effect. It"
+    },
+    {
+      "timestamp": "5:48",
+      "start_seconds": 348,
+      "text": "can play out a Agamon or Goban from the"
+    },
+    {
+      "timestamp": "5:50",
+      "start_seconds": 350,
+      "text": "hand for free since it only has one"
+    },
+    {
+      "timestamp": "5:51",
+      "start_seconds": 351,
+      "text": "Digimon. And the EX4 Agamon will be"
+    },
+    {
+      "timestamp": "5:53",
+      "start_seconds": 353,
+      "text": "played with it on play effect. It will"
+    },
+    {
+      "timestamp": "5:55",
+      "start_seconds": 355,
+      "text": "search the top three cards of the deck,"
+    },
+    {
+      "timestamp": "5:56",
+      "start_seconds": 356,
+      "text": "adding the 81 Greymon to the hand and"
+    },
+    {
+      "timestamp": "5:58",
+      "start_seconds": 358,
+      "text": "returning the rest back to the top of"
+    },
+    {
+      "timestamp": "5:59",
+      "start_seconds": 359,
+      "text": "the deck."
+    },
+    {
+      "timestamp": "6:02",
+      "start_seconds": 362,
+      "text": "Gabon will dig evolve into the 81"
+    },
+    {
+      "timestamp": "6:04",
+      "start_seconds": 364,
+      "text": "Guruman with the special digolution"
+    },
+    {
+      "timestamp": "6:06",
+      "start_seconds": 366,
+      "text": "requirements for two costs. Guruman's"
+    },
+    {
+      "timestamp": "6:08",
+      "start_seconds": 368,
+      "text": "one digolving effect draw one midnight"
+    },
+    {
+      "timestamp": "6:10",
+      "start_seconds": 370,
+      "text": "memory boost main delay effect will be"
+    },
+    {
+      "timestamp": "6:11",
+      "start_seconds": 371,
+      "text": "trashed to gain two memory. Agamon will"
+    },
+    {
+      "timestamp": "6:14",
+      "start_seconds": 374,
+      "text": "dig evolve into the AD1 Greymon with the"
+    },
+    {
+      "timestamp": "6:16",
+      "start_seconds": 376,
+      "text": "special digolution requirements for cost"
+    },
+    {
+      "timestamp": "6:18",
+      "start_seconds": 378,
+      "text": "of two. Greymon's one dig evolving"
+    },
+    {
+      "timestamp": "6:19",
+      "start_seconds": 379,
+      "text": "effect. You may return one card with"
+    },
+    {
+      "timestamp": "6:20",
+      "start_seconds": 380,
+      "text": "Greymon, Guruman or Omnimon in its name"
+    },
+    {
+      "timestamp": "6:22",
+      "start_seconds": 382,
+      "text": "from your trash back to the hand. The X9"
+    },
+    {
+      "timestamp": "6:24",
+      "start_seconds": 384,
+      "text": "where Guruman sites terrace mode will be"
+    },
+    {
+      "timestamp": "6:26",
+      "start_seconds": 386,
+      "text": "added back. Junaman's inherit effect"
+    },
+    {
+      "timestamp": "6:27",
+      "start_seconds": 387,
+      "text": "activates. Your turn once return when"
+    },
+    {
+      "timestamp": "6:29",
+      "start_seconds": 389,
+      "text": "one of your other Digimon digivolves"
+    },
+    {
+      "timestamp": "6:31",
+      "start_seconds": 391,
+      "text": "draw one as well as Gobon's inherit"
+    },
+    {
+      "timestamp": "6:32",
+      "start_seconds": 392,
+      "text": "effect. Your turn once return when one"
+    },
+    {
+      "timestamp": "6:34",
+      "start_seconds": 394,
+      "text": "of your other Digimon Digivolves gain"
+    },
+    {
+      "timestamp": "6:35",
+      "start_seconds": 395,
+      "text": "one memory. And then Guruman's alter"
+    },
+    {
+      "timestamp": "6:37",
+      "start_seconds": 397,
+      "text": "effect activates. When your Digimon or"
+    },
+    {
+      "timestamp": "6:38",
+      "start_seconds": 398,
+      "text": "tamers are played or Digivolve if any of"
+    },
+    {
+      "timestamp": "6:40",
+      "start_seconds": 400,
+      "text": "them have Gmon or Matt Ashida in their"
+    },
+    {
+      "timestamp": "6:42",
+      "start_seconds": 402,
+      "text": "names. This Digimon may digolve into a"
+    },
+    {
+      "timestamp": "6:44",
+      "start_seconds": 404,
+      "text": "Digimon card with Guruman in his name"
+    },
+    {
+      "timestamp": "6:45",
+      "start_seconds": 405,
+      "text": "from the hand without paying the cost."
+    },
+    {
+      "timestamp": "6:47",
+      "start_seconds": 407,
+      "text": "Since Greymon was digolved into Guruman"
+    },
+    {
+      "timestamp": "6:49",
+      "start_seconds": 409,
+      "text": "will now dig evolve into the wear"
+    },
+    {
+      "timestamp": "6:50",
+      "start_seconds": 410,
+      "text": "Guruman Sagittarius mode for free. of"
+    },
+    {
+      "timestamp": "6:52",
+      "start_seconds": 412,
+      "text": "its when dig evolving effect. One of the"
+    },
+    {
+      "timestamp": "6:53",
+      "start_seconds": 413,
+      "text": "opponent's Digimon or tamers can suspend"
+    },
+    {
+      "timestamp": "6:55",
+      "start_seconds": 415,
+      "text": "until their turn ends and the target"
+    },
+    {
+      "timestamp": "6:56",
+      "start_seconds": 416,
+      "text": "will be the Gulmon which can prevent it"
+    },
+    {
+      "timestamp": "6:58",
+      "start_seconds": 418,
+      "text": "from using its blocker ability. Agamon's"
+    },
+    {
+      "timestamp": "6:59",
+      "start_seconds": 419,
+      "text": "inher"
+    },
+    {
+      "timestamp": "7:01",
+      "start_seconds": 421,
+      "text": "one of your other Digimon dig evolves"
+    },
+    {
+      "timestamp": "7:03",
+      "start_seconds": 423,
+      "text": "gain one memory. Greymon's all turns"
+    },
+    {
+      "timestamp": "7:04",
+      "start_seconds": 424,
+      "text": "effect activates when your Digimon or"
+    },
+    {
+      "timestamp": "7:06",
+      "start_seconds": 426,
+      "text": "tamers are played or digolve if any of"
+    },
+    {
+      "timestamp": "7:08",
+      "start_seconds": 428,
+      "text": "them have Guruman or Taikamya in their"
+    },
+    {
+      "timestamp": "7:09",
+      "start_seconds": 429,
+      "text": "names. This Digimon may dig evolve into"
+    },
+    {
+      "timestamp": "7:11",
+      "start_seconds": 431,
+      "text": "a Digimon card with Greymon in its name"
+    },
+    {
+      "timestamp": "7:12",
+      "start_seconds": 432,
+      "text": "in the hand without paying the cost"
+    },
+    {
+      "timestamp": "7:14",
+      "start_seconds": 434,
+      "text": "where the 81 Greymon will dig evolve"
+    },
+    {
+      "timestamp": "7:15",
+      "start_seconds": 435,
+      "text": "into metal Greymon alter mode. It's when"
+    },
+    {
+      "timestamp": "7:17",
+      "start_seconds": 437,
+      "text": "dig evolving effect will delete one of"
+    },
+    {
+      "timestamp": "7:19",
+      "start_seconds": 439,
+      "text": "the opponent's Digimon with 8,000 DP or"
+    },
+    {
+      "timestamp": "7:21",
+      "start_seconds": 441,
+      "text": "less and the target will be Sound"
+    },
+    {
+      "timestamp": "7:22",
+      "start_seconds": 442,
+      "text": "Birdmon where Gurumo Sagittar's your"
+    },
+    {
+      "timestamp": "7:24",
+      "start_seconds": 444,
+      "text": "turn effect will activate. When any of"
+    },
+    {
+      "timestamp": "7:25",
+      "start_seconds": 445,
+      "text": "your Digimon or tamers with Greymon or"
+    },
+    {
+      "timestamp": "7:27",
+      "start_seconds": 447,
+      "text": "Matt Ashida in his name are played or"
+    },
+    {
+      "timestamp": "7:28",
+      "start_seconds": 448,
+      "text": "any of your Digimon dig evolve into a"
+    },
+    {
+      "timestamp": "7:30",
+      "start_seconds": 450,
+      "text": "Digimon with Gmon in its name, this"
+    },
+    {
+      "timestamp": "7:31",
+      "start_seconds": 451,
+      "text": "Digimon may dig evolve into Digimon card"
+    },
+    {
+      "timestamp": "7:33",
+      "start_seconds": 453,
+      "text": "with Guruman in his name from the hand"
+    },
+    {
+      "timestamp": "7:34",
+      "start_seconds": 454,
+      "text": "without paying the cost. Since Metal"
+    },
+    {
+      "timestamp": "7:36",
+      "start_seconds": 456,
+      "text": "Greymon alter mode was digolved into"
+    },
+    {
+      "timestamp": "7:38",
+      "start_seconds": 458,
+      "text": "where Gurman Sagittarius mode will now"
+    },
+    {
+      "timestamp": "7:39",
+      "start_seconds": 459,
+      "text": "reach its level six mega crest Guruman"
+    },
+    {
+      "timestamp": "7:41",
+      "start_seconds": 461,
+      "text": "and then back to Metal Gmon altruist"
+    },
+    {
+      "timestamp": "7:43",
+      "start_seconds": 463,
+      "text": "mode. Your turn. When any of your"
+    },
+    {
+      "timestamp": "7:44",
+      "start_seconds": 464,
+      "text": "Digimon or tamers with Guruman or Tai"
+    },
+    {
+      "timestamp": "7:46",
+      "start_seconds": 466,
+      "text": "Kamya in their names are played or any"
+    },
+    {
+      "timestamp": "7:48",
+      "start_seconds": 468,
+      "text": "of your Digimon digolve into a Digimon"
+    },
+    {
+      "timestamp": "7:49",
+      "start_seconds": 469,
+      "text": "with Guruman in its name, this Digimon"
+    },
+    {
+      "timestamp": "7:51",
+      "start_seconds": 471,
+      "text": "may digolve into a Digimon card with"
+    },
+    {
+      "timestamp": "7:52",
+      "start_seconds": 472,
+      "text": "Greymon in its name from the hand"
+    },
+    {
+      "timestamp": "7:54",
+      "start_seconds": 474,
+      "text": "without paying the cost where it will be"
+    },
+    {
+      "timestamp": "7:55",
+      "start_seconds": 475,
+      "text": "able to reach its level six mega as"
+    },
+    {
+      "timestamp": "7:57",
+      "start_seconds": 477,
+      "text": "well, which is going to be Blitz"
+    },
+    {
+      "timestamp": "7:58",
+      "start_seconds": 478,
+      "text": "Greymon. Let's Gmon's one dig evolving"
+    },
+    {
+      "timestamp": "8:00",
+      "start_seconds": 480,
+      "text": "effect will dig three on one opponent's"
+    },
+    {
+      "timestamp": "8:02",
+      "start_seconds": 482,
+      "text": "Digimon. And a target will be Gulman."
+    },
+    {
+      "timestamp": "8:04",
+      "start_seconds": 484,
+      "text": "Since Goulman was digolved back into"
+    },
+    {
+      "timestamp": "8:06",
+      "start_seconds": 486,
+      "text": "Negamon and based on rule check, a level"
+    },
+    {
+      "timestamp": "8:07",
+      "start_seconds": 487,
+      "text": "two Digi A card with no DP cannot exist"
+    },
+    {
+      "timestamp": "8:10",
+      "start_seconds": 490,
+      "text": "in the battle area, meaning it will be"
+    },
+    {
+      "timestamp": "8:12",
+      "start_seconds": 492,
+      "text": "trashed. activate the second part of"
+    },
+    {
+      "timestamp": "8:13",
+      "start_seconds": 493,
+      "text": "Blitz Greymon's when Digivolving effect."
+    },
+    {
+      "timestamp": "8:15",
+      "start_seconds": 495,
+      "text": "Then until your opponent turn ends,"
+    },
+    {
+      "timestamp": "8:16",
+      "start_seconds": 496,
+      "text": "their Digimon effects don't affect this"
+    },
+    {
+      "timestamp": "8:17",
+      "start_seconds": 497,
+      "text": "Digimon and one of your Digimon with"
+    },
+    {
+      "timestamp": "8:19",
+      "start_seconds": 499,
+      "text": "Guruman in its name protecting itself"
+    },
+    {
+      "timestamp": "8:21",
+      "start_seconds": 501,
+      "text": "along with Cres Guruman. Chris Guruman"
+    },
+    {
+      "timestamp": "8:22",
+      "start_seconds": 502,
+      "text": "will attack into security and use"
+    },
+    {
+      "timestamp": "8:24",
+      "start_seconds": 504,
+      "text": "alliance together with Blitz Greymon."
+    },
+    {
+      "timestamp": "8:26",
+      "start_seconds": 506,
+      "text": "When this Digimon attacks by suspending"
+    },
+    {
+      "timestamp": "8:27",
+      "start_seconds": 507,
+      "text": "one of your other Digimon, this Digimon"
+    },
+    {
+      "timestamp": "8:29",
+      "start_seconds": 509,
+      "text": "adds the suspended Digimon's DP and"
+    },
+    {
+      "timestamp": "8:30",
+      "start_seconds": 510,
+      "text": "gains security attack plus one for the"
+    },
+    {
+      "timestamp": "8:32",
+      "start_seconds": 512,
+      "text": "attack. When Guruman Serious inherit"
+    },
+    {
+      "timestamp": "8:33",
+      "start_seconds": 513,
+      "text": "effect activates when attacking, once"
+    },
+    {
+      "timestamp": "8:35",
+      "start_seconds": 515,
+      "text": "returned, digolve one of your opponent's"
+    },
+    {
+      "timestamp": "8:37",
+      "start_seconds": 517,
+      "text": "Digimon and a target will be a bottom"
+    },
+    {
+      "timestamp": "8:39",
+      "start_seconds": 519,
+      "text": "diging it back to Eismon scatter mode."
+    },
+    {
+      "timestamp": "8:40",
+      "start_seconds": 520,
+      "text": "Press Guruman's when attacking effect"
+    },
+    {
+      "timestamp": "8:42",
+      "start_seconds": 522,
+      "text": "activates. Once returned, you may return"
+    },
+    {
+      "timestamp": "8:43",
+      "start_seconds": 523,
+      "text": "one of your opponent's lowest level"
+    },
+    {
+      "timestamp": "8:45",
+      "start_seconds": 525,
+      "text": "Digimon to the hand. Since all Digimon"
+    },
+    {
+      "timestamp": "8:46",
+      "start_seconds": 526,
+      "text": "on a bottom side are level four, they"
+    },
+    {
+      "timestamp": "8:48",
+      "start_seconds": 528,
+      "text": "will choose to return Eizon back to the"
+    },
+    {
+      "timestamp": "8:49",
+      "start_seconds": 529,
+      "text": "hand. Then this Digimon and one of your"
+    },
+    {
+      "timestamp": "8:51",
+      "start_seconds": 531,
+      "text": "Digimon with Greymon in his name may"
+    },
+    {
+      "timestamp": "8:52",
+      "start_seconds": 532,
+      "text": "unsuspend. Resuming back to the alliance"
+    },
+    {
+      "timestamp": "8:54",
+      "start_seconds": 534,
+      "text": "attack, Chris Guruman will be dealing"
+    },
+    {
+      "timestamp": "8:55",
+      "start_seconds": 535,
+      "text": "two checks in security with a total of"
+    },
+    {
+      "timestamp": "8:57",
+      "start_seconds": 537,
+      "text": "28,000 DP. First security check, black"
+    },
+    {
+      "timestamp": "8:59",
+      "start_seconds": 539,
+      "text": "memory boost, which has a security"
+    },
+    {
+      "timestamp": "9:01",
+      "start_seconds": 541,
+      "text": "effect to place this card in the owner's"
+    },
+    {
+      "timestamp": "9:02",
+      "start_seconds": 542,
+      "text": "battle area. Second security check, a"
+    },
+    {
+      "timestamp": "9:04",
+      "start_seconds": 544,
+      "text": "bottom man. First Gummon will attack and"
+    },
+    {
+      "timestamp": "9:07",
+      "start_seconds": 547,
+      "text": "security once more and alliance together"
+    },
+    {
+      "timestamp": "9:08",
+      "start_seconds": 548,
+      "text": "with Blitz Gmon again. First security"
+    },
+    {
+      "timestamp": "9:10",
+      "start_seconds": 550,
+      "text": "check, Kabottoman core."
+    },
+    {
+      "timestamp": "9:13",
+      "start_seconds": 553,
+      "text": "Second security check, Heisman."
+    },
+    {
+      "timestamp": "9:19",
+      "start_seconds": 559,
+      "text": "With both Quz Guruman and Blitz Greymon"
+    },
+    {
+      "timestamp": "9:21",
+      "start_seconds": 561,
+      "text": "together, they are now DNA and fuses"
+    },
+    {
+      "timestamp": "9:23",
+      "start_seconds": 563,
+      "text": "together into the almighty holy warrior"
+    },
+    {
+      "timestamp": "9:25",
+      "start_seconds": 565,
+      "text": "Digimon Omnimon Alter S. The EX9 Omnimon"
+    },
+    {
+      "timestamp": "9:29",
+      "start_seconds": 569,
+      "text": "Alteres when Digivolving effect. If DNA"
+    },
+    {
+      "timestamp": "9:31",
+      "start_seconds": 571,
+      "text": "digivolving, your opponent's effects"
+    },
+    {
+      "timestamp": "9:32",
+      "start_seconds": 572,
+      "text": "don't affect this Digimon for the turn."
+    },
+    {
+      "timestamp": "9:34",
+      "start_seconds": 574,
+      "text": "Then delete all their Digimon with the"
+    },
+    {
+      "timestamp": "9:36",
+      "start_seconds": 576,
+      "text": "highest level, which will wipe out both"
+    },
+    {
+      "timestamp": "9:37",
+      "start_seconds": 577,
+      "text": "Eismon scatter modes. Omnimon Alter S"
+    },
+    {
+      "timestamp": "9:39",
+      "start_seconds": 579,
+      "text": "will now attack into security. Security"
+    },
+    {
+      "timestamp": "9:41",
+      "start_seconds": 581,
+      "text": "check. Gouman. Alter also has an end of"
+    },
+    {
+      "timestamp": "9:44",
+      "start_seconds": 584,
+      "text": "attack effect. You may play one card"
+    },
+    {
+      "timestamp": "9:45",
+      "start_seconds": 585,
+      "text": "with Greymon in its name or the version"
+    },
+    {
+      "timestamp": "9:47",
+      "start_seconds": 587,
+      "text": "one trait and one card with Guruman in"
+    },
+    {
+      "timestamp": "9:49",
+      "start_seconds": 589,
+      "text": "its name or the version two trait from"
+    },
+    {
+      "timestamp": "9:50",
+      "start_seconds": 590,
+      "text": "this Digimon's digolution cards without"
+    },
+    {
+      "timestamp": "9:52",
+      "start_seconds": 592,
+      "text": "paying the cost where both the 81 blitz"
+    },
+    {
+      "timestamp": "9:54",
+      "start_seconds": 594,
+      "text": "Gmon and Cres Guruman will be played"
+    },
+    {
+      "timestamp": "9:55",
+      "start_seconds": 595,
+      "text": "back out. With this effect played,"
+    },
+    {
+      "timestamp": "9:56",
+      "start_seconds": 596,
+      "text": "Omnimon Alter will be placed as a top"
+    },
+    {
+      "timestamp": "9:58",
+      "start_seconds": 598,
+      "text": "security card. Let's Gmon's onplay"
+    },
+    {
+      "timestamp": "10:00",
+      "start_seconds": 600,
+      "text": "effect will dig 3 on one of the"
+    },
+    {
+      "timestamp": "10:01",
+      "start_seconds": 601,
+      "text": "opponent's Digimon, but there's no"
+    },
+    {
+      "timestamp": "10:02",
+      "start_seconds": 602,
+      "text": "targets. And just like before, it will"
+    },
+    {
+      "timestamp": "10:04",
+      "start_seconds": 604,
+      "text": "protect itself and Cres Guruman from the"
+    },
+    {
+      "timestamp": "10:06",
+      "start_seconds": 606,
+      "text": "opponent's Digimon effects lasting to"
+    },
+    {
+      "timestamp": "10:07",
+      "start_seconds": 607,
+      "text": "the end of their turn. The option card"
+    },
+    {
+      "timestamp": "10:09",
+      "start_seconds": 609,
+      "text": "united will be used for three memory"
+    },
+    {
+      "timestamp": "10:11",
+      "start_seconds": 611,
+      "text": "costs with his main effect to draw two"
+    },
+    {
+      "timestamp": "10:12",
+      "start_seconds": 612,
+      "text": "and place itself in the battle area. And"
+    },
+    {
+      "timestamp": "10:14",
+      "start_seconds": 614,
+      "text": "then the option card Garnet memory boost"
+    },
+    {
+      "timestamp": "10:16",
+      "start_seconds": 616,
+      "text": "will also be used for three memory costs"
+    },
+    {
+      "timestamp": "10:17",
+      "start_seconds": 617,
+      "text": "of his main effect will reveal the top"
+    },
+    {
+      "timestamp": "10:19",
+      "start_seconds": 619,
+      "text": "three cards of your deck. Add one red or"
+    },
+    {
+      "timestamp": "10:20",
+      "start_seconds": 620,
+      "text": "black Digimon card among them to the"
+    },
+    {
+      "timestamp": "10:22",
+      "start_seconds": 622,
+      "text": "hand where the EX4 gobble will be added"
+    },
+    {
+      "timestamp": "10:23",
+      "start_seconds": 623,
+      "text": "and the rest will return back to the"
+    },
+    {
+      "timestamp": "10:25",
+      "start_seconds": 625,
+      "text": "bottom of the deck. when an insane"
+    },
+    {
+      "timestamp": "10:26",
+      "start_seconds": 626,
+      "text": "turnaround from Omnion Alter S clearing"
+    },
+    {
+      "timestamp": "10:28",
+      "start_seconds": 628,
+      "text": "the Ibaton's entire board as well as"
+    },
+    {
+      "timestamp": "10:30",
+      "start_seconds": 630,
+      "text": "taking out all of its security. In this"
+    },
+    {
+      "timestamp": "10:32",
+      "start_seconds": 632,
+      "text": "position, it can potentially win in the"
+    },
+    {
+      "timestamp": "10:34",
+      "start_seconds": 634,
+      "text": "following turn, but it's not over just"
+    },
+    {
+      "timestamp": "10:35",
+      "start_seconds": 635,
+      "text": "yet as a bottom core has yet to come out"
+    },
+    {
+      "timestamp": "10:37",
+      "start_seconds": 637,
+      "text": "to show its true powers. But first,"
+    },
+    {
+      "timestamp": "10:39",
+      "start_seconds": 639,
+      "text": "Black Scramble has a start of your turn"
+    },
+    {
+      "timestamp": "10:41",
+      "start_seconds": 641,
+      "text": "effect. If your opponent has a Digimon,"
+    },
+    {
+      "timestamp": "10:42",
+      "start_seconds": 642,
+      "text": "delay trashes card from the battle area,"
+    },
+    {
+      "timestamp": "10:44",
+      "start_seconds": 644,
+      "text": "return one black Digimon card from your"
+    },
+    {
+      "timestamp": "10:46",
+      "start_seconds": 646,
+      "text": "trash to the top of the deck, where a"
+    },
+    {
+      "timestamp": "10:47",
+      "start_seconds": 647,
+      "text": "bottom will return back to the top. Then"
+    },
+    {
+      "timestamp": "10:49",
+      "start_seconds": 649,
+      "text": "if you don't have a Digimon, you may"
+    },
+    {
+      "timestamp": "10:50",
+      "start_seconds": 650,
+      "text": "play one black Digimon card with 2,000"
+    },
+    {
+      "timestamp": "10:52",
+      "start_seconds": 652,
+      "text": "DP or less from your trash without"
+    },
+    {
+      "timestamp": "10:53",
+      "start_seconds": 653,
+      "text": "paying the cost. Or Sound Birdmon will"
+    },
+    {
+      "timestamp": "10:55",
+      "start_seconds": 655,
+      "text": "be played using his onplay effect to"
+    },
+    {
+      "timestamp": "10:56",
+      "start_seconds": 656,
+      "text": "search the top three. Adding Gulmon,"
+    },
+    {
+      "timestamp": "10:59",
+      "start_seconds": 659,
+      "text": "which has Negamon in its text, and a"
+    },
+    {
+      "timestamp": "11:01",
+      "start_seconds": 661,
+      "text": "bottom on to the hand, returning the"
+    },
+    {
+      "timestamp": "11:02",
+      "start_seconds": 662,
+      "text": "rest back to the bottom. Now unsuspend"
+    },
+    {
+      "timestamp": "11:05",
+      "start_seconds": 665,
+      "text": "and draw a bottom on court will move to"
+    },
+    {
+      "timestamp": "11:07",
+      "start_seconds": 667,
+      "text": "the battle area with its when moving"
+    },
+    {
+      "timestamp": "11:08",
+      "start_seconds": 668,
+      "text": "effect by placing three level six or"
+    },
+    {
+      "timestamp": "11:10",
+      "start_seconds": 670,
+      "text": "lower Digimon cards with Negamon in"
+    },
+    {
+      "timestamp": "11:12",
+      "start_seconds": 672,
+      "text": "their texts from your trash as this"
+    },
+    {
+      "timestamp": "11:13",
+      "start_seconds": 673,
+      "text": "Digimon's top digion cards. Delete all"
+    },
+    {
+      "timestamp": "11:15",
+      "start_seconds": 675,
+      "text": "your opponent's lowest level Digimon."
+    },
+    {
+      "timestamp": "11:17",
+      "start_seconds": 677,
+      "text": "Sound Birdmon, Eizmon, and Rare Raremon"
+    },
+    {
+      "timestamp": "11:19",
+      "start_seconds": 679,
+      "text": "will be added underneath a bottom to"
+    },
+    {
+      "timestamp": "11:21",
+      "start_seconds": 681,
+      "text": "delete both cresummon and blitz greymon."
+    },
+    {
+      "timestamp": "11:23",
+      "start_seconds": 683,
+      "text": "However, thanks to blitz greymon's"
+    },
+    {
+      "timestamp": "11:24",
+      "start_seconds": 684,
+      "text": "onplay effect, both of them are"
+    },
+    {
+      "timestamp": "11:25",
+      "start_seconds": 685,
+      "text": "protected. A bottom core will attack"
+    },
+    {
+      "timestamp": "11:27",
+      "start_seconds": 687,
+      "text": "into security using his when attacking"
+    },
+    {
+      "timestamp": "11:29",
+      "start_seconds": 689,
+      "text": "effect, which is exactly the same as his"
+    },
+    {
+      "timestamp": "11:30",
+      "start_seconds": 690,
+      "text": "when moving effect. This time, it will"
+    },
+    {
+      "timestamp": "11:32",
+      "start_seconds": 692,
+      "text": "place a bottom and two gulmans at the"
+    },
+    {
+      "timestamp": "11:34",
+      "start_seconds": 694,
+      "text": "top of the stack, but it still won't be"
+    },
+    {
+      "timestamp": "11:35",
+      "start_seconds": 695,
+      "text": "able to get rid of cresurum or blitz"
+    },
+    {
+      "timestamp": "11:37",
+      "start_seconds": 697,
+      "text": "greymon from this effect. Bottom court"
+    },
+    {
+      "timestamp": "11:39",
+      "start_seconds": 699,
+      "text": "also has collision, giving all the"
+    },
+    {
+      "timestamp": "11:40",
+      "start_seconds": 700,
+      "text": "opponents Digimon blocker, and they must"
+    },
+    {
+      "timestamp": "11:42",
+      "start_seconds": 702,
+      "text": "block of able. But thanks to Blitz"
+    },
+    {
+      "timestamp": "11:43",
+      "start_seconds": 703,
+      "text": "Greymon's immunity effect, neither Cres"
+    },
+    {
+      "timestamp": "11:45",
+      "start_seconds": 705,
+      "text": "Guruman or itself will gain blocker. But"
+    },
+    {
+      "timestamp": "11:47",
+      "start_seconds": 707,
+      "text": "in this case, Blitz Greymon naturally"
+    },
+    {
+      "timestamp": "11:48",
+      "start_seconds": 708,
+      "text": "has blocker on its own. And the keyword"
+    },
+    {
+      "timestamp": "11:50",
+      "start_seconds": 710,
+      "text": "collision still forces the player to"
+    },
+    {
+      "timestamp": "11:51",
+      "start_seconds": 711,
+      "text": "attempt to block if able, where Blitz"
+    },
+    {
+      "timestamp": "11:53",
+      "start_seconds": 713,
+      "text": "Greymon's immunity would not work in"
+    },
+    {
+      "timestamp": "11:54",
+      "start_seconds": 714,
+      "text": "this case. Therefore, it will block to"
+    },
+    {
+      "timestamp": "11:56",
+      "start_seconds": 716,
+      "text": "stop the attack because the attack"
+    },
+    {
+      "timestamp": "11:57",
+      "start_seconds": 717,
+      "text": "target will switch. The ST15 Tai can"
+    },
+    {
+      "timestamp": "11:59",
+      "start_seconds": 719,
+      "text": "suspend itself to draw a card and give a"
+    },
+    {
+      "timestamp": "12:00",
+      "start_seconds": 720,
+      "text": "bottom on court extra 2,000 DP for the"
+    },
+    {
+      "timestamp": "12:02",
+      "start_seconds": 722,
+      "text": "turn. Same goes for Raymons and her"
+    },
+    {
+      "timestamp": "12:04",
+      "start_seconds": 724,
+      "text": "effect, which can unsuspend a bottom on"
+    },
+    {
+      "timestamp": "12:06",
+      "start_seconds": 726,
+      "text": "core. With all the DP buffs, a bottom on"
+    },
+    {
+      "timestamp": "12:07",
+      "start_seconds": 727,
+      "text": "core will be at 19k DP, taking down"
+    },
+    {
+      "timestamp": "12:10",
+      "start_seconds": 730,
+      "text": "Blitz Greymon. The all turns effect of"
+    },
+    {
+      "timestamp": "12:11",
+      "start_seconds": 731,
+      "text": "our courage united kicks in. When any of"
+    },
+    {
+      "timestamp": "12:13",
+      "start_seconds": 733,
+      "text": "your level five or higher Digimon will"
+    },
+    {
+      "timestamp": "12:14",
+      "start_seconds": 734,
+      "text": "leave the battle area delay by trashing"
+    },
+    {
+      "timestamp": "12:16",
+      "start_seconds": 736,
+      "text": "this option card from the battle area,"
+    },
+    {
+      "timestamp": "12:18",
+      "start_seconds": 738,
+      "text": "you may play one level five or lower"
+    },
+    {
+      "timestamp": "12:19",
+      "start_seconds": 739,
+      "text": "Digimon card with the avenger trade from"
+    },
+    {
+      "timestamp": "12:21",
+      "start_seconds": 741,
+      "text": "your hand without paying the cost which"
+    },
+    {
+      "timestamp": "12:22",
+      "start_seconds": 742,
+      "text": "will play out where Gumman Sagittarius"
+    },
+    {
+      "timestamp": "12:24",
+      "start_seconds": 744,
+      "text": "mode which has the Avenger trait. With"
+    },
+    {
+      "timestamp": "12:25",
+      "start_seconds": 745,
+      "text": "its onplay effect, it will prevent a"
+    },
+    {
+      "timestamp": "12:26",
+      "start_seconds": 746,
+      "text": "bottom from suspending until the end of"
+    },
+    {
+      "timestamp": "12:28",
+      "start_seconds": 748,
+      "text": "the opponent's turn. That way, Omnimon"
+    },
+    {
+      "timestamp": "12:30",
+      "start_seconds": 750,
+      "text": "Alterus can stop a bottom cord from"
+    },
+    {
+      "timestamp": "12:32",
+      "start_seconds": 752,
+      "text": "making a second attack. With a bottom"
+    },
+    {
+      "timestamp": "12:33",
+      "start_seconds": 753,
+      "text": "cord taking down Blitz Greymon, it also"
+    },
+    {
+      "timestamp": "12:35",
+      "start_seconds": 755,
+      "text": "has piercing. When this Digimon deletes"
+    },
+    {
+      "timestamp": "12:37",
+      "start_seconds": 757,
+      "text": "your opponent's Digimon in battle while"
+    },
+    {
+      "timestamp": "12:38",
+      "start_seconds": 758,
+      "text": "attacking, it checks security before the"
+    },
+    {
+      "timestamp": "12:40",
+      "start_seconds": 760,
+      "text": "attack ends along with the keyword"
+    },
+    {
+      "timestamp": "12:41",
+      "start_seconds": 761,
+      "text": "security attack plus one. A bottom core"
+    },
+    {
+      "timestamp": "12:43",
+      "start_seconds": 763,
+      "text": "will still do two security checks. First"
+    },
+    {
+      "timestamp": "12:45",
+      "start_seconds": 765,
+      "text": "check, Omnimon Alter."
+    },
+    {
+      "timestamp": "12:48",
+      "start_seconds": 768,
+      "text": "Second check, Chris Guruman."
+    },
+    {
+      "timestamp": "12:52",
+      "start_seconds": 772,
+      "text": "Black memory boost will use his main"
+    },
+    {
+      "timestamp": "12:54",
+      "start_seconds": 774,
+      "text": "delay effect to trash itself in the"
+    },
+    {
+      "timestamp": "12:55",
+      "start_seconds": 775,
+      "text": "battle area to gain two memory. Tamer"
+    },
+    {
+      "timestamp": "12:57",
+      "start_seconds": 777,
+      "text": "card, Analog Youth, will be played for"
+    },
+    {
+      "timestamp": "12:59",
+      "start_seconds": 779,
+      "text": "two memory costs. On play, reveal the"
+    },
+    {
+      "timestamp": "13:00",
+      "start_seconds": 780,
+      "text": "top three cards of the deck. Add one"
+    },
+    {
+      "timestamp": "13:02",
+      "start_seconds": 782,
+      "text": "Digimon card among them, which will be"
+    },
+    {
+      "timestamp": "13:03",
+      "start_seconds": 783,
+      "text": "Emon Scatter Mode and trash the rest."
+    },
+    {
+      "timestamp": "13:07",
+      "start_seconds": 787,
+      "text": "The option card ll's demon will be used"
+    },
+    {
+      "timestamp": "13:09",
+      "start_seconds": 789,
+      "text": "for one memory cost with his main effect"
+    },
+    {
+      "timestamp": "13:10",
+      "start_seconds": 790,
+      "text": "until the end of your opponent's turn."
+    },
+    {
+      "timestamp": "13:12",
+      "start_seconds": 792,
+      "text": "One of your opponent's Digimon gains"
+    },
+    {
+      "timestamp": "13:13",
+      "start_seconds": 793,
+      "text": "starter main phase. This Digimon attacks"
+    },
+    {
+      "timestamp": "13:15",
+      "start_seconds": 795,
+      "text": "and the target will be Kres Guruman."
+    },
+    {
+      "timestamp": "13:17",
+      "start_seconds": 797,
+      "text": "[music]"
+    },
+    {
+      "timestamp": "13:19",
+      "start_seconds": 799,
+      "text": "A bottom will be played with assembly"
+    },
+    {
+      "timestamp": "13:20",
+      "start_seconds": 800,
+      "text": "minus 6 and in four negons. When this"
+    },
+    {
+      "timestamp": "13:23",
+      "start_seconds": 803,
+      "text": "card will be played by placing the"
+    },
+    {
+      "timestamp": "13:24",
+      "start_seconds": 804,
+      "text": "specific cards from the trash underneath"
+    },
+    {
+      "timestamp": "13:26",
+      "start_seconds": 806,
+      "text": "it, reduce the play cost which will be"
+    },
+    {
+      "timestamp": "13:27",
+      "start_seconds": 807,
+      "text": "played out for five memory. with its"
+    },
+    {
+      "timestamp": "13:29",
+      "start_seconds": 809,
+      "text": "onplay effect. Since there are four"
+    },
+    {
+      "timestamp": "13:30",
+      "start_seconds": 810,
+      "text": "Negammons underneath its digution cards,"
+    },
+    {
+      "timestamp": "13:32",
+      "start_seconds": 812,
+      "text": "it can play out a bottom monon core in"
+    },
+    {
+      "timestamp": "13:34",
+      "start_seconds": 814,
+      "text": "the breeding area from the trash for"
+    },
+    {
+      "timestamp": "13:36",
+      "start_seconds": 816,
+      "text": "free. At the end of the turn, it will"
+    },
+    {
+      "timestamp": "13:37",
+      "start_seconds": 817,
+      "text": "use its effect to place rare raremon"
+    },
+    {
+      "timestamp": "13:38",
+      "start_seconds": 818,
+      "text": "from the trash underneath it to delete a"
+    },
+    {
+      "timestamp": "13:40",
+      "start_seconds": 820,
+      "text": "level five Digimon, which would be where"
+    },
+    {
+      "timestamp": "13:42",
+      "start_seconds": 822,
+      "text": "Guruman Sagittarius smoke with a bottom"
+    },
+    {
+      "timestamp": "13:44",
+      "start_seconds": 824,
+      "text": "not being able to finish the game this"
+    },
+    {
+      "timestamp": "13:45",
+      "start_seconds": 825,
+      "text": "turn. It still set up another core in"
+    },
+    {
+      "timestamp": "13:46",
+      "start_seconds": 826,
+      "text": "the breeding area ready to intercept any"
+    },
+    {
+      "timestamp": "13:48",
+      "start_seconds": 828,
+      "text": "attacks. Passing the turn over to"
+    },
+    {
+      "timestamp": "13:50",
+      "start_seconds": 830,
+      "text": "Omnimon with three memory and digi egg"
+    },
+    {
+      "timestamp": "13:52",
+      "start_seconds": 832,
+      "text": "hatchon. Nokia starting main effect will"
+    },
+    {
+      "timestamp": "13:54",
+      "start_seconds": 834,
+      "text": "play off the EX4 Goblin from the hand"
+    },
+    {
+      "timestamp": "13:56",
+      "start_seconds": 836,
+      "text": "for free since Alter has one or fewer"
+    },
+    {
+      "timestamp": "13:57",
+      "start_seconds": 837,
+      "text": "Digimon. It's on play effect. We'll"
+    },
+    {
+      "timestamp": "13:58",
+      "start_seconds": 838,
+      "text": "search the top three cards, adding Cres"
+    },
+    {
+      "timestamp": "14:00",
+      "start_seconds": 840,
+      "text": "Guruman and Aguman to the hand,"
+    },
+    {
+      "timestamp": "14:02",
+      "start_seconds": 842,
+      "text": "returning the rest back to the top."
+    },
+    {
+      "timestamp": "14:06",
+      "start_seconds": 846,
+      "text": "Because of La Place's demon's effect,"
+    },
+    {
+      "timestamp": "14:07",
+      "start_seconds": 847,
+      "text": "Cres Guruman will now have to declare an"
+    },
+    {
+      "timestamp": "14:09",
+      "start_seconds": 849,
+      "text": "attack, which will attempt to go for"
+    },
+    {
+      "timestamp": "14:10",
+      "start_seconds": 850,
+      "text": "game using its when attacking effect to"
+    },
+    {
+      "timestamp": "14:12",
+      "start_seconds": 852,
+      "text": "return soundmon back to the hand and"
+    },
+    {
+      "timestamp": "14:14",
+      "start_seconds": 854,
+      "text": "then suspend itself. Negamon's inherit"
+    },
+    {
+      "timestamp": "14:15",
+      "start_seconds": 855,
+      "text": "effect, opponent's turn once returned."
+    },
+    {
+      "timestamp": "14:17",
+      "start_seconds": 857,
+      "text": "When one of your opponent's Digimon"
+    },
+    {
+      "timestamp": "14:18",
+      "start_seconds": 858,
+      "text": "attacks, you may change the attack"
+    },
+    {
+      "timestamp": "14:19",
+      "start_seconds": 859,
+      "text": "target to one of Digimon with Negaman"
+    },
+    {
+      "timestamp": "14:21",
+      "start_seconds": 861,
+      "text": "and his text, which will redirect Kres"
+    },
+    {
+      "timestamp": "14:22",
+      "start_seconds": 862,
+      "text": "Guruman's attack into a bottom core."
+    },
+    {
+      "timestamp": "14:25",
+      "start_seconds": 865,
+      "text": "Since the bottom core has higher DP than"
+    },
+    {
+      "timestamp": "14:26",
+      "start_seconds": 866,
+      "text": "Cres Guruman, it will end up taking it"
+    },
+    {
+      "timestamp": "14:28",
+      "start_seconds": 868,
+      "text": "down. Since Cres Guruman will leave the"
+    },
+    {
+      "timestamp": "14:30",
+      "start_seconds": 870,
+      "text": "battle area, our courage united delay"
+    },
+    {
+      "timestamp": "14:31",
+      "start_seconds": 871,
+      "text": "effect will trash itself to play out the"
+    },
+    {
+      "timestamp": "14:33",
+      "start_seconds": 873,
+      "text": "AD1 Greymon. At the same time, Cres"
+    },
+    {
+      "timestamp": "14:35",
+      "start_seconds": 875,
+      "text": "Guruman has the keyword evade. When this"
+    },
+    {
+      "timestamp": "14:37",
+      "start_seconds": 877,
+      "text": "Digimon would be deleted by suspending"
+    },
+    {
+      "timestamp": "14:38",
+      "start_seconds": 878,
+      "text": "this Digimon, it isn't deleted. Gmon's"
+    },
+    {
+      "timestamp": "14:40",
+      "start_seconds": 880,
+      "text": "onplay effect will return where Guruman"
+    },
+    {
+      "timestamp": "14:42",
+      "start_seconds": 882,
+      "text": "Sagittarius most from the trash back to"
+    },
+    {
+      "timestamp": "14:44",
+      "start_seconds": 884,
+      "text": "the hand. Tsunaman will dig evolve into"
+    },
+    {
+      "timestamp": "14:45",
+      "start_seconds": 885,
+      "text": "Goban for zero cost. The Gobman in the"
+    },
+    {
+      "timestamp": "14:48",
+      "start_seconds": 888,
+      "text": "battle area will then dig evolve into"
+    },
+    {
+      "timestamp": "14:49",
+      "start_seconds": 889,
+      "text": "the 81 Guruman for two costs. Guruan's"
+    },
+    {
+      "timestamp": "14:52",
+      "start_seconds": 892,
+      "text": "when digiv evolving effect draw one"
+    },
+    {
+      "timestamp": "14:54",
+      "start_seconds": 894,
+      "text": "since Guruman was digolve into Greymon's"
+    },
+    {
+      "timestamp": "14:56",
+      "start_seconds": 896,
+      "text": "alternate effect will dig evolve itself"
+    },
+    {
+      "timestamp": "14:57",
+      "start_seconds": 897,
+      "text": "into metal Gmon alterous mode for free"
+    },
+    {
+      "timestamp": "14:59",
+      "start_seconds": 899,
+      "text": "and because of that Gabon's inher effect"
+    },
+    {
+      "timestamp": "15:01",
+      "start_seconds": 901,
+      "text": "will gain a memory additionally"
+    },
+    {
+      "timestamp": "15:02",
+      "start_seconds": 902,
+      "text": "guruman's altern effect will dig evolve"
+    },
+    {
+      "timestamp": "15:04",
+      "start_seconds": 904,
+      "text": "itself into wear guruman sagittarius"
+    },
+    {
+      "timestamp": "15:06",
+      "start_seconds": 906,
+      "text": "mode for free it's when digivolving"
+    },
+    {
+      "timestamp": "15:08",
+      "start_seconds": 908,
+      "text": "effect will prevent the abotamon core"
+    },
+    {
+      "timestamp": "15:10",
+      "start_seconds": 910,
+      "text": "from suspending until the end opponent's"
+    },
+    {
+      "timestamp": "15:11",
+      "start_seconds": 911,
+      "text": "turn meaning it won't be able to block"
+    },
+    {
+      "timestamp": "15:13",
+      "start_seconds": 913,
+      "text": "the ping pong will continue with metal"
+    },
+    {
+      "timestamp": "15:15",
+      "start_seconds": 915,
+      "text": "greymon's altruist mode's effect to"
+    },
+    {
+      "timestamp": "15:16",
+      "start_seconds": 916,
+      "text": "digivolve into blitz greymon for free"
+    },
+    {
+      "timestamp": "15:18",
+      "start_seconds": 918,
+      "text": "greymon's when digivolving effect will"
+    },
+    {
+      "timestamp": "15:20",
+      "start_seconds": 920,
+      "text": "digivolve a bottom by three. Just like"
+    },
+    {
+      "timestamp": "15:22",
+      "start_seconds": 922,
+      "text": "before, rule check happens where a level"
+    },
+    {
+      "timestamp": "15:24",
+      "start_seconds": 924,
+      "text": "two Digimon cannot exist in the battle"
+    },
+    {
+      "timestamp": "15:26",
+      "start_seconds": 926,
+      "text": "area since it has no DP. Therefore,"
+    },
+    {
+      "timestamp": "15:28",
+      "start_seconds": 928,
+      "text": "Negamon will be trashed. Then, Blitz"
+    },
+    {
+      "timestamp": "15:30",
+      "start_seconds": 930,
+      "text": "Greymon and where Guruman Sagittarius"
+    },
+    {
+      "timestamp": "15:31",
+      "start_seconds": 931,
+      "text": "smoke will gain Digimon effect immunity"
+    },
+    {
+      "timestamp": "15:33",
+      "start_seconds": 933,
+      "text": "until the end opponent's turn. And"
+    },
+    {
+      "timestamp": "15:34",
+      "start_seconds": 934,
+      "text": "because Blitz Greymon was digolved into"
+    },
+    {
+      "timestamp": "15:36",
+      "start_seconds": 936,
+      "text": "where Gurman sagur smoke can now dig"
+    },
+    {
+      "timestamp": "15:38",
+      "start_seconds": 938,
+      "text": "evolve into the level six Cres Guruman"
+    },
+    {
+      "timestamp": "15:40",
+      "start_seconds": 940,
+      "text": "once again with his wind dig evolving"
+    },
+    {
+      "timestamp": "15:42",
+      "start_seconds": 942,
+      "text": "effect, it will return a bottom encore"
+    },
+    {
+      "timestamp": "15:44",
+      "start_seconds": 944,
+      "text": "back to the hand."
+    },
+    {
+      "timestamp": "15:47",
+      "start_seconds": 947,
+      "text": "Finite memory move's main delay effect"
+    },
+    {
+      "timestamp": "15:48",
+      "start_seconds": 948,
+      "text": "will trash itself to gain two memory"
+    },
+    {
+      "timestamp": "15:50",
+      "start_seconds": 950,
+      "text": "with Bres Guruman and Bliss Greymon back"
+    },
+    {
+      "timestamp": "15:52",
+      "start_seconds": 952,
+      "text": "on the board together. They can fuse"
+    },
+    {
+      "timestamp": "15:53",
+      "start_seconds": 953,
+      "text": "into Omnimon Alteress once again. Alter"
+    },
+    {
+      "timestamp": "15:56",
+      "start_seconds": 956,
+      "text": "is when Dig evolving effect delete one"
+    },
+    {
+      "timestamp": "15:57",
+      "start_seconds": 957,
+      "text": "of the opponent's Digimon with 8,000 DP"
+    },
+    {
+      "timestamp": "15:59",
+      "start_seconds": 959,
+      "text": "or less and return one of the opponent's"
+    },
+    {
+      "timestamp": "16:00",
+      "start_seconds": 960,
+      "text": "level six or higher Digimon to the"
+    },
+    {
+      "timestamp": "16:02",
+      "start_seconds": 962,
+      "text": "bottom of the owner's deck, but there"
+    },
+    {
+      "timestamp": "16:03",
+      "start_seconds": 963,
+      "text": "will be no targets since a bottom's"
+    },
+    {
+      "timestamp": "16:04",
+      "start_seconds": 964,
+      "text": "battle area is empty. Alterus will"
+    },
+    {
+      "timestamp": "16:06",
+      "start_seconds": 966,
+      "text": "declare an attack attempting to finish"
+    },
+    {
+      "timestamp": "16:08",
+      "start_seconds": 968,
+      "text": "off a bottom. But a bottom core has a"
+    },
+    {
+      "timestamp": "16:10",
+      "start_seconds": 970,
+      "text": "breeding opponent's turn effect. When"
+    },
+    {
+      "timestamp": "16:11",
+      "start_seconds": 971,
+      "text": "one of your opponent's Digimon attacks"
+    },
+    {
+      "timestamp": "16:12",
+      "start_seconds": 972,
+      "text": "by returning four Negamon from your"
+    },
+    {
+      "timestamp": "16:14",
+      "start_seconds": 974,
+      "text": "trash or your Digimon's distribution"
+    },
+    {
+      "timestamp": "16:16",
+      "start_seconds": 976,
+      "text": "cards to the bottom of the Digi Egg"
+    },
+    {
+      "timestamp": "16:17",
+      "start_seconds": 977,
+      "text": "deck, this Digimon moves to the battle"
+    },
+    {
+      "timestamp": "16:19",
+      "start_seconds": 979,
+      "text": "area with it. When moving effect, it"
+    },
+    {
+      "timestamp": "16:20",
+      "start_seconds": 980,
+      "text": "will place a rare Roman Eman and"
+    },
+    {
+      "timestamp": "16:22",
+      "start_seconds": 982,
+      "text": "Soundberman from the trash underneath it"
+    },
+    {
+      "timestamp": "16:24",
+      "start_seconds": 984,
+      "text": "to delete all the opponent's lowest"
+    },
+    {
+      "timestamp": "16:25",
+      "start_seconds": 985,
+      "text": "level Digimon which will be Kres"
+    },
+    {
+      "timestamp": "16:27",
+      "start_seconds": 987,
+      "text": "Guruman. Even though a bottom core has"
+    },
+    {
+      "timestamp": "16:29",
+      "start_seconds": 989,
+      "text": "blocker, the Cresguron underneath Alter"
+    },
+    {
+      "timestamp": "16:31",
+      "start_seconds": 991,
+      "text": "has an inherit effect where your turn is"
+    },
+    {
+      "timestamp": "16:33",
+      "start_seconds": 993,
+      "text": "Digimon's attack target can't change,"
+    },
+    {
+      "timestamp": "16:34",
+      "start_seconds": 994,
+      "text": "meaning the final attack will still go"
+    },
+    {
+      "timestamp": "16:36",
+      "start_seconds": 996,
+      "text": "through winning the game."
+    },
+    {
+      "timestamp": "16:39",
+      "start_seconds": 999,
+      "text": "Make sure to check out the Evolve store"
+    },
+    {
+      "timestamp": "16:40",
+      "start_seconds": 1000,
+      "text": "for all awesome TCG accessories. Here"
+    },
+    {
+      "timestamp": "16:42",
+      "start_seconds": 1002,
+      "text": "are the deck lists for today's Battle"
+    },
+    {
+      "timestamp": "16:43",
+      "start_seconds": 1003,
+      "text": "Vault video. Also, huge shout outs to"
+    },
+    {
+      "timestamp": "16:45",
+      "start_seconds": 1005,
+      "text": "premium and deluxe members of the"
+    },
+    {
+      "timestamp": "16:46",
+      "start_seconds": 1006,
+      "text": "channel. And don't forget to subscribe"
+    },
+    {
+      "timestamp": "16:48",
+      "start_seconds": 1008,
+      "text": "to stay tuned for"
+    }
+  ]
+}

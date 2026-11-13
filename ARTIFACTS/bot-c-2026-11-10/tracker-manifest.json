@@ -1,0 +1,14 @@
+{
+  "audit_visibility": "PRIVATE",
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "name": "Bot C",
+  "physical_card_count": 108,
+  "player_inputs": [
+    "player_view",
+    "public_metrics"
+  ],
+  "role": "FIELD_TRACKER",
+  "source_sha256": "208b5077af00b6ca3a8766af0db95f31ce52a7adb9d86b5b9a7ba2f23373b999",
+  "tracker_id": "a110a3c963b7f50fc1a7e45ae062771643ebcf76c1541ad98df04b8fd1d23e75",
+  "version": "bot-c-field-tracker-v1"
+}

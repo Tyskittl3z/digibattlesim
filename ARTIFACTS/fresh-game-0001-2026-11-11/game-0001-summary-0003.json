@@ -1,0 +1,286 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "active": "A",
+  "exact_replay": true,
+  "final_evaluation_credit": 0,
+  "first": "B",
+  "halt_reason": null,
+  "learning_state_unchanged": true,
+  "memory": 1,
+  "new_accepted_judge_receipts": 32,
+  "new_actions": [
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 76,
+      "label": "GREEN",
+      "learning_eligible": false,
+      "seat": "A",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "USE_OPTION",
+      "index": 77,
+      "label": "RED",
+      "learning_eligible": true,
+      "seat": "A",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 78,
+      "label": "GREEN",
+      "learning_eligible": true,
+      "seat": "A",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "FINISH_TURN",
+      "index": 79,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "A",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 80,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 81,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 82,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 83,
+      "label": "GREEN",
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "BREEDING_CHOICE",
+      "index": 84,
+      "label": "GREEN",
+      "learning_eligible": true,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 85,
+      "label": "GREEN",
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "DECLARE_ATTACK",
+      "index": 86,
+      "label": "RED",
+      "learning_eligible": true,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 87,
+      "label": "RED",
+      "learning_eligible": true,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "COUNTER_CHOICE",
+      "index": 88,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "A",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "BLOCK_CHOICE",
+      "index": 89,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "A",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "CONFIRM_ATTACK",
+      "index": 90,
+      "label": "GREEN",
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "END_ATTACK",
+      "index": 91,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "BATTLE_EVOLUTION",
+      "index": 92,
+      "label": "RED",
+      "learning_eligible": true,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 93,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "PLAY_CARD",
+      "index": 94,
+      "label": "GREEN",
+      "learning_eligible": true,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 95,
+      "label": "YELLOW",
+      "learning_eligible": true,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 96,
+      "label": "YELLOW",
+      "learning_eligible": true,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 97,
+      "label": "YELLOW",
+      "learning_eligible": true,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 98,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "FINISH_TURN",
+      "index": 99,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 100,
+      "label": "GREEN",
+      "learning_eligible": true,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 101,
+      "label": "GREEN",
+      "learning_eligible": true,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 102,
+      "label": "YELLOW",
+      "learning_eligible": true,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 103,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 104,
+      "label": "GREEN",
+      "learning_eligible": true,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "FINISH_TURN",
+      "index": 105,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 106,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "A",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 107,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "A",
+      "status": "EXPERIMENTAL_RESOLVED"
+    }
+  ],
+  "new_colors": {
+    "GREEN": 10,
+    "RED": 4,
+    "YELLOW": 18
+  },
+  "new_commands": 32,
+  "phase": "DRAW",
+  "record_file": "game-0001-segment-0003.json.gz",
+  "record_sha256": "ffc939e75a49b18dd755c5596b5deb21399dd419e3be211447d3527b13ea0819",
+  "schema": "game-0001-segment-summary-v1",
+  "seed": 4331348820189008048,
+  "segment": 3,
+  "status": "PAUSED",
+  "terminal_reason": null,
+  "total_commands": 108,
+  "turn": 8,
+  "winner": null
+}

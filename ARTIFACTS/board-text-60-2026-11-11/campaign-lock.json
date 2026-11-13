@@ -1,0 +1,325 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "campaign_id": "ULFORCE_BOARD_TEXT_ADDITIONAL_60_2026_11_11_V1",
+  "context_file": "ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json",
+  "context_file_sha256": "089d449edab177c4f1d31a4b2ce8414650439df4ea6459080400df45d5004484",
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "final_evaluation_credit": 0,
+  "initial_model_state_id": "fc2cb721b93cda666abb143915876c3c024c0365111ab128f9f36ab4b96ff681",
+  "initial_report": "ARTIFACTS/fresh-game-0001-board-text-2026-11-11/game-0001-report.md",
+  "initial_report_sha256": "87d0f1678c58ce0214f755c3f5084b8ffe9d6f6032cea0d6c726aaa102f85784",
+  "lock_sha256": "87a211f5489b0c071ad94358aac61c3ccc827c9032d3b14f0a205661c14a817b",
+  "player_policy": "BOARD_TEXT_HISTORY",
+  "schedule": {
+    "campaign_id": "ULFORCE_BOARD_TEXT_ADDITIONAL_60_2026_11_11_V1",
+    "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+    "count": 60,
+    "games": [
+      {
+        "first": "A",
+        "index": 0,
+        "seed": 16664364153905075627
+      },
+      {
+        "first": "B",
+        "index": 1,
+        "seed": 15362257287162317678
+      },
+      {
+        "first": "A",
+        "index": 2,
+        "seed": 12047944686340276141
+      },
+      {
+        "first": "B",
+        "index": 3,
+        "seed": 884428971674423381
+      },
+      {
+        "first": "A",
+        "index": 4,
+        "seed": 7804549089509846733
+      },
+      {
+        "first": "B",
+        "index": 5,
+        "seed": 12054344170171514003
+      },
+      {
+        "first": "A",
+        "index": 6,
+        "seed": 17142806856446729578
+      },
+      {
+        "first": "B",
+        "index": 7,
+        "seed": 5698987410890930322
+      },
+      {
+        "first": "A",
+        "index": 8,
+        "seed": 5432722010424799087
+      },
+      {
+        "first": "B",
+        "index": 9,
+        "seed": 3377240463394730209
+      },
+      {
+        "first": "A",
+        "index": 10,
+        "seed": 11668316264791277447
+      },
+      {
+        "first": "B",
+        "index": 11,
+        "seed": 4520756428303837408
+      },
+      {
+        "first": "A",
+        "index": 12,
+        "seed": 12975361446898795440
+      },
+      {
+        "first": "B",
+        "index": 13,
+        "seed": 8191867676413273682
+      },
+      {
+        "first": "A",
+        "index": 14,
+        "seed": 6276958426857055656
+      },
+      {
+        "first": "B",
+        "index": 15,
+        "seed": 7725066267705985086
+      },
+      {
+        "first": "A",
+        "index": 16,
+        "seed": 17671374838007817673
+      },
+      {
+        "first": "B",
+        "index": 17,
+        "seed": 3220515400185911614
+      },
+      {
+        "first": "A",
+        "index": 18,
+        "seed": 14768833332492944671
+      },
+      {
+        "first": "B",
+        "index": 19,
+        "seed": 9295817123660164028
+      },
+      {
+        "first": "A",
+        "index": 20,
+        "seed": 6534884852444917083
+      },
+      {
+        "first": "B",
+        "index": 21,
+        "seed": 550008253670562797
+      },
+      {
+        "first": "A",
+        "index": 22,
+        "seed": 14962638506343889221
+      },
+      {
+        "first": "B",
+        "index": 23,
+        "seed": 11530652127083854279
+      },
+      {
+        "first": "A",
+        "index": 24,
+        "seed": 4274756805820524210
+      },
+      {
+        "first": "B",
+        "index": 25,
+        "seed": 12134641098518414298
+      },
+      {
+        "first": "A",
+        "index": 26,
+        "seed": 5468059095692905960
+      },
+      {
+        "first": "B",
+        "index": 27,
+        "seed": 15504770777202505746
+      },
+      {
+        "first": "A",
+        "index": 28,
+        "seed": 3229285776380689995
+      },
+      {
+        "first": "B",
+        "index": 29,
+        "seed": 2938473469403311358
+      },
+      {
+        "first": "A",
+        "index": 30,
+        "seed": 15066149552471533571
+      },
+      {
+        "first": "B",
+        "index": 31,
+        "seed": 15094333301234985299
+      },
+      {
+        "first": "A",
+        "index": 32,
+        "seed": 7539437560518291083
+      },
+      {
+        "first": "B",
+        "index": 33,
+        "seed": 5643592528856475599
+      },
+      {
+        "first": "A",
+        "index": 34,
+        "seed": 4506618860908396922
+      },
+      {
+        "first": "B",
+        "index": 35,
+        "seed": 11974865023370730863
+      },
+      {
+        "first": "A",
+        "index": 36,
+        "seed": 2578904192889408191
+      },
+      {
+        "first": "B",
+        "index": 37,
+        "seed": 18198063192358571856
+      },
+      {
+        "first": "A",
+        "index": 38,
+        "seed": 15276074392501998050
+      },
+      {
+        "first": "B",
+        "index": 39,
+        "seed": 444840558126268706
+      },
+      {
+        "first": "A",
+        "index": 40,
+        "seed": 9050622111796183991
+      },
+      {
+        "first": "B",
+        "index": 41,
+        "seed": 319147774030744299
+      },
+      {
+        "first": "A",
+        "index": 42,
+        "seed": 12090026423348378490
+      },
+      {
+        "first": "B",
+        "index": 43,
+        "seed": 14781972998396932308
+      },
+      {
+        "first": "A",
+        "index": 44,
+        "seed": 16965315805494485970
+      },
+      {
+        "first": "B",
+        "index": 45,
+        "seed": 6618559015423135649
+      },
+      {
+        "first": "A",
+        "index": 46,
+        "seed": 12781321613025470504
+      },
+      {
+        "first": "B",
+        "index": 47,
+        "seed": 14555772656087449179
+      },
+      {
+        "first": "A",
+        "index": 48,
+        "seed": 2614617741572822915
+      },
+      {
+        "first": "B",
+        "index": 49,
+        "seed": 13689343139936565283
+      },
+      {
+        "first": "A",
+        "index": 50,
+        "seed": 2852518082513689270
+      },
+      {
+        "first": "B",
+        "index": 51,
+        "seed": 2236787533136063923
+      },
+      {
+        "first": "A",
+        "index": 52,
+        "seed": 13033082396166237883
+      },
+      {
+        "first": "B",
+        "index": 53,
+        "seed": 13230674530916524136
+      },
+      {
+        "first": "A",
+        "index": 54,
+        "seed": 9823468456746543667
+      },
+      {
+        "first": "B",
+        "index": 55,
+        "seed": 6404560857263661070
+      },
+      {
+        "first": "A",
+        "index": 56,
+        "seed": 8943850092483377017
+      },
+      {
+        "first": "B",
+        "index": 57,
+        "seed": 6498248785786106480
+      },
+      {
+        "first": "A",
+        "index": 58,
+        "seed": 17282961417819281537
+      },
+      {
+        "first": "B",
+        "index": 59,
+        "seed": 7954641529752800128
+      }
+    ],
+    "schedule_sha256": "911bfbbc2d52ed88a8af0a6e1e1887acc5d02b8218c8003e4b769f938cf7c34c",
+    "schema": "fresh-learning-schedule-v1"
+  },
+  "schema": "board-text-sequential-60-lock-v1",
+  "software_evidence_only": true,
+  "target_additional_games": 60
+}

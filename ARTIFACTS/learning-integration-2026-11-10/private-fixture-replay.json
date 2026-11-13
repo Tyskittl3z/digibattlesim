@@ -1,0 +1,12 @@
+{
+  "opening": {
+    "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+    "exact_match": true,
+    "record_sha256": "fe4c43d760acd7ed7e161bc55221f1b42e1cf9ab9e09ccf6b8020f1392095336"
+  },
+  "resumed": {
+    "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+    "exact_match": true,
+    "record_sha256": "ca5926e7eff7e24ada9c3ec7bbfbee288aa748112850f007d25d414f1492d2b4"
+  }
+}

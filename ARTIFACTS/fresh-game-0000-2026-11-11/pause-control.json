@@ -1,0 +1,17 @@
+{
+  "schema": "fresh-game-0000-control-v1",
+  "date": "2026-11-11",
+  "game_0000_authorized": true,
+  "game_0000_started": true,
+  "latest_segment": "game-0000-segment-0023.json.gz",
+  "latest_status": "EXPERIMENTAL_SOFTWARE_TERMINAL",
+  "accepted_commands": 182,
+  "exact_replay": true,
+  "completed_fresh_games": 1,
+  "completed_game_learning_updates": 1,
+  "accepted_fact_finding_matches": 0,
+  "final_evaluation_matches": 0,
+  "cohort_60_running": false,
+  "evaluation_10000_running": false,
+  "certification": "EXPERIMENTAL_AUTOMATED_CHECKS_ONLY"
+}

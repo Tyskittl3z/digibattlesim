@@ -1,0 +1,1120 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "active": "B",
+  "all_archived_source_hashes_match_manifest": true,
+  "archive": "ARTIFACTS/gameplay-continuations-2026-11-03-11/source-checkpoint.tar.gz",
+  "archive_file_count": 94,
+  "archive_sha256": "4e474063c7928717381e06d6c583f6e284218097d4240466ea0034999af67d0b",
+  "certification": "SOFTWARE_REPLAY_ONLY_NOT_RULES_CERTIFICATION",
+  "commands": [
+    {
+      "command": "BEGIN_PREPARATION",
+      "index": 0,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "REDRAW_CHOICE",
+      "index": 1,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "REDRAW_CHOICE",
+      "index": 2,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 3,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 4,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 5,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BREEDING_CHOICE",
+      "index": 6,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "PLAY_CARD",
+      "index": 7,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 8,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "FINISH_TURN",
+      "index": 9,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 10,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 11,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 12,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BREEDING_CHOICE",
+      "index": 13,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "PLAY_CARD",
+      "index": 14,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 15,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "FINISH_TURN",
+      "index": 16,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 17,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 18,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 19,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BREEDING_CHOICE",
+      "index": 20,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "USE_OPTION",
+      "index": 21,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 22,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "PLAY_CARD",
+      "index": 23,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "FINISH_TURN",
+      "index": 24,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 25,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 26,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 27,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BREEDING_CHOICE",
+      "index": 28,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BREEDING_EVOLUTION",
+      "index": 29,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "PLAY_CARD",
+      "index": 30,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 31,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "PLAY_CARD",
+      "index": 32,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 33,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 34,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "PLAY_CARD",
+      "index": 35,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 36,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "FINISH_TURN",
+      "index": 37,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 38,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 39,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 40,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 41,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BREEDING_CHOICE",
+      "index": 42,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "USE_OPTION",
+      "index": 43,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 44,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BREEDING_EVOLUTION",
+      "index": 45,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "PLAY_CARD",
+      "index": 46,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 47,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "FINISH_TURN",
+      "index": 48,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 49,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 50,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 51,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BREEDING_CHOICE",
+      "index": 52,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 53,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BATTLE_EVOLUTION",
+      "index": 54,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 55,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BATTLE_EVOLUTION",
+      "index": 56,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 57,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "DECLARE_ATTACK",
+      "index": 58,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 59,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 60,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 61,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 62,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "COUNTER_CHOICE",
+      "index": 63,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BLOCK_CHOICE",
+      "index": 64,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "CONFIRM_ATTACK",
+      "index": 65,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "END_ATTACK",
+      "index": 66,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "DECLARE_ATTACK",
+      "index": 67,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "COUNTER_CHOICE",
+      "index": 68,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BLOCK_CHOICE",
+      "index": 69,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "CONFIRM_ATTACK",
+      "index": 70,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "END_ATTACK",
+      "index": 71,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "DECLARE_ATTACK",
+      "index": 72,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 73,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 74,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "COUNTER_CHOICE",
+      "index": 75,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BLOCK_CHOICE",
+      "index": 76,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "CONFIRM_ATTACK",
+      "index": 77,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 78,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "END_ATTACK",
+      "index": 79,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "PLAY_CARD",
+      "index": 80,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "FINISH_TURN",
+      "index": 81,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 82,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 83,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 84,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 85,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "FINISH_TURN",
+      "index": 86,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 87,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 88,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 89,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 90,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BREEDING_CHOICE",
+      "index": 91,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 92,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BATTLE_EVOLUTION",
+      "index": 93,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 94,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 95,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 96,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "FINISH_TURN",
+      "index": 97,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 98,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 99,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 100,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 101,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 102,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 103,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 104,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 105,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 106,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 107,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 108,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 109,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 110,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 111,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 112,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BREEDING_CHOICE",
+      "index": 113,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 114,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 115,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BATTLE_EVOLUTION",
+      "index": 116,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 117,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 118,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 119,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 120,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 121,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "FINISH_TURN",
+      "index": 122,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 123,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 124,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 125,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BREEDING_CHOICE",
+      "index": 126,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 127,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BATTLE_EVOLUTION",
+      "index": 128,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 129,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "PASS_TURN",
+      "index": 130,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "FINISH_TURN",
+      "index": 131,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 132,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 133,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 134,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BREEDING_CHOICE",
+      "index": 135,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 136,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 137,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BREEDING_EVOLUTION",
+      "index": 138,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "DECLARE_ATTACK",
+      "index": 139,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 140,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 141,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 142,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 143,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "COUNTER_CHOICE",
+      "index": 144,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BLOCK_CHOICE",
+      "index": 145,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "CONFIRM_ATTACK",
+      "index": 146,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "END_ATTACK",
+      "index": 147,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "PLAY_CARD",
+      "index": 148,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 149,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    },
+    {
+      "command": "BATTLE_EVOLUTION",
+      "index": 150,
+      "physical_verify_passed": true,
+      "public_view_exact": true,
+      "result_exact": true
+    }
+  ],
+  "defender_security_cards": 1,
+  "elapsed_seconds": 22.262,
+  "every_command_result_exact": true,
+  "every_precommand_public_view_exact": true,
+  "execution_id": "0461e1428e3c13d6205a2c1b4077660d3f70021b043373149b5b74580230250b",
+  "final_before_halt_snapshot_exact": true,
+  "final_evaluation_credit": 0,
+  "final_full_snapshot_exact": true,
+  "final_rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c",
+  "final_state_sha256": "82cefe0b7894b87d82602949a4693e38579e31743edebdf3c56ec6aae877d0dc",
+  "first": "A",
+  "halt_command_executed": false,
+  "initial_snapshot_exact": true,
+  "manifest": "ARTIFACTS/gameplay-continuations-2026-11-03-11/source-manifest.json",
+  "manifest_sha256": "86047cca5afd3f0530322ee6d341ac686024edfdd54d6a44d73f0cfebd1a280b",
+  "manifest_source_count": 94,
+  "memory": -1,
+  "new_gameplay_commands": 0,
+  "pending": [
+    {
+      "depth": 0,
+      "effect_id": "BT22-023.when_digivolving_return",
+      "field": "main_text",
+      "id": "effect-57",
+      "instance": "entity-14",
+      "seat": "B",
+      "source": "B:BT22-023#2",
+      "trigger": {
+        "card": "B:BT22-023#2",
+        "kind": "When Digivolving",
+        "previous_top": "B:EX13-019#1"
+      },
+      "usage": []
+    }
+  ],
+  "phase": "MAIN",
+  "physical_cards_by_owner": {
+    "A": 54,
+    "B": 54
+  },
+  "physical_verify_after_each_saved_command": true,
+  "record": "ARTIFACTS/gameplay-continuations-2026-11-03-11/game-0000-segment.json.gz",
+  "record_canonical_sha256": "8d596ab2b7b665453a4e87b9fd2775cb7ce27080603be2349a4f7602b53fec9a",
+  "record_gzip_sha256": "458edf88fc3d26b0ec1e1026770d1eca1d2019f97f0b458e98cbacf5f9185b9c",
+  "reviewed_at_utc": "2026-11-04T04:03:39.989576+00:00",
+  "saved_successful_commands_replayed": 151,
+  "schema": "ARCHIVED_SAVED_PREFIX_PROOF_V1",
+  "seed": 12017913134550805276,
+  "status": "PASS",
+  "stopped_before_saved_halt_command_index": 151,
+  "turn": 10,
+  "unique_physical_cards": 108
+}

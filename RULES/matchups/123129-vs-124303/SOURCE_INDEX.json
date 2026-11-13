@@ -1,0 +1,636 @@
+{
+  "status": "RETRIEVED_NOT_JUDGE_CERTIFIED",
+  "retrieved_at_utc": "2026-10-30T18:04:25.604936+00:00",
+  "sources": [
+    {
+      "id": "card-BT11-023",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-023",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-023.html",
+      "sha256": "8a0641a7b790f34271ee55cfac8b183f29ce2f546bfd62b704069952e5001e23",
+      "locator": "#BT11-023",
+      "review": null
+    },
+    {
+      "id": "card-BT11-032",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-032",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-032.html",
+      "sha256": "82c0b74c599cb27d0784d93959057b2504e97c4e593af5ee0a0fce51db30d50e",
+      "locator": "#BT11-032",
+      "review": null
+    },
+    {
+      "id": "card-BT11-112",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-112",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-112.html",
+      "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc",
+      "locator": "#BT11-112",
+      "review": null
+    },
+    {
+      "id": "card-BT12-016",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT12-016",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT12-016.html",
+      "sha256": "059954b02e84898dd35723dd259c9cc970918044e6166a0cf343d7cc15833c5d",
+      "locator": "#BT12-016",
+      "review": null
+    },
+    {
+      "id": "card-BT12-029",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT12-029",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT12-029.html",
+      "sha256": "4815904431fc1ad0c54a6185aa3269fe75b844cae57da5dc68b72eca0654d505",
+      "locator": "#BT12-029",
+      "review": null
+    },
+    {
+      "id": "card-BT17-013",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT17-013",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT17-013.html",
+      "sha256": "cada35a9e1e68b0582cd0f646dc6067216678712e882402998e4efeb4b099abd",
+      "locator": "#BT17-013",
+      "review": null
+    },
+    {
+      "id": "card-BT17-016",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT17-016",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT17-016.html",
+      "sha256": "a52eece9d558dc9622df3a53164342b7d4e4ada2c3d748921bee353d2acb0218",
+      "locator": "#BT17-016",
+      "review": null
+    },
+    {
+      "id": "card-BT19-007",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT19-007",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT19-007.html",
+      "sha256": "2f00fcac685cff30579f00b45e6b2f40d70b7cc461b661cc6101cc97d01b3ac3",
+      "locator": "#BT19-007",
+      "review": null
+    },
+    {
+      "id": "card-BT19-009",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT19-009",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT19-009.html",
+      "sha256": "8230cec3dcb85b49128b12eb5f70dc3791032c66dc4192008bafc6fe1228f7eb",
+      "locator": "#BT19-009",
+      "review": null
+    },
+    {
+      "id": "card-BT19-011",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT19-011",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT19-011.html",
+      "sha256": "65d731cf89caed980da1efa7306675db772d11435eccaadd929713f9b6194482",
+      "locator": "#BT19-011",
+      "review": null
+    },
+    {
+      "id": "card-BT19-080",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT19-080",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT19-080.html",
+      "sha256": "99917b24bb30d7530475289002e744c38dc841d04a2c4cdd220d4c800a6ee21f",
+      "locator": "#BT19-080",
+      "review": null
+    },
+    {
+      "id": "card-BT20-102",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT20-102",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT20-102.html",
+      "sha256": "6769bd16a111b682dc8f9a27fb5ea0e5a4438a6822e160c79575f480fcd8519b",
+      "locator": "#BT20-102",
+      "review": null
+    },
+    {
+      "id": "card-BT22-022",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-022",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-022.html",
+      "sha256": "b2bc45d6d74a4c8a9569094c25bcc7ffe10e179b4891341dd2187298a0346c85",
+      "locator": "#BT22-022",
+      "review": null
+    },
+    {
+      "id": "card-BT22-023",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-023",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-023.html",
+      "sha256": "a184df26a6bd8c5ccaed325998c9b85a18c0c2d5c0778a20993fd2d6a01e67dd",
+      "locator": "#BT22-023",
+      "review": null
+    },
+    {
+      "id": "card-BT22-085",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-085",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-085.html",
+      "sha256": "a453871077f17613ac9b1d52bbe3065509f2d0fd75ff8d2e040aa3658d3435f1",
+      "locator": "#BT22-085",
+      "review": null
+    },
+    {
+      "id": "card-BT9-011",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT9-011",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT9-011.html",
+      "sha256": "933f4c58d621282a134d4919e14a95265e03d9de050b6c698464639d05c6c420",
+      "locator": "#BT9-011",
+      "review": null
+    },
+    {
+      "id": "card-BT9-092",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT9-092",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT9-092.html",
+      "sha256": "819c58d36db86504fddfe683e1ed69816f7d8622e975401531c6f625a9c2ca00",
+      "locator": "#BT9-092",
+      "review": null
+    },
+    {
+      "id": "card-BT9-109",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT9-109",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT9-109.html",
+      "sha256": "e6a3bcb0cc0d88514529f7c606a3ce5690faee05dfd98a063599e9cfcfe84893",
+      "locator": "#BT9-109",
+      "review": null
+    },
+    {
+      "id": "card-EX1-013",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX1-013",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX1-013.html",
+      "sha256": "df126caa2ee95d5f7b86008ef828291645d15204c177801eb2f73404d0611f38",
+      "locator": "#EX1-013",
+      "review": null
+    },
+    {
+      "id": "card-EX13-002",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-002",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-002.html",
+      "sha256": "9d2abc2c3a5f20aebefbcb5b89818a4559748ddbde4e20f92562092b7267cd4f",
+      "locator": "#EX13-002",
+      "review": null
+    },
+    {
+      "id": "card-EX13-015",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-015",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-015.html",
+      "sha256": "da5ea099591f442de21e60eb9c13857f9585b1ea4c40215dbf27ff56f47c06d6",
+      "locator": "#EX13-015",
+      "review": null
+    },
+    {
+      "id": "card-EX13-017",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-017",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-017.html",
+      "sha256": "2aa137a4f5c18f878139b6021a274f44a1ad001b0a952390ef6690031e5e77d4",
+      "locator": "#EX13-017",
+      "review": null
+    },
+    {
+      "id": "card-EX13-019",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-019",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-019.html",
+      "sha256": "0e9158139b3c4d46987c85a968f40469743a76892cba86227871ed897b1e4d5a",
+      "locator": "#EX13-019",
+      "review": null
+    },
+    {
+      "id": "card-EX13-022",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-022",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-022.html",
+      "sha256": "4771e6eab5218e833eebf7d1ff6cf70ad6fa51a51d556f8a404ac88f07256874",
+      "locator": "#EX13-022",
+      "review": null
+    },
+    {
+      "id": "card-EX13-023",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-023",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-023.html",
+      "sha256": "3d50f704648b02667258fceb3f3675a80141599f76ca4ad1beeb3069d8fad7aa",
+      "locator": "#EX13-023",
+      "review": null
+    },
+    {
+      "id": "card-EX13-069",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-069",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-069.html",
+      "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7",
+      "locator": "#EX13-069",
+      "review": null
+    },
+    {
+      "id": "card-EX2-001",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX2-001",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX2-001.html",
+      "sha256": "5c9084896415a13a05c4a8ee21481fec88ba3334d8befac23d70a85d518ed338",
+      "locator": "#EX2-001",
+      "review": null
+    },
+    {
+      "id": "card-EX2-008",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX2-008",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX2-008.html",
+      "sha256": "bf0c5a65a6a80a06ab835706d3eb0a1c3fefaa3d27b07d677108c9f48e79330c",
+      "locator": "#EX2-008",
+      "review": null
+    },
+    {
+      "id": "card-EX4-006",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX4-006",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX4-006.html",
+      "sha256": "5936d220799867bd530f8c82224bac7279b7d5a5cef975ad8062b47bdf90c2aa",
+      "locator": "#EX4-006",
+      "review": null
+    },
+    {
+      "id": "card-EX5-070",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX5-070",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX5-070.html",
+      "sha256": "65770db65c5e83c6f0dcacc532a5211f406f523c930df3b6e90f899714faa36b",
+      "locator": "#EX5-070",
+      "review": null
+    },
+    {
+      "id": "card-EX8-009",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX8-009",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX8-009.html",
+      "sha256": "069a61b7df9075b4f1a0947bb65deb8203b8d4b5288c229dfd8a1448f80fccfb",
+      "locator": "#EX8-009",
+      "review": null
+    },
+    {
+      "id": "card-EX8-012",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX8-012",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX8-012.html",
+      "sha256": "75984eaa3a914e3d3698269d192e1a6ce60b1538657039230057b4f2b45d2c9f",
+      "locator": "#EX8-012",
+      "review": null
+    },
+    {
+      "id": "card-EX8-015",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX8-015",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX8-015.html",
+      "sha256": "ccd72027e297a8bbdb05743b340060ce939e1edc314916b629380239488f1bf2",
+      "locator": "#EX8-015",
+      "review": null
+    },
+    {
+      "id": "card-EX8-073",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX8-073",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX8-073.html",
+      "sha256": "e64b9dd17ba2fb40f941f5b81bca0956491f506d1ac0f5736caafd5f200d1d68",
+      "locator": "#EX8-073",
+      "review": null
+    },
+    {
+      "id": "image-LM-027",
+      "kind": [
+        "CARD_IMAGE"
+      ],
+      "url": "https://world.digimoncard.com/images/cardlist/card/LM-027.png?260529",
+      "file": "RULES/matchups/123129-vs-124303/sources/LM-027.png",
+      "sha256": "aa1cfa7bb598f7a6a6f849667bd5238d09dd2bd18afa71184d83570daf8ed164",
+      "locator": "Printed OPTION header",
+      "review": null
+    },
+    {
+      "id": "card-LM-027",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-027",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-LM-027.html",
+      "sha256": "749c781db7266ffd08a51a7700841531c8f90a719c471970ae6499bef14e8110",
+      "locator": "#LM-027",
+      "review": null
+    },
+    {
+      "id": "image-LM-028",
+      "kind": [
+        "CARD_IMAGE"
+      ],
+      "url": "https://world.digimoncard.com/images/cardlist/card/LM-028.png?260529",
+      "file": "RULES/matchups/123129-vs-124303/sources/LM-028.png",
+      "sha256": "f26e919328151f9ee595ea160a2949274ca1d30eb4ae6e0dacde5aef78460c8e",
+      "locator": "Printed OPTION header",
+      "review": null
+    },
+    {
+      "id": "card-LM-028",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-028",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-LM-028.html",
+      "sha256": "add30c8ec48a6972ae26bc56af14b6faaab06af29d1b032151662b8e3723c0ee",
+      "locator": "#LM-028",
+      "review": null
+    },
+    {
+      "id": "image-LM-034",
+      "kind": [
+        "CARD_IMAGE"
+      ],
+      "url": "https://world.digimoncard.com/images/cardlist/card/LM-034.png?260529",
+      "file": "RULES/matchups/123129-vs-124303/sources/LM-034.png",
+      "sha256": "dfcf39cb2e036a148e9438ea00699f9909d0b93b07c72239822fd0f2cf2868a9",
+      "locator": "Printed OPTION header",
+      "review": null
+    },
+    {
+      "id": "card-LM-034",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-034",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-LM-034.html",
+      "sha256": "2917e45cc7c729ffe78ae583a7c4f4b12778a51e9c8d68b25dd532f5b96c10f1",
+      "locator": "#LM-034",
+      "review": null
+    },
+    {
+      "id": "card-LM-056",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-056",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-LM-056.html",
+      "sha256": "de0eb9e7c894f8e66217296f511b004d540f5ba030c8cb8c961c53b4bf7ec0dd",
+      "locator": "#LM-056",
+      "review": null
+    },
+    {
+      "id": "card-LM-057",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-057",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-LM-057.html",
+      "sha256": "fa76304967284b7ac49ef134942e3d9bb68ed6bcb58379d796f5d1e695e13fc8",
+      "locator": "#LM-057",
+      "review": null
+    },
+    {
+      "id": "card-LM-058",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-058",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-LM-058.html",
+      "sha256": "a1c4562d78bdc5ca50a66fdeea057570c0324319f7900e7d2fcb008de4c12de7",
+      "locator": "#LM-058",
+      "review": null
+    },
+    {
+      "id": "card-LM-061",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-061",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-LM-061.html",
+      "sha256": "c0e30c3fa53807a3a81211ee07c93d9edc7103aa10b39989f5ddbea9f83bac0d",
+      "locator": "#LM-061",
+      "review": null
+    },
+    {
+      "id": "card-P-104",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=P-104",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-P-104.html",
+      "sha256": "912bf92380c5be9e6f52fcb21cd997c53010023981328e80c0617348180cf5ec",
+      "locator": "#P-104",
+      "review": null
+    },
+    {
+      "id": "card-P-138",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=P-138",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-P-138.html",
+      "sha256": "61d9574f6132911aa54a8e75990a0c829ef424521b26b97fbaca62be9f456354",
+      "locator": "#P-138",
+      "review": null
+    },
+    {
+      "id": "card-P-186",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=P-186",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-P-186.html",
+      "sha256": "d6cc244087bcc7f2ee2d863723e8dbf74521d224d375183fb27266dbcf8e2c23",
+      "locator": "#P-186",
+      "review": null
+    },
+    {
+      "id": "card-ST7-05",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=ST7-05",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-ST7-05.html",
+      "sha256": "048f88fb5e74f13b12ff468102747a050da5f95564f632fa489a1c0914fd9b26",
+      "locator": "#ST7-05",
+      "review": null
+    },
+    {
+      "id": "deck-123129",
+      "kind": [
+        "DECK_COMPOSITION"
+      ],
+      "url": "https://digimon.digilab.cards/decklist/123129",
+      "file": "RULES/matchups/123129-vs-124303/sources/digilab-123129.html",
+      "sha256": "eed7c91958db15172061e3ae07dfb51d943d89413464845bfbaf94aa2a23278a",
+      "review": null
+    },
+    {
+      "id": "deck-124303",
+      "kind": [
+        "DECK_COMPOSITION"
+      ],
+      "url": "https://digimon.digilab.cards/decklist/124303",
+      "file": "RULES/matchups/123129-vs-124303/sources/digilab-124303.html",
+      "sha256": "650e4442efbe4d339b52e4fdaf74a55affa7bd8a9e28800b57b4871c8aeae812",
+      "review": null
+    },
+    {
+      "id": "rules",
+      "kind": [
+        "RULES"
+      ],
+      "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918",
+      "file": "RULES/matchups/123129-vs-124303/sources/general_rule.pdf",
+      "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+      "edition": null,
+      "effective_date": null,
+      "review": null
+    },
+    {
+      "id": "restrictions",
+      "kind": [
+        "RESTRICTIONS"
+      ],
+      "url": "https://world.digimoncard.com/rule/restriction_card/",
+      "file": "RULES/matchups/123129-vs-124303/sources/restrictions.html",
+      "sha256": "58a7d73f7f6cae94a08a5ef1b3d8b5bd87cbff5bc4fa5527856566da5185e1d6",
+      "edition": null,
+      "effective_date": null,
+      "review": null
+    },
+    {
+      "id": "errata",
+      "kind": [
+        "ERRATA"
+      ],
+      "url": "https://world.digimoncard.com/rule/pdf/errata_card_list.pdf?20260515",
+      "file": "RULES/matchups/123129-vs-124303/sources/errata.pdf",
+      "sha256": "ea00c43be9e88860731d2ea1dd550011d3d6bea334a7818a69d8104db284ccb7",
+      "edition": null,
+      "effective_date": null,
+      "review": null
+    }
+  ],
+  "note": "Source retrieval and source text extraction do not certify implemented mechanics. Source dates and region need review before pinning."
+}

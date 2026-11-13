@@ -1,0 +1,12 @@
+{
+  "migrated": {
+    "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+    "exact_match": true,
+    "record_sha256": "e17f1d19591f7c4f58e2fc47056fdb9b1cbe13dde980874165d1ad6f677b48b6"
+  },
+  "retried": {
+    "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+    "exact_match": true,
+    "record_sha256": "6d3c131b35cebf5047e0e8f68dbfef55d9881f3a346f20822c524ecc5acc00f5"
+  }
+}

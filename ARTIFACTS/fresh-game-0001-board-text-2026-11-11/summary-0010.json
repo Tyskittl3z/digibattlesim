@@ -1,0 +1,23 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "commands": 124,
+  "first": "B",
+  "halt_reason": "BT12_RETURN_PROTECTION_UNIMPLEMENTED: EX13-023 main_text source=A:EX13-023#2",
+  "history_report": {
+    "file": "ARTIFACTS/fresh-game-0000-2026-11-11/game-0000-report.md",
+    "sha256": "9e62a62789bf75fcbd943bd8fe0091bace271c36549489909cb1fb9de27a6c82"
+  },
+  "player_policy": "BOARD_TEXT_HISTORY",
+  "record_file": "segment-0010.json.gz",
+  "record_sha256": "bd013484518893d02d1ac546fff9c9fad9318b6e69c65e794d1cb4fb0914f4dd",
+  "replay": {
+    "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+    "exact_match": true,
+    "record_sha256": "68f5cef7c32fb7e198ee2aba0d5be199f6e583748675a6b2cd8c0f41279fe297"
+  },
+  "seed": 17795081213137388177,
+  "segment": 10,
+  "status": "HALT",
+  "turn": 7,
+  "winner": null
+}

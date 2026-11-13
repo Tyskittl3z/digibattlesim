@@ -1,0 +1,2053 @@
+{
+  "schema": "imported-matchup-readiness-v1",
+  "status": "BLOCKED",
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "engine_source_sha256": {
+    "matchup_readiness.py": "2c203a9aee4f6a9bac86284a707ab8dffdf39907ca097f696e2b790fb2099554",
+    "match_context.py": "140c9e1442d1f646a1bea724d2f01141a701fd729586c4072bbaaed45a2f0cd3",
+    "context_runtime.py": "45c31ce090e7dd93e4d0fc43153f0e1fc4adf1013f0889ec43d068d88e05232d",
+    "context_evolution.py": "5c4bc2291dc368a3957720ae7257b1bd9a6da3bc2f423fab8daf1c8472005b54",
+    "selected_mechanics.py": "9ffd6e72b0c296d49d499b7ebc96c8be6b197b87fab16d4070b5c2dbd29dacc4",
+    "effect_scheduler.py": "459a6fea6b9af4a85a566b5fe2b166dfae3b90f6e3e6917e6370e27a4364c60e",
+    "match_preparation.py": "31da31a26c80a2aaf23b7287cb515bec9c7b9799907f39c14e3efb501fd3a6b6",
+    "phase_flow.py": "c74b947e2c30199a4814c418f0399f709e07333ea7c6e955db513498f0838de3",
+    "main_actions.py": "6a398fc61640d94398f57eb6304fc0530c4451c58f6aa68132e432c1ab23bde3",
+    "breeding_evolution.py": "129186ef5525238cf1981cf8a56e57fbfeae54c14612ea593d1a2763b32c6986",
+    "search_effects.py": "a9b50a9f6107908087577a85e31551b9f60b8f1277a4d6c563cf16a6d540e10f",
+    "turn_flow.py": "db2cc3b2619f1b3988c0c00bcbc5de03edc4a41bc38f3f5a382533768ccad2c4",
+    "battlefield_scope.py": "69766cd14abc02c7bf788487e273f669ce1ceb0afa5d2b7e89b06c557c773df3",
+    "attack_flow.py": "bbe75f634af3b208e243e23bbfd2c57c9a5ffb6b65dc44e34806028edfd29ab5",
+    "printed_triggers.py": "ec5c85443ade73d2428d5751fbb99a4fe95ec98d78e3249ae71b082c6f256621",
+    "selected_contexts.py": "657b901c23725c4187ecb7c29cf411709aee7a3f4bd7af76612b7cbc2b86fb2a"
+  },
+  "decks": {
+    "A": {
+      "label": "UlforceVeedramon — Federico Nine",
+      "source_id": "123129",
+      "main": [
+        {
+          "card_number": "BT11-023",
+          "quantity": 4
+        },
+        {
+          "card_number": "BT11-032",
+          "quantity": 1
+        },
+        {
+          "card_number": "BT11-112",
+          "quantity": 4
+        },
+        {
+          "card_number": "BT12-029",
+          "quantity": 3
+        },
+        {
+          "card_number": "BT22-022",
+          "quantity": 1
+        },
+        {
+          "card_number": "BT22-023",
+          "quantity": 3
+        },
+        {
+          "card_number": "BT22-085",
+          "quantity": 1
+        },
+        {
+          "card_number": "EX1-013",
+          "quantity": 3
+        },
+        {
+          "card_number": "EX13-017",
+          "quantity": 4
+        },
+        {
+          "card_number": "EX13-019",
+          "quantity": 4
+        },
+        {
+          "card_number": "EX13-022",
+          "quantity": 4
+        },
+        {
+          "card_number": "EX13-023",
+          "quantity": 4
+        },
+        {
+          "card_number": "EX13-069",
+          "quantity": 4
+        },
+        {
+          "card_number": "LM-028",
+          "quantity": 1
+        },
+        {
+          "card_number": "LM-034",
+          "quantity": 1
+        },
+        {
+          "card_number": "LM-056",
+          "quantity": 1
+        },
+        {
+          "card_number": "LM-057",
+          "quantity": 1
+        },
+        {
+          "card_number": "LM-058",
+          "quantity": 1
+        },
+        {
+          "card_number": "P-104",
+          "quantity": 1
+        },
+        {
+          "card_number": "P-138",
+          "quantity": 4
+        }
+      ],
+      "eggs": [
+        {
+          "card_number": "EX13-002",
+          "quantity": 4
+        }
+      ]
+    },
+    "B": {
+      "label": "UlforceVeedramon — Bern",
+      "source_id": "122110",
+      "main": [
+        {
+          "card_number": "BT11-023",
+          "quantity": 4
+        },
+        {
+          "card_number": "BT11-032",
+          "quantity": 1
+        },
+        {
+          "card_number": "BT11-112",
+          "quantity": 4
+        },
+        {
+          "card_number": "BT12-029",
+          "quantity": 2
+        },
+        {
+          "card_number": "BT20-102",
+          "quantity": 1
+        },
+        {
+          "card_number": "BT22-022",
+          "quantity": 1
+        },
+        {
+          "card_number": "BT22-023",
+          "quantity": 3
+        },
+        {
+          "card_number": "BT22-085",
+          "quantity": 2
+        },
+        {
+          "card_number": "EX1-013",
+          "quantity": 3
+        },
+        {
+          "card_number": "EX13-017",
+          "quantity": 4
+        },
+        {
+          "card_number": "EX13-019",
+          "quantity": 4
+        },
+        {
+          "card_number": "EX13-022",
+          "quantity": 4
+        },
+        {
+          "card_number": "EX13-023",
+          "quantity": 4
+        },
+        {
+          "card_number": "EX13-069",
+          "quantity": 4
+        },
+        {
+          "card_number": "LM-028",
+          "quantity": 1
+        },
+        {
+          "card_number": "LM-056",
+          "quantity": 1
+        },
+        {
+          "card_number": "LM-057",
+          "quantity": 1
+        },
+        {
+          "card_number": "LM-058",
+          "quantity": 1
+        },
+        {
+          "card_number": "P-104",
+          "quantity": 1
+        },
+        {
+          "card_number": "P-138",
+          "quantity": 4
+        }
+      ],
+      "eggs": [
+        {
+          "card_number": "EX13-002",
+          "quantity": 4
+        }
+      ]
+    }
+  },
+  "counts": {
+    "distinct_cards": 22,
+    "main_cards": {
+      "A": 50,
+      "B": 50
+    },
+    "digi_eggs": {
+      "A": 4,
+      "B": 4
+    },
+    "software_only_mechanic_bindings": 10,
+    "printed_text_units": 79,
+    "unsupported_printed_text_units": 69,
+    "fact_finding_attempts": 0,
+    "judge_valid_fact_finding_matches": 0,
+    "approved_roadmap_lanes": 0,
+    "final_matches": 0
+  },
+  "requirements": {
+    "fact_finding_minimum": 60,
+    "fact_finding_starts_each": 30,
+    "final_matches": 10000,
+    "final_starts_each": 5000
+  },
+  "blockers": [
+    {
+      "code": "RULES_SNAPSHOT_UNREVIEWED",
+      "detail": "Official bytes retrieved; edition/effective-date pins and independent rules review remain required."
+    },
+    {
+      "code": "FULL_MATCH_ENGINE_UNIMPLEMENTED",
+      "detail": "Turn switching, scoped battlefield actions, explicit attack windows and plain security battles exist. Remaining card effects, stacked/modified battlefields, counters, Options and end triggers prevent complete selected-pair gameplay."
+    },
+    {
+      "code": "MECHANIC_PACK_UNREVIEWED",
+      "detail": "Experimental software bindings have no independent judge approval."
+    },
+    {
+      "code": "NO_CURRENT_FACT_FINDING_COHORT",
+      "detail": "Zero full current-context matches; require 60+ judge-valid matches with balanced starts and reviewed branch coverage."
+    },
+    {
+      "code": "ROADMAPS_UNAPPROVED",
+      "detail": "No current-context pilots, evaluated legal alternatives or approved best/medium/worst roadmaps."
+    },
+    {
+      "code": "NO_EVALUATION_FREEZE",
+      "detail": "No eligible context-bound freeze or final evaluation exists."
+    },
+    {
+      "code": "METADATA_CONFLICTS_REQUIRE_REVIEW",
+      "detail": "2 official HTML type conflicts; selected official image values retained for review."
+    },
+    {
+      "code": "PRINTED_MECHANICS_UNIMPLEMENTED",
+      "detail": "69 printed-text units lack complete handlers; this is not an interaction branch count."
+    }
+  ],
+  "source_checks": [
+    {
+      "card_number": "BT11-023",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "8a0641a7b790f34271ee55cfac8b183f29ce2f546bfd62b704069952e5001e23"
+    },
+    {
+      "card_number": "BT11-032",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "82c0b74c599cb27d0784d93959057b2504e97c4e593af5ee0a0fce51db30d50e"
+    },
+    {
+      "card_number": "BT11-112",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc"
+    },
+    {
+      "card_number": "BT12-029",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "4815904431fc1ad0c54a6185aa3269fe75b844cae57da5dc68b72eca0654d505"
+    },
+    {
+      "card_number": "BT20-102",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "6769bd16a111b682dc8f9a27fb5ea0e5a4438a6822e160c79575f480fcd8519b"
+    },
+    {
+      "card_number": "BT22-022",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "b2bc45d6d74a4c8a9569094c25bcc7ffe10e179b4891341dd2187298a0346c85"
+    },
+    {
+      "card_number": "BT22-023",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "a184df26a6bd8c5ccaed325998c9b85a18c0c2d5c0778a20993fd2d6a01e67dd"
+    },
+    {
+      "card_number": "BT22-085",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "a453871077f17613ac9b1d52bbe3065509f2d0fd75ff8d2e040aa3658d3435f1"
+    },
+    {
+      "card_number": "EX1-013",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "df126caa2ee95d5f7b86008ef828291645d15204c177801eb2f73404d0611f38"
+    },
+    {
+      "card_number": "EX13-002",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "9d2abc2c3a5f20aebefbcb5b89818a4559748ddbde4e20f92562092b7267cd4f"
+    },
+    {
+      "card_number": "EX13-017",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "2aa137a4f5c18f878139b6021a274f44a1ad001b0a952390ef6690031e5e77d4"
+    },
+    {
+      "card_number": "EX13-019",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "0e9158139b3c4d46987c85a968f40469743a76892cba86227871ed897b1e4d5a"
+    },
+    {
+      "card_number": "EX13-022",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "4771e6eab5218e833eebf7d1ff6cf70ad6fa51a51d556f8a404ac88f07256874"
+    },
+    {
+      "card_number": "EX13-023",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "3d50f704648b02667258fceb3f3675a80141599f76ca4ad1beeb3069d8fad7aa"
+    },
+    {
+      "card_number": "EX13-069",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7"
+    },
+    {
+      "card_number": "LM-028",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "add30c8ec48a6972ae26bc56af14b6faaab06af29d1b032151662b8e3723c0ee"
+    },
+    {
+      "card_number": "LM-034",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "2917e45cc7c729ffe78ae583a7c4f4b12778a51e9c8d68b25dd532f5b96c10f1"
+    },
+    {
+      "card_number": "LM-056",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "de0eb9e7c894f8e66217296f511b004d540f5ba030c8cb8c961c53b4bf7ec0dd"
+    },
+    {
+      "card_number": "LM-057",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "fa76304967284b7ac49ef134942e3d9bb68ed6bcb58379d796f5d1e695e13fc8"
+    },
+    {
+      "card_number": "LM-058",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "a1c4562d78bdc5ca50a66fdeea057570c0324319f7900e7d2fcb008de4c12de7"
+    },
+    {
+      "card_number": "P-104",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "912bf92380c5be9e6f52fcb21cd997c53010023981328e80c0617348180cf5ec"
+    },
+    {
+      "card_number": "P-138",
+      "status": "HASH_MATCHED_NOT_JUDGE_CERTIFIED",
+      "sha256": "61d9574f6132911aa54a8e75990a0c829ef424521b26b97fbaca62be9f456354"
+    }
+  ],
+  "metadata_conflicts": [
+    {
+      "card_number": "LM-028",
+      "basis": "Official PNG visibly labels the card OPTION; visual inspection 2026-10-30, pending independent review",
+      "field": "type",
+      "image_file": "RULES/matchups/123129-vs-124303/sources/LM-028.png",
+      "image_sha256": "f26e919328151f9ee595ea160a2949274ca1d30eb4ae6e0dacde5aef78460c8e",
+      "official_html_value": "Digimon",
+      "official_image_value": "Option",
+      "selected_value": "Option"
+    },
+    {
+      "card_number": "LM-034",
+      "basis": "Official PNG visibly labels the card OPTION; visual inspection 2026-10-30, pending independent review",
+      "field": "type",
+      "image_file": "RULES/matchups/123129-vs-124303/sources/LM-034.png",
+      "image_sha256": "dfcf39cb2e036a148e9438ea00699f9909d0b93b07c72239822fd0f2cf2868a9",
+      "official_html_value": "Digimon",
+      "official_image_value": "Option",
+      "selected_value": "Option"
+    }
+  ],
+  "experimental_packs": [
+    {
+      "card_number": "BT11-023",
+      "effect_id": "BT11-023.on_play_search",
+      "field": "main_text",
+      "definition_sha256": "2b087e49a70979928e01b0527f9ce8533b55114ae4323024f62e643b90108fa9",
+      "text_sha256": "eaf039c560f9917919495012c005bdb9d7896b70dc51389e8973f57f55dd9116",
+      "evidence": [
+        {
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-023",
+          "sha256": "8a0641a7b790f34271ee55cfac8b183f29ce2f546bfd62b704069952e5001e23",
+          "locator": "#BT11-023 On Play search; Q2066/Q2067"
+        },
+        {
+          "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918",
+          "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+          "locator": "Comprehensive rules v4.3: 4-13; 15-3; 15-4; 15-14-1; memory cap 1-4-2"
+        }
+      ],
+      "handler": "search_effects.resolve_search",
+      "handler_module_sha256": "a9b50a9f6107908087577a85e31551b9f60b8f1277a4d6c563cf16a6d540e10f",
+      "status": "EXPERIMENTAL_UNREVIEWED"
+    },
+    {
+      "card_number": "BT22-023",
+      "effect_id": "BT22-023.inherited_unsuspend",
+      "field": "inherited_text",
+      "definition_sha256": "65bfa05c9838899ee391c5168eff33a01cbabfc29e6611b08b8cb3b280715c85",
+      "text_sha256": "d2e0bec9e0d5844c51a811cfd8bb8dce59e221516ae059a2e91e9cb86df9f05e",
+      "evidence": [
+        {
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-023",
+          "sha256": "a184df26a6bd8c5ccaed325998c9b85a18c0c2d5c0778a20993fd2d6a01e67dd",
+          "locator": "#BT22-023 inherited_text; EX1-013 Q3203 / EX13-023 Q7266-Q7269 where applicable"
+        },
+        {
+          "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918",
+          "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+          "locator": "Comprehensive rules v4.3: 4-13; 15-3; 15-4; 15-14-1; memory cap 1-4-2"
+        }
+      ],
+      "handler": "selected_mechanics.resolve_inherited_unsuspend",
+      "handler_module_sha256": "9ffd6e72b0c296d49d499b7ebc96c8be6b197b87fab16d4070b5c2dbd29dacc4",
+      "status": "EXPERIMENTAL_UNREVIEWED"
+    },
+    {
+      "card_number": "BT22-085",
+      "effect_id": "BT22-085.start_turn_memory",
+      "field": "main_text",
+      "definition_sha256": "0ee717dcea67941da0ddb2ce508660441d7feaf589e4fe983f942a4cfcaed610",
+      "text_sha256": "ba67f6d8451b9ff86a1d54ee49b61d04f1a2c5415fc91455e109d226d964fd8c",
+      "evidence": [
+        {
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-085",
+          "sha256": "a453871077f17613ac9b1d52bbe3065509f2d0fd75ff8d2e040aa3658d3435f1",
+          "locator": "#BT22-085 main_text; EX1-013 Q3203 / EX13-023 Q7266-Q7269 where applicable"
+        },
+        {
+          "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918",
+          "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+          "locator": "Comprehensive rules v4.3: 4-13; 15-3; 15-4; 15-14-1; memory cap 1-4-2"
+        }
+      ],
+      "handler": "selected_mechanics.resolve_phase_memory",
+      "handler_module_sha256": "9ffd6e72b0c296d49d499b7ebc96c8be6b197b87fab16d4070b5c2dbd29dacc4",
+      "status": "EXPERIMENTAL_UNREVIEWED"
+    },
+    {
+      "card_number": "EX1-013",
+      "effect_id": "EX1-013.unsuspend_memory",
+      "field": "inherited_text",
+      "definition_sha256": "1f8d254a3e180ff961836b2ccf2217cdd7fa207e58ddef3b8c03ba9279e73b41",
+      "text_sha256": "05b3602207642d19ff3fec9a6d355ae5b20376be0c82d1481eed9e37530d5cd2",
+      "evidence": [
+        {
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX1-013",
+          "sha256": "df126caa2ee95d5f7b86008ef828291645d15204c177801eb2f73404d0611f38",
+          "locator": "#EX1-013 inherited_text; EX1-013 Q3203 / EX13-023 Q7266-Q7269 where applicable"
+        },
+        {
+          "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918",
+          "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+          "locator": "Comprehensive rules v4.3: 4-13; 15-3; 15-4; 15-14-1; memory cap 1-4-2"
+        }
+      ],
+      "handler": "selected_mechanics.resolve_unsuspend_memory",
+      "handler_module_sha256": "9ffd6e72b0c296d49d499b7ebc96c8be6b197b87fab16d4070b5c2dbd29dacc4",
+      "status": "EXPERIMENTAL_UNREVIEWED"
+    },
+    {
+      "card_number": "EX13-017",
+      "effect_id": "EX13-017.on_play_search",
+      "field": "main_text",
+      "definition_sha256": "e229e194366d133c0e35c8bd6773046a78c8b039e4f0185af79ef92a426d7d23",
+      "text_sha256": "fedb3c4fcf6cc236e878f6256fa6af283f0dcd61bee4892df443a22338cbc699",
+      "evidence": [
+        {
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-017",
+          "sha256": "2aa137a4f5c18f878139b6021a274f44a1ad001b0a952390ef6690031e5e77d4",
+          "locator": "#EX13-017 On Play search; Q7255 (printed-text definition)"
+        },
+        {
+          "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918",
+          "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+          "locator": "Comprehensive rules v4.3: 4-13; 15-3; 15-4; 15-14-1; memory cap 1-4-2"
+        }
+      ],
+      "handler": "search_effects.resolve_search",
+      "handler_module_sha256": "a9b50a9f6107908087577a85e31551b9f60b8f1277a4d6c563cf16a6d540e10f",
+      "status": "EXPERIMENTAL_UNREVIEWED"
+    },
+    {
+      "card_number": "EX13-022",
+      "effect_id": "EX13-022.inherited_unsuspend",
+      "field": "inherited_text",
+      "definition_sha256": "73cef4900ac35284738c7c875f69d7b18858c481f844ca920dce86b0d2907daf",
+      "text_sha256": "d68cacb2a158cb7d5070276b47b97b087b9d68000440246938a2d7e1f55c0047",
+      "evidence": [
+        {
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-022",
+          "sha256": "4771e6eab5218e833eebf7d1ff6cf70ad6fa51a51d556f8a404ac88f07256874",
+          "locator": "#EX13-022 inherited_text; EX1-013 Q3203 / EX13-023 Q7266-Q7269 where applicable"
+        },
+        {
+          "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918",
+          "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+          "locator": "Comprehensive rules v4.3: 4-13; 15-3; 15-4; 15-14-1; memory cap 1-4-2"
+        }
+      ],
+      "handler": "selected_mechanics.resolve_inherited_unsuspend",
+      "handler_module_sha256": "9ffd6e72b0c296d49d499b7ebc96c8be6b197b87fab16d4070b5c2dbd29dacc4",
+      "status": "EXPERIMENTAL_UNREVIEWED"
+    },
+    {
+      "card_number": "EX13-023",
+      "effect_id": "EX13-023.orientation",
+      "field": "main_text",
+      "definition_sha256": "c48862dfc84e4a5b95894cba382266a6056efb8f3f46569f89ac25a11d62e50d",
+      "text_sha256": "e2e1246acff0aa28438ee4fe0d86591b5518c0e8690a85a94df8f3eff73bd774",
+      "evidence": [
+        {
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-023",
+          "sha256": "3d50f704648b02667258fceb3f3675a80141599f76ca4ad1beeb3069d8fad7aa",
+          "locator": "#EX13-023 main_text; EX1-013 Q3203 / EX13-023 Q7266-Q7269 where applicable"
+        },
+        {
+          "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918",
+          "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+          "locator": "Comprehensive rules v4.3: 4-13; 15-3; 15-4; 15-14-1; memory cap 1-4-2"
+        }
+      ],
+      "handler": "selected_mechanics.resolve_orientation",
+      "handler_module_sha256": "9ffd6e72b0c296d49d499b7ebc96c8be6b197b87fab16d4070b5c2dbd29dacc4",
+      "status": "EXPERIMENTAL_UNREVIEWED"
+    },
+    {
+      "card_number": "EX13-069",
+      "effect_id": "EX13-069.start_main_memory",
+      "field": "main_text",
+      "definition_sha256": "7e809aee6060bde481cd5c0bd917ddbaa2528babe63ee8e319d293835f09d31e",
+      "text_sha256": "e217432cf0245199c31bb143c2acceecdff2f298f5b01a8ddf8e62e06db403da",
+      "evidence": [
+        {
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-069",
+          "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7",
+          "locator": "#EX13-069 main_text; EX1-013 Q3203 / EX13-023 Q7266-Q7269 where applicable"
+        },
+        {
+          "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918",
+          "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+          "locator": "Comprehensive rules v4.3: 4-13; 15-3; 15-4; 15-14-1; memory cap 1-4-2"
+        }
+      ],
+      "handler": "selected_mechanics.resolve_phase_memory",
+      "handler_module_sha256": "9ffd6e72b0c296d49d499b7ebc96c8be6b197b87fab16d4070b5c2dbd29dacc4",
+      "status": "EXPERIMENTAL_UNREVIEWED"
+    },
+    {
+      "card_number": "P-138",
+      "effect_id": "P-138.on_play_search",
+      "field": "main_text",
+      "definition_sha256": "5e6a9dd5c48e23e360714e7256657b8d6a5353992168739f796829648f453158",
+      "text_sha256": "10175576cd0f2ff14e7bb5a0440dd4cf3f7f0501df8f287f57c8f6004cb91d01",
+      "evidence": [
+        {
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=P-138",
+          "sha256": "61d9574f6132911aa54a8e75990a0c829ef424521b26b97fbaca62be9f456354",
+          "locator": "#P-138 On Play search; Q4244/Q4245"
+        },
+        {
+          "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918",
+          "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+          "locator": "Comprehensive rules v4.3: 4-13; 15-3; 15-4; 15-14-1; memory cap 1-4-2"
+        }
+      ],
+      "handler": "search_effects.resolve_search",
+      "handler_module_sha256": "a9b50a9f6107908087577a85e31551b9f60b8f1277a4d6c563cf16a6d540e10f",
+      "status": "EXPERIMENTAL_UNREVIEWED"
+    },
+    {
+      "card_number": "P-138",
+      "effect_id": "P-138.unsuspend_memory",
+      "field": "inherited_text",
+      "definition_sha256": "5e6a9dd5c48e23e360714e7256657b8d6a5353992168739f796829648f453158",
+      "text_sha256": "b9725cd696f8d10dc225b2e88ec02b7b4fabcf0c1f88c54f0a4f1e7581bd6266",
+      "evidence": [
+        {
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=P-138",
+          "sha256": "61d9574f6132911aa54a8e75990a0c829ef424521b26b97fbaca62be9f456354",
+          "locator": "#P-138 inherited_text; EX1-013 Q3203 / EX13-023 Q7266-Q7269 where applicable"
+        },
+        {
+          "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918",
+          "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+          "locator": "Comprehensive rules v4.3: 4-13; 15-3; 15-4; 15-14-1; memory cap 1-4-2"
+        }
+      ],
+      "handler": "selected_mechanics.resolve_unsuspend_memory",
+      "handler_module_sha256": "9ffd6e72b0c296d49d499b7ebc96c8be6b197b87fab16d4070b5c2dbd29dacc4",
+      "status": "EXPERIMENTAL_UNREVIEWED"
+    }
+  ],
+  "printed_text_inventory": [
+    {
+      "card_number": "BT11-023",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "[On Play] Reveal the top 3 cards of your deck. Add 1 Digimon card with [Veedramon] in its name and 1 blue Tamer card among them to your hand. Place the rest at the bottom of your deck in any order.",
+      "text_sha256": "eaf039c560f9917919495012c005bdb9d7896b70dc51389e8973f57f55dd9116",
+      "software_handler": "BT11-023.on_play_search",
+      "status": "EXPERIMENTAL_UNREVIEWED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT11-023",
+      "field": "inherited_text",
+      "line_index": 0,
+      "printed_text": "[Your Turn][Once Per Turn] When you play a blue Tamer, gain 1 memory.",
+      "text_sha256": "ce60a23e93771f9d72146c0154ac3a55e2041dbf5550414859363aacfa8fe30b",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT11-032",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "[When Digivolving] You may play 1 blue Tamer card from your hand without paying the cost.",
+      "text_sha256": "0487942733a3d58bbb97044015e7cf8ca243864484524614440d1c91195ac14a",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT11-032",
+      "field": "main_text",
+      "line_index": 1,
+      "printed_text": "[Your Turn] When you play a blue Tamer, unsuspend this Digimon.",
+      "text_sha256": "440fe06be042221bf953de2a87dad5d7066d7e87156b9bb491314b3010ce3d55",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT11-032",
+      "field": "main_text",
+      "line_index": 2,
+      "printed_text": "[Your Turn][Once Per Turn] When this Digimon becomes unsuspended, return 1 of your opponent's level 3 or lower Digimon to its owner's hand. For every blue Tamer you have in play, add 1 to the max level of the Digimon you can choose with this effect.",
+      "text_sha256": "0500aa5e820927cb0ba2035b5e9fcbd7941bfa6d45c7a8ec8446b2ad4418a30f",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT11-112",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "[On Play] Until the end of your opponent's turn, 1 of your Digimon with [Veemon] or [Veedramon] in its name gains ＜Blocker＞ and ＜Evade＞.",
+      "text_sha256": "67cbf14f5d9316b0942358a788d8662d20d0e90a0818ee7de72fb5cf77d2c8bc",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT11-112",
+      "field": "main_text",
+      "line_index": 1,
+      "printed_text": "[All Turns] When one of your Digimon with [Veedramon] in its name becomes suspended, by suspending this Tamer, activate 1 of that Digimon's [When Digivolving] effects.",
+      "text_sha256": "38739f2b0a203b04897bd509053334d404bfdf7947f84d1e779406d34bc5d67b",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT11-112",
+      "field": "main_text",
+      "line_index": 2,
+      "printed_text": "[Your Turn][Once Per Turn] When one of your blue Digimon becomes unsuspended, gain 1 memory.",
+      "text_sha256": "de88b2ffe36c503546cb08a87c700f4a14dfb5f8b41cf90ef23c7a1f79ff5740",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT11-112",
+      "field": "security_text",
+      "line_index": 0,
+      "printed_text": "[Security] Play this card without paying its memory cost.",
+      "text_sha256": "6f9b27230f327f806bfe1bb869af2cc0888a3d2e051aeeec843a3926a70046d2",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT12-029",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "[When Digivolving] Unsuspend this Digimon or 1 of your blue Tamers.",
+      "text_sha256": "c01b9525bc9b8bf1a2fea436b55a4c6cbe5b68e800a0046789df3823d0688199",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT12-029",
+      "field": "main_text",
+      "line_index": 1,
+      "printed_text": "[All Turns][Once Per Turn] When this Digimon becomes unsuspended, if you have a blue Tamer in play or this Digimon has [UlforceVeedramon] in its digivolution cards, return 1 of your opponent’s Digimon with the lowest level to its owner’s hand.",
+      "text_sha256": "f62d290ca58a9858430a9e2ff6d0c094bfb9691bcff52de4dccdc7f3e1257adc",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT12-029",
+      "field": "[Special Digivolution Condition]",
+      "printed_text": "[Digivolve] 1 from [UlforceVeedramon]",
+      "text_sha256": "2bdffdacd44e769149e67b29073003387f8695ac035f8981d8654b3ce27db0bc",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT20-102",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "＜Raid＞ ＜Piercing＞ ＜Blocker＞",
+      "text_sha256": "30d86f4563a4689f96ddd4f08918ef01b219d482da65119c52f1f7a4f969c314",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT20-102",
+      "field": "main_text",
+      "line_index": 1,
+      "printed_text": "[On Play] [When Digivolving] If [Omnimon] or [X Antibody] is in this Digimon's digivolution cards, choose 1 of both players' Digimon and delete all other Digimon. Then, return 1 of your opponent's Digimon to the bottom of the deck.",
+      "text_sha256": "0b15ae8a0e2eadd8f419b2cd1f34dd5dd283f0d863d70584e155f37b495ccf8a",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT20-102",
+      "field": "main_text",
+      "line_index": 2,
+      "printed_text": "[End of Your Turn] [Once Per Turn] 1 of your Digimon may gain ＜Rush＞ for the turn and attack without suspending.",
+      "text_sha256": "207d1c24e94ac3a43fadd6497568ba896f5d218f3f6821235efd91a3451d0d88",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT20-102",
+      "field": "[Special Digivolution Condition]",
+      "printed_text": "[Digivolve] [Omnimon]: Cost 2",
+      "text_sha256": "4e3466c4bf1ea941956cc2b231d18417df221a1720e6f5a15bbf080baed699d1",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT22-022",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "[When Digivolving] If you have 1 or fewer Tamers, you may play 1 Tamer card with [Veedramon] in its text from your hand without paying the cost.",
+      "text_sha256": "2db9c211de9be89122a0e065de924c22f67fe3a52a60346de70f97c4b21fb928",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT22-022",
+      "field": "inherited_text",
+      "line_index": 0,
+      "printed_text": "[All Turns] [Once Per Turn] When this Digimon with [Veedramon] in its name would leave the battle area by your opponent's effects, by suspending this Digimon, it doesn't leave.",
+      "text_sha256": "a07ba43e90226d2fbceab08126df95eb75d26df27ef894d2c2304dbfe96fda1e",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT22-022",
+      "field": "[Special Digivolution Condition]",
+      "printed_text": "[Digivolve] Lv.3 w/[CS] trait: Cost 2",
+      "text_sha256": "efc6c83d466c043e6a3d58bf2d806999c188b4a3e7796007913632bb7e842574",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT22-023",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "[On Play] [When Digivolving] Return 1 of your opponent's level 4 or lower Digimon to the bottom of the deck.",
+      "text_sha256": "956f6a0991ab936b7c98407f35f3b05e8e1ccf7218396c0771066f76306c9b50",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT22-023",
+      "field": "main_text",
+      "line_index": 1,
+      "printed_text": "[End of Your Turn] [Once Per Turn] 1 of your blue Digimon or Tamers may unsuspend.",
+      "text_sha256": "4a488c776e6ae5be567d739104ae5fcf3cd033f69810fea14fdbb1ba7042cc30",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT22-023",
+      "field": "inherited_text",
+      "line_index": 0,
+      "printed_text": "[All Turns] [Once Per Turn] When this Digimon with [Veedramon] in its name suspends, if you have a blue Tamer, this Digimon may unsuspend.",
+      "text_sha256": "d2e0bec9e0d5844c51a811cfd8bb8dce59e221516ae059a2e91e9cb86df9f05e",
+      "software_handler": "BT22-023.inherited_unsuspend",
+      "status": "EXPERIMENTAL_UNREVIEWED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT22-023",
+      "field": "[Special Digivolution Condition]",
+      "printed_text": "[Digivolve] Lv.4 w/[CS] trait: Cost 3",
+      "text_sha256": "5ff57acf05c25b6a562da7b76896defe5082790c914743584a7d5030c171dbd8",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT22-085",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "[Start of Your Turn] If you have 2 or less memory, set it to 3.",
+      "text_sha256": "b282569badc8e3178a8fd6f2e9fbbd3b5bfb84e9f8f17f176811beff14a72f8a",
+      "software_handler": "BT22-085.start_turn_memory",
+      "status": "EXPERIMENTAL_UNREVIEWED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT22-085",
+      "field": "main_text",
+      "line_index": 1,
+      "printed_text": "[On Play] 1 of your Digimon with [Veedramon] in its name gets +3000 DP until your opponent's turn ends.",
+      "text_sha256": "1f9d3a90e6da76f31cd2ea9c991c6bf26fcf81dbd523ac14563ca48fcc1f019e",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT22-085",
+      "field": "main_text",
+      "line_index": 2,
+      "printed_text": "[Your Turn] When one of your Digimon with [Veedramon] in its name attacks, by returning this Tamer to the hand, that Digimon gains ＜Jamming＞ for the turn.",
+      "text_sha256": "c976e7cc8c2156baeada2b4ae1a6de5167a0c600b79053a13bfb44f6096ae87a",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "BT22-085",
+      "field": "security_text",
+      "line_index": 0,
+      "printed_text": "[Security] Play this card without paying the cost.",
+      "text_sha256": "1f2cdcf68cb7a804f5c5b0f7a1ab8860f835124620f66d83337346b45d95f852",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX1-013",
+      "field": "inherited_text",
+      "line_index": 0,
+      "printed_text": "[Your Turn][Once Per Turn] When this Digimon becomes unsuspended during your main phase, gain 1 memory.",
+      "text_sha256": "05b3602207642d19ff3fec9a6d355ae5b20376be0c82d1481eed9e37530d5cd2",
+      "software_handler": "EX1-013.unsuspend_memory",
+      "status": "EXPERIMENTAL_UNREVIEWED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-002",
+      "field": "inherited_text",
+      "line_index": 0,
+      "printed_text": "[Your Turn] [Once Per Turn] When any of your blue Tamers are played, this Digimon with [Veedramon] in its name may unsuspend.",
+      "text_sha256": "5892db9e9c2359dbeb5eeaa00d931b580b9b959e655e6cbab033acc1dce8e795",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-017",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "[When Moving] [On Play] Reveal the top 3 cards of your deck. Add 1 card with [Veedramon] in its text or the [Royal Knight] trait among them to the hand. Return the rest to the bottom of the deck.",
+      "text_sha256": "fedb3c4fcf6cc236e878f6256fa6af283f0dcd61bee4892df443a22338cbc699",
+      "software_handler": "EX13-017.on_play_search",
+      "status": "EXPERIMENTAL_UNREVIEWED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-017",
+      "field": "inherited_text",
+      "line_index": 0,
+      "printed_text": "[All Turns] [Once Per Turn] When this Digimon with [Veedramon] in its name would leave the battle area by your opponent's effects, by suspending it, it doesn't leave.",
+      "text_sha256": "3a5565d1f26dc3b2c7a6762dd23785309734bfef04d1ff360ac2b0e9182c696a",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-017",
+      "field": "[Special Digivolution Condition]",
+      "printed_text": "[Digivolve] Lv.2 w/[CS] trait: Cost 0",
+      "text_sha256": "57da81c570f45f6706dbd03c2ac9c54a839e8fc5dfe485e203341d96c0a59cca",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-019",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "＜Jamming＞",
+      "text_sha256": "ba1aa83dbf907dbd45ad7c368a58ea7abf0d7307cf1970b11193eba703ea58ba",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-019",
+      "field": "main_text",
+      "line_index": 1,
+      "printed_text": "[When Attacking] [Once Per Turn] You may play 1 Tamer card with [Veedramon] in its text from your hand with the cost reduced by 2.",
+      "text_sha256": "f02f1cadd148395788b60e1da0dc08c41ff5f01ec720653ffc8501acab832d53",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-019",
+      "field": "inherited_text",
+      "line_index": 0,
+      "printed_text": "＜Jamming＞ (This Digimon can't be deleted in battles against Security Digimon.)",
+      "text_sha256": "acc7e9818a7b1bc8a21592abfb363ea7c02ecfc76b2657533a27f0220d812dea",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-019",
+      "field": "[Special Digivolution Condition]",
+      "printed_text": "[Digivolve] Lv.3 w/[CS] trait: Cost 2",
+      "text_sha256": "efc6c83d466c043e6a3d58bf2d806999c188b4a3e7796007913632bb7e842574",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-022",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "[On Play] [When Digivolving] [When Attacking] [Once Per Turn] You may play 1 Tamer card with [Veedramon] in its text from your hand without paying the cost.",
+      "text_sha256": "064eec9fc9b21a8c6643e8be07d4cceff8fae52ea865adc837f97c10551b18c0",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-022",
+      "field": "main_text",
+      "line_index": 1,
+      "printed_text": "[All Turns] [Once Per Turn] When any of your Tamers are played, 1 of your opponent's Digimon or Tamers can't suspend until their turn ends.",
+      "text_sha256": "7f2999c579554117f916bc4976aabeb5c04f47cc44168d62b887eaec980520ba",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-022",
+      "field": "inherited_text",
+      "line_index": 0,
+      "printed_text": "[All Turns] [Once Per Turn] When this Digimon with [Veedramon] in its name suspends, it may unsuspend.",
+      "text_sha256": "d68cacb2a158cb7d5070276b47b97b087b9d68000440246938a2d7e1f55c0047",
+      "software_handler": "EX13-022.inherited_unsuspend",
+      "status": "EXPERIMENTAL_UNREVIEWED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-022",
+      "field": "[Special Digivolution Condition]",
+      "printed_text": "[Digivolve] Lv.4 w/[CS] trait: Cost 3",
+      "text_sha256": "5ff57acf05c25b6a562da7b76896defe5082790c914743584a7d5030c171dbd8",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-023",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "＜Blocker＞ ＜Evade＞",
+      "text_sha256": "4adafb5185d7a3681fd895f23ce8a47457fe0763b16dd61a05240e3b54cd20b2",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-023",
+      "field": "main_text",
+      "line_index": 1,
+      "printed_text": "[On Play] [When Digivolving] [When Attacking] [Once Per Turn] 1 of your Digimon may change orientation.",
+      "text_sha256": "acc6ba2694ed6dd471b7889b45e7b2b38fe45202479f7e81870ea30d13c0f108",
+      "software_handler": "EX13-023.orientation",
+      "status": "EXPERIMENTAL_UNREVIEWED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-023",
+      "field": "main_text",
+      "line_index": 2,
+      "printed_text": "[On Play] [When Digivolving] You may return all of your opponent's Digimon with the fewest digivolution cards to the bottom of the deck.",
+      "text_sha256": "9a8434839438fc2d2c3e1c56c093329b7a43c3f6a98f70598d632ed2042142eb",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-023",
+      "field": "main_text",
+      "line_index": 3,
+      "printed_text": "[All Turns] Your opponent's effects can't reduce this unsuspended Digimon's DP, return its stacked cards to the hand or deck, or trash them.",
+      "text_sha256": "d9bb6f3f3033e543c3643918aa895f3db922e05ae949c2e7269c2c6fcaa564ac",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-023",
+      "field": "[Special Digivolution Condition]",
+      "printed_text": "[Digivolve] Lv.5 w/[CS] trait: Cost 3",
+      "text_sha256": "7097f3a49dd8460071e6ccb9912f60292ba6efde8f8f7dc60969baed25b72e82",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-023",
+      "field": "[Special Play Condition]",
+      "printed_text": "Assembly -5: Lv.5 × Lv.4 × Lv.3, all w/[Veemon]/[Veedramon] in name",
+      "text_sha256": "b1e35bb573428874269651e6f4437c2bdbf9c0d4ea31a7739b0e82b2b0b1262c",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-069",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "[Start of Your Main Phase] If you have a Digimon with [Veemon] or [Veedramon] in its name, gain 1 memory.",
+      "text_sha256": "74a2fc2856b44da2acedaa97eada9d837ec21daee313c4105e188b5396dcfe6e",
+      "software_handler": "EX13-069.start_main_memory",
+      "status": "EXPERIMENTAL_UNREVIEWED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-069",
+      "field": "main_text",
+      "line_index": 1,
+      "printed_text": "[Your Turn] When any of your Digimon unsuspend, by suspending this Tamer, ＜Draw 1＞. After, 1 of your Digimon may digivolve into a Digimon card with [Veedramon] in its name in the hand with the cost reduced by 2.",
+      "text_sha256": "404fd80020ec76b597e486981910e3d56aeef0e7d05177bc139dbdc1b9614a52",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "EX13-069",
+      "field": "security_text",
+      "line_index": 0,
+      "printed_text": "[Security] Play this card without paying the cost.",
+      "text_sha256": "1f2cdcf68cb7a804f5c5b0f7a1ab8860f835124620f66d83337346b45d95f852",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-028",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "[Main] 1 of your blue Digimon may digivolve into a blue Digimon card in the hand with the digivolution cost reduced by 3. Then, place this card in the battle area.",
+      "text_sha256": "5a2d3d818d3351978fd7eeb0c4b180838ddc93e85fc842ceff71c8f0865a5d30",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-028",
+      "field": "main_text",
+      "line_index": 1,
+      "printed_text": "[Start of Your Turn] If your opponent has a Digimon, ＜Delay＞.",
+      "text_sha256": "fa054044b949b24e6a6fee302bda6f5bccc28036bdc86a65259693ee252ae287",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-028",
+      "field": "main_text",
+      "line_index": 2,
+      "printed_text": "・Return 1 blue Digimon card from your trash to the top of the deck. Then, if you don't have a Digimon, you may play 1 blue Digimon card with 2000 DP or less from your trash without paying the cost.",
+      "text_sha256": "2545f6a4b2dae3e3488295c51cba9d92d07a0befec76dfa1cdbbd52b90246481",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-028",
+      "field": "security_text",
+      "line_index": 0,
+      "printed_text": "[Security] You may play 1 blue Digimon card with 2000 DP or less from your trash without paying the cost. Then, add this card to the hand.",
+      "text_sha256": "b9ae4c4b71f8362b741d8a58b713530a5c9e4851ed7d76a25c1641b9dffb511f",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-034",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "Red also meets this card's color requirements.",
+      "text_sha256": "f540aa91318881b85cc738c157287bfef71c047d01ee5f5f8652623c7a839e90",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-034",
+      "field": "main_text",
+      "line_index": 1,
+      "printed_text": "[Main] Reveal the top 3 cards of your deck. Add 1 blue or red Digimon card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.",
+      "text_sha256": "1b04c128ecce111925657243605432875395379ec94328ad61c57c0faa02aa5a",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-034",
+      "field": "main_text",
+      "line_index": 2,
+      "printed_text": "[Main] ＜Delay＞",
+      "text_sha256": "1fba85aaa94e99be6951ea45bc3fffb69f5c23e59415dbc2d4c3777608210710",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-034",
+      "field": "main_text",
+      "line_index": 3,
+      "printed_text": "・Gain 2 memory.",
+      "text_sha256": "0c6a29372e24ee0e0b4cd14f4861e2144d4d69f9935109cfb497cb94e55b9af4",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-034",
+      "field": "security_text",
+      "line_index": 0,
+      "printed_text": "[Security] Place this card in the battle area.",
+      "text_sha256": "36f0ce447586ccc43aa3a1d11e7a8c00a7fecc4bec45bec612d6bab59e6906a7",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-056",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "While you don't have [Image Training] in the battle area, you can ignore this card's color requirements.",
+      "text_sha256": "19d0b6645c9ce387a646f7124d8668519b6fcadce2ed2ddb3a40271760ebd581",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-056",
+      "field": "main_text",
+      "line_index": 1,
+      "printed_text": "[Main] Reveal the top 2 cards of your deck. Add 1 purple or blue card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.",
+      "text_sha256": "804c3b52811d52948688d48995388b0e8e0cd4e50a173f0ff555a706af2f6de3",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-056",
+      "field": "main_text",
+      "line_index": 2,
+      "printed_text": "[Main] ＜Delay＞",
+      "text_sha256": "1fba85aaa94e99be6951ea45bc3fffb69f5c23e59415dbc2d4c3777608210710",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-056",
+      "field": "main_text",
+      "line_index": 3,
+      "printed_text": "・1 of your Digimon may digivolve into a purple or blue Digimon card in the hand with the digivolution cost reduced by 2.",
+      "text_sha256": "72ac942ab0318662f51ba78f16c8d43c6886c9d22b193fd1ce9d331ec8b10ae0",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-056",
+      "field": "security_text",
+      "line_index": 0,
+      "printed_text": "[Security] Reveal the top 2 cards of your deck. Add 1 purple or blue card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.",
+      "text_sha256": "2cb07d0599207efc52d933257548bf3215adb034f197c085eb7389c87eed8f42",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-057",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "While you don't have [Wall Training] in the battle area, you can ignore this card's color requirements.",
+      "text_sha256": "4fd88969f56a23c377d6d5524a82f629a94d2e3ff34540eb690075430fdd6f12",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-057",
+      "field": "main_text",
+      "line_index": 1,
+      "printed_text": "[Main] Reveal the top 2 cards of your deck. Add 1 red or blue card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.",
+      "text_sha256": "f696fa5808aaba92feb8ffe645aff12d1c4c922ea44b2ae09d3889f134268682",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-057",
+      "field": "main_text",
+      "line_index": 2,
+      "printed_text": "[Main] ＜Delay＞",
+      "text_sha256": "1fba85aaa94e99be6951ea45bc3fffb69f5c23e59415dbc2d4c3777608210710",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-057",
+      "field": "main_text",
+      "line_index": 3,
+      "printed_text": "・1 of your Digimon may digivolve into a red or blue Digimon card in the hand with the cost reduced by 2.",
+      "text_sha256": "d23d9dc020bb8ebed93e011520de180b4c58369a04783d4fd30217e59e003538",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-057",
+      "field": "security_text",
+      "line_index": 0,
+      "printed_text": "[Security] Reveal the top 2 cards of your deck. Add 1 red or blue card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.",
+      "text_sha256": "9129a005fa9fedfc7e8b3d78647fb7c030f687183f961c686ddb9c755b038c57",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-058",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "While you don't have [Parkour Training] in the battle area, you can ignore this card's color requirements.",
+      "text_sha256": "92505553193063997d36e4dc7d8a604ab2e89b9659ac9d54096bce8a72f2e3be",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-058",
+      "field": "main_text",
+      "line_index": 1,
+      "printed_text": "[Main] Reveal the top 2 cards of your deck. Add 1 blue or green card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.",
+      "text_sha256": "63e0517446d4665056526f99ac303d6d25a5bac1274b3fd53a224bdcf3b6e27f",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-058",
+      "field": "main_text",
+      "line_index": 2,
+      "printed_text": "[Main] ＜Delay＞",
+      "text_sha256": "1fba85aaa94e99be6951ea45bc3fffb69f5c23e59415dbc2d4c3777608210710",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-058",
+      "field": "main_text",
+      "line_index": 3,
+      "printed_text": "・1 of your Digimon may digivolve into a blue or green Digimon card in the hand with the cost reduced by 2.",
+      "text_sha256": "ec9e70c39a19fd608caf357ef4af80b63cbbf584245391936ce4c62fd919e7a6",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "LM-058",
+      "field": "security_text",
+      "line_index": 0,
+      "printed_text": "[Security] Reveal the top 2 cards of your deck. Add 1 blue or green card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.",
+      "text_sha256": "ed9233386b2c8645fb3de247910b63cbef814126cce1340fb4a83b8e2e0f53fd",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "P-104",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "[Main] Reveal the top 2 cards of your deck. Add 1 blue card among them to the hand. Return the rest to the bottom of the deck in any order. Then, place this card in the battle area.",
+      "text_sha256": "5ca6a006df1e9ed7e51f3e0f9fc76a083a479aff8519a6c08393a87a0c301f4c",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "P-104",
+      "field": "main_text",
+      "line_index": 1,
+      "printed_text": "[Main] ＜Delay＞",
+      "text_sha256": "1fba85aaa94e99be6951ea45bc3fffb69f5c23e59415dbc2d4c3777608210710",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "P-104",
+      "field": "main_text",
+      "line_index": 2,
+      "printed_text": "・1 of your Digimon may digivolve into a blue Digimon card in your hand for its digivolution cost. When it would digivolve by this effect, reduce the cost by 2.",
+      "text_sha256": "024902138c881b60bfc7be79cb85f524cabf910b7a8e2cd5c03ede28a25eb412",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "P-104",
+      "field": "security_text",
+      "line_index": 0,
+      "printed_text": "[Security] Place this card in the battle area.",
+      "text_sha256": "36f0ce447586ccc43aa3a1d11e7a8c00a7fecc4bec45bec612d6bab59e6906a7",
+      "software_handler": null,
+      "status": "UNIMPLEMENTED",
+      "judge_review": null
+    },
+    {
+      "card_number": "P-138",
+      "field": "main_text",
+      "line_index": 0,
+      "printed_text": "[On Play] [When Digivolving] Reveal the top 3 cards of your deck. Add 1 Digimon card with [Veedramon] in its name and 1 blue Tamer card among them to the hand. Return the rest to the bottom of the deck.",
+      "text_sha256": "10175576cd0f2ff14e7bb5a0440dd4cf3f7f0501df8f287f57c8f6004cb91d01",
+      "software_handler": "P-138.on_play_search",
+      "status": "EXPERIMENTAL_UNREVIEWED",
+      "judge_review": null
+    },
+    {
+      "card_number": "P-138",
+      "field": "inherited_text",
+      "line_index": 0,
+      "printed_text": "[Your Turn] [Once Per Turn] When this Digimon becomes unsuspended, gain 1 memory.",
+      "text_sha256": "b9725cd696f8d10dc225b2e88ec02b7b4fabcf0c1f88c54f0a4f1e7581bd6266",
+      "software_handler": "P-138.unsuspend_memory",
+      "status": "EXPERIMENTAL_UNREVIEWED",
+      "judge_review": null
+    }
+  ],
+  "printed_evolution_candidates": {
+    "A": [
+      {
+        "base": "BT11-023",
+        "target": "BT22-022",
+        "cost": 2,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 2 from Lv.3",
+        "definition_sha256": "024e9c9291e563b9559205619fd19560f627ba0a22973f21707b08b45aba8dad",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT11-023",
+        "target": "EX13-019",
+        "cost": 2,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 2 from Lv.3",
+        "definition_sha256": "ad54641a89c77e77f48729f22f91b646ca3045e2cabf048570351d415e4e7d67",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT11-023",
+        "target": "P-138",
+        "cost": 2,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 2 from Lv.3",
+        "definition_sha256": "5e6a9dd5c48e23e360714e7256657b8d6a5353992168739f796829648f453158",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT11-032",
+        "target": "BT12-029",
+        "cost": 1,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] 1 from [UlforceVeedramon]",
+        "definition_sha256": "58cbcd3ac04742aef5740cc244192e57c0ac20e220b2cfd9bf2abe2b9f6f348d",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT22-022",
+        "target": "BT22-023",
+        "cost": 3,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 3 from Lv.4",
+        "definition_sha256": "65bfa05c9838899ee391c5168eff33a01cbabfc29e6611b08b8cb3b280715c85",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT22-022",
+        "target": "BT22-023",
+        "cost": 3,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] Lv.4 w/[CS] trait: Cost 3",
+        "definition_sha256": "65bfa05c9838899ee391c5168eff33a01cbabfc29e6611b08b8cb3b280715c85",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT22-022",
+        "target": "EX13-022",
+        "cost": 3,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 3 from Lv.4",
+        "definition_sha256": "73cef4900ac35284738c7c875f69d7b18858c481f844ca920dce86b0d2907daf",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT22-022",
+        "target": "EX13-022",
+        "cost": 3,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] Lv.4 w/[CS] trait: Cost 3",
+        "definition_sha256": "73cef4900ac35284738c7c875f69d7b18858c481f844ca920dce86b0d2907daf",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT22-023",
+        "target": "BT11-032",
+        "cost": 4,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 4 from Lv.5",
+        "definition_sha256": "ff783d6b6371c763e5febbd614131de15f69a0293a7603b05f73a2b0c785ad5b",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT22-023",
+        "target": "BT12-029",
+        "cost": 4,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 4 from Lv.5",
+        "definition_sha256": "58cbcd3ac04742aef5740cc244192e57c0ac20e220b2cfd9bf2abe2b9f6f348d",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT22-023",
+        "target": "EX13-023",
+        "cost": 3,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 3 from Lv.5",
+        "definition_sha256": "c48862dfc84e4a5b95894cba382266a6056efb8f3f46569f89ac25a11d62e50d",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT22-023",
+        "target": "EX13-023",
+        "cost": 3,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] Lv.5 w/[CS] trait: Cost 3",
+        "definition_sha256": "c48862dfc84e4a5b95894cba382266a6056efb8f3f46569f89ac25a11d62e50d",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX1-013",
+        "target": "BT22-022",
+        "cost": 2,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 2 from Lv.3",
+        "definition_sha256": "024e9c9291e563b9559205619fd19560f627ba0a22973f21707b08b45aba8dad",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX1-013",
+        "target": "EX13-019",
+        "cost": 2,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 2 from Lv.3",
+        "definition_sha256": "ad54641a89c77e77f48729f22f91b646ca3045e2cabf048570351d415e4e7d67",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX1-013",
+        "target": "P-138",
+        "cost": 2,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 2 from Lv.3",
+        "definition_sha256": "5e6a9dd5c48e23e360714e7256657b8d6a5353992168739f796829648f453158",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-017",
+        "target": "BT22-022",
+        "cost": 2,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 2 from Lv.3",
+        "definition_sha256": "024e9c9291e563b9559205619fd19560f627ba0a22973f21707b08b45aba8dad",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-017",
+        "target": "BT22-022",
+        "cost": 2,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] Lv.3 w/[CS] trait: Cost 2",
+        "definition_sha256": "024e9c9291e563b9559205619fd19560f627ba0a22973f21707b08b45aba8dad",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-017",
+        "target": "EX13-019",
+        "cost": 2,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 2 from Lv.3",
+        "definition_sha256": "ad54641a89c77e77f48729f22f91b646ca3045e2cabf048570351d415e4e7d67",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-017",
+        "target": "EX13-019",
+        "cost": 2,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] Lv.3 w/[CS] trait: Cost 2",
+        "definition_sha256": "ad54641a89c77e77f48729f22f91b646ca3045e2cabf048570351d415e4e7d67",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-017",
+        "target": "P-138",
+        "cost": 2,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 2 from Lv.3",
+        "definition_sha256": "5e6a9dd5c48e23e360714e7256657b8d6a5353992168739f796829648f453158",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-019",
+        "target": "BT22-023",
+        "cost": 3,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 3 from Lv.4",
+        "definition_sha256": "65bfa05c9838899ee391c5168eff33a01cbabfc29e6611b08b8cb3b280715c85",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-019",
+        "target": "BT22-023",
+        "cost": 3,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] Lv.4 w/[CS] trait: Cost 3",
+        "definition_sha256": "65bfa05c9838899ee391c5168eff33a01cbabfc29e6611b08b8cb3b280715c85",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-019",
+        "target": "EX13-022",
+        "cost": 3,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 3 from Lv.4",
+        "definition_sha256": "73cef4900ac35284738c7c875f69d7b18858c481f844ca920dce86b0d2907daf",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-019",
+        "target": "EX13-022",
+        "cost": 3,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] Lv.4 w/[CS] trait: Cost 3",
+        "definition_sha256": "73cef4900ac35284738c7c875f69d7b18858c481f844ca920dce86b0d2907daf",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-022",
+        "target": "BT11-032",
+        "cost": 4,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 4 from Lv.5",
+        "definition_sha256": "ff783d6b6371c763e5febbd614131de15f69a0293a7603b05f73a2b0c785ad5b",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-022",
+        "target": "BT12-029",
+        "cost": 4,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 4 from Lv.5",
+        "definition_sha256": "58cbcd3ac04742aef5740cc244192e57c0ac20e220b2cfd9bf2abe2b9f6f348d",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-022",
+        "target": "EX13-023",
+        "cost": 3,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 3 from Lv.5",
+        "definition_sha256": "c48862dfc84e4a5b95894cba382266a6056efb8f3f46569f89ac25a11d62e50d",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-022",
+        "target": "EX13-023",
+        "cost": 3,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] Lv.5 w/[CS] trait: Cost 3",
+        "definition_sha256": "c48862dfc84e4a5b95894cba382266a6056efb8f3f46569f89ac25a11d62e50d",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-023",
+        "target": "BT12-029",
+        "cost": 1,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] 1 from [UlforceVeedramon]",
+        "definition_sha256": "58cbcd3ac04742aef5740cc244192e57c0ac20e220b2cfd9bf2abe2b9f6f348d",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "P-138",
+        "target": "BT22-023",
+        "cost": 3,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 3 from Lv.4",
+        "definition_sha256": "65bfa05c9838899ee391c5168eff33a01cbabfc29e6611b08b8cb3b280715c85",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "P-138",
+        "target": "EX13-022",
+        "cost": 3,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 3 from Lv.4",
+        "definition_sha256": "73cef4900ac35284738c7c875f69d7b18858c481f844ca920dce86b0d2907daf",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-002",
+        "target": "BT11-023",
+        "cost": 0,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 0 from Lv.2",
+        "definition_sha256": "2b087e49a70979928e01b0527f9ce8533b55114ae4323024f62e643b90108fa9",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-002",
+        "target": "EX1-013",
+        "cost": 0,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 0 from Lv.2",
+        "definition_sha256": "1f8d254a3e180ff961836b2ccf2217cdd7fa207e58ddef3b8c03ba9279e73b41",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-002",
+        "target": "EX13-017",
+        "cost": 0,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 0 from Lv.2",
+        "definition_sha256": "e229e194366d133c0e35c8bd6773046a78c8b039e4f0185af79ef92a426d7d23",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      }
+    ],
+    "B": [
+      {
+        "base": "BT11-023",
+        "target": "BT22-022",
+        "cost": 2,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 2 from Lv.3",
+        "definition_sha256": "024e9c9291e563b9559205619fd19560f627ba0a22973f21707b08b45aba8dad",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT11-023",
+        "target": "EX13-019",
+        "cost": 2,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 2 from Lv.3",
+        "definition_sha256": "ad54641a89c77e77f48729f22f91b646ca3045e2cabf048570351d415e4e7d67",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT11-023",
+        "target": "P-138",
+        "cost": 2,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 2 from Lv.3",
+        "definition_sha256": "5e6a9dd5c48e23e360714e7256657b8d6a5353992168739f796829648f453158",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT11-032",
+        "target": "BT12-029",
+        "cost": 1,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] 1 from [UlforceVeedramon]",
+        "definition_sha256": "58cbcd3ac04742aef5740cc244192e57c0ac20e220b2cfd9bf2abe2b9f6f348d",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT11-032",
+        "target": "BT20-102",
+        "cost": 6,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "BlueRed 6 from Lv.6",
+        "definition_sha256": "ed1422c332b80ae0cba48d4a330c6560366588793ecefbde70c9d4a720a98c22",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT12-029",
+        "target": "BT20-102",
+        "cost": 6,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "BlueRed 6 from Lv.6",
+        "definition_sha256": "ed1422c332b80ae0cba48d4a330c6560366588793ecefbde70c9d4a720a98c22",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT22-022",
+        "target": "BT22-023",
+        "cost": 3,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 3 from Lv.4",
+        "definition_sha256": "65bfa05c9838899ee391c5168eff33a01cbabfc29e6611b08b8cb3b280715c85",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT22-022",
+        "target": "BT22-023",
+        "cost": 3,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] Lv.4 w/[CS] trait: Cost 3",
+        "definition_sha256": "65bfa05c9838899ee391c5168eff33a01cbabfc29e6611b08b8cb3b280715c85",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT22-022",
+        "target": "EX13-022",
+        "cost": 3,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 3 from Lv.4",
+        "definition_sha256": "73cef4900ac35284738c7c875f69d7b18858c481f844ca920dce86b0d2907daf",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT22-022",
+        "target": "EX13-022",
+        "cost": 3,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] Lv.4 w/[CS] trait: Cost 3",
+        "definition_sha256": "73cef4900ac35284738c7c875f69d7b18858c481f844ca920dce86b0d2907daf",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT22-023",
+        "target": "BT11-032",
+        "cost": 4,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 4 from Lv.5",
+        "definition_sha256": "ff783d6b6371c763e5febbd614131de15f69a0293a7603b05f73a2b0c785ad5b",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT22-023",
+        "target": "BT12-029",
+        "cost": 4,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 4 from Lv.5",
+        "definition_sha256": "58cbcd3ac04742aef5740cc244192e57c0ac20e220b2cfd9bf2abe2b9f6f348d",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT22-023",
+        "target": "EX13-023",
+        "cost": 3,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 3 from Lv.5",
+        "definition_sha256": "c48862dfc84e4a5b95894cba382266a6056efb8f3f46569f89ac25a11d62e50d",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "BT22-023",
+        "target": "EX13-023",
+        "cost": 3,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] Lv.5 w/[CS] trait: Cost 3",
+        "definition_sha256": "c48862dfc84e4a5b95894cba382266a6056efb8f3f46569f89ac25a11d62e50d",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX1-013",
+        "target": "BT22-022",
+        "cost": 2,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 2 from Lv.3",
+        "definition_sha256": "024e9c9291e563b9559205619fd19560f627ba0a22973f21707b08b45aba8dad",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX1-013",
+        "target": "EX13-019",
+        "cost": 2,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 2 from Lv.3",
+        "definition_sha256": "ad54641a89c77e77f48729f22f91b646ca3045e2cabf048570351d415e4e7d67",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX1-013",
+        "target": "P-138",
+        "cost": 2,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 2 from Lv.3",
+        "definition_sha256": "5e6a9dd5c48e23e360714e7256657b8d6a5353992168739f796829648f453158",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-017",
+        "target": "BT22-022",
+        "cost": 2,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 2 from Lv.3",
+        "definition_sha256": "024e9c9291e563b9559205619fd19560f627ba0a22973f21707b08b45aba8dad",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-017",
+        "target": "BT22-022",
+        "cost": 2,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] Lv.3 w/[CS] trait: Cost 2",
+        "definition_sha256": "024e9c9291e563b9559205619fd19560f627ba0a22973f21707b08b45aba8dad",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-017",
+        "target": "EX13-019",
+        "cost": 2,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 2 from Lv.3",
+        "definition_sha256": "ad54641a89c77e77f48729f22f91b646ca3045e2cabf048570351d415e4e7d67",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-017",
+        "target": "EX13-019",
+        "cost": 2,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] Lv.3 w/[CS] trait: Cost 2",
+        "definition_sha256": "ad54641a89c77e77f48729f22f91b646ca3045e2cabf048570351d415e4e7d67",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-017",
+        "target": "P-138",
+        "cost": 2,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 2 from Lv.3",
+        "definition_sha256": "5e6a9dd5c48e23e360714e7256657b8d6a5353992168739f796829648f453158",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-019",
+        "target": "BT22-023",
+        "cost": 3,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 3 from Lv.4",
+        "definition_sha256": "65bfa05c9838899ee391c5168eff33a01cbabfc29e6611b08b8cb3b280715c85",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-019",
+        "target": "BT22-023",
+        "cost": 3,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] Lv.4 w/[CS] trait: Cost 3",
+        "definition_sha256": "65bfa05c9838899ee391c5168eff33a01cbabfc29e6611b08b8cb3b280715c85",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-019",
+        "target": "EX13-022",
+        "cost": 3,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 3 from Lv.4",
+        "definition_sha256": "73cef4900ac35284738c7c875f69d7b18858c481f844ca920dce86b0d2907daf",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-019",
+        "target": "EX13-022",
+        "cost": 3,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] Lv.4 w/[CS] trait: Cost 3",
+        "definition_sha256": "73cef4900ac35284738c7c875f69d7b18858c481f844ca920dce86b0d2907daf",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-022",
+        "target": "BT11-032",
+        "cost": 4,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 4 from Lv.5",
+        "definition_sha256": "ff783d6b6371c763e5febbd614131de15f69a0293a7603b05f73a2b0c785ad5b",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-022",
+        "target": "BT12-029",
+        "cost": 4,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 4 from Lv.5",
+        "definition_sha256": "58cbcd3ac04742aef5740cc244192e57c0ac20e220b2cfd9bf2abe2b9f6f348d",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-022",
+        "target": "EX13-023",
+        "cost": 3,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 3 from Lv.5",
+        "definition_sha256": "c48862dfc84e4a5b95894cba382266a6056efb8f3f46569f89ac25a11d62e50d",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-022",
+        "target": "EX13-023",
+        "cost": 3,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] Lv.5 w/[CS] trait: Cost 3",
+        "definition_sha256": "c48862dfc84e4a5b95894cba382266a6056efb8f3f46569f89ac25a11d62e50d",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-023",
+        "target": "BT12-029",
+        "cost": 1,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] 1 from [UlforceVeedramon]",
+        "definition_sha256": "58cbcd3ac04742aef5740cc244192e57c0ac20e220b2cfd9bf2abe2b9f6f348d",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-023",
+        "target": "BT20-102",
+        "cost": 6,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "BlueRed 6 from Lv.6",
+        "definition_sha256": "ed1422c332b80ae0cba48d4a330c6560366588793ecefbde70c9d4a720a98c22",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "P-138",
+        "target": "BT22-023",
+        "cost": 3,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 3 from Lv.4",
+        "definition_sha256": "65bfa05c9838899ee391c5168eff33a01cbabfc29e6611b08b8cb3b280715c85",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "P-138",
+        "target": "EX13-022",
+        "cost": 3,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 3 from Lv.4",
+        "definition_sha256": "73cef4900ac35284738c7c875f69d7b18858c481f844ca920dce86b0d2907daf",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-002",
+        "target": "BT11-023",
+        "cost": 0,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 0 from Lv.2",
+        "definition_sha256": "2b087e49a70979928e01b0527f9ce8533b55114ae4323024f62e643b90108fa9",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-002",
+        "target": "EX1-013",
+        "cost": 0,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 0 from Lv.2",
+        "definition_sha256": "1f8d254a3e180ff961836b2ccf2217cdd7fa207e58ddef3b8c03ba9279e73b41",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      },
+      {
+        "base": "EX13-002",
+        "target": "EX13-017",
+        "cost": 0,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 0 from Lv.2",
+        "definition_sha256": "e229e194366d133c0e35c8bd6773046a78c8b039e4f0185af79ef92a426d7d23",
+        "status": "PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"
+      }
+    ]
+  },
+  "printed_evolution_gaps": [],
+  "note": "No historical matches, pilots or roadmaps were imported. Inventory and scenarios count as zero full matches."
+}

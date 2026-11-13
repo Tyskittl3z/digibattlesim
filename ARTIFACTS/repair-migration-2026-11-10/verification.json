@@ -1,0 +1,62 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "approved_source_changes_sha256": "2659bfd7887af2ccedf1dab564c7f5ca6bb054e9be05c9ad99df8988557291aa",
+  "certification": "EXPERIMENTAL_NOT_INDEPENDENTLY_CERTIFIED",
+  "date": "2026-11-10",
+  "dependency_files": 68,
+  "final_evaluation_credit": 0,
+  "focused_tests": {
+    "command": "python -m unittest test_fresh_repair_migration test_fresh_learning_campaign test_field_tracker test_interaction_scoring test_interaction_learning test_judge_ledger test_named_player_bots test_context_runtime test_match_context test_match_preparation -q",
+    "counts": {
+      "context_runtime": 18,
+      "field_tracker": 30,
+      "fresh_runner": 20,
+      "judge": 8,
+      "learning": 32,
+      "match_context": 8,
+      "match_preparation": 5,
+      "migration": 18,
+      "named_player": 13,
+      "scoring": 21
+    },
+    "cwd": "SOURCE",
+    "exit_code": 0,
+    "passed": 173,
+    "seconds": 73.877
+  },
+  "full_suite_exclusion_reason": "Legacy discovery runs gameplay/cohorts; actual matches remain paused.",
+  "full_suite_run_in_this_increment": false,
+  "historical_record_bytes_unchanged": true,
+  "independent_review": {
+    "blocking_findings_remaining": 0,
+    "final_artifact_audit": "PASS",
+    "fix": "Source-only workers for both builds and migrated replay/resume.",
+    "initial_P1": "Repaired cached bytecode could hide changed earlier outcomes.",
+    "original_reproduction_cached_and_uncached_both_rejected": true,
+    "scoped_rereview": "PASS_P1_ADDRESSED_NO_NEW_BLOCKERS"
+  },
+  "independent_semantic_certification": false,
+  "key_source_hashes": {
+    "SOURCE/fresh_learning_campaign.py": "395d0822e362ad5ee856cb01c3632c33fe90e5b4769b55da337f4ed8128f2344",
+    "SOURCE/fresh_repair_migration.py": "fc3fcdcc639b5551729f8d752131661a468028ffe3de66b8345e18151e292a4e",
+    "SOURCE/test_fresh_repair_migration.py": "e6baad293cca29b572e1bcaecddf16bb0f112e37e17f6edd388e1cfaf9d29de1"
+  },
+  "last_full_suite": {
+    "commit": "aed966b",
+    "passed": 495
+  },
+  "model_unchanged": true,
+  "ordinary_source_pins_preserved": true,
+  "private_proof": "private-repair-proof.json",
+  "private_proof_seconds": 4.92,
+  "production_games_started": 0,
+  "production_learning_updates": 0,
+  "production_ratings_assigned": 0,
+  "run_enabled": false,
+  "source_archive_sha256": "f3164f2ade9908424a9d9a465b600614d8e136a7e787b9462bfb1861fa473cc1",
+  "source_files": 114,
+  "source_manifest_sha256": "469eb7ab1dec932edb00044b1329a4e84cf7eeedd7cc225e3989b9b7fad29335",
+  "source_only_original_and_repaired_execution": true,
+  "status": "EXPLICIT_ENGINE_REPAIR_MIGRATION_VERIFIED_PRIVATE_ONLY",
+  "status_of_matches": "PAUSED_BEFORE_FIRST_MATCH"
+}
