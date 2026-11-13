@@ -1,19 +1,18 @@
 {
   "accepted_fact_finding_credit": 0,
-  "commands": 118,
+  "commands": 127,
   "exact_replay": true,
   "first": "A",
   "game_index": 6,
-  "halt_reason": "SECURITY_CARD_UNSUPPORTED: LM-028 source=B:LM-028#1",
+  "halt_reason": null,
   "history_report": {
     "file": "ARTIFACTS/board-text-60-2026-11-11/game-0005/report.md",
     "sha256": "850f648c20961a4aeed4b0aad7ac26ec70f84ff4c245707f09aff6a08330161e"
   },
   "model_games_before": 8,
-  "record_sha256": "2a9ca80a080a2229cb85220755ac8f4cf9f9e9a9a6db67c9969344a96e946e29",
-  "repair": "The saved LM-028 Security check offers the defending bot an optional blue Digimon of 2000 DP or less from its trash, plays its chosen card at no cost with On Play triggers, then adds LM-028 to hand. The earlier seed, state and bot choices remain fixed.",
+  "record_sha256": "aac8a1262282459f8c450f57b728d0ea104b0a78042e72568dbd1c01d16fc896",
   "seed": 17142806856446729578,
-  "segment": 1,
-  "status": "HALT",
-  "winner": null
+  "segment": 2,
+  "status": "EXPERIMENTAL_SOFTWARE_TERMINAL",
+  "winner": "A"
 }
