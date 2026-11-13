@@ -10,9 +10,10 @@
     "sha256": "850f648c20961a4aeed4b0aad7ac26ec70f84ff4c245707f09aff6a08330161e"
   },
   "model_games_before": 8,
-  "record_sha256": "a7eee1e9da1a1742ea6fad0b4f3ecfb405dea80a4c87fe7e7066483ab36b86f9",
+  "record_sha256": "2a9ca80a080a2229cb85220755ac8f4cf9f9e9a9a6db67c9969344a96e946e29",
+  "repair": "The saved LM-028 Security check offers the defending bot an optional blue Digimon of 2000 DP or less from its trash, plays its chosen card at no cost with On Play triggers, then adds LM-028 to hand. The earlier seed, state and bot choices remain fixed.",
   "seed": 17142806856446729578,
-  "segment": 0,
+  "segment": 1,
   "status": "HALT",
   "winner": null
 }

@@ -32,6 +32,8 @@ SECURITY_OPTION_SPECS['LM-034'] = ('LM-034.security_place',
     '[Security] Place this card in the battle area.')
 SECURITY_OPTION_SPECS['P-104'] = ('P-104.security_place',
     '[Security] Place this card in the battle area.')
+SECURITY_OPTION_SPECS['LM-028'] = ('LM-028.security_play_trash',
+    '[Security] You may play 1 blue Digimon card with 2000 DP or less from your trash without paying the cost. Then, add this card to the hand.')
 BLUE_SCRAMBLE_DELAY = 'LM-028.start_turn_delay'
 DELAY_SPECS = {
     'P-104': ('P-104.main_delay', '[Main] ＜Delay＞', '・1 of your Digimon may digivolve into a blue Digimon card in your hand for its digivolution cost. When it would digivolve by this effect, reduce the cost by 2.'),
@@ -281,6 +283,8 @@ def resolve_checked_security_option(runtime, seat, physical, root):
     from selected_mechanics import _source_evidence
     locator = ('#' + physical.card_number + ' exact printed Security placement'
         if physical.card_number in ('LM-034', 'P-104') else
+        '#' + physical.card_number + ' exact printed Security trash play and hand return'
+        if physical.card_number == 'LM-028' else
         '#' + physical.card_number + ' exact printed Security search and placement')
     evidence = _source_evidence(root, definition.to_dict()['official_source'], locator).manifest()
     runtime.state.zones[seat]['security'].pop()
@@ -355,6 +359,49 @@ def resolve_security_option(runtime, seat, source_key, choice):
 
 def resolve_security_place(runtime, seat, source_key, choice):
     raise RuntimeHalt('SECURITY_PLACE_IS_IMMEDIATE_CHECK_PROCESSING')
+
+
+def blue_scramble_security_choices(runtime, seat, source_key):
+    source = runtime._source(seat, source_key, 'security_text')
+    if source.card_number != 'LM-028':
+        raise RuntimeHalt('BLUE_SCRAMBLE_SECURITY_SOURCE_INVALID')
+    current, attack = runtime.state.resolving_option, runtime.state.attack
+    if (current is None or current['seat'] != seat
+            or current['stack'].cards[-1].key != source_key
+            or attack is None or attack['window'] != 'END' or attack['checked'] != source_key):
+        raise RuntimeHalt('BLUE_SCRAMBLE_SECURITY_WINDOW_REQUIRED')
+    expected = ('LM-028.security_play_trash', seat, source_key, 'security_text')
+    activated = getattr(runtime, '_activated_effect', None)
+    if activated is None or activated[:4] != expected or activated[4] is None:
+        from effect_scheduler import pending_options
+        if not any(tuple(p[k] for k in ('effect_id', 'seat', 'source', 'field')) == expected
+                   for p in pending_options(runtime, seat)):
+            raise RuntimeHalt('BLUE_SCRAMBLE_SECURITY_PENDING_REQUIRED')
+    return [None] + sorted(card.key for card in runtime.state.zones[seat]['trash']
+        if runtime.context.card(seat, card.card_number).kind == 'Digimon'
+        and 'Blue' in runtime.context.card(seat, card.card_number).to_dict()['colors']
+        and type(runtime.context.card(seat, card.card_number).to_dict()['dp']) is int
+        and runtime.context.card(seat, card.card_number).to_dict()['dp'] <= 2000)
+
+
+def resolve_blue_scramble_security(runtime, seat, source_key, choice):
+    if choice not in blue_scramble_security_choices(runtime, seat, source_key):
+        raise RuntimeHalt('BLUE_SCRAMBLE_SECURITY_CHOICE_INVALID')
+    played = None
+    if choice is not None:
+        from main_actions import _play
+        root = Path(__file__).resolve().parents[1]
+        played = _play(runtime, seat, {'hand_key': choice,
+            'rules': {**_rules(root), 'locator': _RULES_LOCATOR}}, root,
+            within_effect=True, source_zone='trash')
+    current = runtime.state.resolving_option
+    if current is None or current['seat'] != seat or current['stack'].cards[-1].key != source_key:
+        raise RuntimeHalt('BLUE_SCRAMBLE_SECURITY_OPTION_LOST')
+    runtime.state.zones[seat]['hand'].append(current['stack'].cards[-1])
+    runtime.state.resolving_option = None
+    return {'processing': 'OPTIONAL_BLUE_DIGIMON_PLAY_THEN_ADD_OPTION_TO_HAND',
+        'played_card': choice, 'play': played, 'added_to_hand': source_key,
+        'full_match_credit': 0}
 
 
 def resolve_option(runtime,seat,source_key,choice):
@@ -492,10 +539,11 @@ def option_bindings(context,root,rules_evidence):
                 hashlib.sha256(card.effect_text('main_text').encode()).hexdigest(),
                 (evidence,replace(rules_evidence,locator=_RULES_LOCATOR)),handler))
         security = security_option_spec(card)
-        if card.number in _TRAINING_NAMES or card.number in ('LM-034', 'P-104'):
+        if card.number in _TRAINING_NAMES or card.number in ('LM-034', 'P-104', 'LM-028'):
             require(security is not None, 'Exact Security Option text changed: ' + card.number)
             bindings.append(MechanicBinding(card.number, security[0], 'security_text',
                 card.definition_sha256, hashlib.sha256(card.effect_text('security_text').encode()).hexdigest(),
                 (evidence, replace(rules_evidence, locator=_RULES_LOCATOR)),
-                resolve_security_place if card.number in ('LM-034', 'P-104') else resolve_security_option))
+                resolve_security_place if card.number in ('LM-034', 'P-104') else
+                resolve_blue_scramble_security if card.number == 'LM-028' else resolve_security_option))
     return tuple(bindings)

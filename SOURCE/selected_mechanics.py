@@ -159,6 +159,9 @@ def selected_pending_choices(runtime, seat, selected):
         return omnimon_end_choices(runtime, seat, selected['source'])
     if selected['effect_id'] == ULFORCE_UNSUSPEND_RETURN_EFFECT:
         return ulforce_unsuspend_return_choices(runtime, seat, selected['source'])
+    if selected['effect_id'] == 'LM-028.security_play_trash':
+        from option_actions import blue_scramble_security_choices
+        return blue_scramble_security_choices(runtime, seat, selected['source'])
     return None
 
 
