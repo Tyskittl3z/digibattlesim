@@ -20,14 +20,16 @@ def _evidence(root):
 def validate_attack(state):
     a=state.attack
     if a is None:return
-    if (not isinstance(a,dict) or set(a)!=ATTACK_FIELDS
+    if (not isinstance(a,dict) or set(a) not in (ATTACK_FIELDS, ATTACK_FIELDS | {'deferred_depth'})
             or a['controller'] not in ('A','B') or a['defender'] not in ('A','B')
             or a['controller']==a['defender'] or a['controller']!=state.active
             or a['window'] not in ('COUNTER','BLOCK','CONFIRM','END')
             or not all(isinstance(a[k],str) and a[k] for k in ('attacker','attacker_instance','target'))
             or not isinstance(a['target_instance'],str)
             or type(a['counter_used']) is not bool or type(a['block_used']) is not bool
-            or (a['checked'] is not None and not isinstance(a['checked'],str))):
+            or (a['checked'] is not None and not isinstance(a['checked'],str))
+            or ('deferred_depth' in a and (type(a['deferred_depth']) is not int
+                or a['deferred_depth'] < 0 or state.phase != 'END_OF_TURN'))):
         raise RuntimeHalt('ATTACK_SCHEMA_INVALID')
 
 
@@ -36,6 +38,7 @@ def _scope(r,root,stage,*,attacker=None,target=None,within_effect=False):
     actor=r.state.active
     if attack is not None:
         actor=attack['controller'];attacker=attack['attacker'];target=attack['target']
+        within_effect = within_effect or 'deferred_depth' in attack
     assert_basic_board_scope(r,'attack_plain',root,
                             event={'stage':stage,'seat':actor,'attacker':attacker,'target':target},
                             within_effect=within_effect)
@@ -68,7 +71,8 @@ def _declare(r,seat,c,root,*,from_end_effect=False):
     if not from_end_effect and (stack.statuses.get('cannot_suspend',False) or ('effect_grants' in stack.statuses
             and active_restriction(r,seat,c['attacker'],'cannot_suspend'))):
         raise RuntimeHalt('ATTACKER_CANNOT_SUSPEND')
-    _scope(r,root,'DECLARE',attacker=c['attacker'],target=c['target'])
+    _scope(r,root,'DECLARE',attacker=c['attacker'],target=c['target'],
+           within_effect=from_end_effect)
     from effect_grants import active_keyword
     rush = active_keyword(r, seat, c['attacker'], 'Rush')
     if stack.played_turn is not None and (stack.played_turn>s.turn or
@@ -92,6 +96,11 @@ def _declare(r,seat,c,root,*,from_end_effect=False):
     s.attack={'attacker':c['attacker'],'attacker_instance':instance,'target':target,
               'target_instance':target_instance,'controller':seat,'defender':other,
               'window':'COUNTER','counter_used':False,'block_used':False,'checked':None}
+    if from_end_effect and s.pending:
+        pending = getattr(r, '_activated_pending', None)
+        if pending is None or pending['effect_id'] != 'BT20-102.end_turn_rush_attack':
+            raise RuntimeHalt('END_ATTACK_ORIGIN_REQUIRED')
+        s.attack['deferred_depth'] = pending['depth']
     from printed_triggers import trigger_lines
     from tamer_play_effects import (PLAY_EFFECT,PLAY_LINE,ATTACK_TAMER_EFFECT,
                                     ATTACK_TAMER_LINE,tamer_play_usage)

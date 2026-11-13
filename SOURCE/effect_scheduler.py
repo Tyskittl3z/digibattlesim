@@ -98,6 +98,9 @@ def pending_options(runtime,seat):
     runtime.context.deck(seat)
     validate_pending(runtime)
     active = [e for e in runtime.state.pending if _inactive_reason(runtime,e) is None]
+    deferred = (runtime.state.attack or {}).get('deferred_depth')
+    if deferred is not None:
+        active = [e for e in active if e['depth'] > deferred]
     if not active:
         return []
     depth = max(e['depth'] for e in active)

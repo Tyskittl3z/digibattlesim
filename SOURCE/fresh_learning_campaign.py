@@ -428,7 +428,8 @@ def run_game(index, root=ROOT, *, context_file=CONTEXT_FILE, campaign_id,
                 current = start('REDRAW_CHOICE', owner)
                 chosen = choose(owner, [{'redraw': False}, {'redraw': True}], {'kind': 'REDRAW_CHOICE'})
                 call('REDRAW_CHOICE', owner, chosen)
-            elif runtime.state.pending:
+            elif runtime.state.pending and (not runtime.state.attack or any(
+                    pending_options(runtime, owner) for owner in bots)):
                 current['command'] = 'GENERATE_PENDING_CHOICES'
                 options = {s: pending_options(runtime, s) for s in bots}
                 owner = next((s for s in bots if options[s]), None)

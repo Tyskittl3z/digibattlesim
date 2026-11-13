@@ -37,6 +37,7 @@ _IDENTITY = ('schema', 'index', 'seed', 'first', 'campaign_id', 'context_id', 'c
     'learning_state_after', 'pilots', 'policy_rng_initial', 'certification',
     'accepted_fact_finding_credit', 'final_evaluation_credit', 'player_policy', 'history_report')
 _SECURITY_POLICY_EXTENSION_BASE = '489f93f21debe54046b2d8512c7b24ed4fe1c8e08696a27b71337158764604bb'
+_END_ATTACK_ROUTER_BASE = '8b11f92afa952fdc1cb97eba88a779637d79942072af4ca993961472317e95c6'
 
 
 def _same(left, right, label):
@@ -156,6 +157,11 @@ def _differences(before, after, approved, *, bootstrap_sources=None):
                                and 'fresh_repair_migration.py' in actual)
     security_policy_extension = (before.get('fresh_repair_migration.py') == _SECURITY_POLICY_EXTENSION_BASE
                                  and {'interaction_learning.py', 'fresh_repair_migration.py'} <= set(actual))
+    end_attack_router_extension = (before.get('fresh_repair_migration.py') == _END_ATTACK_ROUTER_BASE
+        and {'interaction_learning.py', 'fresh_learning_campaign.py', 'imported_attempts.py',
+             'fresh_repair_migration.py'} <= set(actual)
+        and set(actual) - _ENGINE == {'interaction_learning.py', 'fresh_learning_campaign.py',
+                                     'imported_attempts.py', 'fresh_repair_migration.py'})
     allowed = _ENGINE | ({'fresh_learning_campaign.py', 'fresh_repair_migration.py'} if bootstrap else set())
     if tracker_extension:
         allowed |= {'fresh_repair_migration.py'}
@@ -165,6 +171,9 @@ def _differences(before, after, approved, *, bootstrap_sources=None):
         allowed |= {'imported_attempts.py', 'fresh_repair_migration.py'}
     if security_policy_extension:
         allowed |= {'interaction_learning.py', 'fresh_repair_migration.py'}
+    if end_attack_router_extension:
+        allowed |= {'interaction_learning.py', 'fresh_learning_campaign.py',
+                    'imported_attempts.py', 'fresh_repair_migration.py'}
     if set(actual) - allowed or any(before.get(k) is None or after.get(k) is None
                                     for k in actual if k in _ENGINE):
         raise RuntimeHalt('REPAIR_PROTECTED_SOURCE_CHANGE')

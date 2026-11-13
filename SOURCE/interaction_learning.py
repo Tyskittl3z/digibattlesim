@@ -36,7 +36,7 @@ _VIEW = frozenset(('active', 'memory', 'turn', 'phase', 'attack', 'terminal', 'w
 _PLAYER = frozenset(('hand', 'deck', 'eggdeck', 'security', 'trash', 'battle', 'breeding'))
 _STACK = frozenset(('cards', 'suspended', 'statuses', 'instance_id', 'played_turn', 'ready_since_turn'))
 _ATTACK = frozenset(('attacker', 'attacker_instance', 'target', 'target_instance', 'controller',
-                     'defender', 'window', 'counter_used', 'block_used', 'checked'))
+                     'defender', 'window', 'counter_used', 'block_used', 'checked', 'deferred_depth'))
 _METRIC_BOARD = frozenset(('battle_card_count', 'digimon_count', 'tamer_count', 'option_count',
                           'total_stack_cards', 'digivolution_card_count', 'largest_stack_size'))
 _BASE_RECORD = frozenset(('decision', 'public_view_sha256', 'candidates', 'chosen', 'reason', 'bot_id'))
@@ -480,7 +480,9 @@ class _PublicFeatures:
         if attack is not None:
             _require(isinstance(attack, dict) and not set(attack) - _ATTACK, 'PUBLIC_ATTACK_SCHEMA')
             for key, item in attack.items():
-                valid = type(item) is bool if key in ('counter_used', 'block_used') else item is None or isinstance(item, str) if key == 'checked' else isinstance(item, str)
+                valid = (type(item) is bool if key in ('counter_used', 'block_used') else
+                    type(item) is int and item >= 0 if key == 'deferred_depth' else
+                    item is None or isinstance(item, str) if key == 'checked' else isinstance(item, str))
                 _require(valid, 'PUBLIC_ATTACK_FIELD')
         resolving = view['resolving_option']
         if resolving is not None:

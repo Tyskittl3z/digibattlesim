@@ -18,7 +18,8 @@ _VERSION = 'bot-c-field-tracker-v1'
 _STACK_FIELDS = frozenset(('cards', 'suspended', 'statuses', 'instance_id',
                           'played_turn', 'ready_since_turn'))
 _ATTACK_FIELDS = frozenset(('attacker', 'attacker_instance', 'target', 'target_instance',
-                           'controller', 'defender', 'window', 'counter_used', 'block_used', 'checked'))
+                           'controller', 'defender', 'window', 'counter_used', 'block_used', 'checked',
+                           'deferred_depth'))
 _GRANT_FIELDS = frozenset(('controller', 'source', 'source_instance', 'source_field',
     'source_kind', 'source_definition_sha256', 'source_text_sha256', 'target',
     'target_owner', 'target_instance', 'effect', 'created_turn', 'expires'))
@@ -134,6 +135,8 @@ class FieldTracker:
             for name, item in attack.items():
                 if name in ('counter_used', 'block_used'):
                     valid = type(item) is bool
+                elif name == 'deferred_depth':
+                    valid = type(item) is int and item >= 0
                 elif name == 'checked':
                     valid = item is None or isinstance(item, str)
                 else:
@@ -221,8 +224,11 @@ class FieldTracker:
                 'deck': {'count': len(z['deck'])}, 'eggdeck': {'count': len(z['eggdeck'])},
                 'security': {'count': len(z['security'])}, 'trash': list(z['trash']),
                 'battle': copy.deepcopy(s['battle'][owner]), 'breeding': list(s['breeding'][owner])}
-        return {**{name: copy.deepcopy(s[name]) for name in ('active', 'memory', 'turn', 'phase',
-                'attack', 'terminal', 'resolving_option', 'winner')}, 'players': players}
+        public = {name: copy.deepcopy(s[name]) for name in ('active', 'memory', 'turn', 'phase',
+                'attack', 'terminal', 'resolving_option', 'winner')}
+        if public['attack'] is not None:
+            public['attack'].pop('deferred_depth', None)
+        return {**public, 'players': players}
 
     def _metrics(self, snapshot, checks):
         board = {}

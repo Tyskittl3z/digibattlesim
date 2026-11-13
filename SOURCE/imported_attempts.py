@@ -543,7 +543,8 @@ def run_attempt(index, root=ROOT, max_commands=300, *, context_file=CONTEXT_FILE
                 choice = pilots[owner].choose(runtime.public_view(owner), candidates)
                 call('REDRAW_CHOICE', owner, choice, candidates)
                 redraw_count += 1
-            elif runtime.state.pending:  # Scheduler routing, not pilot input.
+            elif runtime.state.pending and (not runtime.state.attack or any(
+                    pending_options(runtime, owner) for owner in ('A', 'B'))):  # Scheduler routing, not pilot input.
                 current['command'] = 'GENERATE_PENDING_CHOICES'
                 options = {owner: pending_options(runtime, owner) for owner in ('A', 'B')}
                 owner = next((owner for owner in ('A', 'B') if options[owner]), None)

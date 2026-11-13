@@ -238,7 +238,9 @@ class ContextRuntime:
             }
         return {'active': self.state.active, 'memory': self.state.memory, 'turn': self.state.turn,
                 'phase':self.state.phase,
-                'attack':state_value(self.state.attack),'terminal':self.state.terminal,
+                'attack':({k: state_value(v) for k, v in self.state.attack.items()
+                           if k != 'deferred_depth'} if self.state.attack is not None else None),
+                'terminal':self.state.terminal,
                 'resolving_option':state_value(self.state.resolving_option),
                 'winner':self.state.winner,
                 'players': players}
@@ -417,7 +419,10 @@ class ContextRuntime:
                 raise RuntimeHalt('ACTION_AFTER_TERMINAL')
             if self.state.attack is not None and not allow_attack:
                 raise RuntimeHalt('ATTACK_PROCESSING_PENDING')
-            if self.state.pending and not allow_pending:
+            deferred = (self.state.attack or {}).get('deferred_depth') if allow_attack else None
+            attack_pending_ok = (deferred is not None and all(
+                effect['depth'] <= deferred for effect in self.state.pending))
+            if self.state.pending and not allow_pending and not attack_pending_ok:
                 raise RuntimeHalt('PENDING_EFFECTS_REQUIRE_RESOLUTION')
             if canonical(self.registry.manifest())!=self._pack_manifest:
                 raise RuntimeHalt('PACK_CHANGED_RESTART_REQUIRED')

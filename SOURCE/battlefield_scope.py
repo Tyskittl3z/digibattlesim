@@ -262,7 +262,8 @@ def assert_basic_board_scope(runtime, action, root, *, event=None, within_effect
         raise RuntimeHalt('BASIC_BOARD_METADATA_UNSUPPORTED: state')
     if type(state.battle) is not dict or set(state.battle) != {'A', 'B'}:
         raise RuntimeHalt('BASIC_BOARD_METADATA_UNSUPPORTED: battle')
-    if within_effect and not getattr(runtime,'_activated_effect',None):
+    if (within_effect and not getattr(runtime,'_activated_effect',None)
+            and not (state.attack and 'deferred_depth' in state.attack)):
         raise RuntimeHalt('BASIC_BOARD_ACTIVE_EFFECT_REQUIRED')
     if state.pending and not within_effect:
         raise RuntimeHalt('BASIC_BOARD_PENDING_EFFECTS_UNSUPPORTED')
