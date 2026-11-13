@@ -1,0 +1,18 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "commands": 83,
+  "exact_replay": true,
+  "first": "B",
+  "game_index": 11,
+  "halt_reason": "ATTACK_KEYWORD_UNSUPPORTED: BT20-102 main_text source=B:BT20-102#1",
+  "history_report": {
+    "file": "ARTIFACTS/board-text-60-2026-11-11/game-0010/report.md",
+    "sha256": "f36eb01e87d6e5fe365fc07a28d67b7a9b52c3bced3614d248d05a30ba9fefac"
+  },
+  "model_games_before": 13,
+  "record_sha256": "7ecf137e456969a7be4a732504ed79b21b60e0e69520de9089cb77aac3209fc1",
+  "seed": 4520756428303837408,
+  "segment": 0,
+  "status": "HALT",
+  "winner": null
+}
