@@ -1,0 +1,18 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "commands": 89,
+  "exact_replay": true,
+  "first": "A",
+  "game_index": 28,
+  "halt_reason": "BATTLE_MULTIPLE_EVADE_CHOICES_UNIMPLEMENTED",
+  "history_report": {
+    "file": "ARTIFACTS/board-text-60-2026-11-11/game-0027/report.md",
+    "sha256": "625454bda3e51f43d7e3ae5b5b9e4de1d7d7d4b1fd4dc0d441bd51f9960444ed"
+  },
+  "model_games_before": 30,
+  "record_sha256": "db36f9fae4017fd4a766ba8360822600f45ead319f5909a7a8a7446a84d12960",
+  "seed": 3229285776380689995,
+  "segment": 0,
+  "status": "HALT",
+  "winner": null
+}

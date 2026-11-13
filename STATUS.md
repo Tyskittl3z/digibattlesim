@@ -14,8 +14,9 @@ Additional games 0 through 27 are complete in software. Bot B and Bot A won
 receipt and Bot C observation, and every final segment passed exact replay.
 Encountered printed effects were repaired through source-only migrations that
 preserved earlier seeds and choices. The cumulative model contains 30 completed
-games including the two initial history games. Additional game 24 completed
-with 179 accepted actions after its queued BT20-102 Piercing Security check.
+games including the two initial history games. Additional game 28 is saved
+after 88 accepted actions at a simultaneous two-player Evade choice.
+Game 24 completed after its queued BT20-102 Piercing Security check.
 Bot C did not increment its successful-check counter for this pending-effect
 check, even though the Security card moved. That metric and any tempo label
 using it require correction before evaluation. Accepted fact-finding
