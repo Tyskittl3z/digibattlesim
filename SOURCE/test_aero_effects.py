@@ -138,14 +138,15 @@ class AeroEffectTests(unittest.TestCase):
         self.assertFalse(any(event.get('type') in ('DELETION', 'BATTLE') for event in runtime.events))
         runtime.verify()
 
-    def test_active_leave_protection_halts_without_partial_return(self):
+    def test_active_leave_protection_offers_choice_without_partial_return(self):
         runtime = self.scenario()
         source = stage(runtime, 'A', ['BT22-023'])
         target = stage(runtime, 'B', ['EX13-017', 'P-138'])
-        before = runtime.snapshot()
-        with self.assertRaisesRegex(RuntimeHalt, 'AERO_RETURN_LEAVE_DEPENDENCY_UNIMPLEMENTED.*EX13-017'):
-            runtime.dispatch(aero.PLAY_EFFECT, 'A', source, target)
-        self.assertEqual(runtime.snapshot(), before)
+        result = runtime.dispatch(aero.PLAY_EFFECT, 'A', source, target)
+        self.assertEqual(result['processing'], 'RETURN_REPLACEMENT_PENDING')
+        self.assertIn(target, runtime.state.battle['B'])
+        self.assertEqual([p['effect_id'] for p in pending_options(runtime, 'B')],
+                         ['EX13-017.return_replacement'])
 
     def test_actual_0010_end_timing_has_explicit_decline_or_unchanged_self_choice(self):
         runtime, command = self.actual(10)

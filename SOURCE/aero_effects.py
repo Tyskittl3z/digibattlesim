@@ -2,9 +2,10 @@
 import hashlib
 
 from context_runtime import MechanicBinding, RuntimeHalt
-from effect_scheduler import pending_options, source_stack
+from effect_scheduler import pending_options, queue_effects, source_stack
 from match_context import require
-from return_effects import return_to_deck_bottom
+from return_effects import (inherited_return_replacement, replacement_effect_id,
+                            return_to_deck_bottom)
 
 
 PLAY_EFFECT = 'BT22-023.on_play_return'
@@ -58,6 +59,19 @@ def resolve_aero_return(runtime, seat, source_key, choice):
     if choice is None:
         return {'target': None, 'processing': 'NO_ELIGIBLE_TARGET', 'full_match_credit': 0}
     opponent = 'B' if seat == 'A' else 'A'
+    replacement = inherited_return_replacement(runtime, seat, opponent, choice)
+    if replacement is not None:
+        replacement_source, _ = replacement
+        stack = runtime.state.battle[opponent][choice]
+        queue_effects(runtime, [{'seat': opponent, 'source': replacement_source,
+            'effect_id': replacement_effect_id(runtime, opponent, replacement_source),
+            'field': 'inherited_text',
+            'trigger': {'kind': 'OPPONENT_EFFECT_RETURN', 'actor': seat,
+                'target': choice, 'target_instance': stack.instance_id,
+                'source_effect': effect_id}}])
+        return {'target': choice, 'processing': 'RETURN_REPLACEMENT_PENDING',
+            'replacement_source': replacement_source, 'returned': None,
+            'trashed_sources': [], 'full_match_credit': 0}
     result = return_to_deck_bottom(runtime, seat, opponent, [choice], [choice],
                                    halt_prefix='AERO_RETURN')
     return {'target': choice, 'returned': result['returned'][0],

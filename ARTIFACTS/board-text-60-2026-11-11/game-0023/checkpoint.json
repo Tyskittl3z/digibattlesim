@@ -1,18 +1,18 @@
 {
   "accepted_fact_finding_credit": 0,
-  "commands": 83,
+  "commands": 134,
   "exact_replay": true,
   "first": "B",
   "game_index": 23,
-  "halt_reason": "AERO_RETURN_REPLACEMENT_CHOICE_REQUIRED: A:P-138#1",
+  "halt_reason": null,
   "history_report": {
     "file": "ARTIFACTS/board-text-60-2026-11-11/game-0022/report.md",
     "sha256": "3cbec7409f2bae112ef2584e9a2f826a4534600d29cc7d801321d8be700561ef"
   },
   "model_games_before": 25,
-  "record_sha256": "de995a3fe34994bd21f9d2f27eb99e97da2e3a3f12b10bffde4aae4df76a2246",
+  "record_sha256": "6c1958dd18e611342b09245bc8bb65c8ba9e32d9af65710f21bb28834879c728",
   "seed": 11530652127083854279,
-  "segment": 0,
-  "status": "HALT",
-  "winner": null
+  "segment": 2,
+  "status": "EXPERIMENTAL_SOFTWARE_TERMINAL",
+  "winner": "B"
 }
