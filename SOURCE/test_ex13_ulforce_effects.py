@@ -82,10 +82,13 @@ class UlforceFewestReturnTests(unittest.TestCase):
             self.assertEqual(r.snapshot(),before)
 
     def test_actual_self_replacement_is_not_silently_skipped(self):
-        r,_,_,_=self.fixture('replacement');before=r.snapshot()
-        with self.assertRaisesRegex(RuntimeHalt,'ULFORCE_RETURN_LEAVE_DEPENDENCY_UNIMPLEMENTED.*BT22-022'):
-            self.resolve(r,True)
-        self.assertEqual(r.snapshot(),before)
+        from return_effects import BT22_REPLACEMENT_EFFECT
+        r,_,target,_=self.fixture('replacement')
+        result=self.resolve(r,True)
+        self.assertEqual(result['processing'],'RETURN_REPLACEMENT_PENDING')
+        self.assertIn(target,r.state.battle['A'])
+        self.assertEqual([p['effect_id'] for p in pending_options(r,'A')],
+                         [BT22_REPLACEMENT_EFFECT])
 
     def test_q7265_stacked_card_protection_allows_direct_digimon_return(self):
         r,_,target,_=self.fixture('protected')

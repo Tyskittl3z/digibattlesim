@@ -146,14 +146,14 @@ def resolve_bt12_return(runtime, seat, source_key, choice):
     if choice is None:
         return {'processing': 'CONDITION_OR_TARGET_UNAVAILABLE', 'returned': None,
                 'trashed_sources': [], 'once_per_turn_consumed': True, 'full_match_credit': 0}
-    from return_effects import REPLACEMENT_EFFECT, inherited_return_replacement, return_to_hand
+    from return_effects import inherited_return_replacement, replacement_effect_id, return_to_hand
     other = 'B' if seat == 'A' else 'A'
     replacement = inherited_return_replacement(runtime, seat, other, choice)
     if replacement is not None:
         replacement_source, _ = replacement
         stack = runtime.state.battle[other][choice]
         queue_effects(runtime, [{'seat': other, 'source': replacement_source,
-            'effect_id': REPLACEMENT_EFFECT, 'field': 'inherited_text',
+            'effect_id': replacement_effect_id(runtime, other, replacement_source), 'field': 'inherited_text',
             'trigger': {'kind': 'OPPONENT_EFFECT_RETURN', 'actor': seat,
                 'target': choice, 'target_instance': stack.instance_id,
                 'source_effect': BT12_RETURN_EFFECT}}])
@@ -168,10 +168,10 @@ def resolve_bt12_return(runtime, seat, source_key, choice):
 
 def selected_pending_choices(runtime, seat, selected):
     """Choice grammar for encountered registered mechanics outside older packs."""
-    from return_effects import REPLACEMENT_EFFECT, return_replacement_choices
+    from return_effects import REPLACEMENT_SPECS, return_replacement_choices
     if selected['effect_id'] in (EVADE_EFFECT, GRANTED_EVADE_EFFECT):
         return [False, True]
-    if selected['effect_id'] == REPLACEMENT_EFFECT:
+    if selected['effect_id'] in {spec[0] for spec in REPLACEMENT_SPECS.values()}:
         return return_replacement_choices(runtime, seat, selected['source'])
     if selected['effect_id'] == BT12_UNSUSPEND_EFFECT:
         return bt12_unsuspend_choices(runtime, seat, selected['source'])

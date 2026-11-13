@@ -23,12 +23,26 @@ _OTHER_TIMINGS = frozenset(('On Play', 'When Digivolving', 'When Attacking',
 REPLACEMENT_EFFECT = 'EX13-017.return_replacement'
 REPLACEMENT_LINE = ('[All Turns] [Once Per Turn] When this Digimon with [Veedramon] in its name '
     "would leave the battle area by your opponent's effects, by suspending it, it doesn't leave.")
+BT22_REPLACEMENT_EFFECT = 'BT22-022.return_replacement'
+BT22_REPLACEMENT_LINE = ('[All Turns] [Once Per Turn] When this Digimon with [Veedramon] in its name '
+    "would leave the battle area by your opponent's effects, by suspending this Digimon, it doesn't leave.")
+REPLACEMENT_SPECS = {'EX13-017': (REPLACEMENT_EFFECT, REPLACEMENT_LINE),
+                     'BT22-022': (BT22_REPLACEMENT_EFFECT, BT22_REPLACEMENT_LINE)}
 STACKED_CARDS_PROTECTION_LINE = ("[All Turns] Your opponent's effects can't reduce this unsuspended "
     "Digimon's DP, return its stacked cards to the hand or deck, or trash them.")
 
 
 def replacement_usage(runtime, owner, source_key, stack):
-    return (runtime.state.turn, owner, source_key, stack.instance_id, REPLACEMENT_EFFECT)
+    effect_id = replacement_effect_id(runtime, owner, source_key)
+    return (runtime.state.turn, owner, source_key, stack.instance_id, effect_id)
+
+
+def replacement_effect_id(runtime, owner, source_key):
+    source = runtime._source(owner, source_key, 'inherited_text')
+    spec = REPLACEMENT_SPECS.get(source.card_number)
+    if spec is None or runtime.context.card(owner, source.card_number).effect_text('inherited_text') != spec[1]:
+        raise RuntimeHalt('RETURN_REPLACEMENT_SOURCE_UNVERIFIED: ' + source_key)
+    return spec[0]
 
 
 def inherited_return_replacement(runtime, actor, owner, target_key):
@@ -44,7 +58,8 @@ def inherited_return_replacement(runtime, actor, owner, target_key):
     found = []
     for source in stack.cards[:-1]:
         definition = runtime.context.card(owner, source.card_number)
-        if source.card_number == 'EX13-017' and definition.effect_text('inherited_text') == REPLACEMENT_LINE:
+        spec = REPLACEMENT_SPECS.get(source.card_number)
+        if spec is not None and definition.effect_text('inherited_text') == spec[1]:
             usage = replacement_usage(runtime, owner, source.key, stack)
             if usage not in runtime.state.once_used:
                 found.append((source.key, usage))
@@ -114,7 +129,8 @@ def preflight_deck_bottom_return(runtime, actor, owner, target_key, *, halt_pref
                     if not _active_line(line, observer_owner, runtime.state.active):
                         continue
                     if (observer is target and field == 'inherited_text'
-                            and physical.card_number == 'EX13-017' and line == REPLACEMENT_LINE):
+                            and physical.card_number in REPLACEMENT_SPECS
+                            and line == REPLACEMENT_SPECS[physical.card_number][1]):
                         continue
                     body = effect_body(line).replace('’', "'")
                     if observer is target and _KEYWORD.search(body):
@@ -212,7 +228,7 @@ def return_to_hand(runtime, actor, owner, target_key, *, halt_prefix='RETURN',
 
 def _replacement_window(runtime, seat, source_key):
     from effect_scheduler import pending_options, source_stack
-    expected = (REPLACEMENT_EFFECT, seat, source_key, 'inherited_text')
+    expected = (replacement_effect_id(runtime, seat, source_key), seat, source_key, 'inherited_text')
     activated = getattr(runtime, '_activated_effect', None)
     if activated is not None and activated[:4] == expected and activated[4] is not None:
         record = getattr(runtime, '_activated_pending', None)
@@ -266,13 +282,15 @@ def inherited_return_replacement_bindings(context, root, rules):
     from selected_mechanics import _source_evidence
     bindings = []
     for card in context.cards:
-        if card.number != 'EX13-017':
+        spec = REPLACEMENT_SPECS.get(card.number)
+        if spec is None:
             continue
-        require(card.effect_text('inherited_text') == REPLACEMENT_LINE,
+        effect_id, line = spec
+        require(card.effect_text('inherited_text') == line,
                 'Exact inherited return replacement text changed')
         evidence = _source_evidence(root, card.to_dict()['official_source'],
-            '#EX13-017 inherited once-per-turn leave replacement')
-        bindings.append(MechanicBinding(card.number, REPLACEMENT_EFFECT, 'inherited_text',
+            '#'+card.number+' inherited once-per-turn leave replacement')
+        bindings.append(MechanicBinding(card.number, effect_id, 'inherited_text',
             card.definition_sha256,
             hashlib.sha256(card.effect_text('inherited_text').encode()).hexdigest(),
             (evidence, replace(rules, locator='Comprehensive rules v4.3: replacement and suspension timing')),

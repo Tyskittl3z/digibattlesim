@@ -45,7 +45,7 @@ class ReturnDependencyTests(unittest.TestCase):
 
     def test_target_lower_inherited_prevention_remains_an_actual_dependency(self):
         runtime, target = self.fixture(('BT22-022', 'BT22-023'))
-        self.blocked(runtime, target, 'RETURN_LEAVE_DEPENDENCY_UNIMPLEMENTED.*BT22-022 inherited_text')
+        self.blocked(runtime, target, 'RETURN_REPLACEMENT_CHOICE_REQUIRED')
 
     def test_lower_card_overflow_is_not_hidden_by_inherited_field_selection(self):
         runtime, target = self.fixture()

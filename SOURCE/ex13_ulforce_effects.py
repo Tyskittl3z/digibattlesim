@@ -6,7 +6,7 @@ from pathlib import Path
 from context_runtime import MechanicBinding,RuntimeHalt
 from effect_scheduler import pending_options, queue_effects
 from match_context import require
-from return_effects import (REPLACEMENT_EFFECT, inherited_return_replacement,
+from return_effects import (inherited_return_replacement, replacement_effect_id,
                             return_to_deck_bottom)
 
 
@@ -77,7 +77,7 @@ def resolve_ulforce_return(runtime,seat,source_key,choice):
         if replacement is not None:
             source, usage = replacement
             queue_effects(runtime, [{'seat': owner, 'source': source,
-                'effect_id': REPLACEMENT_EFFECT, 'field': 'inherited_text',
+                'effect_id': replacement_effect_id(runtime, owner, source), 'field': 'inherited_text',
                 'trigger': {'kind': 'OPPONENT_EFFECT_RETURN', 'actor': seat,
                     'target': target_key, 'target_instance': stack.instance_id,
                     'source_effect': RETURN_EFFECT}}])
