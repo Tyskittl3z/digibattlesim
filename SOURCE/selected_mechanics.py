@@ -19,6 +19,8 @@ ORIENTATION_EFFECT = 'EX13-023.orientation'
 OMNIMON_END_EFFECT = 'BT20-102.end_turn_rush_attack'
 OMNIMON_END_LINE = ('[End of Your Turn] [Once Per Turn] 1 of your Digimon may gain '
     '＜Rush＞ for the turn and attack without suspending.')
+OMNIMON_PIERCE_EFFECT = 'BT20-102.piercing_check'
+OMNIMON_KEYWORDS_LINE = '＜Raid＞ ＜Piercing＞ ＜Blocker＞'
 ULFORCE_UNSUSPEND_RETURN_EFFECT = 'BT11-032.unsuspend_return'
 ULFORCE_UNSUSPEND_RETURN_LINE = ("[Your Turn][Once Per Turn] When this Digimon becomes unsuspended, "
     "return 1 of your opponent's level 3 or lower Digimon to its owner's hand. "
@@ -157,6 +159,8 @@ def selected_pending_choices(runtime, seat, selected):
         return bt12_return_choices(runtime, seat, selected['source'])
     if selected['effect_id'] == OMNIMON_END_EFFECT:
         return omnimon_end_choices(runtime, seat, selected['source'])
+    if selected['effect_id'] == OMNIMON_PIERCE_EFFECT:
+        return omnimon_piercing_choices(runtime, seat, selected['source'])
     if selected['effect_id'] == ULFORCE_UNSUSPEND_RETURN_EFFECT:
         return ulforce_unsuspend_return_choices(runtime, seat, selected['source'])
     if selected['effect_id'] == 'LM-028.security_play_trash':
@@ -245,6 +249,40 @@ def resolve_omnimon_end(runtime, seat, source_key, choice, root):
         'attacker': choice['attacker'], 'target': choice['target'],
         'rush_grant': grant, 'attack': attack, 'once_per_turn_consumed': True,
         'full_match_credit': 0}
+
+
+def omnimon_piercing_choices(runtime, seat, source_key):
+    source = runtime._source(seat, source_key, 'main_text')
+    attack = runtime.state.attack
+    if (source.card_number != 'BT20-102' or attack is None
+            or attack['controller'] != seat or attack['attacker'] != source_key
+            or attack['window'] != 'END' or attack['target'] == 'PLAYER'
+            or attack['checked'] is not None):
+        raise RuntimeHalt('OMNIMON_PIERCING_WINDOW_REQUIRED')
+    expected = (OMNIMON_PIERCE_EFFECT, seat, source_key, 'main_text')
+    activated = getattr(runtime, '_activated_effect', None)
+    if activated is None or activated[:4] != expected or activated[4] is None:
+        from effect_scheduler import pending_options
+        if not any(tuple(p[k] for k in ('effect_id', 'seat', 'source', 'field')) == expected
+                   for p in pending_options(runtime, seat)):
+            raise RuntimeHalt('OMNIMON_PIERCING_PENDING_REQUIRED')
+    return [None]
+
+
+def resolve_omnimon_piercing(runtime, seat, source_key, choice, root):
+    if choice is not None or choice not in omnimon_piercing_choices(runtime, seat, source_key):
+        raise RuntimeHalt('OMNIMON_PIERCING_CHOICE_INVALID')
+    attack = runtime.state.attack
+    original_target = attack['target']
+    if not runtime.state.zones[attack['defender']]['security']:
+        return {'processing': 'NO_SECURITY_TO_CHECK', 'checked_card': None,
+                'original_target': original_target, 'full_match_credit': 0}
+    attack['target'], attack['target_instance'], attack['window'] = 'PLAYER', '', 'CONFIRM'
+    from attack_flow import _confirm
+    result = _confirm(runtime, seat, {}, root)
+    return {'processing': 'MANDATORY_PIERCING_SECURITY_CHECK',
+        'checked_card': result.get('checked_card'), 'original_target': original_target,
+        'check': result, 'full_match_credit': 0}
 
 
 def collect_rina_attack_jamming(runtime, seat, attacker_key):
@@ -562,8 +600,11 @@ def build_selected_registry(context, root):
     rules = _source_evidence(root,source,'Comprehensive rules v4.3: 4-13; 15-3; 15-4; 15-14-1; memory cap 1-4-2')
     def bound_omnimon_end(runtime, seat, source_key, choice):
         return resolve_omnimon_end(runtime, seat, source_key, choice, root)
+    def bound_omnimon_piercing(runtime, seat, source_key, choice):
+        return resolve_omnimon_piercing(runtime, seat, source_key, choice, root)
     specs = [('EX13-023',ORIENTATION_EFFECT,'main_text',ORIENTATION_LINE,resolve_orientation),
         ('BT20-102',OMNIMON_END_EFFECT,'main_text',OMNIMON_END_LINE,bound_omnimon_end),
+        ('BT20-102',OMNIMON_PIERCE_EFFECT,'main_text',OMNIMON_KEYWORDS_LINE,bound_omnimon_piercing),
         ('BT11-032',ULFORCE_UNSUSPEND_RETURN_EFFECT,'main_text',
          ULFORCE_UNSUSPEND_RETURN_LINE,resolve_ulforce_unsuspend_return)] + [
         (number,effect,'inherited_text',line,

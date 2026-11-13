@@ -157,7 +157,7 @@ class AttackTests(unittest.TestCase):
             confirm_attack(r,'B',ROOT)
         self.assertEqual(r.snapshot()['state'],before)
 
-    def test_player_attack_declines_raid_but_digimon_battle_stays_scoped(self):
+    def test_player_attack_declines_raid_and_suspended_digimon_can_be_attacked(self):
         r=self.runtime('B');attacker=self.plain(r,'B','BT20-102')
         self.plain(r,'A','EX1-013',suspended=True)
         result=declare_attack(r,'B',attacker,'PLAYER',ROOT)
@@ -165,10 +165,9 @@ class AttackTests(unittest.TestCase):
         self.assertEqual(r.state.attack['target'],'PLAYER')
         r=self.runtime('B');attacker=self.plain(r,'B','BT20-102')
         defender=self.plain(r,'A','EX1-013',suspended=True)
-        before=r.snapshot()
-        with self.assertRaisesRegex(RuntimeHalt,'ATTACK_KEYWORD_UNSUPPORTED: BT20-102 main_text'):
-            declare_attack(r,'B',attacker,defender,ROOT)
-        self.assertEqual(r.snapshot(),before)
+        result=declare_attack(r,'B',attacker,defender,ROOT)
+        self.assertEqual(result['target'],defender)
+        self.assertEqual(r.state.attack['target'],defender)
 
 
 class EncounteredAeroAttackTests(unittest.TestCase):

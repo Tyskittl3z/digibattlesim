@@ -236,7 +236,19 @@ def _confirm(r,seat,c,root):
             ('ATTACKER',seat,a['attacker']),('DEFENDER',other,a['target'])) if label in losses])
         if 'ATTACKER' in losses:_delete(r,seat,a['attacker'])
         if 'DEFENDER' in losses:_delete(r,other,a['target'])
-        a['window']='END';return {'success':True,'battle_losers':losses}
+        a['window']='END'
+        result={'success':True,'battle_losers':losses}
+        if 'DEFENDER' in losses and 'ATTACKER' not in losses:
+            from selected_mechanics import OMNIMON_KEYWORDS_LINE, OMNIMON_PIERCE_EFFECT
+            top = attacker.cards[-1]
+            if (top.card_number == 'BT20-102' and
+                    OMNIMON_KEYWORDS_LINE in r.context.card(seat, top.card_number).effect_text('main_text').splitlines()):
+                from effect_scheduler import queue_effects
+                queue_effects(r, [{'seat': seat, 'source': top.key,
+                    'effect_id': OMNIMON_PIERCE_EFFECT, 'field': 'main_text',
+                    'trigger': {'kind': 'Piercing', 'deleted_digimon': a['target']}}])
+                result['triggered_effects'] = [OMNIMON_PIERCE_EFFECT]
+        return result
     if not s.zones[other]['security']:
         s.terminal=True;s.winner=seat;s.terminal_reason='SUCCESSFUL_DIRECT_ATTACK'
         s.attack=None
