@@ -1,19 +1,18 @@
 {
   "accepted_fact_finding_credit": 0,
-  "commands": 83,
+  "commands": 219,
   "exact_replay": true,
   "first": "B",
   "game_index": 11,
-  "halt_reason": "ATTACK_KEYWORD_UNSUPPORTED: BT20-102 main_text source=B:BT20-102#1",
+  "halt_reason": "BT12_RETURN_REPLACEMENT_CHOICE_REQUIRED: B:P-138#2",
   "history_report": {
     "file": "ARTIFACTS/board-text-60-2026-11-11/game-0010/report.md",
     "sha256": "f36eb01e87d6e5fe365fc07a28d67b7a9b52c3bced3614d248d05a30ba9fefac"
   },
   "model_games_before": 13,
-  "record_sha256": "fea9e4a217861a8c3ec2c9d9989f39a6d9a922a83bc2622f69a23fdf08608e1d",
-  "repair": "The saved BT20-102 attacks an already suspended opposing Digimon. Its optional Raid retargeting is declined by the explicit target; after deleting that Digimon in battle, printed Piercing queues one mandatory Security check before attack end under rules 16-7-1 through 16-7-6. The saved seed, prior actions and bot choice remain fixed.",
+  "record_sha256": "cf0a0c89cf42340b29a48d9b0666368cb4b980b7533e40d50ce7fae6a1eaf76b",
   "seed": 4520756428303837408,
-  "segment": 1,
+  "segment": 2,
   "status": "HALT",
   "winner": null
 }
