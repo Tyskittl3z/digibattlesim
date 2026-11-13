@@ -1,0 +1,18 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "commands": 46,
+  "exact_replay": true,
+  "first": "A",
+  "game_index": 22,
+  "halt_reason": "ULFORCE_RETURN_LEAVE_DEPENDENCY_UNIMPLEMENTED: BT22-022 inherited_text source=A:BT22-022#1",
+  "history_report": {
+    "file": "ARTIFACTS/board-text-60-2026-11-11/game-0021/report.md",
+    "sha256": "ea3670d0066f7fc6d15805a06c6bedff2d954b62f8cc664888c69e531b105847"
+  },
+  "model_games_before": 24,
+  "record_sha256": "9534a48ffc25dad3322440c437b86a58322f3b1de2c307f94041f141cce17cae",
+  "seed": 14962638506343889221,
+  "segment": 0,
+  "status": "HALT",
+  "winner": null
+}
