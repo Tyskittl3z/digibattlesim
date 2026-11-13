@@ -14,9 +14,9 @@ Bot A won 13. Every accepted action has a judge
 receipt and Bot C observation, and every final segment passed exact replay.
 Encountered printed effects were repaired through source-only migrations that
 preserved earlier seeds and choices. The cumulative model contains 25 completed
-games including the two initial history games. Additional game 22 completed
-with 134 accepted actions after resolving the encountered BT22-022 inherited
-leave replacement. Accepted fact-finding
+games including the two initial history games. Additional game 23 is saved
+after 82 accepted actions at a BT22-023 return requiring the defender's
+EX13-017 replacement choice. Accepted fact-finding
 and final-evaluation credit remain zero pending independent certification.
 
 ## Current corrected Bot A/B game — 2026-11-11
