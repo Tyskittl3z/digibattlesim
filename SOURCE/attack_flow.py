@@ -31,13 +31,14 @@ def validate_attack(state):
         raise RuntimeHalt('ATTACK_SCHEMA_INVALID')
 
 
-def _scope(r,root,stage,*,attacker=None,target=None):
+def _scope(r,root,stage,*,attacker=None,target=None,within_effect=False):
     attack=r.state.attack
     actor=r.state.active
     if attack is not None:
         actor=attack['controller'];attacker=attack['attacker'];target=attack['target']
     assert_basic_board_scope(r,'attack_plain',root,
-                            event={'stage':stage,'seat':actor,'attacker':attacker,'target':target})
+                            event={'stage':stage,'seat':actor,'attacker':attacker,'target':target},
+                            within_effect=within_effect)
 
 
 def _instance(r,stack):
@@ -223,9 +224,10 @@ def _dp(r,seat,stack):
 
 def _offer_printed_evade(r, deletions, decision):
     """Pause one witnessed EX13-023 deletion for its owner's Evade choice."""
-    from effect_grants import active_keyword, active_restriction
-    from effect_scheduler import queue_effects
-    from selected_mechanics import EVADE_EFFECT, EVADE_LINE
+    from effect_grants import _active, active_keyword, active_restriction
+    from effect_scheduler import queue_effects, source_stack
+    from selected_mechanics import (EVADE_EFFECT, EVADE_LINE,
+        GRANTED_EVADE_EFFECT, GRANTED_EVADE_LINE)
     payable = []
     for owner, key in deletions:
         stack = r.state.battle[owner][key]
@@ -235,16 +237,30 @@ def _offer_printed_evade(r, deletions, decision):
                 or not active_keyword(r, owner, key, 'Evade')):
             continue
         top = stack.cards[-1]
-        if (top.card_number != 'EX13-023' or EVADE_LINE not in
+        if (top.card_number == 'EX13-023' and EVADE_LINE in
                 r.context.card(owner, top.card_number).effect_text('main_text').splitlines()):
-            raise RuntimeHalt('BATTLE_EVADE_CHOICE_UNIMPLEMENTED: ' + key)
-        payable.append((owner, key, stack, top))
+            payable.append((owner, key, stack, top.key, EVADE_EFFECT))
+            continue
+        grants = [item for item in _active(r, owner, key)
+                  if 'Evade' in item['effect'].get('keywords', [])]
+        if len(grants) != 1:
+            raise RuntimeHalt('BATTLE_EVADE_GRANT_SOURCE_UNVERIFIED: ' + key)
+        grant = grants[0]
+        try:
+            source = r._source(owner, grant['source'], 'main_text')
+            source_stack(r, owner, grant['source'], 'main_text')
+        except RuntimeHalt as exc:
+            raise RuntimeHalt('BATTLE_EVADE_GRANT_SOURCE_UNAVAILABLE: ' + key) from exc
+        if (source.card_number != 'BT11-112' or GRANTED_EVADE_LINE not in
+                r.context.card(owner, source.card_number).effect_text('main_text').splitlines()):
+            raise RuntimeHalt('BATTLE_EVADE_GRANT_SOURCE_UNVERIFIED: ' + key)
+        payable.append((owner, key, stack, source.key, GRANTED_EVADE_EFFECT))
     if not payable:
         return None
     if len(payable) != 1:
         raise RuntimeHalt('BATTLE_MULTIPLE_EVADE_CHOICES_UNIMPLEMENTED')
-    owner, key, stack, top = payable[0]
-    queue_effects(r, [{'seat': owner, 'source': top.key, 'effect_id': EVADE_EFFECT,
+    owner, key, stack, source_key, effect_id = payable[0]
+    queue_effects(r, [{'seat': owner, 'source': source_key, 'effect_id': effect_id,
         'field': 'main_text', 'trigger': {'kind': 'WOULD_BE_DELETED',
             'target': key, 'target_instance': stack.instance_id,
             'attack': dict(r.state.attack)}}])
@@ -254,12 +270,14 @@ def _offer_printed_evade(r, deletions, decision):
 
 def resolve_printed_evade(runtime, seat, source_key, choice, root):
     """Resolve the optional immediate Evade, then finish the paused battle."""
-    from selected_mechanics import EVADE_EFFECT, EVADE_LINE, _set_orientation
+    from effect_grants import _active
+    from selected_mechanics import (EVADE_EFFECT, EVADE_LINE,
+        GRANTED_EVADE_EFFECT, _set_orientation)
     if type(choice) is not bool:
         raise RuntimeHalt('EVADE_CHOICE_INVALID')
     record = getattr(runtime, '_activated_pending', None)
     attack = runtime.state.attack
-    if (record is None or record['effect_id'] != EVADE_EFFECT
+    if (record is None or record['effect_id'] not in (EVADE_EFFECT, GRANTED_EVADE_EFFECT)
             or record['seat'] != seat or record['source'] != source_key
             or record['field'] != 'main_text' or attack is None
             or attack['window'] != 'CONFIRM' or record['trigger'].get('attack') != attack
@@ -268,9 +286,15 @@ def resolve_printed_evade(runtime, seat, source_key, choice, root):
     key = record['trigger']['target']
     stack = runtime.state.battle[seat].get(key)
     if (stack is None or stack.instance_id != record['trigger']['target_instance']
-            or stack.cards[-1].key != source_key or stack.suspended
-            or EVADE_LINE not in runtime.context.card(seat, 'EX13-023').effect_text('main_text').splitlines()):
+            or stack.suspended):
         raise RuntimeHalt('EVADE_TARGET_CHANGED')
+    if record['effect_id'] == EVADE_EFFECT:
+        if (stack.cards[-1].key != source_key or
+                EVADE_LINE not in runtime.context.card(seat, 'EX13-023').effect_text('main_text').splitlines()):
+            raise RuntimeHalt('EVADE_TARGET_CHANGED')
+    elif not any(item['source'] == source_key and 'Evade' in item['effect'].get('keywords', [])
+                 for item in _active(runtime, seat, key)):
+        raise RuntimeHalt('EVADE_GRANT_EXPIRED')
     if choice:
         changed = _set_orientation(runtime, seat, stack, True)
         if not changed['changed']:
@@ -282,7 +306,7 @@ def resolve_printed_evade(runtime, seat, source_key, choice, root):
 
 
 def _confirm(r,seat,c,root,*,evade_decision=None):
-    a=_window(r,seat,'CONFIRM');_scope(r,root,'CONFIRM');s=r.state;other=a['defender']
+    a=_window(r,seat,'CONFIRM');_scope(r,root,'CONFIRM',within_effect=evade_decision is not None);s=r.state;other=a['defender']
     attacker=s.battle[seat].get(a['attacker'])
     if attacker is None or attacker.instance_id!=a['attacker_instance']:
         a['window']='END';return {'success':False,'reason':'ATTACKER_LEFT_BATTLE'}

@@ -301,7 +301,7 @@ class EncounteredAeroAttackTests(unittest.TestCase):
     def test_payable_evade_halts_actual_deletion_before_security_or_battle_cards_move(self):
         r,attacker,checked=self.evade_fixture(unsuspend=True)
         before=r.snapshot()['state']
-        with self.assertRaisesRegex(RuntimeHalt,'BATTLE_EVADE_CHOICE_UNIMPLEMENTED.*'+attacker):
+        with self.assertRaisesRegex(RuntimeHalt,'BATTLE_EVADE_GRANT_SOURCE_UNAVAILABLE.*'+attacker):
             confirm_attack(r,'B',ROOT)
         self.assertEqual(r.snapshot()['state'],before)
         self.assertEqual(r.state.zones['A']['security'][-1].key,checked)
