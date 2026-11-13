@@ -1,0 +1,18 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "commands": 165,
+  "exact_replay": true,
+  "first": "A",
+  "game_index": 24,
+  "halt_reason": "OMNIMON_PIERCING_WINDOW_REQUIRED",
+  "history_report": {
+    "file": "ARTIFACTS/board-text-60-2026-11-11/game-0023/report.md",
+    "sha256": "221109b0a4367640a7266a58b278d16075161c8e90fd121ce84e74c72f38f6a4"
+  },
+  "model_games_before": 26,
+  "record_sha256": "27648a4a43560cc03e8e9e2551e63af92e45ea73de56febae1ef5bd36d85128e",
+  "seed": 4274756805820524210,
+  "segment": 0,
+  "status": "HALT",
+  "winner": null
+}
