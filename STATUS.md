@@ -9,13 +9,14 @@ seat, the board-and-card-text policy for both seats, and exact replay before
 each terminal model update. This authorization supersedes older one-game and
 pre-match pauses below. It does not authorize the 10,000-match evaluation.
 
-Additional games 0 through 10 are complete in software. Bot B won games 0,
-1 and 2; Bot A won games 3 through 10. Every accepted action has a judge
+Additional games 0 through 11 are complete in software. Bot B won games 0,
+1, 2 and 11; Bot A won games 3 through 10. Every accepted action has a judge
 receipt and Bot C observation, and every final segment passed exact replay.
 Encountered printed effects were repaired through source-only migrations that
-preserved earlier seeds and choices. The cumulative model contains 13 completed
-games including the two initial history games. Additional game 11 is saved
-after 82 accepted actions at BT20-102's Piercing attack. Accepted fact-finding
+preserved earlier seeds and choices. The cumulative model contains 14 completed
+games including the two initial history games. Additional game 11 completed
+with 290 accepted actions after its BT12-029 return offered EX13-017's
+defender replacement choice. Accepted fact-finding
 and final-evaluation credit remain zero pending independent certification.
 
 ## Current corrected Bot A/B game — 2026-11-11

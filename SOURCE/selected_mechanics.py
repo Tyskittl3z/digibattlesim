@@ -141,8 +141,21 @@ def resolve_bt12_return(runtime, seat, source_key, choice):
     if choice is None:
         return {'processing': 'CONDITION_OR_TARGET_UNAVAILABLE', 'returned': None,
                 'trashed_sources': [], 'once_per_turn_consumed': True, 'full_match_credit': 0}
-    from return_effects import return_to_hand
+    from return_effects import REPLACEMENT_EFFECT, inherited_return_replacement, return_to_hand
     other = 'B' if seat == 'A' else 'A'
+    replacement = inherited_return_replacement(runtime, seat, other, choice)
+    if replacement is not None:
+        replacement_source, _ = replacement
+        stack = runtime.state.battle[other][choice]
+        queue_effects(runtime, [{'seat': other, 'source': replacement_source,
+            'effect_id': REPLACEMENT_EFFECT, 'field': 'inherited_text',
+            'trigger': {'kind': 'OPPONENT_EFFECT_RETURN', 'actor': seat,
+                'target': choice, 'target_instance': stack.instance_id,
+                'source_effect': BT12_RETURN_EFFECT}}])
+        return {'processing': 'RETURN_REPLACEMENT_PENDING', 'target': choice,
+            'replacement_source': replacement_source, 'returned': None,
+            'trashed_sources': [], 'once_per_turn_consumed': True,
+            'full_match_credit': 0}
     moved = return_to_hand(runtime, seat, other, choice, halt_prefix='BT12_RETURN')
     return {'processing': 'RETURN_LOWEST_LEVEL_DIGIMON_TO_HAND', **moved,
             'once_per_turn_consumed': True, 'full_match_credit': 0}

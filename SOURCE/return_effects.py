@@ -196,9 +196,11 @@ def return_to_deck_bottom(runtime, actor, owner, target_keys, bottom_order, *, h
     return {'returned': returned, 'trashed_sources': trashed, 'steps': steps}
 
 
-def return_to_hand(runtime, actor, owner, target_key, *, halt_prefix='RETURN'):
+def return_to_hand(runtime, actor, owner, target_key, *, halt_prefix='RETURN',
+                   replacement_handled=False):
     """Return one selected Digimon's top card to hand and trash its sources."""
-    preflight_deck_bottom_return(runtime, actor, owner, target_key, halt_prefix=halt_prefix)
+    preflight_deck_bottom_return(runtime, actor, owner, target_key, halt_prefix=halt_prefix,
+                                 replacement_handled=replacement_handled)
     stack = runtime.state.battle[owner].pop(target_key)
     top, lower = stack.cards[-1], stack.cards[:-1]
     runtime.state.zones[owner]['hand'].append(top)
@@ -224,7 +226,8 @@ def _replacement_window(runtime, seat, source_key):
     target = trigger.get('target')
     if (target not in runtime.state.battle[seat] or stack is not runtime.state.battle[seat][target]
             or trigger.get('target_instance') != stack.instance_id
-            or trigger.get('actor') == seat or trigger.get('source_effect') != 'EX13-023.return_fewest'):
+            or trigger.get('actor') == seat or trigger.get('source_effect') not in
+            ('EX13-023.return_fewest', 'BT12-029.unsuspend_return_lowest')):
         raise RuntimeHalt('RETURN_REPLACEMENT_WINDOW_REQUIRED')
     return record, stack
 
@@ -249,8 +252,12 @@ def resolve_return_replacement(runtime, seat, source_key, choice):
         runtime.state.once_used.add(usage)
         return {'prevented_return': True, 'suspended': target,
                 'once_per_turn_consumed': True, 'full_match_credit': 0}
-    moved = return_to_deck_bottom(runtime, actor, seat, [target], [target],
-        halt_prefix='ULFORCE_RETURN', replacement_handled=True)
+    if trigger['source_effect'] == 'BT12-029.unsuspend_return_lowest':
+        moved = return_to_hand(runtime, actor, seat, target,
+            halt_prefix='BT12_RETURN', replacement_handled=True)
+    else:
+        moved = return_to_deck_bottom(runtime, actor, seat, [target], [target],
+            halt_prefix='ULFORCE_RETURN', replacement_handled=True)
     return {'prevented_return': False, **moved, 'full_match_credit': 0}
 
 
