@@ -274,18 +274,28 @@ def resolve_omnimon_end(runtime, seat, source_key, choice, root):
 def omnimon_piercing_choices(runtime, seat, source_key):
     source = runtime._source(seat, source_key, 'main_text')
     attack = runtime.state.attack
-    if (source.card_number != 'BT20-102' or attack is None
-            or attack['controller'] != seat or attack['attacker'] != source_key
-            or attack['window'] != 'END' or attack['target'] == 'PLAYER'
-            or attack['checked'] is not None):
+    if source.card_number != 'BT20-102':
         raise RuntimeHalt('OMNIMON_PIERCING_WINDOW_REQUIRED')
     expected = (OMNIMON_PIERCE_EFFECT, seat, source_key, 'main_text')
     activated = getattr(runtime, '_activated_effect', None)
-    if activated is None or activated[:4] != expected or activated[4] is None:
+    if activated is not None and activated[:4] == expected and activated[4] is not None:
+        record = getattr(runtime, '_activated_pending', None)
+    else:
         from effect_scheduler import pending_options
-        if not any(tuple(p[k] for k in ('effect_id', 'seat', 'source', 'field')) == expected
-                   for p in pending_options(runtime, seat)):
-            raise RuntimeHalt('OMNIMON_PIERCING_PENDING_REQUIRED')
+        record = next((p for p in pending_options(runtime, seat)
+            if tuple(p[k] for k in ('effect_id', 'seat', 'source', 'field')) == expected), None)
+    if (record is None or record['trigger'].get('kind') != 'Piercing'
+            or not isinstance(record['trigger'].get('deleted_digimon'), str)):
+        raise RuntimeHalt('OMNIMON_PIERCING_PENDING_REQUIRED')
+    if attack is not None and (attack['controller'] != seat or attack['attacker'] != source_key
+            or attack['window'] != 'END' or attack['target'] == 'PLAYER'
+            or attack['checked'] is not None or attack['target'] != record['trigger']['deleted_digimon']):
+        raise RuntimeHalt('OMNIMON_PIERCING_WINDOW_REQUIRED')
+    if attack is None:
+        from effect_scheduler import source_stack
+        stack = source_stack(runtime, seat, source_key, 'main_text')
+        if stack.instance_id != record['instance'] or runtime.state.active != seat:
+            raise RuntimeHalt('OMNIMON_PIERCING_WINDOW_REQUIRED')
     return [None]
 
 
@@ -293,13 +303,32 @@ def resolve_omnimon_piercing(runtime, seat, source_key, choice, root):
     if choice is not None or choice not in omnimon_piercing_choices(runtime, seat, source_key):
         raise RuntimeHalt('OMNIMON_PIERCING_CHOICE_INVALID')
     attack = runtime.state.attack
+    closed_attack = attack is None
+    if closed_attack:
+        from effect_scheduler import source_stack
+        pending = getattr(runtime, '_activated_pending', None)
+        if pending is None or pending['effect_id'] != OMNIMON_PIERCE_EFFECT:
+            raise RuntimeHalt('OMNIMON_PIERCING_PENDING_REQUIRED')
+        opponent = 'B' if seat == 'A' else 'A'
+        stack = source_stack(runtime, seat, source_key, 'main_text')
+        attack = {'attacker': source_key, 'attacker_instance': stack.instance_id,
+            'target': pending['trigger']['deleted_digimon'], 'target_instance': '',
+            'controller': seat, 'defender': opponent, 'window': 'END',
+            'counter_used': False, 'block_used': True, 'checked': None}
+        if runtime.state.phase == 'END_OF_TURN':
+            attack['deferred_depth'] = pending['depth']
+        runtime.state.attack = attack
     original_target = attack['target']
     if not runtime.state.zones[attack['defender']]['security']:
+        if closed_attack:
+            runtime.state.attack = None
         return {'processing': 'NO_SECURITY_TO_CHECK', 'checked_card': None,
                 'original_target': original_target, 'full_match_credit': 0}
     attack['target'], attack['target_instance'], attack['window'] = 'PLAYER', '', 'CONFIRM'
     from attack_flow import _confirm
     result = _confirm(runtime, seat, {}, root)
+    if closed_attack and runtime.state.attack is not None and runtime.state.attack['window'] == 'END':
+        runtime.state.attack = None
     return {'processing': 'MANDATORY_PIERCING_SECURITY_CHECK',
         'checked_card': result.get('checked_card'), 'original_target': original_target,
         'check': result, 'full_match_credit': 0}
