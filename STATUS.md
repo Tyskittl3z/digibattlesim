@@ -9,18 +9,19 @@ seat, the board-and-card-text policy for both seats, and exact replay before
 each terminal model update. This authorization supersedes older one-game and
 pre-match pauses below. It does not authorize the 10,000-match evaluation.
 
-Additional games 0 through 29 are complete in software. Bot B and Bot A won
-15 games each. Every accepted action has a judge
+All 60 additional games are complete in software. Bot B won 31 and Bot A won
+29. The locked schedule started each seat 30 times. Every accepted action has a judge
 receipt and Bot C observation, and every final segment passed exact replay.
 Encountered printed effects were repaired through source-only migrations that
-preserved earlier seeds and choices. The cumulative model contains 32 completed
-games including the two initial history games. Additional game 28 completed
-with 209 accepted actions after its simultaneous two-player Evade choice.
-Game 24 completed after its queued BT20-102 Piercing Security check.
-Bot C did not increment its successful-check counter for this pending-effect
-check, even though the Security card moved. That metric and any tempo label
-using it require correction before evaluation. Accepted fact-finding
-and final-evaluation credit remain zero pending independent certification.
+preserved earlier seeds and choices. The cumulative model contains 62 completed
+games including the two initial history games. The 60 games logged 10,047
+accepted actions, and each terminal game has an exact replay receipt. See
+`ARTIFACTS/board-text-60-2026-11-11/campaign-summary.md` for the result and
+measurement caveat. Bot C did not increment its successful-check counter for
+eight BT20-102 Piercing Security checks, even though each Security card moved.
+The affected tempo labels and model require correction before evaluation.
+Accepted fact-finding and final-evaluation credit remain zero pending
+independent certification.
 
 ## Current corrected Bot A/B game — 2026-11-11
 
