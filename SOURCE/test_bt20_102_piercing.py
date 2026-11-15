@@ -16,6 +16,19 @@ from test_selected_mechanics import ROOT
 
 
 class OmnimonPiercingTests(unittest.TestCase):
+    def test_end_turn_piercing_counts_when_attack_context_has_closed(self):
+        with gzip.open(ROOT / 'ARTIFACTS/board-text-60-2026-11-11/game-0024/segment-0002.json.gz', 'rt') as handle:
+            record = json.load(handle)
+        action = next(command for command in record['commands']
+                      if command['result'].get('processing') == 'MANDATORY_PIERCING_SECURITY_CHECK')
+        self.assertIsNone(action['before']['state']['attack'])
+        context = load_context_file(ROOT / record['context_file'])
+        tracker = FieldTracker(context)
+        tracker.start(action['before'])
+        tracker.observe(action['tracker_command'], action['before'], action['after'],
+                        action['result'], action['judge'])
+        self.assertEqual(tracker.public_metrics()['successful_security_checks']['B'], 1)
+
     def test_piercing_check_rejects_mismatched_nested_result(self):
         with gzip.open(ROOT / 'ARTIFACTS/board-text-60-2026-11-11/game-0011/segment-0004.json.gz', 'rt') as handle:
             record = json.load(handle)
