@@ -1,0 +1,18 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "commands": 143,
+  "exact_replay": true,
+  "first": "B",
+  "game_index": 41,
+  "halt_reason": null,
+  "history_report": {
+    "file": "ARTIFACTS/board-text-60-2026-11-11/game-0040/report.md",
+    "sha256": "6594c0ac7abf5454928a197591a1ccd8369cca453c475dd635c202cf7d43f78d"
+  },
+  "model_games_before": 43,
+  "record_sha256": "3104f46d1a7e1f30b89123810701a450787d92bc89de5ab4eb1b43b982ab1697",
+  "seed": 319147774030744299,
+  "segment": 0,
+  "status": "EXPERIMENTAL_SOFTWARE_TERMINAL",
+  "winner": "B"
+}
