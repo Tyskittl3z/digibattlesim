@@ -1,0 +1,64 @@
+{
+  "schema": "rina-private-selected-pending-window-proof-v1",
+  "date": "2026-11-03",
+  "probes": [
+    {
+      "probe": "valid_private_selected_record",
+      "result": "ACCEPTED_NO_STATE_MUTATION"
+    },
+    {
+      "probe": "missing_private_record",
+      "result": "REJECTED_NO_STATE_MUTATION",
+      "reason": "RINA_REACTIVATION_WINDOW_REQUIRED"
+    },
+    {
+      "probe": "private_id_mismatch",
+      "result": "REJECTED_NO_STATE_MUTATION",
+      "reason": "RINA_REACTIVATION_WINDOW_REQUIRED"
+    },
+    {
+      "probe": "private_effect_mismatch",
+      "result": "REJECTED_NO_STATE_MUTATION",
+      "reason": "RINA_REACTIVATION_WINDOW_REQUIRED"
+    },
+    {
+      "probe": "private_source_mismatch",
+      "result": "REJECTED_NO_STATE_MUTATION",
+      "reason": "RINA_REACTIVATION_WINDOW_REQUIRED"
+    },
+    {
+      "probe": "private_tamer_incarnation_mismatch",
+      "result": "REJECTED_NO_STATE_MUTATION",
+      "reason": "RINA_REACTIVATION_WINDOW_REQUIRED"
+    },
+    {
+      "probe": "empty_observed_incarnation",
+      "result": "REJECTED_NO_STATE_MUTATION",
+      "reason": "RINA_REACTIVATION_TRIGGER_INVALID"
+    },
+    {
+      "probe": "foreign_observed_source",
+      "result": "REJECTED_NO_STATE_MUTATION",
+      "reason": "RINA_REACTIVATION_TRIGGER_INVALID"
+    },
+    {
+      "probe": "nonmatching_trigger_name",
+      "result": "REJECTED_NO_STATE_MUTATION",
+      "reason": "RINA_REACTIVATION_TRIGGER_INVALID"
+    },
+    {
+      "probe": "nonactual_suspension",
+      "result": "REJECTED_NO_STATE_MUTATION",
+      "reason": "RINA_REACTIVATION_TRIGGER_INVALID"
+    },
+    {
+      "probe": "unbound_direct_call",
+      "result": "REJECTED_NO_STATE_MUTATION",
+      "reason": "RINA_REACTIVATION_WINDOW_REQUIRED"
+    }
+  ],
+  "new_actual_gameplay_executed": false,
+  "source_files_edited": [],
+  "full_match_credit": 0,
+  "limits": "Synthetic direct private-window validation only; source-level guards complement dispatcher tests and actual saved-state tests."
+}

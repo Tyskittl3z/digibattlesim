@@ -1,0 +1,15 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "changed_source_files": [
+    "ex13_ulforce_effects.py",
+    "return_effects.py",
+    "selected_mechanics.py"
+  ],
+  "commands": 107,
+  "exact_replay": true,
+  "record_file": "segment-0008.json.gz",
+  "record_sha256": "71c1a0330decf6bbe2f25cbfbc5f2d170bd95b8b996cc412cccaf550027ecdb2",
+  "repair": "EX13-017 inherited return replacement",
+  "segment": 8,
+  "status": "HALT"
+}

@@ -1,0 +1,17 @@
+{
+  "accepted_actions": 222,
+  "accepted_fact_finding_credit": 0,
+  "bot_c_observations": 222,
+  "corrected_sequence_credit": 0,
+  "exact_replay": true,
+  "final_evaluation_credit": 0,
+  "halt_reason": "ULFORCE_RETURN_LEAVE_DEPENDENCY_UNIMPLEMENTED: EX13-017 inherited_text source=B:EX13-017#3",
+  "learning_update_committed": false,
+  "prior_history_report_sha256": "9e62a62789bf75fcbd943bd8fe0091bace271c36549489909cb1fb9de27a6c82",
+  "reason": "User requires current public battlefield, own hand and printed text with prior report; this run used prior named aggressive/defensive preference code.",
+  "record": "game-0001-segment-0016.json.gz",
+  "record_sha256": "9121a49d76ae530e80825b0152f065723a2b78b13980f1b18e5931dcd6edea10",
+  "schema": "game-0001-policy-correction-stop-v1",
+  "seed": 4331348820189008048,
+  "status": "STOPPED_DIAGNOSTIC_OLD_POLICY"
+}

@@ -1,0 +1,34 @@
+{
+  "evidence_type": "USER_SUPPLIED_TIMESTAMPED_TRANSCRIPT",
+  "video_viewed": false,
+  "official_rules_crosschecked": false,
+  "sources": [
+    {
+      "label_inferred_from_narrative": "jupiter-vulcanus",
+      "path": "/workspace/attachments/e08ed235-f49c-480b-be03-32f3bcbf016f/Pasted text.txt",
+      "sha256": "e4f0efe5efac2424f7868c529e576b5fbb4c1df5c789124b47ba9185e1ed1685",
+      "bytes": 32194,
+      "last_timestamp": "20:09",
+      "segment_count": 707,
+      "sediment_file_id": "not provided to reviewing subagent"
+    },
+    {
+      "label_inferred_from_narrative": "abbadomon-omnimon-alter",
+      "path": "/workspace/attachments/c5b90dd6-ecc7-4a29-b6f1-3e5d70ccceaa/Pasted text.txt",
+      "sha256": "27baed9046d31f417c85fabcda22a037079b04427e133e0fb51a6e6dd94dba6d",
+      "bytes": 26532,
+      "last_timestamp": "16:48",
+      "segment_count": 584,
+      "sediment_file_id": "not provided to reviewing subagent"
+    },
+    {
+      "label_inferred_from_narrative": "rebootmon-marsmon",
+      "path": "/workspace/attachments/05845c80-703d-4048-ab1b-b6384747c2ef/Pasted text.txt",
+      "sha256": "4fd8e65605b7232bac5841088cfb24815390a2c2a6259bc1344eecd6aa3a3f42",
+      "bytes": 22848,
+      "last_timestamp": "14:28",
+      "segment_count": 503,
+      "sediment_file_id": "not provided to reviewing subagent"
+    }
+  ]
+}

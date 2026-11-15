@@ -1,0 +1,23 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "commands": 96,
+  "first": "B",
+  "halt_reason": null,
+  "history_report": {
+    "file": "ARTIFACTS/fresh-game-0000-2026-11-11/game-0000-report.md",
+    "sha256": "9e62a62789bf75fcbd943bd8fe0091bace271c36549489909cb1fb9de27a6c82"
+  },
+  "player_policy": "BOARD_TEXT_HISTORY",
+  "record_file": "segment-0006.json.gz",
+  "record_sha256": "8703a879bd88aef06b17c8452e2675f9bc0d2b10044b7321c8d307a504bfe7f3",
+  "replay": {
+    "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+    "exact_match": true,
+    "record_sha256": "e5dedcc88ec1ee0d4b74ce8824682abb530d2ff93dfe2d27a68f4df2327a677b"
+  },
+  "seed": 17795081213137388177,
+  "segment": 6,
+  "status": "PAUSED",
+  "turn": 5,
+  "winner": null
+}

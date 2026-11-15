@@ -1,0 +1,11 @@
+# EX13-022 actual attack-stop source review
+
+The selected turn6/memory3 attack by **B:EX13-022#1** toward A player is legal. The singleton is unsuspended, playedturn4/readysince5, with no restriction or grant. Same saved seed and every preceding command revalidated the exact physical state and RNG. The current broad guard HALT on A Rina is an implementation boundary, not card-text ambiguity or illegal play.
+
+Declaration suspends the attacker and triggers **only its own When Attacking free-Tamer effect**. Its shared OPT is fresh this turn; turn4 On Play usage does not exhaust turn6. A BT11 Rina observes A own Digimon suspension, not B attacker. B EX13 Rina observes unsuspension, not suspension. Singleton Aero does not inherit its own inherited unsuspend ability. A later free-played BT11 Rina cannot retroactively observe the earlier suspension. Declaration neither draws nor spends memory.
+
+Exact free-Tamer choices are `None`, `B:BT11-112#3`, `B:EX13-069#3`. If BT11 Rina is played, resolve her On Play plus both B Aero Tamer-play restrictions and exposed B:EX13-002#1 inherited blue-Tamer observer as one four-effect simultaneous group, in B chosen order. EX13 Rina has no self On Play, leaving three effects. The egg host is now **B:BT22-023#1**, already unsuspended; its explicit optional processing creates no actual unsuspend or derivative Rina/EX1 event. All derived effects finish before Counter timing (CR11-1-4). Rina grant targets and Aero restriction targets/turn7 expiry are recorded in JSON.
+
+A current hand has no Counter card and A battle Digimon have no printed/granted Blocker. After actual pending choices and explicit Counter/no-block choices, the current single security check would reveal **A:P-138#4 (5000DP)** against **7000DP** attacker: attacker survives suspended; P138 goes to A trash; A security5->4; memory remains3; no winner. P138 ordinary OnPlay/WhenDigivolving and inherited text do not become Security effects. These are rule-review expectations from the saved state, not an executed continuation or information for the pilot.
+
+No SOURCE edits, full-match certification or match credit. Exact source hashes, rule locators, state/RNG proofs and conditional branch constraints are in [ex13-022-attack-actual-stop.json](ex13-022-attack-actual-stop.json).

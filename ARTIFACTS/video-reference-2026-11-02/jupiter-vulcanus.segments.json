@@ -1,0 +1,3555 @@
+{
+  "source": {
+    "key": "jupiter-vulcanus",
+    "label": "Jupitermon vs Vulcanusmon",
+    "file_id": "file_0000000055cc81f5b27d175565fa3cae",
+    "original_path": "/workspace/attachments/e08ed235-f49c-480b-be03-32f3bcbf016f/Pasted text.txt",
+    "original_bytes": 32194,
+    "original_sha256": "e4f0efe5efac2424f7868c529e576b5fbb4c1df5c789124b47ba9185e1ed1685",
+    "segments": 707,
+    "last_caption_seconds": 1209,
+    "identity_basis": "USER_CONTEXT_AND_TRANSCRIPT_NOT_EXACT_DECK_CERTIFICATION",
+    "evidence_type": "USER_SUPPLIED_TRANSCRIPT",
+    "card_name_normalization": "NONE_ORIGINAL_WORDS_PRESERVED",
+    "rules_authority": false,
+    "simulated_match_credit": 0,
+    "segments_file": "jupiter-vulcanus.segments.json"
+  },
+  "segments": [
+    {
+      "timestamp": "0:00",
+      "start_seconds": 0,
+      "text": "Welcome to the very first round and game"
+    },
+    {
+      "timestamp": "0:02",
+      "start_seconds": 2,
+      "text": "of the battle vault Olympus 12"
+    },
+    {
+      "timestamp": "0:03",
+      "start_seconds": 3,
+      "text": "tournament okanismon will be going first"
+    },
+    {
+      "timestamp": "0:06",
+      "start_seconds": 6,
+      "text": "hatch BT25 tokon which will dig evolve"
+    },
+    {
+      "timestamp": "0:09",
+      "start_seconds": 9,
+      "text": "into coronaman for zero cost for memory"
+    },
+    {
+      "timestamp": "0:12",
+      "start_seconds": 12,
+      "text": "the tamer card Dan Yuki and Kananuki"
+    },
+    {
+      "timestamp": "0:14",
+      "start_seconds": 14,
+      "text": "will be played and the turn will end at"
+    },
+    {
+      "timestamp": "0:16",
+      "start_seconds": 16,
+      "text": "the end of turn Dan and Kanan's effect"
+    },
+    {
+      "timestamp": "0:17",
+      "start_seconds": 17,
+      "text": "activates by suspending this tamer you"
+    },
+    {
+      "timestamp": "0:19",
+      "start_seconds": 19,
+      "text": "may use one ts trait option card with as"
+    },
+    {
+      "timestamp": "0:21",
+      "start_seconds": 21,
+      "text": "high or lower use cost as your"
+    },
+    {
+      "timestamp": "0:22",
+      "start_seconds": 22,
+      "text": "opponent's memory from the hand without"
+    },
+    {
+      "timestamp": "0:24",
+      "start_seconds": 24,
+      "text": "paying the cost and the option card used"
+    },
+    {
+      "timestamp": "0:25",
+      "start_seconds": 25,
+      "text": "will be factorial area while you have no"
+    },
+    {
+      "timestamp": "0:27",
+      "start_seconds": 27,
+      "text": "face up security cards you can ignore"
+    },
+    {
+      "timestamp": "0:29",
+      "start_seconds": 29,
+      "text": "this card's color requirements with main"
+    },
+    {
+      "timestamp": "0:30",
+      "start_seconds": 30,
+      "text": "effect. Add the bottom security card to"
+    },
+    {
+      "timestamp": "0:32",
+      "start_seconds": 32,
+      "text": "the hand and place this card face up as"
+    },
+    {
+      "timestamp": "0:33",
+      "start_seconds": 33,
+      "text": "the bottom security card. Then you may"
+    },
+    {
+      "timestamp": "0:35",
+      "start_seconds": 35,
+      "text": "play one black or red TS trade Digimon"
+    },
+    {
+      "timestamp": "0:36",
+      "start_seconds": 36,
+      "text": "card from your hand with a cost reduced"
+    },
+    {
+      "timestamp": "0:38",
+      "start_seconds": 38,
+      "text": "by three and Toy Auman will be played."
+    },
+    {
+      "timestamp": "0:40",
+      "start_seconds": 40,
+      "text": "Back to Dan and Kanan's effect. Then one"
+    },
+    {
+      "timestamp": "0:42",
+      "start_seconds": 42,
+      "text": "of your Digimon with the TS trait may"
+    },
+    {
+      "timestamp": "0:43",
+      "start_seconds": 43,
+      "text": "attack. However, Toy Agamon was played"
+    },
+    {
+      "timestamp": "0:44",
+      "start_seconds": 44,
+      "text": "during this turn and cannot attack the"
+    },
+    {
+      "timestamp": "0:46",
+      "start_seconds": 46,
+      "text": "same turn it was played. And now Vtoy"
+    },
+    {
+      "timestamp": "0:48",
+      "start_seconds": 48,
+      "text": "Agamon's on play effect. Real top three"
+    },
+    {
+      "timestamp": "0:49",
+      "start_seconds": 49,
+      "text": "cards of your deck. Add one option card"
+    },
+    {
+      "timestamp": "0:51",
+      "start_seconds": 51,
+      "text": "and one TS trade card among them to the"
+    },
+    {
+      "timestamp": "0:52",
+      "start_seconds": 52,
+      "text": "hand where volcanism will be the TS"
+    },
+    {
+      "timestamp": "0:54",
+      "start_seconds": 54,
+      "text": "trade target and return the rest to the"
+    },
+    {
+      "timestamp": "0:56",
+      "start_seconds": 56,
+      "text": "bottom of the deck. Vtorial area also"
+    },
+    {
+      "timestamp": "0:58",
+      "start_seconds": 58,
+      "text": "has a face up security effect. All turns"
+    },
+    {
+      "timestamp": "1:00",
+      "start_seconds": 60,
+      "text": "all of your black or red TS3 Digimon"
+    },
+    {
+      "timestamp": "1:02",
+      "start_seconds": 62,
+      "text": "gain blocker. And while you have"
+    },
+    {
+      "timestamp": "1:03",
+      "start_seconds": 63,
+      "text": "volcanismon, they also gain the keyword"
+    },
+    {
+      "timestamp": "1:05",
+      "start_seconds": 65,
+      "text": "link plus one. And now the turn will"
+    },
+    {
+      "timestamp": "1:06",
+      "start_seconds": 66,
+      "text": "pass over to Jupiter. Drop for turn the"
+    },
+    {
+      "timestamp": "1:08",
+      "start_seconds": 68,
+      "text": "G8 hatch BT24s"
+    },
+    {
+      "timestamp": "1:11",
+      "start_seconds": 71,
+      "text": "which will dig evolve into the BT25"
+    },
+    {
+      "timestamp": "1:13",
+      "start_seconds": 73,
+      "text": "electmon for zero costs. The option card"
+    },
+    {
+      "timestamp": "1:15",
+      "start_seconds": 75,
+      "text": "in between theater will be used for"
+    },
+    {
+      "timestamp": "1:16",
+      "start_seconds": 76,
+      "text": "three memory costs. While you have a TS"
+    },
+    {
+      "timestamp": "1:18",
+      "start_seconds": 78,
+      "text": "trait Digimon or tamer on the field,"
+    },
+    {
+      "timestamp": "1:19",
+      "start_seconds": 79,
+      "text": "which includes the Electron that has a"
+    },
+    {
+      "timestamp": "1:21",
+      "start_seconds": 81,
+      "text": "TS trait in the breeding area, you can"
+    },
+    {
+      "timestamp": "1:22",
+      "start_seconds": 82,
+      "text": "ignore this card's color requirements."
+    },
+    {
+      "timestamp": "1:24",
+      "start_seconds": 84,
+      "text": "With main effect, reveal top three cards"
+    },
+    {
+      "timestamp": "1:26",
+      "start_seconds": 86,
+      "text": "of your deck. Add one card with the tier"
+    },
+    {
+      "timestamp": "1:27",
+      "start_seconds": 87,
+      "text": "trait among them to the hand and the"
+    },
+    {
+      "timestamp": "1:28",
+      "start_seconds": 88,
+      "text": "target will be the BT24 Aomoman. Return"
+    },
+    {
+      "timestamp": "1:31",
+      "start_seconds": 91,
+      "text": "the rest back to the bottom of the deck."
+    },
+    {
+      "timestamp": "1:32",
+      "start_seconds": 92,
+      "text": "Then place this card in the battle area."
+    },
+    {
+      "timestamp": "1:34",
+      "start_seconds": 94,
+      "text": "Then the tamer card Enori from BT24 will"
+    },
+    {
+      "timestamp": "1:36",
+      "start_seconds": 96,
+      "text": "be played for three memory cards. Pass"
+    },
+    {
+      "timestamp": "1:38",
+      "start_seconds": 98,
+      "text": "any turn back to Volcanon with two"
+    },
+    {
+      "timestamp": "1:40",
+      "start_seconds": 100,
+      "text": "memory. Unsuspend all cards and draw for"
+    },
+    {
+      "timestamp": "1:42",
+      "start_seconds": 102,
+      "text": "turn. Coron will move to the battle"
+    },
+    {
+      "timestamp": "1:43",
+      "start_seconds": 103,
+      "text": "area. Once away moving effect by"
+    },
+    {
+      "timestamp": "1:45",
+      "start_seconds": 105,
+      "text": "trashing up to two Iliad or TS trick"
+    },
+    {
+      "timestamp": "1:47",
+      "start_seconds": 107,
+      "text": "cards from your hand. Draw one for each"
+    },
+    {
+      "timestamp": "1:49",
+      "start_seconds": 109,
+      "text": "card trashed where Tidal Stream and"
+    },
+    {
+      "timestamp": "1:50",
+      "start_seconds": 110,
+      "text": "Volcanos will be trashed from the hand"
+    },
+    {
+      "timestamp": "1:52",
+      "start_seconds": 112,
+      "text": "to draw two cards. Then Dan and Kani"
+    },
+    {
+      "timestamp": "1:54",
+      "start_seconds": 114,
+      "text": "Star main phase effect will activate. If"
+    },
+    {
+      "timestamp": "1:56",
+      "start_seconds": 116,
+      "text": "you have four or less memory, gain one."
+    },
+    {
+      "timestamp": "1:58",
+      "start_seconds": 118,
+      "text": "Coronaman will attack into security."
+    },
+    {
+      "timestamp": "1:59",
+      "start_seconds": 119,
+      "text": "Pokemon's inherit effect when attacking."
+    },
+    {
+      "timestamp": "2:01",
+      "start_seconds": 121,
+      "text": "Once return, if this Digimon has the TS"
+    },
+    {
+      "timestamp": "2:03",
+      "start_seconds": 123,
+      "text": "trait, draw one. Security check. Aoman"
+    },
+    {
+      "timestamp": "2:06",
+      "start_seconds": 126,
+      "text": "5,000 DP and Coronaman will be deleted"
+    },
+    {
+      "timestamp": "2:08",
+      "start_seconds": 128,
+      "text": "by security battle. Next, Toy Agaman"
+    },
+    {
+      "timestamp": "2:10",
+      "start_seconds": 130,
+      "text": "will also attack into security. Security"
+    },
+    {
+      "timestamp": "2:12",
+      "start_seconds": 132,
+      "text": "check. Another AON where toy Aguman will"
+    },
+    {
+      "timestamp": "2:15",
+      "start_seconds": 135,
+      "text": "also be deleted by security battle. The"
+    },
+    {
+      "timestamp": "2:16",
+      "start_seconds": 136,
+      "text": "tamer cardio heroko from BT24 will be"
+    },
+    {
+      "timestamp": "2:18",
+      "start_seconds": 138,
+      "text": "played for three memory cops. So on play"
+    },
+    {
+      "timestamp": "2:20",
+      "start_seconds": 140,
+      "text": "effect, free your top three cards of"
+    },
+    {
+      "timestamp": "2:21",
+      "start_seconds": 141,
+      "text": "your deck. add one card with the TS"
+    },
+    {
+      "timestamp": "2:23",
+      "start_seconds": 143,
+      "text": "trait among them to the hand or the"
+    },
+    {
+      "timestamp": "2:24",
+      "start_seconds": 144,
+      "text": "target will be Kakuan and return the"
+    },
+    {
+      "timestamp": "2:26",
+      "start_seconds": 146,
+      "text": "rest back to the bottom of the deck. And"
+    },
+    {
+      "timestamp": "2:27",
+      "start_seconds": 147,
+      "text": "then the option card in between theater"
+    },
+    {
+      "timestamp": "2:29",
+      "start_seconds": 149,
+      "text": "will also be used for three memory cops."
+    },
+    {
+      "timestamp": "2:31",
+      "start_seconds": 151,
+      "text": "And because all the tamer cards of Dan"
+    },
+    {
+      "timestamp": "2:32",
+      "start_seconds": 152,
+      "text": "and Kanan as well as Heroko all have the"
+    },
+    {
+      "timestamp": "2:34",
+      "start_seconds": 154,
+      "text": "TS trait, it can ignore color"
+    },
+    {
+      "timestamp": "2:35",
+      "start_seconds": 155,
+      "text": "requirements. Its main effect will"
+    },
+    {
+      "timestamp": "2:37",
+      "start_seconds": 157,
+      "text": "reveal the top three cards of the deck,"
+    },
+    {
+      "timestamp": "2:38",
+      "start_seconds": 158,
+      "text": "adding one card with the TS trait among"
+    },
+    {
+      "timestamp": "2:40",
+      "start_seconds": 160,
+      "text": "them, which will be the option card"
+    },
+    {
+      "timestamp": "2:41",
+      "start_seconds": 161,
+      "text": "ignition flare and returns the rest back"
+    },
+    {
+      "timestamp": "2:43",
+      "start_seconds": 163,
+      "text": "to the bottom of the deck. The turn will"
+    },
+    {
+      "timestamp": "2:44",
+      "start_seconds": 164,
+      "text": "end where Dan and Cananan's end of turn"
+    },
+    {
+      "timestamp": "2:46",
+      "start_seconds": 166,
+      "text": "effect will also activate once again by"
+    },
+    {
+      "timestamp": "2:48",
+      "start_seconds": 168,
+      "text": "suspending his tamer. You may use one TS"
+    },
+    {
+      "timestamp": "2:50",
+      "start_seconds": 170,
+      "text": "trade option card with as high or lower"
+    },
+    {
+      "timestamp": "2:52",
+      "start_seconds": 172,
+      "text": "use cost as your opponent's memory from"
+    },
+    {
+      "timestamp": "2:53",
+      "start_seconds": 173,
+      "text": "your hand without paying the cost or"
+    },
+    {
+      "timestamp": "2:55",
+      "start_seconds": 175,
+      "text": "divine arms version omega will be used"
+    },
+    {
+      "timestamp": "2:57",
+      "start_seconds": 177,
+      "text": "which has a use requirement of the TS"
+    },
+    {
+      "timestamp": "2:58",
+      "start_seconds": 178,
+      "text": "trait meaning all the tamer cards with"
+    },
+    {
+      "timestamp": "3:00",
+      "start_seconds": 180,
+      "text": "the TS trait can also ignore its color"
+    },
+    {
+      "timestamp": "3:02",
+      "start_seconds": 182,
+      "text": "requirements as main effect by trashing"
+    },
+    {
+      "timestamp": "3:03",
+      "start_seconds": 183,
+      "text": "one TS trait card from your hand"
+    },
+    {
+      "timestamp": "3:05",
+      "start_seconds": 185,
+      "text": "throughout two and ignition flare will"
+    },
+    {
+      "timestamp": "3:06",
+      "start_seconds": 186,
+      "text": "be trashed after you may link this card"
+    },
+    {
+      "timestamp": "3:08",
+      "start_seconds": 188,
+      "text": "or one TS trade card from your trash to"
+    },
+    {
+      "timestamp": "3:10",
+      "start_seconds": 190,
+      "text": "one of your Digimon on the field without"
+    },
+    {
+      "timestamp": "3:11",
+      "start_seconds": 191,
+      "text": "paying the cost. However, there are no"
+    },
+    {
+      "timestamp": "3:13",
+      "start_seconds": 193,
+      "text": "targets. As the dance and canines"
+    },
+    {
+      "timestamp": "3:14",
+      "start_seconds": 194,
+      "text": "effect, then one of your Digimon with"
+    },
+    {
+      "timestamp": "3:16",
+      "start_seconds": 196,
+      "text": "the tier strait may attack and once"
+    },
+    {
+      "timestamp": "3:17",
+      "start_seconds": 197,
+      "text": "again there also no targets. As the turn"
+    },
+    {
+      "timestamp": "3:19",
+      "start_seconds": 199,
+      "text": "will pass over to Jupiter with three"
+    },
+    {
+      "timestamp": "3:21",
+      "start_seconds": 201,
+      "text": "memory turns to the battle area that"
+    },
+    {
+      "timestamp": "3:24",
+      "start_seconds": 204,
+      "text": "starter main phase effect will activate."
+    },
+    {
+      "timestamp": "3:26",
+      "start_seconds": 206,
+      "text": "If you have four or less memory, gain"
+    },
+    {
+      "timestamp": "3:27",
+      "start_seconds": 207,
+      "text": "one memory. Next, electmon starter main"
+    },
+    {
+      "timestamp": "3:29",
+      "start_seconds": 209,
+      "text": "phase effect also activates [music] by"
+    },
+    {
+      "timestamp": "3:31",
+      "start_seconds": 211,
+      "text": "adding a top security card to the hand."
+    },
+    {
+      "timestamp": "3:32",
+      "start_seconds": 212,
+      "text": "Gain one memory. Digimon's inherit"
+    },
+    {
+      "timestamp": "3:34",
+      "start_seconds": 214,
+      "text": "effect now triggers your turn. Once"
+    },
+    {
+      "timestamp": "3:36",
+      "start_seconds": 216,
+      "text": "return when your security stack is"
+    },
+    {
+      "timestamp": "3:37",
+      "start_seconds": 217,
+      "text": "removed from the Digimon may dig evolve"
+    },
+    {
+      "timestamp": "3:39",
+      "start_seconds": 219,
+      "text": "into the shaman trade Digimon card in"
+    },
+    {
+      "timestamp": "3:40",
+      "start_seconds": 220,
+      "text": "your hand with the digolution cost"
+    },
+    {
+      "timestamp": "3:42",
+      "start_seconds": 222,
+      "text": "reduced by one for a leak will digolve"
+    },
+    {
+      "timestamp": "3:44",
+      "start_seconds": 224,
+      "text": "into the BT24 Amon for one cost. Amon's"
+    },
+    {
+      "timestamp": "3:46",
+      "start_seconds": 226,
+      "text": "one dig evolving effect by adding your"
+    },
+    {
+      "timestamp": "3:48",
+      "start_seconds": 228,
+      "text": "top security card to the hand. You may"
+    },
+    {
+      "timestamp": "3:49",
+      "start_seconds": 229,
+      "text": "play one TS trade tamer card from your"
+    },
+    {
+      "timestamp": "3:51",
+      "start_seconds": 231,
+      "text": "hand without paying the costs. However,"
+    },
+    {
+      "timestamp": "3:52",
+      "start_seconds": 232,
+      "text": "this effect can't play cards of the same"
+    },
+    {
+      "timestamp": "3:54",
+      "start_seconds": 234,
+      "text": "name as any of your tamers. For the BT26"
+    },
+    {
+      "timestamp": "3:56",
+      "start_seconds": 236,
+      "text": "Kanuki will be played for free. Will"
+    },
+    {
+      "timestamp": "3:58",
+      "start_seconds": 238,
+      "text": "attack into security using Electron's"
+    },
+    {
+      "timestamp": "4:00",
+      "start_seconds": 240,
+      "text": "inher effect when attacking. Once"
+    },
+    {
+      "timestamp": "4:02",
+      "start_seconds": 242,
+      "text": "returned, you may add your top security"
+    },
+    {
+      "timestamp": "4:03",
+      "start_seconds": 243,
+      "text": "card to the hand. Then if you have zero"
+    },
+    {
+      "timestamp": "4:05",
+      "start_seconds": 245,
+      "text": "security cards, hover one. Next, Inori's"
+    },
+    {
+      "timestamp": "4:07",
+      "start_seconds": 247,
+      "text": "all turns effect activates. When your"
+    },
+    {
+      "timestamp": "4:08",
+      "start_seconds": 248,
+      "text": "security stack is removed from by"
+    },
+    {
+      "timestamp": "4:10",
+      "start_seconds": 250,
+      "text": "suspending this tamer, one of your AOM"
+    },
+    {
+      "timestamp": "4:11",
+      "start_seconds": 251,
+      "text": "may dig evolve into a Digimon card with"
+    },
+    {
+      "timestamp": "4:13",
+      "start_seconds": 253,
+      "text": "Aio Kusman in its name in the hand"
+    },
+    {
+      "timestamp": "4:15",
+      "start_seconds": 255,
+      "text": "without paying the cops. But Aomon will"
+    },
+    {
+      "timestamp": "4:16",
+      "start_seconds": 256,
+      "text": "dig evolve into Aiocond Blue for free."
+    },
+    {
+      "timestamp": "4:19",
+      "start_seconds": 259,
+      "text": "AO Kosman's one when digolving effect"
+    },
+    {
+      "timestamp": "4:20",
+      "start_seconds": 260,
+      "text": "will digolve one of the opponent's"
+    },
+    {
+      "timestamp": "4:22",
+      "start_seconds": 262,
+      "text": "Digimon, but they're no targets. Then if"
+    },
+    {
+      "timestamp": "4:24",
+      "start_seconds": 264,
+      "text": "you have fewer or fewer security cards,"
+    },
+    {
+      "timestamp": "4:25",
+      "start_seconds": 265,
+      "text": "one of your Digimon unsuspends, which"
+    },
+    {
+      "timestamp": "4:27",
+      "start_seconds": 267,
+      "text": "will be it some pending effects"
+    },
+    {
+      "timestamp": "4:29",
+      "start_seconds": 269,
+      "text": "activated and resolved will now go back"
+    },
+    {
+      "timestamp": "4:30",
+      "start_seconds": 270,
+      "text": "to the initial attack into security."
+    },
+    {
+      "timestamp": "4:32",
+      "start_seconds": 272,
+      "text": "Security security check will spawn which"
+    },
+    {
+      "timestamp": "4:34",
+      "start_seconds": 274,
+      "text": "has 12,000 DP and AO Kosman blue will be"
+    },
+    {
+      "timestamp": "4:36",
+      "start_seconds": 276,
+      "text": "deleted by a security battle. However,"
+    },
+    {
+      "timestamp": "4:37",
+      "start_seconds": 277,
+      "text": "Asium's inherent effect has a keyword"
+    },
+    {
+      "timestamp": "4:39",
+      "start_seconds": 279,
+      "text": "barrier. The Digimon will be deleted in"
+    },
+    {
+      "timestamp": "4:41",
+      "start_seconds": 281,
+      "text": "battle by trashing top security card"
+    },
+    {
+      "timestamp": "4:43",
+      "start_seconds": 283,
+      "text": "isn't deleted. And now it is time for"
+    },
+    {
+      "timestamp": "4:44",
+      "start_seconds": 284,
+      "text": "the first Olympus 12 mega to make its"
+    },
+    {
+      "timestamp": "4:46",
+      "start_seconds": 286,
+      "text": "appearance by using the special"
+    },
+    {
+      "timestamp": "4:48",
+      "start_seconds": 288,
+      "text": "digivolve requirements which can dig"
+    },
+    {
+      "timestamp": "4:49",
+      "start_seconds": 289,
+      "text": "evolve on top of a level five AO Kusman"
+    },
+    {
+      "timestamp": "4:51",
+      "start_seconds": 291,
+      "text": "in name for the cost of one for each of"
+    },
+    {
+      "timestamp": "4:53",
+      "start_seconds": 293,
+      "text": "your security cards. And because they"
+    },
+    {
+      "timestamp": "4:54",
+      "start_seconds": 294,
+      "text": "are zero AO Kusman blue will now dig"
+    },
+    {
+      "timestamp": "4:56",
+      "start_seconds": 296,
+      "text": "evolve into the god that presides over"
+    },
+    {
+      "timestamp": "4:58",
+      "start_seconds": 298,
+      "text": "the skies and rules over thunder and"
+    },
+    {
+      "timestamp": "4:59",
+      "start_seconds": 299,
+      "text": "weather which will be the BT24 secret"
+    },
+    {
+      "timestamp": "5:01",
+      "start_seconds": 301,
+      "text": "rare Jupyter without paying a single"
+    },
+    {
+      "timestamp": "5:03",
+      "start_seconds": 303,
+      "text": "memory. Jupiter's when digolving effect"
+    },
+    {
+      "timestamp": "5:06",
+      "start_seconds": 306,
+      "text": "activates. Crash your top security card"
+    },
+    {
+      "timestamp": "5:07",
+      "start_seconds": 307,
+      "text": "and one of your opponent's Digimon gets"
+    },
+    {
+      "timestamp": "5:09",
+      "start_seconds": 309,
+      "text": "minus 13,000 DP until their turn ends."
+    },
+    {
+      "timestamp": "5:11",
+      "start_seconds": 311,
+      "text": "However, there are no targets. Then if"
+    },
+    {
+      "timestamp": "5:13",
+      "start_seconds": 313,
+      "text": "you have one or fewer security cards,"
+    },
+    {
+      "timestamp": "5:14",
+      "start_seconds": 314,
+      "text": "cover two, which will place the top two"
+    },
+    {
+      "timestamp": "5:16",
+      "start_seconds": 316,
+      "text": "cards of the deck into the top of the"
+    },
+    {
+      "timestamp": "5:17",
+      "start_seconds": 317,
+      "text": "security stack. The left mod will be"
+    },
+    {
+      "timestamp": "5:19",
+      "start_seconds": 319,
+      "text": "played for three memory cards with his"
+    },
+    {
+      "timestamp": "5:20",
+      "start_seconds": 320,
+      "text": "onplay effect. Reveal the top three"
+    },
+    {
+      "timestamp": "5:22",
+      "start_seconds": 322,
+      "text": "cards of your deck. Add one card with"
+    },
+    {
+      "timestamp": "5:23",
+      "start_seconds": 323,
+      "text": "the Iliad trait and one card with the TS"
+    },
+    {
+      "timestamp": "5:25",
+      "start_seconds": 325,
+      "text": "trait among them to the hand. The target"
+    },
+    {
+      "timestamp": "5:26",
+      "start_seconds": 326,
+      "text": "will be the BT26 Jupyter as the Iliad"
+    },
+    {
+      "timestamp": "5:29",
+      "start_seconds": 329,
+      "text": "trait and the BT24 Heroku as a TS trait"
+    },
+    {
+      "timestamp": "5:31",
+      "start_seconds": 331,
+      "text": "and then returning the rest back to the"
+    },
+    {
+      "timestamp": "5:33",
+      "start_seconds": 333,
+      "text": "bottom of the deck. Jupiter will attack"
+    },
+    {
+      "timestamp": "5:34",
+      "start_seconds": 334,
+      "text": "into security. Security check in between"
+    },
+    {
+      "timestamp": "5:36",
+      "start_seconds": 336,
+      "text": "theater, which has a security effect to"
+    },
+    {
+      "timestamp": "5:38",
+      "start_seconds": 338,
+      "text": "place this card in the battle area."
+    },
+    {
+      "timestamp": "5:39",
+      "start_seconds": 339,
+      "text": "Jupiter will now use the main and delay"
+    },
+    {
+      "timestamp": "5:41",
+      "start_seconds": 341,
+      "text": "effect of its own in between theater,"
+    },
+    {
+      "timestamp": "5:42",
+      "start_seconds": 342,
+      "text": "attracting this card from the battle"
+    },
+    {
+      "timestamp": "5:43",
+      "start_seconds": 343,
+      "text": "area, gain two memory. Now it is time"
+    },
+    {
+      "timestamp": "5:45",
+      "start_seconds": 345,
+      "text": "for Jupiter to ascend to its maximum"
+    },
+    {
+      "timestamp": "5:48",
+      "start_seconds": 348,
+      "text": "power level as it will summon the divine"
+    },
+    {
+      "timestamp": "5:49",
+      "start_seconds": 349,
+      "text": "blade carrier nose with an angry roar"
+    },
+    {
+      "timestamp": "5:51",
+      "start_seconds": 351,
+      "text": "which will dig evolve into Jupytermon"
+    },
+    {
+      "timestamp": "5:53",
+      "start_seconds": 353,
+      "text": "raft mode with the special digivol"
+    },
+    {
+      "timestamp": "5:55",
+      "start_seconds": 355,
+      "text": "requirements for five memory costs. Raph"
+    },
+    {
+      "timestamp": "5:57",
+      "start_seconds": 357,
+      "text": "mode has a keyword of succession with"
+    },
+    {
+      "timestamp": "5:59",
+      "start_seconds": 359,
+      "text": "Jupiter mod. This Digimon gains all"
+    },
+    {
+      "timestamp": "6:00",
+      "start_seconds": 360,
+      "text": "effects other than succession of its top"
+    },
+    {
+      "timestamp": "6:02",
+      "start_seconds": 362,
+      "text": "most specified digolution card. Meaning"
+    },
+    {
+      "timestamp": "6:05",
+      "start_seconds": 365,
+      "text": "it will gain all the effects of the BT24"
+    },
+    {
+      "timestamp": "6:06",
+      "start_seconds": 366,
+      "text": "Jupiter underneath it, which can"
+    },
+    {
+      "timestamp": "6:08",
+      "start_seconds": 368,
+      "text": "activate all the following effects as if"
+    },
+    {
+      "timestamp": "6:09",
+      "start_seconds": 369,
+      "text": "it was its own. First, it will activate"
+    },
+    {
+      "timestamp": "6:11",
+      "start_seconds": 371,
+      "text": "Jupitermons when Digivolving effect."
+    },
+    {
+      "timestamp": "6:13",
+      "start_seconds": 373,
+      "text": "Trash your top security card and one of"
+    },
+    {
+      "timestamp": "6:15",
+      "start_seconds": 375,
+      "text": "the opponent's Digimon gets minus 13,000"
+    },
+    {
+      "timestamp": "6:16",
+      "start_seconds": 376,
+      "text": "DP until their turn ends, but there are"
+    },
+    {
+      "timestamp": "6:18",
+      "start_seconds": 378,
+      "text": "no targets. Then, if you have one or"
+    },
+    {
+      "timestamp": "6:20",
+      "start_seconds": 380,
+      "text": "fewer security cards, recover two. Next,"
+    },
+    {
+      "timestamp": "6:22",
+      "start_seconds": 382,
+      "text": "Jupiter's all turns effect activates."
+    },
+    {
+      "timestamp": "6:24",
+      "start_seconds": 384,
+      "text": "Once per turn, when your security stack"
+    },
+    {
+      "timestamp": "6:26",
+      "start_seconds": 386,
+      "text": "is removed from slash your opponent's"
+    },
+    {
+      "timestamp": "6:27",
+      "start_seconds": 387,
+      "text": "top security card, AO Kusan Blue's"
+    },
+    {
+      "timestamp": "6:29",
+      "start_seconds": 389,
+      "text": "inherit effect activates all turns. Once"
+    },
+    {
+      "timestamp": "6:31",
+      "start_seconds": 391,
+      "text": "per turn, when your security stack is"
+    },
+    {
+      "timestamp": "6:32",
+      "start_seconds": 392,
+      "text": "removed from one of your sha trade"
+    },
+    {
+      "timestamp": "6:34",
+      "start_seconds": 394,
+      "text": "Digimon may unsuspend, but the target"
+    },
+    {
+      "timestamp": "6:35",
+      "start_seconds": 395,
+      "text": "will be Jupiter wrath mode. Wrath mode"
+    },
+    {
+      "timestamp": "6:38",
+      "start_seconds": 398,
+      "text": "also has an altern effect. Once per"
+    },
+    {
+      "timestamp": "6:39",
+      "start_seconds": 399,
+      "text": "turn, when any security stack cards are"
+    },
+    {
+      "timestamp": "6:41",
+      "start_seconds": 401,
+      "text": "removed from one of your opponent's"
+    },
+    {
+      "timestamp": "6:42",
+      "start_seconds": 402,
+      "text": "Digimon gets minus 15,000 DP until their"
+    },
+    {
+      "timestamp": "6:45",
+      "start_seconds": 405,
+      "text": "turn ends, however, there are no"
+    },
+    {
+      "timestamp": "6:46",
+      "start_seconds": 406,
+      "text": "targets. And then for its wind dig"
+    },
+    {
+      "timestamp": "6:48",
+      "start_seconds": 408,
+      "text": "evolving effect, trash your top security"
+    },
+    {
+      "timestamp": "6:49",
+      "start_seconds": 409,
+      "text": "card and recover too. What a crazy"
+    },
+    {
+      "timestamp": "6:51",
+      "start_seconds": 411,
+      "text": "amount of damage that was able to dish"
+    },
+    {
+      "timestamp": "6:53",
+      "start_seconds": 413,
+      "text": "out in a single turn. and also"
+    },
+    {
+      "timestamp": "6:54",
+      "start_seconds": 414,
+      "text": "recovering all the way back to floor"
+    },
+    {
+      "timestamp": "6:56",
+      "start_seconds": 416,
+      "text": "security. At the same time, Jupiter on"
+    },
+    {
+      "timestamp": "6:57",
+      "start_seconds": 417,
+      "text": "raft mode has the keyword blocker that"
+    },
+    {
+      "timestamp": "6:59",
+      "start_seconds": 419,
+      "text": "can stop the opponent's attack along"
+    },
+    {
+      "timestamp": "7:00",
+      "start_seconds": 420,
+      "text": "with his counter effect, which is"
+    },
+    {
+      "timestamp": "7:02",
+      "start_seconds": 422,
+      "text": "exactly the same as his when dig"
+    },
+    {
+      "timestamp": "7:03",
+      "start_seconds": 423,
+      "text": "evolving effect to trash his own"
+    },
+    {
+      "timestamp": "7:04",
+      "start_seconds": 424,
+      "text": "security and recover two afterwards"
+    },
+    {
+      "timestamp": "7:07",
+      "start_seconds": 427,
+      "text": "pairing up together with its all turns"
+    },
+    {
+      "timestamp": "7:08",
+      "start_seconds": 428,
+      "text": "effect once more to minus DP on the"
+    },
+    {
+      "timestamp": "7:10",
+      "start_seconds": 430,
+      "text": "opponent's Digimon for the entire turn,"
+    },
+    {
+      "timestamp": "7:12",
+      "start_seconds": 432,
+      "text": "making it quite difficult for Volcanis"
+    },
+    {
+      "timestamp": "7:14",
+      "start_seconds": 434,
+      "text": "to overcome this giant stack. However,"
+    },
+    {
+      "timestamp": "7:15",
+      "start_seconds": 435,
+      "text": "it has quite a number of resources, so"
+    },
+    {
+      "timestamp": "7:17",
+      "start_seconds": 437,
+      "text": "we'll see what it can do. The BT24"
+    },
+    {
+      "timestamp": "7:19",
+      "start_seconds": 439,
+      "text": "Heroko star return effect will activate."
+    },
+    {
+      "timestamp": "7:21",
+      "start_seconds": 441,
+      "text": "If you have four or less memory by"
+    },
+    {
+      "timestamp": "7:22",
+      "start_seconds": 442,
+      "text": "returning this tamers to the bottom of"
+    },
+    {
+      "timestamp": "7:23",
+      "start_seconds": 443,
+      "text": "the deck, you may play one Heroko or one"
+    },
+    {
+      "timestamp": "7:25",
+      "start_seconds": 445,
+      "text": "TS trade Digimon card with 5,000 DP or"
+    },
+    {
+      "timestamp": "7:27",
+      "start_seconds": 447,
+      "text": "less from your hand without paying the"
+    },
+    {
+      "timestamp": "7:28",
+      "start_seconds": 448,
+      "text": "cost and the BT26 Heroko will be played."
+    },
+    {
+      "timestamp": "7:31",
+      "start_seconds": 451,
+      "text": "All cards will unsuspend and draw for"
+    },
+    {
+      "timestamp": "7:32",
+      "start_seconds": 452,
+      "text": "turn. Dig catch to Dan and can start a"
+    },
+    {
+      "timestamp": "7:35",
+      "start_seconds": 455,
+      "text": "main phase effect if you have four or"
+    },
+    {
+      "timestamp": "7:36",
+      "start_seconds": 456,
+      "text": "less memory. Gain one. And then the BT26"
+    },
+    {
+      "timestamp": "7:38",
+      "start_seconds": 458,
+      "text": "Heroku also has a starter main phase"
+    },
+    {
+      "timestamp": "7:40",
+      "start_seconds": 460,
+      "text": "effect. If your opponent has a Digimon,"
+    },
+    {
+      "timestamp": "7:42",
+      "start_seconds": 462,
+      "text": "gain one memory as well. Pokemon will"
+    },
+    {
+      "timestamp": "7:44",
+      "start_seconds": 464,
+      "text": "dig evolve into the BT25 Kuman with the"
+    },
+    {
+      "timestamp": "7:46",
+      "start_seconds": 466,
+      "text": "special dig evolve requirements for zero"
+    },
+    {
+      "timestamp": "7:48",
+      "start_seconds": 468,
+      "text": "cost. The main and delay effect of in"
+    },
+    {
+      "timestamp": "7:50",
+      "start_seconds": 470,
+      "text": "between theater will trash itself to"
+    },
+    {
+      "timestamp": "7:51",
+      "start_seconds": 471,
+      "text": "gain two memory. Now time for the"
+    },
+    {
+      "timestamp": "7:53",
+      "start_seconds": 473,
+      "text": "counterattack. When this card would be"
+    },
+    {
+      "timestamp": "7:54",
+      "start_seconds": 474,
+      "text": "played if you have fewer Digimon than"
+    },
+    {
+      "timestamp": "7:56",
+      "start_seconds": 476,
+      "text": "your opponent, reduce the cost by five"
+    },
+    {
+      "timestamp": "7:58",
+      "start_seconds": 478,
+      "text": "along together with the BT26 your turn"
+    },
+    {
+      "timestamp": "8:00",
+      "start_seconds": 480,
+      "text": "effect. When any boss or TS Digimon"
+    },
+    {
+      "timestamp": "8:02",
+      "start_seconds": 482,
+      "text": "cards will be played by suspendless"
+    },
+    {
+      "timestamp": "8:04",
+      "start_seconds": 484,
+      "text": "tamer, reduce the cost by one. If you"
+    },
+    {
+      "timestamp": "8:06",
+      "start_seconds": 486,
+      "text": "have no Digimon, instead reduce the cost"
+    },
+    {
+      "timestamp": "8:08",
+      "start_seconds": 488,
+      "text": "by two, which will reduce a total of"
+    },
+    {
+      "timestamp": "8:09",
+      "start_seconds": 489,
+      "text": "seven. with the most well-known weapon"
+    },
+    {
+      "timestamp": "8:11",
+      "start_seconds": 491,
+      "text": "master god of the Olympus 12, Volcanis"
+    },
+    {
+      "timestamp": "8:14",
+      "start_seconds": 494,
+      "text": "will be played for only five memory."
+    },
+    {
+      "timestamp": "8:16",
+      "start_seconds": 496,
+      "text": "Volcanis's onplay effect activates. You"
+    },
+    {
+      "timestamp": "8:18",
+      "start_seconds": 498,
+      "text": "may link up to two cards from your hand"
+    },
+    {
+      "timestamp": "8:19",
+      "start_seconds": 499,
+      "text": "or trash to any of your Digimon without"
+    },
+    {
+      "timestamp": "8:21",
+      "start_seconds": 501,
+      "text": "paying the cost where both divine on"
+    },
+    {
+      "timestamp": "8:22",
+      "start_seconds": 502,
+      "text": "version omega and ignition flare will"
+    },
+    {
+      "timestamp": "8:24",
+      "start_seconds": 504,
+      "text": "link together with Volcanis from the"
+    },
+    {
+      "timestamp": "8:26",
+      "start_seconds": 506,
+      "text": "trash. And thanks to Vcanas's altern"
+    },
+    {
+      "timestamp": "8:28",
+      "start_seconds": 508,
+      "text": "effect, all your TS trait Digimon gain"
+    },
+    {
+      "timestamp": "8:29",
+      "start_seconds": 509,
+      "text": "rush and link plus one, which includes"
+    },
+    {
+      "timestamp": "8:31",
+      "start_seconds": 511,
+      "text": "itself, allowing it to link two cards at"
+    },
+    {
+      "timestamp": "8:33",
+      "start_seconds": 513,
+      "text": "the same time. Then back to its onplay"
+    },
+    {
+      "timestamp": "8:34",
+      "start_seconds": 514,
+      "text": "effect for each of your link cards,"
+    },
+    {
+      "timestamp": "8:36",
+      "start_seconds": 516,
+      "text": "Digivolve one all of your opponent's"
+    },
+    {
+      "timestamp": "8:38",
+      "start_seconds": 518,
+      "text": "Digimon. Since there are two link cards,"
+    },
+    {
+      "timestamp": "8:39",
+      "start_seconds": 519,
+      "text": "it will dig two on Jupytermon's entire"
+    },
+    {
+      "timestamp": "8:41",
+      "start_seconds": 521,
+      "text": "board, turning Jupyter on raft mode back"
+    },
+    {
+      "timestamp": "8:43",
+      "start_seconds": 523,
+      "text": "into AU Kuspan Blue. Next, the BT25"
+    },
+    {
+      "timestamp": "8:46",
+      "start_seconds": 526,
+      "text": "Meammon will be played for four memory"
+    },
+    {
+      "timestamp": "8:47",
+      "start_seconds": 527,
+      "text": "costs. Now, for the end of turn effects"
+    },
+    {
+      "timestamp": "8:49",
+      "start_seconds": 529,
+      "text": "where Dan and Kan will suspend itself to"
+    },
+    {
+      "timestamp": "8:51",
+      "start_seconds": 531,
+      "text": "use an option card for three memory"
+    },
+    {
+      "timestamp": "8:52",
+      "start_seconds": 532,
+      "text": "costs or less, which will be"
+    },
+    {
+      "timestamp": "8:54",
+      "start_seconds": 534,
+      "text": "Volcanoson's signature move, Iron Slash,"
+    },
+    {
+      "timestamp": "8:56",
+      "start_seconds": 536,
+      "text": "whose main effect, Digol 2 from one of"
+    },
+    {
+      "timestamp": "8:58",
+      "start_seconds": 538,
+      "text": "your opponent's Digimon, and the target"
+    },
+    {
+      "timestamp": "9:00",
+      "start_seconds": 540,
+      "text": "will be a Kusman blue, diging it back to"
+    },
+    {
+      "timestamp": "9:02",
+      "start_seconds": 542,
+      "text": "an Electimoth. Then you may link this"
+    },
+    {
+      "timestamp": "9:04",
+      "start_seconds": 544,
+      "text": "card to one of your Digimon on the field"
+    },
+    {
+      "timestamp": "9:05",
+      "start_seconds": 545,
+      "text": "without paying the cost which will link"
+    },
+    {
+      "timestamp": "9:07",
+      "start_seconds": 547,
+      "text": "together with Volcanism thanks to the"
+    },
+    {
+      "timestamp": "9:08",
+      "start_seconds": 548,
+      "text": "face up security effect of factorial"
+    },
+    {
+      "timestamp": "9:10",
+      "start_seconds": 550,
+      "text": "area. And because Volcanis is now"
+    },
+    {
+      "timestamp": "9:11",
+      "start_seconds": 551,
+      "text": "finally here in the battle area, all"
+    },
+    {
+      "timestamp": "9:13",
+      "start_seconds": 553,
+      "text": "black or red TS trait Digimon will also"
+    },
+    {
+      "timestamp": "9:15",
+      "start_seconds": 555,
+      "text": "gain an additional link plus one,"
+    },
+    {
+      "timestamp": "9:16",
+      "start_seconds": 556,
+      "text": "allowing Volcanism to equip a total of"
+    },
+    {
+      "timestamp": "9:18",
+      "start_seconds": 558,
+      "text": "three option cards at once. Back to Dan"
+    },
+    {
+      "timestamp": "9:20",
+      "start_seconds": 560,
+      "text": "and Kanan's end of turn effect. Then one"
+    },
+    {
+      "timestamp": "9:22",
+      "start_seconds": 562,
+      "text": "of your Digimon with the TS trait may"
+    },
+    {
+      "timestamp": "9:23",
+      "start_seconds": 563,
+      "text": "attack while Volcanis will attack into"
+    },
+    {
+      "timestamp": "9:25",
+      "start_seconds": 565,
+      "text": "security using the link effect of"
+    },
+    {
+      "timestamp": "9:27",
+      "start_seconds": 567,
+      "text": "ignition flare. When attacking once"
+    },
+    {
+      "timestamp": "9:28",
+      "start_seconds": 568,
+      "text": "returned, delete one of the opponent's"
+    },
+    {
+      "timestamp": "9:30",
+      "start_seconds": 570,
+      "text": "Digimon with as much DP as his Digimon"
+    },
+    {
+      "timestamp": "9:32",
+      "start_seconds": 572,
+      "text": "or less. Thanks to the combination of"
+    },
+    {
+      "timestamp": "9:33",
+      "start_seconds": 573,
+      "text": "all the link cards, it gives memon extra"
+    },
+    {
+      "timestamp": "9:35",
+      "start_seconds": 575,
+      "text": "8,000 BP, totaling to a whopping 20k,"
+    },
+    {
+      "timestamp": "9:37",
+      "start_seconds": 577,
+      "text": "which will delete the BT25 Electmon and"
+    },
+    {
+      "timestamp": "9:39",
+      "start_seconds": 579,
+      "text": "the option card iron slash that is"
+    },
+    {
+      "timestamp": "9:41",
+      "start_seconds": 581,
+      "text": "linked together with Volcanis gives it"
+    },
+    {
+      "timestamp": "9:42",
+      "start_seconds": 582,
+      "text": "the keyword collision. During this"
+    },
+    {
+      "timestamp": "9:44",
+      "start_seconds": 584,
+      "text": "Digimon attack, give all your opponent's"
+    },
+    {
+      "timestamp": "9:45",
+      "start_seconds": 585,
+      "text": "Digimon blocker and the opponent blocks"
+    },
+    {
+      "timestamp": "9:47",
+      "start_seconds": 587,
+      "text": "if able, where Electonmon is now forced"
+    },
+    {
+      "timestamp": "9:49",
+      "start_seconds": 589,
+      "text": "to switch the attack target to itself"
+    },
+    {
+      "timestamp": "9:50",
+      "start_seconds": 590,
+      "text": "from Vcanismon's attack, which will end"
+    },
+    {
+      "timestamp": "9:52",
+      "start_seconds": 592,
+      "text": "up being deleted by battle. Iron Slash"
+    },
+    {
+      "timestamp": "9:54",
+      "start_seconds": 594,
+      "text": "also gives the keyword piercing to"
+    },
+    {
+      "timestamp": "9:55",
+      "start_seconds": 595,
+      "text": "Volcanism. As Digimon attacks and"
+    },
+    {
+      "timestamp": "9:57",
+      "start_seconds": 597,
+      "text": "deletes the opponent's Digimon in"
+    },
+    {
+      "timestamp": "9:58",
+      "start_seconds": 598,
+      "text": "battle, it checks security before the"
+    },
+    {
+      "timestamp": "10:00",
+      "start_seconds": 600,
+      "text": "attack ends. Also, thanks to divide arms"
+    },
+    {
+      "timestamp": "10:02",
+      "start_seconds": 602,
+      "text": "version omega that is linked together"
+    },
+    {
+      "timestamp": "10:03",
+      "start_seconds": 603,
+      "text": "with volcanis. It will also give us"
+    },
+    {
+      "timestamp": "10:05",
+      "start_seconds": 605,
+      "text": "security attack plus one dealing two"
+    },
+    {
+      "timestamp": "10:06",
+      "start_seconds": 606,
+      "text": "security checks. First security check"
+    },
+    {
+      "timestamp": "10:09",
+      "start_seconds": 609,
+      "text": "holy. Second security check."
+    },
+    {
+      "timestamp": "10:12",
+      "start_seconds": 612,
+      "text": "Volcanisman has completely cleared off"
+    },
+    {
+      "timestamp": "10:13",
+      "start_seconds": 613,
+      "text": "the entire board of Jupiter leaving no"
+    },
+    {
+      "timestamp": "10:15",
+      "start_seconds": 615,
+      "text": "Digimon behind. All pending effects and"
+    },
+    {
+      "timestamp": "10:17",
+      "start_seconds": 617,
+      "text": "attacks dissolved. Turn now will pass"
+    },
+    {
+      "timestamp": "10:18",
+      "start_seconds": 618,
+      "text": "over back to Jupiter with three memory."
+    },
+    {
+      "timestamp": "10:20",
+      "start_seconds": 620,
+      "text": "Divine Arms version Omega also gives the"
+    },
+    {
+      "timestamp": "10:22",
+      "start_seconds": 622,
+      "text": "keyword reboot to Volcanos. This Digimon"
+    },
+    {
+      "timestamp": "10:25",
+      "start_seconds": 625,
+      "text": "also fun suspense during the opponent's"
+    },
+    {
+      "timestamp": "10:26",
+      "start_seconds": 626,
+      "text": "unsuspend phase. That way it can also"
+    },
+    {
+      "timestamp": "10:28",
+      "start_seconds": 628,
+      "text": "potentially stop an attack with a"
+    },
+    {
+      "timestamp": "10:29",
+      "start_seconds": 629,
+      "text": "blocker thanks to factorial area."
+    },
+    {
+      "timestamp": "10:31",
+      "start_seconds": 631,
+      "text": "Jupyter man will unsuspend all cards and"
+    },
+    {
+      "timestamp": "10:33",
+      "start_seconds": 633,
+      "text": "draw for turn hatch sunoma. Canyuki"
+    },
+    {
+      "timestamp": "10:36",
+      "start_seconds": 636,
+      "text": "start a main phase effect if you have"
+    },
+    {
+      "timestamp": "10:37",
+      "start_seconds": 637,
+      "text": "four or less memory gain one. And the"
+    },
+    {
+      "timestamp": "10:39",
+      "start_seconds": 639,
+      "text": "same goes for Inori putting Jupyteran"
+    },
+    {
+      "timestamp": "10:41",
+      "start_seconds": 641,
+      "text": "with five memory to work with. Dunaman"
+    },
+    {
+      "timestamp": "10:42",
+      "start_seconds": 642,
+      "text": "will dig evolve into the BT25 Electmon"
+    },
+    {
+      "timestamp": "10:44",
+      "start_seconds": 644,
+      "text": "for zero costs. And then the BT24"
+    },
+    {
+      "timestamp": "10:46",
+      "start_seconds": 646,
+      "text": "Electmon will be played for three memory"
+    },
+    {
+      "timestamp": "10:48",
+      "start_seconds": 648,
+      "text": "costs of his onplay effect to search the"
+    },
+    {
+      "timestamp": "10:50",
+      "start_seconds": 650,
+      "text": "top three cards of the deck. Adding"
+    },
+    {
+      "timestamp": "10:51",
+      "start_seconds": 651,
+      "text": "Jupyteran as the Iliad trait and another"
+    },
+    {
+      "timestamp": "10:53",
+      "start_seconds": 653,
+      "text": "copy of Inori as the TS trait to the"
+    },
+    {
+      "timestamp": "10:55",
+      "start_seconds": 655,
+      "text": "hand turning the rest back to the bottom"
+    },
+    {
+      "timestamp": "10:56",
+      "start_seconds": 656,
+      "text": "of the deck. Electmon will dig evolve"
+    },
+    {
+      "timestamp": "10:58",
+      "start_seconds": 658,
+      "text": "into the BT24 Aomoman for two memory"
+    },
+    {
+      "timestamp": "11:00",
+      "start_seconds": 660,
+      "text": "costs. When digolving effect, he'll add"
+    },
+    {
+      "timestamp": "11:01",
+      "start_seconds": 661,
+      "text": "the top security to the hand, which will"
+    },
+    {
+      "timestamp": "11:03",
+      "start_seconds": 663,
+      "text": "then play out the BT24 Heroku for free."
+    },
+    {
+      "timestamp": "11:05",
+      "start_seconds": 665,
+      "text": "With his onplay effect, go search the"
+    },
+    {
+      "timestamp": "11:06",
+      "start_seconds": 666,
+      "text": "top three cards of the deck, adding a"
+    },
+    {
+      "timestamp": "11:08",
+      "start_seconds": 668,
+      "text": "Christmas holy, which has the TS trait"
+    },
+    {
+      "timestamp": "11:09",
+      "start_seconds": 669,
+      "text": "to the hand and returning the rest back"
+    },
+    {
+      "timestamp": "11:11",
+      "start_seconds": 671,
+      "text": "to the bottom of the deck. Then, Inori's"
+    },
+    {
+      "timestamp": "11:13",
+      "start_seconds": 673,
+      "text": "alter effect activates because the"
+    },
+    {
+      "timestamp": "11:14",
+      "start_seconds": 674,
+      "text": "security card was ruled from from"
+    },
+    {
+      "timestamp": "11:15",
+      "start_seconds": 675,
+      "text": "Aommon's effect by suspending this"
+    },
+    {
+      "timestamp": "11:17",
+      "start_seconds": 677,
+      "text": "tamer. A man can now then dig evolve"
+    },
+    {
+      "timestamp": "11:19",
+      "start_seconds": 679,
+      "text": "into the same AO Kusman holy that was"
+    },
+    {
+      "timestamp": "11:20",
+      "start_seconds": 680,
+      "text": "added to the hand for free. A kusmon"
+    },
+    {
+      "timestamp": "11:22",
+      "start_seconds": 682,
+      "text": "holies when dig evolving effect"
+    },
+    {
+      "timestamp": "11:23",
+      "start_seconds": 683,
+      "text": "activates by trashing a toxic green card"
+    },
+    {
+      "timestamp": "11:25",
+      "start_seconds": 685,
+      "text": "until your opponent turn ends. Their"
+    },
+    {
+      "timestamp": "11:27",
+      "start_seconds": 687,
+      "text": "effects can't reduce the DP of one of"
+    },
+    {
+      "timestamp": "11:28",
+      "start_seconds": 688,
+      "text": "your Digimon. Trash any of its stack"
+    },
+    {
+      "timestamp": "11:30",
+      "start_seconds": 690,
+      "text": "cards or return them back to the hand or"
+    },
+    {
+      "timestamp": "11:31",
+      "start_seconds": 691,
+      "text": "deck. And the target to gain this"
+    },
+    {
+      "timestamp": "11:33",
+      "start_seconds": 693,
+      "text": "protection effect will be for itself."
+    },
+    {
+      "timestamp": "11:34",
+      "start_seconds": 694,
+      "text": "Next, its alter effect activates. Once"
+    },
+    {
+      "timestamp": "11:36",
+      "start_seconds": 696,
+      "text": "returned, when your security stack is"
+    },
+    {
+      "timestamp": "11:38",
+      "start_seconds": 698,
+      "text": "ruled from two of your opponent's"
+    },
+    {
+      "timestamp": "11:39",
+      "start_seconds": 699,
+      "text": "Digimon gets minus 5,000 DP for the"
+    },
+    {
+      "timestamp": "11:40",
+      "start_seconds": 700,
+      "text": "turn, and the target will be Volcanisman"
+    },
+    {
+      "timestamp": "11:42",
+      "start_seconds": 702,
+      "text": "and Maramon. Since Marammon's DP has now"
+    },
+    {
+      "timestamp": "11:44",
+      "start_seconds": 704,
+      "text": "reached zero, rule check will now occur"
+    },
+    {
+      "timestamp": "11:45",
+      "start_seconds": 705,
+      "text": "and it will be deleted by a game"
+    },
+    {
+      "timestamp": "11:47",
+      "start_seconds": 707,
+      "text": "mechanic. Once again, since Jupytermon"
+    },
+    {
+      "timestamp": "11:49",
+      "start_seconds": 709,
+      "text": "has zero security, it can dig evolve on"
+    },
+    {
+      "timestamp": "11:50",
+      "start_seconds": 710,
+      "text": "top of a Kusman with the special"
+    },
+    {
+      "timestamp": "11:52",
+      "start_seconds": 712,
+      "text": "digivolve requirements for zero cost. As"
+    },
+    {
+      "timestamp": "11:55",
+      "start_seconds": 715,
+      "text": "it returns, once again, Jupytermon's"
+    },
+    {
+      "timestamp": "11:56",
+      "start_seconds": 716,
+      "text": "when Digivolving effect activates trash"
+    },
+    {
+      "timestamp": "11:58",
+      "start_seconds": 718,
+      "text": "top security card and one of the"
+    },
+    {
+      "timestamp": "12:00",
+      "start_seconds": 720,
+      "text": "opponent's Digimon gets minus 13,000 DP"
+    },
+    {
+      "timestamp": "12:02",
+      "start_seconds": 722,
+      "text": "until their turn ends and the target"
+    },
+    {
+      "timestamp": "12:04",
+      "start_seconds": 724,
+      "text": "will be volcan. And because it has one"
+    },
+    {
+      "timestamp": "12:05",
+      "start_seconds": 725,
+      "text": "or fewer security cards, it will also"
+    },
+    {
+      "timestamp": "12:07",
+      "start_seconds": 727,
+      "text": "recover too. Aio Kusmon holies in her"
+    },
+    {
+      "timestamp": "12:09",
+      "start_seconds": 729,
+      "text": "effect will also ddig one on the"
+    },
+    {
+      "timestamp": "12:11",
+      "start_seconds": 731,
+      "text": "opponent's Digimon, but there are no"
+    },
+    {
+      "timestamp": "12:12",
+      "start_seconds": 732,
+      "text": "targets. The option card blinding ray"
+    },
+    {
+      "timestamp": "12:13",
+      "start_seconds": 733,
+      "text": "will be used for zero cost with main"
+    },
+    {
+      "timestamp": "12:15",
+      "start_seconds": 735,
+      "text": "effect the top card of your security"
+    },
+    {
+      "timestamp": "12:17",
+      "start_seconds": 737,
+      "text": "stack then gain two memory's"
+    },
+    {
+      "timestamp": "12:21",
+      "start_seconds": 741,
+      "text": "all turns effect activates once returned"
+    },
+    {
+      "timestamp": "12:22",
+      "start_seconds": 742,
+      "text": "because its own security card was"
+    },
+    {
+      "timestamp": "12:24",
+      "start_seconds": 744,
+      "text": "removed from it will trash bond's top"
+    },
+    {
+      "timestamp": "12:26",
+      "start_seconds": 746,
+      "text": "security card"
+    },
+    {
+      "timestamp": "12:28",
+      "start_seconds": 748,
+      "text": "will mode switch into its wrath mode"
+    },
+    {
+      "timestamp": "12:30",
+      "start_seconds": 750,
+      "text": "once again with the special dig"
+    },
+    {
+      "timestamp": "12:31",
+      "start_seconds": 751,
+      "text": "requirements paying five memory cost"
+    },
+    {
+      "timestamp": "12:33",
+      "start_seconds": 753,
+      "text": "raft mode will use one dig evolving"
+    },
+    {
+      "timestamp": "12:34",
+      "start_seconds": 754,
+      "text": "effect to trash a top security card and"
+    },
+    {
+      "timestamp": "12:36",
+      "start_seconds": 756,
+      "text": "recover two then it all turns effect"
+    },
+    {
+      "timestamp": "12:38",
+      "start_seconds": 758,
+      "text": "will activate once per turn once"
+    },
+    {
+      "timestamp": "12:40",
+      "start_seconds": 760,
+      "text": "security stats were removed from one of"
+    },
+    {
+      "timestamp": "12:41",
+      "start_seconds": 761,
+      "text": "the opponent's Digimon gets minus 15,000"
+    },
+    {
+      "timestamp": "12:43",
+      "start_seconds": 763,
+      "text": "DP until their turn ends. And a target"
+    },
+    {
+      "timestamp": "12:45",
+      "start_seconds": 765,
+      "text": "will be Volcanism, putting it down way"
+    },
+    {
+      "timestamp": "12:47",
+      "start_seconds": 767,
+      "text": "below zero DP, which will be deleted via"
+    },
+    {
+      "timestamp": "12:49",
+      "start_seconds": 769,
+      "text": "game mechanics because Rakmo has a key"
+    },
+    {
+      "timestamp": "12:51",
+      "start_seconds": 771,
+      "text": "work succession, which will gain all the"
+    },
+    {
+      "timestamp": "12:52",
+      "start_seconds": 772,
+      "text": "effects of Jupiter underneath it,"
+    },
+    {
+      "timestamp": "12:54",
+      "start_seconds": 774,
+      "text": "triggering its all turns effect once"
+    },
+    {
+      "timestamp": "12:55",
+      "start_seconds": 775,
+      "text": "returned when security stack is removed"
+    },
+    {
+      "timestamp": "12:56",
+      "start_seconds": 776,
+      "text": "from trash your opponent's top security"
+    },
+    {
+      "timestamp": "12:58",
+      "start_seconds": 778,
+      "text": "card. Getting rid of Volcanon's"
+    },
+    {
+      "timestamp": "12:59",
+      "start_seconds": 779,
+      "text": "factorial area and then activating the"
+    },
+    {
+      "timestamp": "13:01",
+      "start_seconds": 781,
+      "text": "BT24 Jupyter's one diging effect to"
+    },
+    {
+      "timestamp": "13:04",
+      "start_seconds": 784,
+      "text": "trash top security card and one of the"
+    },
+    {
+      "timestamp": "13:05",
+      "start_seconds": 785,
+      "text": "opponent's Digimon is minus 13,000 DP,"
+    },
+    {
+      "timestamp": "13:07",
+      "start_seconds": 787,
+      "text": "but they're no targets. Then if you have"
+    },
+    {
+      "timestamp": "13:09",
+      "start_seconds": 789,
+      "text": "one or fewer security cards, recover"
+    },
+    {
+      "timestamp": "13:10",
+      "start_seconds": 790,
+      "text": "two. All pending effects activated and"
+    },
+    {
+      "timestamp": "13:12",
+      "start_seconds": 792,
+      "text": "resolved. The turn will now pass over"
+    },
+    {
+      "timestamp": "13:14",
+      "start_seconds": 794,
+      "text": "back to Volcanis with three memory. As"
+    },
+    {
+      "timestamp": "13:16",
+      "start_seconds": 796,
+      "text": "Jupitermon was able to establish a"
+    },
+    {
+      "timestamp": "13:17",
+      "start_seconds": 797,
+      "text": "strong presence once again and suspend"
+    },
+    {
+      "timestamp": "13:19",
+      "start_seconds": 799,
+      "text": "all cards and draw for turn move to the"
+    },
+    {
+      "timestamp": "13:21",
+      "start_seconds": 801,
+      "text": "battle area with start main phase"
+    },
+    {
+      "timestamp": "13:23",
+      "start_seconds": 803,
+      "text": "effect. If you have four or less memory,"
+    },
+    {
+      "timestamp": "13:24",
+      "start_seconds": 804,
+      "text": "this Digimon may digolve into a machine,"
+    },
+    {
+      "timestamp": "13:26",
+      "start_seconds": 806,
+      "text": "cyborg, or TSA Digimon card in the hand"
+    },
+    {
+      "timestamp": "13:28",
+      "start_seconds": 808,
+      "text": "while paying the cost, which will"
+    },
+    {
+      "timestamp": "13:29",
+      "start_seconds": 809,
+      "text": "digolve into Blimpmon for free."
+    },
+    {
+      "timestamp": "13:31",
+      "start_seconds": 811,
+      "text": "Blimpmons when digolving effect will"
+    },
+    {
+      "timestamp": "13:32",
+      "start_seconds": 812,
+      "text": "reveal top three cards of the debt among"
+    },
+    {
+      "timestamp": "13:33",
+      "start_seconds": 813,
+      "text": "them. Add one machine cyborg or ts trait"
+    },
+    {
+      "timestamp": "13:36",
+      "start_seconds": 816,
+      "text": "digimon card or tamer card to the hand"
+    },
+    {
+      "timestamp": "13:37",
+      "start_seconds": 817,
+      "text": "or place it as any of your machine"
+    },
+    {
+      "timestamp": "13:39",
+      "start_seconds": 819,
+      "text": "cyborg or ts trait Digimon's bottom dig"
+    },
+    {
+      "timestamp": "13:41",
+      "start_seconds": 821,
+      "text": "evvolution card from Panason which has a"
+    },
+    {
+      "timestamp": "13:43",
+      "start_seconds": 823,
+      "text": "TS trait will be added to the hand and"
+    },
+    {
+      "timestamp": "13:45",
+      "start_seconds": 825,
+      "text": "the rest will return back to the bottom"
+    },
+    {
+      "timestamp": "13:46",
+      "start_seconds": 826,
+      "text": "of the deck then back to the other"
+    },
+    {
+      "timestamp": "13:48",
+      "start_seconds": 828,
+      "text": "starting main phase effects and canan"
+    },
+    {
+      "timestamp": "13:49",
+      "start_seconds": 829,
+      "text": "will gain a memory since there's four"
+    },
+    {
+      "timestamp": "13:50",
+      "start_seconds": 830,
+      "text": "less and the PT26 heroko will gain a"
+    },
+    {
+      "timestamp": "13:53",
+      "start_seconds": 833,
+      "text": "memory since the opponent has a Digimon"
+    },
+    {
+      "timestamp": "13:55",
+      "start_seconds": 835,
+      "text": "will attack into security's inherent"
+    },
+    {
+      "timestamp": "13:57",
+      "start_seconds": 837,
+      "text": "effect when attacking if this Digimon"
+    },
+    {
+      "timestamp": "13:58",
+      "start_seconds": 838,
+      "text": "has a TS trait draw one pending effects"
+    },
+    {
+      "timestamp": "14:00",
+      "start_seconds": 840,
+      "text": "activated will now proceed to the"
+    },
+    {
+      "timestamp": "14:02",
+      "start_seconds": 842,
+      "text": "counter timing where Jupiter and"
+    },
+    {
+      "timestamp": "14:03",
+      "start_seconds": 843,
+      "text": "Rathmore and counter effect to trash the"
+    },
+    {
+      "timestamp": "14:05",
+      "start_seconds": 845,
+      "text": "top security card and recover two angel"
+    },
+    {
+      "timestamp": "14:07",
+      "start_seconds": 847,
+      "text": "corresponds and hurt her effect"
+    },
+    {
+      "timestamp": "14:08",
+      "start_seconds": 848,
+      "text": "activates. all turns once per turn when"
+    },
+    {
+      "timestamp": "14:10",
+      "start_seconds": 850,
+      "text": "security stack is removed from. Dig"
+    },
+    {
+      "timestamp": "14:12",
+      "start_seconds": 852,
+      "text": "evolve one of your opponent's Digimon"
+    },
+    {
+      "timestamp": "14:13",
+      "start_seconds": 853,
+      "text": "and the target will be Blimpmon. Dig"
+    },
+    {
+      "timestamp": "14:15",
+      "start_seconds": 855,
+      "text": "evolving it back to Koua. Raph Mo's"
+    },
+    {
+      "timestamp": "14:17",
+      "start_seconds": 857,
+      "text": "altern effect activates once return."
+    },
+    {
+      "timestamp": "14:19",
+      "start_seconds": 859,
+      "text": "When security stack is ruined from only"
+    },
+    {
+      "timestamp": "14:20",
+      "start_seconds": 860,
+      "text": "the opponent's Digimon gets minus 15,000"
+    },
+    {
+      "timestamp": "14:22",
+      "start_seconds": 862,
+      "text": "DP for the turn and the target will be"
+    },
+    {
+      "timestamp": "14:23",
+      "start_seconds": 863,
+      "text": "Kuaman. And because it has now zero DP,"
+    },
+    {
+      "timestamp": "14:25",
+      "start_seconds": 865,
+      "text": "it will be deleted by game mechanics."
+    },
+    {
+      "timestamp": "14:27",
+      "start_seconds": 867,
+      "text": "And because Wrath mode has a key work"
+    },
+    {
+      "timestamp": "14:29",
+      "start_seconds": 869,
+      "text": "succession, it will also activate the"
+    },
+    {
+      "timestamp": "14:30",
+      "start_seconds": 870,
+      "text": "BT24 Dukeon's alter effect. Once return,"
+    },
+    {
+      "timestamp": "14:32",
+      "start_seconds": 872,
+      "text": "when your security stack is run from"
+    },
+    {
+      "timestamp": "14:34",
+      "start_seconds": 874,
+      "text": "trash the opponent's top security."
+    },
+    {
+      "timestamp": "14:35",
+      "start_seconds": 875,
+      "text": "However, there's no security to be"
+    },
+    {
+      "timestamp": "14:36",
+      "start_seconds": 876,
+      "text": "trashed on Volcanis side. Volcanism will"
+    },
+    {
+      "timestamp": "14:38",
+      "start_seconds": 878,
+      "text": "use the delay effect of in between"
+    },
+    {
+      "timestamp": "14:39",
+      "start_seconds": 879,
+      "text": "theater trashing itself to gain two"
+    },
+    {
+      "timestamp": "14:41",
+      "start_seconds": 881,
+      "text": "memory. The option card factorial area"
+    },
+    {
+      "timestamp": "14:43",
+      "start_seconds": 883,
+      "text": "will be used for three memory cards"
+    },
+    {
+      "timestamp": "14:45",
+      "start_seconds": 885,
+      "text": "which can ignore color requirements"
+    },
+    {
+      "timestamp": "14:46",
+      "start_seconds": 886,
+      "text": "since Volcanis does not have a face up"
+    },
+    {
+      "timestamp": "14:48",
+      "start_seconds": 888,
+      "text": "security card. For this main effect, it"
+    },
+    {
+      "timestamp": "14:49",
+      "start_seconds": 889,
+      "text": "will add the bottom security card to the"
+    },
+    {
+      "timestamp": "14:51",
+      "start_seconds": 891,
+      "text": "hand place itself as a face up bottom"
+    },
+    {
+      "timestamp": "14:52",
+      "start_seconds": 892,
+      "text": "security card. Then play one black or"
+    },
+    {
+      "timestamp": "14:54",
+      "start_seconds": 894,
+      "text": "red TSra Digimon card from the hand with"
+    },
+    {
+      "timestamp": "14:56",
+      "start_seconds": 896,
+      "text": "cost reduced by three. or Volcanisman"
+    },
+    {
+      "timestamp": "14:57",
+      "start_seconds": 897,
+      "text": "will be played, which can also reduce"
+    },
+    {
+      "timestamp": "14:59",
+      "start_seconds": 899,
+      "text": "its own play cost by five since it has"
+    },
+    {
+      "timestamp": "15:01",
+      "start_seconds": 901,
+      "text": "fewer Digimon than the opponent. And"
+    },
+    {
+      "timestamp": "15:02",
+      "start_seconds": 902,
+      "text": "along together with the BT26 Heroko,"
+    },
+    {
+      "timestamp": "15:04",
+      "start_seconds": 904,
+      "text": "when any of your boss or TSA Digimon"
+    },
+    {
+      "timestamp": "15:06",
+      "start_seconds": 906,
+      "text": "cards will be played by suspending the"
+    },
+    {
+      "timestamp": "15:07",
+      "start_seconds": 907,
+      "text": "same, reduce the cost by one. If you"
+    },
+    {
+      "timestamp": "15:09",
+      "start_seconds": 909,
+      "text": "have no Digimon, instead reduce the cost"
+    },
+    {
+      "timestamp": "15:11",
+      "start_seconds": 911,
+      "text": "by two with a total cost reduction of"
+    },
+    {
+      "timestamp": "15:12",
+      "start_seconds": 912,
+      "text": "10, the Digimon god or smith three being"
+    },
+    {
+      "timestamp": "15:14",
+      "start_seconds": 914,
+      "text": "Volcanis will turn once again, paying"
+    },
+    {
+      "timestamp": "15:16",
+      "start_seconds": 916,
+      "text": "only two memory costs. Volcan's onplay"
+    },
+    {
+      "timestamp": "15:18",
+      "start_seconds": 918,
+      "text": "effect will link ignition flare and"
+    },
+    {
+      "timestamp": "15:19",
+      "start_seconds": 919,
+      "text": "tidal stream for the trash, giving extra"
+    },
+    {
+      "timestamp": "15:21",
+      "start_seconds": 921,
+      "text": "4,000 DP. Factorial error space of"
+    },
+    {
+      "timestamp": "15:24",
+      "start_seconds": 924,
+      "text": "security effect will also give all black"
+    },
+    {
+      "timestamp": "15:25",
+      "start_seconds": 925,
+      "text": "or red TS trade Digimon blocker. And"
+    },
+    {
+      "timestamp": "15:27",
+      "start_seconds": 927,
+      "text": "because Bucasmon is also present on the"
+    },
+    {
+      "timestamp": "15:29",
+      "start_seconds": 929,
+      "text": "board, they also gain link plus one."
+    },
+    {
+      "timestamp": "15:30",
+      "start_seconds": 930,
+      "text": "Vocasmon also has an altern effect. All"
+    },
+    {
+      "timestamp": "15:32",
+      "start_seconds": 932,
+      "text": "of your TS trade Digimon gain rush and"
+    },
+    {
+      "timestamp": "15:34",
+      "start_seconds": 934,
+      "text": "link plus one including itself."
+    },
+    {
+      "timestamp": "15:35",
+      "start_seconds": 935,
+      "text": "Therefore, it can attack in the same"
+    },
+    {
+      "timestamp": "15:36",
+      "start_seconds": 936,
+      "text": "turn even if it was played, which will"
+    },
+    {
+      "timestamp": "15:38",
+      "start_seconds": 938,
+      "text": "then attack into secured using ignition"
+    },
+    {
+      "timestamp": "15:39",
+      "start_seconds": 939,
+      "text": "flares link effect when attacking. Once"
+    },
+    {
+      "timestamp": "15:41",
+      "start_seconds": 941,
+      "text": "per turn, delete one of the opponent's"
+    },
+    {
+      "timestamp": "15:42",
+      "start_seconds": 942,
+      "text": "Digimon with as much DP as this Digimon"
+    },
+    {
+      "timestamp": "15:44",
+      "start_seconds": 944,
+      "text": "or less. Since both Lucan spawn and"
+    },
+    {
+      "timestamp": "15:46",
+      "start_seconds": 946,
+      "text": "Jupiter Wrath mode are at 16k DP, it"
+    },
+    {
+      "timestamp": "15:48",
+      "start_seconds": 948,
+      "text": "will attempt to delete it. However,"
+    },
+    {
+      "timestamp": "15:49",
+      "start_seconds": 949,
+      "text": "thanks to the keywork succession, Rathmo"
+    },
+    {
+      "timestamp": "15:51",
+      "start_seconds": 951,
+      "text": "will also gain the other altern effect"
+    },
+    {
+      "timestamp": "15:52",
+      "start_seconds": 952,
+      "text": "of Jupytermon when any of his tier"
+    },
+    {
+      "timestamp": "15:54",
+      "start_seconds": 954,
+      "text": "straight Digimon or tamers will leave"
+    },
+    {
+      "timestamp": "15:55",
+      "start_seconds": 955,
+      "text": "the battle area by trashing your top"
+    },
+    {
+      "timestamp": "15:57",
+      "start_seconds": 957,
+      "text": "security cards, they don't leave. Title"
+    },
+    {
+      "timestamp": "15:58",
+      "start_seconds": 958,
+      "text": "streams link effect will also activate."
+    },
+    {
+      "timestamp": "16:00",
+      "start_seconds": 960,
+      "text": "When attacking once per turn, return one"
+    },
+    {
+      "timestamp": "16:02",
+      "start_seconds": 962,
+      "text": "of your opponent's lowest level Digimon"
+    },
+    {
+      "timestamp": "16:03",
+      "start_seconds": 963,
+      "text": "to the hand. Even with AOKman holi's"
+    },
+    {
+      "timestamp": "16:05",
+      "start_seconds": 965,
+      "text": "protection effect from previous turn, it"
+    },
+    {
+      "timestamp": "16:06",
+      "start_seconds": 966,
+      "text": "only protects the stack cards of Jupiter"
+    },
+    {
+      "timestamp": "16:08",
+      "start_seconds": 968,
+      "text": "and raft mode from being returned to"
+    },
+    {
+      "timestamp": "16:09",
+      "start_seconds": 969,
+      "text": "hand or decks, which unfortunately"
+    },
+    {
+      "timestamp": "16:11",
+      "start_seconds": 971,
+      "text": "doesn't prevent the Digimon itself from"
+    },
+    {
+      "timestamp": "16:12",
+      "start_seconds": 972,
+      "text": "being returned. And because Jupyo's"
+    },
+    {
+      "timestamp": "16:14",
+      "start_seconds": 974,
+      "text": "protection effect is once per turn that"
+    },
+    {
+      "timestamp": "16:15",
+      "start_seconds": 975,
+      "text": "has already been used, wrath mode will"
+    },
+    {
+      "timestamp": "16:17",
+      "start_seconds": 977,
+      "text": "return back to the hand and the rest of"
+    },
+    {
+      "timestamp": "16:18",
+      "start_seconds": 978,
+      "text": "the sources will be trashed with no more"
+    },
+    {
+      "timestamp": "16:19",
+      "start_seconds": 979,
+      "text": "blockers standing in Volcanon's way, the"
+    },
+    {
+      "timestamp": "16:21",
+      "start_seconds": 981,
+      "text": "attack will go through. Security check"
+    },
+    {
+      "timestamp": "16:23",
+      "start_seconds": 983,
+      "text": "Inori, which has a security effect to"
+    },
+    {
+      "timestamp": "16:25",
+      "start_seconds": 985,
+      "text": "play this card without paying the cost."
+    },
+    {
+      "timestamp": "16:26",
+      "start_seconds": 986,
+      "text": "The option card, Gravity Crush, will be"
+    },
+    {
+      "timestamp": "16:28",
+      "start_seconds": 988,
+      "text": "used for zero cost, but it main effect"
+    },
+    {
+      "timestamp": "16:30",
+      "start_seconds": 990,
+      "text": "gain two memory. At the end of turn,"
+    },
+    {
+      "timestamp": "16:32",
+      "start_seconds": 992,
+      "text": "lose two memory. It seems like"
+    },
+    {
+      "timestamp": "16:33",
+      "start_seconds": 993,
+      "text": "Volcanisman alone isn't enough to hold"
+    },
+    {
+      "timestamp": "16:35",
+      "start_seconds": 995,
+      "text": "down Jupytermon where we call out its"
+    },
+    {
+      "timestamp": "16:36",
+      "start_seconds": 996,
+      "text": "other Olympus 12 ally being Marsmon"
+    },
+    {
+      "timestamp": "16:38",
+      "start_seconds": 998,
+      "text": "where Marsmon would be played. There's a"
+    },
+    {
+      "timestamp": "16:40",
+      "start_seconds": 1000,
+      "text": "Digimon with 13,000 DP or more where"
+    },
+    {
+      "timestamp": "16:42",
+      "start_seconds": 1002,
+      "text": "Volcanisman has 16,000 DP reduce the"
+    },
+    {
+      "timestamp": "16:44",
+      "start_seconds": 1004,
+      "text": "cost by five where the Digimon god of"
+    },
+    {
+      "timestamp": "16:46",
+      "start_seconds": 1006,
+      "text": "war will appear for seven memory costs."
+    },
+    {
+      "timestamp": "16:48",
+      "start_seconds": 1008,
+      "text": "Marsmon's onplay effect activates. One"
+    },
+    {
+      "timestamp": "16:50",
+      "start_seconds": 1010,
+      "text": "of your Digimon gets extra 3,000 DP for"
+    },
+    {
+      "timestamp": "16:52",
+      "start_seconds": 1012,
+      "text": "the turn. The target will be itself."
+    },
+    {
+      "timestamp": "16:53",
+      "start_seconds": 1013,
+      "text": "Then one of your Digimon may battle"
+    },
+    {
+      "timestamp": "16:54",
+      "start_seconds": 1014,
+      "text": "against one of your opponent's Digimon."
+    },
+    {
+      "timestamp": "16:56",
+      "start_seconds": 1016,
+      "text": "However, there are no targets. At the"
+    },
+    {
+      "timestamp": "16:58",
+      "start_seconds": 1018,
+      "text": "end of turn effects will proceed."
+    },
+    {
+      "timestamp": "16:59",
+      "start_seconds": 1019,
+      "text": "Gravity Quest will lose two memory. Dan"
+    },
+    {
+      "timestamp": "17:01",
+      "start_seconds": 1021,
+      "text": "and Kanan's end of your turn effect"
+    },
+    {
+      "timestamp": "17:02",
+      "start_seconds": 1022,
+      "text": "activates as well by suspending"
+    },
+    {
+      "timestamp": "17:04",
+      "start_seconds": 1024,
+      "text": "themselves to use a TS trait option card"
+    },
+    {
+      "timestamp": "17:05",
+      "start_seconds": 1025,
+      "text": "that has five cost or less for free with"
+    },
+    {
+      "timestamp": "17:07",
+      "start_seconds": 1027,
+      "text": "divine arms version Omega will be used"
+    },
+    {
+      "timestamp": "17:09",
+      "start_seconds": 1029,
+      "text": "with his main effect. It will trash"
+    },
+    {
+      "timestamp": "17:10",
+      "start_seconds": 1030,
+      "text": "Coron from the hand which has the TS"
+    },
+    {
+      "timestamp": "17:11",
+      "start_seconds": 1031,
+      "text": "trait to draw too after it will link"
+    },
+    {
+      "timestamp": "17:13",
+      "start_seconds": 1033,
+      "text": "itself to Volcanis and Marsmon's DP buff"
+    },
+    {
+      "timestamp": "17:15",
+      "start_seconds": 1035,
+      "text": "for the turn will also wear off passing"
+    },
+    {
+      "timestamp": "17:17",
+      "start_seconds": 1037,
+      "text": "it back to Jupiter with five memory"
+    },
+    {
+      "timestamp": "17:18",
+      "start_seconds": 1038,
+      "text": "thanks to Divine Arms version Omega. It"
+    },
+    {
+      "timestamp": "17:20",
+      "start_seconds": 1040,
+      "text": "also gives Volcanon the keyword reboot"
+    },
+    {
+      "timestamp": "17:22",
+      "start_seconds": 1042,
+      "text": "which will unsuspend as well during the"
+    },
+    {
+      "timestamp": "17:24",
+      "start_seconds": 1044,
+      "text": "opponent's unsuspend phase. Throughout"
+    },
+    {
+      "timestamp": "17:25",
+      "start_seconds": 1045,
+      "text": "turnmon will move to the battle area."
+    },
+    {
+      "timestamp": "17:27",
+      "start_seconds": 1047,
+      "text": "Since Jupyon is at five memory, the"
+    },
+    {
+      "timestamp": "17:29",
+      "start_seconds": 1049,
+      "text": "starter main phase effects of Minori and"
+    },
+    {
+      "timestamp": "17:31",
+      "start_seconds": 1051,
+      "text": "Kandan won't be able to gain more. But"
+    },
+    {
+      "timestamp": "17:32",
+      "start_seconds": 1052,
+      "text": "Electon starter main phase effect will"
+    },
+    {
+      "timestamp": "17:34",
+      "start_seconds": 1054,
+      "text": "be able to add the top security to the"
+    },
+    {
+      "timestamp": "17:35",
+      "start_seconds": 1055,
+      "text": "hand to gain one memory. Inherit effect"
+    },
+    {
+      "timestamp": "17:37",
+      "start_seconds": 1057,
+      "text": "activates. Your turn once returned when"
+    },
+    {
+      "timestamp": "17:39",
+      "start_seconds": 1059,
+      "text": "your security stack is removed from this"
+    },
+    {
+      "timestamp": "17:40",
+      "start_seconds": 1060,
+      "text": "Digimon will digolve into shaman trade"
+    },
+    {
+      "timestamp": "17:42",
+      "start_seconds": 1062,
+      "text": "Digimon card from the hand with the"
+    },
+    {
+      "timestamp": "17:43",
+      "start_seconds": 1063,
+      "text": "digion cost reduced by one and the left"
+    },
+    {
+      "timestamp": "17:45",
+      "start_seconds": 1065,
+      "text": "man will dig evolve into the BT24 Amon"
+    },
+    {
+      "timestamp": "17:48",
+      "start_seconds": 1068,
+      "text": "for only one cost. A monster's one dig"
+    },
+    {
+      "timestamp": "17:49",
+      "start_seconds": 1069,
+      "text": "evolving effect will add the top"
+    },
+    {
+      "timestamp": "17:51",
+      "start_seconds": 1071,
+      "text": "security to the hand. You play out of"
+    },
+    {
+      "timestamp": "17:52",
+      "start_seconds": 1072,
+      "text": "the tamer card Dan and Cananan for free."
+    },
+    {
+      "timestamp": "17:53",
+      "start_seconds": 1073,
+      "text": "The option side of the dual card wide"
+    },
+    {
+      "timestamp": "17:55",
+      "start_seconds": 1075,
+      "text": "plasma will be used for each of your"
+    },
+    {
+      "timestamp": "17:56",
+      "start_seconds": 1076,
+      "text": "security cards. Add one to this card's"
+    },
+    {
+      "timestamp": "17:58",
+      "start_seconds": 1078,
+      "text": "use cost. However, Jupytermon has zero"
+    },
+    {
+      "timestamp": "18:00",
+      "start_seconds": 1080,
+      "text": "security. Therefore, its use cost will"
+    },
+    {
+      "timestamp": "18:01",
+      "start_seconds": 1081,
+      "text": "only be its original two with his main"
+    },
+    {
+      "timestamp": "18:03",
+      "start_seconds": 1083,
+      "text": "effect. Delete all your opponent's"
+    },
+    {
+      "timestamp": "18:04",
+      "start_seconds": 1084,
+      "text": "Digimon with the lowest DP, which will"
+    },
+    {
+      "timestamp": "18:06",
+      "start_seconds": 1086,
+      "text": "be Marsmon,"
+    },
+    {
+      "timestamp": "18:08",
+      "start_seconds": 1088,
+      "text": "then recover one."
+    },
+    {
+      "timestamp": "18:11",
+      "start_seconds": 1091,
+      "text": "Aimmon will attack into security with"
+    },
+    {
+      "timestamp": "18:13",
+      "start_seconds": 1093,
+      "text": "the let's inherited effect when"
+    },
+    {
+      "timestamp": "18:14",
+      "start_seconds": 1094,
+      "text": "attacking. Once returned, it will add"
+    },
+    {
+      "timestamp": "18:16",
+      "start_seconds": 1096,
+      "text": "the top security card to the hand and"
+    },
+    {
+      "timestamp": "18:17",
+      "start_seconds": 1097,
+      "text": "recover one because it has zero. And"
+    },
+    {
+      "timestamp": "18:19",
+      "start_seconds": 1099,
+      "text": "then for Inori's altern,"
+    },
+    {
+      "timestamp": "18:22",
+      "start_seconds": 1102,
+      "text": "tamer will suspend so that Aman can dig"
+    },
+    {
+      "timestamp": "18:24",
+      "start_seconds": 1104,
+      "text": "evolve into Aio Kusman blue for free."
+    },
+    {
+      "timestamp": "18:27",
+      "start_seconds": 1107,
+      "text": "Age of Kasmon blues when dig evolving"
+    },
+    {
+      "timestamp": "18:28",
+      "start_seconds": 1108,
+      "text": "effect will dig evolve one of the"
+    },
+    {
+      "timestamp": "18:30",
+      "start_seconds": 1110,
+      "text": "opponent's Digimon but they're no"
+    },
+    {
+      "timestamp": "18:31",
+      "start_seconds": 1111,
+      "text": "targets. Then if you have three or fewer"
+    },
+    {
+      "timestamp": "18:33",
+      "start_seconds": 1113,
+      "text": "security cards, one of your Digimon"
+    },
+    {
+      "timestamp": "18:34",
+      "start_seconds": 1114,
+      "text": "unsuspends, which will be itself. And"
+    },
+    {
+      "timestamp": "18:36",
+      "start_seconds": 1116,
+      "text": "now we're zooming back to the attack"
+    },
+    {
+      "timestamp": "18:37",
+      "start_seconds": 1117,
+      "text": "where Volcanon has the keyword blocker"
+    },
+    {
+      "timestamp": "18:39",
+      "start_seconds": 1119,
+      "text": "thanks to Factorial area which can"
+    },
+    {
+      "timestamp": "18:41",
+      "start_seconds": 1121,
+      "text": "suspend itself to redirect the attack"
+    },
+    {
+      "timestamp": "18:42",
+      "start_seconds": 1122,
+      "text": "during the blocker timing. And because"
+    },
+    {
+      "timestamp": "18:44",
+      "start_seconds": 1124,
+      "text": "Volcanon has higher DP than AON blue, it"
+    },
+    {
+      "timestamp": "18:46",
+      "start_seconds": 1126,
+      "text": "will win the battle. Aimmon's inherit"
+    },
+    {
+      "timestamp": "18:48",
+      "start_seconds": 1128,
+      "text": "effect will activate using the keyword"
+    },
+    {
+      "timestamp": "18:50",
+      "start_seconds": 1130,
+      "text": "barrier to trash the top security card"
+    },
+    {
+      "timestamp": "18:51",
+      "start_seconds": 1131,
+      "text": "to protect it from being deleted by"
+    },
+    {
+      "timestamp": "18:53",
+      "start_seconds": 1133,
+      "text": "battle. The opposite side of the dual"
+    },
+    {
+      "timestamp": "18:54",
+      "start_seconds": 1134,
+      "text": "card wise plasma will be used for two"
+    },
+    {
+      "timestamp": "18:56",
+      "start_seconds": 1136,
+      "text": "memory costs once again with his main"
+    },
+    {
+      "timestamp": "18:57",
+      "start_seconds": 1137,
+      "text": "effect. It will delete all the"
+    },
+    {
+      "timestamp": "18:58",
+      "start_seconds": 1138,
+      "text": "opponent's Digimon with the lowest DP"
+    },
+    {
+      "timestamp": "19:00",
+      "start_seconds": 1140,
+      "text": "which will be volcanism. But the option"
+    },
+    {
+      "timestamp": "19:02",
+      "start_seconds": 1142,
+      "text": "card divines version Omega that is"
+    },
+    {
+      "timestamp": "19:03",
+      "start_seconds": 1143,
+      "text": "linked together with Volcanis gives"
+    },
+    {
+      "timestamp": "19:05",
+      "start_seconds": 1145,
+      "text": "another effect. Altern will leave the"
+    },
+    {
+      "timestamp": "19:07",
+      "start_seconds": 1147,
+      "text": "battle area by trashing one of his link"
+    },
+    {
+      "timestamp": "19:09",
+      "start_seconds": 1149,
+      "text": "cards. It doesn't leave and title stream"
+    },
+    {
+      "timestamp": "19:11",
+      "start_seconds": 1151,
+      "text": "will be trashed to protect it from being"
+    },
+    {
+      "timestamp": "19:12",
+      "start_seconds": 1152,
+      "text": "deleted. After white plasma's other"
+    },
+    {
+      "timestamp": "19:14",
+      "start_seconds": 1154,
+      "text": "effect, they will then also recover one."
+    },
+    {
+      "timestamp": "19:16",
+      "start_seconds": 1156,
+      "text": "After using the option effect, it can"
+    },
+    {
+      "timestamp": "19:18",
+      "start_seconds": 1158,
+      "text": "also ar dig instead of trashing after"
+    },
+    {
+      "timestamp": "19:20",
+      "start_seconds": 1160,
+      "text": "use. Your cards may dig evolve into this"
+    },
+    {
+      "timestamp": "19:21",
+      "start_seconds": 1161,
+      "text": "card without paying the cost. However,"
+    },
+    {
+      "timestamp": "19:23",
+      "start_seconds": 1163,
+      "text": "it will choose not to do so. AO"
+    },
+    {
+      "timestamp": "19:25",
+      "start_seconds": 1165,
+      "text": "custommon blue will dig evvolve back"
+    },
+    {
+      "timestamp": "19:26",
+      "start_seconds": 1166,
+      "text": "into the BT24 Jupiter one more time."
+    },
+    {
+      "timestamp": "19:29",
+      "start_seconds": 1169,
+      "text": "Along with the special digolve"
+    },
+    {
+      "timestamp": "19:30",
+      "start_seconds": 1170,
+      "text": "requirements, it will only pay one"
+    },
+    {
+      "timestamp": "19:31",
+      "start_seconds": 1171,
+      "text": "memory cost with his divine punishment."
+    },
+    {
+      "timestamp": "19:34",
+      "start_seconds": 1174,
+      "text": "It will trash it own security card to"
+    },
+    {
+      "timestamp": "19:35",
+      "start_seconds": 1175,
+      "text": "reduce the DP of Volcanis by 13k. But"
+    },
+    {
+      "timestamp": "19:38",
+      "start_seconds": 1178,
+      "text": "unfortunately, it won't be able to"
+    },
+    {
+      "timestamp": "19:39",
+      "start_seconds": 1179,
+      "text": "recover two since there are no more"
+    },
+    {
+      "timestamp": "19:41",
+      "start_seconds": 1181,
+      "text": "cards left in deck. But then Jupiter"
+    },
+    {
+      "timestamp": "19:42",
+      "start_seconds": 1182,
+      "text": "Monk's altern will activate because the"
+    },
+    {
+      "timestamp": "19:44",
+      "start_seconds": 1184,
+      "text": "security card was removed from it will"
+    },
+    {
+      "timestamp": "19:45",
+      "start_seconds": 1185,
+      "text": "trash and final security being factorial"
+    },
+    {
+      "timestamp": "19:48",
+      "start_seconds": 1188,
+      "text": "area. And with no more blocks and"
+    },
+    {
+      "timestamp": "19:50",
+      "start_seconds": 1190,
+      "text": "security on Volcanon's side, Jupytermon"
+    },
+    {
+      "timestamp": "19:52",
+      "start_seconds": 1192,
+      "text": "will swing for the final attack, winning"
+    },
+    {
+      "timestamp": "19:53",
+      "start_seconds": 1193,
+      "text": "the game as it will also proceed to the"
+    },
+    {
+      "timestamp": "19:55",
+      "start_seconds": 1195,
+      "text": "second round of the Battle Vault Olympus"
+    },
+    {
+      "timestamp": "19:57",
+      "start_seconds": 1197,
+      "text": "12 tournament. If you enjoy the series"
+    },
+    {
+      "timestamp": "19:59",
+      "start_seconds": 1199,
+      "text": "and want to see more, show your support"
+    },
+    {
+      "timestamp": "20:00",
+      "start_seconds": 1200,
+      "text": "by getting the Realm of Gods playmat,"
+    },
+    {
+      "timestamp": "20:02",
+      "start_seconds": 1202,
+      "text": "sleeves, and dice on the Eva store. Here"
+    },
+    {
+      "timestamp": "20:04",
+      "start_seconds": 1204,
+      "text": "are the deck lists for today's Battle"
+    },
+    {
+      "timestamp": "20:05",
+      "start_seconds": 1205,
+      "text": "Vault video. Also, huge shout outs to"
+    },
+    {
+      "timestamp": "20:07",
+      "start_seconds": 1207,
+      "text": "premium and deluxe members of the"
+    },
+    {
+      "timestamp": "20:08",
+      "start_seconds": 1208,
+      "text": "channel. And don't forget to subscribe"
+    },
+    {
+      "timestamp": "20:09",
+      "start_seconds": 1209,
+      "text": "to stay tuned for more."
+    }
+  ]
+}

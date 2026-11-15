@@ -1,0 +1,23 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "commands": 107,
+  "first": "B",
+  "halt_reason": "ULFORCE_RETURN_LEAVE_DEPENDENCY_UNIMPLEMENTED: EX13-017 inherited_text source=B:EX13-017#3",
+  "history_report": {
+    "file": "ARTIFACTS/fresh-game-0000-2026-11-11/game-0000-report.md",
+    "sha256": "9e62a62789bf75fcbd943bd8fe0091bace271c36549489909cb1fb9de27a6c82"
+  },
+  "player_policy": "BOARD_TEXT_HISTORY",
+  "record_file": "segment-0007.json.gz",
+  "record_sha256": "50dae89d90b79a77b9dfcfb9401700d7152fe90b86c9e3a716c594c9fc3d5899",
+  "replay": {
+    "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+    "exact_match": true,
+    "record_sha256": "fa4566378a104208c8ef7b5fa61aa65e4a36c03b77f0179eb714158764d5bed5"
+  },
+  "seed": 17795081213137388177,
+  "segment": 7,
+  "status": "HALT",
+  "turn": 6,
+  "winner": null
+}

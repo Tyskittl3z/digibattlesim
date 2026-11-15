@@ -1,0 +1,1637 @@
+{
+  "matchup_id": "53f4e043b49fca0bf6e691754098e73774995cfee182e7c8245cf446e2d70733",
+  "context": {
+    "schema": "imported-matchup-context-v1",
+    "decks": {
+      "A": {
+        "label": "UlforceVeedramon — Federico Nine",
+        "source_id": "123129",
+        "main": [
+          {
+            "card_number": "BT11-023",
+            "quantity": 4
+          },
+          {
+            "card_number": "BT11-032",
+            "quantity": 1
+          },
+          {
+            "card_number": "BT11-112",
+            "quantity": 4
+          },
+          {
+            "card_number": "BT12-029",
+            "quantity": 3
+          },
+          {
+            "card_number": "BT22-022",
+            "quantity": 1
+          },
+          {
+            "card_number": "BT22-023",
+            "quantity": 3
+          },
+          {
+            "card_number": "BT22-085",
+            "quantity": 1
+          },
+          {
+            "card_number": "EX1-013",
+            "quantity": 3
+          },
+          {
+            "card_number": "EX13-017",
+            "quantity": 4
+          },
+          {
+            "card_number": "EX13-019",
+            "quantity": 4
+          },
+          {
+            "card_number": "EX13-022",
+            "quantity": 4
+          },
+          {
+            "card_number": "EX13-023",
+            "quantity": 4
+          },
+          {
+            "card_number": "EX13-069",
+            "quantity": 4
+          },
+          {
+            "card_number": "LM-028",
+            "quantity": 1
+          },
+          {
+            "card_number": "LM-034",
+            "quantity": 1
+          },
+          {
+            "card_number": "LM-056",
+            "quantity": 1
+          },
+          {
+            "card_number": "LM-057",
+            "quantity": 1
+          },
+          {
+            "card_number": "LM-058",
+            "quantity": 1
+          },
+          {
+            "card_number": "P-104",
+            "quantity": 1
+          },
+          {
+            "card_number": "P-138",
+            "quantity": 4
+          }
+        ],
+        "eggs": [
+          {
+            "card_number": "EX13-002",
+            "quantity": 4
+          }
+        ]
+      },
+      "B": {
+        "label": "Gallantmon — RTA",
+        "source_id": "124303",
+        "main": [
+          {
+            "card_number": "BT12-016",
+            "quantity": 2
+          },
+          {
+            "card_number": "BT17-013",
+            "quantity": 2
+          },
+          {
+            "card_number": "BT17-016",
+            "quantity": 1
+          },
+          {
+            "card_number": "BT19-007",
+            "quantity": 3
+          },
+          {
+            "card_number": "BT19-009",
+            "quantity": 4
+          },
+          {
+            "card_number": "BT19-011",
+            "quantity": 1
+          },
+          {
+            "card_number": "BT19-080",
+            "quantity": 2
+          },
+          {
+            "card_number": "BT20-102",
+            "quantity": 2
+          },
+          {
+            "card_number": "BT9-011",
+            "quantity": 1
+          },
+          {
+            "card_number": "BT9-092",
+            "quantity": 2
+          },
+          {
+            "card_number": "BT9-109",
+            "quantity": 3
+          },
+          {
+            "card_number": "EX13-015",
+            "quantity": 2
+          },
+          {
+            "card_number": "EX2-008",
+            "quantity": 4
+          },
+          {
+            "card_number": "EX4-006",
+            "quantity": 1
+          },
+          {
+            "card_number": "EX5-070",
+            "quantity": 1
+          },
+          {
+            "card_number": "EX8-009",
+            "quantity": 4
+          },
+          {
+            "card_number": "EX8-012",
+            "quantity": 1
+          },
+          {
+            "card_number": "EX8-015",
+            "quantity": 3
+          },
+          {
+            "card_number": "EX8-073",
+            "quantity": 3
+          },
+          {
+            "card_number": "LM-027",
+            "quantity": 1
+          },
+          {
+            "card_number": "LM-057",
+            "quantity": 1
+          },
+          {
+            "card_number": "LM-061",
+            "quantity": 1
+          },
+          {
+            "card_number": "P-186",
+            "quantity": 1
+          },
+          {
+            "card_number": "ST7-05",
+            "quantity": 4
+          }
+        ],
+        "eggs": [
+          {
+            "card_number": "EX2-001",
+            "quantity": 4
+          }
+        ]
+      }
+    },
+    "cards": {
+      "BT11-023": {
+        "attribute": "Free",
+        "card_number": "BT11-023",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 1000,
+        "form": "Rookie",
+        "inherited_text": "[Your Turn][Once Per Turn] When you play a blue Tamer, gain 1 memory.",
+        "level": 3,
+        "main_text": "[On Play] Reveal the top 3 cards of your deck. Add 1 Digimon card with [Veedramon] in its name and 1 blue Tamer card among them to your hand. Place the rest at the bottom of your deck in any order.",
+        "name": "Veemon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 0 from Lv.2"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-023.html",
+          "locator": "#BT11-023",
+          "sha256": "8a0641a7b790f34271ee55cfac8b183f29ce2f546bfd62b704069952e5001e23",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-023"
+        },
+        "play_cost": 3,
+        "security_text": "",
+        "special_conditions": {},
+        "traits": [
+          "Mini Dragon"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT11-032": {
+        "attribute": "Vaccine",
+        "card_number": "BT11-032",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 12000,
+        "form": "Mega",
+        "inherited_text": "",
+        "level": 6,
+        "main_text": "[When Digivolving] You may play 1 blue Tamer card from your hand without paying the cost.\n[Your Turn] When you play a blue Tamer, unsuspend this Digimon.\n[Your Turn][Once Per Turn] When this Digimon becomes unsuspended, return 1 of your opponent's level 3 or lower Digimon to its owner's hand. For every blue Tamer you have in play, add 1 to the max level of the Digimon you can choose with this effect.",
+        "name": "UlforceVeedramon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 4 from Lv.5"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-032.html",
+          "locator": "#BT11-032",
+          "sha256": "82c0b74c599cb27d0784d93959057b2504e97c4e593af5ee0a0fce51db30d50e",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-032"
+        },
+        "play_cost": 12,
+        "security_text": "",
+        "special_conditions": {},
+        "traits": [
+          "Holy Warrior",
+          "Royal Knight"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT11-112": {
+        "attribute": null,
+        "card_number": "BT11-112",
+        "colors": [
+          "Blue"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "[On Play] Until the end of your opponent's turn, 1 of your Digimon with [Veemon] or [Veedramon] in its name gains ＜Blocker＞ and ＜Evade＞.\n[All Turns] When one of your Digimon with [Veedramon] in its name becomes suspended, by suspending this Tamer, activate 1 of that Digimon's [When Digivolving] effects.\n[Your Turn][Once Per Turn] When one of your blue Digimon becomes unsuspended, gain 1 memory.",
+        "name": "Rina Shinomiya",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-112.html",
+          "locator": "#BT11-112",
+          "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-112"
+        },
+        "play_cost": 3,
+        "security_text": "[Security] Play this card without paying its memory cost.",
+        "special_conditions": {},
+        "traits": [
+          ""
+        ],
+        "type": "Tamer",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT12-016": {
+        "attribute": "Virus",
+        "card_number": "BT12-016",
+        "colors": [
+          "Red"
+        ],
+        "dp": 8000,
+        "form": "Ultimate",
+        "inherited_text": "[End of Attack][Once Per Turn] If your opponent has no Digimon in play, and this Digimon has [Growlmon] or [Gallantmon] in its name, gain 2 memory.",
+        "level": 5,
+        "main_text": "[When Digivolving] Delete 1 of your opponent's Digimon with 4000 DP or less. If no opponent's Digimon was deleted by this effect, you may digivolve this Digimon into a level 6 Digimon card with [Gallantmon] in its name in your hand for the digivolution cost. When this Digimon would digivolve by this effect, reduce the digivolution cost by 1.",
+        "name": "WarGrowlmon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Red 3 from Lv.4"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT12-016.html",
+          "locator": "#BT12-016",
+          "sha256": "059954b02e84898dd35723dd259c9cc970918044e6166a0cf343d7cc15833c5d",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT12-016"
+        },
+        "play_cost": 8,
+        "security_text": "",
+        "special_conditions": {},
+        "traits": [
+          "Cyborg"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT12-029": {
+        "attribute": "Vaccine",
+        "card_number": "BT12-029",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 12000,
+        "form": "Mega",
+        "inherited_text": "",
+        "level": 6,
+        "main_text": "[When Digivolving] Unsuspend this Digimon or 1 of your blue Tamers.\n[All Turns][Once Per Turn] When this Digimon becomes unsuspended, if you have a blue Tamer in play or this Digimon has [UlforceVeedramon] in its digivolution cards, return 1 of your opponent’s Digimon with the lowest level to its owner’s hand.",
+        "name": "UlforceVeedramon (X Antibody)",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 4 from Lv.5"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT12-029.html",
+          "locator": "#BT12-029",
+          "sha256": "4815904431fc1ad0c54a6185aa3269fe75b844cae57da5dc68b72eca0654d505",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT12-029"
+        },
+        "play_cost": 12,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] 1 from [UlforceVeedramon]"
+        },
+        "traits": [
+          "Holy Warrior",
+          "Royal Knight",
+          "X Antibody"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT17-013": {
+        "attribute": "Virus",
+        "card_number": "BT17-013",
+        "colors": [
+          "Red"
+        ],
+        "dp": 7000,
+        "form": "Ultimate",
+        "inherited_text": "[All Turns] [Once Per Turn] When an effect deletes an opponent's Digimon, you may unsuspend this Digimon with [Gallantmon] in its name.",
+        "level": 5,
+        "main_text": "[When Digivolving] Delete 1 of your opponent's Digimon with 6000 DP or less. If this effect didn't delete, this Digimon gains ＜Security A. +1＞ for the turn.",
+        "name": "WarGrowlmon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Red 3 from Lv.4"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT17-013.html",
+          "locator": "#BT17-013",
+          "sha256": "cada35a9e1e68b0582cd0f646dc6067216678712e882402998e4efeb4b099abd",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT17-013"
+        },
+        "play_cost": 7,
+        "security_text": "",
+        "special_conditions": {},
+        "traits": [
+          "Cyborg"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT17-016": {
+        "attribute": "Virus",
+        "card_number": "BT17-016",
+        "colors": [
+          "Red"
+        ],
+        "dp": 11000,
+        "form": "Mega",
+        "inherited_text": "",
+        "level": 6,
+        "main_text": "[When Digivolving] [When Attacking] Delete 1 of your opponent's Digimon with 8000 DP or less. If this effect didn't delete, this Digimon gets +3000 DP and gains ＜Blocker＞ until the end of your opponent's turn.\n[Your Turn] While you have 0 or less memory, this Digimon isn't affected by your opponent's effects.",
+        "name": "Gallantmon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Red 3 from Lv.5"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT17-016.html",
+          "locator": "#BT17-016",
+          "sha256": "a52eece9d558dc9622df3a53164342b7d4e4ada2c3d748921bee353d2acb0218",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT17-016"
+        },
+        "play_cost": 11,
+        "security_text": "",
+        "special_conditions": {},
+        "traits": [
+          "Holy Warrior",
+          "Royal Knight"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT19-007": {
+        "attribute": "Virus",
+        "card_number": "BT19-007",
+        "colors": [
+          "Red"
+        ],
+        "dp": 1000,
+        "form": "Rookie",
+        "inherited_text": "[All Turns] While you have 0 or less memory, add 2000 to this Digimon's DP deletion effects' maximums.",
+        "level": 3,
+        "main_text": "[Start of Your Main Phase] If you have [Takato Matsuki] or [Calumon], gain 1 memory.",
+        "name": "Guilmon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Red 0 from Lv.2"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT19-007.html",
+          "locator": "#BT19-007",
+          "sha256": "2f00fcac685cff30579f00b45e6b2f40d70b7cc461b661cc6101cc97d01b3ac3",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT19-007"
+        },
+        "play_cost": 3,
+        "security_text": "",
+        "special_conditions": {},
+        "traits": [
+          "Reptile"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT19-009": {
+        "attribute": "Virus",
+        "card_number": "BT19-009",
+        "colors": [
+          "Red"
+        ],
+        "dp": 5000,
+        "form": "Champion",
+        "inherited_text": "[All Turns] While you have 0 or less memory, add 2000 to this Digimon's DP deletion effects' maximums.",
+        "level": 4,
+        "main_text": "[When Digivolving] If you have 1 or fewer Tamers, you may play 1 [Takato Matsuki] from your hand without paying the cost.",
+        "name": "Growlmon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Red 2 from Lv.3"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT19-009.html",
+          "locator": "#BT19-009",
+          "sha256": "8230cec3dcb85b49128b12eb5f70dc3791032c66dc4192008bafc6fe1228f7eb",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT19-009"
+        },
+        "play_cost": 5,
+        "security_text": "",
+        "special_conditions": {},
+        "traits": [
+          "Dark Dragon"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT19-011": {
+        "attribute": "Virus",
+        "card_number": "BT19-011",
+        "colors": [
+          "Red"
+        ],
+        "dp": 8000,
+        "form": "Ultimate",
+        "inherited_text": "[All Turns] Add 3000 to this Digimon's DP deletion effects' maximums.",
+        "level": 5,
+        "main_text": "{Hand} [Counter] ＜Blast Digivolve＞ (Your Digimon may digivolve into this card without paying the cost.)\n[On Play] [When Digivolving] Delete up to 3000 DP total worth of your opponent's Digimon. For each of your opponent's Digimon, add 2000 to this DP deletion effect's maximum. Then, for each Digimon this effect deleted, gain 1 memory.",
+        "name": "WarGrowlmon ACE",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Red 3 from Lv.4"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT19-011.html",
+          "locator": "#BT19-011",
+          "sha256": "65d731cf89caed980da1efa7306675db772d11435eccaadd929713f9b6194482",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT19-011"
+        },
+        "play_cost": 5,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Rule]": "＜Overflow (-3)＞ (As this card moves from the field or under a card to an area other than those, lose 3 memory.)"
+        },
+        "traits": [
+          "Cyborg"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT19-080": {
+        "attribute": null,
+        "card_number": "BT19-080",
+        "colors": [
+          "Red"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "[Start of Your Turn] If you have 2 or less memory, set it to 3.\n[Your Turn] When any of your Digimon digivolve into a Digimon with [Growlmon] or [Gallantmon] in its name, by suspending this Tamer, that Digimon gains ＜Raid＞ for the turn. Then, that Digimon attacks a player.",
+        "name": "Takato Matsuki",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT19-080.html",
+          "locator": "#BT19-080",
+          "sha256": "99917b24bb30d7530475289002e744c38dc841d04a2c4cdd220d4c800a6ee21f",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT19-080"
+        },
+        "play_cost": 4,
+        "security_text": "[Security] Play this card without paying the cost.",
+        "special_conditions": {},
+        "traits": [
+          ""
+        ],
+        "type": "Tamer",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT20-102": {
+        "attribute": "Vaccine",
+        "card_number": "BT20-102",
+        "colors": [
+          "Blue",
+          "White",
+          "Red"
+        ],
+        "dp": 16000,
+        "form": "Mega",
+        "inherited_text": "",
+        "level": 7,
+        "main_text": "＜Raid＞ ＜Piercing＞ ＜Blocker＞\n[On Play] [When Digivolving] If [Omnimon] or [X Antibody] is in this Digimon's digivolution cards, choose 1 of both players' Digimon and delete all other Digimon. Then, return 1 of your opponent's Digimon to the bottom of the deck.\n[End of Your Turn] [Once Per Turn] 1 of your Digimon may gain ＜Rush＞ for the turn and attack without suspending.",
+        "name": "Omnimon (X Antibody)",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "BlueRed 6 from Lv.6"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT20-102.html",
+          "locator": "#BT20-102",
+          "sha256": "6769bd16a111b682dc8f9a27fb5ea0e5a4438a6822e160c79575f480fcd8519b",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT20-102"
+        },
+        "play_cost": 16,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] [Omnimon]: Cost 2"
+        },
+        "traits": [
+          "Holy Warrior",
+          "X Antibody",
+          "Royal Knight",
+          "LIBERATOR"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT22-022": {
+        "attribute": "Vaccine",
+        "card_number": "BT22-022",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 5000,
+        "form": "Champion",
+        "inherited_text": "[All Turns] [Once Per Turn] When this Digimon with [Veedramon] in its name would leave the battle area by your opponent's effects, by suspending this Digimon, it doesn't leave.",
+        "level": 4,
+        "main_text": "[When Digivolving] If you have 1 or fewer Tamers, you may play 1 Tamer card with [Veedramon] in its text from your hand without paying the cost.",
+        "name": "Veedramon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 2 from Lv.3"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-022.html",
+          "locator": "#BT22-022",
+          "sha256": "b2bc45d6d74a4c8a9569094c25bcc7ffe10e179b4891341dd2187298a0346c85",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-022"
+        },
+        "play_cost": 5,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] Lv.3 w/[CS] trait: Cost 2"
+        },
+        "traits": [
+          "Mythical Dragon",
+          "CS"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT22-023": {
+        "attribute": "Vaccine",
+        "card_number": "BT22-023",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 7000,
+        "form": "Ultimate",
+        "inherited_text": "[All Turns] [Once Per Turn] When this Digimon with [Veedramon] in its name suspends, if you have a blue Tamer, this Digimon may unsuspend.",
+        "level": 5,
+        "main_text": "[On Play] [When Digivolving] Return 1 of your opponent's level 4 or lower Digimon to the bottom of the deck.\n[End of Your Turn] [Once Per Turn] 1 of your blue Digimon or Tamers may unsuspend.",
+        "name": "AeroVeedramon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 3 from Lv.4"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-023.html",
+          "locator": "#BT22-023",
+          "sha256": "a184df26a6bd8c5ccaed325998c9b85a18c0c2d5c0778a20993fd2d6a01e67dd",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-023"
+        },
+        "play_cost": 7,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] Lv.4 w/[CS] trait: Cost 3"
+        },
+        "traits": [
+          "Holy Dragon",
+          "CS"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT22-085": {
+        "attribute": null,
+        "card_number": "BT22-085",
+        "colors": [
+          "Blue"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "[Start of Your Turn] If you have 2 or less memory, set it to 3.\n[On Play] 1 of your Digimon with [Veedramon] in its name gets +3000 DP until your opponent's turn ends.\n[Your Turn] When one of your Digimon with [Veedramon] in its name attacks, by returning this Tamer to the hand, that Digimon gains ＜Jamming＞ for the turn.",
+        "name": "Rina Shinomiya",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-085.html",
+          "locator": "#BT22-085",
+          "sha256": "a453871077f17613ac9b1d52bbe3065509f2d0fd75ff8d2e040aa3658d3435f1",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-085"
+        },
+        "play_cost": 4,
+        "security_text": "[Security] Play this card without paying the cost.",
+        "special_conditions": {},
+        "traits": [
+          "CS"
+        ],
+        "type": "Tamer",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT9-011": {
+        "attribute": "Virus",
+        "card_number": "BT9-011",
+        "colors": [
+          "Red"
+        ],
+        "dp": 6000,
+        "form": "Champion",
+        "inherited_text": "[Your Turn] Add 1000 to the maximum DP you can choose with DP-based deletion effects.",
+        "level": 4,
+        "main_text": "",
+        "name": "Growlmon (X Antibody)",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Red 2 from Lv.3"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT9-011.html",
+          "locator": "#BT9-011",
+          "sha256": "933f4c58d621282a134d4919e14a95265e03d9de050b6c698464639d05c6c420",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT9-011"
+        },
+        "play_cost": 5,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] 0 from [Growlmon]"
+        },
+        "traits": [
+          "Dark Dragon",
+          "X Antibody"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT9-092": {
+        "attribute": null,
+        "card_number": "BT9-092",
+        "colors": [
+          "White"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "[On Play] Reveal the top 3 cards of your deck. Add 1 Digimon card with [X Antibody] in its traits and 1 Option card with [X Antibody] in its traits among them to your hand. Place the rest at the bottom of your deck in any order.\n[Your Turn] When one of your Digimon digivolves into a same-level Digimon with [X Antibody] in its traits, you may suspend this Tamer to gain 1 memory and ＜Draw 1＞.",
+        "name": "Cool Boy",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT9-092.html",
+          "locator": "#BT9-092",
+          "sha256": "819c58d36db86504fddfe683e1ed69816f7d8622e975401531c6f625a9c2ca00",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT9-092"
+        },
+        "play_cost": 2,
+        "security_text": "[Security] Play this card without paying its memory cost.",
+        "special_conditions": {},
+        "traits": [
+          ""
+        ],
+        "type": "Tamer",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT9-109": {
+        "attribute": "X Antibody",
+        "card_number": "BT9-109",
+        "colors": [
+          "White"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "[All Turns] Effects can't trash [X Antibody] in this Digimon's digivolution cards.\n[When Attacking] This Digimon can digivolve into a Digimon card with [X Antibody] in its traits in your hand for its digivolution cost.",
+        "level": null,
+        "main_text": "While you have a Digimon in play, you may use this card without meeting its color requirements.\n[Security] Gain 1 memory, and add this card to its owner's hand.\n[Main] Place this card under 1 of your Digimon without [X Antibody] in its digivolution cards as its bottom digivolution card.",
+        "name": "X Antibody",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT9-109.html",
+          "locator": "#BT9-109",
+          "sha256": "e6a3bcb0cc0d88514529f7c606a3ce5690faee05dfd98a063599e9cfcfe84893",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT9-109"
+        },
+        "play_cost": 0,
+        "security_text": "[All Turns] Effects can't trash [X Antibody] in this Digimon's digivolution cards.\n[When Attacking] This Digimon can digivolve into a Digimon card with [X Antibody] in its traits in your hand for its digivolution cost.",
+        "special_conditions": {},
+        "traits": [
+          ""
+        ],
+        "type": "Option",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX1-013": {
+        "attribute": "Free",
+        "card_number": "EX1-013",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 2000,
+        "form": "Rookie",
+        "inherited_text": "[Your Turn][Once Per Turn] When this Digimon becomes unsuspended during your main phase, gain 1 memory.",
+        "level": 3,
+        "main_text": "",
+        "name": "Veemon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 0 from Lv.2"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX1-013.html",
+          "locator": "#EX1-013",
+          "sha256": "df126caa2ee95d5f7b86008ef828291645d15204c177801eb2f73404d0611f38",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX1-013"
+        },
+        "play_cost": 3,
+        "security_text": "",
+        "special_conditions": {},
+        "traits": [
+          "Mini Dragon"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX13-002": {
+        "attribute": null,
+        "card_number": "EX13-002",
+        "colors": [
+          "Blue"
+        ],
+        "dp": null,
+        "form": "In-Training",
+        "inherited_text": "[Your Turn] [Once Per Turn] When any of your blue Tamers are played, this Digimon with [Veedramon] in its name may unsuspend.",
+        "level": 2,
+        "main_text": "",
+        "name": "DemiVeemon",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-002.html",
+          "locator": "#EX13-002",
+          "sha256": "9d2abc2c3a5f20aebefbcb5b89818a4559748ddbde4e20f92562092b7267cd4f",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-002"
+        },
+        "play_cost": null,
+        "security_text": "",
+        "special_conditions": {},
+        "traits": [
+          "Baby Dragon"
+        ],
+        "type": "Digi-Egg",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX13-015": {
+        "attribute": "Virus",
+        "card_number": "EX13-015",
+        "colors": [
+          "Red"
+        ],
+        "dp": 12000,
+        "form": "Mega",
+        "inherited_text": "",
+        "level": 6,
+        "main_text": "＜Raid＞ ＜Progress＞ ＜Blocker＞\n[On Play] [When Digivolving] [When Attacking] [Counter] [Once Per Turn] Delete 1 of your opponent's 12000 DP or higher Digimon. If this effect didn't delete, trash their top security card.\n[All Turns] [Once Per Turn] When this Digimon would leave the battle area other than by your effects, by deleting 1 of your opponent's 9000 DP or lower Digimon, it doesn't leave.",
+        "name": "Gallantmon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Red 3 from Lv.5"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-015.html",
+          "locator": "#EX13-015",
+          "sha256": "da5ea099591f442de21e60eb9c13857f9585b1ea4c40215dbf27ff56f47c06d6",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-015"
+        },
+        "play_cost": 12,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Play Condition]": "Assembly -5: Lv.5 × Lv.4 × Lv.3, all w/[Guilmon]/[Growlmon] in name"
+        },
+        "traits": [
+          "Holy Warrior",
+          "Royal Knight"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX13-017": {
+        "attribute": "Free",
+        "card_number": "EX13-017",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 1000,
+        "form": "Rookie",
+        "inherited_text": "[All Turns] [Once Per Turn] When this Digimon with [Veedramon] in its name would leave the battle area by your opponent's effects, by suspending it, it doesn't leave.",
+        "level": 3,
+        "main_text": "[When Moving] [On Play] Reveal the top 3 cards of your deck. Add 1 card with [Veedramon] in its text or the [Royal Knight] trait among them to the hand. Return the rest to the bottom of the deck.",
+        "name": "Veemon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 0 from Lv.2"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-017.html",
+          "locator": "#EX13-017",
+          "sha256": "2aa137a4f5c18f878139b6021a274f44a1ad001b0a952390ef6690031e5e77d4",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-017"
+        },
+        "play_cost": 3,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] Lv.2 w/[CS] trait: Cost 0"
+        },
+        "traits": [
+          "Mini Dragon",
+          "CS"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX13-019": {
+        "attribute": "Vaccine",
+        "card_number": "EX13-019",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 6000,
+        "form": "Champion",
+        "inherited_text": "＜Jamming＞ (This Digimon can't be deleted in battles against Security Digimon.)",
+        "level": 4,
+        "main_text": "＜Jamming＞\n[When Attacking] [Once Per Turn] You may play 1 Tamer card with [Veedramon] in its text from your hand with the cost reduced by 2.",
+        "name": "Veedramon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 2 from Lv.3"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-019.html",
+          "locator": "#EX13-019",
+          "sha256": "0e9158139b3c4d46987c85a968f40469743a76892cba86227871ed897b1e4d5a",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-019"
+        },
+        "play_cost": 6,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] Lv.3 w/[CS] trait: Cost 2"
+        },
+        "traits": [
+          "Mythical Dragon",
+          "CS"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX13-022": {
+        "attribute": "Vaccine",
+        "card_number": "EX13-022",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 7000,
+        "form": "Ultimate",
+        "inherited_text": "[All Turns] [Once Per Turn] When this Digimon with [Veedramon] in its name suspends, it may unsuspend.",
+        "level": 5,
+        "main_text": "[On Play] [When Digivolving] [When Attacking] [Once Per Turn] You may play 1 Tamer card with [Veedramon] in its text from your hand without paying the cost.\n[All Turns] [Once Per Turn] When any of your Tamers are played, 1 of your opponent's Digimon or Tamers can't suspend until their turn ends.",
+        "name": "AeroVeedramon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 3 from Lv.4"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-022.html",
+          "locator": "#EX13-022",
+          "sha256": "4771e6eab5218e833eebf7d1ff6cf70ad6fa51a51d556f8a404ac88f07256874",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-022"
+        },
+        "play_cost": 7,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] Lv.4 w/[CS] trait: Cost 3"
+        },
+        "traits": [
+          "Holy Dragon",
+          "CS"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX13-023": {
+        "attribute": "Vaccine",
+        "card_number": "EX13-023",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 12000,
+        "form": "Mega",
+        "inherited_text": "",
+        "level": 6,
+        "main_text": "＜Blocker＞ ＜Evade＞\n[On Play] [When Digivolving] [When Attacking] [Once Per Turn] 1 of your Digimon may change orientation.\n[On Play] [When Digivolving] You may return all of your opponent's Digimon with the fewest digivolution cards to the bottom of the deck.\n[All Turns] Your opponent's effects can't reduce this unsuspended Digimon's DP, return its stacked cards to the hand or deck, or trash them.",
+        "name": "UlforceVeedramon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 3 from Lv.5"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-023.html",
+          "locator": "#EX13-023",
+          "sha256": "3d50f704648b02667258fceb3f3675a80141599f76ca4ad1beeb3069d8fad7aa",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-023"
+        },
+        "play_cost": 12,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] Lv.5 w/[CS] trait: Cost 3",
+          "[Special Play Condition]": "Assembly -5: Lv.5 × Lv.4 × Lv.3, all w/[Veemon]/[Veedramon] in name"
+        },
+        "traits": [
+          "Holy Warrior",
+          "Royal Knight",
+          "CS"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX13-069": {
+        "attribute": null,
+        "card_number": "EX13-069",
+        "colors": [
+          "Blue"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "[Start of Your Main Phase] If you have a Digimon with [Veemon] or [Veedramon] in its name, gain 1 memory.\n[Your Turn] When any of your Digimon unsuspend, by suspending this Tamer, ＜Draw 1＞. After, 1 of your Digimon may digivolve into a Digimon card with [Veedramon] in its name in the hand with the cost reduced by 2.",
+        "name": "Rina Shinomiya",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-069.html",
+          "locator": "#EX13-069",
+          "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-069"
+        },
+        "play_cost": 3,
+        "security_text": "[Security] Play this card without paying the cost.",
+        "special_conditions": {},
+        "traits": [
+          "CS"
+        ],
+        "type": "Tamer",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX2-001": {
+        "attribute": null,
+        "card_number": "EX2-001",
+        "colors": [
+          "Red"
+        ],
+        "dp": null,
+        "form": "In-Training",
+        "inherited_text": "[When Attacking][Once Per Turn] If this Digimon has [Guilmon], [Growlmon], or [Gallantmon] in its name, ＜Draw 1＞. (Draw 1 card from your deck.)",
+        "level": 2,
+        "main_text": "",
+        "name": "Gigimon",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX2-001.html",
+          "locator": "#EX2-001",
+          "sha256": "5c9084896415a13a05c4a8ee21481fec88ba3334d8befac23d70a85d518ed338",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX2-001"
+        },
+        "play_cost": null,
+        "security_text": "",
+        "special_conditions": {},
+        "traits": [
+          "Lesser"
+        ],
+        "type": "Digi-Egg",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX2-008": {
+        "attribute": "Virus",
+        "card_number": "EX2-008",
+        "colors": [
+          "Red"
+        ],
+        "dp": 1000,
+        "form": "Rookie",
+        "inherited_text": "[When Attacking][Once Per Turn] If this Digimon has [Growlmon] or [Gallantmon] in its name, delete 1 of your opponent's Digimon with 3000 DP or less.",
+        "level": 3,
+        "main_text": "[On Play] Reveal the top 4 cards of your deck. Add 1 card with [Growlmon] or [Gallantmon] in its name and 1 [Takato Matsuki] among them to your hand. Place the remaining cards at the bottom of your deck in any order.",
+        "name": "Guilmon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Red 0 from Lv.2"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX2-008.html",
+          "locator": "#EX2-008",
+          "sha256": "bf0c5a65a6a80a06ab835706d3eb0a1c3fefaa3d27b07d677108c9f48e79330c",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX2-008"
+        },
+        "play_cost": 3,
+        "security_text": "",
+        "special_conditions": {},
+        "traits": [
+          "Reptile"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX4-006": {
+        "attribute": "Virus",
+        "card_number": "EX4-006",
+        "colors": [
+          "Red",
+          "Purple"
+        ],
+        "dp": 2000,
+        "form": "Rookie",
+        "inherited_text": "",
+        "level": 3,
+        "main_text": "[On Play] If the total number of cards in both players' trashes is 20 or more, this Digimon gains ＜Rush＞ for the turn. (This Digimon may attack the turn it was played.)",
+        "name": "Guilmon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "RedPurple 1 from Lv.2"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX4-006.html",
+          "locator": "#EX4-006",
+          "sha256": "5936d220799867bd530f8c82224bac7279b7d5a5cef975ad8062b47bdf90c2aa",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX4-006"
+        },
+        "play_cost": 3,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] 0 from [Gigimon]"
+        },
+        "traits": [
+          "Reptile"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX5-070": {
+        "attribute": null,
+        "card_number": "EX5-070",
+        "colors": [
+          "White"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "[All Turns] When this Digimon would leave the battle area other than by one of your effects, from this Digimon's digivolution cards, return 1 Digimon card to the hand and place 1 [X Antibody] on top of your security stack.",
+        "level": null,
+        "main_text": "While you have a Digimon, you may ignore this card's color requirements.\n[Security] Add this card to the hand.\n[Main] 1 of your Digimon without [X Antibody] in its digivolution cards may digivolve into a Digimon card with the [X Antibody] trait in your hand with the digivolution cost reduced by 1. If it did, place this card as its bottom digivolution card.\n(Rule) Name: Also treated as [X Antibody].",
+        "name": "X Antibody Proto Form",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX5-070.html",
+          "locator": "#EX5-070",
+          "sha256": "65770db65c5e83c6f0dcacc532a5211f406f523c930df3b6e90f899714faa36b",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX5-070"
+        },
+        "play_cost": 0,
+        "security_text": "",
+        "special_conditions": {},
+        "traits": [
+          "X Antibody"
+        ],
+        "type": "Option",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX8-009": {
+        "attribute": "Virus",
+        "card_number": "EX8-009",
+        "colors": [
+          "Red",
+          "Purple"
+        ],
+        "dp": 2000,
+        "form": "Rookie",
+        "inherited_text": "[Your Turn] [Once Per Turn] When any of your opponent's Digimon are deleted, gain 1 memory.",
+        "level": 3,
+        "main_text": "[On Play] [When Digivolving] Reveal the top 3 cards of your deck. Add 1 card with [Growlmon] or [Gallantmon] in its name and 1 [X Antibody] among them to the hand. Return the rest to the bottom of the deck.",
+        "name": "Guilmon (X Antibody)",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "RedPurple 1 from Lv.2"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX8-009.html",
+          "locator": "#EX8-009",
+          "sha256": "069a61b7df9075b4f1a0947bb65deb8203b8d4b5288c229dfd8a1448f80fccfb",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX8-009"
+        },
+        "play_cost": 3,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] [Gigimon]/[Guilmon]: Cost 0"
+        },
+        "traits": [
+          "Dark Dragon",
+          "X Antibody"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX8-012": {
+        "attribute": "Virus",
+        "card_number": "EX8-012",
+        "colors": [
+          "Red",
+          "Purple"
+        ],
+        "dp": 6000,
+        "form": "Champion",
+        "inherited_text": "[Your Turn] [Once Per Turn] When any of your opponent's Digimon are deleted, gain 1 memory.",
+        "level": 4,
+        "main_text": "[When Digivolving] ＜Draw 1＞ and trash 1 card in your hand. Then, if [Growlmon] or [X Antibody] is in this Digimon's digivolution cards, until the end of your opponent's turn, this Digimon gains \"[On Deletion] You may play 1 card with [Guilmon] in its name from your trash without paying the cost.\"",
+        "name": "Growlmon (X Antibody)",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "RedPurple 3 from Lv.3"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX8-012.html",
+          "locator": "#EX8-012",
+          "sha256": "75984eaa3a914e3d3698269d192e1a6ce60b1538657039230057b4f2b45d2c9f",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX8-012"
+        },
+        "play_cost": 6,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] [Growlmon]: Cost 0"
+        },
+        "traits": [
+          "Dark Dragon",
+          "X Antibody"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX8-015": {
+        "attribute": "Virus",
+        "card_number": "EX8-015",
+        "colors": [
+          "Red",
+          "Purple"
+        ],
+        "dp": 8000,
+        "form": "Ultimate",
+        "inherited_text": "＜Security A. +1＞ (This Digimon checks 1 additional security card.)",
+        "level": 5,
+        "main_text": "[When Digivolving] Until the end of your opponent's turn, this Digimon can't be returned to hands or decks and gets +3000 DP. Then, if [WarGrowlmon] or [X Antibody] is in this Digimon's digivolution cards, delete 1 of your opponent's Digimon with 10000 or less DP.",
+        "name": "WarGrowlmon (X Antibody)",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "RedPurple 4 from Lv.4"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX8-015.html",
+          "locator": "#EX8-015",
+          "sha256": "ccd72027e297a8bbdb05743b340060ce939e1edc314916b629380239488f1bf2",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX8-015"
+        },
+        "play_cost": 8,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] [WarGrowlmon]: Cost 1"
+        },
+        "traits": [
+          "Cyborg",
+          "X Antibody"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX8-073": {
+        "attribute": "Virus",
+        "card_number": "EX8-073",
+        "colors": [
+          "Red",
+          "Blue",
+          "Yellow"
+        ],
+        "dp": 12000,
+        "form": "Mega",
+        "inherited_text": "-",
+        "level": 6,
+        "main_text": "[When Digivolving] [When Attacking] If [Gallantmon] or [X Antibody] is in this Digimon's digivolution cards, until the end of your opponent's turn, this Digimon gets +4000 DP and 1 of their Digimon gets -4000 DP.\n[When Digivolving] [End of Attack] [Once per Turn] Delete 1 of your opponent's 10000 DP or lower Digimon. If this effect didn't delete, trash their top security card and this Digimon unsuspends.\n[All Turns] While you have 0 or less memory, this Digimon isn't affected by your opponent's Digimon's effects.",
+        "name": "Gallantmon (X Antibody)",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "RedBlueYellow 4 from Lv.5"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX8-073.html",
+          "locator": "#EX8-073",
+          "sha256": "e64b9dd17ba2fb40f941f5b81bca0956491f506d1ac0f5736caafd5f200d1d68",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX8-073"
+        },
+        "play_cost": 12,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] [Gallantmon]: Cost 1"
+        },
+        "traits": [
+          "Holy Warrior",
+          "X Antibody",
+          "Royal Knight"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "LM-027": {
+        "attribute": null,
+        "card_number": "LM-027",
+        "colors": [
+          "Red"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "[Main] 1 of your red Digimon may digivolve into a red Digimon card in the hand with the digivolution cost reduced by 3. Then, place this card in the battle area.\n[Start of Your Turn] If your opponent has a Digimon, ＜Delay＞.\n・Return 1 red Digimon card from your trash to the top of the deck. Then, if you don't have a Digimon, you may play 1 red Digimon card with 2000 DP or less from your trash without paying the cost.",
+        "metadata_conflicts": [
+          {
+            "basis": "Official PNG visibly labels the card OPTION; visual inspection 2026-10-30, pending independent review",
+            "field": "type",
+            "image_file": "RULES/matchups/123129-vs-124303/sources/LM-027.png",
+            "image_sha256": "aa1cfa7bb598f7a6a6f849667bd5238d09dd2bd18afa71184d83570daf8ed164",
+            "official_html_value": "Digimon",
+            "official_image_value": "Option",
+            "selected_value": "Option"
+          }
+        ],
+        "name": "Red Scramble",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-LM-027.html",
+          "locator": "#LM-027",
+          "sha256": "749c781db7266ffd08a51a7700841531c8f90a719c471970ae6499bef14e8110",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-027"
+        },
+        "play_cost": 2,
+        "security_text": "[Security] You may play 1 red Digimon card with 2000 DP or less from your trash without paying the cost. Then, add this card to the hand.",
+        "special_conditions": {},
+        "traits": [
+          ""
+        ],
+        "type": "Option",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "LM-028": {
+        "attribute": null,
+        "card_number": "LM-028",
+        "colors": [
+          "Blue"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "[Main] 1 of your blue Digimon may digivolve into a blue Digimon card in the hand with the digivolution cost reduced by 3. Then, place this card in the battle area.\n[Start of Your Turn] If your opponent has a Digimon, ＜Delay＞.\n・Return 1 blue Digimon card from your trash to the top of the deck. Then, if you don't have a Digimon, you may play 1 blue Digimon card with 2000 DP or less from your trash without paying the cost.",
+        "metadata_conflicts": [
+          {
+            "basis": "Official PNG visibly labels the card OPTION; visual inspection 2026-10-30, pending independent review",
+            "field": "type",
+            "image_file": "RULES/matchups/123129-vs-124303/sources/LM-028.png",
+            "image_sha256": "f26e919328151f9ee595ea160a2949274ca1d30eb4ae6e0dacde5aef78460c8e",
+            "official_html_value": "Digimon",
+            "official_image_value": "Option",
+            "selected_value": "Option"
+          }
+        ],
+        "name": "Blue Scramble",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-LM-028.html",
+          "locator": "#LM-028",
+          "sha256": "add30c8ec48a6972ae26bc56af14b6faaab06af29d1b032151662b8e3723c0ee",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-028"
+        },
+        "play_cost": 2,
+        "security_text": "[Security] You may play 1 blue Digimon card with 2000 DP or less from your trash without paying the cost. Then, add this card to the hand.",
+        "special_conditions": {},
+        "traits": [
+          ""
+        ],
+        "type": "Option",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "LM-034": {
+        "attribute": null,
+        "card_number": "LM-034",
+        "colors": [
+          "Blue"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "Red also meets this card's color requirements.\n[Main] Reveal the top 3 cards of your deck. Add 1 blue or red Digimon card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.\n[Main] ＜Delay＞\n・Gain 2 memory.",
+        "metadata_conflicts": [
+          {
+            "basis": "Official PNG visibly labels the card OPTION; visual inspection 2026-10-30, pending independent review",
+            "field": "type",
+            "image_file": "RULES/matchups/123129-vs-124303/sources/LM-034.png",
+            "image_sha256": "dfcf39cb2e036a148e9438ea00699f9909d0b93b07c72239822fd0f2cf2868a9",
+            "official_html_value": "Digimon",
+            "official_image_value": "Option",
+            "selected_value": "Option"
+          }
+        ],
+        "name": "Wisteria Memory Boost!",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-LM-034.html",
+          "locator": "#LM-034",
+          "sha256": "2917e45cc7c729ffe78ae583a7c4f4b12778a51e9c8d68b25dd532f5b96c10f1",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-034"
+        },
+        "play_cost": 3,
+        "security_text": "[Security] Place this card in the battle area.",
+        "special_conditions": {},
+        "traits": [
+          ""
+        ],
+        "type": "Option",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "LM-056": {
+        "attribute": null,
+        "card_number": "LM-056",
+        "colors": [
+          "Purple",
+          "Blue"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "While you don't have [Image Training] in the battle area, you can ignore this card's color requirements.\n[Main] Reveal the top 2 cards of your deck. Add 1 purple or blue card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.\n[Main] ＜Delay＞\n・1 of your Digimon may digivolve into a purple or blue Digimon card in the hand with the digivolution cost reduced by 2.",
+        "name": "Image Training",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-LM-056.html",
+          "locator": "#LM-056",
+          "sha256": "de0eb9e7c894f8e66217296f511b004d540f5ba030c8cb8c961c53b4bf7ec0dd",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-056"
+        },
+        "play_cost": 2,
+        "security_text": "[Security] Reveal the top 2 cards of your deck. Add 1 purple or blue card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.",
+        "special_conditions": {},
+        "traits": [
+          ""
+        ],
+        "type": "Option",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "LM-057": {
+        "attribute": null,
+        "card_number": "LM-057",
+        "colors": [
+          "Red",
+          "Blue"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "While you don't have [Wall Training] in the battle area, you can ignore this card's color requirements.\n[Main] Reveal the top 2 cards of your deck. Add 1 red or blue card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.\n[Main] ＜Delay＞\n・1 of your Digimon may digivolve into a red or blue Digimon card in the hand with the cost reduced by 2.",
+        "name": "Wall Training",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-LM-057.html",
+          "locator": "#LM-057",
+          "sha256": "fa76304967284b7ac49ef134942e3d9bb68ed6bcb58379d796f5d1e695e13fc8",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-057"
+        },
+        "play_cost": 2,
+        "security_text": "[Security] Reveal the top 2 cards of your deck. Add 1 red or blue card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.",
+        "special_conditions": {},
+        "traits": [
+          ""
+        ],
+        "type": "Option",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "LM-058": {
+        "attribute": null,
+        "card_number": "LM-058",
+        "colors": [
+          "Blue",
+          "Green"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "While you don't have [Parkour Training] in the battle area, you can ignore this card's color requirements.\n[Main] Reveal the top 2 cards of your deck. Add 1 blue or green card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.\n[Main] ＜Delay＞\n・1 of your Digimon may digivolve into a blue or green Digimon card in the hand with the cost reduced by 2.",
+        "name": "Parkour Training",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-LM-058.html",
+          "locator": "#LM-058",
+          "sha256": "a1c4562d78bdc5ca50a66fdeea057570c0324319f7900e7d2fcb008de4c12de7",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-058"
+        },
+        "play_cost": 2,
+        "security_text": "[Security] Reveal the top 2 cards of your deck. Add 1 blue or green card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.",
+        "special_conditions": {},
+        "traits": [
+          ""
+        ],
+        "type": "Option",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "LM-061": {
+        "attribute": null,
+        "card_number": "LM-061",
+        "colors": [
+          "Black",
+          "Red"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "While you don't have [Punching Training] in the battle area, you can ignore this card's color requirements.\n[Main] Reveal the top 2 cards of your deck. Add 1 black or red card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.\n[Main] ＜Delay＞\n・1 of your Digimon may digivolve into a black or red Digimon card in the hand with the cost reduced by 2.",
+        "name": "Punching Training",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-LM-061.html",
+          "locator": "#LM-061",
+          "sha256": "c0e30c3fa53807a3a81211ee07c93d9edc7103aa10b39989f5ddbea9f83bac0d",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-061"
+        },
+        "play_cost": 2,
+        "security_text": "[Security] Reveal the top 2 cards of your deck. Add 1 black or red card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.",
+        "special_conditions": {},
+        "traits": [
+          ""
+        ],
+        "type": "Option",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "P-104": {
+        "attribute": null,
+        "card_number": "P-104",
+        "colors": [
+          "Blue"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "[Main] Reveal the top 2 cards of your deck. Add 1 blue card among them to the hand. Return the rest to the bottom of the deck in any order. Then, place this card in the battle area.\n[Main] ＜Delay＞\n・1 of your Digimon may digivolve into a blue Digimon card in your hand for its digivolution cost. When it would digivolve by this effect, reduce the cost by 2.",
+        "name": "Mental Training",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-P-104.html",
+          "locator": "#P-104",
+          "sha256": "912bf92380c5be9e6f52fcb21cd997c53010023981328e80c0617348180cf5ec",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=P-104"
+        },
+        "play_cost": 2,
+        "security_text": "[Security] Place this card in the battle area.",
+        "special_conditions": {},
+        "traits": [
+          ""
+        ],
+        "type": "Option",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "P-138": {
+        "attribute": "Vaccine",
+        "card_number": "P-138",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 5000,
+        "form": "Champion",
+        "inherited_text": "[Your Turn] [Once Per Turn] When this Digimon becomes unsuspended, gain 1 memory.",
+        "level": 4,
+        "main_text": "[On Play] [When Digivolving] Reveal the top 3 cards of your deck. Add 1 Digimon card with [Veedramon] in its name and 1 blue Tamer card among them to the hand. Return the rest to the bottom of the deck.",
+        "name": "Veedramon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 2 from Lv.3"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-P-138.html",
+          "locator": "#P-138",
+          "sha256": "61d9574f6132911aa54a8e75990a0c829ef424521b26b97fbaca62be9f456354",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=P-138"
+        },
+        "play_cost": 5,
+        "security_text": "",
+        "special_conditions": {},
+        "traits": [
+          "Mythical Dragon"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "P-186": {
+        "attribute": "Virus",
+        "card_number": "P-186",
+        "colors": [
+          "Red",
+          "Yellow"
+        ],
+        "dp": 12000,
+        "form": "Mega",
+        "inherited_text": "",
+        "level": 6,
+        "main_text": "When this card would be played, if there is a Digimon with 13000 DP or more, reduce the play cost by 2 for every 5 total cards in both players' trashes.\n＜Rush＞ ＜Blocker＞\n[On Play] [When Digivolving] Delete 1 Digimon with 13000 DP or more. If this effect didn't delete, ＜Recovery +1 ≪Deck≫＞.",
+        "name": "Gallantmon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "RedYellow 4 from Lv.5"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-P-186.html",
+          "locator": "#P-186",
+          "sha256": "d6cc244087bcc7f2ee2d863723e8dbf74521d224d375183fb27266dbcf8e2c23",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=P-186"
+        },
+        "play_cost": 12,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] Lv.5 w/[WarGrowlmon] in name: Cost 3"
+        },
+        "traits": [
+          "Holy Warrior",
+          "Royal Knight"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "ST7-05": {
+        "attribute": "Virus",
+        "card_number": "ST7-05",
+        "colors": [
+          "Red"
+        ],
+        "dp": 5000,
+        "form": "Champion",
+        "inherited_text": "[Your Turn][Once Per Turn] When an opponent's Digimon is deleted, gain 1 memory.",
+        "level": 4,
+        "main_text": "",
+        "name": "Growlmon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Red 2 from Lv.3"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-ST7-05.html",
+          "locator": "#ST7-05",
+          "sha256": "048f88fb5e74f13b12ff468102747a050da5f95564f632fa489a1c0914fd9b26",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=ST7-05"
+        },
+        "play_cost": 4,
+        "security_text": "",
+        "special_conditions": {},
+        "traits": [
+          "Dark Dragon"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      }
+    },
+    "rules": {
+      "as_of_date": "2026-10-30",
+      "language": "English",
+      "name": "EX13",
+      "region": "English-version worldwide rules",
+      "selection_status": "REGION_EXPLICITLY_SELECTED_BY_USER_2026-10-30"
+    }
+  },
+  "status": "EXPERIMENTAL_NOT_GAMEPLAY_READY"
+}

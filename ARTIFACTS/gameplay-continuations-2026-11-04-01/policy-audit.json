@@ -1,0 +1,79 @@
+{
+  "authorized_operation": {
+    "args": {
+      "choice": "A:BT22-022#1",
+      "pending_id": "effect-57"
+    },
+    "command": "RESOLVE_PENDING",
+    "mode": "REVALIDATE_SAVED_PREFIX_THEN_EXECUTE_SELECTED_ACTION_ONLY",
+    "new_policy_decisions_allowed": 0,
+    "random_policy_substitution_allowed": false,
+    "seat": "B"
+  },
+  "cohorts_authorized_this_increment": false,
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "current_imported_context_user_bot_adapter": "NOT_FOUND",
+  "date": "2026-11-04",
+  "evidence_policy": {
+    "accepted_fact_finding_credit": 0,
+    "final_evaluation_credit": 0,
+    "ratings_assigned": false,
+    "scoring_criteria_for_this_game": "NOT_DEFINED_OR_BOUND",
+    "user_bot_evidence_credit": 0
+  },
+  "first": "A",
+  "historical_policies": {
+    "A": {
+      "attempt_index": 0,
+      "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+      "information_policy": "PUBLIC_VIEW_OWN_HAND_AND_EXPLICIT_REVEALS_ONLY",
+      "pilot_id": "ff96dbb6d6237bbc6a6b4feff52b63c648fb14f3aaf21d5b9584aa450993d0d4",
+      "pilot_seed": 4784800928794852333,
+      "policy": "fresh-untrained-uniform-random-reference-v1",
+      "policy_segment": {
+        "attempt_index": 0,
+        "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+        "kind": "FRESH_POLICY_AFTER_REVALIDATED_PREFIX",
+        "previous_record_sha256": "216bb6e8ee837e14be7380c164e6f983fbbe316c48237ad4c6aca25a9e6dd34f",
+        "seed_derivation": "SHA256(pilot-rng,current-policy-identity,previous-record-sha256)[:16]"
+      },
+      "roadmap": null,
+      "runner_sha256": "1f7d528c33c2a7da6daf9d78c18beef02992ee9f022b538ac2a9680160fd4d56",
+      "seat": "A",
+      "strategy_status": "FRESH_UNTRAINED_RANDOM_REFERENCE",
+      "training_data": []
+    },
+    "B": {
+      "attempt_index": 0,
+      "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+      "information_policy": "PUBLIC_VIEW_OWN_HAND_AND_EXPLICIT_REVEALS_ONLY",
+      "pilot_id": "d568e7eeaaf8cb69a31ff028e47ad17db86bcd030d6852697d48789d0113a7f2",
+      "pilot_seed": 2333537112965949213,
+      "policy": "fresh-untrained-uniform-random-reference-v1",
+      "policy_segment": {
+        "attempt_index": 0,
+        "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+        "kind": "FRESH_POLICY_AFTER_REVALIDATED_PREFIX",
+        "previous_record_sha256": "216bb6e8ee837e14be7380c164e6f983fbbe316c48237ad4c6aca25a9e6dd34f",
+        "seed_derivation": "SHA256(pilot-rng,current-policy-identity,previous-record-sha256)[:16]"
+      },
+      "roadmap": null,
+      "runner_sha256": "1f7d528c33c2a7da6daf9d78c18beef02992ee9f022b538ac2a9680160fd4d56",
+      "seat": "B",
+      "strategy_status": "FRESH_UNTRAINED_RANDOM_REFERENCE",
+      "training_data": []
+    }
+  },
+  "historical_policy_role": "UNTRAINED_RANDOM_REFERENCE_DIAGNOSTICS_NOT_VERIFIED_AS_USER_BOTS",
+  "legacy_other_matchup": {
+    "implementation": "SOURCE/match_evidence.py",
+    "matchup": "Jupitermon vs Amaterasumon/Toho",
+    "policy_id": "loaded-pair-v13-integrity-evidence",
+    "roster_source": "SOURCE/frozen_evaluation.py",
+    "used_for_this_continuation": false
+  },
+  "original_seed": 12017913134550805276,
+  "saved_record": "ARTIFACTS/gameplay-continuations-2026-11-03-11/game-0000-segment.json.gz",
+  "saved_record_file_sha256": "458edf88fc3d26b0ec1e1026770d1eca1d2019f97f0b458e98cbacf5f9185b9c",
+  "schema": "saved-game-policy-identity-audit-v1"
+}

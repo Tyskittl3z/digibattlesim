@@ -1,0 +1,46 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "active": "B",
+  "exact_replay": true,
+  "final_evaluation_credit": 0,
+  "first": "A",
+  "halt_reason": "ATTACK_OBSERVER_UNIMPLEMENTED: BT22-085 main_text source=B:BT22-085#2",
+  "learning_state_unchanged": true,
+  "memory": 3,
+  "new_accepted_judge_receipts": 1,
+  "new_actions": [
+    {
+      "command": "BREEDING_CHOICE",
+      "index": 40,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "DECLARE_ATTACK",
+      "index": 41,
+      "label": null,
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "HALT"
+    }
+  ],
+  "new_colors": {
+    "GREEN": 0,
+    "RED": 0,
+    "YELLOW": 1
+  },
+  "new_commands": 2,
+  "phase": "MAIN",
+  "record_file": "game-0000-segment-0003.json.gz",
+  "record_sha256": "3ba08c600312cc389ce062486cbcdf63f897853ab83dc1362719ef6ec8fab14e",
+  "schema": "game-0000-segment-summary-v1",
+  "seed": 4851742998504393566,
+  "segment": 3,
+  "status": "HALT",
+  "terminal_reason": null,
+  "total_commands": 42,
+  "turn": 4,
+  "winner": null
+}

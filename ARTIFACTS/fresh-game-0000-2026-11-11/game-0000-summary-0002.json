@@ -1,0 +1,158 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "active": "B",
+  "exact_replay": true,
+  "final_evaluation_credit": 0,
+  "first": "A",
+  "halt_reason": null,
+  "learning_state_unchanged": true,
+  "memory": 3,
+  "new_accepted_judge_receipts": 16,
+  "new_actions": [
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 24,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "A",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 25,
+      "label": "GREEN",
+      "learning_eligible": false,
+      "seat": "A",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "BREEDING_CHOICE",
+      "index": 26,
+      "label": "GREEN",
+      "learning_eligible": true,
+      "seat": "A",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 27,
+      "label": "GREEN",
+      "learning_eligible": false,
+      "seat": "A",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "DECLARE_ATTACK",
+      "index": 28,
+      "label": "RED",
+      "learning_eligible": true,
+      "seat": "A",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "COUNTER_CHOICE",
+      "index": 29,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "BLOCK_CHOICE",
+      "index": 30,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "CONFIRM_ATTACK",
+      "index": 31,
+      "label": "GREEN",
+      "learning_eligible": false,
+      "seat": "A",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "END_ATTACK",
+      "index": 32,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "A",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "PLAY_CARD",
+      "index": 33,
+      "label": "GREEN",
+      "learning_eligible": true,
+      "seat": "A",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 34,
+      "label": "GREEN",
+      "learning_eligible": true,
+      "seat": "A",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "FINISH_TURN",
+      "index": 35,
+      "label": "GREEN",
+      "learning_eligible": false,
+      "seat": "A",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 36,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "RESOLVE_PENDING",
+      "index": 37,
+      "label": "GREEN",
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 38,
+      "label": "YELLOW",
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    },
+    {
+      "command": "ADVANCE_PHASE",
+      "index": 39,
+      "label": "GREEN",
+      "learning_eligible": false,
+      "seat": "B",
+      "status": "EXPERIMENTAL_RESOLVED"
+    }
+  ],
+  "new_colors": {
+    "GREEN": 9,
+    "RED": 1,
+    "YELLOW": 6
+  },
+  "new_commands": 16,
+  "phase": "BREEDING",
+  "record_file": "game-0000-segment-0002.json.gz",
+  "record_sha256": "bae21a8e97b7a07ac0ac76e7e452796146c3b15971d1502e307dedfe298a1b0e",
+  "schema": "game-0000-segment-summary-v1",
+  "seed": 4851742998504393566,
+  "segment": 2,
+  "status": "PAUSED",
+  "terminal_reason": null,
+  "total_commands": 40,
+  "turn": 4,
+  "winner": null
+}

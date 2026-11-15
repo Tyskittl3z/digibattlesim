@@ -1,0 +1,2050 @@
+{
+  "configuration": {
+    "epsilon": 0.1,
+    "future_return": null,
+    "keys": "WHITELISTED_OWN_PUBLIC_FEATURES_WITHOUT_PHYSICAL_COPY_OR_TRANSIENT_IDS",
+    "minimum_independent_games": 3,
+    "outcome_association": "SEPARATE_WINS_LOSSES",
+    "reward": "PER_GAME_MEAN_IMMEDIATE_OBSERVED_BOARD_REWARD"
+  },
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "criterion_sha256": "84de51952609311beadcbec58f9c8252e1aea2c9eae96689eaf5aad4711fcdaf",
+  "games": {
+    "9fdca17168a5412a9bc4ac2cfc155a488378db6a5ea1bd0924352a39481d241e": {
+      "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+      "input_state_id": "e39a510a19f770eb0abeb30b9c48c6cf49a62009e9bcaf037ac1ca4640eb0167",
+      "observations": [
+        {
+          "action_key": "1a27339673c0728af6825d42eccdaa17d5f3a288f391a475d0da1bdb6c7cf813",
+          "mean_reward": -0.5,
+          "seat": "A",
+          "state_key": "17008c539b139268c77181c11181331d8fa1c5218ff034825bc7524c8e6f72bb"
+        },
+        {
+          "action_key": "fce34d0c163a9d4a3e9a402f4b74b595da187b9bfde853ac95d4c203ce949b93",
+          "mean_reward": 0.0,
+          "seat": "A",
+          "state_key": "49d41d44f0cf137c88d86c2cfea32bc26376a450c465d8140542003507dd7915"
+        },
+        {
+          "action_key": "71a04f76d688f4544ab119d6b823f1441967393a5b1c7d6713771a5efc0754f7",
+          "mean_reward": 1.45,
+          "seat": "A",
+          "state_key": "4bb7253fa8d33b36c92e9c481141d4ed1b892d9604f977a715aa780bda99bd5f"
+        },
+        {
+          "action_key": "4c5aee3986b32276ac2a33ada974436c45054b6b431f2c7b890200829cb9ed00",
+          "mean_reward": 0.15,
+          "seat": "A",
+          "state_key": "4f9c16bf872a39d02a4c85c5504fcc277432197b26eb2cfd7d969abd5a027344"
+        },
+        {
+          "action_key": "23bf53456fa69ad0cd034776051add46f5222989c0ef30baa3b21f25564a2712",
+          "mean_reward": 3.5,
+          "seat": "A",
+          "state_key": "54f68c864f7978539a23cb6ca446af79bfe6cf89bc4fa53a0adacbacec7bf824"
+        },
+        {
+          "action_key": "7fda49df170dcc36c9994d3a5645066420417c838ae988f85f7d5289a30c347e",
+          "mean_reward": -0.3,
+          "seat": "A",
+          "state_key": "8d8dd7281a3952b5190616659287302ca9bf4a2c5a6e842fc7cee201ff90bc46"
+        },
+        {
+          "action_key": "0e04d7500488acabfd8228d74e0dea7482d8a900689a73cacc01fc574c69f676",
+          "mean_reward": 0.5,
+          "seat": "A",
+          "state_key": "92c164ebe5499d1ae63a6f4f7fb1342531fd5538c7bd52bd02cf2a9d1614391e"
+        },
+        {
+          "action_key": "633017f4a40180137c4b7486ed099da166226848b96924305b85c611bad86f62",
+          "mean_reward": -0.5,
+          "seat": "A",
+          "state_key": "97303afaa84b7904e402f87b613fcc91a227019567b36c2d8e486aeec2ed0f13"
+        },
+        {
+          "action_key": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "mean_reward": 0.0,
+          "seat": "A",
+          "state_key": "9ed0e4fc71bf36d896137b67425cfe98e7c6b63b59f7eda1d2f16c169d63e009"
+        },
+        {
+          "action_key": "0f80e76dbe5d7b073f2713cebb2edc47f3f320b852065c960ffd91dbdf871860",
+          "mean_reward": -0.5,
+          "seat": "A",
+          "state_key": "a108ea7954a40ee2a306d75d0be7bffbb512f79b63ddc200806d30b31240b6b6"
+        },
+        {
+          "action_key": "7f16367b9458e8e131d50d2f6bd4cfcb445070e7df3dade0d56a0b769306fc3d",
+          "mean_reward": 2.5,
+          "seat": "A",
+          "state_key": "a2340e9c73125fcd2e2627982375737a387a30fcf2cefa4d036ef22804d6c7e7"
+        },
+        {
+          "action_key": "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e",
+          "mean_reward": 0.5,
+          "seat": "A",
+          "state_key": "afedb26bc75caadeb57c2121d1f5835846b467b6123865570f26b5c8ebba41ee"
+        },
+        {
+          "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+          "mean_reward": 0.0,
+          "seat": "A",
+          "state_key": "b72f1644e740ba6804bab97de9e9d9e991ea8d7adef975733978a844579ea6ff"
+        },
+        {
+          "action_key": "9abbd80af5bcdab5ae00e7a18d87e596342d0508d256264be87eede17488fd06",
+          "mean_reward": 0.0,
+          "seat": "A",
+          "state_key": "c115bdc3d00b13521748d6f01e041b2802110d7bb348a65dfbf1b82f77a2cf41"
+        },
+        {
+          "action_key": "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e",
+          "mean_reward": 0.5,
+          "seat": "A",
+          "state_key": "e5f64a9c552f52de34ec5324e8c8ad236a38d6ac89252d3c5c3a0080a4cdb4bb"
+        },
+        {
+          "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+          "mean_reward": 1.5,
+          "seat": "B",
+          "state_key": "09b42f184daa52a59918285f50fcc9a6f1cbeb286be52b7d31b86eb8360bb46e"
+        },
+        {
+          "action_key": "f78158610cf6d52546c4d34746e0a56a2c65daa94d55bc0b8da20031f76a7276",
+          "mean_reward": 0.0,
+          "seat": "B",
+          "state_key": "0a9741d83787cf0c2d695c6a7902f09941f5e2961b79d5faa42d68256f4ab48c"
+        },
+        {
+          "action_key": "5a901fe4f2ab062df73ea95e34be597ad77797fbcbd2f4f1c2b76adb433af8e2",
+          "mean_reward": 0.0,
+          "seat": "B",
+          "state_key": "0cef18e9c707f79bd2c66632240029b40878e0e0d10f382b69fe5ce595e46f10"
+        },
+        {
+          "action_key": "6eef3d00e869431951d407b5f12667447912a4a8ac3ac7615a834e7abc511e6f",
+          "mean_reward": 1.5,
+          "seat": "B",
+          "state_key": "0fff10ef04057206926f41de4d5145543fae9c584b04974e4a7868d0028d7551"
+        },
+        {
+          "action_key": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "mean_reward": 0.0,
+          "seat": "B",
+          "state_key": "1012946da3b514db8549c88b3af2e86eb0c453b75b1a3a5d9fa2ee644cbd3890"
+        },
+        {
+          "action_key": "f646cd9625f10367b5280c183b3c7e692c5a09c46f85fce759da930da965df9e",
+          "mean_reward": 1.0,
+          "seat": "B",
+          "state_key": "13152d77379b6ee9ba2c3b8467d6c3aebbed9ef89e188151da5e1ea5f44eb6ca"
+        },
+        {
+          "action_key": "8242be5a7b22d041a6d91bf523b3b8dd62f1a5e8759cb8050749c7181f89245e",
+          "mean_reward": 0.5,
+          "seat": "B",
+          "state_key": "16fc528ee654d1245e065d007ea54d7284a678ce726f38d9ee37e624cdd9760b"
+        },
+        {
+          "action_key": "49835f5a6fac5aa9fd866da8068dc0d389516e8a68d4daa28024d24dab4a3e8d",
+          "mean_reward": -1.5,
+          "seat": "B",
+          "state_key": "172da7802cc9200879be3ea75b3193b23db1b0c0f93e7151fb9613dc8cd43d6a"
+        },
+        {
+          "action_key": "f78158610cf6d52546c4d34746e0a56a2c65daa94d55bc0b8da20031f76a7276",
+          "mean_reward": 0.5,
+          "seat": "B",
+          "state_key": "1790451cc1d14c768fb2efffcf80611db23bdb2aab35c80e267be3dfa745b385"
+        },
+        {
+          "action_key": "7f7cc72128d34c5ea784323a8bc34e28bb9adcf893dafa6dcf6f7c963674d67d",
+          "mean_reward": -0.65,
+          "seat": "B",
+          "state_key": "17c1d2126bb1031c0c8bbecf1a813194f950dd45d4ae8a616af4e08f3f3a64e9"
+        },
+        {
+          "action_key": "49835f5a6fac5aa9fd866da8068dc0d389516e8a68d4daa28024d24dab4a3e8d",
+          "mean_reward": -0.5,
+          "seat": "B",
+          "state_key": "1b3afb786f5f4eb3355d9a170bbd13290a45cb57faac5cd2dc0ce632d7f7240a"
+        },
+        {
+          "action_key": "e339899d08b66a1b269f13e12efed6245f6dd8301e63df8902fcc6eb3aaa6b6e",
+          "mean_reward": -0.5,
+          "seat": "B",
+          "state_key": "2c82318e71578fe42258d4fb2e569eaea6807a89ab279c1e719b90f00bb6bd8c"
+        },
+        {
+          "action_key": "7f5d2234060866872ca23b9fdf76642e5c5c938c9d58ebcbaf0d862aaa3fdf86",
+          "mean_reward": 1.5,
+          "seat": "B",
+          "state_key": "2cdcca835cc693d750af4811cd175a801b5c70ef193d2beb10f8f558f8159ee3"
+        },
+        {
+          "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+          "mean_reward": 0.5,
+          "seat": "B",
+          "state_key": "3112c255a7c6f5d301e5f6fd6f39cac914d543c8154f21fabb8c7b739498b0c6"
+        },
+        {
+          "action_key": "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e",
+          "mean_reward": 0.5,
+          "seat": "B",
+          "state_key": "3abd554aabdddcbfa2c42b82fca809b330361fb6d1726fa726344e8136603986"
+        },
+        {
+          "action_key": "7f5d2234060866872ca23b9fdf76642e5c5c938c9d58ebcbaf0d862aaa3fdf86",
+          "mean_reward": 2.0,
+          "seat": "B",
+          "state_key": "3e72936baf68faa367c1f054f82f63ed2db3eee0f7f13363571264d8582ffc72"
+        },
+        {
+          "action_key": "23bf53456fa69ad0cd034776051add46f5222989c0ef30baa3b21f25564a2712",
+          "mean_reward": 3.6,
+          "seat": "B",
+          "state_key": "43a00332d02ce96b71d8d1f6cb43aac23f7d92a9f6a8b83b45b9ea4ed4092a5e"
+        },
+        {
+          "action_key": "c2847b57e5aef82c5d5e4a09fb1029d89d337f81a2233dc45eca48f1be5224a6",
+          "mean_reward": 1.7,
+          "seat": "B",
+          "state_key": "49f653f27d934b5e1c48c4c01e190ae61bfb2cf3674adf71dc0229992e009e7a"
+        },
+        {
+          "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+          "mean_reward": 2.7,
+          "seat": "B",
+          "state_key": "4aea4e5f9bc4a49367f51f7644eb8bca0b5058b3a3966a68b790cd962da7fe86"
+        },
+        {
+          "action_key": "ebf1a4c0b487f958725db09a13b6c148f7597e609392ebf4bb2b6ed0cf5caad7",
+          "mean_reward": -0.5,
+          "seat": "B",
+          "state_key": "4b4c87e0faffd76c2286acfda9575826ba780d294622d09ef632ea0b9859d192"
+        },
+        {
+          "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+          "mean_reward": 0.0,
+          "seat": "B",
+          "state_key": "4dbff523596b4790bb57a5b3d3c5fd2ba0450c54a68a33d211296977a90b5f75"
+        },
+        {
+          "action_key": "0f80e76dbe5d7b073f2713cebb2edc47f3f320b852065c960ffd91dbdf871860",
+          "mean_reward": -0.5,
+          "seat": "B",
+          "state_key": "514c04a235f680827092705b3adc073748f39b8f2c6a43e639af235ab10aff2a"
+        },
+        {
+          "action_key": "7c4cc1bad3c52b5ac026f49a9ffe5f9a635e5c1753b0a2677b2a59d74940c2e4",
+          "mean_reward": 0.0,
+          "seat": "B",
+          "state_key": "5954c6a927f52817387a58ec4e4d4d7f00564a4b63359247af27d8469277f6a9"
+        },
+        {
+          "action_key": "fce34d0c163a9d4a3e9a402f4b74b595da187b9bfde853ac95d4c203ce949b93",
+          "mean_reward": 1.5,
+          "seat": "B",
+          "state_key": "5ce5131093bbac7ba4121707722c108110262fabfb2f6eaf37e61b3028863914"
+        },
+        {
+          "action_key": "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e",
+          "mean_reward": 0.5,
+          "seat": "B",
+          "state_key": "5d9b3108045efae3677c61b29bdeef4b8c6396acdba344141e4be1eda277e0fd"
+        },
+        {
+          "action_key": "0e99ad792b42fb97dae4668e2d81c62e34e036166be27fb93d13ffced8ce9ef9",
+          "mean_reward": -0.5,
+          "seat": "B",
+          "state_key": "6077830f27aceca09c395e237a0bd77d4f51903a173164a49401e847dae6c974"
+        },
+        {
+          "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+          "mean_reward": 0.0,
+          "seat": "B",
+          "state_key": "622de86aaf5ce13b7b7e6b9ec303863fddd11db7c4bd0262d181c92da6cd7065"
+        },
+        {
+          "action_key": "f78158610cf6d52546c4d34746e0a56a2c65daa94d55bc0b8da20031f76a7276",
+          "mean_reward": 0.5,
+          "seat": "B",
+          "state_key": "64ddf4a0b8868829b000cb0eee2a850f6c17537f371c38e2bdb3556b15fc0098"
+        },
+        {
+          "action_key": "f78158610cf6d52546c4d34746e0a56a2c65daa94d55bc0b8da20031f76a7276",
+          "mean_reward": 0.5,
+          "seat": "B",
+          "state_key": "65527516db273cd507849a54aab141911dde9897e90abd8403e2649cd8c40a63"
+        },
+        {
+          "action_key": "bc82507d9c0a70b51f9b4858c5d23ab080af0969f3a85b82b86f3b197f7ea808",
+          "mean_reward": -0.5,
+          "seat": "B",
+          "state_key": "6b7dbe9039d1c852f2d8a34ed04069f8f40bfbe919cf5ae6fb62574eb7084a75"
+        },
+        {
+          "action_key": "1a9489ec19fa1f938ffe30ede7172b2248e87672bdf89dff11570b2d4c303e65",
+          "mean_reward": -0.5,
+          "seat": "B",
+          "state_key": "7f2b3b5c0585e3c1ce3b0156944629d0ab3f84772dc180f829210903c20cdb3e"
+        },
+        {
+          "action_key": "3e99f9597c0daf7b8e2ca131e60d2f7acb7cb5b63630192754f7474a536fa86a",
+          "mean_reward": -0.5,
+          "seat": "B",
+          "state_key": "7f95608ca45757ef33394f5f3026d613af1e1ad4b7085801c0945e6dfa8c31f1"
+        },
+        {
+          "action_key": "49835f5a6fac5aa9fd866da8068dc0d389516e8a68d4daa28024d24dab4a3e8d",
+          "mean_reward": -0.5,
+          "seat": "B",
+          "state_key": "816883291e3bb2ae84080c026e4784c0a16e18b162b95afd8977fc719fe159ad"
+        },
+        {
+          "action_key": "3e2b88e2180956c926bad1fcbbea9f292b5751059796c963881da0fae2e118a1",
+          "mean_reward": 0.5,
+          "seat": "B",
+          "state_key": "856da31af74c47ed88ce87d7bdbfef3f6be053f151bfa58537a4825292a64ccb"
+        },
+        {
+          "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+          "mean_reward": 0.0,
+          "seat": "B",
+          "state_key": "911623434d552412f1556e71554cbe9eca2eec8d0e8af75ba85ef2d202880ec2"
+        },
+        {
+          "action_key": "b23819836deda2c86a63976e9285773e6653f7a2fb9f5bee45875948abbfe0c6",
+          "mean_reward": -0.25,
+          "seat": "B",
+          "state_key": "9ac8f45e649da0bc64fd9e3f9c7de4fa99639a9615fa24a2255012c34f03cd9e"
+        },
+        {
+          "action_key": "2e0ea70728c465ca5759c4f0a60a4c3f827b6652bbe9b933d2ab5ec1ee8c2c7d",
+          "mean_reward": 5.7,
+          "seat": "B",
+          "state_key": "abeef9ea9cdba747a0703435f221180e03ab61d4012fe6aca7be264b79af8e4f"
+        },
+        {
+          "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+          "mean_reward": 0.0,
+          "seat": "B",
+          "state_key": "cfd1eda1e9a587ace66c5d463769be97e7dc42535f295f3582d5e9d5087cf75b"
+        },
+        {
+          "action_key": "49835f5a6fac5aa9fd866da8068dc0d389516e8a68d4daa28024d24dab4a3e8d",
+          "mean_reward": -0.5,
+          "seat": "B",
+          "state_key": "da0429447b8b5aa6de3d1623cf5c0c61d9b34ef4fdacee89512702b13967e32e"
+        },
+        {
+          "action_key": "7c4cc1bad3c52b5ac026f49a9ffe5f9a635e5c1753b0a2677b2a59d74940c2e4",
+          "mean_reward": 0.0,
+          "seat": "B",
+          "state_key": "dbf997bb33dd6f8ed14a4b0bb92f61834190c30cc057747bd4fc7682a46bd6f2"
+        },
+        {
+          "action_key": "7f5d2234060866872ca23b9fdf76642e5c5c938c9d58ebcbaf0d862aaa3fdf86",
+          "mean_reward": 0.5,
+          "seat": "B",
+          "state_key": "e33f8200217fd098311fbf0500b086902223f08f8c2791a944198d68647197b6"
+        },
+        {
+          "action_key": "ebf1a4c0b487f958725db09a13b6c148f7597e609392ebf4bb2b6ed0cf5caad7",
+          "mean_reward": -0.5,
+          "seat": "B",
+          "state_key": "e5f0a33588bcaed9ada90b794f982139bd4d090bc90ffb882e8606e72d907bbf"
+        },
+        {
+          "action_key": "5e2517eda3bcd275b1caa6231a58b9d3c0445b5248fc3301b3d87c0d382b3b80",
+          "mean_reward": 0.5,
+          "seat": "B",
+          "state_key": "e74980321b17a539cdc8750785c048ee5245422ea9cf6d62024a3a9099505cbb"
+        },
+        {
+          "action_key": "e339899d08b66a1b269f13e12efed6245f6dd8301e63df8902fcc6eb3aaa6b6e",
+          "mean_reward": -0.5,
+          "seat": "B",
+          "state_key": "f3588b907b18e5be160a9cb2184813008e62912d967ee3ed5f7eb93d7f99c6f5"
+        },
+        {
+          "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+          "mean_reward": 0.0,
+          "seat": "B",
+          "state_key": "f3adf46471143cd1a4742fb94691d7b6c7976baa498b1bdf0f8b6c8c47ac9773"
+        },
+        {
+          "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+          "mean_reward": -1.5,
+          "seat": "B",
+          "state_key": "f802f61f41b993987b76fcc72e1426ce6f3f1aeaf55422de12df0fa7baf4def6"
+        },
+        {
+          "action_key": "8242be5a7b22d041a6d91bf523b3b8dd62f1a5e8759cb8050749c7181f89245e",
+          "mean_reward": 1.5,
+          "seat": "B",
+          "state_key": "fbb5d75b7c989d8a122582d3246b23f55ca3eaa8c4280aef24ed3860e4271bfc"
+        }
+      ],
+      "ordinal": 1,
+      "payload_sha256": "952ba6b96466686023a5a91fea044c95f02ac27f9c3c2f6b69bd14d5833620f7",
+      "winner": "B"
+    },
+    "b90e9029b96f8c5c31297a8a7cebe6bdc4a4d66926b7c0c3c1af6dde4bf36e79": {
+      "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+      "input_state_id": "66db6c6c425dc5e897ce2e6d360805a499b9b60937ab697c855e9a4c6f5cb034",
+      "observations": [
+        {
+          "action_key": "e0cf89d6dbf25ccdb604f4e02cef27850ddab3ccf6421efed4c5ac2bcd42d181",
+          "mean_reward": -0.5,
+          "seat": "A",
+          "state_key": "0c7b27ce3063b240207a399cb720c9fe0d916fb89eb77e1903a2a876cc2ed001"
+        },
+        {
+          "action_key": "6eef3d00e869431951d407b5f12667447912a4a8ac3ac7615a834e7abc511e6f",
+          "mean_reward": 1.5,
+          "seat": "A",
+          "state_key": "0f05cb3f97b2ad3c7371259a4e021fdd12044754140fafa290189583d1e0178a"
+        },
+        {
+          "action_key": "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e",
+          "mean_reward": 0.5,
+          "seat": "A",
+          "state_key": "156564e340862476ea00968fa0d836c9e52a766e31c7d5cf7bac33f6b51f66b2"
+        },
+        {
+          "action_key": "633017f4a40180137c4b7486ed099da166226848b96924305b85c611bad86f62",
+          "mean_reward": -0.5,
+          "seat": "A",
+          "state_key": "2052b5597d9c5a9d0c49e0384520745b6f1c534c2282e1bf02a22978fe029ef9"
+        },
+        {
+          "action_key": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+          "mean_reward": 0.0,
+          "seat": "A",
+          "state_key": "244f4f72293ac5836605e60e58a4242968708d3bae9061603db9a22df41a7fbd"
+        },
+        {
+          "action_key": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "mean_reward": 0.0,
+          "seat": "A",
+          "state_key": "28a7e0244057aa846e0b91bfee60758a1cc26ea9df914f45f917212b6fb8c6c4"
+        },
+        {
+          "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+          "mean_reward": 3.5,
+          "seat": "A",
+          "state_key": "2e73169fe245e9f5c1685cdc0e60f3dd98c441be806c14b56ec3d797dfccc963"
+        },
+        {
+          "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+          "mean_reward": 0.0,
+          "seat": "A",
+          "state_key": "32617076e08d966885c2d2c67844d80c43f66316865375b850d296381f189cc0"
+        },
+        {
+          "action_key": "09711973848b5308adefc6d35ce9e09f142c548775c3a0c9c0b592533c805a70",
+          "mean_reward": 0.5,
+          "seat": "A",
+          "state_key": "3454431ced3ab92cb039d654db3b76b8e45cf76c67fc5b754c5f3677971c1f03"
+        },
+        {
+          "action_key": "67087d04f01c9a205c6175fc519e838296bae776a43ce1fe7e0ab338f373a1d7",
+          "mean_reward": -0.5,
+          "seat": "A",
+          "state_key": "35a5a5b4d46749dcd95269b45c572b585eef7c9a47a1a9a93707aaf6e81346ef"
+        },
+        {
+          "action_key": "23bf53456fa69ad0cd034776051add46f5222989c0ef30baa3b21f25564a2712",
+          "mean_reward": 3.95,
+          "seat": "A",
+          "state_key": "397e54aa9f1e3021279ea910b8013430de156f4c8d1dc0c437cf0b322d4766e2"
+        },
+        {
+          "action_key": "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e",
+          "mean_reward": 0.5,
+          "seat": "A",
+          "state_key": "3e208be2e1e49c80da1797e3824d223feca297edb20cc897421cb836f0fea535"
+        },
+        {
+          "action_key": "b23819836deda2c86a63976e9285773e6653f7a2fb9f5bee45875948abbfe0c6",
+          "mean_reward": -0.25,
+          "seat": "A",
+          "state_key": "3fd3dd4fcd75a685bcce4aa527c74f5bb108e772d3e1b177def6157630633def"
+        },
+        {
+          "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+          "mean_reward": 1.5,
+          "seat": "A",
+          "state_key": "5043506a3a8d50dc42f1f8d408c9e6b16a458001974722b6cb9d3c74949f863c"
+        },
+        {
+          "action_key": "faffe40cc622bd0c09414d781d891ace618619877a968a3102ecf347d33f38a4",
+          "mean_reward": -2.5,
+          "seat": "A",
+          "state_key": "508cac42431e705ce494a820ffa321a37d9041dd921b61b2c27b285613e8c396"
+        },
+        {
+          "action_key": "e93cdef73a15e90eaf1e6e170c0d568b0292e21b5f57f7507a7e60a394425ab1",
+          "mean_reward": -1.5,
+          "seat": "A",
+          "state_key": "67078197de9eba4d4b01aad0e904bc9f573f07074f783f3d95ee0055917ffe5f"
+        },
+        {
+          "action_key": "b6c4906f077211f768c778d291db56ac83c45576b67e81b345f8c99c938db957",
+          "mean_reward": -1.0,
+          "seat": "A",
+          "state_key": "6b36bca5be09e4416eadca76a69be16b795a19baf132d6ca2b9bc814bd6657fd"
+        },
+        {
+          "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+          "mean_reward": 0.0,
+          "seat": "A",
+          "state_key": "72f9c3032c684c95515cf1599a402a2d3e55500c51249269f46a07d8c0dbce14"
+        },
+        {
+          "action_key": "fce34d0c163a9d4a3e9a402f4b74b595da187b9bfde853ac95d4c203ce949b93",
+          "mean_reward": 1.5,
+          "seat": "A",
+          "state_key": "75a703033d9b84e3eb959e21ea0f09a7d61f574989cd869cc73bfb67619b876c"
+        },
+        {
+          "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+          "mean_reward": 0.0,
+          "seat": "A",
+          "state_key": "8ca977826b5afd95d6cbe5e03a18df2d9d5e0584ac00392031e20fb71360239b"
+        },
+        {
+          "action_key": "808df2a50029d99d6d95a276b49086352e66e7e4816bf04067779444cb227368",
+          "mean_reward": -1.3,
+          "seat": "A",
+          "state_key": "8f13fd0791dc91b05c40eb09c55fc372ae5b9d7cf3f9c152e0687f8981e6b8bb"
+        },
+        {
+          "action_key": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "mean_reward": 0.0,
+          "seat": "A",
+          "state_key": "9381841b2c4645a5cb3519e560ab7aceac2191e24f4b2ed8717a20d5b6325f63"
+        },
+        {
+          "action_key": "8242be5a7b22d041a6d91bf523b3b8dd62f1a5e8759cb8050749c7181f89245e",
+          "mean_reward": 2.0,
+          "seat": "A",
+          "state_key": "93a88f1d907590ac83e4c357b6a349f27db6ce205b23375e15c3a166f63253da"
+        },
+        {
+          "action_key": "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e",
+          "mean_reward": 0.5,
+          "seat": "A",
+          "state_key": "9ce09ac29e9c52875afbd84fbfda04f7d1e659e6719321a9e659d3b9e09cb546"
+        },
+        {
+          "action_key": "23bf53456fa69ad0cd034776051add46f5222989c0ef30baa3b21f25564a2712",
+          "mean_reward": 2.95,
+          "seat": "A",
+          "state_key": "9efff682558828921638c90779bdaa2beced1edc26004068e9d59ae871974bc7"
+        },
+        {
+          "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+          "mean_reward": 0.0,
+          "seat": "A",
+          "state_key": "a457db8660169348ad27772c72dd78392bb2f4637d27a9467951a80aa53062a9"
+        },
+        {
+          "action_key": "13db5864db772d309b03c9f3a7bd83d108339394fb5e3e54c8be5f0ae623dc53",
+          "mean_reward": -0.5,
+          "seat": "A",
+          "state_key": "aaf9858cc37b640b003e471e489a0178b30970a1ad11b35a1243fb358176e1b7"
+        },
+        {
+          "action_key": "0e04d7500488acabfd8228d74e0dea7482d8a900689a73cacc01fc574c69f676",
+          "mean_reward": 0.5,
+          "seat": "A",
+          "state_key": "acbb46e5bee6a74526d750eeb7fe79edad6639f6aef89677a53bf90601f158c6"
+        },
+        {
+          "action_key": "e93cdef73a15e90eaf1e6e170c0d568b0292e21b5f57f7507a7e60a394425ab1",
+          "mean_reward": -1.5,
+          "seat": "A",
+          "state_key": "b95ff46b12e86ab71e396d732d0a49d8c9fe5cb1080065700be152543552c121"
+        },
+        {
+          "action_key": "c76fd3a8097a1a926bf472348a75ac9925e5ed7781d779c316c0dce2659e6e71",
+          "mean_reward": 1.5,
+          "seat": "A",
+          "state_key": "bf57a3f6c84b74bd92678e316c8a4e728c41d206dff2efd8f255bb51ab969dec"
+        },
+        {
+          "action_key": "325769b5b2b31c78c441f1ad8676bed8feb2dfd29cd3b71c24048b0e33d2e0d7",
+          "mean_reward": 0.45,
+          "seat": "A",
+          "state_key": "c5c4edca71c82a712f8c1c6774163d5bd265ec6619def4cf0accac6899cefc08"
+        },
+        {
+          "action_key": "5e2517eda3bcd275b1caa6231a58b9d3c0445b5248fc3301b3d87c0d382b3b80",
+          "mean_reward": 0.5,
+          "seat": "A",
+          "state_key": "ca956a38181f1ca076fcb1295fc71e6dfa7c7e17d73c8e5c836799ce786983e7"
+        },
+        {
+          "action_key": "3e99f9597c0daf7b8e2ca131e60d2f7acb7cb5b63630192754f7474a536fa86a",
+          "mean_reward": -0.5,
+          "seat": "A",
+          "state_key": "cd3b65f1c6fd3f19fb691ec6b373d1604b6eb20e955e7a82995915db7b504b4c"
+        },
+        {
+          "action_key": "d646125c5d41ff7b96a691f4cab9d06d7a492012c25bd96cfb81d8731574dd6a",
+          "mean_reward": 0.5,
+          "seat": "A",
+          "state_key": "d21d3775b9b41a33f00fe0ce442c4d339b693486465ccba64ede93f1957f9266"
+        },
+        {
+          "action_key": "8242be5a7b22d041a6d91bf523b3b8dd62f1a5e8759cb8050749c7181f89245e",
+          "mean_reward": 2.0,
+          "seat": "A",
+          "state_key": "d8d9b8493a49422e125ed723d4cf71729120d258d640e7f8a6752e45a86599c0"
+        },
+        {
+          "action_key": "0df6f236981529831ded65fc64f7d396386c645adf92bf5fed251c818ca60f68",
+          "mean_reward": 1.35,
+          "seat": "A",
+          "state_key": "dc001ff484a785ab7e8055633153cf0deaedba7d0e8e802c8c521f1a0d01563b"
+        },
+        {
+          "action_key": "65d604947ffd78833f736cade10095f65a6b62fe84acdc6d19e8720892377367",
+          "mean_reward": -0.5,
+          "seat": "A",
+          "state_key": "e25dced460d9672664ba5f16ad3c8871c4c82188abc611e2c363b7b50e3d5930"
+        },
+        {
+          "action_key": "12078d61b7da082f2da36810f8171485e091d9ea0344f0d7f0ca6cbb839b9200",
+          "mean_reward": 2.5,
+          "seat": "A",
+          "state_key": "feb968648ca0f083fde94939be9d342fca688179951a5939888c9f16d066cd7d"
+        },
+        {
+          "action_key": "65f7dea958fda51b202fd9cc107d8e9803d4da73e28e840588d825204a485047",
+          "mean_reward": -0.65,
+          "seat": "B",
+          "state_key": "0f6ba4e0b24b8c68441ba5921463c2d85ac47d4b2874ba9223c11bd7ff090fde"
+        },
+        {
+          "action_key": "6eef3d00e869431951d407b5f12667447912a4a8ac3ac7615a834e7abc511e6f",
+          "mean_reward": 1.5,
+          "seat": "B",
+          "state_key": "1201f60873cfaf2f9b29c11ae5885e09c8b292015fb68d5ea4525a515b69c571"
+        },
+        {
+          "action_key": "5653cd87e2940b25f88e3335b85798fd777962ada9320273bfe0f264c73c3000",
+          "mean_reward": 2.0,
+          "seat": "B",
+          "state_key": "156f752ed23dc5fb6a32320a9f312fefdf712f940d2a316aeff521f0206ff4ce"
+        },
+        {
+          "action_key": "7c54b5b68c435d147b2b611e95631e27996e1a5d1034915e01a05d5f673c37f7",
+          "mean_reward": -0.75,
+          "seat": "B",
+          "state_key": "227fff3a0011bc2c1cbdfc0311493d513ddb09e6f781f237c9cd8ecf385f3c0a"
+        },
+        {
+          "action_key": "dd080623965450327101bf4fe0be51f1311a89171c7e03a9cf960146752b27c1",
+          "mean_reward": 0.5,
+          "seat": "B",
+          "state_key": "24531d98fe72730a86e24a5756fcad4495886e7c94b728e42780248753c1aa5c"
+        },
+        {
+          "action_key": "0dd6ca2e30ddfd0177f6b3c4d9004abf3b9034e2fbeedb8fe42b2a4f0d28d699",
+          "mean_reward": -1.5,
+          "seat": "B",
+          "state_key": "277e328353e851a7ee5b7aa9cd73ec1ac64f2d2c9fbdbe129972cbac724fc4b6"
+        },
+        {
+          "action_key": "7eafdbe7fb745058742250b8eb3dc583c5c7b4e973e39c072294851983e6becd",
+          "mean_reward": 0.3,
+          "seat": "B",
+          "state_key": "2a38d5f8fd99a474a50883ca6cdae7278ad7af91954dd78acf93e8a65f2a7b1b"
+        },
+        {
+          "action_key": "0e04d7500488acabfd8228d74e0dea7482d8a900689a73cacc01fc574c69f676",
+          "mean_reward": 0.5,
+          "seat": "B",
+          "state_key": "2a6a2a5118158358775a269e2558e2793c8180c26b06d9163cfaad205712f624"
+        },
+        {
+          "action_key": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+          "mean_reward": 0.0,
+          "seat": "B",
+          "state_key": "306b8cbb14daf0c03211100538a55ccbc7bb6c70a2ebad15c4e7d4088e45a938"
+        },
+        {
+          "action_key": "e339899d08b66a1b269f13e12efed6245f6dd8301e63df8902fcc6eb3aaa6b6e",
+          "mean_reward": -0.5,
+          "seat": "B",
+          "state_key": "31924078f0371d635c09617124df33827d8a039c02b3e06b83a838683edac9c3"
+        },
+        {
+          "action_key": "5f80969640733f8fd042bf48c021d6eef56c3e13313b1edcf6a1d91b5dc6b52e",
+          "mean_reward": 1.975,
+          "seat": "B",
+          "state_key": "3758ac0a4e801834b18cf28b026770c08a6966194500fa19806699f3824db872"
+        },
+        {
+          "action_key": "5e2517eda3bcd275b1caa6231a58b9d3c0445b5248fc3301b3d87c0d382b3b80",
+          "mean_reward": 0.5,
+          "seat": "B",
+          "state_key": "394f32a3ad5d22a089c47fac1b61d385106f80b35b9e7d1291945d666a17e406"
+        },
+        {
+          "action_key": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+          "mean_reward": 5.2,
+          "seat": "B",
+          "state_key": "39dc7c4f070407bffbf389d78fba5d8b1d2e31f19120a948a0bc22953eb7f7b3"
+        },
+        {
+          "action_key": "83441a3e8c59c12534ac69e579263168d6a7141f354f0bc6223cecfa8f4a0a94",
+          "mean_reward": -1.0,
+          "seat": "B",
+          "state_key": "3bdd2fb97fb423ae0ab56f68f9ae5f955a9dce1875c7e6382212fc342fbe5244"
+        },
+        {
+          "action_key": "45a544c8505d59c701afe959fe8cdcd5a10ed1af22d2ae4f75881504ca26c814",
+          "mean_reward": -0.5,
+          "seat": "B",
+          "state_key": "4e8558861dd27c5e47595ab55f9df3949397646eba01d952fd38914d5028bec2"
+        },
+        {
+          "action_key": "1a9489ec19fa1f938ffe30ede7172b2248e87672bdf89dff11570b2d4c303e65",
+          "mean_reward": -0.5,
+          "seat": "B",
+          "state_key": "53b3d7a39279e4011250c453dd640a7a76c056aa24962b36318a9f1958d307bb"
+        },
+        {
+          "action_key": "b68649876546dac1fdb627bbee687ee959840906a2296aa0bd1a8f29841fe1bc",
+          "mean_reward": -1.0,
+          "seat": "B",
+          "state_key": "6b68a58d37396a921e8dfd427bee2c83cf97b4b3cec81fb0b731fedce6293548"
+        },
+        {
+          "action_key": "26ea60742b6e0b472febd8b14ebfacebb6384d63e0395733e1460bd13210d06a",
+          "mean_reward": -2.0,
+          "seat": "B",
+          "state_key": "6ca0c8645759ab3477049bb0fb96db0bd1aa690504223021e855679ee0f74e3d"
+        },
+        {
+          "action_key": "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e",
+          "mean_reward": 0.5,
+          "seat": "B",
+          "state_key": "75177b9cad9725a0c9588ee942ebc1765368d81ccbc381145182faab370a7478"
+        },
+        {
+          "action_key": "c4ecf1b1604d9ac213b93c1353b28d048d887cc86289d22da40b2c305c1bc38e",
+          "mean_reward": 0.75,
+          "seat": "B",
+          "state_key": "782140009b322e467003fddb9dd2ea92ddce713c34a47d8a6ea714c53d7c6a3d"
+        },
+        {
+          "action_key": "7f5d2234060866872ca23b9fdf76642e5c5c938c9d58ebcbaf0d862aaa3fdf86",
+          "mean_reward": 0.0,
+          "seat": "B",
+          "state_key": "7e119fc15a98079f2505ec5a62a06b0c0bf76e719335c31da6b859c8a94854f6"
+        },
+        {
+          "action_key": "86624447f7e1492ca9cf96e6f093168ad1c328fa77e3f0b2be5b6de60a28ca86",
+          "mean_reward": -0.5,
+          "seat": "B",
+          "state_key": "8390596af3213c90c4f5c0e3edcd53660327c4cd359fa984cece8e26fddbc599"
+        },
+        {
+          "action_key": "4873320fc3348940132ee9d109a385befa36bd8231d1812f6b4750bdc2427fbf",
+          "mean_reward": -0.5,
+          "seat": "B",
+          "state_key": "85a779709a76bc1da875581e6eb665d76d6815e44469d800cd78df48614f157c"
+        },
+        {
+          "action_key": "8ddf33dae57bff3aa029789790bab379dab31aeb400f42a69e25e276ce34dd56",
+          "mean_reward": 1.425,
+          "seat": "B",
+          "state_key": "98079770719d1af714a44cd225c73ada6a54362ac19cdfc754f8bf52584092ee"
+        },
+        {
+          "action_key": "f646cd9625f10367b5280c183b3c7e692c5a09c46f85fce759da930da965df9e",
+          "mean_reward": 1.0,
+          "seat": "B",
+          "state_key": "9a297fd1f4e9d642e496f7ed9a1027537a04e22b9289e2853382e1ab25e2bd63"
+        },
+        {
+          "action_key": "5653cd87e2940b25f88e3335b85798fd777962ada9320273bfe0f264c73c3000",
+          "mean_reward": 2.0,
+          "seat": "B",
+          "state_key": "9f8057bae0f6d6a9160c2c604fb80da2531b2da6b6f803d4e82c9ee3a64dc8b1"
+        },
+        {
+          "action_key": "23bf53456fa69ad0cd034776051add46f5222989c0ef30baa3b21f25564a2712",
+          "mean_reward": 3.6,
+          "seat": "B",
+          "state_key": "b4af723198322e7af2b917912bf0d17927906cfe6fc885747c3bd26b661f5a4b"
+        },
+        {
+          "action_key": "808df2a50029d99d6d95a276b49086352e66e7e4816bf04067779444cb227368",
+          "mean_reward": -1.3,
+          "seat": "B",
+          "state_key": "b80f5f6134f0a1b11a909c17e8b3aa73104d7cee4bf8afb1c7c38ce370f31ac4"
+        },
+        {
+          "action_key": "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e",
+          "mean_reward": 0.5,
+          "seat": "B",
+          "state_key": "c93aa758d4d5f748619988c80450d681dbb840f4d2bdc626a7fb067c829986dc"
+        },
+        {
+          "action_key": "7eafdbe7fb745058742250b8eb3dc583c5c7b4e973e39c072294851983e6becd",
+          "mean_reward": 0.3,
+          "seat": "B",
+          "state_key": "cd3934f0325613005a2bced099a92f66cca70d123bee20233d45ffeef5c65dbb"
+        },
+        {
+          "action_key": "a0bb0e722edf2abc9e40ef6d8c3ea0b602c8de8f7b2ad2e15eeba02413998a8e",
+          "mean_reward": -0.55,
+          "seat": "B",
+          "state_key": "d577a8ee50d270a37c1b62e356d8f560ee97ba9ce5952ecd7f31332883349c7d"
+        },
+        {
+          "action_key": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "mean_reward": 0.0,
+          "seat": "B",
+          "state_key": "dd7ddffcc65cc40bf05f24cf8caf691a3ab4ccb833d3fed693010d262bbc6c9b"
+        },
+        {
+          "action_key": "5653cd87e2940b25f88e3335b85798fd777962ada9320273bfe0f264c73c3000",
+          "mean_reward": -2.0,
+          "seat": "B",
+          "state_key": "e2c3e8e0afd8eb4cd0e38d72c7e7e408afbe12b85accced1a7d6971b732254af"
+        },
+        {
+          "action_key": "fce34d0c163a9d4a3e9a402f4b74b595da187b9bfde853ac95d4c203ce949b93",
+          "mean_reward": 0.0,
+          "seat": "B",
+          "state_key": "e94d087100d9a7ad1729a2bc48ef3ba14830e1cd047f5416d85ce687585ec5e5"
+        }
+      ],
+      "ordinal": 0,
+      "payload_sha256": "e5f83d212004157c72437d343966dda5605bef85a24fbd058080b3db23e8c97d",
+      "winner": "A"
+    }
+  },
+  "state_id": "fc2cb721b93cda666abb143915876c3c024c0365111ab128f9f36ab4b96ff681",
+  "tables": {
+    "A": {
+      "0c7b27ce3063b240207a399cb720c9fe0d916fb89eb77e1903a2a876cc2ed001": {
+        "e0cf89d6dbf25ccdb604f4e02cef27850ddab3ccf6421efed4c5ac2bcd42d181": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 1
+        }
+      },
+      "0f05cb3f97b2ad3c7371259a4e021fdd12044754140fafa290189583d1e0178a": {
+        "6eef3d00e869431951d407b5f12667447912a4a8ac3ac7615a834e7abc511e6f": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 1.5,
+          "reward_sum": 1.5,
+          "wins": 1
+        }
+      },
+      "156564e340862476ea00968fa0d836c9e52a766e31c7d5cf7bac33f6b51f66b2": {
+        "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 1
+        }
+      },
+      "17008c539b139268c77181c11181331d8fa1c5218ff034825bc7524c8e6f72bb": {
+        "1a27339673c0728af6825d42eccdaa17d5f3a288f391a475d0da1bdb6c7cf813": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 0
+        }
+      },
+      "2052b5597d9c5a9d0c49e0384520745b6f1c534c2282e1bf02a22978fe029ef9": {
+        "633017f4a40180137c4b7486ed099da166226848b96924305b85c611bad86f62": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 1
+        }
+      },
+      "244f4f72293ac5836605e60e58a4242968708d3bae9061603db9a22df41a7fbd": {
+        "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 1
+        }
+      },
+      "28a7e0244057aa846e0b91bfee60758a1cc26ea9df914f45f917212b6fb8c6c4": {
+        "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 1
+        }
+      },
+      "2e73169fe245e9f5c1685cdc0e60f3dd98c441be806c14b56ec3d797dfccc963": {
+        "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 3.5,
+          "reward_sum": 3.5,
+          "wins": 1
+        }
+      },
+      "32617076e08d966885c2d2c67844d80c43f66316865375b850d296381f189cc0": {
+        "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 1
+        }
+      },
+      "3454431ced3ab92cb039d654db3b76b8e45cf76c67fc5b754c5f3677971c1f03": {
+        "09711973848b5308adefc6d35ce9e09f142c548775c3a0c9c0b592533c805a70": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 1
+        }
+      },
+      "35a5a5b4d46749dcd95269b45c572b585eef7c9a47a1a9a93707aaf6e81346ef": {
+        "67087d04f01c9a205c6175fc519e838296bae776a43ce1fe7e0ab338f373a1d7": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 1
+        }
+      },
+      "397e54aa9f1e3021279ea910b8013430de156f4c8d1dc0c437cf0b322d4766e2": {
+        "23bf53456fa69ad0cd034776051add46f5222989c0ef30baa3b21f25564a2712": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 3.95,
+          "reward_sum": 3.95,
+          "wins": 1
+        }
+      },
+      "3e208be2e1e49c80da1797e3824d223feca297edb20cc897421cb836f0fea535": {
+        "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 1
+        }
+      },
+      "3fd3dd4fcd75a685bcce4aa527c74f5bb108e772d3e1b177def6157630633def": {
+        "b23819836deda2c86a63976e9285773e6653f7a2fb9f5bee45875948abbfe0c6": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.25,
+          "reward_sum": -0.25,
+          "wins": 1
+        }
+      },
+      "49d41d44f0cf137c88d86c2cfea32bc26376a450c465d8140542003507dd7915": {
+        "fce34d0c163a9d4a3e9a402f4b74b595da187b9bfde853ac95d4c203ce949b93": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 0
+        }
+      },
+      "4bb7253fa8d33b36c92e9c481141d4ed1b892d9604f977a715aa780bda99bd5f": {
+        "71a04f76d688f4544ab119d6b823f1441967393a5b1c7d6713771a5efc0754f7": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 1.45,
+          "reward_sum": 1.45,
+          "wins": 0
+        }
+      },
+      "4f9c16bf872a39d02a4c85c5504fcc277432197b26eb2cfd7d969abd5a027344": {
+        "4c5aee3986b32276ac2a33ada974436c45054b6b431f2c7b890200829cb9ed00": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.15,
+          "reward_sum": 0.15,
+          "wins": 0
+        }
+      },
+      "5043506a3a8d50dc42f1f8d408c9e6b16a458001974722b6cb9d3c74949f863c": {
+        "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 1.5,
+          "reward_sum": 1.5,
+          "wins": 1
+        }
+      },
+      "508cac42431e705ce494a820ffa321a37d9041dd921b61b2c27b285613e8c396": {
+        "faffe40cc622bd0c09414d781d891ace618619877a968a3102ecf347d33f38a4": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -2.5,
+          "reward_sum": -2.5,
+          "wins": 1
+        }
+      },
+      "54f68c864f7978539a23cb6ca446af79bfe6cf89bc4fa53a0adacbacec7bf824": {
+        "23bf53456fa69ad0cd034776051add46f5222989c0ef30baa3b21f25564a2712": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 3.5,
+          "reward_sum": 3.5,
+          "wins": 0
+        }
+      },
+      "67078197de9eba4d4b01aad0e904bc9f573f07074f783f3d95ee0055917ffe5f": {
+        "e93cdef73a15e90eaf1e6e170c0d568b0292e21b5f57f7507a7e60a394425ab1": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -1.5,
+          "reward_sum": -1.5,
+          "wins": 1
+        }
+      },
+      "6b36bca5be09e4416eadca76a69be16b795a19baf132d6ca2b9bc814bd6657fd": {
+        "b6c4906f077211f768c778d291db56ac83c45576b67e81b345f8c99c938db957": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -1.0,
+          "reward_sum": -1.0,
+          "wins": 1
+        }
+      },
+      "72f9c3032c684c95515cf1599a402a2d3e55500c51249269f46a07d8c0dbce14": {
+        "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 1
+        }
+      },
+      "75a703033d9b84e3eb959e21ea0f09a7d61f574989cd869cc73bfb67619b876c": {
+        "fce34d0c163a9d4a3e9a402f4b74b595da187b9bfde853ac95d4c203ce949b93": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 1.5,
+          "reward_sum": 1.5,
+          "wins": 1
+        }
+      },
+      "8ca977826b5afd95d6cbe5e03a18df2d9d5e0584ac00392031e20fb71360239b": {
+        "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 1
+        }
+      },
+      "8d8dd7281a3952b5190616659287302ca9bf4a2c5a6e842fc7cee201ff90bc46": {
+        "7fda49df170dcc36c9994d3a5645066420417c838ae988f85f7d5289a30c347e": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": -0.3,
+          "reward_sum": -0.3,
+          "wins": 0
+        }
+      },
+      "8f13fd0791dc91b05c40eb09c55fc372ae5b9d7cf3f9c152e0687f8981e6b8bb": {
+        "808df2a50029d99d6d95a276b49086352e66e7e4816bf04067779444cb227368": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -1.3,
+          "reward_sum": -1.3,
+          "wins": 1
+        }
+      },
+      "92c164ebe5499d1ae63a6f4f7fb1342531fd5538c7bd52bd02cf2a9d1614391e": {
+        "0e04d7500488acabfd8228d74e0dea7482d8a900689a73cacc01fc574c69f676": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 0
+        }
+      },
+      "9381841b2c4645a5cb3519e560ab7aceac2191e24f4b2ed8717a20d5b6325f63": {
+        "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 1
+        }
+      },
+      "93a88f1d907590ac83e4c357b6a349f27db6ce205b23375e15c3a166f63253da": {
+        "8242be5a7b22d041a6d91bf523b3b8dd62f1a5e8759cb8050749c7181f89245e": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 2.0,
+          "reward_sum": 2.0,
+          "wins": 1
+        }
+      },
+      "97303afaa84b7904e402f87b613fcc91a227019567b36c2d8e486aeec2ed0f13": {
+        "633017f4a40180137c4b7486ed099da166226848b96924305b85c611bad86f62": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 0
+        }
+      },
+      "9ce09ac29e9c52875afbd84fbfda04f7d1e659e6719321a9e659d3b9e09cb546": {
+        "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 1
+        }
+      },
+      "9ed0e4fc71bf36d896137b67425cfe98e7c6b63b59f7eda1d2f16c169d63e009": {
+        "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 0
+        }
+      },
+      "9efff682558828921638c90779bdaa2beced1edc26004068e9d59ae871974bc7": {
+        "23bf53456fa69ad0cd034776051add46f5222989c0ef30baa3b21f25564a2712": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 2.95,
+          "reward_sum": 2.95,
+          "wins": 1
+        }
+      },
+      "a108ea7954a40ee2a306d75d0be7bffbb512f79b63ddc200806d30b31240b6b6": {
+        "0f80e76dbe5d7b073f2713cebb2edc47f3f320b852065c960ffd91dbdf871860": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 0
+        }
+      },
+      "a2340e9c73125fcd2e2627982375737a387a30fcf2cefa4d036ef22804d6c7e7": {
+        "7f16367b9458e8e131d50d2f6bd4cfcb445070e7df3dade0d56a0b769306fc3d": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 2.5,
+          "reward_sum": 2.5,
+          "wins": 0
+        }
+      },
+      "a457db8660169348ad27772c72dd78392bb2f4637d27a9467951a80aa53062a9": {
+        "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 1
+        }
+      },
+      "aaf9858cc37b640b003e471e489a0178b30970a1ad11b35a1243fb358176e1b7": {
+        "13db5864db772d309b03c9f3a7bd83d108339394fb5e3e54c8be5f0ae623dc53": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 1
+        }
+      },
+      "acbb46e5bee6a74526d750eeb7fe79edad6639f6aef89677a53bf90601f158c6": {
+        "0e04d7500488acabfd8228d74e0dea7482d8a900689a73cacc01fc574c69f676": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 1
+        }
+      },
+      "afedb26bc75caadeb57c2121d1f5835846b467b6123865570f26b5c8ebba41ee": {
+        "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 0
+        }
+      },
+      "b72f1644e740ba6804bab97de9e9d9e991ea8d7adef975733978a844579ea6ff": {
+        "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 0
+        }
+      },
+      "b95ff46b12e86ab71e396d732d0a49d8c9fe5cb1080065700be152543552c121": {
+        "e93cdef73a15e90eaf1e6e170c0d568b0292e21b5f57f7507a7e60a394425ab1": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -1.5,
+          "reward_sum": -1.5,
+          "wins": 1
+        }
+      },
+      "bf57a3f6c84b74bd92678e316c8a4e728c41d206dff2efd8f255bb51ab969dec": {
+        "c76fd3a8097a1a926bf472348a75ac9925e5ed7781d779c316c0dce2659e6e71": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 1.5,
+          "reward_sum": 1.5,
+          "wins": 1
+        }
+      },
+      "c115bdc3d00b13521748d6f01e041b2802110d7bb348a65dfbf1b82f77a2cf41": {
+        "9abbd80af5bcdab5ae00e7a18d87e596342d0508d256264be87eede17488fd06": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 0
+        }
+      },
+      "c5c4edca71c82a712f8c1c6774163d5bd265ec6619def4cf0accac6899cefc08": {
+        "325769b5b2b31c78c441f1ad8676bed8feb2dfd29cd3b71c24048b0e33d2e0d7": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.45,
+          "reward_sum": 0.45,
+          "wins": 1
+        }
+      },
+      "ca956a38181f1ca076fcb1295fc71e6dfa7c7e17d73c8e5c836799ce786983e7": {
+        "5e2517eda3bcd275b1caa6231a58b9d3c0445b5248fc3301b3d87c0d382b3b80": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 1
+        }
+      },
+      "cd3b65f1c6fd3f19fb691ec6b373d1604b6eb20e955e7a82995915db7b504b4c": {
+        "3e99f9597c0daf7b8e2ca131e60d2f7acb7cb5b63630192754f7474a536fa86a": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 1
+        }
+      },
+      "d21d3775b9b41a33f00fe0ce442c4d339b693486465ccba64ede93f1957f9266": {
+        "d646125c5d41ff7b96a691f4cab9d06d7a492012c25bd96cfb81d8731574dd6a": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 1
+        }
+      },
+      "d8d9b8493a49422e125ed723d4cf71729120d258d640e7f8a6752e45a86599c0": {
+        "8242be5a7b22d041a6d91bf523b3b8dd62f1a5e8759cb8050749c7181f89245e": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 2.0,
+          "reward_sum": 2.0,
+          "wins": 1
+        }
+      },
+      "dc001ff484a785ab7e8055633153cf0deaedba7d0e8e802c8c521f1a0d01563b": {
+        "0df6f236981529831ded65fc64f7d396386c645adf92bf5fed251c818ca60f68": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 1.35,
+          "reward_sum": 1.35,
+          "wins": 1
+        }
+      },
+      "e25dced460d9672664ba5f16ad3c8871c4c82188abc611e2c363b7b50e3d5930": {
+        "65d604947ffd78833f736cade10095f65a6b62fe84acdc6d19e8720892377367": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 1
+        }
+      },
+      "e5f64a9c552f52de34ec5324e8c8ad236a38d6ac89252d3c5c3a0080a4cdb4bb": {
+        "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 0
+        }
+      },
+      "feb968648ca0f083fde94939be9d342fca688179951a5939888c9f16d066cd7d": {
+        "12078d61b7da082f2da36810f8171485e091d9ea0344f0d7f0ca6cbb839b9200": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 2.5,
+          "reward_sum": 2.5,
+          "wins": 1
+        }
+      }
+    },
+    "B": {
+      "09b42f184daa52a59918285f50fcc9a6f1cbeb286be52b7d31b86eb8360bb46e": {
+        "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 1.5,
+          "reward_sum": 1.5,
+          "wins": 1
+        }
+      },
+      "0a9741d83787cf0c2d695c6a7902f09941f5e2961b79d5faa42d68256f4ab48c": {
+        "f78158610cf6d52546c4d34746e0a56a2c65daa94d55bc0b8da20031f76a7276": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 1
+        }
+      },
+      "0cef18e9c707f79bd2c66632240029b40878e0e0d10f382b69fe5ce595e46f10": {
+        "5a901fe4f2ab062df73ea95e34be597ad77797fbcbd2f4f1c2b76adb433af8e2": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 1
+        }
+      },
+      "0f6ba4e0b24b8c68441ba5921463c2d85ac47d4b2874ba9223c11bd7ff090fde": {
+        "65f7dea958fda51b202fd9cc107d8e9803d4da73e28e840588d825204a485047": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": -0.65,
+          "reward_sum": -0.65,
+          "wins": 0
+        }
+      },
+      "0fff10ef04057206926f41de4d5145543fae9c584b04974e4a7868d0028d7551": {
+        "6eef3d00e869431951d407b5f12667447912a4a8ac3ac7615a834e7abc511e6f": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 1.5,
+          "reward_sum": 1.5,
+          "wins": 1
+        }
+      },
+      "1012946da3b514db8549c88b3af2e86eb0c453b75b1a3a5d9fa2ee644cbd3890": {
+        "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 1
+        }
+      },
+      "1201f60873cfaf2f9b29c11ae5885e09c8b292015fb68d5ea4525a515b69c571": {
+        "6eef3d00e869431951d407b5f12667447912a4a8ac3ac7615a834e7abc511e6f": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 1.5,
+          "reward_sum": 1.5,
+          "wins": 0
+        }
+      },
+      "13152d77379b6ee9ba2c3b8467d6c3aebbed9ef89e188151da5e1ea5f44eb6ca": {
+        "f646cd9625f10367b5280c183b3c7e692c5a09c46f85fce759da930da965df9e": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 1.0,
+          "reward_sum": 1.0,
+          "wins": 1
+        }
+      },
+      "156f752ed23dc5fb6a32320a9f312fefdf712f940d2a316aeff521f0206ff4ce": {
+        "5653cd87e2940b25f88e3335b85798fd777962ada9320273bfe0f264c73c3000": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 2.0,
+          "reward_sum": 2.0,
+          "wins": 0
+        }
+      },
+      "16fc528ee654d1245e065d007ea54d7284a678ce726f38d9ee37e624cdd9760b": {
+        "8242be5a7b22d041a6d91bf523b3b8dd62f1a5e8759cb8050749c7181f89245e": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 1
+        }
+      },
+      "172da7802cc9200879be3ea75b3193b23db1b0c0f93e7151fb9613dc8cd43d6a": {
+        "49835f5a6fac5aa9fd866da8068dc0d389516e8a68d4daa28024d24dab4a3e8d": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -1.5,
+          "reward_sum": -1.5,
+          "wins": 1
+        }
+      },
+      "1790451cc1d14c768fb2efffcf80611db23bdb2aab35c80e267be3dfa745b385": {
+        "f78158610cf6d52546c4d34746e0a56a2c65daa94d55bc0b8da20031f76a7276": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 1
+        }
+      },
+      "17c1d2126bb1031c0c8bbecf1a813194f950dd45d4ae8a616af4e08f3f3a64e9": {
+        "7f7cc72128d34c5ea784323a8bc34e28bb9adcf893dafa6dcf6f7c963674d67d": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.65,
+          "reward_sum": -0.65,
+          "wins": 1
+        }
+      },
+      "1b3afb786f5f4eb3355d9a170bbd13290a45cb57faac5cd2dc0ce632d7f7240a": {
+        "49835f5a6fac5aa9fd866da8068dc0d389516e8a68d4daa28024d24dab4a3e8d": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 1
+        }
+      },
+      "227fff3a0011bc2c1cbdfc0311493d513ddb09e6f781f237c9cd8ecf385f3c0a": {
+        "7c54b5b68c435d147b2b611e95631e27996e1a5d1034915e01a05d5f673c37f7": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": -0.75,
+          "reward_sum": -0.75,
+          "wins": 0
+        }
+      },
+      "24531d98fe72730a86e24a5756fcad4495886e7c94b728e42780248753c1aa5c": {
+        "dd080623965450327101bf4fe0be51f1311a89171c7e03a9cf960146752b27c1": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 0
+        }
+      },
+      "277e328353e851a7ee5b7aa9cd73ec1ac64f2d2c9fbdbe129972cbac724fc4b6": {
+        "0dd6ca2e30ddfd0177f6b3c4d9004abf3b9034e2fbeedb8fe42b2a4f0d28d699": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": -1.5,
+          "reward_sum": -1.5,
+          "wins": 0
+        }
+      },
+      "2a38d5f8fd99a474a50883ca6cdae7278ad7af91954dd78acf93e8a65f2a7b1b": {
+        "7eafdbe7fb745058742250b8eb3dc583c5c7b4e973e39c072294851983e6becd": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.3,
+          "reward_sum": 0.3,
+          "wins": 0
+        }
+      },
+      "2a6a2a5118158358775a269e2558e2793c8180c26b06d9163cfaad205712f624": {
+        "0e04d7500488acabfd8228d74e0dea7482d8a900689a73cacc01fc574c69f676": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 0
+        }
+      },
+      "2c82318e71578fe42258d4fb2e569eaea6807a89ab279c1e719b90f00bb6bd8c": {
+        "e339899d08b66a1b269f13e12efed6245f6dd8301e63df8902fcc6eb3aaa6b6e": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 1
+        }
+      },
+      "2cdcca835cc693d750af4811cd175a801b5c70ef193d2beb10f8f558f8159ee3": {
+        "7f5d2234060866872ca23b9fdf76642e5c5c938c9d58ebcbaf0d862aaa3fdf86": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 1.5,
+          "reward_sum": 1.5,
+          "wins": 1
+        }
+      },
+      "306b8cbb14daf0c03211100538a55ccbc7bb6c70a2ebad15c4e7d4088e45a938": {
+        "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 0
+        }
+      },
+      "3112c255a7c6f5d301e5f6fd6f39cac914d543c8154f21fabb8c7b739498b0c6": {
+        "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 1
+        }
+      },
+      "31924078f0371d635c09617124df33827d8a039c02b3e06b83a838683edac9c3": {
+        "e339899d08b66a1b269f13e12efed6245f6dd8301e63df8902fcc6eb3aaa6b6e": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 0
+        }
+      },
+      "3758ac0a4e801834b18cf28b026770c08a6966194500fa19806699f3824db872": {
+        "5f80969640733f8fd042bf48c021d6eef56c3e13313b1edcf6a1d91b5dc6b52e": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 1.975,
+          "reward_sum": 1.975,
+          "wins": 0
+        }
+      },
+      "394f32a3ad5d22a089c47fac1b61d385106f80b35b9e7d1291945d666a17e406": {
+        "5e2517eda3bcd275b1caa6231a58b9d3c0445b5248fc3301b3d87c0d382b3b80": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 0
+        }
+      },
+      "39dc7c4f070407bffbf389d78fba5d8b1d2e31f19120a948a0bc22953eb7f7b3": {
+        "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 5.2,
+          "reward_sum": 5.2,
+          "wins": 0
+        }
+      },
+      "3abd554aabdddcbfa2c42b82fca809b330361fb6d1726fa726344e8136603986": {
+        "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 1
+        }
+      },
+      "3bdd2fb97fb423ae0ab56f68f9ae5f955a9dce1875c7e6382212fc342fbe5244": {
+        "83441a3e8c59c12534ac69e579263168d6a7141f354f0bc6223cecfa8f4a0a94": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": -1.0,
+          "reward_sum": -1.0,
+          "wins": 0
+        }
+      },
+      "3e72936baf68faa367c1f054f82f63ed2db3eee0f7f13363571264d8582ffc72": {
+        "7f5d2234060866872ca23b9fdf76642e5c5c938c9d58ebcbaf0d862aaa3fdf86": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 2.0,
+          "reward_sum": 2.0,
+          "wins": 1
+        }
+      },
+      "43a00332d02ce96b71d8d1f6cb43aac23f7d92a9f6a8b83b45b9ea4ed4092a5e": {
+        "23bf53456fa69ad0cd034776051add46f5222989c0ef30baa3b21f25564a2712": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 3.6,
+          "reward_sum": 3.6,
+          "wins": 1
+        }
+      },
+      "49f653f27d934b5e1c48c4c01e190ae61bfb2cf3674adf71dc0229992e009e7a": {
+        "c2847b57e5aef82c5d5e4a09fb1029d89d337f81a2233dc45eca48f1be5224a6": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 1.7,
+          "reward_sum": 1.7,
+          "wins": 1
+        }
+      },
+      "4aea4e5f9bc4a49367f51f7644eb8bca0b5058b3a3966a68b790cd962da7fe86": {
+        "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 2.7,
+          "reward_sum": 2.7,
+          "wins": 1
+        }
+      },
+      "4b4c87e0faffd76c2286acfda9575826ba780d294622d09ef632ea0b9859d192": {
+        "ebf1a4c0b487f958725db09a13b6c148f7597e609392ebf4bb2b6ed0cf5caad7": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 1
+        }
+      },
+      "4dbff523596b4790bb57a5b3d3c5fd2ba0450c54a68a33d211296977a90b5f75": {
+        "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 1
+        }
+      },
+      "4e8558861dd27c5e47595ab55f9df3949397646eba01d952fd38914d5028bec2": {
+        "45a544c8505d59c701afe959fe8cdcd5a10ed1af22d2ae4f75881504ca26c814": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 0
+        }
+      },
+      "514c04a235f680827092705b3adc073748f39b8f2c6a43e639af235ab10aff2a": {
+        "0f80e76dbe5d7b073f2713cebb2edc47f3f320b852065c960ffd91dbdf871860": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 1
+        }
+      },
+      "53b3d7a39279e4011250c453dd640a7a76c056aa24962b36318a9f1958d307bb": {
+        "1a9489ec19fa1f938ffe30ede7172b2248e87672bdf89dff11570b2d4c303e65": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 0
+        }
+      },
+      "5954c6a927f52817387a58ec4e4d4d7f00564a4b63359247af27d8469277f6a9": {
+        "7c4cc1bad3c52b5ac026f49a9ffe5f9a635e5c1753b0a2677b2a59d74940c2e4": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 1
+        }
+      },
+      "5ce5131093bbac7ba4121707722c108110262fabfb2f6eaf37e61b3028863914": {
+        "fce34d0c163a9d4a3e9a402f4b74b595da187b9bfde853ac95d4c203ce949b93": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 1.5,
+          "reward_sum": 1.5,
+          "wins": 1
+        }
+      },
+      "5d9b3108045efae3677c61b29bdeef4b8c6396acdba344141e4be1eda277e0fd": {
+        "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 1
+        }
+      },
+      "6077830f27aceca09c395e237a0bd77d4f51903a173164a49401e847dae6c974": {
+        "0e99ad792b42fb97dae4668e2d81c62e34e036166be27fb93d13ffced8ce9ef9": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 1
+        }
+      },
+      "622de86aaf5ce13b7b7e6b9ec303863fddd11db7c4bd0262d181c92da6cd7065": {
+        "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 1
+        }
+      },
+      "64ddf4a0b8868829b000cb0eee2a850f6c17537f371c38e2bdb3556b15fc0098": {
+        "f78158610cf6d52546c4d34746e0a56a2c65daa94d55bc0b8da20031f76a7276": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 1
+        }
+      },
+      "65527516db273cd507849a54aab141911dde9897e90abd8403e2649cd8c40a63": {
+        "f78158610cf6d52546c4d34746e0a56a2c65daa94d55bc0b8da20031f76a7276": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 1
+        }
+      },
+      "6b68a58d37396a921e8dfd427bee2c83cf97b4b3cec81fb0b731fedce6293548": {
+        "b68649876546dac1fdb627bbee687ee959840906a2296aa0bd1a8f29841fe1bc": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": -1.0,
+          "reward_sum": -1.0,
+          "wins": 0
+        }
+      },
+      "6b7dbe9039d1c852f2d8a34ed04069f8f40bfbe919cf5ae6fb62574eb7084a75": {
+        "bc82507d9c0a70b51f9b4858c5d23ab080af0969f3a85b82b86f3b197f7ea808": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 1
+        }
+      },
+      "6ca0c8645759ab3477049bb0fb96db0bd1aa690504223021e855679ee0f74e3d": {
+        "26ea60742b6e0b472febd8b14ebfacebb6384d63e0395733e1460bd13210d06a": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": -2.0,
+          "reward_sum": -2.0,
+          "wins": 0
+        }
+      },
+      "75177b9cad9725a0c9588ee942ebc1765368d81ccbc381145182faab370a7478": {
+        "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 0
+        }
+      },
+      "782140009b322e467003fddb9dd2ea92ddce713c34a47d8a6ea714c53d7c6a3d": {
+        "c4ecf1b1604d9ac213b93c1353b28d048d887cc86289d22da40b2c305c1bc38e": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.75,
+          "reward_sum": 0.75,
+          "wins": 0
+        }
+      },
+      "7e119fc15a98079f2505ec5a62a06b0c0bf76e719335c31da6b859c8a94854f6": {
+        "7f5d2234060866872ca23b9fdf76642e5c5c938c9d58ebcbaf0d862aaa3fdf86": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 0
+        }
+      },
+      "7f2b3b5c0585e3c1ce3b0156944629d0ab3f84772dc180f829210903c20cdb3e": {
+        "1a9489ec19fa1f938ffe30ede7172b2248e87672bdf89dff11570b2d4c303e65": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 1
+        }
+      },
+      "7f95608ca45757ef33394f5f3026d613af1e1ad4b7085801c0945e6dfa8c31f1": {
+        "3e99f9597c0daf7b8e2ca131e60d2f7acb7cb5b63630192754f7474a536fa86a": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 1
+        }
+      },
+      "816883291e3bb2ae84080c026e4784c0a16e18b162b95afd8977fc719fe159ad": {
+        "49835f5a6fac5aa9fd866da8068dc0d389516e8a68d4daa28024d24dab4a3e8d": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 1
+        }
+      },
+      "8390596af3213c90c4f5c0e3edcd53660327c4cd359fa984cece8e26fddbc599": {
+        "86624447f7e1492ca9cf96e6f093168ad1c328fa77e3f0b2be5b6de60a28ca86": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 0
+        }
+      },
+      "856da31af74c47ed88ce87d7bdbfef3f6be053f151bfa58537a4825292a64ccb": {
+        "3e2b88e2180956c926bad1fcbbea9f292b5751059796c963881da0fae2e118a1": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 1
+        }
+      },
+      "85a779709a76bc1da875581e6eb665d76d6815e44469d800cd78df48614f157c": {
+        "4873320fc3348940132ee9d109a385befa36bd8231d1812f6b4750bdc2427fbf": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 0
+        }
+      },
+      "911623434d552412f1556e71554cbe9eca2eec8d0e8af75ba85ef2d202880ec2": {
+        "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 1
+        }
+      },
+      "98079770719d1af714a44cd225c73ada6a54362ac19cdfc754f8bf52584092ee": {
+        "8ddf33dae57bff3aa029789790bab379dab31aeb400f42a69e25e276ce34dd56": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 1.425,
+          "reward_sum": 1.425,
+          "wins": 0
+        }
+      },
+      "9a297fd1f4e9d642e496f7ed9a1027537a04e22b9289e2853382e1ab25e2bd63": {
+        "f646cd9625f10367b5280c183b3c7e692c5a09c46f85fce759da930da965df9e": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 1.0,
+          "reward_sum": 1.0,
+          "wins": 0
+        }
+      },
+      "9ac8f45e649da0bc64fd9e3f9c7de4fa99639a9615fa24a2255012c34f03cd9e": {
+        "b23819836deda2c86a63976e9285773e6653f7a2fb9f5bee45875948abbfe0c6": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.25,
+          "reward_sum": -0.25,
+          "wins": 1
+        }
+      },
+      "9f8057bae0f6d6a9160c2c604fb80da2531b2da6b6f803d4e82c9ee3a64dc8b1": {
+        "5653cd87e2940b25f88e3335b85798fd777962ada9320273bfe0f264c73c3000": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 2.0,
+          "reward_sum": 2.0,
+          "wins": 0
+        }
+      },
+      "abeef9ea9cdba747a0703435f221180e03ab61d4012fe6aca7be264b79af8e4f": {
+        "2e0ea70728c465ca5759c4f0a60a4c3f827b6652bbe9b933d2ab5ec1ee8c2c7d": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 5.7,
+          "reward_sum": 5.7,
+          "wins": 1
+        }
+      },
+      "b4af723198322e7af2b917912bf0d17927906cfe6fc885747c3bd26b661f5a4b": {
+        "23bf53456fa69ad0cd034776051add46f5222989c0ef30baa3b21f25564a2712": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 3.6,
+          "reward_sum": 3.6,
+          "wins": 0
+        }
+      },
+      "b80f5f6134f0a1b11a909c17e8b3aa73104d7cee4bf8afb1c7c38ce370f31ac4": {
+        "808df2a50029d99d6d95a276b49086352e66e7e4816bf04067779444cb227368": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": -1.3,
+          "reward_sum": -1.3,
+          "wins": 0
+        }
+      },
+      "c93aa758d4d5f748619988c80450d681dbb840f4d2bdc626a7fb067c829986dc": {
+        "a9af25b322c2f513746f12d806cb28c21400836157fff6217ee7b238da739d3e": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 0
+        }
+      },
+      "cd3934f0325613005a2bced099a92f66cca70d123bee20233d45ffeef5c65dbb": {
+        "7eafdbe7fb745058742250b8eb3dc583c5c7b4e973e39c072294851983e6becd": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.3,
+          "reward_sum": 0.3,
+          "wins": 0
+        }
+      },
+      "cfd1eda1e9a587ace66c5d463769be97e7dc42535f295f3582d5e9d5087cf75b": {
+        "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 1
+        }
+      },
+      "d577a8ee50d270a37c1b62e356d8f560ee97ba9ce5952ecd7f31332883349c7d": {
+        "a0bb0e722edf2abc9e40ef6d8c3ea0b602c8de8f7b2ad2e15eeba02413998a8e": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": -0.55,
+          "reward_sum": -0.55,
+          "wins": 0
+        }
+      },
+      "da0429447b8b5aa6de3d1623cf5c0c61d9b34ef4fdacee89512702b13967e32e": {
+        "49835f5a6fac5aa9fd866da8068dc0d389516e8a68d4daa28024d24dab4a3e8d": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 1
+        }
+      },
+      "dbf997bb33dd6f8ed14a4b0bb92f61834190c30cc057747bd4fc7682a46bd6f2": {
+        "7c4cc1bad3c52b5ac026f49a9ffe5f9a635e5c1753b0a2677b2a59d74940c2e4": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 1
+        }
+      },
+      "dd7ddffcc65cc40bf05f24cf8caf691a3ab4ccb833d3fed693010d262bbc6c9b": {
+        "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 0
+        }
+      },
+      "e2c3e8e0afd8eb4cd0e38d72c7e7e408afbe12b85accced1a7d6971b732254af": {
+        "5653cd87e2940b25f88e3335b85798fd777962ada9320273bfe0f264c73c3000": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": -2.0,
+          "reward_sum": -2.0,
+          "wins": 0
+        }
+      },
+      "e33f8200217fd098311fbf0500b086902223f08f8c2791a944198d68647197b6": {
+        "7f5d2234060866872ca23b9fdf76642e5c5c938c9d58ebcbaf0d862aaa3fdf86": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 1
+        }
+      },
+      "e5f0a33588bcaed9ada90b794f982139bd4d090bc90ffb882e8606e72d907bbf": {
+        "ebf1a4c0b487f958725db09a13b6c148f7597e609392ebf4bb2b6ed0cf5caad7": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 1
+        }
+      },
+      "e74980321b17a539cdc8750785c048ee5245422ea9cf6d62024a3a9099505cbb": {
+        "5e2517eda3bcd275b1caa6231a58b9d3c0445b5248fc3301b3d87c0d382b3b80": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.5,
+          "reward_sum": 0.5,
+          "wins": 1
+        }
+      },
+      "e94d087100d9a7ad1729a2bc48ef3ba14830e1cd047f5416d85ce687585ec5e5": {
+        "fce34d0c163a9d4a3e9a402f4b74b595da187b9bfde853ac95d4c203ce949b93": {
+          "independent_games": 1,
+          "losses": 1,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 0
+        }
+      },
+      "f3588b907b18e5be160a9cb2184813008e62912d967ee3ed5f7eb93d7f99c6f5": {
+        "e339899d08b66a1b269f13e12efed6245f6dd8301e63df8902fcc6eb3aaa6b6e": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -0.5,
+          "reward_sum": -0.5,
+          "wins": 1
+        }
+      },
+      "f3adf46471143cd1a4742fb94691d7b6c7976baa498b1bdf0f8b6c8c47ac9773": {
+        "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 0.0,
+          "reward_sum": 0.0,
+          "wins": 1
+        }
+      },
+      "f802f61f41b993987b76fcc72e1426ce6f3f1aeaf55422de12df0fa7baf4def6": {
+        "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": -1.5,
+          "reward_sum": -1.5,
+          "wins": 1
+        }
+      },
+      "fbb5d75b7c989d8a122582d3246b23f55ca3eaa8c4280aef24ed3860e4271bfc": {
+        "8242be5a7b22d041a6d91bf523b3b8dd62f1a5e8759cb8050749c7181f89245e": {
+          "independent_games": 1,
+          "losses": 0,
+          "mean_reward": 1.5,
+          "reward_sum": 1.5,
+          "wins": 1
+        }
+      }
+    }
+  },
+  "version": "fresh-observed-board-learning-v1"
+}

@@ -1,0 +1,632 @@
+[
+  {
+    "path": "visual/early/frame-0010.jpg",
+    "elapsed_seconds": 10,
+    "sha256": "f7afe19d375b8da34ef5928d67f8e9744d33ecf866865be4cd6c7815e7ef1496",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/early/frame-0046.jpg",
+    "elapsed_seconds": 46,
+    "sha256": "4c46c2ee4d73cc335147d12008daafdba7dfb1f384d0c32981c5cd4af1517338",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/early/frame-0180.jpg",
+    "elapsed_seconds": 180,
+    "sha256": "5818d4c79632d30f666b450b51514a8d5938f0e723ac9d72247126ccaae3f5d5",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/early/frame-0206.jpg",
+    "elapsed_seconds": 206,
+    "sha256": "34ace49b3fdfdeb6d66f36a6a0fca1771e07d73d25c75f4e6829dd4fea5a53ca",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0243.jpg",
+    "elapsed_seconds": 243,
+    "sha256": "38fbb28538832521f9f2ca22c422e974e88edb053f2f773422ce9a75092900a9",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0246.jpg",
+    "elapsed_seconds": 246,
+    "sha256": "477c1d01e9cf19da59d7afd1c6ea4656bd9adcc9a5db7a6ef95ee48b1950c5bc",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0252.jpg",
+    "elapsed_seconds": 252,
+    "sha256": "5ce140d02b5adb5f36e45b223a057276aa906a9b87064add248f549e56ba1440",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0255.jpg",
+    "elapsed_seconds": 255,
+    "sha256": "8a7fb12c500addb3e3f1b2055b33615d025fd5c68e42c866420ce60643e4f9bd",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0261.jpg",
+    "elapsed_seconds": 261,
+    "sha256": "2faa41c232125a6fd3f0662af26f08a0a25f045225600578668601fba9a2011c",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0267.jpg",
+    "elapsed_seconds": 267,
+    "sha256": "5125b2246b8083d518304b8a4e709e0b8d102f9dc19461caccc2acef82076912",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0270.jpg",
+    "elapsed_seconds": 270,
+    "sha256": "948284ee4485e637136b70f28740236e1e80167cf34539f6c90abc7f731bac7a",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0279.jpg",
+    "elapsed_seconds": 279,
+    "sha256": "b8dd1165b9970b3b3088e1de791e6f4f23722db02f45e62a39bae41930e08685",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0282.jpg",
+    "elapsed_seconds": 282,
+    "sha256": "ae64699415e52b194c0c8a330a323b63eee5e755eea91bdf8d9e8e7446214006",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0285.jpg",
+    "elapsed_seconds": 285,
+    "sha256": "d3b5b28e40ea7fa60f3f0c9f2d2dce7c35bb605a6a068028f1efc9d06b41c9a0",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0294.jpg",
+    "elapsed_seconds": 294,
+    "sha256": "fda9840e32cca97824db883f51b271cb84462e5569a414e132447ab80fe868f8",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0297.jpg",
+    "elapsed_seconds": 297,
+    "sha256": "fc07499556db48c77c8797910b18257e6a6ea904500aed4ebad7e6f81ea31911",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0315.jpg",
+    "elapsed_seconds": 315,
+    "sha256": "0cacce9339dad56e836c3ab6706c425ccda1e9e4c3363cceb85e7f747fe53aa8",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0321.jpg",
+    "elapsed_seconds": 321,
+    "sha256": "3acc105181c1af241d3262f4b0a02161491aec76eb580c5ec164c2a9edde7b1e",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0324.jpg",
+    "elapsed_seconds": 324,
+    "sha256": "750a32420bbabf99276fd3049d5c60c3c5974ab402acea05e04724cec792a725",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0327.jpg",
+    "elapsed_seconds": 327,
+    "sha256": "5e4fb0493fc1c8f6f0378f798f0340cc3e4973f62ef0e91bc84a1bdd35310dec",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0330.jpg",
+    "elapsed_seconds": 330,
+    "sha256": "daa0306d4e3ffe3189e128f1eb8e34443542740927cfde1730c3e48442d0d8b4",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0333.jpg",
+    "elapsed_seconds": 333,
+    "sha256": "80d28b002454929dcf8beaf6f7e5d6311fb79067732390d363ac90e14ed4899c",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0336.jpg",
+    "elapsed_seconds": 336,
+    "sha256": "4a9bc8ee2c4eccd80f12690f1f596026f7aec131c57c25d9319622fd12f2b50d",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0339.jpg",
+    "elapsed_seconds": 339,
+    "sha256": "7bc7d2ccfe4ddf40a9b3ee7dfb7e5ed5150774dfe2366ded6be986541e151515",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0342.jpg",
+    "elapsed_seconds": 342,
+    "sha256": "0bcd8209e3b58057953d96bcf7847b55729a90944320aad4148d588c34e3f072",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0345.jpg",
+    "elapsed_seconds": 345,
+    "sha256": "7ab7672561912d3af1e64d8bcbdd04e53666f5f86e5229ace2f6a57fc6fcf6f1",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0348.jpg",
+    "elapsed_seconds": 348,
+    "sha256": "60eeab700b53360d4a05cfac62738ab138560e5cb107a87aa1b0b510753c2e2a",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0354.jpg",
+    "elapsed_seconds": 354,
+    "sha256": "ba764319a556f750231300571239b2dd224ea8d75133bd842e9d138608ed5c7b",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0357.jpg",
+    "elapsed_seconds": 357,
+    "sha256": "45d2046a719b2f1440815c5aa805d0e2afc3a723abb60d42f25dd5e3b62732bf",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0360.jpg",
+    "elapsed_seconds": 360,
+    "sha256": "d42f5cab4847dcb674f54b51fa0896f179025ea8cf3ff8b715a6f736444bf34c",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0363.jpg",
+    "elapsed_seconds": 363,
+    "sha256": "01d6e1b9d6a71c46252a582fb040869eff4d32c13ba1f6cad686f7e36415659a",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0366.jpg",
+    "elapsed_seconds": 366,
+    "sha256": "429beab83db908d159e60bffe53a19bc59cb9a880d6138566e62b55f33b65915",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0369.jpg",
+    "elapsed_seconds": 369,
+    "sha256": "7f825aa54806d5ec10b48f78c37bb86e5b499e8c8d7554fab8c062cdc2d6be84",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0375.jpg",
+    "elapsed_seconds": 375,
+    "sha256": "759fc777b8d96086b188b54c9c5a35515268ea67b9ece1669f24d73c036463f8",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0378.jpg",
+    "elapsed_seconds": 378,
+    "sha256": "b90b21f1e8075cd97fab3b00fb2342ac0ab337244c676242477664a3406a743e",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0381.jpg",
+    "elapsed_seconds": 381,
+    "sha256": "f0b3402ec18c389888277aa63c5346e09709d7281028066107ac5bbb682fa61e",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0384.jpg",
+    "elapsed_seconds": 384,
+    "sha256": "d92c0dd0f63342edaf151e2f852dde94b85a35436409109c1190ab7ba7ac12e7",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0387.jpg",
+    "elapsed_seconds": 387,
+    "sha256": "ff81b29ef22ae8f91cb496bfab795a91785e1393daee8b6e653bea171db69ea8",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0435.jpg",
+    "elapsed_seconds": 435,
+    "sha256": "7daf717da988039111b29dc38357be2ef0bb594c71e43e3eaac5dde754042ae4",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0438.jpg",
+    "elapsed_seconds": 438,
+    "sha256": "c2aac95521607a3ba6f7446e3b60d5f79c6469daf3160b539fe61ee0eab27f2c",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0441.jpg",
+    "elapsed_seconds": 441,
+    "sha256": "625c9927aed9f5b16cd4764ed178bb465ff3701fce5568cc1e5db6f6e5af596e",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0444.jpg",
+    "elapsed_seconds": 444,
+    "sha256": "92a86131076548092503f82fc915d02368de5a821e5ae73a4799580dbc7cd0ca",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0447.jpg",
+    "elapsed_seconds": 447,
+    "sha256": "307d0861e9430b8629b2803fffef3936384f729672b599f544f39555feff8cd6",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0459.jpg",
+    "elapsed_seconds": 459,
+    "sha256": "1b94db8f534e9a056c540a54763f192ef5a98f78f66d859e32b1decd678c0497",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0462.jpg",
+    "elapsed_seconds": 462,
+    "sha256": "1942dd5e00b2b06a4acb73529ed6591617df6b10338721edf55ff07e4d893f9b",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0465.jpg",
+    "elapsed_seconds": 465,
+    "sha256": "350b4e1c041f11684e7ef28a4e4e500227e0114a970dd2065bfc0e68e91baca2",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0483.jpg",
+    "elapsed_seconds": 483,
+    "sha256": "3e3e0a177ec49cb2d4365c023349022b40d794085b76998656cbd114bdf81ebe",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0486.jpg",
+    "elapsed_seconds": 486,
+    "sha256": "e179aabed677a6d9e66d0705bef89d7938bb7d8ee76d29fdb10aa1168d4c7c41",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0489.jpg",
+    "elapsed_seconds": 489,
+    "sha256": "3537067d73b26f574b0f06d8d234497df503747e2594b286073dbb8da775f506",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0500.jpg",
+    "elapsed_seconds": 500,
+    "sha256": "674bffeaed77fb483807d725133c35515df316e359b8c847f9cc33fbf6bd312d",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0503.jpg",
+    "elapsed_seconds": 503,
+    "sha256": "8bff91b7d4abc7ddf04ab24e075221a22c744556be527386399d8dca509af93f",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0509.jpg",
+    "elapsed_seconds": 509,
+    "sha256": "a0a1e7deb2666a98c163fb1d4bcfa3d9f2d045ec010f027723f9ab023a5fb22c",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0512.jpg",
+    "elapsed_seconds": 512,
+    "sha256": "c7cde361ffcb693d226bc668c6a8612b0ad6ec03f865a1a36db8d061e421fdd3",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0515.jpg",
+    "elapsed_seconds": 515,
+    "sha256": "20d4dc30021a04feafc2d448ce268f3f84ad38c01dbc18fdd509c971f697399c",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0518.jpg",
+    "elapsed_seconds": 518,
+    "sha256": "a90404ed249cc6da23ccad57f312a79a711d098931f7259f2e126bb9818d1d74",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0521.jpg",
+    "elapsed_seconds": 521,
+    "sha256": "bc549201db75a400d453a57a304088503feb49121e6a678db63dfb31ebfdecf8",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0524.jpg",
+    "elapsed_seconds": 524,
+    "sha256": "21dff7481904002c5f251bfcd7bee6f3d172c4cc0fe504f01f2b885f70a6d411",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0530.jpg",
+    "elapsed_seconds": 530,
+    "sha256": "0ce8664d6846c3f02bcb6fe7634f60d4441c32e2a7ee54c3f036f32ed4e9ae6e",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0533.jpg",
+    "elapsed_seconds": 533,
+    "sha256": "df3abb0c03f9e162446b725b4c33e2c5e0659c29d5aab9b813b98f08e48291bb",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0536.jpg",
+    "elapsed_seconds": 536,
+    "sha256": "8ed0b6f3f4de0dc7ddab3e70f786f489726ca5c148b1704718a6edfe1b53ef14",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0539.jpg",
+    "elapsed_seconds": 539,
+    "sha256": "9e64a95170bae2f3e4df8084dee63186efbd15a28fb6efc47d6fc6613524ed9f",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0542.jpg",
+    "elapsed_seconds": 542,
+    "sha256": "9e9ab7217328a3b96efefc499384e9aebf8b4ee88de4ed61d16d823ec98160aa",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0545.jpg",
+    "elapsed_seconds": 545,
+    "sha256": "10ccadae0857061f62875f785a74f807e5ecc94e1377cd35b8c8b15e43838d44",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0548.jpg",
+    "elapsed_seconds": 548,
+    "sha256": "b57b3576eab63001c31454152f1b7e0cb8b397816f20f5cd08db2bbfd246cfb6",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0551.jpg",
+    "elapsed_seconds": 551,
+    "sha256": "9c900edf706e3acf3630ca130128d0cd0af0073a378fc40fa2084a27e9f3d2c3",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0554.jpg",
+    "elapsed_seconds": 554,
+    "sha256": "a724a5ccf66adc8bb18d02f1da7121b4abd34c425f898aa156f68838e4d96d0b",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0564.jpg",
+    "elapsed_seconds": 564,
+    "sha256": "330c3ac53e1de7f3eee494dda09b360272dec45b7aca899c28e7e231b82448b7",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/middle/frame-0567.jpg",
+    "elapsed_seconds": 567,
+    "sha256": "82dcabace82f888d9220f9140e6888174cd18ae3f1b3dd336b295b519ea1fe06",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0607.jpg",
+    "elapsed_seconds": 607,
+    "sha256": "199b4f823f6fb73d47599a306d973cf16aeeb32818582432b68313b3f90f4fe8",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0624.jpg",
+    "elapsed_seconds": 624,
+    "sha256": "532d54f02aaf9c3e3d78fb5f785552f167aa5ef06590f07215c10fea57682e1f",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0644.jpg",
+    "elapsed_seconds": 644,
+    "sha256": "cf48b395945eafc8241cab206b3dcdb0fcac5585e1ff456942b570373aaa68ae",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0653.jpg",
+    "elapsed_seconds": 653,
+    "sha256": "d51fb629dd0255ab16cbc1dd60f244b39533d3fa9c393a2b3cc301d178a00929",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0658.jpg",
+    "elapsed_seconds": 658,
+    "sha256": "297c84380a035ecbaaf3bf7afbca11ecc6fe22bfb04c68f5b1e71672bdcc4786",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0665.jpg",
+    "elapsed_seconds": 665,
+    "sha256": "9211a36f4a02e42084c14d1fa989e2fa38c3e221d2024b2140b65a0049a6126b",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0674.jpg",
+    "elapsed_seconds": 674,
+    "sha256": "103cdb4e76fe210fa80526e67423bc9a1dcc364445c60214513515c31cbdd525",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0690.jpg",
+    "elapsed_seconds": 690,
+    "sha256": "2c5afca2823472e9f701f7e0a1b768e1f4c840786151a12eb22153434d74d56e",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0695.jpg",
+    "elapsed_seconds": 695,
+    "sha256": "54f8dcfc2209e99bb8743ca12486b9d301141257d7acb8b99804cb9322c222ec",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0699.jpg",
+    "elapsed_seconds": 699,
+    "sha256": "5f3873fcc9d21b7d62b741ce7fe8a7c77bb021520d1ac06743a0d2306a372ec0",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0712.jpg",
+    "elapsed_seconds": 712,
+    "sha256": "92391641a0e5ac8fe68a2e8c1577fe7877a15b4840e415f1fd53e22e7b9d29d7",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0718.jpg",
+    "elapsed_seconds": 718,
+    "sha256": "f8b475ddd196b82acc946825aa6c70975dbe7822600c1d4df9a0086dcc5e1284",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0726.jpg",
+    "elapsed_seconds": 726,
+    "sha256": "ffd3e1bb0016ab54c3529a8fa6a1a4a92304fda4c9755385b9ccfd6376f3d866",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0741.jpg",
+    "elapsed_seconds": 741,
+    "sha256": "4b7f344c8d126af2c12344fa1c1132f084ac25b655772f676e843883affc6efb",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0748.jpg",
+    "elapsed_seconds": 748,
+    "sha256": "2a34882f4d0ac78da30b7f85adb38872db5fe103c9a2613d479f6b6149389e96",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0763.jpg",
+    "elapsed_seconds": 763,
+    "sha256": "f524765557061b2d8bcf0185d3dc1213c5b604aa8e6cc9fff47a88317a046c53",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0802.jpg",
+    "elapsed_seconds": 802,
+    "sha256": "5a80043fd51fd152499ddbb3f1cb45ccfad82356d682142a71c072068a2fa040",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0809.jpg",
+    "elapsed_seconds": 809,
+    "sha256": "1567081c5437817443a80af8a242a2ae13ead8eebff5b74746eb8f6ccd7cb219",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0817.jpg",
+    "elapsed_seconds": 817,
+    "sha256": "3927684e4bf3905f1cc63d846b02e23f202e7160b918abdb12352179e9959d3a",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0841.jpg",
+    "elapsed_seconds": 841,
+    "sha256": "cea7149926bd3ec9f186843b50a83b177900eb01c4fbe9ca774171298ce04c7b",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0845.jpg",
+    "elapsed_seconds": 845,
+    "sha256": "2205b964c38df56de6e168676c1fdad48c4bb952cf0e25745b0358d72bb9a283",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0860.jpg",
+    "elapsed_seconds": 860,
+    "sha256": "2dff385bd1f306171424ec9b2ff88b4d4814477b35440fc3c0e506a882a1e1c7",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0865.jpg",
+    "elapsed_seconds": 865,
+    "sha256": "58c0d5307bf0b7bcdd2bf9de4d95c41786c97d26583bb95d2c319d1b5aefd6c5",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0879.jpg",
+    "elapsed_seconds": 879,
+    "sha256": "82aeb512cfc8d75e92340f3f303d80a22d5d5ba73446c62d099292d3829f5567",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0888.jpg",
+    "elapsed_seconds": 888,
+    "sha256": "a21372c41d3d2eaaea19dc158ad9b25e1ba194d166a001795caaabaa42cebce4",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0892.jpg",
+    "elapsed_seconds": 892,
+    "sha256": "354e76ac0440da8b395897c4c10b5fa9436d338d04d5a8373fb0185f2d41872b",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0909.jpg",
+    "elapsed_seconds": 909,
+    "sha256": "c597573ffacdc8d228f8e89212337c1e943a69532aa2be5591492445ba28195a",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0922.jpg",
+    "elapsed_seconds": 922,
+    "sha256": "7e36e3501e90281ee033bb73a675d314a536893e9374f1ba0fb2bc50cf550399",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0944.jpg",
+    "elapsed_seconds": 944,
+    "sha256": "5e343c5ae05352c0582c08de197fde4940c5bb8a9d6952ba97c8f37c2d78f595",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0961.jpg",
+    "elapsed_seconds": 961,
+    "sha256": "e125f0966e3ebcc6e48188efb691160b94ec5d241a7287be6724f6e3c5ef975c",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0965.jpg",
+    "elapsed_seconds": 965,
+    "sha256": "1e28a47a9660fffa6d08e71b0d58ab77fac0fc349909d22475aa110b0c1ec2f1",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0969.jpg",
+    "elapsed_seconds": 969,
+    "sha256": "907294e16ebab3c66064192068fa5d65e0940cb07383807e0c92ad983ba9dc25",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0973.jpg",
+    "elapsed_seconds": 973,
+    "sha256": "bf2aa158706f42b71e68baccadd15b2fc156b4778ead144f120cfd5faf348a68",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0976.jpg",
+    "elapsed_seconds": 976,
+    "sha256": "2f7fcacaef4738f9123f5545b3610c7cf705fa41fc993acbbecbc222bfbc27fc",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0985.jpg",
+    "elapsed_seconds": 985,
+    "sha256": "1d03d726e741eb6d51a7774922006183f52c0ef09afffb17d578b135ccfa75aa",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-0997.jpg",
+    "elapsed_seconds": 997,
+    "sha256": "21fb34793b1cc9447ddc8bc7d04796d2263e9ab3831ec7a0c27b4207c41ae235",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  },
+  {
+    "path": "visual/late/frame-1000.jpg",
+    "elapsed_seconds": 1000,
+    "sha256": "2b9712d402f2984d5b091287171cdb8f0d7b1729287e84185620a66fb4bac817",
+    "type": "EXACT_TIMESTAMP_FRAME_SAMPLE"
+  }
+]

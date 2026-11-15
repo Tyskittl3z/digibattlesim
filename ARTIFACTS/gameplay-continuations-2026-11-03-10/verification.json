@@ -1,0 +1,22 @@
+{
+  "full_suite_at_this_exact_source_checkpoint": "NOT_RUN",
+  "last_fully_green_full_suite": {
+    "commit": "713a513",
+    "tests_passed": 459
+  },
+  "focused_suite": {
+    "tests_passed": 78,
+    "seconds": 146.425
+  },
+  "independent_actual_tests": {
+    "passed": 3,
+    "seconds": 42.224
+  },
+  "independent_declared_attack_proof": true,
+  "exact_replay": true,
+  "turn": 10,
+  "commands": 147,
+  "same_seed": 12017913134550805276,
+  "full_match_credit": 0,
+  "next_stop": "ATTACK_PERSISTENT_EFFECT_UNSUPPORTED: EX13-023 main_text source=B:EX13-023#1"
+}

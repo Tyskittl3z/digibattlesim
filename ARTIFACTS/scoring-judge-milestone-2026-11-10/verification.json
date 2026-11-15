@@ -1,0 +1,31 @@
+{
+  "bot_c_tests": 30,
+  "criterion_sha256": "84de51952609311beadcbec58f9c8252e1aea2c9eae96689eaf5aad4711fcdaf",
+  "date": "2026-11-10",
+  "focused_tests": {
+    "command": "python -m unittest test_interaction_scoring test_judge_ledger test_field_tracker -q",
+    "passed": 59,
+    "seconds": 4.781
+  },
+  "fresh_matches_started": 0,
+  "full_game_certification": false,
+  "judge_tests": 8,
+  "last_full_suite": {
+    "commit": "aed966b",
+    "passed": 495
+  },
+  "production_learning_updates": 0,
+  "production_ratings_assigned": 0,
+  "run_enabled": false,
+  "scope": "Scoring and automated judge receipts only; learner and fresh runner remain in progress.",
+  "scorer_tests": 21,
+  "sources": {
+    "RULES/learning-2026-11-10/INTERACTION_CRITERIA.json": "90e68db01b5644693f5403eb5d7d5fd6a30059e0b01f465c9cb2729df26a5ba4",
+    "SOURCE/interaction_scoring.py": "c9e09123fc1666d36624a7e41e4aab7ac09c671e354b54aa77d2517a5db2992c",
+    "SOURCE/judge_ledger.py": "e9da34fec4b11dbe10906a04c76425051c6aeaf8b70a40cd0c1db20fe2bda382",
+    "SOURCE/test_interaction_scoring.py": "17b807a0cf36e90e08d7d22c1b90cfb5d7f79c55813cafc083cbf7bd9a375395",
+    "SOURCE/test_judge_ledger.py": "13d785ae825d001086e7cccf4b55f50eb433c48effc6c70c89ee0641a7b30b0f"
+  },
+  "status": "VERIFIED_COMPONENTS_INTEGRATION_IN_PROGRESS",
+  "status_of_matches": "PAUSED_BEFORE_FIRST_MATCH"
+}

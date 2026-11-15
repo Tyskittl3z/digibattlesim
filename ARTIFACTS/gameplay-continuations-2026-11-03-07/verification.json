@@ -1,0 +1,19 @@
+{
+  "full_suite_at_this_exact_source_checkpoint": "NOT_RUN",
+  "last_prior_full_suite": {
+    "commit": "713a513",
+    "tests_passed": 459
+  },
+  "focused_runs": [
+    {
+      "module": "test_tamer_play_effects",
+      "tests_passed": 13,
+      "seconds": 67.693
+    }
+  ],
+  "exact_replay": true,
+  "turn": 8,
+  "commands": 104,
+  "same_seed": 12017913134550805276,
+  "full_match_credit": 0
+}

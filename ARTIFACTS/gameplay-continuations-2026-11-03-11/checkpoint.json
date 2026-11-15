@@ -1,0 +1,13 @@
+{
+  "seed": 12017913134550805276,
+  "first": "A",
+  "status": "HALT",
+  "turn": 10,
+  "commands": 152,
+  "halt_reason": "AERO_RETURN_DEPENDENCY_UNSUPPORTED: EX13-002 inherited_text",
+  "winner": null,
+  "record_sha256": "8d596ab2b7b665453a4e87b9fd2775cb7ce27080603be2349a4f7602b53fec9a",
+  "accepted_fact_finding_credit": 0,
+  "previous_record": "ARTIFACTS/gameplay-continuations-2026-11-03-10/game-0000-segment.json.gz",
+  "execution_id": "0461e1428e3c13d6205a2c1b4077660d3f70021b043373149b5b74580230250b"
+}

@@ -1,0 +1,13 @@
+{
+  "seed": 12017913134550805276,
+  "first": "A",
+  "status": "HALT",
+  "turn": 10,
+  "commands": 147,
+  "halt_reason": "ATTACK_PERSISTENT_EFFECT_UNSUPPORTED: EX13-023 main_text source=B:EX13-023#1",
+  "winner": null,
+  "record_sha256": "216bb6e8ee837e14be7380c164e6f983fbbe316c48237ad4c6aca25a9e6dd34f",
+  "accepted_fact_finding_credit": 0,
+  "previous_record": "ARTIFACTS/gameplay-continuations-2026-11-03-09/game-0000-segment.json.gz",
+  "execution_id": "15a4097494a855a574ab66abb63a8032dbf53cb521812405f416e47ffbcdc54b"
+}

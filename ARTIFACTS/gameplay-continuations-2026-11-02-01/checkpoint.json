@@ -1,0 +1,12 @@
+{
+  "original_seed": 12017913134550805276,
+  "seed": 12017913134550805276,
+  "first": "A",
+  "status": "HALT",
+  "turn": 3,
+  "commands": 22,
+  "halt_reason": "UNKNOWN_OPTION_ACTION: A:LM-028#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+  "winner": null,
+  "record_sha256": "82afdb9e77e9994d098f1f78508032b7ce834aa7326e49cec5492996ec4ac605",
+  "accepted_fact_finding_credit": 0
+}

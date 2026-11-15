@@ -1,0 +1,373 @@
+{
+  "schema": "encountered-end-unsuspend-rina-independent-review-v1",
+  "review_date": "2026-11-03",
+  "status": "LEGAL_SELECTED_UNSUSPEND_REQUIRES_THREE_ACTUAL_RINA_REACTIONS",
+  "certification": "NONE_SOURCE_BACKED_ENCOUNTER_REVIEW_ONLY",
+  "full_match_credit": 0,
+  "accepted_fact_finding_credit": 0,
+  "final_evaluation_credit": 0,
+  "source_record": "ARTIFACTS/gameplay-continuations-2026-11-03-05/game-0000-segment.json.gz",
+  "seed": 12017913134550805276,
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "selected_command": {
+    "choice": "B:EX13-022#3",
+    "pending_id": "effect-21"
+  },
+  "prefix_verification": {
+    "method": "Replay all82 preceding saved commands from original same seed and compare full physical state/RNG before new resolution",
+    "preceding_saved_commands_replayed": 82,
+    "exact_physical_state": true,
+    "exact_rng": true,
+    "state_sha256": "35993ad551f6199e228639e2b9f83736e4414bdb025f2fcd4baf9752dc023fc7",
+    "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+  },
+  "actual_state": {
+    "turn": 6,
+    "active": "B",
+    "phase": "END_OF_TURN",
+    "memory": -3,
+    "end_effect_source": "B:BT22-023#1",
+    "end_effect_id": "BT22-023.end_turn_unsuspend",
+    "selected_target": "B:EX13-022#3",
+    "target_currently_suspended": true,
+    "target_cannot_suspend_through_actual_B_turn6_end": true,
+    "target_Blocker_Evade_through_A_turn7_end": true,
+    "B_Rinas": [
+      "B:BT11-112#3",
+      "B:EX13-069#3",
+      "B:EX13-069#4"
+    ],
+    "all_B_Rinas_unsuspended": true,
+    "B_Rinas_cannot_suspend": false,
+    "once_used": [
+      [
+        6,
+        "A",
+        "A:EX13-022#1",
+        "entity-9",
+        "EX13-022.tamer_play_restriction"
+      ],
+      [
+        6,
+        "B",
+        "B:EX13-002#1",
+        "entity-10",
+        "EX13-002.tamer_play_unsuspend"
+      ],
+      [
+        6,
+        "B",
+        "B:EX13-022#1",
+        "entity-5",
+        "EX13-022.play_tamer"
+      ],
+      [
+        6,
+        "B",
+        "B:EX13-022#1",
+        "entity-5",
+        "EX13-022.tamer_play_restriction"
+      ],
+      [
+        6,
+        "B",
+        "B:EX13-022#3",
+        "entity-2",
+        "EX13-022.play_tamer"
+      ],
+      [
+        6,
+        "B",
+        "B:EX13-022#3",
+        "entity-2",
+        "EX13-022.tamer_play_restriction"
+      ]
+    ]
+  },
+  "selected_unsuspend_assessment": {
+    "legality": "LEGAL optional BT22 end effect target is own blue Digimon; cannot_suspend does not prohibit unsuspend",
+    "operation": "Consume BT22 end-effect current incarnation OPT on activation; change target suspended True to False",
+    "is_actual_unsuspend_event": true,
+    "target_singleton_no_own_inherited_text_active": true
+  },
+  "simultaneous_reactions": [
+    {
+      "source": "B:BT11-112#3",
+      "field": "main_text",
+      "timing": "Your Turn Once Per Turn own blue Digimon unsuspended",
+      "processing": "Mandatory gain1 memory",
+      "current_turn_OPT_available": true,
+      "memory_if_processed_before_spending_effects": -2
+    },
+    {
+      "source": "B:EX13-069#3",
+      "field": "main_text",
+      "timing": "Your Turn own Digimon unsuspended",
+      "processing": "Optional by suspending THIS Tamer, mandatory Draw1, then optional own Digimon -> Veedramon-name card in hand with reduction2",
+      "printed_OPT": false,
+      "self_suspension_currently_payable": true
+    },
+    {
+      "source": "B:EX13-069#4",
+      "field": "main_text",
+      "timing": "Your Turn own Digimon unsuspended",
+      "processing": "Optional by suspending THIS Tamer, mandatory Draw1, then optional own Digimon -> Veedramon-name card in hand with reduction2",
+      "printed_OPT": false,
+      "self_suspension_currently_payable": true
+    }
+  ],
+  "simultaneous_scheduling": {
+    "controller": "B",
+    "same_group_count": 3,
+    "explicit_order_choice_required": true,
+    "current_END_phase_does_not_disable_Your_Turn": true,
+    "negative_memory_does_not_close_bound_effects": true,
+    "no_sibling_activation_between_one_Rina_Draw_and_After_choice": true,
+    "later_Digivolving_and_other_derived_triggers": "Finish their relevant derived groups before earlier pending simultaneous siblings."
+  },
+  "rina_processing_contract": {
+    "before_processing": "Choose whether to pay that Rina optional self-suspension; validate that exact Tamer can suspend",
+    "decline_payment": "No Draw and no After evolution, per Q7437",
+    "pay_payment": "Suspend that Tamer, draw actual next card, expose post-draw own-hand choices, then allow None or one eligible evolution for that effect",
+    "draw_then_decline_evolution": "LEGAL: Draw is mandatory after successful self-suspension, optional evolution can separately be declined",
+    "reductions_do_not_stack": "Q7439: two Rina effects resolve separately; never combine their reductions into minus4 on one evolution",
+    "effect_has_no_OPT": "Availability for a later separate trigger depends on paying own self-suspension and source timing, not invented once-per-turn limit",
+    "newly_played_Rina_can_pay_suspension": "Being played on turn6 does not prohibit suspending a Tamer as this effect optional condition",
+    "card_name_restriction": "Evolution target card name must contain Veedramon; the base may be any own Digimon that meets a printed route",
+    "route_requirements_and_costs_still_apply": true,
+    "phase_and_memory": "Effect-authorized evolution is permitted during END_OF_TURN while memory is negative; ordinary Main-action guards must not override that permission",
+    "evolution_bonus_draw_and_new_top_When_Digivolving": "Required if a non-None legal route is selected; unknown mandatory/optional triggered behavior must precisely HALT rather than be silently omitted or automatically declined."
+  },
+  "reviewer_only_draw_evidence": {
+    "information_policy": "For source-backed judge inspection only. Never expose hidden deck order in the pilot candidate set or before actual Draw.",
+    "hand_before_Draw": [
+      "B:EX1-013#2",
+      "B:BT11-023#4",
+      "B:BT11-032#1"
+    ],
+    "initial_next_cards": [
+      "B:EX13-023#1",
+      "B:P-138#1",
+      "B:EX13-069#1",
+      "B:BT11-112#2",
+      "B:BT11-023#3",
+      "B:BT22-023#2"
+    ],
+    "first_Rina_Draw_if_no_other_draw_occurs": "B:EX13-023#1",
+    "second_Rina_Draw_if_first_does_not_evolve_and_no_other_draw_occurs": "B:P-138#1",
+    "evolution_bonus_draw_if_first_Rina_evolves_immediately": "B:P-138#1",
+    "subsequent_Rina_Draw_after_that_bonus_draw_if_no_other_draw_occurs": "B:EX13-069#1",
+    "draw_order_is_branch_dependent": true
+  },
+  "first_post_Draw_evolution_choices": {
+    "optional_None": true,
+    "route_record_count": 9,
+    "distinct_source_target_pairs": 6,
+    "routes": [
+      {
+        "source_key": "B:BT22-023#1",
+        "hand_key": "B:BT11-032#1",
+        "route_index": 0,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 4 from Lv.5",
+        "printed_cost": 4,
+        "reduction": 2,
+        "payable_cost": 2,
+        "memory_if_BT11_memory_not_yet_resolved": -5,
+        "memory_if_BT11_memory_already_resolved": -4
+      },
+      {
+        "source_key": "B:BT22-023#1",
+        "hand_key": "B:EX13-023#1",
+        "route_index": 0,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 3 from Lv.5",
+        "printed_cost": 3,
+        "reduction": 2,
+        "payable_cost": 1,
+        "memory_if_BT11_memory_not_yet_resolved": -4,
+        "memory_if_BT11_memory_already_resolved": -3
+      },
+      {
+        "source_key": "B:BT22-023#1",
+        "hand_key": "B:EX13-023#1",
+        "route_index": 1,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] Lv.5 w/[CS] trait: Cost 3",
+        "printed_cost": 3,
+        "reduction": 2,
+        "payable_cost": 1,
+        "memory_if_BT11_memory_not_yet_resolved": -4,
+        "memory_if_BT11_memory_already_resolved": -3
+      },
+      {
+        "source_key": "B:EX13-022#1",
+        "hand_key": "B:BT11-032#1",
+        "route_index": 0,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 4 from Lv.5",
+        "printed_cost": 4,
+        "reduction": 2,
+        "payable_cost": 2,
+        "memory_if_BT11_memory_not_yet_resolved": -5,
+        "memory_if_BT11_memory_already_resolved": -4
+      },
+      {
+        "source_key": "B:EX13-022#1",
+        "hand_key": "B:EX13-023#1",
+        "route_index": 0,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 3 from Lv.5",
+        "printed_cost": 3,
+        "reduction": 2,
+        "payable_cost": 1,
+        "memory_if_BT11_memory_not_yet_resolved": -4,
+        "memory_if_BT11_memory_already_resolved": -3
+      },
+      {
+        "source_key": "B:EX13-022#1",
+        "hand_key": "B:EX13-023#1",
+        "route_index": 1,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] Lv.5 w/[CS] trait: Cost 3",
+        "printed_cost": 3,
+        "reduction": 2,
+        "payable_cost": 1,
+        "memory_if_BT11_memory_not_yet_resolved": -4,
+        "memory_if_BT11_memory_already_resolved": -3
+      },
+      {
+        "source_key": "B:EX13-022#3",
+        "hand_key": "B:BT11-032#1",
+        "route_index": 0,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 4 from Lv.5",
+        "printed_cost": 4,
+        "reduction": 2,
+        "payable_cost": 2,
+        "memory_if_BT11_memory_not_yet_resolved": -5,
+        "memory_if_BT11_memory_already_resolved": -4
+      },
+      {
+        "source_key": "B:EX13-022#3",
+        "hand_key": "B:EX13-023#1",
+        "route_index": 0,
+        "basis": "PRINTED_NORMAL",
+        "printed_condition": "Blue 3 from Lv.5",
+        "printed_cost": 3,
+        "reduction": 2,
+        "payable_cost": 1,
+        "memory_if_BT11_memory_not_yet_resolved": -4,
+        "memory_if_BT11_memory_already_resolved": -3
+      },
+      {
+        "source_key": "B:EX13-022#3",
+        "hand_key": "B:EX13-023#1",
+        "route_index": 1,
+        "basis": "PRINTED_SPECIAL",
+        "printed_condition": "[Digivolve] Lv.5 w/[CS] trait: Cost 3",
+        "printed_cost": 3,
+        "reduction": 2,
+        "payable_cost": 1,
+        "memory_if_BT11_memory_not_yet_resolved": -4,
+        "memory_if_BT11_memory_already_resolved": -3
+      }
+    ],
+    "target_sources": [
+      "B:EX13-022#1",
+      "B:EX13-022#3",
+      "B:BT22-023#1"
+    ],
+    "no_other_current_route": "B EX13-019 is Lv4; hand Veemon cards do not have Veedramon in name. Next P138 is Lv4 requiring Lv3 and B currently has no battle Lv3."
+  },
+  "nontriggers": [
+    "A BT11 Rina YourTurn memory effect is inactive during B turn and A own-Digimon suspension condition is not this event.",
+    "A EX13 Rina YourTurn effect is inactive during B turn and references A own Digimon.",
+    "A BT12-029 sees no self unsuspend; B Aero unsuspension is not its self event.",
+    "Other B Aero singleton did not unsuspend; no own inherited text is active on a singleton top.",
+    "B EX1 inherited memory belongs to a different BT22 Aero stack, which did not unsuspend; its Main phase condition would also be false in END_OF_TURN.",
+    "EX13-002 blue-Tamer-play effect sees no Tamer play from an unsuspend or Tamer self-suspension.",
+    "Paying EX13 Rina self-suspension suspends a Tamer, not a Veedramon Digimon, so BT11 Rina suspension observer is not triggered by that payment.",
+    "Start of Main Phase does not occur merely because effects are processing during B end timing."
+  ],
+  "grant_and_turn_boundary": {
+    "A_owned_cannot_suspend_on_B_EX13_022_3": "Retain throughout all pending end/derived processing. It forbids later suspension of the same entity, not the selected unsuspend or ordinary evolution.",
+    "normal_evolution_preserves_entity_grants": "Current restriction survives normal evolution of B EX13-022#3 until actual expiry.",
+    "expire_only_actual_turn_end": true,
+    "if_memory_reaches_0_or_more": "Ending turn is postponed under CR6-6-4 after processing; same B turn continues and no current-turn grants expire.",
+    "if_both_Rinas_decline_and_memory_effect_resolves": "Memory -3 to -2; after all pending effects and actual B completion, A starts turn7 with2.",
+    "actual_B_turn6_boundary": "Remove A-owned restriction expiring current Bturn6; preserve B-owned Blocker/Evade and A restrictions expiring Aturn7."
+  },
+  "verification": {
+    "new_unsuspend_or_Rina_resolution_executed": false,
+    "source_files_edited": [],
+    "note": "Legality/source expectations and branch-specific printed-route calculations only; no new full gameplay outcome claimed."
+  },
+  "sources": [
+    {
+      "file": "ARTIFACTS/gameplay-continuations-2026-11-03-05/game-0000-segment.json.gz",
+      "sha256": "6cab62862136ef5d9bf9a7b43ab7af2df72051c14a02f158464fe98f77b44c6e",
+      "locator": "Exact preserved record/context bytes"
+    },
+    {
+      "file": "ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json",
+      "sha256": "089d449edab177c4f1d31a4b2ce8414650439df4ea6459080400df45d5004484",
+      "locator": "Exact preserved record/context bytes"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-023.html",
+      "sha256": "a184df26a6bd8c5ccaed325998c9b85a18c0c2d5c0778a20993fd2d6a01e67dd",
+      "locator": "#BT22-023 actual printed identity, level/color/evolution requirements, active main/inherited timing"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-022.html",
+      "sha256": "4771e6eab5218e833eebf7d1ff6cf70ad6fa51a51d556f8a404ac88f07256874",
+      "locator": "#EX13-022 actual printed identity, level/color/evolution requirements, active main/inherited timing"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-112.html",
+      "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc",
+      "locator": "#BT11-112 actual printed identity, level/color/evolution requirements, active main/inherited timing"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-069.html",
+      "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7",
+      "locator": "#EX13-069 Your Turn actual unsuspend -> by suspending this Tamer Draw1 After optional Veedramon evolution reduction2; Q7437-Q7439"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT12-029.html",
+      "sha256": "4815904431fc1ad0c54a6185aa3269fe75b844cae57da5dc68b72eca0654d505",
+      "locator": "#BT12-029 actual printed identity, level/color/evolution requirements, active main/inherited timing"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-002.html",
+      "sha256": "9d2abc2c3a5f20aebefbcb5b89818a4559748ddbde4e20f92562092b7267cd4f",
+      "locator": "#EX13-002 actual printed identity, level/color/evolution requirements, active main/inherited timing"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX1-013.html",
+      "sha256": "df126caa2ee95d5f7b86008ef828291645d15204c177801eb2f73404d0611f38",
+      "locator": "#EX1-013 actual printed identity, level/color/evolution requirements, active main/inherited timing"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-032.html",
+      "sha256": "82c0b74c599cb27d0784d93959057b2504e97c4e593af5ee0a0fce51db30d50e",
+      "locator": "#BT11-032 actual printed identity, level/color/evolution requirements, active main/inherited timing"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-023.html",
+      "sha256": "3d50f704648b02667258fceb3f3675a80141599f76ca4ad1beeb3069d8fad7aa",
+      "locator": "#EX13-023 actual printed identity, level/color/evolution requirements, active main/inherited timing"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-P-138.html",
+      "sha256": "61d9574f6132911aa54a8e75990a0c829ef424521b26b97fbaca62be9f456354",
+      "locator": "#P-138 actual printed identity, level/color/evolution requirements, active main/inherited timing"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/general_rule.pdf",
+      "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+      "locator": "v4.3: 1-3-3;1-3-9;1-4-2;4-2;6-6-2 through6-6-4;8-1-2 through8-1-3-3;15-1-2;15-1-4;15-3-1;15-4-1-2;15-4-3-4 through15-4-3-5;15-4-5;15-7-1 through15-7-5;15-14-1;15-16-8;15-16-12"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "base_commit": "90d9b09",
+  "concrete_unresolved_defects_found": [],
+  "executed_independent_validation": [
+    {
+      "command": "python -m unittest test_attack_flow.EncounteredUlforceAttackTests -v",
+      "cwd": "SOURCE",
+      "exit_code": 0,
+      "output_file": "turn10-independent-actual-tests.txt",
+      "result": "OK",
+      "seconds": 42.224,
+      "tests": 3
+    },
+    {
+      "checks": [
+        "139 successful saved commands preserve each public view/result and final state/RNG under current source",
+        "one call queues exactly inherited EX13-022 and two own BT11 Rina effects at depth0",
+        "declaration preserves memory5, zones, RNG and entity-5",
+        "opponent A has no pending effects",
+        "Counter/Block/Confirm refuse pending reactions with exact rollback",
+        "explicit private decline order Rina3\u2192Aero\u2192Rina2 allows Counter\u2192Block\u2192Confirm with A security2 untouched",
+        "true inherited unsuspend fails on actual unsupported BT11 reaction and entirely rolls back",
+        "source bytes and original gzip record unchanged"
+      ],
+      "command": "python ARTIFACTS/gameplay-continuations-2026-11-03-10/rules-reviews/turn10-private-declaration-proof.py",
+      "evidence": "turn10-private-declaration-proof.json",
+      "exit_code": 0,
+      "result": "PASS",
+      "seconds": 39.352
+    },
+    {
+      "checks": [
+        "94 archive members match94-entry manifest",
+        "139 successful saved commands exact at archived source",
+        "entire initial/final/before-HALT snapshots and RNG exact",
+        "108 unique physical cards54/54",
+        "halted140th declaration unexecuted"
+      ],
+      "command": "python ARTIFACTS/gameplay-continuations-2026-11-03-10/rules-reviews/archive09-prefix-proof.py",
+      "evidence": "archive09-prefix-proof.json",
+      "executor": "archive09_prefix independent subagent",
+      "exit_code": 0,
+      "result": "PASS",
+      "seconds": 20.959
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "clean"
+    }
+  ],
+  "execution_id": "15a4097494a855a574ab66abb63a8032dbf53cb521812405f416e47ffbcdc54b",
+  "final_evaluation_credit": 0,
+  "head_when_written": "90d9b09d5d0a73d9aa77e0fbf2d640e068c76f55",
+  "judge_certification_credit": 0,
+  "limits": [
+    "No new actual game trace/commands produced by this reviewer; private branches are targeted scenarios only",
+    "No Security confirmation was executed in the independent private proof",
+    "Full suite not independently rerun by this reviewer; worker/root owns broader validation status",
+    "Only selected declaration increment reviewed; future unsupported BT11 true-unsuspend effects still require gameplay-first implementation when selected",
+    "Official source hashes/reasoning in turn10-actual-attack-rules-review.json"
+  ],
+  "new_actual_gameplay_commands": 0,
+  "review_findings": [
+    {
+      "area": "attack_flow._declare",
+      "conclusion": "The suspension is still inside the control-command transaction. All registered suspension reactions are collected after the same false\u2192true change and batched once with actual When Attacking effects. Current BT11 top contributes none. Existing source/entity, readiness, target and attack-window checks remain."
+    },
+    {
+      "area": "battlefield_scope._attack_source_dependencies",
+      "conclusion": "Composition and singleton whitelists were removed for actual participant fields. Pinned main versus inherited fields remain distinguished; dormant On Play/When Digivolving text does not fire. Unsupported combat text/keywords and unreviewed special condition fields remain explicit guards."
+    },
+    {
+      "area": "battlefield_scope.assert_basic_board_scope",
+      "conclusion": "Before declaration mutation, shared orientation preflight checks actual suspension observers and registered handlers. Unsupported true BT11 unsuspend remains a separate guarded event."
+    },
+    {
+      "area": "keyword declaration guard",
+      "conclusion": "Worker code audit identified a Raid regression in the initial prepared patch; current guard rejects unsupported participant plain keyword/text at DECLARE and CONFIRM. The final diff retains that correction and a concrete regression. No universal keyword support is claimed."
+    },
+    {
+      "area": "tests",
+      "conclusion": "Actual saved-state tests check the three source identities/depth0, one batch, no opponent reactions, memory/zones/RNG/entity preservation, pending Counter refusal, explicit decline ordering, and transactional later-unsuspend HALT. Alternate synthetic stack test confirms known-field composition and retained Jamming guard."
+    }
+  ],
+  "reviewed_diff_sha256": "649c8ca758d4f918c2e4a50d6c59de7830dcbb99db083ed013dd895d9b70974e",
+  "reviewer": "turn10_attack_judge",
+  "schema": "actual-encounter-implementation-review-v1",
+  "scope": "Attack declaration integration and current field-based combat guard changes, with saved actual Game0000 turn10 private checks. No full-game certification.",
+  "source_edits": 0,
+  "source_sha256": {
+    "SOURCE/attack_flow.py": "be9adb19ed1465ff32b282c0dead91bd93258ecb6ea65b8343c140a7dc29dd6a",
+    "SOURCE/battlefield_scope.py": "4557deea84a28683b9f04c497a1b9c7d8a5df96a77a5e2b81826fd80b79c8f7e",
+    "SOURCE/test_attack_flow.py": "e31533d33373845cc7ed0ed1d73b091d77b45dd2e8ebc8438261bd2ea4580dbf",
+    "SOURCE/test_battlefield_scope.py": "fc175d270cbcb39b57173c7bda3372922bc6252f33754e118b3438f4fdfe0a29"
+  },
+  "status": "NO_CONCRETE_DEFECT_FOUND_IN_SELECTED_DECLARATION_INCREMENT",
+  "strategy_credit": 0
+}

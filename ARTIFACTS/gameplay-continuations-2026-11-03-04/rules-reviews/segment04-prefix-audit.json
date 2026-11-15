@@ -1,0 +1,436 @@
+{
+  "schema": "encountered-prefix-rules-audit-v1",
+  "date": "2026-11-03",
+  "scope": "19 newly resolved commands58 through76; command77 is unresolved and excluded",
+  "status": "NO_CONCRETE_DEFECT_FOUND_IN_REVIEWED_PREFIX",
+  "certification": "NONE_SOURCE_BACKED_PREFIX_REVIEW_AND_SOFTWARE_VERIFICATION_ONLY",
+  "full_match_credit": 0,
+  "accepted_fact_finding_credit": 0,
+  "final_evaluation_credit": 0,
+  "seed": 12017913134550805276,
+  "first": "A",
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "findings": [],
+  "rules_assessment": [
+    {
+      "commands": [
+        58,
+        59,
+        60,
+        61,
+        62
+      ],
+      "assessment": "First singleton Aero attack pays suspension, queues own fresh When Attacking OPT, freely plays eligible EX13 Rina from own hand; two Aero restrictions and exposed egg observer form one derived simultaneous batch. Egg processing explicitly declined; both restrictions last until A turn7 ends.",
+      "rules": [
+        "CR4-23-1",
+        "CR11-2-8-1",
+        "CR11-1-4",
+        "CR15-4-3",
+        "CR15-7",
+        "CR15-14-1",
+        "EX13-022 Q7264"
+      ]
+    },
+    {
+      "commands": [
+        63,
+        64,
+        68,
+        69,
+        75,
+        76
+      ],
+      "assessment": "No A Counter card or available A Blocker was omitted; all three explicit Counter/no-block sequences occur only after pending processing completes.",
+      "rules": [
+        "CR11-1-4",
+        "CR11-3-1",
+        "CR11-4-1",
+        "CR12-1-4"
+      ]
+    },
+    {
+      "commands": [
+        65,
+        66
+      ],
+      "assessment": "7000DP Aero survives checked P138 at5000DP. P138 ordinary On Play/When Digivolving and inherited text are inactive in security; checked card goes to A trash without deletion and A security5 becomes4.",
+      "rules": [
+        "CR13-1-6",
+        "CR13-1-8-4",
+        "CR14-2-1",
+        "CR14-2-3",
+        "CR15-3-1"
+      ]
+    },
+    {
+      "commands": [
+        67,
+        68,
+        69,
+        70,
+        71
+      ],
+      "assessment": "1000DP singleton BT11 Veemon has no inherited Tamer-play ability while top. It loses to checked7000DP Aero and is deleted; checked Aero goes to A trash without activating ordinary battle-area abilities. A security4 becomes3.",
+      "rules": [
+        "CR13",
+        "CR14-2-1",
+        "CR14-2-2",
+        "CR14-2-3",
+        "CR15-3-1"
+      ]
+    },
+    {
+      "commands": [
+        72,
+        73,
+        74
+      ],
+      "assessment": "Other Aero copy has independent fresh free-Tamer OPT despite its separate restriction effect already used. Free BT11 Rina enters after attacker suspension, so cannot retrotrigger it. Her mandatory On Play grants attacking Aero Blocker/Evade until A turn7 ends. Both Aero restriction OPTs and egg OPT are already used and do not trigger again; Options have no matching timing and breeding sources cannot trigger.",
+      "rules": [
+        "CR3-4-7-4",
+        "CR11-1-3",
+        "CR15-3-1",
+        "CR15-4-2",
+        "CR15-14-1-2",
+        "CR15-14-1-3",
+        "CR15-14-1-4"
+      ]
+    }
+  ],
+  "verification": {
+    "command": "python work/prefix_audit_segment04.py",
+    "archived_source_files_verified": 86,
+    "successful_saved_commands_reapplied": 77,
+    "new_resolved_commands_reviewed": 19,
+    "saved_public_views_and_results_equal": true,
+    "legal_exposed_pending_choices_checked": true,
+    "counter_and_blocker_availability_checked": true,
+    "public_view_own_hand_and_hidden_opponent_hand_security_boundaries_checked": true,
+    "runtime_verify_after_every_command": true,
+    "independent_physical_inventory": "108 unique original physical cards after every command",
+    "unchanged_rng_for_19_new_commands": true,
+    "memory3_unchanged_for_19_new_commands": true,
+    "both_deck_orders_unchanged_for_19_new_commands": true,
+    "before_halt_state_and_rng_equal_saved": true,
+    "before_halt_physical_sha256": "72ed8b90e177167dd3955e73d735ab5d692c246b1e8dd2dd786c56df9536b305",
+    "source_code_edited": false,
+    "saved_gameplay_records_edited": false
+  },
+  "commands": [
+    {
+      "command_index_zero_based": 58,
+      "command": "DECLARE_ATTACK",
+      "seat": "B",
+      "turn": 6,
+      "memory_before_and_after": 3,
+      "saved_public_view_and_result_equal": true,
+      "rng_unchanged": true,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS"
+    },
+    {
+      "command_index_zero_based": 59,
+      "command": "RESOLVE_PENDING",
+      "seat": "B",
+      "turn": 6,
+      "memory_before_and_after": 3,
+      "saved_public_view_and_result_equal": true,
+      "rng_unchanged": true,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "effect_source": "B:EX13-022#1",
+      "effect_id": "EX13-022.play_tamer",
+      "choice": "B:EX13-069#3",
+      "choice_in_exposed_legal_choices": true,
+      "free_play_from_own_hand_verified": true,
+      "derived_effects": [
+        "EX13-022.tamer_play_restriction",
+        "EX13-022.tamer_play_restriction",
+        "EX13-002.tamer_play_unsuspend"
+      ]
+    },
+    {
+      "command_index_zero_based": 60,
+      "command": "RESOLVE_PENDING",
+      "seat": "B",
+      "turn": 6,
+      "memory_before_and_after": 3,
+      "saved_public_view_and_result_equal": true,
+      "rng_unchanged": true,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "effect_source": "B:EX13-002#1",
+      "effect_id": "EX13-002.tamer_play_unsuspend",
+      "choice": false,
+      "choice_in_exposed_legal_choices": true
+    },
+    {
+      "command_index_zero_based": 61,
+      "command": "RESOLVE_PENDING",
+      "seat": "B",
+      "turn": 6,
+      "memory_before_and_after": 3,
+      "saved_public_view_and_result_equal": true,
+      "rng_unchanged": true,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "effect_source": "B:EX13-022#1",
+      "effect_id": "EX13-022.tamer_play_restriction",
+      "choice": "A:EX13-022#1",
+      "choice_in_exposed_legal_choices": true,
+      "grant_expiry": "END_OF_A_TURN7"
+    },
+    {
+      "command_index_zero_based": 62,
+      "command": "RESOLVE_PENDING",
+      "seat": "B",
+      "turn": 6,
+      "memory_before_and_after": 3,
+      "saved_public_view_and_result_equal": true,
+      "rng_unchanged": true,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "effect_source": "B:EX13-022#3",
+      "effect_id": "EX13-022.tamer_play_restriction",
+      "choice": "A:BT12-029#2",
+      "choice_in_exposed_legal_choices": true,
+      "grant_expiry": "END_OF_A_TURN7"
+    },
+    {
+      "command_index_zero_based": 63,
+      "command": "COUNTER_CHOICE",
+      "seat": "A",
+      "turn": 6,
+      "memory_before_and_after": 3,
+      "saved_public_view_and_result_equal": true,
+      "rng_unchanged": true,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS"
+    },
+    {
+      "command_index_zero_based": 64,
+      "command": "BLOCK_CHOICE",
+      "seat": "A",
+      "turn": 6,
+      "memory_before_and_after": 3,
+      "saved_public_view_and_result_equal": true,
+      "rng_unchanged": true,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS"
+    },
+    {
+      "command_index_zero_based": 65,
+      "command": "CONFIRM_ATTACK",
+      "seat": "B",
+      "turn": 6,
+      "memory_before_and_after": 3,
+      "saved_public_view_and_result_equal": true,
+      "rng_unchanged": true,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "security_battle": {
+        "checked_card": "A:P-138#4",
+        "attacker_dp": 7000,
+        "security_dp": 5000,
+        "attacker_deleted": false,
+        "security_card_not_deleted": true,
+        "security_after": 4
+      }
+    },
+    {
+      "command_index_zero_based": 66,
+      "command": "END_ATTACK",
+      "seat": "B",
+      "turn": 6,
+      "memory_before_and_after": 3,
+      "saved_public_view_and_result_equal": true,
+      "rng_unchanged": true,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS"
+    },
+    {
+      "command_index_zero_based": 67,
+      "command": "DECLARE_ATTACK",
+      "seat": "B",
+      "turn": 6,
+      "memory_before_and_after": 3,
+      "saved_public_view_and_result_equal": true,
+      "rng_unchanged": true,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS"
+    },
+    {
+      "command_index_zero_based": 68,
+      "command": "COUNTER_CHOICE",
+      "seat": "A",
+      "turn": 6,
+      "memory_before_and_after": 3,
+      "saved_public_view_and_result_equal": true,
+      "rng_unchanged": true,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS"
+    },
+    {
+      "command_index_zero_based": 69,
+      "command": "BLOCK_CHOICE",
+      "seat": "A",
+      "turn": 6,
+      "memory_before_and_after": 3,
+      "saved_public_view_and_result_equal": true,
+      "rng_unchanged": true,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS"
+    },
+    {
+      "command_index_zero_based": 70,
+      "command": "CONFIRM_ATTACK",
+      "seat": "B",
+      "turn": 6,
+      "memory_before_and_after": 3,
+      "saved_public_view_and_result_equal": true,
+      "rng_unchanged": true,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "security_battle": {
+        "checked_card": "A:EX13-022#4",
+        "attacker_dp": 1000,
+        "security_dp": 7000,
+        "attacker_deleted": true,
+        "security_card_not_deleted": true,
+        "security_after": 3
+      }
+    },
+    {
+      "command_index_zero_based": 71,
+      "command": "END_ATTACK",
+      "seat": "B",
+      "turn": 6,
+      "memory_before_and_after": 3,
+      "saved_public_view_and_result_equal": true,
+      "rng_unchanged": true,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS"
+    },
+    {
+      "command_index_zero_based": 72,
+      "command": "DECLARE_ATTACK",
+      "seat": "B",
+      "turn": 6,
+      "memory_before_and_after": 3,
+      "saved_public_view_and_result_equal": true,
+      "rng_unchanged": true,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS"
+    },
+    {
+      "command_index_zero_based": 73,
+      "command": "RESOLVE_PENDING",
+      "seat": "B",
+      "turn": 6,
+      "memory_before_and_after": 3,
+      "saved_public_view_and_result_equal": true,
+      "rng_unchanged": true,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "effect_source": "B:EX13-022#3",
+      "effect_id": "EX13-022.play_tamer",
+      "choice": "B:BT11-112#3",
+      "choice_in_exposed_legal_choices": true,
+      "free_play_from_own_hand_verified": true,
+      "derived_effects": [
+        "BT11-112.on_play_grant"
+      ],
+      "no_retroactive_rina_suspension_trigger": true,
+      "previous_observer_opt_uses_block_repeat_triggers": true
+    },
+    {
+      "command_index_zero_based": 74,
+      "command": "RESOLVE_PENDING",
+      "seat": "B",
+      "turn": 6,
+      "memory_before_and_after": 3,
+      "saved_public_view_and_result_equal": true,
+      "rng_unchanged": true,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS",
+      "effect_source": "B:BT11-112#3",
+      "effect_id": "BT11-112.on_play_grant",
+      "choice": "B:EX13-022#3",
+      "choice_in_exposed_legal_choices": true,
+      "grant_expiry": "END_OF_A_TURN7"
+    },
+    {
+      "command_index_zero_based": 75,
+      "command": "COUNTER_CHOICE",
+      "seat": "A",
+      "turn": 6,
+      "memory_before_and_after": 3,
+      "saved_public_view_and_result_equal": true,
+      "rng_unchanged": true,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS"
+    },
+    {
+      "command_index_zero_based": 76,
+      "command": "BLOCK_CHOICE",
+      "seat": "A",
+      "turn": 6,
+      "memory_before_and_after": 3,
+      "saved_public_view_and_result_equal": true,
+      "rng_unchanged": true,
+      "physical_inventory": "108_UNIQUE_ORIGINAL_PHYSICAL_CARDS"
+    }
+  ],
+  "source_evidence": [
+    {
+      "file": "ARTIFACTS/gameplay-continuations-2026-11-03-04/game-0000-segment.json.gz",
+      "sha256": "bf73be75a4b3404759c6b92e6745a1e26b0a36192009a43622e1f742fba33629"
+    },
+    {
+      "file": "ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json",
+      "sha256": "089d449edab177c4f1d31a4b2ce8414650439df4ea6459080400df45d5004484"
+    },
+    {
+      "file": "ARTIFACTS/gameplay-continuations-2026-11-03-04/source-checkpoint.tar.gz",
+      "sha256": "b064edb83fa4ef756327ae91159271e6746506b7e60e29e1c1208e2b20ebce3e"
+    },
+    {
+      "file": "ARTIFACTS/gameplay-continuations-2026-11-03-04/source-manifest.json",
+      "sha256": "d23e705d3b3e3ca0f9354886fc9456b55448616fd509a83a2280ea077bdbb6a9"
+    },
+    {
+      "file": "work/prefix_audit_segment04.py",
+      "sha256": "83fd0876236a4c7b9739f659941aa877b5a97bcaaa6e39cf98aaa30e11b0eccf"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/general_rule.pdf",
+      "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-P-138.html",
+      "sha256": "61d9574f6132911aa54a8e75990a0c829ef424521b26b97fbaca62be9f456354"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-022.html",
+      "sha256": "4771e6eab5218e833eebf7d1ff6cf70ad6fa51a51d556f8a404ac88f07256874"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-023.html",
+      "sha256": "8a0641a7b790f34271ee55cfac8b183f29ce2f546bfd62b704069952e5001e23"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-112.html",
+      "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-069.html",
+      "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-002.html",
+      "sha256": "9d2abc2c3a5f20aebefbcb5b89818a4559748ddbde4e20f92562092b7267cd4f"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX1-013.html",
+      "sha256": "df126caa2ee95d5f7b86008ef828291645d15204c177801eb2f73404d0611f38"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-022.html",
+      "sha256": "b2bc45d6d74a4c8a9569094c25bcc7ffe10e179b4891341dd2187298a0346c85"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-023.html",
+      "sha256": "a184df26a6bd8c5ccaed325998c9b85a18c0c2d5c0778a20993fd2d6a01e67dd"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-LM-028.html",
+      "sha256": "add30c8ec48a6972ae26bc56af14b6faaab06af29d1b032151662b8e3723c0ee"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-LM-034.html",
+      "sha256": "2917e45cc7c729ffe78ae583a7c4f4b12778a51e9c8d68b25dd532f5b96c10f1"
+    }
+  ]
+}

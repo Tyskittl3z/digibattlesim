@@ -1,0 +1,38 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "active": "B",
+  "commands": 152,
+  "date": "2026-11-04",
+  "execution_id": "64df647ab5651bf7a1438fa70684c6e7af5d08f875430344d428098a95c1cf42",
+  "final_evaluation_credit": 0,
+  "first": "A",
+  "historical_policies": {
+    "A": {
+      "pilot_id": "ff96dbb6d6237bbc6a6b4feff52b63c648fb14f3aaf21d5b9584aa450993d0d4",
+      "policy": "fresh-untrained-uniform-random-reference-v1"
+    },
+    "B": {
+      "pilot_id": "d568e7eeaaf8cb69a31ff028e47ad17db86bcd030d6852697d48789d0113a7f2",
+      "policy": "fresh-untrained-uniform-random-reference-v1"
+    }
+  },
+  "historical_policies_are_user_bots": false,
+  "memory": -1,
+  "new_policy_decisions": 0,
+  "newly_resolved_commands": 1,
+  "phase": "END_OF_TURN",
+  "policy_invocations": 0,
+  "previous_record": "ARTIFACTS/gameplay-continuations-2026-11-03-11/game-0000-segment.json.gz",
+  "previous_record_sha256": "8d596ab2b7b665453a4e87b9fd2775cb7ce27080603be2349a4f7602b53fec9a",
+  "ratings_assigned": false,
+  "record_sha256": "9c91970824f016f2f33e6f48311c7fff0f399f91dc50c24fcdc1a9be78d54044",
+  "schema": "game0000-selected-return-checkpoint-v1",
+  "scoring_criteria": "NOT_DEFINED_OR_BOUND_FOR_THIS_GAME",
+  "seed": 12017913134550805276,
+  "status": "PAUSED_AFTER_SAVED_ACTION",
+  "stop_reason": "USER_REQUESTED_PAUSE_AFTER_SAVED_ACTION_BEFORE_NEW_PLAYER_DECISION",
+  "successful_commands": 152,
+  "turn": 10,
+  "user_bot_evidence_credit": 0,
+  "winner": null
+}

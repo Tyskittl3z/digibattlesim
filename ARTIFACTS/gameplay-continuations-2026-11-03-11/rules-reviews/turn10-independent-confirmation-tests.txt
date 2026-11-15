@@ -1,0 +1,11 @@
+Command: python -m unittest test_attack_flow.EncounteredUlforceConfirmationTests test_battlefield_scope.BattlefieldScopeTests.test_persistent_fields_distinguish_self_adjectives_from_global_combat_targets -v
+Cwd: SOURCE
+Exit code: 0
+
+test_actual_security_battle_ignores_unrelated_self_protection_and_moves_only_checked_card (test_attack_flow.EncounteredUlforceConfirmationTests.test_actual_security_battle_ignores_unrelated_self_protection_and_moves_only_checked_card) ... ok
+test_persistent_fields_distinguish_self_adjectives_from_global_combat_targets (test_battlefield_scope.BattlefieldScopeTests.test_persistent_fields_distinguish_self_adjectives_from_global_combat_targets) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 34.387s
+
+OK

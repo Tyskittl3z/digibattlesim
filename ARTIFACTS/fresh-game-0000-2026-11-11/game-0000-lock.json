@@ -1,0 +1,587 @@
+{
+  "authorized_games": [
+    0
+  ],
+  "campaign_id": "ULFORCE_MIRROR_FACT_FINDING_2026_11_11_V1",
+  "cohort_running": false,
+  "context_file": "ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json",
+  "context_file_sha256": "089d449edab177c4f1d31a4b2ce8414650439df4ea6459080400df45d5004484",
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "criteria": {
+    "binding": "LOADED_ARTIFACTS_AT_MODULE_IMPORT",
+    "criteria": {
+      "breeding": "Each physical card in breeding contributes 0.5; breeding cards are excluded from battle body/source/DP components.",
+      "definitions": {
+        "GREEN": "Positive observed net impact above the neutral threshold under these declared weights.",
+        "RED": "Negative observed net impact below the neutral threshold under these declared weights.",
+        "UNRATED": "The action did not resolve successfully. No reward is assigned.",
+        "YELLOW": "Near-zero observed net impact within the neutral threshold under these declared weights."
+      },
+      "disabled": "Cannot-suspend, or suspended and cannot-unsuspend. Threat units are 1 + 0.5 per source + 0.25 per level + 0.1 per 1000 known DP; this is a declared heuristic, not combat legality.",
+      "efficiency": "Positive net non-memory board benefit divided by evidenced paid memory. Explicit zero-cost development is FREE with no division. Missing payment evidence remains UNVERIFIED. This is not a globally-cheapest claim.",
+      "known_dp": "Printed DP plus active typed positive DP grants only. No inference of unimplemented continuous card text.",
+      "limitations": "Immediate command-boundary measurements do not establish causation, optimal play, calibrated win probabilities or approved roadmap lanes. Later effects can change a play's overall result.",
+      "memory_payment": "Use canonical PAY_* result steps. Traverse a steps tree instead of duplicated sibling result aliases; without steps prefer result, then named evolution/play subresults. A node's direct cost summarizes its canonical subtree and is a fallback only when no nested payment evidence exists. Equal-cost distinct PAY steps remain distinct. Independent payments must appear as separate canonical sibling steps or subresults. If no explicit evidence exists, a same-active actor-relative gauge decrease is an estimate only for explicit spend commands.",
+      "memory_resource_residual": "When the active player is unchanged, actor-relative gauge change plus explicit/estimated paid cost records observed other resource gains or losses. It is separate from actual paid cost. Turn flips create neither payment nor residual. This credits observed capped gains/refunds without using nominal printed gains.",
+      "neutral_absolute_threshold": 0.25,
+      "objective": "Observed public board impact, memory efficiency and tempo from the scoring player's perspective.",
+      "position_components": "Each position component is own amount minus opponent amount. Delta is after minus before; contribution is delta times its declared weight.",
+      "procedural_commands": [
+        "BEGIN_PREPARATION",
+        "REDRAW_CHOICE",
+        "ADVANCE_PHASE",
+        "FINISH_TURN",
+        "END_ATTACK",
+        "SETTLE_PENDING"
+      ],
+      "procedural_policy": "Preserve the actual signed observed components, reward and color at every successfully resolved boundary. Mark procedural commands as learning_eligible=false and decision_type=PROCEDURAL: automatic deals/draws or phase-boundary effects are observations, not learned strategic choices. Learning also excludes forced singleton choices, as enforced by the decision recorder and learner.",
+      "ready": "An unsuspended Digimon or Tamer that is not prevented from suspending. Options receive no readiness bonus.",
+      "schema": "observed-board-impact-criteria-v1",
+      "security_checks": "Cumulative completed checks supplied by Bot C. Missing history is unknown and is never reconstructed from remaining security or attack declarations.",
+      "status": "DEFINED_HEURISTIC_NOT_APPROVED_STRATEGY",
+      "tempo": "Show per-player cards in play, source depth, largest stack and completed check totals, plus per-axis leader. An overall leader requires dominance across all known axes; conflicting leads are CONTESTED and missing check history is UNKNOWN. No weights or win probabilities are implied by this dominance summary.",
+      "terminal_outcomes": "Recorded separately. A winner flag alone does not make an interaction green and is not included in this board reward.",
+      "version": 1,
+      "weights": {
+        "battle_units": 2.0,
+        "breeding_cards": 0.5,
+        "disabled_threat": -0.5,
+        "hand_cards": 0.5,
+        "known_dp_thousands": 0.1,
+        "levels": 0.25,
+        "memory_paid": -0.5,
+        "memory_resource_residual": 0.5,
+        "ready_blockers": 1.0,
+        "ready_cards": 0.5,
+        "security_checks": 2.0,
+        "security_remaining": 2.0,
+        "sources": 0.5
+      }
+    },
+    "criterion_sha256": "84de51952609311beadcbec58f9c8252e1aea2c9eae96689eaf5aad4711fcdaf",
+    "file": "RULES/learning-2026-11-10/INTERACTION_CRITERIA.json",
+    "file_sha256": "90e68db01b5644693f5403eb5d7d5fd6a30059e0b01f465c9cb2729df26a5ba4",
+    "probability_claim": false,
+    "scorer_source_sha256": "c9e09123fc1666d36624a7e41e4aab7ac09c671e354b54aa77d2517a5db2992c",
+    "strategic_approval": "NONE"
+  },
+  "date": "2026-11-11",
+  "final_evaluation_running": false,
+  "game": {
+    "first": "A",
+    "index": 0,
+    "seed": 4851742998504393566
+  },
+  "game_index": 0,
+  "historical_mixed_game_raw_sha256": "5e9d23e2c52b9f98a86d020f3181e261ba5722fb39dd78a7cc0961385bac6e61",
+  "learning_state_before": {
+    "configuration": {
+      "epsilon": 0.1,
+      "future_return": null,
+      "keys": "WHITELISTED_OWN_PUBLIC_FEATURES_WITHOUT_PHYSICAL_COPY_OR_TRANSIENT_IDS",
+      "minimum_independent_games": 3,
+      "outcome_association": "SEPARATE_WINS_LOSSES",
+      "reward": "PER_GAME_MEAN_IMMEDIATE_OBSERVED_BOARD_REWARD"
+    },
+    "context_id": null,
+    "criterion_sha256": "84de51952609311beadcbec58f9c8252e1aea2c9eae96689eaf5aad4711fcdaf",
+    "games": {},
+    "state_id": "66db6c6c425dc5e897ce2e6d360805a499b9b60937ab697c855e9a4c6f5cb034",
+    "tables": {
+      "A": {},
+      "B": {}
+    },
+    "version": "fresh-observed-board-learning-v1"
+  },
+  "learning_state_id": "66db6c6c425dc5e897ce2e6d360805a499b9b60937ab697c855e9a4c6f5cb034",
+  "pilots": {
+    "A": {
+      "bot_id": "3f10b8ca65754efbc2e4565f3d4c0a34515b3ad647a32b8a6b2bbe86ae739a8f",
+      "configuration": {
+        "epsilon": 0.1,
+        "future_return": null,
+        "keys": "WHITELISTED_OWN_PUBLIC_FEATURES_WITHOUT_PHYSICAL_COPY_OR_TRANSIENT_IDS",
+        "minimum_independent_games": 3,
+        "outcome_association": "SEPARATE_WINS_LOSSES",
+        "reward": "PER_GAME_MEAN_IMMEDIATE_OBSERVED_BOARD_REWARD"
+      },
+      "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+      "criterion_sha256": "84de51952609311beadcbec58f9c8252e1aea2c9eae96689eaf5aad4711fcdaf",
+      "information_policy": "PUBLIC_VIEW_OWN_HAND_AND_EXPLICIT_REVEALS_ONLY",
+      "input_state_id": "66db6c6c425dc5e897ce2e6d360805a499b9b60937ab697c855e9a4c6f5cb034",
+      "name": "Bot A",
+      "policy_seed": 9220504744081500928,
+      "policy_status": "EXPERIMENTAL_OBSERVED_BOARD_LEARNING",
+      "prior": {
+        "bot_id": "3051db093e356d30cb042bb3bca1d948a5f3e187cadee9dbdea3f8b572cbaf87",
+        "configuration": {
+          "bottom_order": "PHYSICAL_KEY_ASCENDING",
+          "name": "Bot A",
+          "outcome_ratings": "NONE",
+          "planning_depth": 0,
+          "priorities": [
+            "zero-security player attack",
+            "security pressure",
+            "favorable printed-DP battle",
+            "development"
+          ],
+          "roadmaps": [],
+          "style": "AGGRESSIVE",
+          "tie_break": "CANONICAL_CANDIDATE_ASCENDING",
+          "training_data": [],
+          "unsuspend": [
+            "suspended Digimon",
+            "suspended Tamer"
+          ]
+        },
+        "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+        "information_policy": "PUBLIC_VIEW_OWN_HAND_AND_EXPLICIT_REVEALS_ONLY",
+        "name": "Bot A",
+        "policy_status": "FRESH_UNTRAINED_HEURISTIC_PREFERENCES",
+        "roadmap": null,
+        "seat": "A",
+        "source_sha256": "fab7f1900b8d07f02fe7030c776581a5810d74f62bea117dc129b5d83df26b1b",
+        "style": "AGGRESSIVE",
+        "training_data": [],
+        "version": "fresh-named-public-preferences-v1"
+      },
+      "probability_claim": false,
+      "seat": "A",
+      "source_sha256": "1f61d2e7e9e552926cdd7fc188bad2b883729aed135bacb5867ab27ddca109a5",
+      "strategic_approval": "NONE",
+      "style": "AGGRESSIVE",
+      "version": "fresh-observed-board-learning-v1"
+    },
+    "B": {
+      "bot_id": "9e12d6470fd4bc6e0e1f2889f5e83a203aa9e5225e99ed5b670a6e760b7cd8a0",
+      "configuration": {
+        "epsilon": 0.1,
+        "future_return": null,
+        "keys": "WHITELISTED_OWN_PUBLIC_FEATURES_WITHOUT_PHYSICAL_COPY_OR_TRANSIENT_IDS",
+        "minimum_independent_games": 3,
+        "outcome_association": "SEPARATE_WINS_LOSSES",
+        "reward": "PER_GAME_MEAN_IMMEDIATE_OBSERVED_BOARD_REWARD"
+      },
+      "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+      "criterion_sha256": "84de51952609311beadcbec58f9c8252e1aea2c9eae96689eaf5aad4711fcdaf",
+      "information_policy": "PUBLIC_VIEW_OWN_HAND_AND_EXPLICIT_REVEALS_ONLY",
+      "input_state_id": "66db6c6c425dc5e897ce2e6d360805a499b9b60937ab697c855e9a4c6f5cb034",
+      "name": "Bot B",
+      "policy_seed": 7049724939986253703,
+      "policy_status": "EXPERIMENTAL_OBSERVED_BOARD_LEARNING",
+      "prior": {
+        "bot_id": "6fe75b159762009ec2fead167b1f7e2dda7125e3d9beeb83d37ef0948d46bdcd",
+        "configuration": {
+          "bottom_order": "PHYSICAL_KEY_ASCENDING",
+          "name": "Bot B",
+          "outcome_ratings": "NONE",
+          "planning_depth": 0,
+          "priorities": [
+            "zero-security player attack",
+            "favorable printed-DP battle",
+            "development and ready Blockers",
+            "security pressure"
+          ],
+          "roadmaps": [],
+          "style": "DEFENSIVE",
+          "tie_break": "CANONICAL_CANDIDATE_ASCENDING",
+          "training_data": [],
+          "unsuspend": [
+            "suspended Blocker",
+            "suspended All Turns Tamer",
+            "suspended Digimon",
+            "suspended other Tamer"
+          ]
+        },
+        "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+        "information_policy": "PUBLIC_VIEW_OWN_HAND_AND_EXPLICIT_REVEALS_ONLY",
+        "name": "Bot B",
+        "policy_status": "FRESH_UNTRAINED_HEURISTIC_PREFERENCES",
+        "roadmap": null,
+        "seat": "B",
+        "source_sha256": "fab7f1900b8d07f02fe7030c776581a5810d74f62bea117dc129b5d83df26b1b",
+        "style": "DEFENSIVE",
+        "training_data": [],
+        "version": "fresh-named-public-preferences-v1"
+      },
+      "probability_claim": false,
+      "seat": "B",
+      "source_sha256": "1f61d2e7e9e552926cdd7fc188bad2b883729aed135bacb5867ab27ddca109a5",
+      "strategic_approval": "NONE",
+      "style": "DEFENSIVE",
+      "version": "fresh-observed-board-learning-v1"
+    }
+  },
+  "production_learning_updates_before_game": 0,
+  "schedule": {
+    "campaign_id": "ULFORCE_MIRROR_FACT_FINDING_2026_11_11_V1",
+    "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+    "count": 60,
+    "games": [
+      {
+        "first": "A",
+        "index": 0,
+        "seed": 4851742998504393566
+      },
+      {
+        "first": "B",
+        "index": 1,
+        "seed": 4331348820189008048
+      },
+      {
+        "first": "A",
+        "index": 2,
+        "seed": 6141209402564835413
+      },
+      {
+        "first": "B",
+        "index": 3,
+        "seed": 12280921650984587234
+      },
+      {
+        "first": "A",
+        "index": 4,
+        "seed": 4190105074021731860
+      },
+      {
+        "first": "B",
+        "index": 5,
+        "seed": 11698581636430464639
+      },
+      {
+        "first": "A",
+        "index": 6,
+        "seed": 3782896538655634788
+      },
+      {
+        "first": "B",
+        "index": 7,
+        "seed": 5711523175583742167
+      },
+      {
+        "first": "A",
+        "index": 8,
+        "seed": 16800548605191004295
+      },
+      {
+        "first": "B",
+        "index": 9,
+        "seed": 17309462193351784050
+      },
+      {
+        "first": "A",
+        "index": 10,
+        "seed": 12153033987204347447
+      },
+      {
+        "first": "B",
+        "index": 11,
+        "seed": 5851394806360889948
+      },
+      {
+        "first": "A",
+        "index": 12,
+        "seed": 2101950198887642284
+      },
+      {
+        "first": "B",
+        "index": 13,
+        "seed": 16981006676455617676
+      },
+      {
+        "first": "A",
+        "index": 14,
+        "seed": 18400414162281782985
+      },
+      {
+        "first": "B",
+        "index": 15,
+        "seed": 10571307730640987862
+      },
+      {
+        "first": "A",
+        "index": 16,
+        "seed": 17013134093388047074
+      },
+      {
+        "first": "B",
+        "index": 17,
+        "seed": 104838844531001091
+      },
+      {
+        "first": "A",
+        "index": 18,
+        "seed": 14011128032084789953
+      },
+      {
+        "first": "B",
+        "index": 19,
+        "seed": 4531923671338437447
+      },
+      {
+        "first": "A",
+        "index": 20,
+        "seed": 17600249931390198423
+      },
+      {
+        "first": "B",
+        "index": 21,
+        "seed": 15647513270363614215
+      },
+      {
+        "first": "A",
+        "index": 22,
+        "seed": 2751608414997627486
+      },
+      {
+        "first": "B",
+        "index": 23,
+        "seed": 10420302291037810674
+      },
+      {
+        "first": "A",
+        "index": 24,
+        "seed": 1175951372416534671
+      },
+      {
+        "first": "B",
+        "index": 25,
+        "seed": 7973094963158883888
+      },
+      {
+        "first": "A",
+        "index": 26,
+        "seed": 6767385135482324298
+      },
+      {
+        "first": "B",
+        "index": 27,
+        "seed": 13770085322408169249
+      },
+      {
+        "first": "A",
+        "index": 28,
+        "seed": 14848822263446686493
+      },
+      {
+        "first": "B",
+        "index": 29,
+        "seed": 4386650330264855434
+      },
+      {
+        "first": "A",
+        "index": 30,
+        "seed": 13227026682131638372
+      },
+      {
+        "first": "B",
+        "index": 31,
+        "seed": 4874638604255616621
+      },
+      {
+        "first": "A",
+        "index": 32,
+        "seed": 15637870255421039232
+      },
+      {
+        "first": "B",
+        "index": 33,
+        "seed": 16711287850744816468
+      },
+      {
+        "first": "A",
+        "index": 34,
+        "seed": 4231965213441521759
+      },
+      {
+        "first": "B",
+        "index": 35,
+        "seed": 13564119233319086969
+      },
+      {
+        "first": "A",
+        "index": 36,
+        "seed": 8958763726205178809
+      },
+      {
+        "first": "B",
+        "index": 37,
+        "seed": 1507610394915651315
+      },
+      {
+        "first": "A",
+        "index": 38,
+        "seed": 12522546608096614328
+      },
+      {
+        "first": "B",
+        "index": 39,
+        "seed": 17476234376075537058
+      },
+      {
+        "first": "A",
+        "index": 40,
+        "seed": 10068278721543439701
+      },
+      {
+        "first": "B",
+        "index": 41,
+        "seed": 6257539791635444623
+      },
+      {
+        "first": "A",
+        "index": 42,
+        "seed": 13132693033162282669
+      },
+      {
+        "first": "B",
+        "index": 43,
+        "seed": 12938985791913619996
+      },
+      {
+        "first": "A",
+        "index": 44,
+        "seed": 3396209666414848040
+      },
+      {
+        "first": "B",
+        "index": 45,
+        "seed": 7919453585903926291
+      },
+      {
+        "first": "A",
+        "index": 46,
+        "seed": 13496838506188737104
+      },
+      {
+        "first": "B",
+        "index": 47,
+        "seed": 14481575766525658740
+      },
+      {
+        "first": "A",
+        "index": 48,
+        "seed": 10614178331662486357
+      },
+      {
+        "first": "B",
+        "index": 49,
+        "seed": 8810319347949272410
+      },
+      {
+        "first": "A",
+        "index": 50,
+        "seed": 3509932071250769025
+      },
+      {
+        "first": "B",
+        "index": 51,
+        "seed": 13616133125272833428
+      },
+      {
+        "first": "A",
+        "index": 52,
+        "seed": 13263575762867982475
+      },
+      {
+        "first": "B",
+        "index": 53,
+        "seed": 13066148559834555941
+      },
+      {
+        "first": "A",
+        "index": 54,
+        "seed": 16099941939602584906
+      },
+      {
+        "first": "B",
+        "index": 55,
+        "seed": 16547495813563154801
+      },
+      {
+        "first": "A",
+        "index": 56,
+        "seed": 2783848444218627888
+      },
+      {
+        "first": "B",
+        "index": 57,
+        "seed": 13402610595372772195
+      },
+      {
+        "first": "A",
+        "index": 58,
+        "seed": 3490113076231998883
+      },
+      {
+        "first": "B",
+        "index": 59,
+        "seed": 15638302707920978558
+      }
+    ],
+    "schedule_sha256": "50127a808b655efb86be91101ef999e6f862373e52af6996c32d202093966eb7",
+    "schema": "fresh-learning-schedule-v1"
+  },
+  "schema": "fresh-game-0000-lock-v1",
+  "source_git_commit": "b5e32ee7e0b5639384714477966172caa88ad01c",
+  "sources": {
+    "aero_effects.py": "c6615bd53485646549c1845b5e3b04edcbac2aeb1cc11e36d7cc9cb1750a10c7",
+    "attack_flow.py": "be9adb19ed1465ff32b282c0dead91bd93258ecb6ea65b8343c140a7dc29dd6a",
+    "basic_event_dependencies.py": "d1cd66f6f442f275247bf904a8042e132875cf696b7e0a84ceeabfdd67951593",
+    "battle_evolution.py": "ca98736942d763e8d1dcd23850bb9c28a4707f6841c60b2d0538074fb476c82a",
+    "battlefield_scope.py": "5843691a90cab163246218b83f210054b4e21df56c4e5ea3dd9de3018d9a18b4",
+    "breeding_evolution.py": "129186ef5525238cf1981cf8a56e57fbfeae54c14612ea593d1a2763b32c6986",
+    "context_evolution.py": "5c4bc2291dc368a3957720ae7257b1bd9a6da3bc2f423fab8daf1c8472005b54",
+    "context_runtime.py": "ccc140502af45f119410ce32b16a59636623b6f059ed7d016f04f750ce726e31",
+    "effect_grants.py": "68d863872f1bba865f3598bd633c986fffd2459be0e8fb1534da561aebe99d6f",
+    "effect_scheduler.py": "a78f067545534b302a60fa702b587bb649f5b93f45eebff26d4044e34ec69244",
+    "evaluation_gate.py": "f3392c24f30d03c8c9fd87f35657bba59032c3a15c6d9ebbdeef32c95610aef4",
+    "ex13_ulforce_effects.py": "50bb3549d47b64c33fcda0962ef235cb7723bedc554e6113caaf48961dd06aa0",
+    "field_tracker.py": "208b5077af00b6ca3a8766af0db95f31ce52a7adb9d86b5b9a7ba2f23373b999",
+    "fresh_learning_campaign.py": "395d0822e362ad5ee856cb01c3632c33fe90e5b4769b55da337f4ed8128f2344",
+    "fresh_repair_migration.py": "fc3fcdcc639b5551729f8d752131661a468028ffe3de66b8345e18151e292a4e",
+    "frozen_evaluation.py": "bbb3d78d775eb6597e92c0cdcb90cb5a7b60e6d731662d31308a698528fbff8d",
+    "full_game_integrity.py": "ea32b0bf1e6bdd74aac2e5f2a30a3121732f315faebbb6dff7f24118767ecc01",
+    "full_match_attempt.py": "6d43ac60796246f2eeb53f9269cc7961ccee77c82f7ca404c73e72a718f15f9a",
+    "imported_attempts.py": "1f7d528c33c2a7da6daf9d78c18beef02992ee9f022b538ac2a9680160fd4d56",
+    "interaction_learning.py": "1f61d2e7e9e552926cdd7fc188bad2b883729aed135bacb5867ab27ddca109a5",
+    "interaction_scoring.py": "c9e09123fc1666d36624a7e41e4aab7ac09c671e354b54aa77d2517a5db2992c",
+    "judge_ledger.py": "e9da34fec4b11dbe10906a04c76425051c6aeaf8b70a40cd0c1db20fe2bda382",
+    "loaded_digivolution.py": "4ae853d35b5d068ab9eb405e9871825e20d9fa3f973125e984ca4bc03309fb83",
+    "loaded_effects.py": "609a0d42e26d1eb3c600498d25ade94279706d5e100b5b012bcb0aeb4ce668ab",
+    "main_actions.py": "02b083f288eaf382569c98e30f163832e60d27fafab4b2df1fa1dcf20145477e",
+    "match_context.py": "140c9e1442d1f646a1bea724d2f01141a701fd729586c4072bbaaed45a2f0cd3",
+    "match_evidence.py": "d6f7c751880e4a26b671b4b9e7461d9df12dda848e60c375d243202b9f134b32",
+    "match_preparation.py": "31da31a26c80a2aaf23b7287cb515bec9c7b9799907f39c14e3efb501fd3a6b6",
+    "matchup_readiness.py": "1c42e03cdb6aef049472b34f13f7e381fe50a41fe9e85e9b14f1cfca57bcdb3f",
+    "matchup_v10_active_choices.py": "2223ec232807ab91cb2588dac0e8b2da856efd8d4b3b221a3f9d040e2f282b4f",
+    "matchup_v11_endturn_choices.py": "543709af32eca7f3bf1e5534db1b64ae1fadd00998dcb4c398aee3fe4331fff8",
+    "matchup_v12_attack_sources.py": "d10150d48bf9698485eb5231e3abe3ec3fef39fa999d96403b2b34db2fd83b45",
+    "matchup_v5.py": "b1fd7954fa34fe641960527f907b2f31dd205b5ff14a9f922390ee91dbe8ef94",
+    "matchup_v6.py": "eaba3254258c95774cb284f0886d1cde48fec7b8a8435365d00b2e36738d1c20",
+    "matchup_v7.py": "77050d3dd72252f0ee35655672db2620dc6b6b0639e3a79977dfe09def2738f3",
+    "matchup_v8.py": "830e471a46d2f9f5b10ea21d166bd2c5e59243d4f94c96bb6d21a22602130afd",
+    "matchup_v9_decision_policy.py": "a863dd658503111d979a325f49b5f716766ecdb8d3a598bc784ae30d68d37a64",
+    "named_bot_continuation.py": "1cffe6649c8517cd708227426c892e72915d19535c91098771cf7fac8fd2ced0",
+    "named_player_bots.py": "fab7f1900b8d07f02fe7030c776581a5810d74f62bea117dc129b5d83df26b1b",
+    "on_play_effects.py": "9f7674332feeb05a43e08a4285b6340000db752cc44d18ad2f79b1a4ef84b05e",
+    "option_actions.py": "89a2c0b6999c3a793832140734da0ba79ade83e5bff205419a3cff475069adb0",
+    "phase_flow.py": "0ea66f83b22c43a826ff9419866e19cf00935726a7b8a8a582294119f21145e7",
+    "printed_triggers.py": "ec5c85443ade73d2428d5751fbb99a4fe95ec98d78e3249ae71b082c6f256621",
+    "recorded_action_checkpoint.py": "8008887595fc23e3f0ae2aa687a183be52cde09f793c837a93f07b476b896753",
+    "return_effects.py": "a7dc0f6fa25a65ae12bbcfa876760446b3e9c79275a67e49cec85d8747477459",
+    "rina_reactivation.py": "5184c962f0dffde521ca32cc9619885d11df7e15bb108d65cf33086484b26f55",
+    "rina_unsuspend_effects.py": "d53b3e4f20f722e2b84ff24600ce762d7f0c7a0c3614ee486599f37928c2c49b",
+    "search_effects.py": "a9b50a9f6107908087577a85e31551b9f60b8f1277a4d6c563cf16a6d540e10f",
+    "security_attack_layer.py": "22373be7d01c67967f570a36a2c5c17f5134eceb816f29fd984b390ea8f65501",
+    "security_tamer.py": "61276a23878fc1a13cdb88b8fd9e3c63d11a9bba659abedad252cbf45f5a2844",
+    "seeded_opening_probe.py": "d106c287eb100f9f9f6bec3a6dce240be2a5643d943bdda137003cd7b429c586",
+    "selected_contexts.py": "657b901c23725c4187ecb7c29cf411709aee7a3f4bd7af76612b7cbc2b86fb2a",
+    "selected_mechanics.py": "b8c50832a61e9a2818fe8bf72da59421de186e1009cb00bc1396d6447f54fae6",
+    "tamer_play_effects.py": "182d0b4464b471b1a6a6eceba6b8df6c06a580bd4359e5658a16234b3b30d1c5",
+    "turn_flow.py": "b274b9558bd4da3ffc4f7aacb4a7c509f0eeb0656ec5e013c209ff43362b43fc",
+    "two_player_prefix.py": "c3b7d29500795a35938673ac1ab5f9c41e1ac6fdcfc200ac7e014bc3bbe1e518",
+    "verified_full_match.py": "945d21a9f43c423f5eb3a4c1cf35433dc086091a1e5ae4a6d5b1e092c4ceb16e",
+    "workflow_policy.py": "b7b871332a8eac9756caa70ae3695aac45adcc48677778c1f7d9b5f1bf80c6ae"
+  }
+}

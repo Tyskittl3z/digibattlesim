@@ -1,0 +1,1253 @@
+{
+  "schema": "bt11-ulforce-implementation-independent-addendum-v1",
+  "date": "2026-11-03",
+  "status": "NO_CONCRETE_DEFECT_FOUND_FOR_ACTUAL_SOURCE_CASE",
+  "certification": "NONE_EXPERIMENTAL_ENCOUNTER_REVIEW_ONLY",
+  "full_match_credit": 0,
+  "accepted_fact_finding_credit": 0,
+  "final_evaluation_credit": 0,
+  "strategy_assessment": "NONE",
+  "record": "ARTIFACTS/gameplay-continuations-2026-11-03-07/game-0000-segment.json.gz",
+  "record_file_sha256": "1be88284465f08b47a0654571bdbe63bd1e0ef4d2e88499b2c931a814420ee09",
+  "seed": 12017913134550805276,
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "source_hashes_unchanged_during_audit": true,
+  "reviewed_source_sha256": {
+    "SOURCE/tamer_play_effects.py": "182d0b4464b471b1a6a6eceba6b8df6c06a580bd4359e5658a16234b3b30d1c5",
+    "SOURCE/battle_evolution.py": "d2ec95be9e8bd98d89ff05804f510b8163782b0539791675269aef265819c72e",
+    "SOURCE/test_tamer_play_effects.py": "8115543a2a00709a64eaff729d2c0f2b77e432d3df8678ea0887f4b6129beae9",
+    "SOURCE/main_actions.py": "3edfe3e58548caae9dfe4c40c86ffbb6a1b75cb1cfb1629670067442771d0dd5",
+    "SOURCE/basic_event_dependencies.py": "d1cd66f6f442f275247bf904a8042e132875cf696b7e0a84ceeabfdd67951593",
+    "SOURCE/effect_scheduler.py": "a78f067545534b302a60fa702b587bb649f5b93f45eebff26d4044e34ec69244",
+    "SOURCE/selected_mechanics.py": "4dddf084c142ea2780a5414a6cd56c32d136730b4b6df77e39dbe4a3109486dc",
+    "SOURCE/effect_grants.py": "68d863872f1bba865f3598bd633c986fffd2459be0e8fb1534da561aebe99d6f",
+    "SOURCE/context_runtime.py": "27a15c525744050ec26f1419eb059a2b03f329026b0d38fcde389f9309006004"
+  },
+  "source_files_edited": [],
+  "independent_unit_test_execution": {
+    "command": "python3 -m unittest test_tamer_play_effects.EncounteredUlforceBlueTamerTests -v",
+    "cwd": "SOURCE",
+    "tests": 3,
+    "seconds": 21.666,
+    "result": "OK",
+    "exit_code": 0,
+    "note": "Observed independent tool execution; the worker-reported13-test run is separate and not claimed here."
+  },
+  "source_assessment": [
+    "BT11-032 exact WhenDigivolving line maps to source-bound PLAY_SPECS; no support is inferred for another card wording.",
+    "Cost and stack placement precede actual bonus draw; only then is the WhenDigivolving effect queued. Choices inspect current own hand, filtered by Tamer type and Blue color.",
+    "Optional play and mandatory own-blue-Tamer-play self-unsuspend have empty usage and no invented OPT consumption.",
+    "Reaction collection requires observer ownership equal to the played Tamer owner, active YourTurn timing and Blue Tamer color; it reads only active main/inherited fields.",
+    "Rina OnPlay and Ulforce self-unsuspend are queued together by the shared actual-play procedure, at the same derived depth, retaining explicit next-effect order.",
+    "Mandatory self-unsuspend accepts only the no-target command None; False is rejected transactionally. Shared orientation procedure skips changes/reactions when already unsuspended.",
+    "A future actual false->true suspension or true->false unsuspension requires its real observers. BT11 own bounce is unimplemented, so a genuine new Ulforce unsuspend still HALTs precisely before orientation mutation; this is a software dependency, not an illegality ruling."
+  ],
+  "actual_new_commands": {
+    "range": "94-98",
+    "evolution_cost": 4,
+    "memory_path": [
+      3,
+      -1
+    ],
+    "bonus_draw": "A:BT11-112#3",
+    "play_selected": true,
+    "played_card": "A:BT11-112#3",
+    "play_cost": 0,
+    "selected_simultaneous_order": [
+      "BT11-112.on_play_grant",
+      "BT11-032.blue_tamer_unsuspend"
+    ],
+    "selected_grant_target": "A:BT12-029#2",
+    "grant_expiry": {
+      "turn": 8,
+      "controller": "B",
+      "boundary": "turn_end"
+    },
+    "self_unsuspend_changed": false,
+    "new_opt_uses": [],
+    "extra_unsuspend_memory_draw_bounce": false,
+    "actual_turn7_end": {
+      "expired_original_restrictions": true,
+      "expired_old_B_blocker_evade": true,
+      "new_Rina_grant_retained_through_B_turn8": true
+    }
+  },
+  "targeted_actual_state_branches": {
+    "explicit_free_play_decline_verified": true,
+    "on_play_targets": [
+      "A:BT11-032#1",
+      "A:BT12-029#2"
+    ],
+    "both_orders_for_each_actual_target": [
+      {
+        "on_play_target": "A:BT11-032#1",
+        "processing_order": [
+          "BT11-112.on_play_grant",
+          "BT11-032.blue_tamer_unsuspend"
+        ],
+        "results": [
+          {
+            "effect": "BT11-112.on_play_grant",
+            "result": {
+              "full_match_credit": 0,
+              "grant": {
+                "controller": "A",
+                "created_turn": 7,
+                "effect": {
+                  "keywords": [
+                    "Blocker",
+                    "Evade"
+                  ]
+                },
+                "expires": {
+                  "boundary": "turn_end",
+                  "controller": "B",
+                  "turn": 8
+                },
+                "source": "A:BT11-112#3",
+                "source_definition_sha256": "85b224c905ce3d12a3e1dd6858d67f8ca0e71f129bd3dc12db19fd9d4bd4c789",
+                "source_field": "main_text",
+                "source_instance": "entity-15",
+                "source_kind": "Tamer",
+                "source_text_sha256": "e83fb2d6b5be86a0b5988b744702691462c3a80a01845a860c41199e3b57d216",
+                "target": "A:BT11-032#1",
+                "target_instance": "entity-9",
+                "target_owner": "A"
+              },
+              "processing": "GRANT_APPLIED",
+              "target": "A:BT11-032#1"
+            }
+          },
+          {
+            "effect": "BT11-032.blue_tamer_unsuspend",
+            "result": {
+              "changed": false,
+              "full_match_credit": 0,
+              "processing": "MANDATORY_SELF_UNSUSPEND",
+              "prohibition": null,
+              "suspended_after": false,
+              "suspended_before": false
+            }
+          }
+        ],
+        "no_actual_unsuspend_or_extra_triggers": true,
+        "memory": -1,
+        "once_used_unchanged": true,
+        "rng_unchanged": true,
+        "original_restriction_preserved": true,
+        "grant_expiry": {
+          "turn": 8,
+          "controller": "B",
+          "boundary": "turn_end"
+        }
+      },
+      {
+        "on_play_target": "A:BT11-032#1",
+        "processing_order": [
+          "BT11-032.blue_tamer_unsuspend",
+          "BT11-112.on_play_grant"
+        ],
+        "results": [
+          {
+            "effect": "BT11-032.blue_tamer_unsuspend",
+            "result": {
+              "changed": false,
+              "full_match_credit": 0,
+              "processing": "MANDATORY_SELF_UNSUSPEND",
+              "prohibition": null,
+              "suspended_after": false,
+              "suspended_before": false
+            }
+          },
+          {
+            "effect": "BT11-112.on_play_grant",
+            "result": {
+              "full_match_credit": 0,
+              "grant": {
+                "controller": "A",
+                "created_turn": 7,
+                "effect": {
+                  "keywords": [
+                    "Blocker",
+                    "Evade"
+                  ]
+                },
+                "expires": {
+                  "boundary": "turn_end",
+                  "controller": "B",
+                  "turn": 8
+                },
+                "source": "A:BT11-112#3",
+                "source_definition_sha256": "85b224c905ce3d12a3e1dd6858d67f8ca0e71f129bd3dc12db19fd9d4bd4c789",
+                "source_field": "main_text",
+                "source_instance": "entity-15",
+                "source_kind": "Tamer",
+                "source_text_sha256": "e83fb2d6b5be86a0b5988b744702691462c3a80a01845a860c41199e3b57d216",
+                "target": "A:BT11-032#1",
+                "target_instance": "entity-9",
+                "target_owner": "A"
+              },
+              "processing": "GRANT_APPLIED",
+              "target": "A:BT11-032#1"
+            }
+          }
+        ],
+        "no_actual_unsuspend_or_extra_triggers": true,
+        "memory": -1,
+        "once_used_unchanged": true,
+        "rng_unchanged": true,
+        "original_restriction_preserved": true,
+        "grant_expiry": {
+          "turn": 8,
+          "controller": "B",
+          "boundary": "turn_end"
+        }
+      },
+      {
+        "on_play_target": "A:BT12-029#2",
+        "processing_order": [
+          "BT11-112.on_play_grant",
+          "BT11-032.blue_tamer_unsuspend"
+        ],
+        "results": [
+          {
+            "effect": "BT11-112.on_play_grant",
+            "result": {
+              "full_match_credit": 0,
+              "grant": {
+                "controller": "A",
+                "created_turn": 7,
+                "effect": {
+                  "keywords": [
+                    "Blocker",
+                    "Evade"
+                  ]
+                },
+                "expires": {
+                  "boundary": "turn_end",
+                  "controller": "B",
+                  "turn": 8
+                },
+                "source": "A:BT11-112#3",
+                "source_definition_sha256": "85b224c905ce3d12a3e1dd6858d67f8ca0e71f129bd3dc12db19fd9d4bd4c789",
+                "source_field": "main_text",
+                "source_instance": "entity-15",
+                "source_kind": "Tamer",
+                "source_text_sha256": "e83fb2d6b5be86a0b5988b744702691462c3a80a01845a860c41199e3b57d216",
+                "target": "A:BT12-029#2",
+                "target_instance": "entity-4",
+                "target_owner": "A"
+              },
+              "processing": "GRANT_APPLIED",
+              "target": "A:BT12-029#2"
+            }
+          },
+          {
+            "effect": "BT11-032.blue_tamer_unsuspend",
+            "result": {
+              "changed": false,
+              "full_match_credit": 0,
+              "processing": "MANDATORY_SELF_UNSUSPEND",
+              "prohibition": null,
+              "suspended_after": false,
+              "suspended_before": false
+            }
+          }
+        ],
+        "no_actual_unsuspend_or_extra_triggers": true,
+        "memory": -1,
+        "once_used_unchanged": true,
+        "rng_unchanged": true,
+        "original_restriction_preserved": true,
+        "grant_expiry": {
+          "turn": 8,
+          "controller": "B",
+          "boundary": "turn_end"
+        }
+      },
+      {
+        "on_play_target": "A:BT12-029#2",
+        "processing_order": [
+          "BT11-032.blue_tamer_unsuspend",
+          "BT11-112.on_play_grant"
+        ],
+        "results": [
+          {
+            "effect": "BT11-032.blue_tamer_unsuspend",
+            "result": {
+              "changed": false,
+              "full_match_credit": 0,
+              "processing": "MANDATORY_SELF_UNSUSPEND",
+              "prohibition": null,
+              "suspended_after": false,
+              "suspended_before": false
+            }
+          },
+          {
+            "effect": "BT11-112.on_play_grant",
+            "result": {
+              "full_match_credit": 0,
+              "grant": {
+                "controller": "A",
+                "created_turn": 7,
+                "effect": {
+                  "keywords": [
+                    "Blocker",
+                    "Evade"
+                  ]
+                },
+                "expires": {
+                  "boundary": "turn_end",
+                  "controller": "B",
+                  "turn": 8
+                },
+                "source": "A:BT11-112#3",
+                "source_definition_sha256": "85b224c905ce3d12a3e1dd6858d67f8ca0e71f129bd3dc12db19fd9d4bd4c789",
+                "source_field": "main_text",
+                "source_instance": "entity-15",
+                "source_kind": "Tamer",
+                "source_text_sha256": "e83fb2d6b5be86a0b5988b744702691462c3a80a01845a860c41199e3b57d216",
+                "target": "A:BT12-029#2",
+                "target_instance": "entity-4",
+                "target_owner": "A"
+              },
+              "processing": "GRANT_APPLIED",
+              "target": "A:BT12-029#2"
+            }
+          }
+        ],
+        "no_actual_unsuspend_or_extra_triggers": true,
+        "memory": -1,
+        "once_used_unchanged": true,
+        "rng_unchanged": true,
+        "original_restriction_preserved": true,
+        "grant_expiry": {
+          "turn": 8,
+          "controller": "B",
+          "boundary": "turn_end"
+        }
+      }
+    ],
+    "case_count": 4
+  },
+  "new_record_prefix_replay": {
+    "successful_commands": 103,
+    "all_saved_public_views_and_results_match": true,
+    "all_commands_verify_108_card_conservation": true,
+    "final_physical_and_rng_exact": true,
+    "final_state_sha256": "449565028908c8eabc5ef627f2a7b7fce70cb329ec3278bcc5b8145f6a5ec336",
+    "final_rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c",
+    "new_command104_not_executed": true,
+    "per_command": [
+      {
+        "command": 1,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "4246033214d597f2c351bbf6e9a5115a573e1260386bccd294a7fb60c643b093",
+        "rng_sha256": "267ed696f499c0dfabd2ae5b227da2a8bf6844c4e249fffe3c65d9e97b3350d1"
+      },
+      {
+        "command": 2,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "c2ccbb9acd8094a77bc2d7e7e16e58e9974d2a4d352436617be909c682221004",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 3,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "ac88d9002a1ea5d73f0924e4f6565d00f0a57021f298c819e6c4a76108d4392b",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 4,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "89d6ef79c29d0a0581ff7c5cb8ebcd0f0a4107a340334c37f631a62b7fa0064e",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 5,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "50639be06b44d2eaec7311853605f7014c59780e5cf9797075def938055d7d5f",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 6,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "3e4c9df40c5859cccda521b575e86964f835a6f4cae1d56810d8a2c8b9aefc23",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 7,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "15ffb8e42b9435e1bab9ed061d2d77785f7a348f831676139bd363f1598926e7",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 8,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "1d72ef67d998a72c3f003dd70253cac162b9926edab2d70c77e3d61a45384c65",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 9,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "79b358ed73a371e70c2925c20fbfea1b49893192c3b2cb86b917be5940450d82",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 10,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "6738dbdcb326fa001310f731004891ad16f2e4fb133161ba659ceda4ad68fdb5",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 11,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "bdab06513824d0462eee5a883e40548f17fb8befcea9205f707d560bcad29623",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 12,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "5a7fa7eed15fc00c881dab291ead4fe850b40e7b9026f643745ed4418cea1f9b",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 13,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "6a81a3a106b63085aaae786e02d726972de5da5d7043701255e98a1435369294",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 14,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "fda16468aa15a21cc5eb0506ed24c97748b68830bc43202c7945fd0a47bd8d87",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 15,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "87101283e500fd8249219b60591cc141161fe4dc15d2acf10c233a31e2a74046",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 16,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "fffb819953982c3dc37d4cb09314c47e6d4fc3753b6509771d079bc58050239f",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 17,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "a926ff83a8f1dd8706839cc49304c6bf96c4fe0b385ef15c7789fb08b5e886aa",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 18,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "ebefb22861241d118a000099a09756dc6f8a82c1d1c745b43c427e2d799ad142",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 19,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "3750f744b8eda58b303a98e59718e1c5402b86627e90925068672ce60863372e",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 20,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "ad8fb8f6220784d70c743f030e2a30928630b6ee75511ee97dcb4d7a50ffaf7b",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 21,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "7ff867b6ca0ecf51fdf1b330f0a9817f61155d3ccd74e101ebeb91c5a1e7a548",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 22,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "f1a124359822cab2013fe19e22170fba85f74746797f2d24073d3b5f295171e9",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 23,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "54cbfab8333c2f7421080dd1599ab3c304ff3d2a912f73282a7f9748e4ab8e03",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 24,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "dd76dd3453f0517d67f7bdd4d4148a58af3a2cab7a278dcc99ba68d27b288f81",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 25,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "4d5bb1621d36f6f366bfabeb72f3ce732f7b599683c3c8f4b77aab23e485c8ef",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 26,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "e9b358abed003641e2c05744f88fce7e8ccb36238f6bd645cf2b06a3c1d1c5d5",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 27,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "695d3a1125398e2aff7872cc18c320ba6a2be8b105aa395be0428436f86d046d",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 28,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "52752a018db731947bd2c3d525709745da084027126c628377f6546f71c44af0",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 29,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "d034eae9062ee6a32a3b8ef08bc9d26554f01f974443b66665854ff2cf664598",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 30,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "7a701fb35e83dd4655bfbb13715147829d3fad99b8af4bbf1c7130c7500b59a2",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 31,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "44da20500b831698b98d90683b3dc6e638fe53d1a54316abdcc05186931cbc63",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 32,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "cf354aadf8527f6aa3453677d3b7ec2f87e4cc618f04ba4cfb2180d894ff4b20",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 33,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "1983ab43e7e05e804b61e895bbef979121b5c6edabd36cff3b80025b21aa14cd",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 34,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "f5317b464b0e65a81ab3f62ae7120220ec2753cddc1358e65fdd77e24004ee4c",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 35,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "9ad93aa2b64642f1638194de20bc566bbd75426c1d46458bc2c477388d09a2d7",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 36,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "6d004ec5a0e3091115c8164e39fa5d2857d5f5dca1662419d904aaad0c9a4efd",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 37,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "31f7c45c4640e782d2ac6ecaac337b28867bf9b856148d2fa41e4fb55993ccb3",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 38,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "fb77c265d42d853a3a37410686e44b5ac4f525daa27217fe056fc4519e2a1633",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 39,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "8a63e808b561120ec9cec4cab48f49aafa37b9abf4bab4daf1e6681182730c70",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 40,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "7b1efc18aa31bac825ffb52b87b288720f45b2d918e53f1b8cf5eae3712f85e6",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 41,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "cf9cba2978e857e579ec476082e60eab0780e21b9aa532e67b9f416615a3df07",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 42,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "63f49c55b15e166faa8d1febd2c9d5c998efa3078f2bb8c6cd7addb3e1de3e25",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 43,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "7f9af2e67ba300f65278dfb2192c9af704b0681724a10ffebc9578afed5026e3",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 44,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "a5e36206ba6c7671c1ac496d6e61f58a41134810c6657dea435cb4bc9b1dbadb",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 45,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "1100fd19671b4d694c1493d872b6a9bb8ba1bf819e1090cd6a2f9c5f7a1b4b8e",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 46,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "6214270a8989c4b6c2ef474b9fe1697b9ab7627b5f5b77eb8eba28e808145b2c",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 47,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "b7a8bc9938fbd8cc67515e5719006a2887ef4035ef54e7277b8f6a10682c9797",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 48,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "c375aa8cce7c6b02f5e14d17538ec956016fd59e357b77e6e6b481317c280f4c",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 49,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "54442f95f418534de42e2cfcb34e2ef9d0bd69441a356d0f23a7c3165c1f9a3b",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 50,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "4786c31b174d448999356165081ee543d8f19db2f58f8dd18884fb545fb77245",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 51,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "b52a6458adba7aad5f27ad45e17a3bc81402ffe147b08f0191a1579a9c6068b0",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 52,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "084d513a46e259d43b26ded834ff6e272d98c6d43f45cb2c2b9f78f0b8f6c753",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 53,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "4c303b460c45887aadafd1aa8a9b2a6f997065bb1b64c2c8e057e2bc0a3004a2",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 54,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "584cb0ccaf33ae253c490ab187687501b2a1fc613ea5ad199e76e44581f6ad4a",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 55,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "d4460e20dbcc9d685ed7d612101655647cd88254ca4503f442414b23c1e3b0c1",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 56,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "5783155b3ca8bc1004ee2dc42d4c984d7f13be2b6cc3a29ad6e3bb78760f9b40",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 57,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "178c2f33c6ddf9be2a5ab00659959a6a430112a4e4d226dab5fedf9fabc84165",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 58,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "1e1ebe259f6133e2175041b126cbe4219458913a215de616fecaaf87772d2e2b",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 59,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "5bb96555cec91d3506ead94cbbe2b1605c551ee4df345f95430a151927e01e82",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 60,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "57c51f2e639c9cec8f3cb7746c92df79e1b3e8276f5dcdf549888384e26b17ea",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 61,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "e9187bdc5a7380835333cedd1770f93636e218ffe70af2e6249de6db3d6cfc2c",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 62,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "79c10e096a21a72e22c1c6b9422cdbcc0f4e59eeae5e5429e8af4c2f58267bf6",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 63,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "a994da767949b990a71a5a86b530f140e47aeb19b870d4890de680a1f153dd39",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 64,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "3d0a6bd6d17618ba76e2e075a4ed91b1476ebc6e1369107ac2839de3beb8404f",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 65,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "0a2228f6e119074c09b46e1dbe6fddcc3eb8a787ffb123e1b451127410104941",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 66,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "f4b7ad5cbd75be89cfcf1813152753618cc7f9a44fac1ec4a7bf5d6ee7c76b99",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 67,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "d29f9bba3cdaedfc2c37694dd653b7ac13ab06ad9013795fffaefed23ed32712",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 68,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "254578caa607c78fdc722e3a66a74caae8e233e1b38889a5c75212333a16812f",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 69,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "ac180b5b2be8fd593e398fb7b584e231d5692569bb595c3fe0144a0f1e0910f8",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 70,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "55d9c9f63be9a5f566800df4f0eac0d8643d74255201c6eed14a5f4f956130a7",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 71,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "02786b8f5524acd2567eb26265f387a45052cb45c16ee522ea58b54ef610b27d",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 72,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "2a1ca7ea4f0a36d69a0274ee504c368db3bc3fab2dbb8dec06a80fec2dcfb2bb",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 73,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "b8e791569d4db897cf4aa5edcfb2dc35290b7cd56721801d88272da895e73994",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 74,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "409e23f955632d7cabd4c5fe1caef7a9dda36bb195669d044e79e87155da03d0",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 75,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "4587fc98b95843f22ec6c005e59ae65325d78d5fd6aeba8d94ea019e71a42292",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 76,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "b2dbca8701347e6469b3746ceb95ba5b2dc02330e651db3852572a109a561c06",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 77,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "6fe46290cb358922ae80ae7978828fcfe366c5e1d81509901dcb66d2004cc3d6",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 78,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "dd731c80abeae50716f5e1cb81e75103971262f8750c5e0a65b88089aed42229",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 79,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "ec6d682d548bd485b296583760a950d3b23e83ab3bc9506e0d2ad5ad4abf58a1",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 80,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "760471c51a94d3b33b7cb6a14a2411b29991cddef95b088f766f67573d8b272a",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 81,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "5dac6339ae168e142c830478237b51711700b42fb0bde3ee7556ecffa0fda37f",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 82,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "35993ad551f6199e228639e2b9f83736e4414bdb025f2fcd4baf9752dc023fc7",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 83,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "633656a9c7b278bde04e0823169efead68dbc283b22057a091c80fa388b79de1",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 84,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "5ce60533c2aee4597adac1e6e900c6838cbcec37d37c262e47c7bc69757d00f3",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 85,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "176f1e0c125979ab1ab3e1816b262b17a3190ae34347569cd2cd6889afbb00cd",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 86,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "fda84f1a3e5bbae8e07d9719e79e033f9de50119e6699a37c8ea3ec956fce930",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 87,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "b42ad323c6eef15d3922b1a0f06e9e8993e514d45dbc0e27a0c3052b53909cb8",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 88,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "2267c0b7bf0e628ff0d1f2253b128f38fcf4858f89d008a7c1ea7bb55ed44105",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 89,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "2b00346c3047266ce5e1c4630d56d81cedb2f737e410fdee62abfd677c643ec0",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 90,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "aae358e83a3b4a4580cd3890a061c6525900d2a0e75e0813a9cf8b301498fec0",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 91,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "dd6d13fad2f2c0f806fa14a7f18719e07cb2d540c839ad955e3c41cc5fb8e83f",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 92,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "147c76674258004c92f28e7ae2ccc51531d5dd3efaa04e77c6d1bf7f89e13916",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 93,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "be9f126accae673e8ccaefd74388a6bcd39df1ae4bcdde5a6ecb4c06af18acfe",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 94,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "cb11a7652548d295a1b2bf8f722aec413f39f750def750854edde867f289abae",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 95,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "59a8e3ff6e56f7a3e435aa3d711f2eee53203e8c1e2347386d34f7b8e3863620",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 96,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "b6c2073569520d8880774d6f170cd638169e1e7a8491da5ae8af8c136197123b",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 97,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "c331e6ac6d91c0e6fc48fb262275dd9a4eab8a55e03fa4598259ddca06c3904d",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 98,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "3bf0e337904383571f8fa537fe9b5661801246ce25b94e0e5eb746d9d7933424",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 99,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "517f27bb6948b670bb6df0a1d309bb972b3b044c8bbfdcd07132e0c707ec3a46",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 100,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "614f5f3d9091b49b76a312c5e502fb01e10bafbbc9d18d9faf40ac3471cebd07",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 101,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "bfeaa0944db82ff638bf8f227bf5430829621241a97cac70e72153518d8a333c",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 102,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "d5076c1fe9e75bc9c6be26fb3fc1f0fbb12a8d9915b8ebe51dea719052046e3d",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      },
+      {
+        "command": 103,
+        "public_view_match": true,
+        "result_match": true,
+        "physical_integrity_valid": true,
+        "state_sha256": "449565028908c8eabc5ef627f2a7b7fce70cb329ec3278bcc5b8145f6a5ec336",
+        "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+      }
+    ]
+  },
+  "bindings": [
+    {
+      "card_number": "BT11-032",
+      "effect_id": "BT11-032.play_blue_tamer",
+      "field": "main_text",
+      "definition_sha256": "ff783d6b6371c763e5febbd614131de15f69a0293a7603b05f73a2b0c785ad5b",
+      "text_sha256": "444809e80c71f24881462dca231a9dc6946cfbc34743da347fb2253dfc1ab4ef",
+      "evidence": [
+        {
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-032",
+          "sha256": "82c0b74c599cb27d0784d93959057b2504e97c4e593af5ee0a0fce51db30d50e",
+          "locator": "#BT11-032 actual Tamer-play text; EX13-022 Q7264 where applicable; CR1-3-3,3-4-3,4-23-1,7-1-3,15-4-3-5-1,15-8-3-9,15-10-2-1,15-14-1,15-16-2,15-16-3"
+        },
+        {
+          "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918",
+          "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+          "locator": "Comprehensive rules v4.3: 4-13; 15-3; 15-4; 15-14-1; memory cap 1-4-2"
+        }
+      ],
+      "handler": "tamer_play_effects.resolve_tamer_play",
+      "handler_module_sha256": "182d0b4464b471b1a6a6eceba6b8df6c06a580bd4359e5658a16234b3b30d1c5",
+      "status": "EXPERIMENTAL_UNREVIEWED"
+    },
+    {
+      "card_number": "BT11-032",
+      "effect_id": "BT11-032.blue_tamer_unsuspend",
+      "field": "main_text",
+      "definition_sha256": "ff783d6b6371c763e5febbd614131de15f69a0293a7603b05f73a2b0c785ad5b",
+      "text_sha256": "444809e80c71f24881462dca231a9dc6946cfbc34743da347fb2253dfc1ab4ef",
+      "evidence": [
+        {
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-032",
+          "sha256": "82c0b74c599cb27d0784d93959057b2504e97c4e593af5ee0a0fce51db30d50e",
+          "locator": "#BT11-032 actual Tamer-play text; EX13-022 Q7264 where applicable; CR1-3-3,3-4-3,4-23-1,7-1-3,15-4-3-5-1,15-8-3-9,15-10-2-1,15-14-1,15-16-2,15-16-3"
+        },
+        {
+          "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918",
+          "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+          "locator": "Comprehensive rules v4.3: 4-13; 15-3; 15-4; 15-14-1; memory cap 1-4-2"
+        }
+      ],
+      "handler": "tamer_play_effects.resolve_ulforce_tamer_unsuspend",
+      "handler_module_sha256": "182d0b4464b471b1a6a6eceba6b8df6c06a580bd4359e5658a16234b3b30d1c5",
+      "status": "EXPERIMENTAL_UNREVIEWED"
+    }
+  ],
+  "official_source_hashes": [
+    {
+      "id": "card-BT11-032",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-032.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-032",
+      "sha256": "82c0b74c599cb27d0784d93959057b2504e97c4e593af5ee0a0fce51db30d50e"
+    },
+    {
+      "id": "card-BT11-112",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-112.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-112",
+      "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc"
+    },
+    {
+      "id": "card-EX13-022",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-022.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-022",
+      "sha256": "4771e6eab5218e833eebf7d1ff6cf70ad6fa51a51d556f8a404ac88f07256874"
+    },
+    {
+      "id": "card-EX13-069",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-069.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-069",
+      "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7"
+    },
+    {
+      "id": "card-EX1-013",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX1-013.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX1-013",
+      "sha256": "df126caa2ee95d5f7b86008ef828291645d15204c177801eb2f73404d0611f38"
+    },
+    {
+      "id": "rules",
+      "file": "RULES/matchups/123129-vs-124303/sources/general_rule.pdf",
+      "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918",
+      "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271"
+    }
+  ],
+  "limits": "Only actual encountered Ulforce play/unsuspend behavior reviewed. Current new EX13-023 halt, future bounce resolution, complete-game validity, branch completeness and strategy remain outside this addendum."
+}

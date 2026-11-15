@@ -1,0 +1,42 @@
+{
+  "full_suite_at_publication": {
+    "tests_run": 488,
+    "seconds": 541.431,
+    "result": "ONE_STALE_EXPECTED_ERROR_ASSERTION_FAILED",
+    "failure": "test_battlefield_scope expected the former unknown-observer error instead of requiring the now-registered BT11 Ulforce handler",
+    "test_expectation_corrected": true,
+    "last_fully_green_suite_commit": "713a513",
+    "last_fully_green_suite_tests": 459
+  },
+  "last_prior_full_suite": {
+    "commit": "713a513",
+    "tests_passed": 459
+  },
+  "focused_runs": [
+    {
+      "module": "test_rina_reactivation",
+      "tests_passed": 10,
+      "seconds": 21.616
+    },
+    {
+      "integration_checks": 33,
+      "note": "32 initially passed; one strict PACK_CHANGED interruption retried under frozen source and passed13.224s. No guard weakened."
+    },
+    {
+      "case": "actual Rina pilot/priority/no-extra-draw integration",
+      "tests_passed": 1,
+      "seconds": 16.514
+    }
+  ],
+  "independent_focused_tests_passed": 13,
+  "private_proof_probes": {
+    "valid_accepted": 1,
+    "invalid_rejected": 10
+  },
+  "exact_replay": true,
+  "turn": 10,
+  "commands": 140,
+  "same_seed": 12017913134550805276,
+  "full_match_credit": 0,
+  "execution_id": "f1f63348a34bb689487bff3ad7e2592ca3cad1d418773b3fae48220e33700985"
+}

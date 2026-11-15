@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-05",
+  "draft_tests_parked_outside_live_source": 23,
+  "historical164_command_record_unchanged": true,
+  "historical_record_git_blob": "772c020f76e7355a5d7899816c3d19d2927aa4d7",
+  "last_verified_focused_set": {
+    "commit": "220afab",
+    "passed": 82
+  },
+  "last_verified_full_suite": {
+    "commit": "aed966b",
+    "passed": 495
+  },
+  "live_source_matches_220afab_archived_manifest": true,
+  "new_games_started": 0,
+  "new_implementation_modules_present": false,
+  "new_learning_updates": 0,
+  "new_opening_deals": 0,
+  "python_source_files_verified": 102,
+  "requires_user_continue_before_match": true,
+  "status": "PAUSE_CONFIRMED",
+  "tests_executed_for_this_save": 0
+}

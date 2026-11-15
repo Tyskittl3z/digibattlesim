@@ -8,3 +8,4 @@ V12_GAMES.json
 *.tmp
 .DS_Store
 .superpowers/
+.worktrees/

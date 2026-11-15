@@ -1,0 +1,28 @@
+{
+  "full_suite_at_this_exact_source_checkpoint": "NOT_RUN",
+  "last_prior_full_suite": {
+    "commit": "778452d",
+    "tests_passed": 430
+  },
+  "focused_runs": [
+    {
+      "modules": [
+        "test_attack_flow",
+        "test_battlefield_scope"
+      ],
+      "tests_passed": 40,
+      "seconds": 50.114
+    },
+    {
+      "class": "EncounteredAeroAttackTests",
+      "tests_passed": 7,
+      "seconds": 37.587
+    }
+  ],
+  "focused_counts_may_overlap": true,
+  "exact_replay": true,
+  "turn": 6,
+  "commands": 78,
+  "same_seed": 12017913134550805276,
+  "full_match_credit": 0
+}

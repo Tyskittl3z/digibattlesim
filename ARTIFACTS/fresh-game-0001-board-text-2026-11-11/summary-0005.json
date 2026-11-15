@@ -1,0 +1,14 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "changed_source_files": [
+    "fresh_repair_migration.py",
+    "interaction_learning.py"
+  ],
+  "commands": 81,
+  "exact_replay": true,
+  "record_file": "segment-0005.json.gz",
+  "record_sha256": "4f3ff5eeed439b490e44ef0287a8481106ae744b498bce734860206279bf615f",
+  "repair": "LM-056 Security search",
+  "segment": 5,
+  "status": "HALT"
+}

@@ -1,0 +1,61 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "active_named_profiles_separate": true,
+  "cohorts_run": 0,
+  "date": "2026-11-04",
+  "exact_full_record_replay": {
+    "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+    "exact_match": true,
+    "index": 0,
+    "replayed_record_sha256": "8e9f67ab71b773522775d3e3692c91374e4915e83be187dc7a3c7ef1392db6e8",
+    "saved_record_sha256": "8e9f67ab71b773522775d3e3692c91374e4915e83be187dc7a3c7ef1392db6e8"
+  },
+  "final_evaluation_credit": 0,
+  "first_new_policy_decision_command_index": 153,
+  "focused_tests": {
+    "command": "python -m unittest test_named_player_bots test_named_bot_continuation test_recorded_action_checkpoint test_context_runtime test_return_effects test_aero_effects test_ex13_ulforce_effects -q",
+    "passed": 82,
+    "seconds": 57.599,
+    "status": "PASS"
+  },
+  "full_suite_this_increment": "NOT_RUN_NO_COHORTS_USER_INSTRUCTION",
+  "git_diff_check": "PASS",
+  "historical_policy_manifests_unchanged": true,
+  "independent_continuation_tests": {
+    "passed": 7,
+    "seconds": 30.341
+  },
+  "independent_profile_tests": {
+    "passed": 13,
+    "seconds": 0.123
+  },
+  "independent_recorded_command_proof": {
+    "all_views_results_events_state_and_RNG_exact": true,
+    "commands": 164,
+    "path": "independent-recorded-suffix-proof.json",
+    "rules_review": "NO_ILLEGALITY_FOUND_IN_RECORDED_SUFFIX",
+    "seconds": 37.12,
+    "status": "PASS",
+    "unique_physical_cards": 108,
+    "whole_game_certification": false
+  },
+  "last_full_suite": {
+    "commit": "aed966b",
+    "passed": 495,
+    "seconds": 556.48
+  },
+  "named_policy_calls": {
+    "A": 9,
+    "B": 2
+  },
+  "new_commands": 12,
+  "original_152_command_prefix_unchanged": true,
+  "outcome_ratings": "NONE",
+  "rules_engine_unchanged": true,
+  "schema": "named-player-segment-verification-v1",
+  "source_archive_matches_current_source": true,
+  "source_files": 102,
+  "suffix_RNG_unchanged": true,
+  "syntax_check": "PASS",
+  "whole_game_user_bot_credit": 0
+}

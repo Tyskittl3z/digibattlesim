@@ -1,0 +1,103 @@
+[
+  {
+    "accepted_before_repair": 41,
+    "approved_source_changes": [
+      "attack_flow.py",
+      "battlefield_scope.py",
+      "effect_grants.py",
+      "rina_unsuspend_effects.py",
+      "selected_mechanics.py"
+    ],
+    "original_replay_exact": true,
+    "parent_record_sha256": "3ba08c600312cc389ce062486cbcdf63f897853ab83dc1362719ef6ec8fab14e",
+    "parent_status": "HALT",
+    "saved_command": "DECLARE_ATTACK",
+    "saved_reason": "ATTACK_OBSERVER_UNIMPLEMENTED: BT22-085 main_text source=B:BT22-085#2"
+  },
+  {
+    "accepted_before_repair": 42,
+    "approved_source_changes": [
+      "field_tracker.py",
+      "fresh_repair_migration.py"
+    ],
+    "original_replay_exact": true,
+    "parent_record_sha256": "12a7a10d02339a778e6b3026a7878ed5cbbdad8a301cfb9ddd9989aeeeeeaf56",
+    "parent_status": "PAUSED",
+    "saved_command": "DECLARE_ATTACK",
+    "saved_reason": null
+  },
+  {
+    "accepted_before_repair": 48,
+    "approved_source_changes": [
+      "attack_flow.py"
+    ],
+    "original_replay_exact": true,
+    "parent_record_sha256": "9c82cedf4ee7e31068ce2d202ef926f1e2e94774fe9d328afa10f2a1802f745a",
+    "parent_status": "HALT",
+    "saved_command": "CONFIRM_ATTACK",
+    "saved_reason": "BATTLE_DP_GRANT_UNSUPPORTED: B:EX13-022#2"
+  },
+  {
+    "accepted_before_repair": 89,
+    "approved_source_changes": [
+      "attack_flow.py",
+      "battlefield_scope.py",
+      "effect_grants.py"
+    ],
+    "original_replay_exact": true,
+    "parent_record_sha256": "e79d7843d7c2f7d9a6a80ad9dc7b693a26cac45da267a451f55d84d1d4bedfee",
+    "parent_status": "HALT",
+    "saved_command": "DECLARE_ATTACK",
+    "saved_reason": "ATTACK_KEYWORD_UNSUPPORTED: EX13-023 main_text source=A:EX13-023#3"
+  },
+  {
+    "accepted_before_repair": 122,
+    "approved_source_changes": [
+      "battlefield_scope.py"
+    ],
+    "original_replay_exact": true,
+    "parent_record_sha256": "2ed04169ba47821db90be26b896a6fd608df7f2b57ac78e33679f3d17e29c179",
+    "parent_status": "PAUSED",
+    "saved_command": "BATTLE_EVOLUTION",
+    "saved_reason": null
+  },
+  {
+    "accepted_before_repair": 152,
+    "approved_source_changes": [
+      "attack_flow.py",
+      "fresh_repair_migration.py",
+      "named_bot_continuation.py"
+    ],
+    "original_replay_exact": true,
+    "parent_record_sha256": "b9dc1683ef56a352f23ec1caf6c48e3b7157a110e1a2b729090618a8d9a5fd64",
+    "parent_status": "HALT",
+    "saved_command": "GENERATE_BLOCK_CHOICES",
+    "saved_reason": "NAMED_BOT_BLOCK_CHOICES_UNIMPLEMENTED: B:EX13-023#2"
+  },
+  {
+    "accepted_before_repair": 156,
+    "approved_source_changes": [
+      "battlefield_scope.py",
+      "effect_grants.py"
+    ],
+    "original_replay_exact": true,
+    "parent_record_sha256": "208bc886555c2dbbd521cba1149b2c8cccbd69486f4260d775c734ba8fbf52c1",
+    "parent_status": "HALT",
+    "saved_command": "CONFIRM_ATTACK",
+    "saved_reason": "ATTACK_KEYWORD_UNSUPPORTED: EX13-019 inherited_text source=B:EX13-019#1"
+  },
+  {
+    "accepted_before_repair": 165,
+    "approved_source_changes": [
+      "battle_evolution.py",
+      "fresh_repair_migration.py",
+      "imported_attempts.py",
+      "selected_mechanics.py"
+    ],
+    "original_replay_exact": true,
+    "parent_record_sha256": "319f999e8d30e12357551bd0480f28d486923245f9a3ca1200883765120ab7d8",
+    "parent_status": "HALT",
+    "saved_command": "BATTLE_EVOLUTION",
+    "saved_reason": "BATTLE_DIGIVOLVING_EFFECT_UNSUPPORTED: BT12-029 timing=When Digivolving source=B:BT12-029#1"
+  }
+]

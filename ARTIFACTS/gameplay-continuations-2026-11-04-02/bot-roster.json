@@ -1,0 +1,84 @@
+{
+  "active_pilots": {
+    "A": {
+      "bot_id": "3051db093e356d30cb042bb3bca1d948a5f3e187cadee9dbdea3f8b572cbaf87",
+      "configuration": {
+        "bottom_order": "PHYSICAL_KEY_ASCENDING",
+        "name": "Bot A",
+        "outcome_ratings": "NONE",
+        "planning_depth": 0,
+        "priorities": [
+          "zero-security player attack",
+          "security pressure",
+          "favorable printed-DP battle",
+          "development"
+        ],
+        "roadmaps": [],
+        "style": "AGGRESSIVE",
+        "tie_break": "CANONICAL_CANDIDATE_ASCENDING",
+        "training_data": [],
+        "unsuspend": [
+          "suspended Digimon",
+          "suspended Tamer"
+        ]
+      },
+      "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+      "information_policy": "PUBLIC_VIEW_OWN_HAND_AND_EXPLICIT_REVEALS_ONLY",
+      "name": "Bot A",
+      "policy_status": "FRESH_UNTRAINED_HEURISTIC_PREFERENCES",
+      "roadmap": null,
+      "seat": "A",
+      "source_sha256": "fab7f1900b8d07f02fe7030c776581a5810d74f62bea117dc129b5d83df26b1b",
+      "style": "AGGRESSIVE",
+      "training_data": [],
+      "version": "fresh-named-public-preferences-v1"
+    },
+    "B": {
+      "bot_id": "6fe75b159762009ec2fead167b1f7e2dda7125e3d9beeb83d37ef0948d46bdcd",
+      "configuration": {
+        "bottom_order": "PHYSICAL_KEY_ASCENDING",
+        "name": "Bot B",
+        "outcome_ratings": "NONE",
+        "planning_depth": 0,
+        "priorities": [
+          "zero-security player attack",
+          "favorable printed-DP battle",
+          "development and ready Blockers",
+          "security pressure"
+        ],
+        "roadmaps": [],
+        "style": "DEFENSIVE",
+        "tie_break": "CANONICAL_CANDIDATE_ASCENDING",
+        "training_data": [],
+        "unsuspend": [
+          "suspended Blocker",
+          "suspended All Turns Tamer",
+          "suspended Digimon",
+          "suspended other Tamer"
+        ]
+      },
+      "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+      "information_policy": "PUBLIC_VIEW_OWN_HAND_AND_EXPLICIT_REVEALS_ONLY",
+      "name": "Bot B",
+      "policy_status": "FRESH_UNTRAINED_HEURISTIC_PREFERENCES",
+      "roadmap": null,
+      "seat": "B",
+      "source_sha256": "fab7f1900b8d07f02fe7030c776581a5810d74f62bea117dc129b5d83df26b1b",
+      "style": "DEFENSIVE",
+      "training_data": [],
+      "version": "fresh-named-public-preferences-v1"
+    }
+  },
+  "cohorts_authorized_this_increment": false,
+  "context_file": "ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json",
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "date": "2026-11-04",
+  "historical_policies_relabelled": false,
+  "historical_prefix_commands": 152,
+  "historical_prefix_policy": "fresh-untrained-uniform-random-reference-v1",
+  "old_matchup_strategy_imported": false,
+  "outcome_ratings": "NONE",
+  "schema": "named-public-player-roster-v1",
+  "status": "FRESH_UNTRAINED_PROFILES_FOR_BOUNDED_SAME_GAME_CONTINUATION",
+  "whole_mixed_game_credit": 0
+}

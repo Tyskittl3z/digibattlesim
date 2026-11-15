@@ -1,0 +1,29 @@
+{
+  "all_saved_results_events_state_and_RNG_exact": true,
+  "commands_replayed": 164,
+  "date": "2026-11-10",
+  "deterministic_observer_ledger_replay": true,
+  "fresh_matches_started": 0,
+  "full_match_credit": 0,
+  "learning_updates": 0,
+  "mode": "STORED_COMMAND_VERIFICATION_ONLY",
+  "new_actual_gameplay_commands": 0,
+  "observations": 164,
+  "original_record_bytes_unchanged": true,
+  "physical_cards_conserved": 108,
+  "player_policy_calls": 0,
+  "player_views_compared_after_every_command": true,
+  "record": "ARTIFACTS/gameplay-continuations-2026-11-04-02/game-0000-segment.json.gz",
+  "record_sha256": "8e9f67ab71b773522775d3e3692c91374e4915e83be187dc7a3c7ef1392db6e8",
+  "seconds": 38.204,
+  "source_bytes_stable": true,
+  "source_files": 104,
+  "status": "PASS",
+  "strategic_ratings": 0,
+  "successful_security_checks": {
+    "A": 0,
+    "B": 4
+  },
+  "tracker_physical_snapshot_exact_after_every_command": true,
+  "whole_game_judge_certification": false
+}

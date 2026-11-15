@@ -1,0 +1,271 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "actual_event_footprint": {
+    "Tamer_play_events": [],
+    "deleted_cards": [],
+    "lower_cards_to_owner_trash": [
+      "A:EX13-002#2",
+      "A:EX1-013#2"
+    ],
+    "orientation_changes": [],
+    "returned_entity": "A:BT22-022#1 / entity-17",
+    "source_cost_or_bonus_draw_repeated": false,
+    "top_to_owner_deck_bottom": "A:BT22-022#1"
+  },
+  "actual_state": {
+    "A_security_count": 1,
+    "active": "B",
+    "attack": null,
+    "memory": -1,
+    "pending": [
+      {
+        "depth": 0,
+        "effect_id": "BT22-023.when_digivolving_return",
+        "field": "main_text",
+        "id": "effect-57",
+        "instance": "entity-14",
+        "seat": "B",
+        "source": "B:BT22-023#2",
+        "trigger": {
+          "card": "B:BT22-023#2",
+          "kind": "When Digivolving",
+          "previous_top": "B:EX13-019#1"
+        },
+        "usage": []
+      }
+    ],
+    "phase": "MAIN",
+    "source": {
+      "cards": [
+        "B:EX13-019#1",
+        "B:BT22-023#2"
+      ],
+      "instance_id": "entity-14",
+      "played_turn": 6,
+      "ready_since_turn": 7,
+      "statuses": {},
+      "suspended": false
+    },
+    "target": {
+      "cards": [
+        "A:EX13-002#2",
+        "A:EX1-013#2",
+        "A:BT22-022#1"
+      ],
+      "instance_id": "entity-17",
+      "played_turn": null,
+      "ready_since_turn": 9,
+      "statuses": {},
+      "suspended": false
+    },
+    "target_printed_level": 4,
+    "target_statuses": {},
+    "turn": 10
+  },
+  "archived_prefix_proof": "PASS:94archive/manifest entries;151exactsuccesses/fullinitial/final/beforeHALTstate+RNG/108unique cards; see archive11-prefix-proof.json",
+  "expected_result": {
+    "A_deck_bottom": "A:BT22-022#1",
+    "A_deck_delta": 1,
+    "A_trash_delta": 2,
+    "RNG_unchanged": true,
+    "active": "B",
+    "attack": null,
+    "memory": -1,
+    "new_draws": 0,
+    "new_orientation_events": 0,
+    "new_pending_reactions": 0,
+    "phase": "END_OF_TURN",
+    "returned": "A:BT22-022#1",
+    "source_unchanged": true,
+    "target_removed_from_battle": true,
+    "timing": "Resolve this pending When Digivolving effect fully, then with no pending processing at memory\u22121 open END_OF_TURN. B remains active at turn10/memory\u22121; do not switch turns or automatically resolve the future End of Your Turn choice.",
+    "trashed_sources": [
+      "A:EX13-002#2",
+      "A:EX1-013#2"
+    ]
+  },
+  "field_assessment": [
+    {
+      "active_field": "main_text",
+      "card": "A:BT22-022#1",
+      "finding": "Own When Digivolving free-Tamer effect does not trigger from leaving/return. Printed inherited would-leave protection is inactive while this card is the top."
+    },
+    {
+      "active_field": "inherited_text",
+      "card": "A:EX13-002#2",
+      "finding": "Your Turn Tamer-play unsuspend text is not triggered: A is not active, no blue Tamer is played, and returning the stack is not an orientation event."
+    },
+    {
+      "active_field": "inherited_text",
+      "card": "A:EX1-013#2",
+      "finding": "Your Turn/Main unsuspend-memory text is not triggered: A is not active and no suspended\u2192unsuspended change occurs. Sources going to trash are not deleted."
+    },
+    {
+      "active_field": "inherited_text",
+      "card": "unrelated B BT22-022 inherited replacement",
+      "finding": "Protects its own observing Digimon from opponent effects; the actual target is Aentity17 and the return is Bown effect, so it does not apply."
+    },
+    {
+      "active_field": "main_text",
+      "card": "B:EX13-023#1",
+      "finding": "Protection is self-only and opponent-effects-only; does not protect the distinct A target. Ordinary return of the Digimon also differs from an effect explicitly returning its stacked cards (Q7265)."
+    },
+    {
+      "active_field": "main_text or grants",
+      "card": "Evade grants/keyword",
+      "finding": "No deletion is requested and actual target has no grants. Evade is a would-be-deleted replacement, not a return prevention."
+    }
+  ],
+  "final_evaluation_credit": 0,
+  "head_at_review": "90d9b09d5d0a73d9aa77e0fbf2d640e068c76f55",
+  "implementation_review": "Pending. Root full suite imposes explicit SOURCE-write hold; return worker preparing reviewable changes separately. This reviewer makes no SOURCE edits.",
+  "intake_correction": {
+    "parent_acknowledged": true,
+    "resolution": "Review is bound only to the saved record; no input/trace/memory/timing is changed.",
+    "saved_evidence": "Actual command150 is BATTLE_EVOLUTION B:EX13-019#1\u2192B:BT22-023#2, printed special route1 cost3, Bmemory2\u2192\u22121, bonus drawB:BT20-102#1; pendingeffect57 is When Digivolving.",
+    "superseded_inference": "Task intake initially described an Aero hard play / On Play at memory\u22122."
+  },
+  "judge_certification_credit": 0,
+  "legality": {
+    "choice": "A:BT22-022#1",
+    "legal": true,
+    "mandatory_processing": true,
+    "pending_id": "effect-57",
+    "reason": "A:BT22-022#1 is an opponent level4Digimon; eligible targets exist and this mandatory Return1 cannot be replaced by an unmodeled decline.",
+    "seat": "B",
+    "selected_command": "RESOLVE_PENDING"
+  },
+  "new_actual_gameplay_commands": 0,
+  "official_authority": [
+    {
+      "relevance": "Mandatory Return1 opponentLv4orlower at actual When Digivolving timing",
+      "sections": "BT22-023 #BT22-023; CR15-10-2-1;15-1-5;15-16-3-1"
+    },
+    {
+      "relevance": "Owner destination, top deckbottom and lower sources trash simultaneously; Digi-Egg lower goes to public trash, not back to eggdeck",
+      "sections": "CR3-1-3-8;3-2;4-7-8;4-16"
+    },
+    {
+      "relevance": "Only active main/inherited fields and actual turn/trigger conditions apply",
+      "sections": "CR15-3-1;15-8-3-3/4;15-16-8"
+    },
+    {
+      "relevance": "Return is not deletion; Evade only prevents deletion",
+      "sections": "CR4-15-1;16-22-1/2"
+    },
+    {
+      "relevance": "Negative memory does not skip unresolved triggered processing before turn-end timing",
+      "sections": "CR6-6-1/2/3;15-4;15-8-3"
+    },
+    {
+      "relevance": "Stack-card wording has its specific scope; no genuine unsuspend means no inherited memory trigger",
+      "sections": "EX13-023 Q7265;EX1-013 Q3203"
+    }
+  ],
+  "printed_effect": "[On Play] [When Digivolving] Return 1 of your opponent's level 4 or lower Digimon to the bottom of the deck.",
+  "qa_ids_read": [
+    "Q4875",
+    "Q3203",
+    "Q7265",
+    "Q7266",
+    "Q7267",
+    "Q7268",
+    "Q7269"
+  ],
+  "record": {
+    "canonical_sha256": "8d596ab2b7b665453a4e87b9fd2775cb7ce27080603be2349a4f7602b53fec9a",
+    "commands": 152,
+    "gzip_sha256": "458edf88fc3d26b0ec1e1026770d1eca1d2019f97f0b458e98cbacf5f9185b9c",
+    "halt_reason": "AERO_RETURN_DEPENDENCY_UNSUPPORTED: EX13-002 inherited_text",
+    "manifest_source_count": 94,
+    "path": "ARTIFACTS/gameplay-continuations-2026-11-03-11/game-0000-segment.json.gz",
+    "seed": 12017913134550805276,
+    "successful_commands": 151
+  },
+  "review_metadata_correction": "Initial review draft incorrectly said phaseMAIN remained after resolution. Existing _finish_main_processing and CR6-6 open END_OF_TURN once the last current effect clears at negative memory; corrected before final implementation review.",
+  "reviewer": "turn10_attack_judge",
+  "schema": "actual-single-return-rules-review-v1",
+  "source_edits": 0,
+  "sources": [
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-022.html",
+      "hash_verified": true,
+      "id": "card-BT22-022",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "locator": "#BT22-022",
+      "review": null,
+      "sha256": "b2bc45d6d74a4c8a9569094c25bcc7ffe10e179b4891341dd2187298a0346c85",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-022"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-023.html",
+      "hash_verified": true,
+      "id": "card-BT22-023",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "locator": "#BT22-023",
+      "review": null,
+      "sha256": "a184df26a6bd8c5ccaed325998c9b85a18c0c2d5c0778a20993fd2d6a01e67dd",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-023"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX1-013.html",
+      "hash_verified": true,
+      "id": "card-EX1-013",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "locator": "#EX1-013",
+      "review": null,
+      "sha256": "df126caa2ee95d5f7b86008ef828291645d15204c177801eb2f73404d0611f38",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX1-013"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-002.html",
+      "hash_verified": true,
+      "id": "card-EX13-002",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "locator": "#EX13-002",
+      "review": null,
+      "sha256": "9d2abc2c3a5f20aebefbcb5b89818a4559748ddbde4e20f92562092b7267cd4f",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-002"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-023.html",
+      "hash_verified": true,
+      "id": "card-EX13-023",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "locator": "#EX13-023",
+      "review": null,
+      "sha256": "3d50f704648b02667258fceb3f3675a80141599f76ca4ad1beeb3069d8fad7aa",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-023"
+    },
+    {
+      "edition": null,
+      "effective_date": null,
+      "file": "RULES/matchups/123129-vs-124303/sources/general_rule.pdf",
+      "hash_verified": true,
+      "id": "rules",
+      "kind": [
+        "RULES"
+      ],
+      "review": null,
+      "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+      "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918"
+    }
+  ],
+  "status": "CLEAR_PRINTED_RETURN_BLOCKED_BY_OVERBROAD_TARGET_WHITELIST",
+  "strategy_credit": 0
+}

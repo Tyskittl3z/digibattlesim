@@ -1,0 +1,243 @@
+{
+  "actual_state": {
+    "active": "B",
+    "attack": null,
+    "attacker": {
+      "cards": [
+        "B:EX13-022#1",
+        "B:BT11-032#1"
+      ],
+      "instance_id": "entity-5",
+      "played_turn": 4,
+      "ready_since_turn": 5,
+      "statuses": {},
+      "suspended": false
+    },
+    "memory": 5,
+    "once_used": [],
+    "opponent_security_count": 2,
+    "opponent_statuses": {
+      "A:BT11-032#1": {},
+      "A:BT11-112#2": {},
+      "A:BT11-112#3": {},
+      "A:BT12-029#2": {},
+      "A:BT22-022#1": {},
+      "A:EX13-069#1": {},
+      "A:LM-034#1": {}
+    },
+    "own_bt11_rinas": {
+      "B:BT11-112#2": {
+        "cards": [
+          "B:BT11-112#2"
+        ],
+        "instance_id": "entity-16",
+        "played_turn": 8,
+        "ready_since_turn": 9,
+        "statuses": {},
+        "suspended": false
+      },
+      "B:BT11-112#3": {
+        "cards": [
+          "B:BT11-112#3"
+        ],
+        "instance_id": "entity-12",
+        "played_turn": 6,
+        "ready_since_turn": 7,
+        "statuses": {},
+        "suspended": false
+      }
+    },
+    "pending": [],
+    "phase": "MAIN",
+    "turn": 10
+  },
+  "concrete_rules_defects_found": [],
+  "decision": {
+    "attacker": "B:BT11-032#1",
+    "command": "DECLARE_ATTACK",
+    "legality": "Legal declaration in the saved state. Printed When Digivolving and later unsuspend effects do not independently prevent ordinary attack declaration.",
+    "seat": "B",
+    "target": "PLAYER"
+  },
+  "expected_declaration": {
+    "controller": "B",
+    "counter_block_confirmation_deferred_until_pending_processing_resolves": true,
+    "depth": 0,
+    "memory_unchanged": 5,
+    "opponent_rina_reactions": [],
+    "own_top_when_attacking_effect": null,
+    "preserves_entity": "entity-5",
+    "simultaneous_effects": [
+      {
+        "effect": "EX13-022.inherited_unsuspend",
+        "field": "inherited_text",
+        "processing": "explicit optional unsuspend; fresh once-per-turn",
+        "source": "B:EX13-022#1"
+      },
+      {
+        "effect": "BT11-112.suspend_reactivation",
+        "field": "main_text",
+        "processing": "explicit optional Tamer suspension cost / current When Digivolving effect choice",
+        "source": "B:BT11-112#2"
+      },
+      {
+        "effect": "BT11-112.suspend_reactivation",
+        "field": "main_text",
+        "processing": "explicit optional Tamer suspension cost / current When Digivolving effect choice",
+        "source": "B:BT11-112#3"
+      }
+    ],
+    "suspends_attacker": true,
+    "zones_rng_unchanged": true
+  },
+  "future_unsupported_event": {
+    "event": "actual B:BT11-032#1 unsuspend",
+    "note": "Any later target level cap uses the blue Tamer count at processing, not a stale declaration count. No future event was played by this review.",
+    "required_effects": [
+      "BT11-032 mandatory once-per-turn return1 opponent level3 or lower, max level +1 for every own blue Tamer",
+      "own BT11-112#2/#3 mandatory once-per-turn memory gain if fresh",
+      "own EX13-069#3/#4 explicit optional self-suspension / Draw1 / After evolution choices"
+    ],
+    "status": "Retain explicit unsupported-event HALT until selected and correctly implemented; do not execute or silently omit it during this increment"
+  },
+  "head_at_review": "90d9b09d5d0a73d9aa77e0fbf2d640e068c76f55",
+  "name_correction": "Pinned EX13-019 is Veedramon; no historical Veemon typo is reused.",
+  "qa_ids_read": [
+    "Q2142",
+    "Q2143",
+    "Q7198",
+    "Q7199",
+    "Q7200",
+    "Q7264",
+    "Q7259"
+  ],
+  "reasoning": [
+    {
+      "authority": "CR7-1-2-1;11-1-2;11-2-1/2/5;11-2-7-1;11-2-8-1",
+      "finding": "B is the turn player in MAIN at memory5; attacker is unsuspended, played turn4, ready since turn5, with no prohibition. PLAYER is a legal target."
+    },
+    {
+      "authority": "CR2-3-11-2-1;15-3-1;15-14-1; official EX13-022 #EX13-022",
+      "finding": "EX13-022 is an inherited source, so its main When Attacking free-play effect is inactive. Its inherited All Turns OPT suspension reaction applies to current UlforceVeedramon."
+    },
+    {
+      "authority": "official BT11-112 #BT11-112;Q2142/Q2143/Q7199/Q7200;CR15-7;15-10-1-1",
+      "finding": "Two own BT11 Rinas observe the same own Veedramon suspension. Their costs are optional and their individual current effects are chosen explicitly. Opponent Rinas do not observe an own Digimon suspension."
+    },
+    {
+      "authority": "CR15-4-2-3;15-4-3-1/2/4/5;15-4-5-2;15-15-7-1",
+      "finding": "The three effects share one declaration timing; B chooses the next effect only after the previous effect resolves. Derived effects finish before the remaining older siblings."
+    },
+    {
+      "authority": "official BT11-032 #BT11-032;CR15-8-3-3/4",
+      "finding": "BT11-032 has no When Attacking effect. Unsuspend on blue Tamer play and mandatory OPT return on own unsuspend wait for their actual triggering events."
+    },
+    {
+      "authority": "CR11-1-3/4;11-3;11-4;11-5; actual snapshot",
+      "finding": "Counter precedes Block and successful-attack confirmation, after all declaration-trigger processing. A has2 security and no active Blocker grants in the saved state."
+    }
+  ],
+  "record": {
+    "archive_manifest_entries": 94,
+    "canonical_record_sha256": "edba5ed4f421e6a0928d8212a3504d4f29e0f2abc776480fe6c90c7c471215a3",
+    "commands": 140,
+    "gzip_sha256": "3dbca9be5f068511b2dc4806e157232fcec84ab01560a4dd23b301ad88be21c1",
+    "path": "ARTIFACTS/gameplay-continuations-2026-11-03-09/game-0000-segment.json.gz",
+    "seed": 12017913134550805276,
+    "status": "HALT",
+    "successful_commands": 139
+  },
+  "reviewer": "turn10_attack_judge",
+  "schema": "actual-encounter-rules-review-v1",
+  "scope": "Selected Game0000 turn10 attack declaration only; read-only official wording/rules audit, implementation verification pending",
+  "sources": [
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-032.html",
+      "hash_verified": true,
+      "id": "card-BT11-032",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "locator": "#BT11-032",
+      "review": null,
+      "sha256": "82c0b74c599cb27d0784d93959057b2504e97c4e593af5ee0a0fce51db30d50e",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-032"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-112.html",
+      "hash_verified": true,
+      "id": "card-BT11-112",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "locator": "#BT11-112",
+      "review": null,
+      "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-112"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-019.html",
+      "hash_verified": true,
+      "id": "card-EX13-019",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "locator": "#EX13-019",
+      "review": null,
+      "sha256": "0e9158139b3c4d46987c85a968f40469743a76892cba86227871ed897b1e4d5a",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-019"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-022.html",
+      "hash_verified": true,
+      "id": "card-EX13-022",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "locator": "#EX13-022",
+      "review": null,
+      "sha256": "4771e6eab5218e833eebf7d1ff6cf70ad6fa51a51d556f8a404ac88f07256874",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-022"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-069.html",
+      "hash_verified": true,
+      "id": "card-EX13-069",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "locator": "#EX13-069",
+      "review": null,
+      "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-069"
+    },
+    {
+      "edition": null,
+      "effective_date": null,
+      "file": "RULES/matchups/123129-vs-124303/sources/general_rule.pdf",
+      "hash_verified": true,
+      "id": "rules",
+      "kind": [
+        "RULES"
+      ],
+      "review": null,
+      "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+      "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918"
+    }
+  ],
+  "verification_limits": {
+    "archived_prefix_proof": "PASS:94 source hashes;139 saved successes; full state/RNG;108 cards. See archive09-prefix-proof.json",
+    "final_evaluation_credit": 0,
+    "full_match_credit": 0,
+    "implementation_check": "Independent final diff review and3 actual encounter tests passed; see turn10-attack-implementation-review.json",
+    "judge_certification_credit": 0,
+    "new_actual_gameplay_commands": 0,
+    "source_edits": 0,
+    "strategy_credit": 0
+  }
+}

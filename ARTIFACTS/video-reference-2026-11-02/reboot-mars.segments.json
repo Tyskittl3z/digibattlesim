@@ -1,0 +1,2535 @@
+{
+  "source": {
+    "key": "reboot-mars",
+    "label": "Rebootmon vs Marsmon (narrative identification)",
+    "file_id": "file_00000000344481f58b117258baa88680",
+    "original_path": "/workspace/attachments/05845c80-703d-4048-ab1b-b6384747c2ef/Pasted text.txt",
+    "original_bytes": 22848,
+    "original_sha256": "4fd8e65605b7232bac5841088cfb24815390a2c2a6259bc1344eecd6aa3a3f42",
+    "segments": 503,
+    "last_caption_seconds": 868,
+    "identity_basis": "USER_CONTEXT_AND_TRANSCRIPT_NOT_EXACT_DECK_CERTIFICATION",
+    "evidence_type": "USER_SUPPLIED_TRANSCRIPT",
+    "card_name_normalization": "NONE_ORIGINAL_WORDS_PRESERVED",
+    "rules_authority": false,
+    "simulated_match_credit": 0,
+    "segments_file": "reboot-mars.segments.json"
+  },
+  "segments": [
+    {
+      "timestamp": "0:00",
+      "start_seconds": 0,
+      "text": "Rebu will be making the first move."
+    },
+    {
+      "timestamp": "0:01",
+      "start_seconds": 1,
+      "text": "Hatch swipemon and digiv evolve into"
+    },
+    {
+      "timestamp": "0:04",
+      "start_seconds": 4,
+      "text": "anmon with zero cost. The option card"
+    },
+    {
+      "timestamp": "0:06",
+      "start_seconds": 6,
+      "text": "cyber engage will be used with three"
+    },
+    {
+      "timestamp": "0:08",
+      "start_seconds": 8,
+      "text": "memory cost which has a huge requirement"
+    },
+    {
+      "timestamp": "0:10",
+      "start_seconds": 10,
+      "text": "with the atmon trade and because has the"
+    },
+    {
+      "timestamp": "0:12",
+      "start_seconds": 12,
+      "text": "atmon trait it can ignore the color"
+    },
+    {
+      "timestamp": "0:13",
+      "start_seconds": 13,
+      "text": "requirements. His main effect reveal top"
+    },
+    {
+      "timestamp": "0:15",
+      "start_seconds": 15,
+      "text": "three cards of the deck. Add one atmon"
+    },
+    {
+      "timestamp": "0:16",
+      "start_seconds": 16,
+      "text": "trade card among them to the hand."
+    },
+    {
+      "timestamp": "0:18",
+      "start_seconds": 18,
+      "text": "Bootman will be added [music] and the"
+    },
+    {
+      "timestamp": "0:19",
+      "start_seconds": 19,
+      "text": "rest will be trashed. Turn passes over"
+    },
+    {
+      "timestamp": "0:21",
+      "start_seconds": 21,
+      "text": "to Marsmon. Draw for turn. Digi egg"
+    },
+    {
+      "timestamp": "0:23",
+      "start_seconds": 23,
+      "text": "hatch took which will dig into baremon"
+    },
+    {
+      "timestamp": "0:26",
+      "start_seconds": 26,
+      "text": "for zero cost. AT24 Heroko will be"
+    },
+    {
+      "timestamp": "0:28",
+      "start_seconds": 28,
+      "text": "played for three members with his onplay"
+    },
+    {
+      "timestamp": "0:30",
+      "start_seconds": 30,
+      "text": "effect reveal the top three cards of the"
+    },
+    {
+      "timestamp": "0:32",
+      "start_seconds": 32,
+      "text": "deck and one card with the TSR among"
+    },
+    {
+      "timestamp": "0:33",
+      "start_seconds": 33,
+      "text": "them to the hand. The red and green"
+    },
+    {
+      "timestamp": "0:35",
+      "start_seconds": 35,
+      "text": "grizzly man will be added and the rest"
+    },
+    {
+      "timestamp": "0:36",
+      "start_seconds": 36,
+      "text": "will return back to the bottom of the"
+    },
+    {
+      "timestamp": "0:38",
+      "start_seconds": 38,
+      "text": "deck. Next, the dual tamer Dan Yuki and"
+    },
+    {
+      "timestamp": "0:40",
+      "start_seconds": 40,
+      "text": "Kayanuki for BT24 will be played for"
+    },
+    {
+      "timestamp": "0:42",
+      "start_seconds": 42,
+      "text": "four memory costs. Since the memory"
+    },
+    {
+      "timestamp": "0:43",
+      "start_seconds": 43,
+      "text": "gauge has passed over to Reboot on side,"
+    },
+    {
+      "timestamp": "0:45",
+      "start_seconds": 45,
+      "text": "you will now use the end of your turn"
+    },
+    {
+      "timestamp": "0:47",
+      "start_seconds": 47,
+      "text": "effect by suspending this tamer. You may"
+    },
+    {
+      "timestamp": "0:48",
+      "start_seconds": 48,
+      "text": "use one TS trait option card with as"
+    },
+    {
+      "timestamp": "0:50",
+      "start_seconds": 50,
+      "text": "high or lower use [music] cost as your"
+    },
+    {
+      "timestamp": "0:51",
+      "start_seconds": 51,
+      "text": "opponent's memory from your hand without"
+    },
+    {
+      "timestamp": "0:53",
+      "start_seconds": 53,
+      "text": "paying the cost. Then one of your"
+    },
+    {
+      "timestamp": "0:54",
+      "start_seconds": 54,
+      "text": "Digimon with the TS trait may attack."
+    },
+    {
+      "timestamp": "0:56",
+      "start_seconds": 56,
+      "text": "Since Marsman has no Digimon in the"
+    },
+    {
+      "timestamp": "0:57",
+      "start_seconds": 57,
+      "text": "battle area, no Digimon will attack, but"
+    },
+    {
+      "timestamp": "0:59",
+      "start_seconds": 59,
+      "text": "the option card Paradise Coliseum will"
+    },
+    {
+      "timestamp": "1:00",
+      "start_seconds": 60,
+      "text": "be used for free. Main effect, add your"
+    },
+    {
+      "timestamp": "1:02",
+      "start_seconds": 62,
+      "text": "B security card to the hand and place"
+    },
+    {
+      "timestamp": "1:04",
+      "start_seconds": 64,
+      "text": "this card as a face up B security card."
+    },
+    {
+      "timestamp": "1:06",
+      "start_seconds": 66,
+      "text": "Then you may play a red or green TS"
+    },
+    {
+      "timestamp": "1:07",
+      "start_seconds": 67,
+      "text": "trade Digimon card from your hand with"
+    },
+    {
+      "timestamp": "1:09",
+      "start_seconds": 69,
+      "text": "the cost reduced by three and the BC24"
+    },
+    {
+      "timestamp": "1:11",
+      "start_seconds": 71,
+      "text": "tape will be played for free with it on"
+    },
+    {
+      "timestamp": "1:12",
+      "start_seconds": 72,
+      "text": "play effect reveal top three cards of"
+    },
+    {
+      "timestamp": "1:14",
+      "start_seconds": 74,
+      "text": "the deck. Add one Digimon card with the"
+    },
+    {
+      "timestamp": "1:15",
+      "start_seconds": 75,
+      "text": "shaman trait or with the beast animal or"
+    },
+    {
+      "timestamp": "1:18",
+      "start_seconds": 78,
+      "text": "sovereign other than sea animal in any"
+    },
+    {
+      "timestamp": "1:19",
+      "start_seconds": 79,
+      "text": "of his traits and one card with the TS"
+    },
+    {
+      "timestamp": "1:21",
+      "start_seconds": 81,
+      "text": "trait among them to the hand. Fair will"
+    },
+    {
+      "timestamp": "1:23",
+      "start_seconds": 83,
+      "text": "be added as the beast trait and Paradise"
+    },
+    {
+      "timestamp": "1:24",
+      "start_seconds": 84,
+      "text": "Coliseum will be added as the TS trait"
+    },
+    {
+      "timestamp": "1:26",
+      "start_seconds": 86,
+      "text": "to the hand with the rest returning back"
+    },
+    {
+      "timestamp": "1:27",
+      "start_seconds": 87,
+      "text": "to the bottom of the deck. Paradise"
+    },
+    {
+      "timestamp": "1:28",
+      "start_seconds": 88,
+      "text": "Colosseum has a face up security effect."
+    },
+    {
+      "timestamp": "1:30",
+      "start_seconds": 90,
+      "text": "All turns all of your red or green TS"
+    },
+    {
+      "timestamp": "1:32",
+      "start_seconds": 92,
+      "text": "trait Digimon get extra 2,000 DP while"
+    },
+    {
+      "timestamp": "1:34",
+      "start_seconds": 94,
+      "text": "you have Marsmon or [music] Kalismon."
+    },
+    {
+      "timestamp": "1:35",
+      "start_seconds": 95,
+      "text": "They also gain rush and now the turn"
+    },
+    {
+      "timestamp": "1:37",
+      "start_seconds": 97,
+      "text": "will pass back over to Reboot Mon with"
+    },
+    {
+      "timestamp": "1:39",
+      "start_seconds": 99,
+      "text": "four member draw for turn on will move"
+    },
+    {
+      "timestamp": "1:41",
+      "start_seconds": 101,
+      "text": "to the battle area. Diver engage will"
+    },
+    {
+      "timestamp": "1:42",
+      "start_seconds": 102,
+      "text": "use it delay effect to trash yourself"
+    },
+    {
+      "timestamp": "1:44",
+      "start_seconds": 104,
+      "text": "[music] from the battle area to play out"
+    },
+    {
+      "timestamp": "1:45",
+      "start_seconds": 105,
+      "text": "a trade card from your hand. the cost"
+    },
+    {
+      "timestamp": "1:47",
+      "start_seconds": 107,
+      "text": "reduced by three and the BT25 gashmon"
+    },
+    {
+      "timestamp": "1:49",
+      "start_seconds": 109,
+      "text": "will be played which has an onplay"
+    },
+    {
+      "timestamp": "1:50",
+      "start_seconds": 110,
+      "text": "effect to search the top three cards of"
+    },
+    {
+      "timestamp": "1:52",
+      "start_seconds": 112,
+      "text": "the deck adding one atmon trait card and"
+    },
+    {
+      "timestamp": "1:54",
+      "start_seconds": 114,
+      "text": "one social tool reboot or creation trait"
+    },
+    {
+      "timestamp": "1:56",
+      "start_seconds": 116,
+      "text": "among them to the hand for shmon and"
+    },
+    {
+      "timestamp": "1:58",
+      "start_seconds": 118,
+      "text": "gashmon can be both added to the hand"
+    },
+    {
+      "timestamp": "2:00",
+      "start_seconds": 120,
+      "text": "and the rest will turn back to the"
+    },
+    {
+      "timestamp": "2:01",
+      "start_seconds": 121,
+      "text": "bottom of the deck gashmon from the"
+    },
+    {
+      "timestamp": "2:02",
+      "start_seconds": 122,
+      "text": "battle area will link itself tomon for"
+    },
+    {
+      "timestamp": "2:04",
+      "start_seconds": 124,
+      "text": "one memory [music] cost but with's"
+    },
+    {
+      "timestamp": "2:06",
+      "start_seconds": 126,
+      "text": "effect your turn on must return when a"
+    },
+    {
+      "timestamp": "2:07",
+      "start_seconds": 127,
+      "text": "social tool or game trade card would"
+    },
+    {
+      "timestamp": "2:09",
+      "start_seconds": 129,
+      "text": "link to this Digimon you may reduce the"
+    },
+    {
+      "timestamp": "2:11",
+      "start_seconds": 131,
+      "text": "cost by one making it zero's [music] one"
+    },
+    {
+      "timestamp": "2:13",
+      "start_seconds": 133,
+      "text": "linking effect will delete one of the"
+    },
+    {
+      "timestamp": "2:14",
+      "start_seconds": 134,
+      "text": "opponent's Digimon for 3,000 DP or less"
+    },
+    {
+      "timestamp": "2:16",
+      "start_seconds": 136,
+      "text": "and the target will be taper. Next,"
+    },
+    {
+      "timestamp": "2:18",
+      "start_seconds": 138,
+      "text": "swipe mon's inher effect activates. Your"
+    },
+    {
+      "timestamp": "2:20",
+      "start_seconds": 140,
+      "text": "turn must return when this Digimon gets"
+    },
+    {
+      "timestamp": "2:22",
+      "start_seconds": 142,
+      "text": "linked, draw one. And now, by [music]"
+    },
+    {
+      "timestamp": "2:23",
+      "start_seconds": 143,
+      "text": "placing Gashmon on top of Atmon, it will"
+    },
+    {
+      "timestamp": "2:25",
+      "start_seconds": 145,
+      "text": "act fused together into Limon. Pokemon"
+    },
+    {
+      "timestamp": "2:27",
+      "start_seconds": 147,
+      "text": "will use his main once return effect to"
+    },
+    {
+      "timestamp": "2:29",
+      "start_seconds": 149,
+      "text": "link one social tool or game trade"
+    },
+    {
+      "timestamp": "2:31",
+      "start_seconds": 151,
+      "text": "Digimon card from the hand or this"
+    },
+    {
+      "timestamp": "2:32",
+      "start_seconds": 152,
+      "text": "Digimon's digion cards. The cost reduced"
+    },
+    {
+      "timestamp": "2:34",
+      "start_seconds": 154,
+      "text": "by one, but Craftmon will be linked from"
+    },
+    {
+      "timestamp": "2:36",
+      "start_seconds": 156,
+      "text": "the hand by paying one memory cost."
+    },
+    {
+      "timestamp": "2:38",
+      "start_seconds": 158,
+      "text": "Craftmon will linking effect by trashing"
+    },
+    {
+      "timestamp": "2:39",
+      "start_seconds": 159,
+      "text": "one atlant trade card from your hand,"
+    },
+    {
+      "timestamp": "2:41",
+      "start_seconds": 161,
+      "text": "draw two, and the BT21 gimmon [music]"
+    },
+    {
+      "timestamp": "2:43",
+      "start_seconds": 163,
+      "text": "will be trashed. Oimon's your turn"
+    },
+    {
+      "timestamp": "2:44",
+      "start_seconds": 164,
+      "text": "effect activates once returned when this"
+    },
+    {
+      "timestamp": "2:46",
+      "start_seconds": 166,
+      "text": "Digimon gets linked. If you have one or"
+    },
+    {
+      "timestamp": "2:47",
+      "start_seconds": 167,
+      "text": "three tamers, you may play one cusky and"
+    },
+    {
+      "timestamp": "2:49",
+      "start_seconds": 169,
+      "text": "eat from your hand without paying the"
+    },
+    {
+      "timestamp": "2:51",
+      "start_seconds": 171,
+      "text": "cost. Next, by placing craftmon on top"
+    },
+    {
+      "timestamp": "2:53",
+      "start_seconds": 173,
+      "text": "of Loiman, it will [music] now add fuse"
+    },
+    {
+      "timestamp": "2:54",
+      "start_seconds": 174,
+      "text": "together to go into boots. One dig"
+    },
+    {
+      "timestamp": "2:57",
+      "start_seconds": 177,
+      "text": "evolving effect. If it's your turn,"
+    },
+    {
+      "timestamp": "2:58",
+      "start_seconds": 178,
+      "text": "[music] you may link one social or game"
+    },
+    {
+      "timestamp": "3:01",
+      "start_seconds": 181,
+      "text": "trade digimon card from your hand or"
+    },
+    {
+      "timestamp": "3:02",
+      "start_seconds": 182,
+      "text": "this Digimon's digion card to this"
+    },
+    {
+      "timestamp": "3:04",
+      "start_seconds": 184,
+      "text": "Digimon with the cost reduced by two."
+    },
+    {
+      "timestamp": "3:06",
+      "start_seconds": 186,
+      "text": "Craftmon will be linked from the hand"
+    },
+    {
+      "timestamp": "3:07",
+      "start_seconds": 187,
+      "text": "for free and using his one linking"
+    },
+    {
+      "timestamp": "3:09",
+      "start_seconds": 189,
+      "text": "effect once again by trashing Kazuki"
+    },
+    {
+      "timestamp": "3:10",
+      "start_seconds": 190,
+      "text": "[music] and Izzky from the hand which"
+    },
+    {
+      "timestamp": "3:11",
+      "start_seconds": 191,
+      "text": "has the Aon trait to draw two cards all"
+    },
+    {
+      "timestamp": "3:14",
+      "start_seconds": 194,
+      "text": "turns effect. When this Digimon gets"
+    },
+    {
+      "timestamp": "3:15",
+      "start_seconds": 195,
+      "text": "linked, suspend one of your opponent's"
+    },
+    {
+      "timestamp": "3:17",
+      "start_seconds": 197,
+      "text": "Digimon for tamers and Hero will be the"
+    },
+    {
+      "timestamp": "3:19",
+      "start_seconds": 199,
+      "text": "target. Kazuki and Isip's main effect by"
+    },
+    {
+      "timestamp": "3:21",
+      "start_seconds": 201,
+      "text": "suspending this tamer, you may link one"
+    },
+    {
+      "timestamp": "3:22",
+      "start_seconds": 202,
+      "text": "atmon trade Digimon card from your hand"
+    },
+    {
+      "timestamp": "3:24",
+      "start_seconds": 204,
+      "text": "or your Digimon's digion cards [music]"
+    },
+    {
+      "timestamp": "3:25",
+      "start_seconds": 205,
+      "text": "to one of the Digimon for the cost"
+    },
+    {
+      "timestamp": "3:27",
+      "start_seconds": 207,
+      "text": "reduced by two. And by trashing the"
+    },
+    {
+      "timestamp": "3:28",
+      "start_seconds": 208,
+      "text": "craftmon that is linked will be linked"
+    },
+    {
+      "timestamp": "3:30",
+      "start_seconds": 210,
+      "text": "from the hand to boot for one memory"
+    },
+    {
+      "timestamp": "3:31",
+      "start_seconds": 211,
+      "text": "cost. Chopman's when linking effect. Two"
+    },
+    {
+      "timestamp": "3:33",
+      "start_seconds": 213,
+      "text": "of your opponent's Digimon or tamers can"
+    },
+    {
+      "timestamp": "3:35",
+      "start_seconds": 215,
+      "text": "unsuspend until their turn ends and the"
+    },
+    {
+      "timestamp": "3:37",
+      "start_seconds": 217,
+      "text": "targets will be the two tamers on Mars"
+    },
+    {
+      "timestamp": "3:38",
+      "start_seconds": 218,
+      "text": "one's [music] side. Chopman and Bootman"
+    },
+    {
+      "timestamp": "3:40",
+      "start_seconds": 220,
+      "text": "will now afuse together into the god of"
+    },
+    {
+      "timestamp": "3:42",
+      "start_seconds": 222,
+      "text": "revolution who governs the beginning and"
+    },
+    {
+      "timestamp": "3:44",
+      "start_seconds": 224,
+      "text": "the end which will be his Bootman"
+    },
+    {
+      "timestamp": "3:47",
+      "start_seconds": 227,
+      "text": "Rebum [music] will attack into security"
+    },
+    {
+      "timestamp": "3:48",
+      "start_seconds": 228,
+      "text": "with his when attacking effect by"
+    },
+    {
+      "timestamp": "3:50",
+      "start_seconds": 230,
+      "text": "linking one aton trade card from your"
+    },
+    {
+      "timestamp": "3:51",
+      "start_seconds": 231,
+      "text": "hand or this Digimon's distribution"
+    },
+    {
+      "timestamp": "3:53",
+      "start_seconds": 233,
+      "text": "cards to this Digimon without paying the"
+    },
+    {
+      "timestamp": "3:55",
+      "start_seconds": 235,
+      "text": "cost. One of your [music] Digimon may"
+    },
+    {
+      "timestamp": "3:56",
+      "start_seconds": 236,
+      "text": "unsuspend where Craftmon will be led"
+    },
+    {
+      "timestamp": "3:58",
+      "start_seconds": 238,
+      "text": "from the sources to Reboot. Raven Mon's"
+    },
+    {
+      "timestamp": "4:00",
+      "start_seconds": 240,
+      "text": "all turns effect activates once returned"
+    },
+    {
+      "timestamp": "4:02",
+      "start_seconds": 242,
+      "text": "when this Digimon gets linked or"
+    },
+    {
+      "timestamp": "4:03",
+      "start_seconds": 243,
+      "text": "unsuspend until your turn ends. This"
+    },
+    {
+      "timestamp": "4:05",
+      "start_seconds": 245,
+      "text": "Digimon gains piercing and blocker"
+    },
+    {
+      "timestamp": "4:06",
+      "start_seconds": 246,
+      "text": "[music] and your opponent's Digimon"
+    },
+    {
+      "timestamp": "4:08",
+      "start_seconds": 248,
+      "text": "effects don't affect it. Craft mons when"
+    },
+    {
+      "timestamp": "4:09",
+      "start_seconds": 249,
+      "text": "linking effect will trash logimmon from"
+    },
+    {
+      "timestamp": "4:11",
+      "start_seconds": 251,
+      "text": "the hand to draw two. Continuing the"
+    },
+    {
+      "timestamp": "4:13",
+      "start_seconds": 253,
+      "text": "attack into security with reboot one"
+    },
+    {
+      "timestamp": "4:14",
+      "start_seconds": 254,
+      "text": "that has 15k DP and security attack plus"
+    },
+    {
+      "timestamp": "4:16",
+      "start_seconds": 256,
+      "text": "one. It will deal two checks. First"
+    },
+    {
+      "timestamp": "4:18",
+      "start_seconds": 258,
+      "text": "check tape your"
+    },
+    {
+      "timestamp": "4:21",
+      "start_seconds": 261,
+      "text": "second check grapple."
+    },
+    {
+      "timestamp": "4:24",
+      "start_seconds": 264,
+      "text": "Reboot on attacking security once again"
+    },
+    {
+      "timestamp": "4:26",
+      "start_seconds": 266,
+      "text": "for another two checks. First check,"
+    },
+    {
+      "timestamp": "4:28",
+      "start_seconds": 268,
+      "text": "great grizzly mod. Second check, Hilo,"
+    },
+    {
+      "timestamp": "4:31",
+      "start_seconds": 271,
+      "text": "which has a security effect that can be"
+    },
+    {
+      "timestamp": "4:33",
+      "start_seconds": 273,
+      "text": "played without paying the costs. It's on"
+    },
+    {
+      "timestamp": "4:35",
+      "start_seconds": 275,
+      "text": "[music] play effect to search top three"
+    },
+    {
+      "timestamp": "4:36",
+      "start_seconds": 276,
+      "text": "to add one TS trade card to the hand,"
+    },
+    {
+      "timestamp": "4:38",
+      "start_seconds": 278,
+      "text": "which will be great grizzly mod, and the"
+    },
+    {
+      "timestamp": "4:40",
+      "start_seconds": 280,
+      "text": "rest will turn back to the bottom. The"
+    },
+    {
+      "timestamp": "4:43",
+      "start_seconds": 283,
+      "text": "BC21 Haru will be played for four memory"
+    },
+    {
+      "timestamp": "4:45",
+      "start_seconds": 285,
+      "text": "costs, passing [music] a turn over to"
+    },
+    {
+      "timestamp": "4:46",
+      "start_seconds": 286,
+      "text": "Marsmon with two memory, and Reboot"
+    },
+    {
+      "timestamp": "4:48",
+      "start_seconds": 288,
+      "text": "Monk's piercing, blocker, and immunity"
+    },
+    {
+      "timestamp": "4:50",
+      "start_seconds": 290,
+      "text": "effect will be gone. [music] The crazy"
+    },
+    {
+      "timestamp": "4:51",
+      "start_seconds": 291,
+      "text": "amount of firepower that Reboot was able"
+    },
+    {
+      "timestamp": "4:53",
+      "start_seconds": 293,
+      "text": "to dish out and is currently threatening"
+    },
+    {
+      "timestamp": "4:54",
+      "start_seconds": 294,
+      "text": "Letho against Marsmon and Callismon"
+    },
+    {
+      "timestamp": "4:56",
+      "start_seconds": 296,
+      "text": "where the bear brothers are forced to"
+    },
+    {
+      "timestamp": "4:58",
+      "start_seconds": 298,
+      "text": "answer Reboot immediately. Can they"
+    },
+    {
+      "timestamp": "4:59",
+      "start_seconds": 299,
+      "text": "stabilize and make a comeback? We'll"
+    },
+    {
+      "timestamp": "5:01",
+      "start_seconds": 301,
+      "text": "find out. Hero start of your turn effect"
+    },
+    {
+      "timestamp": "5:03",
+      "start_seconds": 303,
+      "text": "activates. If you have four [music] or"
+    },
+    {
+      "timestamp": "5:04",
+      "start_seconds": 304,
+      "text": "less memory by returning his tamer to"
+    },
+    {
+      "timestamp": "5:05",
+      "start_seconds": 305,
+      "text": "the bottom of the deck, you can play one"
+    },
+    {
+      "timestamp": "5:07",
+      "start_seconds": 307,
+      "text": "hero or one TS trade Digimon card with"
+    },
+    {
+      "timestamp": "5:09",
+      "start_seconds": 309,
+      "text": "5,000 DP or less from your hand without"
+    },
+    {
+      "timestamp": "5:10",
+      "start_seconds": 310,
+      "text": "paying the cost and the BT25 red baron"
+    },
+    {
+      "timestamp": "5:13",
+      "start_seconds": 313,
+      "text": "will be played. And now we'll proceed to"
+    },
+    {
+      "timestamp": "5:14",
+      "start_seconds": 314,
+      "text": "the unsuspend phase where reboot man has"
+    },
+    {
+      "timestamp": "5:16",
+      "start_seconds": 316,
+      "text": "a keyword reboot which can unsuspend"
+    },
+    {
+      "timestamp": "5:18",
+      "start_seconds": 318,
+      "text": "itself and his alternate effect will"
+    },
+    {
+      "timestamp": "5:19",
+      "start_seconds": 319,
+      "text": "activate once again to gain piercing"
+    },
+    {
+      "timestamp": "5:21",
+      "start_seconds": 321,
+      "text": "walker and digimon effective immunity"
+    },
+    {
+      "timestamp": "5:23",
+      "start_seconds": 323,
+      "text": "blasting to the end of reboot's turn."
+    },
+    {
+      "timestamp": "5:25",
+      "start_seconds": 325,
+      "text": "Cars one will draw for trap fair will"
+    },
+    {
+      "timestamp": "5:26",
+      "start_seconds": 326,
+      "text": "move from the breeding area to the"
+    },
+    {
+      "timestamp": "5:28",
+      "start_seconds": 328,
+      "text": "battle area and kan starter main phase"
+    },
+    {
+      "timestamp": "5:30",
+      "start_seconds": 330,
+      "text": "effect. If you have four or less memory"
+    },
+    {
+      "timestamp": "5:31",
+      "start_seconds": 331,
+      "text": "game one also has a starter main effect."
+    },
+    {
+      "timestamp": "5:33",
+      "start_seconds": 333,
+      "text": "If you have far less memory, this"
+    },
+    {
+      "timestamp": "5:35",
+      "start_seconds": 335,
+      "text": "Digimon may dig evolve into a Digimon"
+    },
+    {
+      "timestamp": "5:36",
+      "start_seconds": 336,
+      "text": "card with beast, animal, [music] or"
+    },
+    {
+      "timestamp": "5:38",
+      "start_seconds": 338,
+      "text": "sovereign other than sea animal in any"
+    },
+    {
+      "timestamp": "5:40",
+      "start_seconds": 340,
+      "text": "of his traits or TS trait in the hand"
+    },
+    {
+      "timestamp": "5:42",
+      "start_seconds": 342,
+      "text": "without paying [music] the cost, which"
+    },
+    {
+      "timestamp": "5:43",
+      "start_seconds": 343,
+      "text": "will dig evolve into the red and green"
+    },
+    {
+      "timestamp": "5:44",
+      "start_seconds": 344,
+      "text": "grizzly mind for free. When diging"
+    },
+    {
+      "timestamp": "5:47",
+      "start_seconds": 347,
+      "text": "effect, one of your Digimon will be"
+    },
+    {
+      "timestamp": "5:48",
+      "start_seconds": 348,
+      "text": "animal or sovereign other than sea"
+    },
+    {
+      "timestamp": "5:50",
+      "start_seconds": 350,
+      "text": "animal in any of his traits or the"
+    },
+    {
+      "timestamp": "5:51",
+      "start_seconds": 351,
+      "text": "shaman or TS trait gain raid and 3,000"
+    },
+    {
+      "timestamp": "5:54",
+      "start_seconds": 354,
+      "text": "DP for the turn and the target will be"
+    },
+    {
+      "timestamp": "5:55",
+      "start_seconds": 355,
+      "text": "itself. The other bear mod will also use"
+    },
+    {
+      "timestamp": "5:57",
+      "start_seconds": 357,
+      "text": "a starter main effect. This time evolve"
+    },
+    {
+      "timestamp": "5:59",
+      "start_seconds": 359,
+      "text": "into the green and black grizzly mod"
+    },
+    {
+      "timestamp": "6:01",
+      "start_seconds": 361,
+      "text": "from BT25. With this one dig effect or"
+    },
+    {
+      "timestamp": "6:03",
+      "start_seconds": 363,
+      "text": "if a Digimon with beast, animal or"
+    },
+    {
+      "timestamp": "6:05",
+      "start_seconds": 365,
+      "text": "sovereign other than sea animal trait in"
+    },
+    {
+      "timestamp": "6:06",
+      "start_seconds": 366,
+      "text": "any of his traits [music] or the shaman"
+    },
+    {
+      "timestamp": "6:08",
+      "start_seconds": 368,
+      "text": "or TS trait, gain extra 3,000 BP until"
+    },
+    {
+      "timestamp": "6:10",
+      "start_seconds": 370,
+      "text": "your opponent turn ends and the [music]"
+    },
+    {
+      "timestamp": "6:12",
+      "start_seconds": 372,
+      "text": "target will be its bare brother, red and"
+    },
+    {
+      "timestamp": "6:13",
+      "start_seconds": 373,
+      "text": "green grizzly. Grizzly will dig evolve"
+    },
+    {
+      "timestamp": "6:16",
+      "start_seconds": 376,
+      "text": "into great grizzly man with the special"
+    },
+    {
+      "timestamp": "6:17",
+      "start_seconds": 377,
+      "text": "digution requirements for three memory"
+    },
+    {
+      "timestamp": "6:19",
+      "start_seconds": 379,
+      "text": "costs because when digoling effect, if"
+    },
+    {
+      "timestamp": "6:21",
+      "start_seconds": 381,
+      "text": "one of the opponent's Digimon start a"
+    },
+    {
+      "timestamp": "6:22",
+      "start_seconds": 382,
+      "text": "main phase, [music] this Digimon attacks"
+    },
+    {
+      "timestamp": "6:24",
+      "start_seconds": 384,
+      "text": "when their turn ends and the target will"
+    },
+    {
+      "timestamp": "6:26",
+      "start_seconds": 386,
+      "text": "be reboot. However, it is immune to the"
+    },
+    {
+      "timestamp": "6:27",
+      "start_seconds": 387,
+      "text": "opponent's Digimon effects until the end"
+    },
+    {
+      "timestamp": "6:29",
+      "start_seconds": 389,
+      "text": "of Reboot's turn. Meaning Great Grizzly"
+    },
+    {
+      "timestamp": "6:30",
+      "start_seconds": 390,
+      "text": "Mon's effect won't work against it."
+    },
+    {
+      "timestamp": "6:32",
+      "start_seconds": 392,
+      "text": "Great [music] Grizzly Mon will attack"
+    },
+    {
+      "timestamp": "6:33",
+      "start_seconds": 393,
+      "text": "into security and use raid gain from"
+    },
+    {
+      "timestamp": "6:35",
+      "start_seconds": 395,
+      "text": "Grizzly's effect to change the attack"
+    },
+    {
+      "timestamp": "6:36",
+      "start_seconds": 396,
+      "text": "target to one of the opponent's"
+    },
+    {
+      "timestamp": "6:38",
+      "start_seconds": 398,
+      "text": "unsuspended Digimon with the highest DP"
+    },
+    {
+      "timestamp": "6:40",
+      "start_seconds": 400,
+      "text": "which will be Reboot. Pokemon's inherit"
+    },
+    {
+      "timestamp": "6:42",
+      "start_seconds": 402,
+      "text": "effect when attacking once per turn if"
+    },
+    {
+      "timestamp": "6:43",
+      "start_seconds": 403,
+      "text": "this Digimon has a TS trait. [music]"
+    },
+    {
+      "timestamp": "6:44",
+      "start_seconds": 404,
+      "text": "Draw one at this moment. With all the"
+    },
+    {
+      "timestamp": "6:46",
+      "start_seconds": 406,
+      "text": "combined DP with the Grizzly Mons worth"
+    },
+    {
+      "timestamp": "6:48",
+      "start_seconds": 408,
+      "text": "3,000 each, extra 2,000 from Paradise"
+    },
+    {
+      "timestamp": "6:50",
+      "start_seconds": 410,
+      "text": "Coliseum, [music] another 1,000 from"
+    },
+    {
+      "timestamp": "6:51",
+      "start_seconds": 411,
+      "text": "both Fairmon and Grizzlymons in her"
+    },
+    {
+      "timestamp": "6:53",
+      "start_seconds": 413,
+      "text": "effects. Grizzly mod will now be at 17k"
+    },
+    {
+      "timestamp": "6:55",
+      "start_seconds": 415,
+      "text": "DP. Swing [music] into reboot mod that"
+    },
+    {
+      "timestamp": "6:57",
+      "start_seconds": 417,
+      "text": "is only at 15k DP. deleting it by"
+    },
+    {
+      "timestamp": "7:00",
+      "start_seconds": 420,
+      "text": "battle. And because of that, great"
+    },
+    {
+      "timestamp": "7:01",
+      "start_seconds": 421,
+      "text": "grizzly's alter effect activates. When"
+    },
+    {
+      "timestamp": "7:03",
+      "start_seconds": 423,
+      "text": "this Digimon wins a battle, it may dig"
+    },
+    {
+      "timestamp": "7:04",
+      "start_seconds": 424,
+      "text": "evolve into Calisan or Margemon in the"
+    },
+    {
+      "timestamp": "7:06",
+      "start_seconds": 426,
+      "text": "hand without paying the cost where Great"
+    },
+    {
+      "timestamp": "7:08",
+      "start_seconds": 428,
+      "text": "Grizzly will dig into BT25 Callismon for"
+    },
+    {
+      "timestamp": "7:11",
+      "start_seconds": 431,
+      "text": "free. Calmon's one dig bombing effect."
+    },
+    {
+      "timestamp": "7:12",
+      "start_seconds": 432,
+      "text": "Once return, you may suspend one of your"
+    },
+    {
+      "timestamp": "7:14",
+      "start_seconds": 434,
+      "text": "opponent's Digimon or tamers for [music]"
+    },
+    {
+      "timestamp": "7:15",
+      "start_seconds": 435,
+      "text": "the target will be Har. Then one of"
+    },
+    {
+      "timestamp": "7:17",
+      "start_seconds": 437,
+      "text": "their Digimon or tamers can unsuspend"
+    },
+    {
+      "timestamp": "7:18",
+      "start_seconds": 438,
+      "text": "until their turn ends, which will be"
+    },
+    {
+      "timestamp": "7:20",
+      "start_seconds": 440,
+      "text": "Katsky and [music] next as all turns"
+    },
+    {
+      "timestamp": "7:22",
+      "start_seconds": 442,
+      "text": "effect will also activate. Once"
+    },
+    {
+      "timestamp": "7:23",
+      "start_seconds": 443,
+      "text": "returned, when effects play or digol any"
+    },
+    {
+      "timestamp": "7:25",
+      "start_seconds": 445,
+      "text": "Digimon, which includes itself, Digim"
+    },
+    {
+      "timestamp": "7:27",
+      "start_seconds": 447,
+      "text": "evolve one [music] on the opponent's"
+    },
+    {
+      "timestamp": "7:28",
+      "start_seconds": 448,
+      "text": "Digimon. Then this Digimon may battle"
+    },
+    {
+      "timestamp": "7:29",
+      "start_seconds": 449,
+      "text": "one of your opponent's Digimon."
+    },
+    {
+      "timestamp": "7:30",
+      "start_seconds": 450,
+      "text": "Unfortunately, there are no targets with"
+    },
+    {
+      "timestamp": "7:32",
+      "start_seconds": 452,
+      "text": "Calison being present on the board. Now,"
+    },
+    {
+      "timestamp": "7:34",
+      "start_seconds": 454,
+      "text": "Paradise Coliseum will give all red or"
+    },
+    {
+      "timestamp": "7:35",
+      "start_seconds": 455,
+      "text": "[music] green tier straight Digimon rush"
+    },
+    {
+      "timestamp": "7:37",
+      "start_seconds": 457,
+      "text": "as well, where Grizzly will attack into"
+    },
+    {
+      "timestamp": "7:39",
+      "start_seconds": 459,
+      "text": "security. Security check, craftmon,"
+    },
+    {
+      "timestamp": "7:41",
+      "start_seconds": 461,
+      "text": "which also has a security effect at the"
+    },
+    {
+      "timestamp": "7:43",
+      "start_seconds": 463,
+      "text": "end of battle. Play this card without"
+    },
+    {
+      "timestamp": "7:44",
+      "start_seconds": 464,
+      "text": "paying the cost. On play effect, add the"
+    },
+    {
+      "timestamp": "7:46",
+      "start_seconds": 466,
+      "text": "top security to the hand, then recover"
+    },
+    {
+      "timestamp": "7:49",
+      "start_seconds": 469,
+      "text": "one. The option card in between theater"
+    },
+    {
+      "timestamp": "7:51",
+      "start_seconds": 471,
+      "text": "will be used for three memory costs."
+    },
+    {
+      "timestamp": "7:53",
+      "start_seconds": 473,
+      "text": "While you have a TS trait, Digimon or"
+    },
+    {
+      "timestamp": "7:54",
+      "start_seconds": 474,
+      "text": "Tamer on the field, you can ignore this"
+    },
+    {
+      "timestamp": "7:56",
+      "start_seconds": 476,
+      "text": "card's color requirements. Main effect"
+    },
+    {
+      "timestamp": "7:57",
+      "start_seconds": 477,
+      "text": "give you the top three cards of the"
+    },
+    {
+      "timestamp": "7:58",
+      "start_seconds": 478,
+      "text": "deck. Add one card with TS trick among"
+    },
+    {
+      "timestamp": "8:00",
+      "start_seconds": 480,
+      "text": "them to the hand which will be take your"
+    },
+    {
+      "timestamp": "8:01",
+      "start_seconds": 481,
+      "text": "mod and the rest returns back to the"
+    },
+    {
+      "timestamp": "8:03",
+      "start_seconds": 483,
+      "text": "bottom. The turn will now end with all"
+    },
+    {
+      "timestamp": "8:04",
+      "start_seconds": 484,
+      "text": "stun effects wired off from tamers as"
+    },
+    {
+      "timestamp": "8:06",
+      "start_seconds": 486,
+      "text": "well as the extra DB buff from the red"
+    },
+    {
+      "timestamp": "8:08",
+      "start_seconds": 488,
+      "text": "and green grizzly mod passing over"
+    },
+    {
+      "timestamp": "8:09",
+      "start_seconds": 489,
+      "text": "[music] to reboot mod. Callismon has"
+    },
+    {
+      "timestamp": "8:11",
+      "start_seconds": 491,
+      "text": "reboot which will unsuspect. It also has"
+    },
+    {
+      "timestamp": "8:13",
+      "start_seconds": 493,
+      "text": "blocker which could potentially stop an"
+    },
+    {
+      "timestamp": "8:14",
+      "start_seconds": 494,
+      "text": "attack. Looks like the bear brothers are"
+    },
+    {
+      "timestamp": "8:16",
+      "start_seconds": 496,
+      "text": "able to deal with reboot man for now."
+    },
+    {
+      "timestamp": "8:17",
+      "start_seconds": 497,
+      "text": "But thanks to checking craftmon from"
+    },
+    {
+      "timestamp": "8:19",
+      "start_seconds": 499,
+      "text": "security reboot man might have a"
+    },
+    {
+      "timestamp": "8:20",
+      "start_seconds": 500,
+      "text": "clapback play but has to be careful to"
+    },
+    {
+      "timestamp": "8:22",
+      "start_seconds": 502,
+      "text": "not play or dig any Digimon by effects."
+    },
+    {
+      "timestamp": "8:25",
+      "start_seconds": 505,
+      "text": "Otherwise, Callis man can counter"
+    },
+    {
+      "timestamp": "8:26",
+      "start_seconds": 506,
+      "text": "against it with Digivol and force a"
+    },
+    {
+      "timestamp": "8:28",
+      "start_seconds": 508,
+      "text": "battle. Reboot man will draw for trmony"
+    },
+    {
+      "timestamp": "8:30",
+      "start_seconds": 510,
+      "text": "[music]"
+    },
+    {
+      "timestamp": "8:32",
+      "start_seconds": 512,
+      "text": "starter main effect. If your opponent"
+    },
+    {
+      "timestamp": "8:33",
+      "start_seconds": 513,
+      "text": "has a Digimon, gain a memory. Swipe man"
+    },
+    {
+      "timestamp": "8:35",
+      "start_seconds": 515,
+      "text": "will dig [music] into onmon to zero"
+    },
+    {
+      "timestamp": "8:37",
+      "start_seconds": 517,
+      "text": "costs. Logimmon will link itself from"
+    },
+    {
+      "timestamp": "8:39",
+      "start_seconds": 519,
+      "text": "the hand to craftmon for two memory"
+    },
+    {
+      "timestamp": "8:40",
+      "start_seconds": 520,
+      "text": "cuffs. Logan's when linking [music]"
+    },
+    {
+      "timestamp": "8:42",
+      "start_seconds": 522,
+      "text": "effect will suspend one of the"
+    },
+    {
+      "timestamp": "8:43",
+      "start_seconds": 523,
+      "text": "opponent's Digimon or tamer and the"
+    },
+    {
+      "timestamp": "8:44",
+      "start_seconds": 524,
+      "text": "target will be catalog. Ar your turn"
+    },
+    {
+      "timestamp": "8:46",
+      "start_seconds": 526,
+      "text": "effect activates. When your [music]"
+    },
+    {
+      "timestamp": "8:48",
+      "start_seconds": 528,
+      "text": "Digimon get linked by suspending this"
+    },
+    {
+      "timestamp": "8:49",
+      "start_seconds": 529,
+      "text": "tamer, draw one. Then one of your"
+    },
+    {
+      "timestamp": "8:51",
+      "start_seconds": 531,
+      "text": "Digimon may accuse into a Digimon card"
+    },
+    {
+      "timestamp": "8:52",
+      "start_seconds": 532,
+      "text": "in the [music] hand. However, it will"
+    },
+    {
+      "timestamp": "8:54",
+      "start_seconds": 534,
+      "text": "choose not to because this is considered"
+    },
+    {
+      "timestamp": "8:55",
+      "start_seconds": 535,
+      "text": "as digolving by an effect which will run"
+    },
+    {
+      "timestamp": "8:57",
+      "start_seconds": 537,
+      "text": "into Calismon's trap. Craftmon will"
+    },
+    {
+      "timestamp": "8:59",
+      "start_seconds": 539,
+      "text": "attack into [music] Grizzlymon. Thanks"
+    },
+    {
+      "timestamp": "9:00",
+      "start_seconds": 540,
+      "text": "to Logimmon being linked together with"
+    },
+    {
+      "timestamp": "9:02",
+      "start_seconds": 542,
+      "text": "it. It will give it extra 3,000 DP"
+    },
+    {
+      "timestamp": "9:03",
+      "start_seconds": 543,
+      "text": "making it 8,000 where Grizzlymon only"
+    },
+    {
+      "timestamp": "9:05",
+      "start_seconds": 545,
+      "text": "has 7,000 DP even with the buffs from"
+    },
+    {
+      "timestamp": "9:07",
+      "start_seconds": 547,
+      "text": "Bearmon's incurred effect and Paradise"
+    },
+    {
+      "timestamp": "9:09",
+      "start_seconds": 549,
+      "text": "[music] Locks. As a result, it'll be"
+    },
+    {
+      "timestamp": "9:10",
+      "start_seconds": 550,
+      "text": "deleted by battle. Craftmon will dig"
+    },
+    {
+      "timestamp": "9:12",
+      "start_seconds": 552,
+      "text": "evolve into Shotmon for three memory"
+    },
+    {
+      "timestamp": "9:14",
+      "start_seconds": 554,
+      "text": "costs. with his one diging effect. If"
+    },
+    {
+      "timestamp": "9:16",
+      "start_seconds": 556,
+      "text": "it's your turn, you may link one social"
+    },
+    {
+      "timestamp": "9:18",
+      "start_seconds": 558,
+      "text": "tool [music] or game trade Digimon card"
+    },
+    {
+      "timestamp": "9:19",
+      "start_seconds": 559,
+      "text": "from your trash or this Digimon's digion"
+    },
+    {
+      "timestamp": "9:21",
+      "start_seconds": 561,
+      "text": "cards to this Digimon with the cost"
+    },
+    {
+      "timestamp": "9:23",
+      "start_seconds": 563,
+      "text": "reduced by two. Because a Digimon can"
+    },
+    {
+      "timestamp": "9:24",
+      "start_seconds": 564,
+      "text": "only have one link card to it at a time,"
+    },
+    {
+      "timestamp": "9:26",
+      "start_seconds": 566,
+      "text": "Loimon will be then trashed [music] and"
+    },
+    {
+      "timestamp": "9:28",
+      "start_seconds": 568,
+      "text": "Bootman will be taken from the trash to"
+    },
+    {
+      "timestamp": "9:29",
+      "start_seconds": 569,
+      "text": "link together with Shopan for one memory"
+    },
+    {
+      "timestamp": "9:31",
+      "start_seconds": 571,
+      "text": "cost. Bootman's one linking effect will"
+    },
+    {
+      "timestamp": "9:33",
+      "start_seconds": 573,
+      "text": "return one of the opponent's suspended"
+    },
+    {
+      "timestamp": "9:34",
+      "start_seconds": 574,
+      "text": "Digimon to [music] the bottom of the"
+    },
+    {
+      "timestamp": "9:35",
+      "start_seconds": 575,
+      "text": "deck and the target will be callusmon."
+    },
+    {
+      "timestamp": "9:37",
+      "start_seconds": 577,
+      "text": "Shotmon's all turns effect activates."
+    },
+    {
+      "timestamp": "9:39",
+      "start_seconds": 579,
+      "text": "Once per turn, when this Digimon gets"
+    },
+    {
+      "timestamp": "9:40",
+      "start_seconds": 580,
+      "text": "linked, one of your opponent's Digimon"
+    },
+    {
+      "timestamp": "9:42",
+      "start_seconds": 582,
+      "text": "or Tamers can't dig evolve until their"
+    },
+    {
+      "timestamp": "9:44",
+      "start_seconds": 584,
+      "text": "turn ends, and the target will be"
+    },
+    {
+      "timestamp": "9:45",
+      "start_seconds": 585,
+      "text": "Heroko. The turn will now end passing"
+    },
+    {
+      "timestamp": "9:47",
+      "start_seconds": 587,
+      "text": "over to Marsmon's side with two memory"
+    },
+    {
+      "timestamp": "9:49",
+      "start_seconds": 589,
+      "text": "where Reubon will be pressing lethal"
+    },
+    {
+      "timestamp": "9:50",
+      "start_seconds": 590,
+      "text": "against Marsmon once again. In the"
+    },
+    {
+      "timestamp": "9:52",
+      "start_seconds": 592,
+      "text": "following turn, Hero's start of turn"
+    },
+    {
+      "timestamp": "9:54",
+      "start_seconds": 594,
+      "text": "effect will activate. Since there's four"
+    },
+    {
+      "timestamp": "9:55",
+      "start_seconds": 595,
+      "text": "[music] less memory, it can bomb deck"
+    },
+    {
+      "timestamp": "9:56",
+      "start_seconds": 596,
+      "text": "itself. Play Tapion from the hand for"
+    },
+    {
+      "timestamp": "9:58",
+      "start_seconds": 598,
+      "text": "free. Tapion's onplayer effect will"
+    },
+    {
+      "timestamp": "9:59",
+      "start_seconds": 599,
+      "text": "search the top three,"
+    },
+    {
+      "timestamp": "10:02",
+      "start_seconds": 602,
+      "text": "adding Grizzly [music] as the beast"
+    },
+    {
+      "timestamp": "10:03",
+      "start_seconds": 603,
+      "text": "trait and another copy of the same taper"
+    },
+    {
+      "timestamp": "10:05",
+      "start_seconds": 605,
+      "text": "as a TS trait to the hand where the rest"
+    },
+    {
+      "timestamp": "10:07",
+      "start_seconds": 607,
+      "text": "will return back to the bottom of the"
+    },
+    {
+      "timestamp": "10:08",
+      "start_seconds": 608,
+      "text": "deck. [music] Now unsuspend and draw for"
+    },
+    {
+      "timestamp": "10:11",
+      "start_seconds": 611,
+      "text": "turn catch Pokemon and the cannon start"
+    },
+    {
+      "timestamp": "10:14",
+      "start_seconds": 614,
+      "text": "main phase will gain a memory since"
+    },
+    {
+      "timestamp": "10:15",
+      "start_seconds": 615,
+      "text": "there's [music] four or less Pokemon"
+    },
+    {
+      "timestamp": "10:16",
+      "start_seconds": 616,
+      "text": "will dig evolve into the red bearmon for"
+    },
+    {
+      "timestamp": "10:18",
+      "start_seconds": 618,
+      "text": "zero cost will dig evolve into grizzly"
+    },
+    {
+      "timestamp": "10:21",
+      "start_seconds": 621,
+      "text": "man with a special digution requirement"
+    },
+    {
+      "timestamp": "10:22",
+      "start_seconds": 622,
+      "text": "[music] for two memory costs grizzly"
+    },
+    {
+      "timestamp": "10:24",
+      "start_seconds": 624,
+      "text": "when one dig evolving effect will give"
+    },
+    {
+      "timestamp": "10:26",
+      "start_seconds": 626,
+      "text": "itself ra and extra 3,000 DP for the"
+    },
+    {
+      "timestamp": "10:28",
+      "start_seconds": 628,
+      "text": "turn in between theater delay effect"
+    },
+    {
+      "timestamp": "10:29",
+      "start_seconds": 629,
+      "text": "will trash itself in the battle area to"
+    },
+    {
+      "timestamp": "10:31",
+      "start_seconds": 631,
+      "text": "gain two memory frizz [music] will dig"
+    },
+    {
+      "timestamp": "10:33",
+      "start_seconds": 633,
+      "text": "evolve into graph with a special digital"
+    },
+    {
+      "timestamp": "10:35",
+      "start_seconds": 635,
+      "text": "requirements for three memory costs of"
+    },
+    {
+      "timestamp": "10:37",
+      "start_seconds": 637,
+      "text": "it when digging effect from Your Digimon"
+    },
+    {
+      "timestamp": "10:39",
+      "start_seconds": 639,
+      "text": "gets extra 3,000 DB for the turn [music]"
+    },
+    {
+      "timestamp": "10:40",
+      "start_seconds": 640,
+      "text": "which will be itself. Then one of your"
+    },
+    {
+      "timestamp": "10:42",
+      "start_seconds": 642,
+      "text": "Digimon may attack. However, Grapply"
+    },
+    {
+      "timestamp": "10:44",
+      "start_seconds": 644,
+      "text": "won't be able to since the taper man was"
+    },
+    {
+      "timestamp": "10:46",
+      "start_seconds": 646,
+      "text": "played this turn and it doesn't have"
+    },
+    {
+      "timestamp": "10:47",
+      "start_seconds": 647,
+      "text": "rush. Grapplon will then dig evolve into"
+    },
+    {
+      "timestamp": "10:49",
+      "start_seconds": 649,
+      "text": "Marsmon with the special digivolution"
+    },
+    {
+      "timestamp": "10:51",
+      "start_seconds": 651,
+      "text": "requirements for only three cops."
+    },
+    {
+      "timestamp": "10:52",
+      "start_seconds": 652,
+      "text": "Marsmon when dig evolving effect, one of"
+    },
+    {
+      "timestamp": "10:54",
+      "start_seconds": 654,
+      "text": "your Digimon [music] gets extra 3,000 BP"
+    },
+    {
+      "timestamp": "10:56",
+      "start_seconds": 656,
+      "text": "for the turn, which will also be itself."
+    },
+    {
+      "timestamp": "10:58",
+      "start_seconds": 658,
+      "text": "Then one of your Digimon may battle one"
+    },
+    {
+      "timestamp": "10:59",
+      "start_seconds": 659,
+      "text": "of your opponent's Digimon, [music]"
+    },
+    {
+      "timestamp": "11:00",
+      "start_seconds": 660,
+      "text": "which will fight against Shot, taking it"
+    },
+    {
+      "timestamp": "11:02",
+      "start_seconds": 662,
+      "text": "down. Next, all turns on return. When"
+    },
+    {
+      "timestamp": "11:04",
+      "start_seconds": 664,
+      "text": "any of your TSA Digimon win a battle,"
+    },
+    {
+      "timestamp": "11:06",
+      "start_seconds": 666,
+      "text": "trash your opponent's top security card."
+    },
+    {
+      "timestamp": "11:07",
+      "start_seconds": 667,
+      "text": "At the end of the turn, Dan and Kana can"
+    },
+    {
+      "timestamp": "11:09",
+      "start_seconds": 669,
+      "text": "suspend itself [music] to use the option"
+    },
+    {
+      "timestamp": "11:11",
+      "start_seconds": 671,
+      "text": "card in between theater for free. Since"
+    },
+    {
+      "timestamp": "11:12",
+      "start_seconds": 672,
+      "text": "Reboot is at three memories, then one of"
+    },
+    {
+      "timestamp": "11:14",
+      "start_seconds": 674,
+      "text": "your Digimon with the TS Trait may"
+    },
+    {
+      "timestamp": "11:15",
+      "start_seconds": 675,
+      "text": "[music] attack. And because Marsmon is"
+    },
+    {
+      "timestamp": "11:17",
+      "start_seconds": 677,
+      "text": "now on the board, Paradise Coliseum will"
+    },
+    {
+      "timestamp": "11:19",
+      "start_seconds": 679,
+      "text": "give all the green and red TS trait"
+    },
+    {
+      "timestamp": "11:20",
+      "start_seconds": 680,
+      "text": "Digimon rush, meaning it can declare an"
+    },
+    {
+      "timestamp": "11:23",
+      "start_seconds": 683,
+      "text": "attack into security in between the main"
+    },
+    {
+      "timestamp": "11:25",
+      "start_seconds": 685,
+      "text": "effect will search the top three cards"
+    },
+    {
+      "timestamp": "11:26",
+      "start_seconds": 686,
+      "text": "of the deck. Adding great grizzly to the"
+    },
+    {
+      "timestamp": "11:28",
+      "start_seconds": 688,
+      "text": "hand and returning the rest back to the"
+    },
+    {
+      "timestamp": "11:30",
+      "start_seconds": 690,
+      "text": "bottom of the deck. Marsmon's when"
+    },
+    {
+      "timestamp": "11:31",
+      "start_seconds": 691,
+      "text": "attacking effect is exactly the same as"
+    },
+    {
+      "timestamp": "11:32",
+      "start_seconds": 692,
+      "text": "his windage evolving effect and his not"
+    },
+    {
+      "timestamp": "11:34",
+      "start_seconds": 694,
+      "text": "once much return which will gain another"
+    },
+    {
+      "timestamp": "11:36",
+      "start_seconds": 696,
+      "text": "extra 3,000 DP for the turn. With all"
+    },
+    {
+      "timestamp": "11:38",
+      "start_seconds": 698,
+      "text": "the DP buffs, Marsmon will reach a"
+    },
+    {
+      "timestamp": "11:39",
+      "start_seconds": 699,
+      "text": "massive amount of 27k along with"
+    },
+    {
+      "timestamp": "11:41",
+      "start_seconds": 701,
+      "text": "grappling's inher effect to give it"
+    },
+    {
+      "timestamp": "11:43",
+      "start_seconds": 703,
+      "text": "security attack plus one which will deal"
+    },
+    {
+      "timestamp": "11:45",
+      "start_seconds": 705,
+      "text": "two checks. First check carmon."
+    },
+    {
+      "timestamp": "11:48",
+      "start_seconds": 708,
+      "text": "Second check Marsmon has been able to"
+    },
+    {
+      "timestamp": "11:51",
+      "start_seconds": 711,
+      "text": "put reboot down to one security evening"
+    },
+    {
+      "timestamp": "11:53",
+      "start_seconds": 713,
+      "text": "the game out and all the DP buffs that"
+    },
+    {
+      "timestamp": "11:55",
+      "start_seconds": 715,
+      "text": "has gained for the turn will now wear"
+    },
+    {
+      "timestamp": "11:56",
+      "start_seconds": 716,
+      "text": "off passing a turn over to Reboot for"
+    },
+    {
+      "timestamp": "11:58",
+      "start_seconds": 718,
+      "text": "three memory. spend and draw. On [music]"
+    },
+    {
+      "timestamp": "12:00",
+      "start_seconds": 720,
+      "text": "will move to the battle area. Pres and"
+    },
+    {
+      "timestamp": "12:02",
+      "start_seconds": 722,
+      "text": "Insky start a main phase effect. If the"
+    },
+    {
+      "timestamp": "12:04",
+      "start_seconds": 724,
+      "text": "opponent has a Digimon, gain a memory."
+    },
+    {
+      "timestamp": "12:05",
+      "start_seconds": 725,
+      "text": "Bas25 Gashon will link itself from the"
+    },
+    {
+      "timestamp": "12:07",
+      "start_seconds": 727,
+      "text": "hand to Aman for one memory cost."
+    },
+    {
+      "timestamp": "12:09",
+      "start_seconds": 729,
+      "text": "[music] But with Aman's your turn"
+    },
+    {
+      "timestamp": "12:11",
+      "start_seconds": 731,
+      "text": "effect, it can reduce the link cost by"
+    },
+    {
+      "timestamp": "12:13",
+      "start_seconds": 733,
+      "text": "one, making it zero. And since Gashmon's"
+    },
+    {
+      "timestamp": "12:15",
+      "start_seconds": 735,
+      "text": "linked to Arman, Swipondon's in her"
+    },
+    {
+      "timestamp": "12:16",
+      "start_seconds": 736,
+      "text": "effect will draw a card. Aman and"
+    },
+    {
+      "timestamp": "12:18",
+      "start_seconds": 738,
+      "text": "Gashmon were now afused together into"
+    },
+    {
+      "timestamp": "12:20",
+      "start_seconds": 740,
+      "text": "Limon with zero cost. Pokemon's main"
+    },
+    {
+      "timestamp": "12:22",
+      "start_seconds": 742,
+      "text": "once per turn effect will link Craftmon"
+    },
+    {
+      "timestamp": "12:24",
+      "start_seconds": 744,
+      "text": "from the hand with the cost reduced by"
+    },
+    {
+      "timestamp": "12:26",
+      "start_seconds": 746,
+      "text": "one, paying only one memory. Craftmon's"
+    },
+    {
+      "timestamp": "12:27",
+      "start_seconds": 747,
+      "text": "one linking effect will trash cyber"
+    },
+    {
+      "timestamp": "12:29",
+      "start_seconds": 749,
+      "text": "engage from the hand to draw two. Logan"
+    },
+    {
+      "timestamp": "12:31",
+      "start_seconds": 751,
+      "text": "and Craftmon will now appuse together to"
+    },
+    {
+      "timestamp": "12:33",
+      "start_seconds": 753,
+      "text": "go into Bootman for zero cost. Bootman's"
+    },
+    {
+      "timestamp": "12:36",
+      "start_seconds": 756,
+      "text": "one diging effect. This is your turn. It"
+    },
+    {
+      "timestamp": "12:38",
+      "start_seconds": 758,
+      "text": "can link Shotmon from the hand with the"
+    },
+    {
+      "timestamp": "12:39",
+      "start_seconds": 759,
+      "text": "cost reduced by two. Shopmon has a link"
+    },
+    {
+      "timestamp": "12:41",
+      "start_seconds": 761,
+      "text": "cost of three where one memory will be"
+    },
+    {
+      "timestamp": "12:42",
+      "start_seconds": 762,
+      "text": "paid. Shopmon's one linking effect will"
+    },
+    {
+      "timestamp": "12:44",
+      "start_seconds": 764,
+      "text": "prevent Marsmon as well as the dual"
+    },
+    {
+      "timestamp": "12:46",
+      "start_seconds": 766,
+      "text": "tamer Dan and Kanan from unsuspending"
+    },
+    {
+      "timestamp": "12:48",
+      "start_seconds": 768,
+      "text": "until the opponent's [music] turn ends."
+    },
+    {
+      "timestamp": "12:49",
+      "start_seconds": 769,
+      "text": "Pokemon's alter effect since it was"
+    },
+    {
+      "timestamp": "12:51",
+      "start_seconds": 771,
+      "text": "linked to spend one of the opponents"
+    },
+    {
+      "timestamp": "12:52",
+      "start_seconds": 772,
+      "text": "Digimon or tamers but there are [music]"
+    },
+    {
+      "timestamp": "12:54",
+      "start_seconds": 774,
+      "text": "no targets. Hummon and Shman will afuse"
+    },
+    {
+      "timestamp": "12:56",
+      "start_seconds": 776,
+      "text": "together once again to go into Rebuan"
+    },
+    {
+      "timestamp": "12:58",
+      "start_seconds": 778,
+      "text": "once more. Rebootman will attack into"
+    },
+    {
+      "timestamp": "13:00",
+      "start_seconds": 780,
+      "text": "[music] Marsmon. If it's when an"
+    },
+    {
+      "timestamp": "13:01",
+      "start_seconds": 781,
+      "text": "attacking effect, it will link Carouson"
+    },
+    {
+      "timestamp": "13:03",
+      "start_seconds": 783,
+      "text": "from the hand without paying the cost to"
+    },
+    {
+      "timestamp": "13:05",
+      "start_seconds": 785,
+      "text": "unsuspend itself. Then it all turns"
+    },
+    {
+      "timestamp": "13:07",
+      "start_seconds": 787,
+      "text": "effect will kick in. Since it was linked"
+    },
+    {
+      "timestamp": "13:08",
+      "start_seconds": 788,
+      "text": "or unsuspended, it will gain [music]"
+    },
+    {
+      "timestamp": "13:10",
+      "start_seconds": 790,
+      "text": "piercing blocker and the opponent's"
+    },
+    {
+      "timestamp": "13:11",
+      "start_seconds": 791,
+      "text": "Digimon effects won't affect it until"
+    },
+    {
+      "timestamp": "13:13",
+      "start_seconds": 793,
+      "text": "the turn ends. If carous, it will reach"
+    },
+    {
+      "timestamp": "13:16",
+      "start_seconds": 796,
+      "text": "up to 16k DP. Attacking over Marsmon"
+    },
+    {
+      "timestamp": "13:18",
+      "start_seconds": 798,
+      "text": "that only has 15k [music] and deleting"
+    },
+    {
+      "timestamp": "13:20",
+      "start_seconds": 800,
+      "text": "it with piercing. When this Digimon"
+    },
+    {
+      "timestamp": "13:22",
+      "start_seconds": 802,
+      "text": "deletes your opponent's Digimon in"
+    },
+    {
+      "timestamp": "13:23",
+      "start_seconds": 803,
+      "text": "battle while attacking it, it checks the"
+    },
+    {
+      "timestamp": "13:25",
+      "start_seconds": 805,
+      "text": "security before the attack ends, which"
+    },
+    {
+      "timestamp": "13:26",
+      "start_seconds": 806,
+      "text": "will be Paradise Coliseum. With its"
+    },
+    {
+      "timestamp": "13:28",
+      "start_seconds": 808,
+      "text": "security effect, it can play one level"
+    },
+    {
+      "timestamp": "13:29",
+      "start_seconds": 809,
+      "text": "four or lower red or green TS trade"
+    },
+    {
+      "timestamp": "13:31",
+      "start_seconds": 811,
+      "text": "Digimon cards from the hand or trash"
+    },
+    {
+      "timestamp": "13:33",
+      "start_seconds": 813,
+      "text": "without paying the cost. With the green"
+    },
+    {
+      "timestamp": "13:34",
+      "start_seconds": 814,
+      "text": "and black grizzly mon will be played"
+    },
+    {
+      "timestamp": "13:36",
+      "start_seconds": 816,
+      "text": "back from the trash. With its onplay"
+    },
+    {
+      "timestamp": "13:37",
+      "start_seconds": 817,
+      "text": "effect, it will give itself extra 3,000"
+    },
+    {
+      "timestamp": "13:39",
+      "start_seconds": 819,
+      "text": "DP until the end of opponent's turn. At"
+    },
+    {
+      "timestamp": "13:41",
+      "start_seconds": 821,
+      "text": "the same time, it has blocker, which can"
+    },
+    {
+      "timestamp": "13:42",
+      "start_seconds": 822,
+      "text": "stop reboot's final attack. This is"
+    },
+    {
+      "timestamp": "13:44",
+      "start_seconds": 824,
+      "text": "where Kaziki and his will use its main"
+    },
+    {
+      "timestamp": "13:46",
+      "start_seconds": 826,
+      "text": "effect. By suspending this tamer, it can"
+    },
+    {
+      "timestamp": "13:48",
+      "start_seconds": 828,
+      "text": "link oneonone trade card from the hand"
+    },
+    {
+      "timestamp": "13:50",
+      "start_seconds": 830,
+      "text": "or your Digimon's digion [music] cards"
+    },
+    {
+      "timestamp": "13:51",
+      "start_seconds": 831,
+      "text": "to one of your Digimon with the cost"
+    },
+    {
+      "timestamp": "13:53",
+      "start_seconds": 833,
+      "text": "reduced by two or will be linked from"
+    },
+    {
+      "timestamp": "13:55",
+      "start_seconds": 835,
+      "text": "underneath Rebuan sources to it for"
+    },
+    {
+      "timestamp": "13:57",
+      "start_seconds": 837,
+      "text": "free. Rebu also has a keyword link plus"
+    },
+    {
+      "timestamp": "13:59",
+      "start_seconds": 839,
+      "text": "one which can add one more to this"
+    },
+    {
+      "timestamp": "14:00",
+      "start_seconds": 840,
+      "text": "Digimon's maximum amount of links."
+    },
+    {
+      "timestamp": "14:02",
+      "start_seconds": 842,
+      "text": "[music] Armon's when linking effect will"
+    },
+    {
+      "timestamp": "14:04",
+      "start_seconds": 844,
+      "text": "suspend one of the opponent's Digimon"
+    },
+    {
+      "timestamp": "14:05",
+      "start_seconds": 845,
+      "text": "and the target will be the grizzly mons"
+    },
+    {
+      "timestamp": "14:07",
+      "start_seconds": 847,
+      "text": "[music]"
+    },
+    {
+      "timestamp": "14:08",
+      "start_seconds": 848,
+      "text": "reboot was linked. It can suspend itself"
+    },
+    {
+      "timestamp": "14:10",
+      "start_seconds": 850,
+      "text": "to draw one with no more plays that can"
+    },
+    {
+      "timestamp": "14:12",
+      "start_seconds": 852,
+      "text": "be made from Marsmon and Talisman's"
+    },
+    {
+      "timestamp": "14:13",
+      "start_seconds": 853,
+      "text": "side. Reboot Mong will attack into"
+    },
+    {
+      "timestamp": "14:15",
+      "start_seconds": 855,
+      "text": "security once more, winning the game."
+    },
+    {
+      "timestamp": "14:19",
+      "start_seconds": 859,
+      "text": "Make sure to check out the Evolve store"
+    },
+    {
+      "timestamp": "14:20",
+      "start_seconds": 860,
+      "text": "for all awesome TCG accessories. Here"
+    },
+    {
+      "timestamp": "14:22",
+      "start_seconds": 862,
+      "text": "are the deck lists for today's Battle"
+    },
+    {
+      "timestamp": "14:23",
+      "start_seconds": 863,
+      "text": "Vault video. Also, huge shout outs to"
+    },
+    {
+      "timestamp": "14:25",
+      "start_seconds": 865,
+      "text": "premium and deluxe members of the"
+    },
+    {
+      "timestamp": "14:26",
+      "start_seconds": 866,
+      "text": "channel. And don't forget to subscribe"
+    },
+    {
+      "timestamp": "14:28",
+      "start_seconds": 868,
+      "text": "to stay tuned for"
+    }
+  ]
+}

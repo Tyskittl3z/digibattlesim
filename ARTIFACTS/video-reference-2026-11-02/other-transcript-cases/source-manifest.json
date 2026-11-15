@@ -1,0 +1,34 @@
+{
+  "evidence_type": "USER_SUPPLIED_TIMESTAMPED_TRANSCRIPT",
+  "video_viewed": false,
+  "official_rules_crosschecked": false,
+  "sources": [
+    {
+      "label": "jesmon-alphamon",
+      "sediment_file_id": "file_00000000779081f5afc0cb0f5ee73c29",
+      "path": "/workspace/attachments/ccdce49c-a3d1-4193-ac02-49d863b78c69/Pasted text.txt",
+      "sha256": "e014f9c3b2dbc28b7c77ff99d8e7e122d48151b316e7ee913213e7a78bd55e5a",
+      "bytes": 31971,
+      "last_timestamp": "20:08",
+      "segment_count": 700
+    },
+    {
+      "label": "gracenovamon-ceresmon-bacchusmon",
+      "sediment_file_id": "file_00000000e18881f5ae03abbe98522100",
+      "path": "/workspace/attachments/a4dffd61-e4d5-4476-8d72-034fc82a52b2/Pasted text.txt",
+      "sha256": "1832bed77ff09be6b960c377e7a26256f36a7c6e1b21f18a494712758309e1d6",
+      "bytes": 37963,
+      "last_timestamp": "23:49",
+      "segment_count": 827
+    },
+    {
+      "label": "junomon-neptunemon-venusmon",
+      "sediment_file_id": "file_0000000068ec81f5b4f8fe7faf53964c",
+      "path": "/workspace/attachments/dd906542-13ae-4cf8-a346-bd7c70880c8b/Pasted text.txt",
+      "sha256": "57c9fc1281a1fa110241522193103a6a54b30dc951d7a5e39bb53fbfc6cd4fa7",
+      "bytes": 32186,
+      "last_timestamp": "20:50",
+      "segment_count": 705
+    }
+  ]
+}

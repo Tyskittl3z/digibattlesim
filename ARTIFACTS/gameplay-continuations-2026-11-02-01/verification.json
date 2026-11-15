@@ -1,0 +1,16 @@
+{
+  "tests_passed": 409,
+  "duration_seconds": 134.239,
+  "full_suite_command": "python -m unittest discover -p 'test_*.py' -q",
+  "same_original_game_seed": 12017913134550805276,
+  "game_index": 0,
+  "game_turn": 3,
+  "command_count": 22,
+  "exact_replay": true,
+  "next_selected_action": "UNKNOWN_OPTION_ACTION: A:LM-028#1 OPTION_LEGALITY_AND_EFFECT_UNVERIFIED",
+  "software_terminal_matches": 0,
+  "valid_completed_matches": 0,
+  "approved_lanes": 0,
+  "final_matches": 0,
+  "execution_id": "de456dd4818f23e7850292e227980b8699908ed18fa436a9a99de183730744db"
+}

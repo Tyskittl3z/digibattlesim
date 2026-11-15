@@ -1,0 +1,60 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "criterion_sha256": "84de51952609311beadcbec58f9c8252e1aea2c9eae96689eaf5aad4711fcdaf",
+  "date": "2026-11-10",
+  "final_evaluation_credit": 0,
+  "focused_tests": {
+    "command": "python -m unittest test_interaction_scoring test_interaction_learning test_judge_ledger test_fresh_learning_campaign test_field_tracker test_named_player_bots test_context_runtime test_match_context test_match_preparation -q",
+    "counts": {
+      "context_runtime": 18,
+      "field_tracker": 30,
+      "fresh_runner": 20,
+      "judge": 8,
+      "learning": 32,
+      "match_context": 8,
+      "match_preparation": 5,
+      "named_player": 13,
+      "scoring": 21
+    },
+    "cwd": "SOURCE",
+    "exit_code": 0,
+    "passed": 155,
+    "seconds": 35.346
+  },
+  "full_game_certification": false,
+  "full_suite_exclusion_reason": "Includes legacy gameplay/cohort tests; actual matches are paused.",
+  "full_suite_run_in_this_increment": false,
+  "independent_review": {
+    "blocking_findings_remaining": 0,
+    "final_artifact_hash_and_replay_audit": "PASS",
+    "learner_final_grammar_regressions": 2
+  },
+  "independent_semantic_certification": false,
+  "key_source_hashes": {
+    "SOURCE/field_tracker.py": "208b5077af00b6ca3a8766af0db95f31ce52a7adb9d86b5b9a7ba2f23373b999",
+    "SOURCE/fresh_learning_campaign.py": "dd5cd17e718097c69e391c09e9b9d9c7c62b8021cc261b696f57543320889718",
+    "SOURCE/interaction_learning.py": "1f61d2e7e9e552926cdd7fc188bad2b883729aed135bacb5867ab27ddca109a5",
+    "SOURCE/interaction_scoring.py": "c9e09123fc1666d36624a7e41e4aab7ac09c671e354b54aa77d2517a5db2992c",
+    "SOURCE/judge_ledger.py": "e9da34fec4b11dbe10906a04c76425051c6aeaf8b70a40cd0c1db20fe2bda382",
+    "SOURCE/test_fresh_learning_campaign.py": "d1786545d2605dc66aae60407970a044274c46d83a38ed3ba83af676aaad68a6",
+    "SOURCE/test_interaction_learning.py": "ceef390043a5e9a195b1bd0ff76ee9e69cd441b285a6abe6f5ffdc6a20361847"
+  },
+  "last_full_suite": {
+    "commit": "aed966b",
+    "passed": 495
+  },
+  "private_fixture_proof": "private-setup-proof.json",
+  "production_campaigns_started": 0,
+  "production_games_started": 0,
+  "production_learning_updates": 0,
+  "production_ratings_assigned": 0,
+  "repaired_build_migration_supported": false,
+  "run_enabled": false,
+  "same_build_resume_only": true,
+  "source_archive_sha256": "0aa7b59883863f61aa19d4bd90459ac0aaf16c93fc90ae8f907c288497bbf5a7",
+  "source_files": 112,
+  "source_manifest": "source-manifest.json",
+  "source_manifest_sha256": "25ec6f467d82efa4b09efcddad78605c244ad581ac8c2e34524726316b75bfd0",
+  "status": "PRIVATE_FIXTURE_INTEGRATION_VERIFIED",
+  "status_of_matches": "PAUSED_BEFORE_FIRST_MATCH"
+}

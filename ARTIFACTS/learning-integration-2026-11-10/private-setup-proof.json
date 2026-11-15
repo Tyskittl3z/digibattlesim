@@ -1,0 +1,31 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "all_judges_experimental_without_independent_certification": true,
+  "all_procedural_steps_ineligible_for_learning": true,
+  "criterion_sha256": "84de51952609311beadcbec58f9c8252e1aea2c9eae96689eaf5aad4711fcdaf",
+  "date": "2026-11-10",
+  "final_evaluation_credit": 0,
+  "fixture_commands": 5,
+  "historical_record_bytes_unchanged": true,
+  "mode": "PRIVATE_PREMATCH_TEST_FIXTURE_ONLY",
+  "model_unchanged": true,
+  "named_profiles": {
+    "A": "AGGRESSIVE",
+    "B": "DEFENSIVE"
+  },
+  "only_tracker_views_and_public_metadata_to_players": true,
+  "opening_and_resumed_exact_replay": true,
+  "paused_commit_rejected": true,
+  "production_campaigns_started": 0,
+  "production_games_started": 0,
+  "production_learning_updates": 0,
+  "repaired_build_migration_supported": false,
+  "same_build_resume_only": true,
+  "saved_choices_and_policy_rng_preserved": true,
+  "seconds": 4.243,
+  "source_bytes_stable": true,
+  "source_files": 112,
+  "status": "PASS",
+  "stored_replay_calls_choose": false,
+  "tracker_observations": 5
+}

@@ -1,0 +1,13 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "changed_source_files": [
+    "return_effects.py"
+  ],
+  "commands": 124,
+  "exact_replay": true,
+  "record_file": "segment-0011.json.gz",
+  "record_sha256": "044e6cd3a7cb68a5299e9f2e5cd3554aea08b925e2fe50f7408bdecbd0b219b7",
+  "repair": "EX13-023 direct Digimon return under Q7265",
+  "segment": 11,
+  "status": "HALT"
+}

@@ -1,0 +1,16 @@
+{
+  "status": "UNVERIFIED_ENGINE_SNAPSHOT_EXTRACTION_REVIEW_REQUIRED",
+  "entries": [
+    {
+      "card_number": "BT9-109",
+      "issue": "Official Security line is embedded in main_text while extracted security_text duplicates inherited text. Single-field security inspection cannot establish complete semantics.",
+      "source_file": "RULES/matchups/123129-vs-124303/sources/official-BT9-109.html",
+      "handling": "Option use and security remain explicit unsupported HALTs; no metadata substitution or favorable certification.",
+      "owner": "Catalog/official-text verification handoff; engine snapshot remains unverified."
+    },
+    {
+      "issue": "Extracted Q&A may omit angle-bracket keyword text because HTMLParser treats it as markup. Original official HTML bytes, not text extraction alone, are authority.",
+      "handling": "Inspect raw pinned sources and card images for each implemented mechanic; all independent review fields remain unset."
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "context_file": "ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json",
+  "criteria_status": "DRAFT_NOT_LOCKED_NO_RATINGS_ASSIGNED",
+  "date": "2026-11-05",
+  "draft_test_execution": {
+    "expected_module_absent_failures": 2,
+    "passes_claimed": 0,
+    "tests_run": 2
+  },
+  "draft_tests": {
+    "field_tracker": 16,
+    "fresh_runner": 7,
+    "total": 23
+  },
+  "final_10000_run_enabled": false,
+  "fresh_matches_completed": 0,
+  "fresh_matches_started": 0,
+  "historical_game": "ARTIFACTS/gameplay-continuations-2026-11-04-02/game-0000-segment.json.gz",
+  "historical_game_used_for_fresh_training": false,
+  "implementation_status": "DRAFT_TESTS_AND_DESIGN_ONLY",
+  "last_verified_focused_tests": {
+    "commit": "220afab",
+    "passed": 82
+  },
+  "last_verified_full_suite": {
+    "commit": "aed966b",
+    "passed": 495
+  },
+  "learning_updates": 0,
+  "live_source_unchanged_from": "220afab91ea815a951969ce1cad271e9b7ef5cba",
+  "opening_deal_started": false,
+  "pending_modules": [
+    "SOURCE/field_tracker.py",
+    "SOURCE/interaction_learning.py",
+    "SOURCE/fresh_learning_campaign.py",
+    "SOURCE/judge_ledger.py"
+  ],
+  "planned_firsts": {
+    "A": 30,
+    "B": 30
+  },
+  "planned_matches": 60,
+  "players": {
+    "A": "AGGRESSIVE",
+    "B": "DEFENSIVE"
+  },
+  "rating_basis": "OBSERVED_BOARD_IMPACT_MEMORY_EFFICIENCY_AND_TEMPO",
+  "run_enabled": false,
+  "schedule_created": false,
+  "schema": "fresh-learning-pre-match-pause-v1",
+  "status": "PAUSED_BEFORE_FIRST_MATCH",
+  "tempo_inputs": [
+    "cards_in_play",
+    "stack_sizes",
+    "completed_successful_security_checks"
+  ],
+  "third_bot": "BOT_C_FIELD_TRACKER_PLANNED",
+  "usage_reset_lifts_pause": false,
+  "user_instruction": "pause before u start the match"
+}

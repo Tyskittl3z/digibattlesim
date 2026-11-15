@@ -1,0 +1,23 @@
+{
+  "authorization": "User 2026-11-02: it does not have to be that matchup; do whatever would work best",
+  "queue_order": 145,
+  "queue_file": "ARTIFACTS/ex13-engine-2026-10-30/randomized-matchup-queue.json",
+  "original_queue_unchanged": true,
+  "development_priority_only": true,
+  "new_matchup_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "old_matchup_id": "53f4e043b49fca0bf6e691754098e73774995cfee182e7c8245cf446e2d70733",
+  "distinct_cards": 22,
+  "old_distinct_cards": 45,
+  "deck_source": {
+    "source_id": "122110",
+    "url": "https://digimon.digilab.cards/decklist/122110",
+    "sha256": "d94a80dd22b12120424e9254f4b74fee15d3f6d9eb642ad47866ea46497a4a73",
+    "file": "RULES/matchups/123129-vs-122110/sources/digilab-122110.html"
+  },
+  "fresh_pilots_required": true,
+  "copied_training_data": [],
+  "copied_roadmaps": [],
+  "copied_match_results": [],
+  "accepted_fact_finding_credit": 0,
+  "final_evaluation_credit": 0
+}

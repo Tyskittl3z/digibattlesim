@@ -1,0 +1,58 @@
+{
+  "TDD_notes": [
+    "Initial absent-module regression failed as expected.",
+    "Archived resolving-Option fixture requested B LM-034 absent from that deck; corrected live test to B LM-028.",
+    "Privacy/counter/identity regressions failed before fixes; all final focused checks pass."
+  ],
+  "all104_source_files_match_archive": true,
+  "archived_observer_proof": {
+    "all_player_views_exact": true,
+    "commands": 164,
+    "deterministic_ledger_replay": true,
+    "physical_cards": 108,
+    "seconds": 38.204,
+    "state_RNG_results_events_exact": true,
+    "status": "PASS",
+    "successful_checks": {
+      "A": 0,
+      "B": 4
+    }
+  },
+  "component": "Bot C FIELD_TRACKER",
+  "date": "2026-11-10",
+  "existing_engine_and_policy_sources_unchanged": true,
+  "focused_tests": {
+    "command": "python -m unittest test_field_tracker test_context_runtime test_match_context test_match_preparation test_named_player_bots -q",
+    "passed": 74,
+    "seconds": 3.935
+  },
+  "fresh_matches_started": 0,
+  "full_suite_this_increment": "NOT_RUN_LEGACY_MATCH_COHORT_TESTS_WHILE_ACTUAL_MATCHES_PAUSED",
+  "independent_review": {
+    "blocking_findings": 0,
+    "seconds": 3.496,
+    "status": "PASS",
+    "tests": 30
+  },
+  "last_full_suite": {
+    "commit": "aed966b",
+    "passed": 495
+  },
+  "learning_updates": 0,
+  "new_actual_gameplay_commands": 0,
+  "new_modules_only": [
+    "SOURCE/field_tracker.py",
+    "SOURCE/test_field_tracker.py"
+  ],
+  "new_player_decisions": 0,
+  "status": "PASS",
+  "strategic_ratings": 0,
+  "syntax_and_diff_checks": "PASS",
+  "tracker_id": "a110a3c963b7f50fc1a7e45ae062771643ebcf76c1541ad98df04b8fd1d23e75",
+  "tracker_source_sha256": "208b5077af00b6ca3a8766af0db95f31ce52a7adb9d86b5b9a7ba2f23373b999",
+  "tracker_tests": {
+    "passed": 30,
+    "seconds": 1.787
+  },
+  "whole_game_judge_certification": false
+}

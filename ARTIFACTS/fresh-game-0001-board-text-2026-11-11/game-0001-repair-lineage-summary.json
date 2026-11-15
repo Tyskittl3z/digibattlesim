@@ -1,0 +1,48 @@
+[
+  {
+    "accepted_before_repair": 79,
+    "approved_source_changes": [
+      "attack_flow.py",
+      "context_runtime.py",
+      "effect_scheduler.py",
+      "option_actions.py"
+    ],
+    "original_replay_exact": true,
+    "parent_record_sha256": "5b0721ca94e1e275ec8d23cb1043f81f3ac7bf8f94a7cdeed6809dc0531e7e3f",
+    "parent_status": "HALT",
+    "saved_reason": "SECURITY_CARD_UNSUPPORTED: LM-056 source=A:LM-056#1"
+  },
+  {
+    "accepted_before_repair": 80,
+    "approved_source_changes": [
+      "fresh_repair_migration.py",
+      "interaction_learning.py"
+    ],
+    "original_replay_exact": true,
+    "parent_record_sha256": "5b8b173fb44484926ca556414ed2f6e20865664ae15ffaa7a2f78071f6562a68",
+    "parent_status": "HALT",
+    "saved_reason": "LEARNING_PUBLIC_PENDING_FIELD"
+  },
+  {
+    "accepted_before_repair": 106,
+    "approved_source_changes": [
+      "ex13_ulforce_effects.py",
+      "return_effects.py",
+      "selected_mechanics.py"
+    ],
+    "original_replay_exact": true,
+    "parent_record_sha256": "50dae89d90b79a77b9dfcfb9401700d7152fe90b86c9e3a716c594c9fc3d5899",
+    "parent_status": "HALT",
+    "saved_reason": "ULFORCE_RETURN_LEAVE_DEPENDENCY_UNIMPLEMENTED: EX13-017 inherited_text source=B:EX13-017#3"
+  },
+  {
+    "accepted_before_repair": 123,
+    "approved_source_changes": [
+      "return_effects.py"
+    ],
+    "original_replay_exact": true,
+    "parent_record_sha256": "bd013484518893d02d1ac546fff9c9fad9318b6e69c65e794d1cb4fb0914f4dd",
+    "parent_status": "HALT",
+    "saved_reason": "BT12_RETURN_PROTECTION_UNIMPLEMENTED: EX13-023 main_text source=A:EX13-023#2"
+  }
+]

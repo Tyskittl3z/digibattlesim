@@ -1,0 +1,295 @@
+{
+  "schema": "encountered-rina-end-unsuspend-implementation-review-addendum-v1",
+  "review_date": "2026-11-03",
+  "status": "NO_CONCRETE_GAP_FOUND_FOR_ACTUAL_END_UNSUSPEND_AND_RINA_CASE",
+  "certification": "NONE_SOURCE_AND_SOFTWARE_INTERACTION_REVIEW_ONLY",
+  "full_match_credit": 0,
+  "accepted_fact_finding_credit": 0,
+  "final_evaluation_credit": 0,
+  "scope": [
+    "Actual turn6 effect21 B EX13-022#3 unsuspend and exactly three B Rina reactions",
+    "Paid self-suspension/Draw/After choice sequencing and fixed−2 source-bound evolution at negative END memory",
+    "Private activated pending proof, orientation event ownership/timing filtering, and relevant runner choice adapter",
+    "Actual segment06 decline path and completed-boundary grant timing, not certification of the whole segment"
+  ],
+  "reference_source_review": {
+    "file": "ARTIFACTS/gameplay-continuations-2026-11-03-06/rules-reviews/bt22-023-end-unsuspend-actual-stop.json",
+    "sha256": "d9b68419deb0d9045f96ccabc9d54cafd547b984429274a8b3c36814812085b0"
+  },
+  "seed": 12017913134550805276,
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "findings": [],
+  "assessment": [
+    "The actual cannot-suspend grant does not prevent the chosen unsuspend; only suspended-to-unsuspended Digimon change generates the relevant reaction group.",
+    "Event matching distinguishes suspension/unsuspension, actor ownership, Digimon/Tamer type, self references and timing. A Rinas/BT12 and unrelated inherited sources do not receive this B singleton event.",
+    "BT11 Rina memory effect has its exact per-copy/incarnation current-turn OPT; both EX13 Rina effects have no invented OPT and expose optional payment booleans before drawing.",
+    "Successful self-suspension is required before Draw and After. Drawn card reaches actual own hand before route choices; a deeper same-source pending continuation preserves priority over original simultaneous siblings. Declining or failing payment creates no After processing.",
+    "Continuation validates private active pending record/source incarnation, paid source/instance and completed draw. Trusted evolution uses only fixed reduction2 and bypasses ordinary Main/positive-memory guards solely inside that bound effect.",
+    "The current first paid branch exposes newly drawn EX13-023 plus existing BT11-032 routes. Unsupported real When Digivolving route selection is an atomic precise HALT rather than hidden decline or skipped effect.",
+    "Runner adapter uses boolean pre-draw options and current own-hand post-draw route choices; hidden deck order is not included in the pre-draw choice schema.",
+    "Actual segment06 records unsuspend, mandatory −3to−2 memory, two explicit EX13 self-suspension declines, then actual B completion to A turn7/memory2. Grant audit confirms current Bturn6 cannot-suspend persists through pending resolution and expires only completed boundary; B-owned keywords lasting Aturn7 remain."
+  ],
+  "verification": {
+    "command": "python -m unittest test_rina_unsuspend_effects.RinaUnsuspendTests -v",
+    "working_directory": "SOURCE",
+    "tests_run": 7,
+    "exit_code": 0,
+    "runtime_seconds": 14.187,
+    "result": "OK",
+    "test_names": [
+      "test_actual_unsuspend_queues_three_own_tamers_and_mandatory_memory_opt",
+      "test_bound_evolution_at_negative_end_memory_uses_only_fixed_reduction_two",
+      "test_forged_continuation_without_paid_parent_is_rejected_atomically",
+      "test_paid_draw_continuation_precedes_siblings_and_uses_postdraw_hand",
+      "test_predraw_choice_has_no_deck_peek_and_decline_has_no_after",
+      "test_unknown_real_digivolving_effect_halts_only_when_postdraw_route_selected",
+      "test_unpayable_self_suspension_cannot_draw_or_enable_after"
+    ],
+    "preserved_actual_prefix": "Focused actual fixture replays all82 original prior commands and asserts exact physical state and RNG before effect21.",
+    "frozen_production_hashes_unchanged_after_tests": true,
+    "scenario_credit": 0
+  },
+  "actual_saved_boundary_audit": {
+    "record": "ARTIFACTS/gameplay-continuations-2026-11-03-06/game-0000-segment.json.gz",
+    "record_status": "HALT",
+    "records": [
+      {
+        "command_number": 83,
+        "command": "RESOLVE_PENDING",
+        "seat": "B",
+        "args": {
+          "choice": "B:EX13-022#3",
+          "pending_id": "effect-21"
+        },
+        "before": {
+          "turn": 6,
+          "active": "B",
+          "phase": "END_OF_TURN",
+          "memory": -3,
+          "B_EX13_022_3_suspended": true,
+          "A_owned_cannot_suspend_present": true,
+          "B_owned_keywords_present": true
+        },
+        "result": {
+          "changed": true,
+          "full_match_credit": 0,
+          "once_per_turn_consumed": true,
+          "processing": "UNSUSPEND_SELECTED",
+          "prohibition": null,
+          "suspended_after": false,
+          "suspended_before": true,
+          "target": "B:EX13-022#3"
+        }
+      },
+      {
+        "command_number": 84,
+        "command": "RESOLVE_PENDING",
+        "seat": "B",
+        "args": {
+          "choice": null,
+          "pending_id": "effect-24"
+        },
+        "before": {
+          "turn": 6,
+          "active": "B",
+          "phase": "END_OF_TURN",
+          "memory": -3,
+          "B_EX13_022_3_suspended": false,
+          "A_owned_cannot_suspend_present": true,
+          "B_owned_keywords_present": true
+        },
+        "result": {
+          "full_match_credit": 0,
+          "gained": 1,
+          "memory_after": -2,
+          "memory_before": -3,
+          "once_per_turn_consumed": true
+        }
+      },
+      {
+        "command_number": 85,
+        "command": "RESOLVE_PENDING",
+        "seat": "B",
+        "args": {
+          "choice": false,
+          "pending_id": "effect-22"
+        },
+        "before": {
+          "turn": 6,
+          "active": "B",
+          "phase": "END_OF_TURN",
+          "memory": -2,
+          "B_EX13_022_3_suspended": false,
+          "A_owned_cannot_suspend_present": true,
+          "B_owned_keywords_present": true
+        },
+        "result": {
+          "drawn_card": null,
+          "full_match_credit": 0,
+          "processing": "SUSPENSION_DECLINED",
+          "suspension_paid": false
+        }
+      },
+      {
+        "command_number": 86,
+        "command": "RESOLVE_PENDING",
+        "seat": "B",
+        "args": {
+          "choice": false,
+          "pending_id": "effect-23"
+        },
+        "before": {
+          "turn": 6,
+          "active": "B",
+          "phase": "END_OF_TURN",
+          "memory": -2,
+          "B_EX13_022_3_suspended": false,
+          "A_owned_cannot_suspend_present": true,
+          "B_owned_keywords_present": true
+        },
+        "result": {
+          "drawn_card": null,
+          "full_match_credit": 0,
+          "processing": "SUSPENSION_DECLINED",
+          "suspension_paid": false
+        }
+      },
+      {
+        "command_number": 87,
+        "command": "FINISH_TURN",
+        "seat": "B",
+        "args": {},
+        "before": {
+          "turn": 6,
+          "active": "B",
+          "phase": "END_OF_TURN",
+          "memory": -2,
+          "B_EX13_022_3_suspended": false,
+          "A_owned_cannot_suspend_present": true,
+          "B_owned_keywords_present": true
+        },
+        "result": {
+          "full_match_credit": 0,
+          "memory_after": 2,
+          "memory_before": -2,
+          "next_controller": "A",
+          "phase": "START_OF_TURN",
+          "rules_source": {
+            "locator": "Comprehensive rules v4.3: 6-1-3; 6-1-4; 6-5-1-7-1; 6-6; 15-8-3-6; 15-11-1; 15-13; 15-14-1-5-1; 15-16-12",
+            "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+            "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918"
+          },
+          "turn": 7,
+          "turn_postponed": false
+        }
+      },
+      {
+        "command_number": 88,
+        "command": "ADVANCE_PHASE",
+        "seat": "A",
+        "args": {},
+        "before": {
+          "turn": 7,
+          "active": "A",
+          "phase": "START_OF_TURN",
+          "memory": 2,
+          "B_EX13_022_3_suspended": false,
+          "A_owned_cannot_suspend_present": false,
+          "B_owned_keywords_present": true
+        },
+        "result": {
+          "full_match_credit": 0,
+          "phase": "TURN_START_EFFECTS",
+          "rules_source": {
+            "locator": "Comprehensive rules v4.3: 1-2-3-2; 6-1 through 6-4; 15-4",
+            "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+            "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918"
+          }
+        }
+      }
+    ],
+    "current_Bturn6_restriction_retained_until_completed_boundary": true,
+    "Aturn7_keyword_grants_retained": true,
+    "A_starts_turn7_memory": 2,
+    "note": "Read-only observed command audit; not an independent certification of unrelated later interactions or a full match."
+  },
+  "source_hashes": [
+    {
+      "file": "SOURCE/rina_unsuspend_effects.py",
+      "sha256": "d53b3e4f20f722e2b84ff24600ce762d7f0c7a0c3614ee486599f37928c2c49b",
+      "production_frozen": true
+    },
+    {
+      "file": "SOURCE/selected_mechanics.py",
+      "sha256": "4dddf084c142ea2780a5414a6cd56c32d136730b4b6df77e39dbe4a3109486dc",
+      "production_frozen": true
+    },
+    {
+      "file": "SOURCE/phase_flow.py",
+      "sha256": "0ea66f83b22c43a826ff9419866e19cf00935726a7b8a8a582294119f21145e7",
+      "production_frozen": true
+    },
+    {
+      "file": "SOURCE/battle_evolution.py",
+      "sha256": "88191a14dac6fdb74bbed36262283e83c74d45406371c2897fa680e0407588bf",
+      "production_frozen": true
+    },
+    {
+      "file": "SOURCE/context_runtime.py",
+      "sha256": "27a15c525744050ec26f1419eb059a2b03f329026b0d38fcde389f9309006004",
+      "production_frozen": true
+    },
+    {
+      "file": "SOURCE/imported_attempts.py",
+      "sha256": "33c61cefb7bc20a156d3b9fca3fccc9b4ebdfbfeda91b6d272996a3033606d80",
+      "production_frozen": true
+    },
+    {
+      "file": "ARTIFACTS/gameplay-continuations-2026-11-03-06/game-0000-segment.json.gz",
+      "sha256": "0dfe656ec952fb6537bb06f209e694ca8dda21891e31eb566d9801f0d2363e2e"
+    },
+    {
+      "file": "SOURCE/test_rina_unsuspend_effects.py",
+      "sha256": "9f8b99043ba563ac251b183fc2f56b76da3897fdd5016242fc4a9c6a78109d27"
+    },
+    {
+      "file": "SOURCE/turn_flow.py",
+      "sha256": "b274b9558bd4da3ffc4f7aacb4a7c509f0eeb0656ec5e013c209ff43362b43fc"
+    },
+    {
+      "file": "SOURCE/effect_scheduler.py",
+      "sha256": "a78f067545534b302a60fa702b587bb649f5b93f45eebff26d4044e34ec69244"
+    },
+    {
+      "file": "SOURCE/effect_grants.py",
+      "sha256": "68d863872f1bba865f3598bd633c986fffd2459be0e8fb1534da561aebe99d6f"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-023.html",
+      "sha256": "a184df26a6bd8c5ccaed325998c9b85a18c0c2d5c0778a20993fd2d6a01e67dd"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-112.html",
+      "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-069.html",
+      "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/general_rule.pdf",
+      "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271"
+    }
+  ],
+  "rules_locators": [
+    "BT22-023 printed End of Your Turn Once Per Turn blue Digimon/Tamer optional unsuspend",
+    "BT11-112 printed Your Turn Once Per Turn own blue Digimon unsuspend gain1 memory",
+    "EX13-069 printed Your Turn optional self-suspension Draw1 After optional Veedramon evolution reduction2;Q7437/Q7439",
+    "CR1-3-3;6-6-2 through6-6-4;8-1;15-1-2;15-4-1-2;15-4-3-4 through15-4-3-5;15-4-5;15-7;15-14-1"
+  ],
+  "limitations": [
+    "No SOURCE files edited by reviewer.",
+    "Paid After alternatives remain diagnostic scenario evidence, zero completed-match credit.",
+    "Review does not certify all future Rina/evolution/orientation routes or the saved segment as a complete match."
+  ]
+}

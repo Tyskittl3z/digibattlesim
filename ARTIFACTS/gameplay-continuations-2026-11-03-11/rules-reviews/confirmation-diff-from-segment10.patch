@@ -1,0 +1,126 @@
+--- archive10/SOURCE/battlefield_scope.py
++++ current/SOURCE/battlefield_scope.py
+@@ -39,6 +39,27 @@
+ 
+ def _assert_selected_context(runtime, root):
+     require_selected_context(runtime.context, root)
++
++
++def _persistent_field_is_self_only(body):
++    """Recognize a self modifier/protection, failing closed on other targets.
++
++    An orientation adjective does not change the affected entity. A mention of
++    that entity in a condition, however, does not make a global modifier local.
++    Unknown wording stays a dependency rather than acquiring inferred support.
++    """
++    predicate=re.sub(r'^(?:While|If)\s+[^,]+,\s*','',body, count=1, flags=re.I)
++    reference=r'\bthis\s+(?:(?:un)?suspended\s+)?Digimon(?:[\'’]s)?\b'
++    predicate,count=re.subn(reference,'SELF',predicate,flags=re.I)
++    if not count:return False
++    predicate=re.sub(r'\b(?:your opponent[\'’]s|your|opponent[\'’]s) effects?\b',
++                     'effects',predicate,flags=re.I)
++    if re.search(r'＜|\b(?:Digimon|Tamer|security|players?|you|your|opponent|their|'
++                 r'all|each|every|both|other|only|attacks?|attacking|battle|costs?|memory)\b',
++                 predicate,re.I):
++        return False
++    return bool(re.match(r'^SELF\s+(?:gets?|gains?|is|isn\'t|can\'t|cannot|may)\b',predicate,re.I)
++                or re.match(r'^effects?\s+(?:can\'t|cannot)\b[^.]*\bSELF\b',predicate,re.I))
+ 
+ 
+ def _attack_source_dependencies(runtime, owner, anchor, source, field, event):
+@@ -114,7 +135,7 @@
+             reason='ATTACK_KEYWORD_UNSUPPORTED' if '＜' in line else 'ATTACK_PRINTED_FIELD_UNIMPLEMENTED'
+             raise RuntimeHalt(reason+': '+source.card_number+' '+field+' source='+source.key)
+         if stage=='CONFIRM' and headers and re.search(r'\b(?:DP|attack|Digimon|security)\b',body,re.I):
+-            if 'this Digimon' not in body or participant:
++            if participant or not _persistent_field_is_self_only(body):
+                 raise RuntimeHalt('ATTACK_PERSISTENT_EFFECT_UNSUPPORTED: '+source.card_number+' '+field+' source='+source.key)
+ 
+ 
+--- archive10/SOURCE/test_attack_flow.py
++++ current/SOURCE/test_attack_flow.py
+@@ -378,4 +378,42 @@
+         self.assertEqual(r.snapshot(),before)
+ 
+ 
++_SEGMENT10_CONFIRM=None
++class EncounteredUlforceConfirmationTests(unittest.TestCase):
++    def actual(self):
++        global _SEGMENT10_CONFIRM
++        if _SEGMENT10_CONFIRM is None:
++            from imported_attempts import _apply
++            from matchup_readiness import load_context_file
++            record=json.loads(gzip.decompress((ROOT/
++                'ARTIFACTS/gameplay-continuations-2026-11-03-10/game-0000-segment.json.gz').read_bytes()))
++            context=load_context_file(ROOT/'ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json')
++            r=ContextRuntime(context,record['seed'],record['first'],
++                build_selected_registry(context,ROOT),allow_experimental=True)
++            self.assertEqual(len(record['commands'][:-1]),146)
++            for command in record['commands'][:-1]:
++                _apply(r,command['command'],command['seat'],command['args'],ROOT)
++            self.assertEqual(r.snapshot()['state'],record['halts'][-1]['before']['state'])
++            self.assertEqual(r.snapshot()['rng_state'],record['halts'][-1]['before']['rng_state'])
++            _SEGMENT10_CONFIRM=r
++        return copy.deepcopy(_SEGMENT10_CONFIRM)
++
++    def test_actual_security_battle_ignores_unrelated_self_protection_and_moves_only_checked_card(self):
++        r=self.actual();before=r.snapshot();expected=copy.deepcopy(before['state'])
++        self.assertEqual((r.state.turn,r.state.active,r.state.memory,r.state.phase),(10,'B',5,'MAIN'))
++        self.assertEqual(expected['attack']['window'],'CONFIRM')
++        self.assertEqual(expected['zones']['A']['security'],['A:EX13-069#2','A:P-138#1'])
++        actor=r.state.battle['B'][r.state.attack['attacker']]
++        self.assertEqual(r.context.card('B',actor.cards[-1].card_number).to_dict()['dp'],12000)
++        self.assertFalse(r.state.battle['B']['B:EX13-023#1'].suspended)
++        checked=expected['zones']['A']['security'].pop()
++        expected['zones']['A']['trash'].append(checked)
++        expected['attack']['checked']=checked;expected['attack']['window']='END'
++        result=confirm_attack(r,'B',ROOT)
++        self.assertEqual(result['checked_card'],'A:P-138#1')
++        self.assertFalse(result['attacker_deleted']);self.assertFalse(result['security_card_deleted'])
++        self.assertEqual(r.snapshot()['state'],expected)
++        self.assertEqual(r.snapshot()['rng_state'],before['rng_state']);r.verify()
++
++
+ if __name__=='__main__':unittest.main()
+--- archive10/SOURCE/test_battlefield_scope.py
++++ current/SOURCE/test_battlefield_scope.py
+@@ -105,6 +105,39 @@
+                     assert_basic_board_scope(runtime,'attack_plain',ROOT,event=event)
+             self.assertEqual(self.snapshot(runtime),before)
+ 
++    def test_persistent_fields_distinguish_self_adjectives_from_global_combat_targets(self):
++        from battlefield_scope import _attack_source_dependencies
++        protection=("Your opponent's effects can't reduce this unsuspended Digimon's DP, "
++                    "return its stacked cards to the hand or deck, or trash them.")
++        cases=[(protection,True),(protection.replace("Digimon's","Digimon’s"),True),
++               ('This suspended Digimon gets +1000 DP.',True),
++               ('All your Digimon get +1000 DP while this unsuspended Digimon is in play.',False),
++               ('Your opponent can only attack this unsuspended Digimon.',False),
++               ('This Digimon gives your other Digimon +1000 DP.',False),
++               ('While this Digimon is in play, your security Digimon get +1000 DP.',False),
++               ('This Digimon and your security gain ＜Jamming＞.',False)]
++        for body,self_only in cases:
++            for participant in (False,True):
++                with self.subTest(body=body,participant=participant):
++                    runtime=self.runtime()
++                    actor=stage(runtime,'A',['EX1-013'])
++                    observer=stage(runtime,'A',['EX13-023'])
++                    cards={card.number:card for card in runtime.context.cards}
++                    raw=cards['EX13-023'].to_dict();raw['main_text']='[All Turns] '+body
++                    cards['EX13-023']=CardDefinition.from_dict(raw)
++                    runtime.context=MatchContext.create(runtime.context.deck_a,runtime.context.deck_b,
++                        cards,runtime.context.to_dict()['rules'])
++                    source=runtime.state.battle['A'][observer].cards[-1]
++                    event={'stage':'CONFIRM','seat':'A','attacker':observer if participant else actor,
++                           'target':'PLAYER'}
++                    before=self.snapshot(runtime)
++                    if self_only and not participant:
++                        _attack_source_dependencies(runtime,'A',observer,source,'main_text',event)
++                    else:
++                        with self.assertRaisesRegex(RuntimeHalt,'ATTACK_PERSISTENT_EFFECT_UNSUPPORTED'):
++                            _attack_source_dependencies(runtime,'A',observer,source,'main_text',event)
++                    self.assertEqual(self.snapshot(runtime),before)
++
+     def test_verified_option_tops_are_inert_for_combat_without_broadening_digimon_support(self):
+         from option_actions import OPTION_SPECS
+         from matchup_readiness import load_context_file

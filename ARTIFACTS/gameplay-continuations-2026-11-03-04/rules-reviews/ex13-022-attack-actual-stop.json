@@ -1,0 +1,297 @@
+{
+  "schema": "encountered-attack-independent-review-v1",
+  "review_date": "2026-11-03",
+  "scope": "Actual saved Game0 turn6 DECLARE_ATTACK singleton B EX13-022#1 toward opponent player; direct triggers and current branch combat constraints",
+  "status": "DECLARATION_LEGAL_ENCOUNTERED_SCOPE_AND_WHEN_ATTACKING_SUPPORT_REQUIRED",
+  "certification": "NONE_INTERACTION_SOURCE_REVIEW_ONLY",
+  "full_match_credit": 0,
+  "accepted_fact_finding_credit": 0,
+  "final_evaluation_credit": 0,
+  "source_record": "ARTIFACTS/gameplay-continuations-2026-11-03-03/game-0000-segment.json.gz",
+  "seed": 12017913134550805276,
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "preservation": {
+    "preceding_saved_commands_replayed": 58,
+    "exact_physical_state_at_stop": true,
+    "exact_rng_at_stop": true,
+    "state_sha256": "1e1ebe259f6133e2175041b126cbe4219458913a215de616fecaaf87772d2e2b",
+    "rng_sha256": "654e54d4c76c543f2c2c97eb300d43f5a167145e0a05f1611ad1a9e377ba930c"
+  },
+  "selected_command": {
+    "attacker": "B:EX13-022#1",
+    "kind": "DECLARE_ATTACK",
+    "target": "PLAYER"
+  },
+  "actual_state": {
+    "turn": 6,
+    "active": "B",
+    "memory": 3,
+    "attacker": "B:EX13-022#1",
+    "attacker_stack": [
+      "B:EX13-022#1"
+    ],
+    "attacker_instance": "entity-5",
+    "suspended": false,
+    "played_turn": 4,
+    "ready_since_turn": 5,
+    "statuses": {},
+    "once_used": []
+  },
+  "declaration_assessment": {
+    "legality": "LEGAL: own ready unsuspended Digimon, not played this turn, memory nonnegative, no suspension/attack restriction; opponent player is legal target",
+    "immediate_operation": "Suspend B:EX13-022#1 and declare opponent A player target. No memory cost or draw.",
+    "immediate_effects": [
+      {
+        "source": "B:EX13-022#1",
+        "field": "main_text",
+        "effect_id": "EX13-022.play_tamer",
+        "timing": "When Attacking",
+        "once_per_turn_available": true
+      }
+    ],
+    "timing": "Resolve the When Attacking effect and all derived groups before Counter timing (CR11-1-4). A stored future attack window must not permit Counter/Block advancement while triggers remain pending.",
+    "shared_once_per_turn": "The shared OnPlay/WhenDigivolving/WhenAttacking effect has one OPT per copy per turn. Source OnPlay turn4 does not exhaust turn6. Its separate Tamer-play restriction has independent OPT.",
+    "free_tamer_choices": [
+      null,
+      "B:BT11-112#3",
+      "B:EX13-069#3"
+    ],
+    "free_tamer_play_cost": 0,
+    "no_automatic_draw": true
+  },
+  "nontriggers": [
+    {
+      "source": "A:BT11-112#2",
+      "reason": "All Turns suspension effect references your own A Digimon; B attacker suspension is not that event. Your Turn unsuspend memory is also not active in B turn."
+    },
+    {
+      "source": "B:EX13-069#4",
+      "reason": "Its draw/evolve observer requires an actual unsuspend; declaration suspends the attacker."
+    },
+    {
+      "source": "B:EX13-022#1",
+      "field": "inherited_text",
+      "reason": "Singleton top has no exposed own inherited effect, so its inherited suspension->unsuspend text does not apply."
+    },
+    {
+      "source": "B:BT22-023#1",
+      "reason": "Other Digimon did not suspend; its inherited text is inactive as top; exposed EX1/BT22 inherited texts require unsuspend or opponent-effect removal events, neither occurred."
+    },
+    {
+      "source": "B:EX13-002#1",
+      "reason": "Blue Tamer play has not yet happened at declaration. It triggers only if the explicit free-Tamer choice is taken."
+    },
+    {
+      "source": "B:BT11-112#3",
+      "reason": "Initially in hand; entering later cannot retroactively see the earlier declaration suspension."
+    },
+    {
+      "source": "A:EX13-022#1",
+      "reason": "No Tamer was played at declaration. Later B Tamer play does not satisfy A your-Tamer condition."
+    },
+    {
+      "source": "B:BT11-023#2",
+      "reason": "Its blue-Tamer memory clause is inherited and inactive while its card is top."
+    }
+  ],
+  "derived_free_tamer_branches": {
+    "decline": {
+      "choice": null,
+      "derived_group": []
+    },
+    "BT11_Rina": {
+      "choice": "B:BT11-112#3",
+      "simultaneous_group": [
+        "B:BT11-112#3 On Play Blocker/Evade grant",
+        "B:EX13-022#1 own-Tamer-play restriction",
+        "B:EX13-022#3 own-Tamer-play restriction",
+        "B:EX13-002#1 inherited optional unsuspend of B:BT22-023#1"
+      ],
+      "rina_on_play_targets": [
+        "B:BT11-023#2",
+        "B:BT22-023#1",
+        "B:EX13-022#1",
+        "B:EX13-022#3"
+      ]
+    },
+    "EX13_Rina": {
+      "choice": "B:EX13-069#3",
+      "simultaneous_group": [
+        "B:EX13-022#1 own-Tamer-play restriction",
+        "B:EX13-022#3 own-Tamer-play restriction",
+        "B:EX13-002#1 inherited optional unsuspend of B:BT22-023#1"
+      ],
+      "self_on_play": null
+    },
+    "common": {
+      "activation_order": "B explicitly chooses order within each simultaneous group; derived effects finish before earlier pending effects.",
+      "aero_targets_each": [
+        "A:BT11-112#2",
+        "A:BT12-029#2",
+        "A:EX13-022#1"
+      ],
+      "same_target_for_both_aero_effects_legal": true,
+      "egg_host": "B:BT22-023#1",
+      "egg_host_already_unsuspended": true,
+      "egg_processing": "Explicit optional choice; unsuspended host remains unsuspended and produces no actual unsuspend or additional Rina/EX1 reactions under CR1-3-3. The attacking singleton remains suspended.",
+      "grant_expiry": {
+        "turn": 7,
+        "controller": "A",
+        "boundary": "completed_turn_end"
+      },
+      "memory_after_processing": 3
+    }
+  },
+  "actual_combat_constraints": {
+    "defender_counter_cards": [],
+    "counter_choices": [
+      null
+    ],
+    "defender_blockers": [],
+    "block_choices": [
+      null
+    ],
+    "attacker_printed_dp": 7000,
+    "attacker_actual_dp": 7000,
+    "attacker_jamming": false,
+    "default_security_checks": 1,
+    "revealed_if_uninterrupted": "A:P-138#4",
+    "security_card_name": "Veedramon",
+    "security_card_dp": 5000,
+    "security_effects": [],
+    "security_ordinary_main_text_does_not_trigger": true,
+    "security_card_inherited_text_inactive": true,
+    "expected_after_current_check": {
+      "attacker_survives": true,
+      "attacker_stays_suspended": true,
+      "checked_card_moved_to_A_trash": "A:P-138#4",
+      "security_digimon_deleted": false,
+      "A_security_before": 5,
+      "A_security_after": 4,
+      "memory": 3,
+      "winner": null
+    },
+    "scope_limit": "These are current saved-state/source-backed expectations. Resolve actual choices and all pending effects before Counter, Block and security actions. Not an executed attack result and not pilot access to hidden security."
+  },
+  "findings": [
+    {
+      "id": "ACTUAL_LEGAL_ATTACK_BLOCKED_BY_BROAD_SCOPE",
+      "description": "Saved selected legal declaration halts on A BT11-112 solely because attack guard permits only broad inert/plain singleton scope. Implement the encountered event dependencies and attacker WhenAttacking effect; unrelated ownership/timing text is not an actual trigger.",
+      "source": "SOURCE/battlefield_scope.py / SOURCE/attack_flow.py",
+      "status": "Implementation delegated to worker; this reviewer made no source changes."
+    }
+  ],
+  "verification": {
+    "type": "READ_ONLY_SAME_SEED_PREFIX_REVALIDATION_AND_SOURCE_DERIVED_EXPECTATIONS",
+    "prefix_state_and_rng": "PASS exact match at original stop",
+    "attack_executed": false,
+    "full_match_credit": 0
+  },
+  "sources": [
+    {
+      "file": "ARTIFACTS/gameplay-continuations-2026-11-03-03/game-0000-segment.json.gz",
+      "sha256": "fc08e14438d36175eed85e6170b0fdd5af83dea115772bbced160519369d0d4a",
+      "locator": "Exact reviewed file bytes"
+    },
+    {
+      "file": "ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json",
+      "sha256": "089d449edab177c4f1d31a4b2ce8414650439df4ea6459080400df45d5004484",
+      "locator": "Exact reviewed file bytes"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-022.html",
+      "sha256": "4771e6eab5218e833eebf7d1ff6cf70ad6fa51a51d556f8a404ac88f07256874",
+      "locator": "#EX13-022 printed identity, main and inherited timing, Security field; EX13-022 Q7264 for printed Veedramon text qualification"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-112.html",
+      "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc",
+      "locator": "#BT11-112 printed identity, main and inherited timing, Security field; EX13-022 Q7264 for printed Veedramon text qualification"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-069.html",
+      "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7",
+      "locator": "#EX13-069 printed identity, main and inherited timing, Security field; EX13-022 Q7264 for printed Veedramon text qualification"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-002.html",
+      "sha256": "9d2abc2c3a5f20aebefbcb5b89818a4559748ddbde4e20f92562092b7267cd4f",
+      "locator": "#EX13-002 printed identity, main and inherited timing, Security field; EX13-022 Q7264 for printed Veedramon text qualification"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX1-013.html",
+      "sha256": "df126caa2ee95d5f7b86008ef828291645d15204c177801eb2f73404d0611f38",
+      "locator": "#EX1-013 printed identity, main and inherited timing, Security field; EX13-022 Q7264 for printed Veedramon text qualification"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-022.html",
+      "sha256": "b2bc45d6d74a4c8a9569094c25bcc7ffe10e179b4891341dd2187298a0346c85",
+      "locator": "#BT22-022 printed identity, main and inherited timing, Security field; EX13-022 Q7264 for printed Veedramon text qualification"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-023.html",
+      "sha256": "a184df26a6bd8c5ccaed325998c9b85a18c0c2d5c0778a20993fd2d6a01e67dd",
+      "locator": "#BT22-023 printed identity, main and inherited timing, Security field; EX13-022 Q7264 for printed Veedramon text qualification"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-023.html",
+      "sha256": "8a0641a7b790f34271ee55cfac8b183f29ce2f546bfd62b704069952e5001e23",
+      "locator": "#BT11-023 printed identity, main and inherited timing, Security field; EX13-022 Q7264 for printed Veedramon text qualification"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT12-029.html",
+      "sha256": "4815904431fc1ad0c54a6185aa3269fe75b844cae57da5dc68b72eca0654d505",
+      "locator": "#BT12-029 printed identity, main and inherited timing, Security field; EX13-022 Q7264 for printed Veedramon text qualification"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-032.html",
+      "sha256": "82c0b74c599cb27d0784d93959057b2504e97c4e593af5ee0a0fce51db30d50e",
+      "locator": "#BT11-032 printed identity, main and inherited timing, Security field; EX13-022 Q7264 for printed Veedramon text qualification"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-P-138.html",
+      "sha256": "61d9574f6132911aa54a8e75990a0c829ef424521b26b97fbaca62be9f456354",
+      "locator": "#P-138 printed identity, main and inherited timing, Security field; EX13-022 Q7264 for printed Veedramon text qualification"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/general_rule.pdf",
+      "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+      "locator": "v4.3: 1-3-3; 3-4; 7-1-2-1; 11-1-2 through 11-1-5; 11-2-1 through 11-2-8-1; 11-3; 11-4; 11-5; 11-6; 12-1; 13-1-1 through 13-1-8-5; 14-2; 15-3-1; 15-4-2 through 15-4-5; 15-14-1-1 through 15-14-1-5-1; 15-16-5"
+    },
+    {
+      "file": "SOURCE/attack_flow.py",
+      "sha256": "68e2e9d410e2295ff092d54859e506224aada5f9217a4e9507a8323d16f79ef1",
+      "locator": "Exact reviewed file bytes"
+    },
+    {
+      "file": "SOURCE/battlefield_scope.py",
+      "sha256": "5eee71776c04519521c6265c837e91adde53909f15c45403aee896c23d1ba11d",
+      "locator": "Exact reviewed file bytes"
+    },
+    {
+      "file": "SOURCE/basic_event_dependencies.py",
+      "sha256": "d1cd66f6f442f275247bf904a8042e132875cf696b7e0a84ceeabfdd67951593",
+      "locator": "Exact reviewed file bytes"
+    },
+    {
+      "file": "SOURCE/tamer_play_effects.py",
+      "sha256": "2fa70c416fd37399289caf29d5de65640d37f997ba5cfd8ddec705084c05b0f6",
+      "locator": "Exact reviewed file bytes"
+    },
+    {
+      "file": "SOURCE/context_runtime.py",
+      "sha256": "80754809f57eb1fb3bd13a1bb0b709eb58f04c608dd7ca7a31ce5ddea534d3ca",
+      "locator": "Exact reviewed file bytes"
+    },
+    {
+      "file": "SOURCE/effect_scheduler.py",
+      "sha256": "a78f067545534b302a60fa702b587bb649f5b93f45eebff26d4044e34ec69244",
+      "locator": "Exact reviewed file bytes"
+    },
+    {
+      "file": "SOURCE/effect_grants.py",
+      "sha256": "68d863872f1bba865f3598bd633c986fffd2459be0e8fb1534da561aebe99d6f",
+      "locator": "Exact reviewed file bytes"
+    }
+  ]
+}

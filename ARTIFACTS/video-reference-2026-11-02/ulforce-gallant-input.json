@@ -1,0 +1,12 @@
+{
+  "source_file_id": "file_00000000d93481f5bfdddc99a2b8409b",
+  "local_path": "/workspace/attachments/1d65edb1-e371-46e1-93c4-4e737509638b/Pasted text.txt",
+  "bytes": 18568,
+  "sha256": "d85431debd87be58ba65b2a97d730392a150e5e48c8e3552d54335f753722615",
+  "evidence_status": "TRANSCRIPT_ONLY",
+  "video_viewed": false,
+  "full_simulated_matches_credit": 0,
+  "judge_certified_matches_credit": 0,
+  "strategy_lanes_credit": 0,
+  "notes": "Different exact deck composition from selected context; use overlapping mechanic cases only."
+}

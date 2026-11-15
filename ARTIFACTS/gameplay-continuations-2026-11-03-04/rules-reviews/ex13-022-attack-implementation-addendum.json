@@ -1,0 +1,119 @@
+{
+  "schema": "encountered-attack-implementation-review-addendum-v1",
+  "review_date": "2026-11-03",
+  "status": "NO_CONCRETE_DEFECT_FOUND_FOR_ACTUAL_TURN6_SINGLETON_AERO_ATTACK",
+  "certification": "NONE_INTERACTION_SOURCE_AND_SOFTWARE_REVIEW_ONLY",
+  "full_match_credit": 0,
+  "accepted_fact_finding_credit": 0,
+  "final_evaluation_credit": 0,
+  "scope": [
+    "Frozen attack_flow.py and battlefield_scope.py actual selected turn6 B EX13-022#1 singleton attack toward A player",
+    "Actual declaration suspension/When Attacking, pending timing, current Counter/Block availability, and current P138 security check",
+    "Narrow current free-Rina branch event behavior and explicit unsupported live dependency checks"
+  ],
+  "reference_source_review": {
+    "file": "ARTIFACTS/gameplay-continuations-2026-11-03-04/rules-reviews/ex13-022-attack-actual-stop.json",
+    "sha256": "39b5093fc994e90e95fc867b61fe645620a0143e0aa1cfa0011df3689f04dc31"
+  },
+  "source_record": "ARTIFACTS/gameplay-continuations-2026-11-03-03/game-0000-segment.json.gz",
+  "seed": 12017913134550805276,
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "findings": [],
+  "assessment": [
+    "Declaration correctly accepts the ready unsuspended singleton Aero and marks only its own When Attacking effect pending with the shared current-turn per-copy OPT usage.",
+    "Attack source dependency checks distinguish suspend from unsuspend and filter observer ownership: A Rina does not trigger on B attacker; B EX13 Rina does not trigger on suspension; singleton Aero inherited text stays inactive.",
+    "Counter/Block advancement remains blocked by the central pending guard until attack-declaration and derived groups finish. Free BT11 Rina does not retroactively trigger on earlier declaration suspension.",
+    "Per-window attack scope permits current unrelated stacked BT22 Aero while checking its actually exposed inherited observers at the appropriate events; no speculative unrelated self trigger is activated.",
+    "Current Counter decline/no-block proceed because A has no Counter card or available Blocker. An available unsupported Blocker produces explicit HALT, preventing an invented forced decline.",
+    "Current 7000DP attacker versus P1385000DP security check survives, moves checked P138 to A trash, lowers security5to4 and leaves memory3; ordinary P138 OnPlay/WhenDigivolving text does not activate in Security.",
+    "Security/deletion consequences are preflighted before card moves; current surviving-attacker slice has no deletion observers to resolve. Availability checks do not silently omit payable Evade when deletion would actually occur."
+  ],
+  "verification": {
+    "command": "python -m unittest test_attack_flow.EncounteredAeroAttackTests -v",
+    "working_directory": "SOURCE",
+    "tests_run": 7,
+    "exit_code": 0,
+    "runtime_seconds": 37.587,
+    "result": "OK",
+    "test_names": [
+      "test_defender_with_available_granted_blocker_cannot_be_silently_omitted",
+      "test_free_rina_play_after_declaration_does_not_retrotrigger_suspension",
+      "test_payable_evade_halts_actual_deletion_before_security_or_battle_cards_move",
+      "test_same_owner_rina_actual_suspension_observer_is_not_silently_skipped",
+      "test_saved_aero_attack_queues_actual_when_attacking_then_completes_security_check",
+      "test_shared_aero_once_per_turn_use_prevents_another_attack_activation",
+      "test_suspended_evade_cannot_pay_and_does_not_prevent_battle_deletion"
+    ],
+    "actual_test_observations": [
+      "Before selected declaration, exact preserved prefix physical state and RNG match saved stop.",
+      "Only own Aero When Attacking pending; explicit None consumes shared OPT.",
+      "A:P-138#4 check resolves with attacker surviving, A security4, P138 in A trash, attack ends, memory3, RNG unchanged.",
+      "Free BT11 Rina branch resolves current derived effects before Counter and preserves suspended attacker."
+    ],
+    "production_hashes_unchanged_after_tests": true
+  },
+  "source_hashes": [
+    {
+      "file": "SOURCE/attack_flow.py",
+      "sha256": "5b60366b9f3a504e2ff56b8599d2a1e5b81d5cf2946fa53a916c3adf1f2f51be",
+      "production_frozen": true
+    },
+    {
+      "file": "SOURCE/battlefield_scope.py",
+      "sha256": "bf1ebf0b742060cccfeea07f707d81e083f29c4f67b4ab2b25271ab4b739b5e3",
+      "production_frozen": true
+    },
+    {
+      "file": "SOURCE/test_attack_flow.py",
+      "sha256": "0ad08da6650caf11c8a37e3730def41d5b95b4a1ff058f8262e85d8e63291c85"
+    },
+    {
+      "file": "SOURCE/context_runtime.py",
+      "sha256": "80754809f57eb1fb3bd13a1bb0b709eb58f04c608dd7ca7a31ce5ddea534d3ca"
+    },
+    {
+      "file": "SOURCE/tamer_play_effects.py",
+      "sha256": "2fa70c416fd37399289caf29d5de65640d37f997ba5cfd8ddec705084c05b0f6"
+    },
+    {
+      "file": "SOURCE/effect_scheduler.py",
+      "sha256": "a78f067545534b302a60fa702b587bb649f5b93f45eebff26d4044e34ec69244"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-022.html",
+      "sha256": "4771e6eab5218e833eebf7d1ff6cf70ad6fa51a51d556f8a404ac88f07256874"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-112.html",
+      "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-069.html",
+      "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-P-138.html",
+      "sha256": "61d9574f6132911aa54a8e75990a0c829ef424521b26b97fbaca62be9f456354"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/general_rule.pdf",
+      "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271"
+    }
+  ],
+  "rules_locators": [
+    "CR11-1-4: all declaration effects complete before Counter timing",
+    "CR11-2-1,11-2-5,11-2-7-1,11-2-8-1: suspension, readiness and legal player target",
+    "CR12-1 and16-5: current Blocker availability and suspension requirements",
+    "CR13-1,14-2: ordinary Security Digimon battle/processing and no Security Digimon deletion",
+    "CR15-3-1: inherited effects",
+    "CR15-4-3-5,15-4-5: simultaneous/derived groups",
+    "CR15-14-1-1 through15-14-1-5-1: per-copy shared effect OPT/current turn reset",
+    "EX13-022 printed OnPlay/WhenDigivolving/WhenAttacking shared OPT and separate Tamer-play observer",
+    "P-138 printed5000DP and absence of Security effect"
+  ],
+  "limitations": [
+    "No SOURCE files edited by this reviewer.",
+    "Review/test evidence does not certify complete matches, arbitrary future attack routes, or pilot strategy.",
+    "All test probes have zero full-match, accepted fact-finding and final-evaluation credit."
+  ]
+}

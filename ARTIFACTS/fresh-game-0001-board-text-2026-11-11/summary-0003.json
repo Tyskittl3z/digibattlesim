@@ -1,0 +1,16 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "changed_source_files": [
+    "attack_flow.py",
+    "context_runtime.py",
+    "effect_scheduler.py",
+    "option_actions.py"
+  ],
+  "commands": 80,
+  "exact_replay": true,
+  "record_file": "segment-0003.json.gz",
+  "record_sha256": "7ec15135a34368e3a4c08841ff206d05150ef65e290199ae379eb9eb6859b429",
+  "repair": "LM-056 Security search",
+  "segment": 3,
+  "status": "HALT"
+}

@@ -1,0 +1,114 @@
+{
+  "deck": {
+    "label": "Gallantmon — RTA",
+    "source_id": "124303",
+    "main": [
+      {
+        "card_number": "BT12-016",
+        "quantity": 2
+      },
+      {
+        "card_number": "BT17-013",
+        "quantity": 2
+      },
+      {
+        "card_number": "BT17-016",
+        "quantity": 1
+      },
+      {
+        "card_number": "BT19-007",
+        "quantity": 3
+      },
+      {
+        "card_number": "BT19-009",
+        "quantity": 4
+      },
+      {
+        "card_number": "BT19-011",
+        "quantity": 1
+      },
+      {
+        "card_number": "BT19-080",
+        "quantity": 2
+      },
+      {
+        "card_number": "BT20-102",
+        "quantity": 2
+      },
+      {
+        "card_number": "BT9-011",
+        "quantity": 1
+      },
+      {
+        "card_number": "BT9-092",
+        "quantity": 2
+      },
+      {
+        "card_number": "BT9-109",
+        "quantity": 3
+      },
+      {
+        "card_number": "EX13-015",
+        "quantity": 2
+      },
+      {
+        "card_number": "EX2-008",
+        "quantity": 4
+      },
+      {
+        "card_number": "EX4-006",
+        "quantity": 1
+      },
+      {
+        "card_number": "EX5-070",
+        "quantity": 1
+      },
+      {
+        "card_number": "EX8-009",
+        "quantity": 4
+      },
+      {
+        "card_number": "EX8-012",
+        "quantity": 1
+      },
+      {
+        "card_number": "EX8-015",
+        "quantity": 3
+      },
+      {
+        "card_number": "EX8-073",
+        "quantity": 3
+      },
+      {
+        "card_number": "LM-027",
+        "quantity": 1
+      },
+      {
+        "card_number": "LM-057",
+        "quantity": 1
+      },
+      {
+        "card_number": "LM-061",
+        "quantity": 1
+      },
+      {
+        "card_number": "P-186",
+        "quantity": 1
+      },
+      {
+        "card_number": "ST7-05",
+        "quantity": 4
+      }
+    ],
+    "eggs": [
+      {
+        "card_number": "EX2-001",
+        "quantity": 4
+      }
+    ]
+  },
+  "composition_sha256": "931d1672cc00ab2800fc8f3a8878e65be2b04fe0ae20f16cf2534af82f2789c4",
+  "source_page_sha256": "650e4442efbe4d339b52e4fdaf74a55affa7bd8a9e28800b57b4871c8aeae812",
+  "source_url": "https://digimon.digilab.cards/decklist/124303",
+  "composition_status": "THIRD_PARTY_EXACT_COUNTS_WITH_OFFICIAL_TYPES_NOT_TOURNAMENT_CERTIFIED"
+}

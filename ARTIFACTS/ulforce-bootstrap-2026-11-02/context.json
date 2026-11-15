@@ -1,0 +1,900 @@
+{
+  "matchup_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "context": {
+    "schema": "imported-matchup-context-v1",
+    "decks": {
+      "A": {
+        "label": "UlforceVeedramon — Federico Nine",
+        "source_id": "123129",
+        "main": [
+          {
+            "card_number": "BT11-023",
+            "quantity": 4
+          },
+          {
+            "card_number": "BT11-032",
+            "quantity": 1
+          },
+          {
+            "card_number": "BT11-112",
+            "quantity": 4
+          },
+          {
+            "card_number": "BT12-029",
+            "quantity": 3
+          },
+          {
+            "card_number": "BT22-022",
+            "quantity": 1
+          },
+          {
+            "card_number": "BT22-023",
+            "quantity": 3
+          },
+          {
+            "card_number": "BT22-085",
+            "quantity": 1
+          },
+          {
+            "card_number": "EX1-013",
+            "quantity": 3
+          },
+          {
+            "card_number": "EX13-017",
+            "quantity": 4
+          },
+          {
+            "card_number": "EX13-019",
+            "quantity": 4
+          },
+          {
+            "card_number": "EX13-022",
+            "quantity": 4
+          },
+          {
+            "card_number": "EX13-023",
+            "quantity": 4
+          },
+          {
+            "card_number": "EX13-069",
+            "quantity": 4
+          },
+          {
+            "card_number": "LM-028",
+            "quantity": 1
+          },
+          {
+            "card_number": "LM-034",
+            "quantity": 1
+          },
+          {
+            "card_number": "LM-056",
+            "quantity": 1
+          },
+          {
+            "card_number": "LM-057",
+            "quantity": 1
+          },
+          {
+            "card_number": "LM-058",
+            "quantity": 1
+          },
+          {
+            "card_number": "P-104",
+            "quantity": 1
+          },
+          {
+            "card_number": "P-138",
+            "quantity": 4
+          }
+        ],
+        "eggs": [
+          {
+            "card_number": "EX13-002",
+            "quantity": 4
+          }
+        ]
+      },
+      "B": {
+        "label": "UlforceVeedramon — Bern",
+        "source_id": "122110",
+        "main": [
+          {
+            "card_number": "BT11-023",
+            "quantity": 4
+          },
+          {
+            "card_number": "BT11-032",
+            "quantity": 1
+          },
+          {
+            "card_number": "BT11-112",
+            "quantity": 4
+          },
+          {
+            "card_number": "BT12-029",
+            "quantity": 2
+          },
+          {
+            "card_number": "BT20-102",
+            "quantity": 1
+          },
+          {
+            "card_number": "BT22-022",
+            "quantity": 1
+          },
+          {
+            "card_number": "BT22-023",
+            "quantity": 3
+          },
+          {
+            "card_number": "BT22-085",
+            "quantity": 2
+          },
+          {
+            "card_number": "EX1-013",
+            "quantity": 3
+          },
+          {
+            "card_number": "EX13-017",
+            "quantity": 4
+          },
+          {
+            "card_number": "EX13-019",
+            "quantity": 4
+          },
+          {
+            "card_number": "EX13-022",
+            "quantity": 4
+          },
+          {
+            "card_number": "EX13-023",
+            "quantity": 4
+          },
+          {
+            "card_number": "EX13-069",
+            "quantity": 4
+          },
+          {
+            "card_number": "LM-028",
+            "quantity": 1
+          },
+          {
+            "card_number": "LM-056",
+            "quantity": 1
+          },
+          {
+            "card_number": "LM-057",
+            "quantity": 1
+          },
+          {
+            "card_number": "LM-058",
+            "quantity": 1
+          },
+          {
+            "card_number": "P-104",
+            "quantity": 1
+          },
+          {
+            "card_number": "P-138",
+            "quantity": 4
+          }
+        ],
+        "eggs": [
+          {
+            "card_number": "EX13-002",
+            "quantity": 4
+          }
+        ]
+      }
+    },
+    "cards": {
+      "BT11-023": {
+        "attribute": "Free",
+        "card_number": "BT11-023",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 1000,
+        "form": "Rookie",
+        "inherited_text": "[Your Turn][Once Per Turn] When you play a blue Tamer, gain 1 memory.",
+        "level": 3,
+        "main_text": "[On Play] Reveal the top 3 cards of your deck. Add 1 Digimon card with [Veedramon] in its name and 1 blue Tamer card among them to your hand. Place the rest at the bottom of your deck in any order.",
+        "name": "Veemon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 0 from Lv.2"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-023.html",
+          "locator": "#BT11-023",
+          "sha256": "8a0641a7b790f34271ee55cfac8b183f29ce2f546bfd62b704069952e5001e23",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-023"
+        },
+        "play_cost": 3,
+        "security_text": "",
+        "special_conditions": {},
+        "traits": [
+          "Mini Dragon"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT11-032": {
+        "attribute": "Vaccine",
+        "card_number": "BT11-032",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 12000,
+        "form": "Mega",
+        "inherited_text": "",
+        "level": 6,
+        "main_text": "[When Digivolving] You may play 1 blue Tamer card from your hand without paying the cost.\n[Your Turn] When you play a blue Tamer, unsuspend this Digimon.\n[Your Turn][Once Per Turn] When this Digimon becomes unsuspended, return 1 of your opponent's level 3 or lower Digimon to its owner's hand. For every blue Tamer you have in play, add 1 to the max level of the Digimon you can choose with this effect.",
+        "name": "UlforceVeedramon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 4 from Lv.5"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-032.html",
+          "locator": "#BT11-032",
+          "sha256": "82c0b74c599cb27d0784d93959057b2504e97c4e593af5ee0a0fce51db30d50e",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-032"
+        },
+        "play_cost": 12,
+        "security_text": "",
+        "special_conditions": {},
+        "traits": [
+          "Holy Warrior",
+          "Royal Knight"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT11-112": {
+        "attribute": null,
+        "card_number": "BT11-112",
+        "colors": [
+          "Blue"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "[On Play] Until the end of your opponent's turn, 1 of your Digimon with [Veemon] or [Veedramon] in its name gains ＜Blocker＞ and ＜Evade＞.\n[All Turns] When one of your Digimon with [Veedramon] in its name becomes suspended, by suspending this Tamer, activate 1 of that Digimon's [When Digivolving] effects.\n[Your Turn][Once Per Turn] When one of your blue Digimon becomes unsuspended, gain 1 memory.",
+        "name": "Rina Shinomiya",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-112.html",
+          "locator": "#BT11-112",
+          "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-112"
+        },
+        "play_cost": 3,
+        "security_text": "[Security] Play this card without paying its memory cost.",
+        "special_conditions": {},
+        "traits": [
+          ""
+        ],
+        "type": "Tamer",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT12-029": {
+        "attribute": "Vaccine",
+        "card_number": "BT12-029",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 12000,
+        "form": "Mega",
+        "inherited_text": "",
+        "level": 6,
+        "main_text": "[When Digivolving] Unsuspend this Digimon or 1 of your blue Tamers.\n[All Turns][Once Per Turn] When this Digimon becomes unsuspended, if you have a blue Tamer in play or this Digimon has [UlforceVeedramon] in its digivolution cards, return 1 of your opponent’s Digimon with the lowest level to its owner’s hand.",
+        "name": "UlforceVeedramon (X Antibody)",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 4 from Lv.5"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT12-029.html",
+          "locator": "#BT12-029",
+          "sha256": "4815904431fc1ad0c54a6185aa3269fe75b844cae57da5dc68b72eca0654d505",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT12-029"
+        },
+        "play_cost": 12,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] 1 from [UlforceVeedramon]"
+        },
+        "traits": [
+          "Holy Warrior",
+          "Royal Knight",
+          "X Antibody"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT20-102": {
+        "attribute": "Vaccine",
+        "card_number": "BT20-102",
+        "colors": [
+          "Blue",
+          "White",
+          "Red"
+        ],
+        "dp": 16000,
+        "form": "Mega",
+        "inherited_text": "",
+        "level": 7,
+        "main_text": "＜Raid＞ ＜Piercing＞ ＜Blocker＞\n[On Play] [When Digivolving] If [Omnimon] or [X Antibody] is in this Digimon's digivolution cards, choose 1 of both players' Digimon and delete all other Digimon. Then, return 1 of your opponent's Digimon to the bottom of the deck.\n[End of Your Turn] [Once Per Turn] 1 of your Digimon may gain ＜Rush＞ for the turn and attack without suspending.",
+        "name": "Omnimon (X Antibody)",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "BlueRed 6 from Lv.6"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT20-102.html",
+          "locator": "#BT20-102",
+          "sha256": "6769bd16a111b682dc8f9a27fb5ea0e5a4438a6822e160c79575f480fcd8519b",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT20-102"
+        },
+        "play_cost": 16,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] [Omnimon]: Cost 2"
+        },
+        "traits": [
+          "Holy Warrior",
+          "X Antibody",
+          "Royal Knight",
+          "LIBERATOR"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT22-022": {
+        "attribute": "Vaccine",
+        "card_number": "BT22-022",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 5000,
+        "form": "Champion",
+        "inherited_text": "[All Turns] [Once Per Turn] When this Digimon with [Veedramon] in its name would leave the battle area by your opponent's effects, by suspending this Digimon, it doesn't leave.",
+        "level": 4,
+        "main_text": "[When Digivolving] If you have 1 or fewer Tamers, you may play 1 Tamer card with [Veedramon] in its text from your hand without paying the cost.",
+        "name": "Veedramon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 2 from Lv.3"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-022.html",
+          "locator": "#BT22-022",
+          "sha256": "b2bc45d6d74a4c8a9569094c25bcc7ffe10e179b4891341dd2187298a0346c85",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-022"
+        },
+        "play_cost": 5,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] Lv.3 w/[CS] trait: Cost 2"
+        },
+        "traits": [
+          "Mythical Dragon",
+          "CS"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT22-023": {
+        "attribute": "Vaccine",
+        "card_number": "BT22-023",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 7000,
+        "form": "Ultimate",
+        "inherited_text": "[All Turns] [Once Per Turn] When this Digimon with [Veedramon] in its name suspends, if you have a blue Tamer, this Digimon may unsuspend.",
+        "level": 5,
+        "main_text": "[On Play] [When Digivolving] Return 1 of your opponent's level 4 or lower Digimon to the bottom of the deck.\n[End of Your Turn] [Once Per Turn] 1 of your blue Digimon or Tamers may unsuspend.",
+        "name": "AeroVeedramon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 3 from Lv.4"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-023.html",
+          "locator": "#BT22-023",
+          "sha256": "a184df26a6bd8c5ccaed325998c9b85a18c0c2d5c0778a20993fd2d6a01e67dd",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-023"
+        },
+        "play_cost": 7,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] Lv.4 w/[CS] trait: Cost 3"
+        },
+        "traits": [
+          "Holy Dragon",
+          "CS"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "BT22-085": {
+        "attribute": null,
+        "card_number": "BT22-085",
+        "colors": [
+          "Blue"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "[Start of Your Turn] If you have 2 or less memory, set it to 3.\n[On Play] 1 of your Digimon with [Veedramon] in its name gets +3000 DP until your opponent's turn ends.\n[Your Turn] When one of your Digimon with [Veedramon] in its name attacks, by returning this Tamer to the hand, that Digimon gains ＜Jamming＞ for the turn.",
+        "name": "Rina Shinomiya",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-085.html",
+          "locator": "#BT22-085",
+          "sha256": "a453871077f17613ac9b1d52bbe3065509f2d0fd75ff8d2e040aa3658d3435f1",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-085"
+        },
+        "play_cost": 4,
+        "security_text": "[Security] Play this card without paying the cost.",
+        "special_conditions": {},
+        "traits": [
+          "CS"
+        ],
+        "type": "Tamer",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX1-013": {
+        "attribute": "Free",
+        "card_number": "EX1-013",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 2000,
+        "form": "Rookie",
+        "inherited_text": "[Your Turn][Once Per Turn] When this Digimon becomes unsuspended during your main phase, gain 1 memory.",
+        "level": 3,
+        "main_text": "",
+        "name": "Veemon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 0 from Lv.2"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX1-013.html",
+          "locator": "#EX1-013",
+          "sha256": "df126caa2ee95d5f7b86008ef828291645d15204c177801eb2f73404d0611f38",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX1-013"
+        },
+        "play_cost": 3,
+        "security_text": "",
+        "special_conditions": {},
+        "traits": [
+          "Mini Dragon"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX13-002": {
+        "attribute": null,
+        "card_number": "EX13-002",
+        "colors": [
+          "Blue"
+        ],
+        "dp": null,
+        "form": "In-Training",
+        "inherited_text": "[Your Turn] [Once Per Turn] When any of your blue Tamers are played, this Digimon with [Veedramon] in its name may unsuspend.",
+        "level": 2,
+        "main_text": "",
+        "name": "DemiVeemon",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-002.html",
+          "locator": "#EX13-002",
+          "sha256": "9d2abc2c3a5f20aebefbcb5b89818a4559748ddbde4e20f92562092b7267cd4f",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-002"
+        },
+        "play_cost": null,
+        "security_text": "",
+        "special_conditions": {},
+        "traits": [
+          "Baby Dragon"
+        ],
+        "type": "Digi-Egg",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX13-017": {
+        "attribute": "Free",
+        "card_number": "EX13-017",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 1000,
+        "form": "Rookie",
+        "inherited_text": "[All Turns] [Once Per Turn] When this Digimon with [Veedramon] in its name would leave the battle area by your opponent's effects, by suspending it, it doesn't leave.",
+        "level": 3,
+        "main_text": "[When Moving] [On Play] Reveal the top 3 cards of your deck. Add 1 card with [Veedramon] in its text or the [Royal Knight] trait among them to the hand. Return the rest to the bottom of the deck.",
+        "name": "Veemon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 0 from Lv.2"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-017.html",
+          "locator": "#EX13-017",
+          "sha256": "2aa137a4f5c18f878139b6021a274f44a1ad001b0a952390ef6690031e5e77d4",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-017"
+        },
+        "play_cost": 3,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] Lv.2 w/[CS] trait: Cost 0"
+        },
+        "traits": [
+          "Mini Dragon",
+          "CS"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX13-019": {
+        "attribute": "Vaccine",
+        "card_number": "EX13-019",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 6000,
+        "form": "Champion",
+        "inherited_text": "＜Jamming＞ (This Digimon can't be deleted in battles against Security Digimon.)",
+        "level": 4,
+        "main_text": "＜Jamming＞\n[When Attacking] [Once Per Turn] You may play 1 Tamer card with [Veedramon] in its text from your hand with the cost reduced by 2.",
+        "name": "Veedramon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 2 from Lv.3"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-019.html",
+          "locator": "#EX13-019",
+          "sha256": "0e9158139b3c4d46987c85a968f40469743a76892cba86227871ed897b1e4d5a",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-019"
+        },
+        "play_cost": 6,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] Lv.3 w/[CS] trait: Cost 2"
+        },
+        "traits": [
+          "Mythical Dragon",
+          "CS"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX13-022": {
+        "attribute": "Vaccine",
+        "card_number": "EX13-022",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 7000,
+        "form": "Ultimate",
+        "inherited_text": "[All Turns] [Once Per Turn] When this Digimon with [Veedramon] in its name suspends, it may unsuspend.",
+        "level": 5,
+        "main_text": "[On Play] [When Digivolving] [When Attacking] [Once Per Turn] You may play 1 Tamer card with [Veedramon] in its text from your hand without paying the cost.\n[All Turns] [Once Per Turn] When any of your Tamers are played, 1 of your opponent's Digimon or Tamers can't suspend until their turn ends.",
+        "name": "AeroVeedramon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 3 from Lv.4"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-022.html",
+          "locator": "#EX13-022",
+          "sha256": "4771e6eab5218e833eebf7d1ff6cf70ad6fa51a51d556f8a404ac88f07256874",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-022"
+        },
+        "play_cost": 7,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] Lv.4 w/[CS] trait: Cost 3"
+        },
+        "traits": [
+          "Holy Dragon",
+          "CS"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX13-023": {
+        "attribute": "Vaccine",
+        "card_number": "EX13-023",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 12000,
+        "form": "Mega",
+        "inherited_text": "",
+        "level": 6,
+        "main_text": "＜Blocker＞ ＜Evade＞\n[On Play] [When Digivolving] [When Attacking] [Once Per Turn] 1 of your Digimon may change orientation.\n[On Play] [When Digivolving] You may return all of your opponent's Digimon with the fewest digivolution cards to the bottom of the deck.\n[All Turns] Your opponent's effects can't reduce this unsuspended Digimon's DP, return its stacked cards to the hand or deck, or trash them.",
+        "name": "UlforceVeedramon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 3 from Lv.5"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-023.html",
+          "locator": "#EX13-023",
+          "sha256": "3d50f704648b02667258fceb3f3675a80141599f76ca4ad1beeb3069d8fad7aa",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-023"
+        },
+        "play_cost": 12,
+        "security_text": "",
+        "special_conditions": {
+          "[Special Digivolution Condition]": "[Digivolve] Lv.5 w/[CS] trait: Cost 3",
+          "[Special Play Condition]": "Assembly -5: Lv.5 × Lv.4 × Lv.3, all w/[Veemon]/[Veedramon] in name"
+        },
+        "traits": [
+          "Holy Warrior",
+          "Royal Knight",
+          "CS"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "EX13-069": {
+        "attribute": null,
+        "card_number": "EX13-069",
+        "colors": [
+          "Blue"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "[Start of Your Main Phase] If you have a Digimon with [Veemon] or [Veedramon] in its name, gain 1 memory.\n[Your Turn] When any of your Digimon unsuspend, by suspending this Tamer, ＜Draw 1＞. After, 1 of your Digimon may digivolve into a Digimon card with [Veedramon] in its name in the hand with the cost reduced by 2.",
+        "name": "Rina Shinomiya",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-069.html",
+          "locator": "#EX13-069",
+          "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-069"
+        },
+        "play_cost": 3,
+        "security_text": "[Security] Play this card without paying the cost.",
+        "special_conditions": {},
+        "traits": [
+          "CS"
+        ],
+        "type": "Tamer",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "LM-028": {
+        "attribute": null,
+        "card_number": "LM-028",
+        "colors": [
+          "Blue"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "[Main] 1 of your blue Digimon may digivolve into a blue Digimon card in the hand with the digivolution cost reduced by 3. Then, place this card in the battle area.\n[Start of Your Turn] If your opponent has a Digimon, ＜Delay＞.\n・Return 1 blue Digimon card from your trash to the top of the deck. Then, if you don't have a Digimon, you may play 1 blue Digimon card with 2000 DP or less from your trash without paying the cost.",
+        "metadata_conflicts": [
+          {
+            "basis": "Official PNG visibly labels the card OPTION; visual inspection 2026-10-30, pending independent review",
+            "field": "type",
+            "image_file": "RULES/matchups/123129-vs-124303/sources/LM-028.png",
+            "image_sha256": "f26e919328151f9ee595ea160a2949274ca1d30eb4ae6e0dacde5aef78460c8e",
+            "official_html_value": "Digimon",
+            "official_image_value": "Option",
+            "selected_value": "Option"
+          }
+        ],
+        "name": "Blue Scramble",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-LM-028.html",
+          "locator": "#LM-028",
+          "sha256": "add30c8ec48a6972ae26bc56af14b6faaab06af29d1b032151662b8e3723c0ee",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-028"
+        },
+        "play_cost": 2,
+        "security_text": "[Security] You may play 1 blue Digimon card with 2000 DP or less from your trash without paying the cost. Then, add this card to the hand.",
+        "special_conditions": {},
+        "traits": [
+          ""
+        ],
+        "type": "Option",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "LM-034": {
+        "attribute": null,
+        "card_number": "LM-034",
+        "colors": [
+          "Blue"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "Red also meets this card's color requirements.\n[Main] Reveal the top 3 cards of your deck. Add 1 blue or red Digimon card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.\n[Main] ＜Delay＞\n・Gain 2 memory.",
+        "metadata_conflicts": [
+          {
+            "basis": "Official PNG visibly labels the card OPTION; visual inspection 2026-10-30, pending independent review",
+            "field": "type",
+            "image_file": "RULES/matchups/123129-vs-124303/sources/LM-034.png",
+            "image_sha256": "dfcf39cb2e036a148e9438ea00699f9909d0b93b07c72239822fd0f2cf2868a9",
+            "official_html_value": "Digimon",
+            "official_image_value": "Option",
+            "selected_value": "Option"
+          }
+        ],
+        "name": "Wisteria Memory Boost!",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-LM-034.html",
+          "locator": "#LM-034",
+          "sha256": "2917e45cc7c729ffe78ae583a7c4f4b12778a51e9c8d68b25dd532f5b96c10f1",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-034"
+        },
+        "play_cost": 3,
+        "security_text": "[Security] Place this card in the battle area.",
+        "special_conditions": {},
+        "traits": [
+          ""
+        ],
+        "type": "Option",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "LM-056": {
+        "attribute": null,
+        "card_number": "LM-056",
+        "colors": [
+          "Purple",
+          "Blue"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "While you don't have [Image Training] in the battle area, you can ignore this card's color requirements.\n[Main] Reveal the top 2 cards of your deck. Add 1 purple or blue card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.\n[Main] ＜Delay＞\n・1 of your Digimon may digivolve into a purple or blue Digimon card in the hand with the digivolution cost reduced by 2.",
+        "name": "Image Training",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-LM-056.html",
+          "locator": "#LM-056",
+          "sha256": "de0eb9e7c894f8e66217296f511b004d540f5ba030c8cb8c961c53b4bf7ec0dd",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-056"
+        },
+        "play_cost": 2,
+        "security_text": "[Security] Reveal the top 2 cards of your deck. Add 1 purple or blue card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.",
+        "special_conditions": {},
+        "traits": [
+          ""
+        ],
+        "type": "Option",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "LM-057": {
+        "attribute": null,
+        "card_number": "LM-057",
+        "colors": [
+          "Red",
+          "Blue"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "While you don't have [Wall Training] in the battle area, you can ignore this card's color requirements.\n[Main] Reveal the top 2 cards of your deck. Add 1 red or blue card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.\n[Main] ＜Delay＞\n・1 of your Digimon may digivolve into a red or blue Digimon card in the hand with the cost reduced by 2.",
+        "name": "Wall Training",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-LM-057.html",
+          "locator": "#LM-057",
+          "sha256": "fa76304967284b7ac49ef134942e3d9bb68ed6bcb58379d796f5d1e695e13fc8",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-057"
+        },
+        "play_cost": 2,
+        "security_text": "[Security] Reveal the top 2 cards of your deck. Add 1 red or blue card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.",
+        "special_conditions": {},
+        "traits": [
+          ""
+        ],
+        "type": "Option",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "LM-058": {
+        "attribute": null,
+        "card_number": "LM-058",
+        "colors": [
+          "Blue",
+          "Green"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "While you don't have [Parkour Training] in the battle area, you can ignore this card's color requirements.\n[Main] Reveal the top 2 cards of your deck. Add 1 blue or green card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.\n[Main] ＜Delay＞\n・1 of your Digimon may digivolve into a blue or green Digimon card in the hand with the cost reduced by 2.",
+        "name": "Parkour Training",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-LM-058.html",
+          "locator": "#LM-058",
+          "sha256": "a1c4562d78bdc5ca50a66fdeea057570c0324319f7900e7d2fcb008de4c12de7",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-058"
+        },
+        "play_cost": 2,
+        "security_text": "[Security] Reveal the top 2 cards of your deck. Add 1 blue or green card among them to the hand. Return the rest to the bottom of the deck. Then, place this card in the battle area.",
+        "special_conditions": {},
+        "traits": [
+          ""
+        ],
+        "type": "Option",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "P-104": {
+        "attribute": null,
+        "card_number": "P-104",
+        "colors": [
+          "Blue"
+        ],
+        "dp": null,
+        "form": null,
+        "inherited_text": "",
+        "level": null,
+        "main_text": "[Main] Reveal the top 2 cards of your deck. Add 1 blue card among them to the hand. Return the rest to the bottom of the deck in any order. Then, place this card in the battle area.\n[Main] ＜Delay＞\n・1 of your Digimon may digivolve into a blue Digimon card in your hand for its digivolution cost. When it would digivolve by this effect, reduce the cost by 2.",
+        "name": "Mental Training",
+        "normal_digivolution": {},
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-P-104.html",
+          "locator": "#P-104",
+          "sha256": "912bf92380c5be9e6f52fcb21cd997c53010023981328e80c0617348180cf5ec",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=P-104"
+        },
+        "play_cost": 2,
+        "security_text": "[Security] Place this card in the battle area.",
+        "special_conditions": {},
+        "traits": [
+          ""
+        ],
+        "type": "Option",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      },
+      "P-138": {
+        "attribute": "Vaccine",
+        "card_number": "P-138",
+        "colors": [
+          "Blue"
+        ],
+        "dp": 5000,
+        "form": "Champion",
+        "inherited_text": "[Your Turn] [Once Per Turn] When this Digimon becomes unsuspended, gain 1 memory.",
+        "level": 4,
+        "main_text": "[On Play] [When Digivolving] Reveal the top 3 cards of your deck. Add 1 Digimon card with [Veedramon] in its name and 1 blue Tamer card among them to the hand. Return the rest to the bottom of the deck.",
+        "name": "Veedramon",
+        "normal_digivolution": {
+          "Digivolve Cost 1": "Blue 2 from Lv.3"
+        },
+        "official_source": {
+          "file": "RULES/matchups/123129-vs-124303/sources/official-P-138.html",
+          "locator": "#P-138",
+          "sha256": "61d9574f6132911aa54a8e75990a0c829ef424521b26b97fbaca62be9f456354",
+          "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=P-138"
+        },
+        "play_cost": 5,
+        "security_text": "",
+        "special_conditions": {},
+        "traits": [
+          "Mythical Dragon"
+        ],
+        "type": "Digimon",
+        "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+      }
+    },
+    "rules": {
+      "as_of_date": "2026-10-30",
+      "language": "English",
+      "name": "EX13",
+      "region": "English-version worldwide rules",
+      "selection_status": "REGION_EXPLICITLY_SELECTED_BY_USER_2026-10-30"
+    }
+  },
+  "status": "EXPERIMENTAL_NOT_GAMEPLAY_READY",
+  "selection_basis": "User delegated best starting matchup; distinct-list mirror minimizes missing mechanics while retaining official definitions."
+}

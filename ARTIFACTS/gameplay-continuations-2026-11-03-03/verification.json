@@ -1,0 +1,17 @@
+{
+  "tests_passed": 430,
+  "duration_seconds": 259.488,
+  "full_suite_command": "python -m unittest discover -p 'test_*.py' -q",
+  "same_original_game_seed": 12017913134550805276,
+  "game_index": 0,
+  "game_turn": 6,
+  "command_count": 59,
+  "exact_replay": true,
+  "next_selected_action": "DECLARE_ATTACK B:EX13-022#1 target PLAYER",
+  "next_software_blocker": "BASIC_BOARD_TOP_UNSUPPORTED: A BT11-112",
+  "software_terminal_matches": 0,
+  "valid_completed_matches": 0,
+  "approved_lanes": 0,
+  "final_matches": 0,
+  "execution_id": "accc268b95cd0d3dc72a973f263c5056ae2767f7d1066179b95a9253f0bce023"
+}

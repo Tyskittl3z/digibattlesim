@@ -1,0 +1,15 @@
+# EX13 Ulforce actual-stop source review
+
+**The saved Rina evolution is legal and creates two simultaneous When Digivolving effects.** Route0 cost3 minus the single paid Rina reduction2 takes B memory2→1 in the ongoing UNSUSPEND processing. Place EX13-023 over entity-10, preserve its four former cards as sources and unsuspended orientation, then perform the mandatory evolution draw before queuing either trigger. The archived judge-only next deck card is B:P-138#1; it must not enter pilot visibility before the draw.
+
+EX13-023 Q7266 expressly lets B choose the activation order of orientation and optional return-all. Each next effect is chosen after the prior effect resolves (CR15-4-3-4). Orientation alone has a shared OPT; activating it counts even if its optional processing is declined. The separate return effect has no OPT.
+
+If return is processed in this saved state, A:BT12-029#2 is the sole minimum with zero sources. Return its top to A deck bottom; there are no lower cards to trash. A BT11 Ulforce has one source. Rina's Blocker/Evade grant does not prevent return: Evade only concerns would-be deletion (CR16-22-1/2). B's own self-replacement/protection does not protect this opposing singleton.
+
+All four B Digimon are currently unsuspended. Orientation may decline or suspend an own Digimon. Actual suspension of either B Aero or new EX13 Ulforce triggers B BT11 Rina AllTurns; the new EX13 top also has inherited BT22 Aero. Those derived reactions precede the other original pending effect (CR15-4-5-2). Preserve a precise HALT if a real selected dependency is unfinished. Veemon EX13-019 does not match a Veedramon-only observer.
+
+**Future tied-minima order belongs to the owner of the action-causing card, B here.** CR3-1-3-4 states: “When multiple cards leave an area at the same time, the player who owns the card that caused the action to be performed chooses the order in which the cards are placed in the new area.” Its example specifically assigns return-all opponent Digimon bottom order to the effect activator. CR3-1-3-6 makes the order public. A future tie must obtain that explicit order or HALT before mutation; the actual singleton needs no order choice. CR4-7-8 handles simultaneous trashing of any lower source cards.
+
+Independently replayed **all103 successful saved commands using segment07 archived SOURCE**, with every source hash matching its archive manifest. All saved public views/results match, all108 cards conserve after every command, and final full physical state/RNG match both saved final and before-HALT snapshots. Command104 was not retried; no new gameplay or SOURCE edits occurred. Proof: [ex13-ulforce-archived-prefix-proof.json](ex13-ulforce-archived-prefix-proof.json). Exact official excerpts, PDF/card/source hashes and detailed findings: [ex13-ulforce-actual-stop.json](ex13-ulforce-actual-stop.json).
+
+This is source-backed encounter evidence, with **zero full-match, fact-finding, strategic-lane or final-evaluation credit**. Current new implementation and any later segment08 play require their own review.

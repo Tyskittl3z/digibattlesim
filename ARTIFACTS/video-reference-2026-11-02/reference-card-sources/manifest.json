@@ -1,0 +1,37 @@
+[
+  {
+    "card_number": "EX12-071",
+    "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX12-071",
+    "bytes": 94103,
+    "sha256": "4de2c00a2a506e429c4cb6f00a2490c61c8d19c49669658ab5c8cb539ed9efa5",
+    "status": "RETRIEVED_UNREVIEWED"
+  },
+  {
+    "card_number": "EX12-074",
+    "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX12-074",
+    "bytes": 95416,
+    "sha256": "68353f950ae7ce419a14d3b48e19e70637a62c79f103925d43700cfa10e91840",
+    "status": "RETRIEVED_UNREVIEWED"
+  },
+  {
+    "card_number": "RB1-030",
+    "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=RB1-030",
+    "bytes": 86314,
+    "sha256": "25681df1b6798220494745cd4d770ff40a7f09200b5397761248a00ed3ef3585",
+    "status": "RETRIEVED_UNREVIEWED"
+  },
+  {
+    "card_number": "EX12-066",
+    "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX12-066",
+    "bytes": 93950,
+    "sha256": "6ae406fcff4798e5815a8d0650cf094828ece6904a1169f8e1ab9c60e49a10b3",
+    "status": "RETRIEVED_UNREVIEWED"
+  },
+  {
+    "card_number": "EX12-013",
+    "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX12-013",
+    "bytes": 129727,
+    "sha256": "81059c309b426b762fcff3cf3ba7576954d8895f10629fe98c493ee786c01a69",
+    "status": "RETRIEVED_UNREVIEWED"
+  }
+]

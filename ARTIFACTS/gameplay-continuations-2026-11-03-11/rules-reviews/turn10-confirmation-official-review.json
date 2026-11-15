@@ -1,0 +1,222 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "actual_state": {
+    "active": "B",
+    "attack": {
+      "attacker": "B:BT11-032#1",
+      "attacker_instance": "entity-5",
+      "block_used": false,
+      "checked": null,
+      "controller": "B",
+      "counter_used": false,
+      "defender": "A",
+      "target": "PLAYER",
+      "target_instance": "",
+      "window": "CONFIRM"
+    },
+    "attacker": {
+      "cards": [
+        "B:EX13-022#1",
+        "B:BT11-032#1"
+      ],
+      "instance_id": "entity-5",
+      "played_turn": 4,
+      "ready_since_turn": 5,
+      "statuses": {},
+      "suspended": true
+    },
+    "attacker_printed_dp": 12000,
+    "checked_definition": {
+      "attribute": "Vaccine",
+      "card_number": "P-138",
+      "colors": [
+        "Blue"
+      ],
+      "dp": 5000,
+      "form": "Champion",
+      "inherited_text": "[Your Turn] [Once Per Turn] When this Digimon becomes unsuspended, gain 1 memory.",
+      "level": 4,
+      "main_text": "[On Play] [When Digivolving] Reveal the top 3 cards of your deck. Add 1 Digimon card with [Veedramon] in its name and 1 blue Tamer card among them to the hand. Return the rest to the bottom of the deck.",
+      "name": "Veedramon",
+      "normal_digivolution": {
+        "Digivolve Cost 1": "Blue 2 from Lv.3"
+      },
+      "official_source": {
+        "file": "RULES/matchups/123129-vs-124303/sources/official-P-138.html",
+        "locator": "#P-138",
+        "sha256": "61d9574f6132911aa54a8e75990a0c829ef424521b26b97fbaca62be9f456354",
+        "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=P-138"
+      },
+      "play_cost": 5,
+      "security_text": "",
+      "special_conditions": {},
+      "traits": [
+        "Mythical Dragon"
+      ],
+      "type": "Digimon",
+      "verification_status": "OFFICIAL_BYTES_RETRIEVED_PENDING_INDEPENDENT_REVIEW"
+    },
+    "memory": 5,
+    "pending": [],
+    "phase": "MAIN",
+    "security": [
+      "A:EX13-069#2",
+      "A:P-138#1"
+    ],
+    "turn": 10,
+    "unrelated_self_protected_stack": {
+      "cards": [
+        "B:EX13-002#1",
+        "B:EX1-013#3",
+        "B:BT22-022#1",
+        "B:BT22-023#1",
+        "B:EX13-023#1"
+      ],
+      "instance_id": "entity-10",
+      "played_turn": null,
+      "ready_since_turn": 6,
+      "statuses": {},
+      "suspended": false
+    }
+  },
+  "archive_prefix_proof": "PASS:94 sources/146 exact saved successes/full state/RNG/108cards; see archive10-prefix-proof.json",
+  "final_evaluation_credit": 0,
+  "head_at_review": "90d9b09d5d0a73d9aa77e0fbf2d640e068c76f55",
+  "implementation_review": "PASS: final source-bound review and2 independent tests; see turn10-confirmation-implementation-review.json",
+  "judge_certification_credit": 0,
+  "new_actual_gameplay_commands": 0,
+  "no_source_edits": true,
+  "official_authority": [
+    {
+      "relevance": "Counter and Block precede confirmation; a successful attack against a player with security performs Security processing",
+      "sections": "CR11-1-3/4;11-5-1-1/1-1"
+    },
+    {
+      "relevance": "One mandatory check, checked card temporarily outside areas, no actual Security effect, Security battle, then checked card to trash",
+      "sections": "CR13-1-1/2/3/4/6/7;13-1-8-1 through13-1-8-4"
+    },
+    {
+      "relevance": "Compare DP; higher DP wins; Security Digimon are not deleted when they lose",
+      "sections": "CR14-1;14-2-1 through14-2-5"
+    },
+    {
+      "relevance": "Effects are card processing; inherited P-138 text is inactive on a checked singleton; persistent self-only protection does not create an unrelated Security effect",
+      "sections": "CR15-1-1;15-3-1;15-8-2;15-16-10"
+    },
+    {
+      "relevance": "Protection names the self entity/stack and restricted operations; pinned DP12000 and5000; no Security text on P-138",
+      "sections": "EX13-023 #EX13-023 and Q7265; P-138 #P-138; BT11-032 #BT11-032"
+    }
+  ],
+  "protection_scope": {
+    "applies_to": "opponent effects attempting the listed operations on the protected entity or its stack",
+    "current_event_is_opponent_card_effect": false,
+    "current_event_reduces_dp": false,
+    "current_event_returns_or_trashes_stacked_cards": false,
+    "current_event_touches_protected_entity": false,
+    "protected_entity": "B:EX13-023#1 / entity-10",
+    "self_reference": "this unsuspended Digimon; its stacked cards"
+  },
+  "protection_wording": "[All Turns] Your opponent's effects can't reduce this unsuspended Digimon's DP, return its stacked cards to the hand or deck, or trash them.",
+  "qa_ids_read": [
+    "Q7265",
+    "Q7266",
+    "Q7267",
+    "Q7268",
+    "Q7269"
+  ],
+  "record": {
+    "canonical_sha256": "216bb6e8ee837e14be7380c164e6f983fbbe316c48237ad4c6aca25a9e6dd34f",
+    "commands": 147,
+    "gzip_sha256": "c4b018914f627f49988108da1558af0f31d3b0bedf13ad9bb92f81d05cb66967",
+    "halt_reason": "ATTACK_PERSISTENT_EFFECT_UNSUPPORTED: EX13-023 main_text source=B:EX13-023#1",
+    "manifest_source_count": 94,
+    "path": "ARTIFACTS/gameplay-continuations-2026-11-03-10/game-0000-segment.json.gz",
+    "seed": 12017913134550805276,
+    "successful_commands": 146
+  },
+  "reviewer": "turn10_attack_judge",
+  "ruling": {
+    "cause_of_existing_halt": "The literal string test for this Digimon misses this unsuspended Digimon, then treats that self-only protection as a global combat modifier. This is a software capability guard error, not ambiguous card wording.",
+    "command": "CONFIRM_ATTACK",
+    "expected_changes": {
+      "A_security_delta": -1,
+      "A_trash_append": "A:P-138#1",
+      "B_EX13_protected_stack_unchanged": true,
+      "RNG_unchanged": true,
+      "attacker_deleted": false,
+      "checked_card": "A:P-138#1",
+      "memory": 5,
+      "next_attack_window": "END",
+      "security_card_deleted": false,
+      "terminal": false
+    },
+    "expected_processing": [
+      "A has security2, so successful PLAYER attack performs one Security check after resolved Counter and Block choices",
+      "Reveal and check A:P-138#1; it has printed5000DP and no Security effect",
+      "Printed12000DP attacking B:BT11-032#1 wins ordinary Security battle and remains suspended in battle",
+      "Security Digimon P-138 is not deleted even though it loses; checked card is placed in A trash",
+      "A security decreases2\u21921, with A:EX13-069#2 still in security; no direct-attack victory",
+      "Attack proceeds to END window; no extra orientation change, Rina/Aero reaction, bonus draw, memory change or stack movement"
+    ],
+    "legal": true,
+    "seat": "B"
+  },
+  "schema": "actual-confirmation-rules-review-v1",
+  "sources": [
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-032.html",
+      "hash_verified": true,
+      "id": "card-BT11-032",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "locator": "#BT11-032",
+      "review": null,
+      "sha256": "82c0b74c599cb27d0784d93959057b2504e97c4e593af5ee0a0fce51db30d50e",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-032"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-023.html",
+      "hash_verified": true,
+      "id": "card-EX13-023",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "locator": "#EX13-023",
+      "review": null,
+      "sha256": "3d50f704648b02667258fceb3f3675a80141599f76ca4ad1beeb3069d8fad7aa",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-023"
+    },
+    {
+      "file": "RULES/matchups/123129-vs-124303/sources/official-P-138.html",
+      "hash_verified": true,
+      "id": "card-P-138",
+      "kind": [
+        "CARD_TEXT",
+        "CARD_QA"
+      ],
+      "locator": "#P-138",
+      "review": null,
+      "sha256": "61d9574f6132911aa54a8e75990a0c829ef424521b26b97fbaca62be9f456354",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=P-138"
+    },
+    {
+      "edition": null,
+      "effective_date": null,
+      "file": "RULES/matchups/123129-vs-124303/sources/general_rule.pdf",
+      "hash_verified": true,
+      "id": "rules",
+      "kind": [
+        "RULES"
+      ],
+      "review": null,
+      "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+      "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918"
+    }
+  ],
+  "status": "CLEAR_CARD_WORDING_OVERBROAD_ENGINE_GUARD",
+  "strategy_credit": 0
+}

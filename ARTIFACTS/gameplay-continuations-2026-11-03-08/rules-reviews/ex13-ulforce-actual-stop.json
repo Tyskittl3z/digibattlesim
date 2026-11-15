@@ -1,0 +1,264 @@
+{
+  "schema": "ex13-ulforce-actual-saved-encounter-rules-review-v1",
+  "date": "2026-11-03",
+  "status": "SOURCE_BACKED_SELECTED_EVOLUTION_AND_TWO_TRIGGER_TIMING_CONFIRMED",
+  "certification": "NONE_ENCOUNTER_REVIEW_ONLY",
+  "scope": "Read-only official-source assessment of saved command104; replay103 successful saved commands using segment07 archived SOURCE; no stop retry or new gameplay",
+  "record": "ARTIFACTS/gameplay-continuations-2026-11-03-07/game-0000-segment.json.gz",
+  "record_sha256": "1be88284465f08b47a0654571bdbe63bd1e0ef4d2e88499b2c931a814420ee09",
+  "seed": 12017913134550805276,
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "saved_stop_command_number": 104,
+  "archive_base_commit": "713a513",
+  "prefix_proof_file": "ex13-ulforce-archived-prefix-proof.json",
+  "prefix_proof": {
+    "successful_commands_replayed": 103,
+    "archived_source_all_hashes_match_manifest": true,
+    "exact_saved_final_physical_state_and_rng": true,
+    "physical_integrity_valid_after_every_command": true,
+    "cards_conserved": {
+      "A": 54,
+      "B": 54,
+      "total": 108
+    },
+    "stop_command104_executed": false
+  },
+  "actual_saved_choice": {
+    "choice": {
+      "hand_key": "B:EX13-023#1",
+      "route_index": 0,
+      "source_key": "B:BT22-023#1"
+    },
+    "pending_id": "effect-33"
+  },
+  "actual_before": {
+    "turn": 8,
+    "active": "B",
+    "phase": "UNSUSPEND",
+    "memory": 2,
+    "paid_rina": "B:EX13-069#4",
+    "pending_id": "effect-33",
+    "rina_draw_card": "B:EX13-023#1",
+    "remaining_pending_effect_count": 1,
+    "a_digimon_sources": {
+      "A:BT12-029#2": 0,
+      "A:BT11-032#1": 1
+    }
+  },
+  "required_resolution": [
+    {
+      "step": "Resolve paid Rina After continuation",
+      "finding": "The chosen effect permits evolution during UNSUSPEND; ordinary Main-only action restriction does not suppress a card-effect evolution. No normal phase advance is due while processing remains unresolved.",
+      "references": [
+        "EX13-069 printed YourTurn effect",
+        "Q7437",
+        "Q7439",
+        "CR6-2",
+        "CR6-5-1",
+        "CR15-4"
+      ]
+    },
+    {
+      "step": "Pay and preserve stack",
+      "finding": "Route0 Blue Lv5 cost3 applies; the single paid EX13 Rina supplies reduction2, so B memory2\u21921. Stack new EX13 top onto entity-10, preserving orientation/entity and the four old cards as sources. No Assembly reduction; no new play or orientation event.",
+      "references": [
+        "EX13-023 printed Blue Lv5 cost3",
+        "EX13-069 printed reduction2",
+        "Q7439",
+        "CR8-1-3-1..3"
+      ]
+    },
+    {
+      "step": "Mandatory evolution draw",
+      "finding": "Stacking is followed by draw1 before evolution completes and WhenDigivolving effects trigger. Saved deck next card is B:P-138#1; this is judge-only state evidence and must not become discovery-pilot visibility.",
+      "references": [
+        "CR8-1-3-3",
+        "CR15-16-3-1"
+      ]
+    },
+    {
+      "step": "Two simultaneous effects",
+      "finding": "Queue orientation OPT and return-all as distinct effects in the same simultaneous group. B chooses the next effect after each resolution; neither effect is forced ahead. The return line has no OPT. Orientation activation consumes its shared OnPlay/WhenDigivolving/WhenAttacking OPT even if optional processing is declined or cannot be completed.",
+      "references": [
+        "EX13-023 printed separate lines",
+        "Q7266",
+        "CR15-4-3-4",
+        "CR15-4-3-5-1",
+        "CR15-14-1-1..4"
+      ]
+    },
+    {
+      "step": "Optional return-all",
+      "finding": "B may decline; if processed, affect every opponent Digimon currently tied for fewest sources. The saved sole minimum is A:BT12-029#2, zero sources, so return that top to A deck bottom; no source is trashed in this actual case. A:BT11-032#1 has one source and is excluded. Tamers, Option and breeding cards are excluded.",
+      "references": [
+        "EX13-023 printed may return all",
+        "CR15-8-3-7",
+        "CR15-10-2-4-1",
+        "CR15-11-2-1",
+        "CR4-8-1",
+        "CR3-1-3-8",
+        "CR4-7-8"
+      ]
+    },
+    {
+      "step": "Actual leave/protection checks",
+      "finding": "A singleton only has Rina Blocker/Evade; Evade responds to would-be deletion, so it does not prevent return-to-deck. Its self-unsuspend trigger is not a leave trigger. B own BT22 Veedramon inherited self replacement is on another stack and is limited to opponent effects; B EX13 stacked-card protection does not protect A. No source-dependent leave event exists beneath actual A singleton.",
+      "references": [
+        "BT11-112 printed OnPlay grant",
+        "BT12-029 printed AllTurns effect",
+        "BT22-022 printed inherited effect",
+        "EX13-023 Q7265",
+        "CR16-22-1..2",
+        "CR4-7-8"
+      ]
+    },
+    {
+      "step": "Optional orientation and actual reactions",
+      "finding": "B may decline or change orientation of one current own Digimon, including the new EX13 top. All four current B Digimon are unsuspended, so an actual change suspends the selected one. Suspending B EX13-022#1/#3 or new EX13-023#1 triggers B BT11 Rina AllTurns; new EX13 top also has inherited BT22-023 unsuspend. B EX13-019 is Veemon and does not satisfy the Veedramon-only observer. Handle any real derived reaction before the other original WhenDigi effect; if unimplemented, retain the precise chosen action/state/seed and HALT before mutation.",
+      "references": [
+        "Q7267",
+        "BT11-112 printed AllTurns",
+        "BT22-023 printed inherited",
+        "EX13-019 printed name",
+        "CR15-4-5-1..3",
+        "CR15-8-3-3..4"
+      ]
+    }
+  ],
+  "future_tied_minima_order_correction": {
+    "finding": "If multiple opponent Digimon tie, the owner of the card causing the action chooses destination order. B owns B:EX13-023#1, so B chooses; A owning the destination deck does not make A the chooser.",
+    "precise_rule": "CR3-1-3-4",
+    "official_excerpt": "3-1-3-4. When multiple cards leave an area at the same time, the player who owns the card that caused the action to be performed chooses the order in which the cards are placed in the new area. (Example: When \"[When Digivolving] Return all of your opponent's Digimon with the highest level to the bottom of the deck in any order\" is used to return multiple opponent's Digimon to the bottom of the deck at the same time, the player who activated this effect chooses the order in which the cards are placed at the bottom of the deck.)",
+    "public_order_rule": "3-1-3-6. When multiple cards are moved from a public area then placed into a private area at the same time, they are placed after the order is made public.",
+    "rule_pdf_sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+    "implementation_requirement": "For a future tied-minima encounter, require the explicit order from B before mutation; a scope HALT is valid until that choice is implemented. Do not invent sorted/random order. Actual singleton requires no ordering choice.",
+    "shared_sources_note": "For future source-bearing returned Digimon, trash lower cards simultaneously per CR4-7-8; preserve card ownership, stacked-source conservation, and actual leave/replacement dependencies."
+  },
+  "official_qa": {
+    "EX13-023": [
+      {
+        "id": "Q7265",
+        "date": "Sep. 18, 2026",
+        "question": "What exactly does a \"can't (perform XX on) stacked cards\" effect mean?",
+        "answer": "This means that the effect prevents processing of \"(perform XX on) stacked cards.\"\nFor example, a \"can't trash stacked cards\" effect prevents trashing the top stacked cards by (which trashes the top stacked cards) or similar effects, and it prevents trashing the bottom stacked cards by \"trash a digivolution card\" or similar effects.\nHowever, because the effect only prevents processing \"(perform XX on) stacked cards,\" XX is still permitted to be performed on the Digimon itself, for instance by effects that tell you to \"perform XX\" on the Digimon."
+      },
+      {
+        "id": "Q7266",
+        "date": "Sep. 18, 2026",
+        "question": "This card has multiple effects that trigger when it's played or when it digivolves. In what order can they be activated?",
+        "answer": "The effects trigger simultaneously, so the player can choose the activation order."
+      },
+      {
+        "id": "Q7267",
+        "date": "Sep. 18, 2026",
+        "question": "What does orientation mean?",
+        "answer": "It refers to the suspended or unsuspended state of a card."
+      }
+    ],
+    "EX13-069": [
+      {
+        "id": "Q7437",
+        "date": "Sep. 18, 2026",
+        "question": "Can I process the part of the effect after \"after\" in this card's [Your Turn] effect without meeting the \"by\" condition?",
+        "answer": "No, you can't.\nIf you don't suspend this card, you can't process the part after \"after\" in this card's [Your Turn] effect."
+      },
+      {
+        "id": "Q7439",
+        "date": "Sep. 18, 2026",
+        "question": "There are two copies of this card in the battle area.\nCan I activate both of their [Your Turn] effects and digivolve one specified card with its cost reduced by the combined amount from both effects?",
+        "answer": "No, you can't.\nYou can't simultaneously activate multiple effects that digivolve a card."
+      }
+    ]
+  },
+  "official_rules_excerpts": {
+    "digivolution_completion": "8-1-3-3. The player places the Digimon for the digivolution on top of the chosen card, draws 1 card, and the digivolution process is resolved.",
+    "source_trashing": "4-7-8. When a card with cards stacked under it would be removed from the field, the cards under it are trashed at the same time. (Example: When a Digimon or Tamer would be removed from the battle area, any cards under it are trashed at the same time.)",
+    "simultaneous_next_order": "15-4-3-4. The activation order is determined for effects that trigger simultaneously by choosing the next pending activation effect after each effect has been resolved.",
+    "derived_trigger_priority": "15-4-5-2. A derived triggering effect will activate before previously triggered effects that are pending activation.",
+    "evade": "16-22-1. <Evade> is a keyword effect. By suspending a Digimon with this effect when it would be deleted, this effect prevents the deletion. 16-22-2. <Evade> is an immediate-type effect that triggers when the Digimon with this effect would be deleted. (For details, refer to 15-8-5 \"Immediate-Type Effects\")15-8-5"
+  },
+  "official_source_pins": [
+    {
+      "id": "card-EX13-023",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-023.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-023",
+      "sha256": "3d50f704648b02667258fceb3f3675a80141599f76ca4ad1beeb3069d8fad7aa",
+      "review_locator": "#EX13-023; Q7265-Q7269; separate optional orientation OPT and optional return-all effects"
+    },
+    {
+      "id": "card-EX13-069",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-069.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-069",
+      "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7",
+      "review_locator": "#EX13-069 Your Turn Draw/After evolution; Q7437/Q7439 source-bound cost reduction"
+    },
+    {
+      "id": "card-BT22-023",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-023.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-023",
+      "sha256": "a184df26a6bd8c5ccaed325998c9b85a18c0c2d5c0778a20993fd2d6a01e67dd",
+      "review_locator": "#BT22-023 Lv5 Blue; inherited same-Digimon optional unsuspend on suspension"
+    },
+    {
+      "id": "card-BT22-022",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-022.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-022",
+      "sha256": "b2bc45d6d74a4c8a9569094c25bcc7ffe10e179b4891341dd2187298a0346c85",
+      "review_locator": "#BT22-022 inherited own-stack leave replacement from opponent effects"
+    },
+    {
+      "id": "card-BT11-112",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-112.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-112",
+      "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc",
+      "review_locator": "#BT11-112 OnPlay Blocker/Evade grant; AllTurns same-controller Veedramon suspension; Q2142-Q2143/Q7199-Q7200"
+    },
+    {
+      "id": "card-BT12-029",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT12-029.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT12-029",
+      "sha256": "4815904431fc1ad0c54a6185aa3269fe75b844cae57da5dc68b72eca0654d505",
+      "review_locator": "#BT12-029 actual opposing singleton; printed self-unsuspend observer does not trigger on returning to deck"
+    },
+    {
+      "id": "card-BT11-032",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-032.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-032",
+      "sha256": "82c0b74c599cb27d0784d93959057b2504e97c4e593af5ee0a0fce51db30d50e",
+      "review_locator": "#BT11-032 other opposing Digimon with one source"
+    },
+    {
+      "id": "card-EX13-019",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-019.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-019",
+      "sha256": "0e9158139b3c4d46987c85a968f40469743a76892cba86227871ed897b1e4d5a",
+      "review_locator": "#EX13-019 Veemon name, excludes Veedramon-only suspension observer"
+    },
+    {
+      "id": "card-EX1-013",
+      "file": "RULES/matchups/123129-vs-124303/sources/official-EX1-013.html",
+      "url": "https://world.digimoncard.com/cardlist/?search=true&card_no=EX1-013",
+      "sha256": "df126caa2ee95d5f7b86008ef828291645d15204c177801eb2f73404d0611f38",
+      "review_locator": "#EX1-013 inherited unsuspend memory only during own main phase"
+    },
+    {
+      "id": "rules",
+      "file": "RULES/matchups/123129-vs-124303/sources/general_rule.pdf",
+      "url": "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918",
+      "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+      "review_locator": "CRv4.3 last updated2026/09/18:3-1-3-4/6/8;4-7-8;4-8-1;6-2;6-5-1;8-1-3;15-4;15-8-3;15-10-2-4-1;15-11-2;15-14-1;15-16-3-1;16-22"
+    }
+  ],
+  "supplemental_file_hashes": {
+    "RULES/matchups/123129-vs-124303/SOURCE_INDEX.json": "09e681295ce1d005cd554fddda4464b09d46e5adeb5139ac91d090fb7defe40c",
+    "RULES/matchups/123129-vs-124303/CARD_QA.json": "6296a5a40223ffbf1ea0d2a2c803f9c9a9b8727e13674e0201f383ea4b7db92f",
+    "ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json": "089d449edab177c4f1d31a4b2ce8414650439df4ea6459080400df45d5004484"
+  },
+  "no_source_edits": true,
+  "no_new_gameplay": true,
+  "full_match_credit": 0,
+  "accepted_fact_finding_credit": 0,
+  "final_evaluation_credit": 0,
+  "strategy_assessment": "NONE",
+  "limits": "This is the pre-stop source review and archived successful-prefix proof. It does not certify the new current implementation, any later segment08 gameplay, a full game, branch completeness, strategic choices, roadmap lanes, or final eligibility."
+}
