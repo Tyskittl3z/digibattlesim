@@ -72,10 +72,11 @@ def queue_effects(runtime, effects):
             runtime.state.entity_sequence += 1
             stack.instance_id = 'entity-' + str(runtime.state.entity_sequence)
         runtime.state.effect_sequence += 1
+        deferred_attack_depth = (runtime.state.attack or {}).get('deferred_depth', -1)
         effect = {'id':'effect-'+str(runtime.state.effect_sequence),
                   'seat':raw['seat'],'source':raw['source'],'effect_id':raw['effect_id'],
                   'field':raw['field'],'instance':stack.instance_id,
-                  'depth':getattr(runtime,'_resolution_depth',-1)+1,
+                  'depth':max(getattr(runtime,'_resolution_depth',-1), deferred_attack_depth)+1,
                   'trigger':copy.deepcopy(trigger),'usage':copy.deepcopy(usage)}
         runtime.state.pending.append(effect)
         runtime.events.append({'type':'EFFECT_PENDING','context_id':runtime.context.matchup_id,
@@ -94,10 +95,39 @@ def _inactive_reason(runtime,effect):
     return None
 
 
+def _condition_unmet_reason(runtime, effect):
+    """A false `if` condition hides activation until it may be settled.
+
+    Other pending effects can change the board before this one activates, so
+    ordinary pruning must retain it while any other processing remains.
+    """
+    if effect['effect_id'] == 'BT22-023.inherited_unsuspend':
+        from selected_mechanics import blue_tamer_present
+        if not blue_tamer_present(runtime, effect['seat']):
+            return 'BLUE_TAMER_CONDITION_NOT_MET'
+    if effect['effect_id'] == 'BT12-029.unsuspend_return_lowest':
+        from selected_mechanics import bt12_return_condition_met
+        if not bt12_return_condition_met(runtime, effect['seat'], effect['source']):
+            return 'BLUE_TAMER_OR_ULFORCE_CONDITION_NOT_MET'
+    if effect['effect_id'] == 'BT22-022.play_tamer':
+        from tamer_play_effects import veedramon_tamer_condition_met
+        if not veedramon_tamer_condition_met(runtime, effect['seat']):
+            return 'TAMER_COUNT_CONDITION_NOT_MET'
+    if effect['effect_id'] in ('BT22-085.start_turn_memory', 'EX13-069.start_main_memory'):
+        from selected_mechanics import selected_phase_condition_met
+        if not selected_phase_condition_met(runtime, effect['seat'], effect['effect_id']):
+            return ('START_TURN_MEMORY_CONDITION_NOT_MET'
+                    if effect['effect_id'] == 'BT22-085.start_turn_memory'
+                    else 'START_MAIN_DIGIMON_CONDITION_NOT_MET')
+    return None
+
+
 def pending_options(runtime,seat):
     runtime.context.deck(seat)
     validate_pending(runtime)
-    active = [e for e in runtime.state.pending if _inactive_reason(runtime,e) is None]
+    active = [e for e in runtime.state.pending
+              if _inactive_reason(runtime,e) is None
+              and _condition_unmet_reason(runtime,e) is None]
     deferred = (runtime.state.attack or {}).get('deferred_depth')
     if deferred is not None:
         active = [e for e in active if e['depth'] > deferred]
@@ -110,11 +140,15 @@ def pending_options(runtime,seat):
     return copy.deepcopy([e for e in group if e['seat']==seat]) if seat==controller else []
 
 
-def prune_pending(runtime):
+def prune_pending(runtime, *, settle_conditions=False):
     validate_pending(runtime)
     retained,cancelled = [],[]
+    deferred = (runtime.state.attack or {}).get('deferred_depth')
     for effect in runtime.state.pending:
         reason = _inactive_reason(runtime,effect)
+        if (reason is None and settle_conditions
+                and (deferred is None or effect['depth'] > deferred)):
+            reason = _condition_unmet_reason(runtime,effect)
         if reason:
             cancelled.append({'type':'PENDING_CANCELLED','turn':runtime.state.turn,
                               'effect':copy.deepcopy(effect),'reason':reason})

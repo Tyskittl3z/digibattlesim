@@ -1,0 +1,850 @@
+{
+  "campaign": "ARTIFACTS/board-text-60-piercing-corrected-v2-2026-11-15",
+  "choice_summary": {
+    "BLOCK_CHOICE": {
+      "empty_candidates": 0,
+      "learning_eligible": 47,
+      "multiple_candidates": 47,
+      "single_candidate": 513,
+      "total": 560
+    },
+    "BOTTOM_ORDER": {
+      "empty_candidates": 0,
+      "learning_eligible": 0,
+      "multiple_candidates": 181,
+      "single_candidate": 95,
+      "total": 276
+    },
+    "BREEDING_ACTION": {
+      "empty_candidates": 0,
+      "learning_eligible": 423,
+      "multiple_candidates": 423,
+      "single_candidate": 150,
+      "total": 573
+    },
+    "COUNTER_CHOICE": {
+      "empty_candidates": 0,
+      "learning_eligible": 0,
+      "multiple_candidates": 0,
+      "single_candidate": 560,
+      "total": 560
+    },
+    "MAIN_ACTION": {
+      "empty_candidates": 0,
+      "learning_eligible": 1617,
+      "multiple_candidates": 1617,
+      "single_candidate": 0,
+      "total": 1617
+    },
+    "PENDING_CHOICE": {
+      "empty_candidates": 0,
+      "learning_eligible": 1682,
+      "multiple_candidates": 1702,
+      "single_candidate": 1010,
+      "total": 2712
+    },
+    "PENDING_EFFECT_ORDER": {
+      "empty_candidates": 0,
+      "learning_eligible": 727,
+      "multiple_candidates": 844,
+      "single_candidate": 2200,
+      "total": 3044
+    },
+    "REDRAW_CHOICE": {
+      "empty_candidates": 0,
+      "learning_eligible": 0,
+      "multiple_candidates": 120,
+      "single_candidate": 0,
+      "total": 120
+    }
+  },
+  "command_counts": {
+    "ADVANCE_PHASE": 1825,
+    "BATTLE_EVOLUTION": 280,
+    "BEGIN_PREPARATION": 60,
+    "BLOCK_CHOICE": 560,
+    "BREEDING_CHOICE": 573,
+    "BREEDING_EVOLUTION": 413,
+    "CONFIRM_ATTACK": 560,
+    "COUNTER_CHOICE": 560,
+    "DECLARE_ATTACK": 535,
+    "END_ATTACK": 500,
+    "FINISH_TURN": 628,
+    "OPTION_DELAY": 1,
+    "PLAY_CARD": 385,
+    "REDRAW_CHOICE": 120,
+    "RESOLVE_PENDING": 3044,
+    "USE_OPTION": 3
+  },
+  "counts": {
+    "cancellations": 37,
+    "commands": 10047,
+    "decisions": 9462,
+    "effects": 3044,
+    "games": 60
+  },
+  "coverage_note": "Command decisions are not BOT_DECISION/JUDGE_PATH events in the older loaded-pair coverage schema. No legal-branch or match-certification verdict is asserted.",
+  "decision_counts": {
+    "BLOCK_CHOICE": 560,
+    "BOTTOM_ORDER": 276,
+    "BREEDING_ACTION": 573,
+    "COUNTER_CHOICE": 560,
+    "MAIN_ACTION": 1617,
+    "PENDING_CHOICE": 2712,
+    "PENDING_EFFECT_ORDER": 3044,
+    "REDRAW_CHOICE": 120
+  },
+  "effect_counts": {
+    "BT11-023.blue_tamer_memory": 27,
+    "BT11-023.on_play_search": 69,
+    "BT11-032.blue_tamer_unsuspend": 19,
+    "BT11-032.play_blue_tamer": 27,
+    "BT11-032.unsuspend_return": 17,
+    "BT11-112.granted_evade": 3,
+    "BT11-112.on_play_grant": 125,
+    "BT11-112.suspend_reactivation": 327,
+    "BT11-112.unsuspend_memory": 164,
+    "BT12-029.unsuspend_return_lowest": 83,
+    "BT12-029.when_digivolving_unsuspend": 134,
+    "BT20-102.end_turn_rush_attack": 25,
+    "BT20-102.piercing_check": 8,
+    "BT22-022.play_tamer": 13,
+    "BT22-022.return_replacement": 1,
+    "BT22-023.end_turn_unsuspend": 94,
+    "BT22-023.inherited_unsuspend": 112,
+    "BT22-023.on_play_return": 63,
+    "BT22-023.when_digivolving_return": 47,
+    "BT22-085.attack_jamming": 60,
+    "BT22-085.on_play_grant": 25,
+    "BT22-085.start_turn_memory": 37,
+    "EX1-013.unsuspend_memory": 46,
+    "EX13-002.tamer_play_unsuspend": 55,
+    "EX13-017.on_play_search": 70,
+    "EX13-017.return_replacement": 13,
+    "EX13-019.attack_play_tamer": 28,
+    "EX13-022.inherited_unsuspend": 103,
+    "EX13-022.play_tamer": 104,
+    "EX13-022.tamer_play_restriction": 88,
+    "EX13-023.evade": 16,
+    "EX13-023.orientation": 161,
+    "EX13-023.return_fewest": 138,
+    "EX13-069.start_main_memory": 167,
+    "EX13-069.unsuspend_draw": 229,
+    "EX13-069.unsuspend_evolve": 131,
+    "LM-028.main_evolve": 1,
+    "LM-028.security_play_trash": 10,
+    "LM-028.start_turn_delay": 1,
+    "LM-056.main_search": 13,
+    "LM-057.main_search": 7,
+    "LM-058.main_search": 7,
+    "P-104.main_delay": 1,
+    "P-138.on_play_search": 93,
+    "P-138.unsuspend_memory": 82
+  },
+  "event_types": {
+    "CONTROL_RESOLVED": 7003,
+    "EFFECT_PENDING": 3081,
+    "MECHANIC_RESOLVED": 3044,
+    "PENDING_CANCELLED": 37
+  },
+  "records": [
+    {
+      "commands": 139,
+      "index": 0,
+      "record_sha256": "507421bb36342aaa2f64f0167e1fb0eee5e4e49cacaf213f1f06e804dc184764",
+      "seed": 16664364153905075627
+    },
+    {
+      "commands": 150,
+      "index": 1,
+      "record_sha256": "e892acb38c614c5844a977eea1475be781287768d0d65e4632ab91135fb979d4",
+      "seed": 15362257287162317678
+    },
+    {
+      "commands": 125,
+      "index": 2,
+      "record_sha256": "2107f9430bcb6db1d76272aa48939e28ddd96f7fe643bc7f5639cbf28d33d901",
+      "seed": 12047944686340276141
+    },
+    {
+      "commands": 217,
+      "index": 3,
+      "record_sha256": "f5989c9c7da602a6d3116341d4796a9b6e80afeac5cebe599e730a86257339ea",
+      "seed": 884428971674423381
+    },
+    {
+      "commands": 182,
+      "index": 4,
+      "record_sha256": "3cd49712f3d5befb14c20ab0a0192e76c140810dad34dd368d4a695048a97a62",
+      "seed": 7804549089509846733
+    },
+    {
+      "commands": 198,
+      "index": 5,
+      "record_sha256": "02c5d984672536631944221e6c391c0337aa87eb01c0c14d4392415b44ab5e71",
+      "seed": 12054344170171514003
+    },
+    {
+      "commands": 127,
+      "index": 6,
+      "record_sha256": "6797338bdf9b9848aac82dd5e361ff20fdf9cf07256235accb1c39c761caaeda",
+      "seed": 17142806856446729578
+    },
+    {
+      "commands": 132,
+      "index": 7,
+      "record_sha256": "4adca5dd38149d15d9de9ddc28d8f379f3cb3e0d68b742a3a0e6f41667495fe8",
+      "seed": 5698987410890930322
+    },
+    {
+      "commands": 104,
+      "index": 8,
+      "record_sha256": "0298e9686b05ab5b5adaf001cd887c1cb4eee00de7213cc5af3b1388f321ee0a",
+      "seed": 5432722010424799087
+    },
+    {
+      "commands": 170,
+      "index": 9,
+      "record_sha256": "68d7c3a95a02cb2eefd2672cc06bc6940afc5e9d975baf5b88ee931e9954c228",
+      "seed": 3377240463394730209
+    },
+    {
+      "commands": 163,
+      "index": 10,
+      "record_sha256": "afa0448fdfd35a3f8370fb01938f7bef1bff5f6e35fdc451e1e01417ba77442f",
+      "seed": 11668316264791277447
+    },
+    {
+      "commands": 290,
+      "index": 11,
+      "record_sha256": "d675219c8a3071cc60875556b665ffa5d8c62fca0b181cd26f2da7849b9a485a",
+      "seed": 4520756428303837408
+    },
+    {
+      "commands": 182,
+      "index": 12,
+      "record_sha256": "782325683d2503490e18c2a35a5d53ebc8c66fef1dc60788c5d1e35ded9b36f4",
+      "seed": 12975361446898795440
+    },
+    {
+      "commands": 203,
+      "index": 13,
+      "record_sha256": "606b6c5bb32fadc0de75cdbd859892bdca050ba7fc458aa67f44182f1d9248b0",
+      "seed": 8191867676413273682
+    },
+    {
+      "commands": 175,
+      "index": 14,
+      "record_sha256": "77796b311ce03f6c4808f5d98965a4d8ab82b4e7a87c2ee5edb8a2d8ee60f300",
+      "seed": 6276958426857055656
+    },
+    {
+      "commands": 130,
+      "index": 15,
+      "record_sha256": "a78f9f6a320728edc952ec7329784c471f7e363e193e6e8dcd87c926b82ab80b",
+      "seed": 7725066267705985086
+    },
+    {
+      "commands": 234,
+      "index": 16,
+      "record_sha256": "930881738f5d86192f32ff9b38b4dbfde1daf769596edafa8f60ea174c028160",
+      "seed": 17671374838007817673
+    },
+    {
+      "commands": 298,
+      "index": 17,
+      "record_sha256": "4d905c81b251bb746856e1a5ea7860cf1c188331b2ccde101664449ac0d23c30",
+      "seed": 3220515400185911614
+    },
+    {
+      "commands": 123,
+      "index": 18,
+      "record_sha256": "c6038a0fc0321100172c9e2e5f5cdc57e0412e0f27a23046758cc12ab7648e98",
+      "seed": 14768833332492944671
+    },
+    {
+      "commands": 240,
+      "index": 19,
+      "record_sha256": "bef2019bf341714eef8dc5750d37b85a759c1f630ba84257e546186c29b96a82",
+      "seed": 9295817123660164028
+    },
+    {
+      "commands": 206,
+      "index": 20,
+      "record_sha256": "8b45192313ac458185d2ea5d11d8e5395c77166360f10695d0f09cf5384885ed",
+      "seed": 6534884852444917083
+    },
+    {
+      "commands": 160,
+      "index": 21,
+      "record_sha256": "92ba42d1be7b513712337bb3b199d0d4c5a70bc12cfc837b6fbe0fe4785a6f6e",
+      "seed": 550008253670562797
+    },
+    {
+      "commands": 134,
+      "index": 22,
+      "record_sha256": "87bc868429f5b09e81404a3d0aa82ce4e75c3530301591649ce61f2c26e4f0da",
+      "seed": 14962638506343889221
+    },
+    {
+      "commands": 134,
+      "index": 23,
+      "record_sha256": "a683ef800a7c093b1e35f55fb47c5d5be1769bd810536d4b91d5b225d1b69e48",
+      "seed": 11530652127083854279
+    },
+    {
+      "commands": 179,
+      "index": 24,
+      "record_sha256": "9f8c629b1e22b50bc8fcee260c5be06b85767109d0b3d21bb6735f243d930d89",
+      "seed": 4274756805820524210
+    },
+    {
+      "commands": 167,
+      "index": 25,
+      "record_sha256": "f0f07afa12b056eb86e0b7aedc23006ea43305f110137f14a84dc522fe11d5e4",
+      "seed": 12134641098518414298
+    },
+    {
+      "commands": 103,
+      "index": 26,
+      "record_sha256": "eb03d7910743f95a48e3bfafc4b6b2a14840fe230889c53974028a41567a0602",
+      "seed": 5468059095692905960
+    },
+    {
+      "commands": 125,
+      "index": 27,
+      "record_sha256": "e931a396f11556fedd2cad18b2bf909829de57159a715e36c0d71e4a6e44c756",
+      "seed": 15504770777202505746
+    },
+    {
+      "commands": 209,
+      "index": 28,
+      "record_sha256": "67822d84e8829f242c54d15997923cd7e44529ca86ec07ff38de510757d3d68d",
+      "seed": 3229285776380689995
+    },
+    {
+      "commands": 95,
+      "index": 29,
+      "record_sha256": "7302bdededa9d97a26dacf75575429b8532605ee4473b037d683a24e42fc3d2f",
+      "seed": 2938473469403311358
+    },
+    {
+      "commands": 150,
+      "index": 30,
+      "record_sha256": "acb09be0bbe8c17a7b8550c980ba17ed376029dddaae8f9e6db7ead80d7395ad",
+      "seed": 15066149552471533571
+    },
+    {
+      "commands": 147,
+      "index": 31,
+      "record_sha256": "b711b86654abe7453010c59ad7e9fcd8b447ac5a81d75a56152f359c337c6081",
+      "seed": 15094333301234985299
+    },
+    {
+      "commands": 153,
+      "index": 32,
+      "record_sha256": "3f63abc30a4bae978fa74b67f2bdb6977b4eb090558bdb55ec42901de150264d",
+      "seed": 7539437560518291083
+    },
+    {
+      "commands": 127,
+      "index": 33,
+      "record_sha256": "f921312c5eaa4ce61ba282d4bae4d1bc784450272ff07c36d95cb2d5c562890f",
+      "seed": 5643592528856475599
+    },
+    {
+      "commands": 144,
+      "index": 34,
+      "record_sha256": "228c23b3e13ff47be35519ed9ee6afe0d24a435b7c5d9e351cfde822644b4f9b",
+      "seed": 4506618860908396922
+    },
+    {
+      "commands": 236,
+      "index": 35,
+      "record_sha256": "dc9de2f45de67274d127fd12dce91f691cb01c2ce81f84c4625e766bb993ff49",
+      "seed": 11974865023370730863
+    },
+    {
+      "commands": 158,
+      "index": 36,
+      "record_sha256": "60c1279acf484432edecc13d7d10363e4a8a2e3bdacc8567c75be5ac6e67cffe",
+      "seed": 2578904192889408191
+    },
+    {
+      "commands": 172,
+      "index": 37,
+      "record_sha256": "e412de56cd5b5540640fc08daadc2a31e1e8fbd2da52ff191d30a5257fff25ce",
+      "seed": 18198063192358571856
+    },
+    {
+      "commands": 204,
+      "index": 38,
+      "record_sha256": "563430ef98710452f842c5d250d8d2696486b55b7963e4b156c2bdf0b7749022",
+      "seed": 15276074392501998050
+    },
+    {
+      "commands": 212,
+      "index": 39,
+      "record_sha256": "8db8f46ee05d2f7eaa94b19d2dddd8f9e7cce9d7dd305fffc229ea7a14355410",
+      "seed": 444840558126268706
+    },
+    {
+      "commands": 146,
+      "index": 40,
+      "record_sha256": "42afce78e215223fc059a908d1fa7b73b31d209061969b5380cb86e4bb81d2f7",
+      "seed": 9050622111796183991
+    },
+    {
+      "commands": 143,
+      "index": 41,
+      "record_sha256": "be95a17d66f3dacdad004288ba306ec867fb0ea2a50d0d75723e2a0181d72f1e",
+      "seed": 319147774030744299
+    },
+    {
+      "commands": 177,
+      "index": 42,
+      "record_sha256": "1a11f68ffd2a8f54b07f930f340577dc0d92de7f76e529cf6899eef65269a54a",
+      "seed": 12090026423348378490
+    },
+    {
+      "commands": 147,
+      "index": 43,
+      "record_sha256": "66fa417ac0f7488336fb0843c98679fddee6f2cc412ff37da9d7ac7c6ae6cee6",
+      "seed": 14781972998396932308
+    },
+    {
+      "commands": 171,
+      "index": 44,
+      "record_sha256": "698b0a5532635dac73d265ea2af994879a7b4e8764925da8cba3daff86804124",
+      "seed": 16965315805494485970
+    },
+    {
+      "commands": 167,
+      "index": 45,
+      "record_sha256": "53055efbeffdb060007a5666cc764cd0bc9c3e6068e9aa46af8689b5e8b4fbda",
+      "seed": 6618559015423135649
+    },
+    {
+      "commands": 180,
+      "index": 46,
+      "record_sha256": "e059bdccaa9b53170bbd41dbf7b5ac2648906de89d88bfa5afeaf539e704629f",
+      "seed": 12781321613025470504
+    },
+    {
+      "commands": 177,
+      "index": 47,
+      "record_sha256": "ebde3b550a11a7e8754743205e454e212af975f19530f7f2606e64b48560e58a",
+      "seed": 14555772656087449179
+    },
+    {
+      "commands": 184,
+      "index": 48,
+      "record_sha256": "e4b3a4a4df97f41dd80e99a96fd12812e998b3c862a5ccd6cce096c2da5f6699",
+      "seed": 2614617741572822915
+    },
+    {
+      "commands": 182,
+      "index": 49,
+      "record_sha256": "9d8d0abda45ed0a323694d0f013081075caf93f9f2b7eb26f8a2793dceb3150c",
+      "seed": 13689343139936565283
+    },
+    {
+      "commands": 128,
+      "index": 50,
+      "record_sha256": "b44e02799a20029a8f4d4367c4af1cbb7a95fba6246adc65c767659781e0cce3",
+      "seed": 2852518082513689270
+    },
+    {
+      "commands": 164,
+      "index": 51,
+      "record_sha256": "d8802e470a67845b4eaa4af1411e06f3da6580af51e2b358373a31ad054305c2",
+      "seed": 2236787533136063923
+    },
+    {
+      "commands": 194,
+      "index": 52,
+      "record_sha256": "a94bb68047b3b462dbc6b436c36f6acd6de66582a6b2cf6f5c0d6509cff73553",
+      "seed": 13033082396166237883
+    },
+    {
+      "commands": 150,
+      "index": 53,
+      "record_sha256": "a30cc9bbd916cbeeae70ff68a42f1667aa87bd4dcebec28066461b5046108b36",
+      "seed": 13230674530916524136
+    },
+    {
+      "commands": 130,
+      "index": 54,
+      "record_sha256": "8ec725a7f08c8568acda257774a2c4678109e6d1ede34c44b2c615b7315661af",
+      "seed": 9823468456746543667
+    },
+    {
+      "commands": 206,
+      "index": 55,
+      "record_sha256": "204b670b8ee8a44bd06d9d550ed3eed7f8fa6debbfce6a988393aaf6ce44f286",
+      "seed": 6404560857263661070
+    },
+    {
+      "commands": 155,
+      "index": 56,
+      "record_sha256": "599d95d06cf5e5cb6421b99df869e0d984ce9bbc475daf6118cbe3fe85e7262f",
+      "seed": 8943850092483377017
+    },
+    {
+      "commands": 139,
+      "index": 57,
+      "record_sha256": "e0c791481a47a834ac5e2e1bb7cb68c2dafc975985109899a92d0b8f2a0f2c6a",
+      "seed": 6498248785786106480
+    },
+    {
+      "commands": 188,
+      "index": 58,
+      "record_sha256": "8078990e8722abbef90b5e641a5a14ff84b71a674eeba92383e89589caedcfe5",
+      "seed": 17282961417819281537
+    },
+    {
+      "commands": 122,
+      "index": 59,
+      "record_sha256": "a6579097c45f0bfda212d09db4efd535dfe04b850b9bf158a025fbb29dced484",
+      "seed": 7954641529752800128
+    }
+  ],
+  "schema": "ulforce-rules-trace-index-v1",
+  "source_audit": {
+    "matched_official_hashes": 23,
+    "sources": [
+      {
+        "count": 669,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-019.html",
+        "locators": [
+          "#EX13-019"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 669
+        },
+        "sha256": "0e9158139b3c4d46987c85a968f40469743a76892cba86227871ed897b1e4d5a",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-019"
+        ]
+      },
+      {
+        "count": 19,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-LM-034.html",
+        "locators": [
+          "#LM-034"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 19
+        },
+        "sha256": "2917e45cc7c729ffe78ae583a7c4f4b12778a51e9c8d68b25dd532f5b96c10f1",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-034"
+        ]
+      },
+      {
+        "count": 579,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-017.html",
+        "locators": [
+          "#EX13-017"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 579
+        },
+        "sha256": "2aa137a4f5c18f878139b6021a274f44a1ad001b0a952390ef6690031e5e77d4",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-017"
+        ]
+      },
+      {
+        "count": 1509,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-023.html",
+        "locators": [
+          "#EX13-023"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 1509
+        },
+        "sha256": "3d50f704648b02667258fceb3f3675a80141599f76ca4ad1beeb3069d8fad7aa",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-023"
+        ]
+      },
+      {
+        "count": 977,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-022.html",
+        "locators": [
+          "#EX13-022"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 977
+        },
+        "sha256": "4771e6eab5218e833eebf7d1ff6cf70ad6fa51a51d556f8a404ac88f07256874",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-022"
+        ]
+      },
+      {
+        "count": 1455,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-BT12-029.html",
+        "locators": [
+          "#BT12-029"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 1455
+        },
+        "sha256": "4815904431fc1ad0c54a6185aa3269fe75b844cae57da5dc68b72eca0654d505",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=BT12-029"
+        ]
+      },
+      {
+        "count": 882,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-P-138.html",
+        "locators": [
+          "#P-138"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 882
+        },
+        "sha256": "61d9574f6132911aa54a8e75990a0c829ef424521b26b97fbaca62be9f456354",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=P-138"
+        ]
+      },
+      {
+        "count": 271,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-BT20-102.html",
+        "locators": [
+          "#BT20-102"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 271
+        },
+        "sha256": "6769bd16a111b682dc8f9a27fb5ea0e5a4438a6822e160c79575f480fcd8519b",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=BT20-102"
+        ]
+      },
+      {
+        "count": 357,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-032.html",
+        "locators": [
+          "#BT11-032"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 357
+        },
+        "sha256": "82c0b74c599cb27d0784d93959057b2504e97c4e593af5ee0a0fce51db30d50e",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-032"
+        ]
+      },
+      {
+        "count": 747,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-023.html",
+        "locators": [
+          "#BT11-023"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 747
+        },
+        "sha256": "8a0641a7b790f34271ee55cfac8b183f29ce2f546bfd62b704069952e5001e23",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-023"
+        ]
+      },
+      {
+        "count": 738,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-069.html",
+        "locators": [
+          "#EX13-069"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 738
+        },
+        "sha256": "8cd9f74a5bcb7dcbc01dd4e1e72c917752af4adf2f401630e9739b1f0ecac9b7",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-069"
+        ]
+      },
+      {
+        "count": 27,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-P-104.html",
+        "locators": [
+          "#P-104"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 27
+        },
+        "sha256": "912bf92380c5be9e6f52fcb21cd997c53010023981328e80c0617348180cf5ec",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=P-104"
+        ]
+      },
+      {
+        "count": 280,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-EX13-002.html",
+        "locators": [
+          "#EX13-002"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 280
+        },
+        "sha256": "9d2abc2c3a5f20aebefbcb5b89818a4559748ddbde4e20f92562092b7267cd4f",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=EX13-002"
+        ]
+      },
+      {
+        "count": 892,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-023.html",
+        "locators": [
+          "#BT22-023"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 892
+        },
+        "sha256": "a184df26a6bd8c5ccaed325998c9b85a18c0c2d5c0778a20993fd2d6a01e67dd",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-023"
+        ]
+      },
+      {
+        "count": 37,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-LM-058.html",
+        "locators": [
+          "#LM-058"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 37
+        },
+        "sha256": "a1c4562d78bdc5ca50a66fdeea057570c0324319f7900e7d2fcb008de4c12de7",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-058"
+        ]
+      },
+      {
+        "count": 181,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-085.html",
+        "locators": [
+          "#BT22-085"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 181
+        },
+        "sha256": "a453871077f17613ac9b1d52bbe3065509f2d0fd75ff8d2e040aa3658d3435f1",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-085"
+        ]
+      },
+      {
+        "count": 10047,
+        "file": "RULES/matchups/123129-vs-124303/sources/general_rule.pdf",
+        "locators": [
+          "Comprehensive rules v4.3: 1-2-3-2; 6-1 through 6-4; 15-4",
+          "Comprehensive rules v4.3: 1-2; 7-1-2-1; 11; 12; 13; 14; 15-3-1",
+          "Comprehensive rules v4.3: 1-3-11-1; 3-4-5; 4-2-2; 6-5-1-2; 8-1-1 through 8-1-3-3; 15-3-1; 15-4; 15-11-1; 15-13; 15-16-3-1",
+          "Comprehensive rules v4.3: 1-3-11-1; 3-4-7-3 through 3-4-7-8; 6-5; 8-1-2-8; 8-1-3-1 through 8-1-3-3",
+          "Comprehensive rules v4.3: 1-3-11-1; 4-2; 6-5-1-1; 7-1-1 through 7-1-3-3",
+          "Comprehensive rules v4.3: 3-4-6; 4-3-1; 4-22-1 through 4-22-4; 6-5-1-3; 8-1; 9-1-1 through 9-1-9; 15-8-3-9; 15-10-2-1; 15-15-3; 16-17-1 through 16-17-3",
+          "Comprehensive rules v4.3: 4-17; 4-18; 6-4; 6-5; 15-4",
+          "Comprehensive rules v4.3: 5-2-1-1 through 5-2-1-8",
+          "Comprehensive rules v4.3: 6-1-3; 6-1-4; 6-5-1-7-1; 6-6; 15-8-3-6; 15-11-1; 15-13; 15-14-1-5-1; 15-16-12"
+        ],
+        "roles": {
+          "COMPREHENSIVE_RULE_SNAPSHOT": 10047
+        },
+        "sha256": "a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271",
+        "urls": [
+          "https://world.digimoncard.com/rule/pdf/general_rule.pdf?20260918"
+        ]
+      },
+      {
+        "count": 47,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-LM-028.html",
+        "locators": [
+          "#LM-028"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 47
+        },
+        "sha256": "add30c8ec48a6972ae26bc56af14b6faaab06af29d1b032151662b8e3723c0ee",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-028"
+        ]
+      },
+      {
+        "count": 244,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-BT22-022.html",
+        "locators": [
+          "#BT22-022"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 244
+        },
+        "sha256": "b2bc45d6d74a4c8a9569094c25bcc7ffe10e179b4891341dd2187298a0346c85",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=BT22-022"
+        ]
+      },
+      {
+        "count": 45,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-LM-056.html",
+        "locators": [
+          "#LM-056"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 45
+        },
+        "sha256": "de0eb9e7c894f8e66217296f511b004d540f5ba030c8cb8c961c53b4bf7ec0dd",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-056"
+        ]
+      },
+      {
+        "count": 577,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-EX1-013.html",
+        "locators": [
+          "#EX1-013"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 577
+        },
+        "sha256": "df126caa2ee95d5f7b86008ef828291645d15204c177801eb2f73404d0611f38",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=EX1-013"
+        ]
+      },
+      {
+        "count": 37,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-LM-057.html",
+        "locators": [
+          "#LM-057"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 37
+        },
+        "sha256": "fa76304967284b7ac49ef134942e3d9bb68ed6bcb58379d796f5d1e695e13fc8",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=LM-057"
+        ]
+      },
+      {
+        "count": 875,
+        "file": "RULES/matchups/123129-vs-124303/sources/official-BT11-112.html",
+        "locators": [
+          "#BT11-112"
+        ],
+        "roles": {
+          "PRINTED_CARD_SOURCE": 875
+        },
+        "sha256": "fdb1fd52a0c1a123ad67b1eb6b472119bca26cba2622cdc1752fc038b0be1cfc",
+        "urls": [
+          "https://world.digimoncard.com/cardlist/?search=true&card_no=BT11-112"
+        ]
+      }
+    ],
+    "unmatched_citations": []
+  },
+  "status": "UNREVIEWED"
+}

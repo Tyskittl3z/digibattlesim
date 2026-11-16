@@ -191,16 +191,19 @@ class EncounteredVeedramonTamerTests(unittest.TestCase):
         self.assertEqual(runtime.state.once_used,before)
         self.assertNotIn('B:BT11-112#3',runtime.state.battle['B']);runtime.verify()
 
-    def test_bt22_condition_is_rechecked_at_activation_and_false_is_a_noop(self):
+    def test_bt22_condition_false_cancels_before_activation(self):
         runtime,source=self.actual()
         # Another simultaneous effect may have placed a second Tamer before
         # this already triggered effect activates.
         stage(runtime,'B',['BT22-085'])
-        self.assertEqual(tamers.tamer_play_choices(runtime,'B',source,'BT22-022.play_tamer'),[None])
         before=copy.deepcopy(runtime.state.battle)
-        result=resolve_pending(runtime,'B',pending_options(runtime,'B')[0]['id'],None)
-        self.assertEqual(result['processing'],'CONDITION_NOT_MET')
+        self.assertEqual(pending_options(runtime,'B'),[])
+        runtime.settle_pending()
+        self.assertEqual(runtime.state.pending,[])
         self.assertEqual(runtime.state.battle,before);self.assertEqual(runtime.state.once_used,set())
+        cancellation=next(event for event in runtime.events if event['type']=='PENDING_CANCELLED'
+                          and event['effect']['effect_id']=='BT22-022.play_tamer')
+        self.assertEqual(cancellation['reason'],'TAMER_COUNT_CONDITION_NOT_MET')
 
     def test_actual_free_rina_and_egg_emit_four_simultaneous_effects_without_orientation_event(self):
         from on_play_effects import ON_PLAY_SPECS

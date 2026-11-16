@@ -1,5 +1,44 @@
 # Verified handoff status
 
+## Rules review in progress — 2026-11-16
+
+The selected 123129 vs 122110 mirror's corrected 60-game archive remains
+diagnostic software evidence. A trace index under
+`RULES/reviews/123129-vs-122110/` maps all 10,047 accepted commands, 3,044
+effect resolutions, 9,462 choices, and 37 canceled pending effects to saved
+games and judge receipts. Its 23 cited official source hashes match local
+cached files; every effect binding remains `EXPERIMENTAL_UNREVIEWED`.
+
+Official rules review found BT20-102 Piercing processed after `END_ATTACK` in
+games 24 and 55. It also found four printed `if` effects activated with false
+processing conditions: BT22-023 inherited unsuspend (58 cases), BT22-022
+Tamer play (8), BT22-085 start-turn memory (25), EX13-069 start-main
+memory (42), and BT12-029 unsuspend return (12). The engine branch has
+focused tests and fixes for those paths;
+the original archive and seeds are preserved. See the campaign's
+`RULES_REVIEW_FINDING.md` and `CONDITION_REVIEW_FINDING.md`. The rules lock,
+complete semantic interaction review, fresh corrected cohort, and independent
+certification remain open. Fact-finding credit, approved roadmaps, and final
+evaluation remain zero.
+
+Focused attack scenarios additionally found that an ineligible child effect
+could block both settlement and `END_ATTACK`. The runner and scheduler now
+provide an explicit `SETTLE_PENDING` action for that child in ordinary and
+deferred attacks before ending the attack. This is a prospective repair, not
+a reinterpretation of the archive. The standalone scenario dispatch API still
+permits direct EX13-023 orientation activation outside a printed trigger;
+that path remains open for a separate guard before broad pack verification.
+
+Verification on the first published rules-review commit `f16f717` ran 703
+repository tests: 5 failures and 10 errors. Nine errors replay old saved
+actions that the corrected pending rules reject; one migration fixture failed
+to import a new helper. A follow-up moved that helper into the copied runner
+adapter and updated the BT12 conditional test. The focused regression set then
+passed 13 tests. The migration module still reports 15 failures and 4 errors
+across 21 tests from `REPAIR_BOOTSTRAP_RUNNER_MISMATCH` against its older
+checkpoint. The full repository suite has not been rerun after this follow-up;
+do not claim it is green.
+
 ## Corrected 60-game software sequence — latest checkpoint
 
 The BT20-102 Piercing measurement repair is on draft PR #2, branch

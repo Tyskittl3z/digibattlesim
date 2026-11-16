@@ -59,10 +59,36 @@ class ReactionTests(unittest.TestCase):
     def test_bt22_processing_condition_checked_at_activation(self):
         r=self.runtime();source=stage(r,'A',['BT22-023','EX13-023'])
         r.dispatch(ORIENTATION_EFFECT,'A',source,source)
+        # It triggers on suspension, then fails the processing condition
+        # before activation; it cannot consume its once-per-turn use.
+        self.assertEqual(pending_options(r,'A'),[])
         self.assertEqual(len(r.state.pending),1)
-        resolve_pending(r,'A',pending_options(r,'A')[0]['id'],True)
+        r.settle_pending()
+        self.assertEqual(r.state.pending,[])
         self.assertTrue(r.state.battle['A'][source].suspended)
-        self.assertEqual(r.events[-1]['result']['processing'],'BLUE_TAMER_CONDITION_FAILED')
+        self.assertFalse(any(use[-1]=='BT22-023.inherited_unsuspend'
+                             for use in r.state.once_used))
+        cancellation=next(e for e in r.events if e['type']=='PENDING_CANCELLED')
+        self.assertEqual(cancellation['reason'],'BLUE_TAMER_CONDITION_NOT_MET')
+
+    def test_bt22_condition_can_become_true_while_trigger_is_pending(self):
+        r=self.runtime();source=stage(r,'A',['BT22-023','EX13-023'])
+        r.dispatch(ORIENTATION_EFFECT,'A',source,source)
+        self.assertEqual(pending_options(r,'A'),[])
+        stage(r,'A',['BT22-085'])
+        offered=pending_options(r,'A')
+        self.assertEqual([p['effect_id'] for p in offered],['BT22-023.inherited_unsuspend'])
+        resolve_pending(r,'A',offered[0]['id'],True)
+        self.assertFalse(r.state.battle['A'][source].suspended)
+
+    def test_inherited_unsuspend_cannot_be_called_without_pending_trigger(self):
+        r=self.runtime();source=stage(r,'A',['BT22-023','EX13-023'],suspended=True)
+        stage(r,'A',['BT22-085'])
+        with self.assertRaisesRegex(RuntimeHalt,'INHERITED_UNSUSPEND_PENDING_REQUIRED'):
+            r.dispatch('BT22-023.inherited_unsuspend','A',
+                       r.state.battle['A'][source].cards[0].key,True,
+                       field_='inherited_text')
+        self.assertTrue(r.state.battle['A'][source].suspended)
 
     def test_bt22_can_unsuspend_with_blue_tamer_that_has_no_orientation_reaction(self):
         r=self.runtime();source=stage(r,'A',['BT22-023','EX13-023']);stage(r,'A',['BT22-085'])
@@ -102,6 +128,7 @@ class ReactionTests(unittest.TestCase):
     def test_bt12_self_unsuspend_queues_its_registered_return(self):
         from selected_mechanics import _set_orientation
         r=self.runtime();source=stage(r,'A',['BT12-029'],suspended=True)
+        stage(r,'A',['BT22-085'])
         result=_set_orientation(r,'A',r.state.battle['A'][source],False)
         self.assertTrue(result['changed'])
         self.assertFalse(r.state.battle['A'][source].suspended)

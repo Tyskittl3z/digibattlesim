@@ -12,6 +12,24 @@ from test_selected_mechanics import ROOT, stage
 
 
 class BT12UnsuspendTests(unittest.TestCase):
+    def test_return_if_condition_false_cannot_activate_or_consume_use(self):
+        from selected_mechanics import _set_orientation
+        context = load_context_file(ROOT / 'ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json')
+        runtime = ContextRuntime(context, 12128, 'B', build_selected_registry(context, ROOT),
+                                 allow_experimental=True)
+        source = stage(runtime, 'B', ['BT12-029'], suspended=True)
+        stage(runtime, 'A', ['EX13-019'])
+        runtime.state.phase = 'MAIN'
+        _set_orientation(runtime, 'B', runtime.state.battle['B'][source], False)
+        self.assertEqual(len(runtime.state.pending), 1)
+        self.assertEqual(pending_options(runtime, 'B'), [])
+        runtime.settle_pending()
+        self.assertEqual(runtime.state.pending, [])
+        self.assertFalse(any(use[-1] == 'BT12-029.unsuspend_return_lowest'
+                             for use in runtime.state.once_used))
+        cancellation = next(e for e in runtime.events if e['type'] == 'PENDING_CANCELLED')
+        self.assertEqual(cancellation['reason'], 'BLUE_TAMER_OR_ULFORCE_CONDITION_NOT_MET')
+
     def test_rina_reactivation_can_resolve_bt12_unsuspend_on_opponents_turn(self):
         from effect_scheduler import queue_effects
         from rina_reactivation import collect_rina_suspension_reactions

@@ -24,6 +24,12 @@ class SchedulerTests(unittest.TestCase):
         self.assertEqual(r.state.memory,1);self.assertEqual(r.state.pending,[])
         self.assertEqual(r.events[-1]['pending_id'],opts[0]['id'])
 
+    def test_settlement_cannot_skip_an_activatable_pending_effect(self):
+        r=self.runtime();source=put_source(r)
+        queue_effects(r,[self.effect(source)])
+        with self.assertRaisesRegex(RuntimeHalt,'PENDING_EFFECTS_REQUIRE_RESOLUTION'):
+            r.settle_pending()
+
     def test_handler_receives_validated_pending_proof_only_during_activation(self):
         import copy
         def capture_pending(runtime,seat,source,choice):

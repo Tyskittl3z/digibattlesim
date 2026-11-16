@@ -35,6 +35,15 @@ CONTEXT_FILE = 'ARTIFACTS/ex13-engine-2026-10-30/context.json'
 POLICY = 'fresh-untrained-uniform-random-reference-v1'
 
 
+def has_attack_child_pending(runtime):
+    attack = runtime.state.attack
+    if attack is None:
+        return False
+    deferred = attack.get('deferred_depth')
+    return any(deferred is None or effect['depth'] > deferred
+               for effect in runtime.state.pending)
+
+
 def seed_for(index, context_id):
     if type(index) is not int or index < 0:
         raise ValueError('Nonnegative attempt index required')
@@ -543,7 +552,7 @@ def run_attempt(index, root=ROOT, max_commands=300, *, context_file=CONTEXT_FILE
                 choice = pilots[owner].choose(runtime.public_view(owner), candidates)
                 call('REDRAW_CHOICE', owner, choice, candidates)
                 redraw_count += 1
-            elif runtime.state.pending and (not runtime.state.attack or any(
+            elif runtime.state.pending and (not runtime.state.attack or has_attack_child_pending(runtime) or any(
                     pending_options(runtime, owner) for owner in ('A', 'B'))):  # Scheduler routing, not pilot input.
                 current['command'] = 'GENERATE_PENDING_CHOICES'
                 options = {owner: pending_options(runtime, owner) for owner in ('A', 'B')}

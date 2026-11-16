@@ -401,10 +401,13 @@ class ContextRuntime:
         """Apply automatic source-loss/OPT cancellations, never optional choices."""
         if self.halted or self.state.terminal:
             raise RuntimeHalt('SETTLE_AFTER_HALT_OR_TERMINAL')
-        from effect_scheduler import prune_pending
+        from effect_scheduler import pending_options, prune_pending
         def settle(trial,seat,choice):
-            return {'cancelled':prune_pending(trial)}
-        return self._control_command('SETTLE_PENDING',self.state.active,None,settle,allow_pending=True)
+            if any(pending_options(trial, owner) for owner in ('A', 'B')):
+                raise RuntimeHalt('PENDING_EFFECTS_REQUIRE_RESOLUTION')
+            return {'cancelled':prune_pending(trial, settle_conditions=True)}
+        return self._control_command('SETTLE_PENDING',self.state.active,None,settle,
+                                     allow_pending=True, allow_attack=True)
 
     def _control_command(self,kind,seat,choice,operation,*,allow_pending=False,allow_attack=False):
         """Atomic trusted rules primitive; never an unbound pilot action API."""

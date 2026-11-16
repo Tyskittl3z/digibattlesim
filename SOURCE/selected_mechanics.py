@@ -97,6 +97,13 @@ def resolve_bt12_unsuspend(runtime, seat, source_key, choice):
     return {'target':choice, **result, 'processing':'UNSUSPEND_PRINTED_CHOICE'}
 
 
+def bt12_return_condition_met(runtime, seat, source_key):
+    stack = source_stack(runtime, seat, source_key, 'main_text')
+    return blue_tamer_present(runtime, seat) or any(
+        'UlforceVeedramon' in runtime.context.card(seat, card.card_number).name
+        for card in stack.cards[:-1])
+
+
 def bt12_return_choices(runtime, seat, source_key):
     source = runtime._source(seat, source_key, 'main_text')
     if source.card_number != 'BT12-029':
@@ -117,13 +124,8 @@ def bt12_return_choices(runtime, seat, source_key):
             or trigger.get('suspended_before') is not True
             or trigger.get('suspended_after') is not False):
         raise RuntimeHalt('BT12_RETURN_WINDOW_REQUIRED')
-    blue_tamer = any(runtime.context.card(seat, item.cards[-1].card_number).kind == 'Tamer'
-        and 'Blue' in runtime.context.card(seat, item.cards[-1].card_number).to_dict()['colors']
-        for item in runtime.state.battle[seat].values())
-    ulforce_source = any('UlforceVeedramon' in runtime.context.card(seat, card.card_number).name
-                         for card in stack.cards[:-1])
-    if not (blue_tamer or ulforce_source):
-        return [None]
+    if not bt12_return_condition_met(runtime, seat, source_key):
+        raise RuntimeHalt('BT12_RETURN_CONDITION_NOT_MET')
     other = 'B' if seat == 'A' else 'A'
     targets = [(key, runtime.context.card(other, item.cards[-1].card_number).to_dict()['level'])
                for key, item in runtime.state.battle[other].items()
@@ -287,15 +289,10 @@ def omnimon_piercing_choices(runtime, seat, source_key):
     if (record is None or record['trigger'].get('kind') != 'Piercing'
             or not isinstance(record['trigger'].get('deleted_digimon'), str)):
         raise RuntimeHalt('OMNIMON_PIERCING_PENDING_REQUIRED')
-    if attack is not None and (attack['controller'] != seat or attack['attacker'] != source_key
+    if attack is None or (attack['controller'] != seat or attack['attacker'] != source_key
             or attack['window'] != 'END' or attack['target'] == 'PLAYER'
             or attack['checked'] is not None or attack['target'] != record['trigger']['deleted_digimon']):
         raise RuntimeHalt('OMNIMON_PIERCING_WINDOW_REQUIRED')
-    if attack is None:
-        from effect_scheduler import source_stack
-        stack = source_stack(runtime, seat, source_key, 'main_text')
-        if stack.instance_id != record['instance'] or runtime.state.active != seat:
-            raise RuntimeHalt('OMNIMON_PIERCING_WINDOW_REQUIRED')
     return [None]
 
 
@@ -303,32 +300,13 @@ def resolve_omnimon_piercing(runtime, seat, source_key, choice, root):
     if choice is not None or choice not in omnimon_piercing_choices(runtime, seat, source_key):
         raise RuntimeHalt('OMNIMON_PIERCING_CHOICE_INVALID')
     attack = runtime.state.attack
-    closed_attack = attack is None
-    if closed_attack:
-        from effect_scheduler import source_stack
-        pending = getattr(runtime, '_activated_pending', None)
-        if pending is None or pending['effect_id'] != OMNIMON_PIERCE_EFFECT:
-            raise RuntimeHalt('OMNIMON_PIERCING_PENDING_REQUIRED')
-        opponent = 'B' if seat == 'A' else 'A'
-        stack = source_stack(runtime, seat, source_key, 'main_text')
-        attack = {'attacker': source_key, 'attacker_instance': stack.instance_id,
-            'target': pending['trigger']['deleted_digimon'], 'target_instance': '',
-            'controller': seat, 'defender': opponent, 'window': 'END',
-            'counter_used': False, 'block_used': True, 'checked': None}
-        if runtime.state.phase == 'END_OF_TURN':
-            attack['deferred_depth'] = pending['depth']
-        runtime.state.attack = attack
     original_target = attack['target']
     if not runtime.state.zones[attack['defender']]['security']:
-        if closed_attack:
-            runtime.state.attack = None
         return {'processing': 'NO_SECURITY_TO_CHECK', 'checked_card': None,
                 'original_target': original_target, 'full_match_credit': 0}
     attack['target'], attack['target_instance'], attack['window'] = 'PLAYER', '', 'CONFIRM'
     from attack_flow import _confirm
     result = _confirm(runtime, seat, {}, root)
-    if closed_attack and runtime.state.attack is not None and runtime.state.attack['window'] == 'END':
-        runtime.state.attack = None
     return {'processing': 'MANDATORY_PIERCING_SECURITY_CHECK',
         'checked_card': result.get('checked_card'), 'original_target': original_target,
         'check': result, 'full_match_credit': 0}
@@ -570,6 +548,13 @@ def resolve_orientation(runtime, seat, source_key, target):
     return {'target':target,**result,'once_per_turn_consumed':True}
 
 
+def blue_tamer_present(runtime, seat):
+    return any(runtime.context.card(seat, stack.cards[-1].card_number).kind == 'Tamer'
+               and 'Blue' in runtime.context.card(
+                   seat, stack.cards[-1].card_number).to_dict()['colors']
+               for stack in runtime.state.battle[seat].values())
+
+
 def resolve_inherited_unsuspend(runtime,seat,source,choice):
     if type(choice) is not bool:
         raise RuntimeHalt('BOOLEAN_PROCESSING_CHOICE_REQUIRED')
@@ -577,18 +562,18 @@ def resolve_inherited_unsuspend(runtime,seat,source,choice):
     known = INHERITED_REACTIONS.get(physical.card_number)
     if physical.card_number not in ('EX13-022','BT22-023') or known is None:
         raise RuntimeHalt('INHERITED_UNSUSPEND_SOURCE_INVALID')
+    activated = getattr(runtime, '_activated_effect', None)
+    if (activated is None or activated[:4] != (known[0], seat, source, 'inherited_text')
+            or activated[4] is None):
+        raise RuntimeHalt('INHERITED_UNSUSPEND_PENDING_REQUIRED')
+    if physical.card_number == 'BT22-023' and not blue_tamer_present(runtime, seat):
+        raise RuntimeHalt('BLUE_TAMER_CONDITION_NOT_MET')
     usage = _usage(runtime,seat,source,known[0])
     if usage in runtime.state.once_used:
         raise RuntimeHalt('ONCE_PER_TURN_ALREADY_USED')
     runtime.state.once_used.add(usage)
     if not choice:
         return {'changed':False,'processing':'OPTIONAL_PROCESSING_DECLINED_AFTER_ACTIVATION'}
-    if physical.card_number == 'BT22-023':
-        blue = any(runtime.context.card(seat,s.cards[-1].card_number).kind=='Tamer'
-                   and 'Blue' in runtime.context.card(seat,s.cards[-1].card_number).to_dict()['colors']
-                   for s in runtime.state.battle[seat].values())
-        if not blue:
-            return {'changed':False,'processing':'BLUE_TAMER_CONDITION_FAILED'}
     stack = source_stack(runtime,seat,source,'inherited_text')
     return {**_set_orientation(runtime,seat,stack,False),'processing':'OPTIONAL_UNSUSPEND_SELECTED'}
 
@@ -609,14 +594,32 @@ def resolve_unsuspend_memory(runtime,seat,source,choice):
     return {'memory_before':before,'memory_after':runtime.state.memory,'gained':runtime.state.memory-before}
 
 
+def selected_phase_condition_met(runtime, seat, effect_id):
+    if effect_id == 'BT22-085.start_turn_memory':
+        return runtime.state.memory <= 2
+    if effect_id == 'EX13-069.start_main_memory':
+        return any(runtime.context.card(seat, stack.cards[-1].card_number).kind == 'Digimon'
+                   and any(name in runtime.context.card(
+                       seat, stack.cards[-1].card_number).name
+                           for name in ('Veemon', 'Veedramon'))
+                   for stack in runtime.state.battle[seat].values())
+    raise RuntimeHalt('PHASE_PROCESSING_CONDITION_UNKNOWN: ' + effect_id)
+
+
 def resolve_phase_memory(runtime,seat,source,choice):
     physical = runtime._source(seat,source,'main_text')
     spec = PHASE_EFFECTS.get(physical.card_number)
     if spec is None or choice is not None or runtime.state.active!=seat:
         raise RuntimeHalt('PHASE_MEMORY_SOURCE_OR_CHOICE_INVALID')
+    activated = getattr(runtime, '_activated_effect', None)
+    if activated is None or activated[:4] != (spec[0], seat, source, 'main_text') or activated[4] is None:
+        raise RuntimeHalt('PHASE_PENDING_REQUIRED')
     expected_phase = 'TURN_START_EFFECTS' if spec[1]=='Start of Your Turn' else 'MAIN'
     if runtime.state.phase!=expected_phase:
         raise RuntimeHalt('PHASE_MEMORY_TIMING_INVALID')
+    if physical.card_number in ('BT22-085', 'EX13-069') and not selected_phase_condition_met(
+            runtime, seat, spec[0]):
+        raise RuntimeHalt('PHASE_PROCESSING_CONDITION_NOT_MET')
     before = runtime.state.memory
     condition = True
     if physical.card_number in ('BT22-085','BT19-080'):
