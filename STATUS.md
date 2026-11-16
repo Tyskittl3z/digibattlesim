@@ -17,6 +17,10 @@ pending shape. See the corrected campaign summary for counts and evidence.
 
 Independent fact-finding credit remains zero. The 10,000-match evaluation has
 not started, and the heuristic colors are not approved strategy roadmaps. The
+subsequent rules review found that games 24 and 55 resolved BT20-102 Piercing
+after `END_ATTACK`, contrary to comprehensive rules section 16-7-4. The
+archived actions and outcomes remain diagnostic; see `RULES_REVIEW_FINDING.md`
+in the corrected campaign folder. The
 focused tracker/scorer/Piercing tests passed (55); the full repository suite
 ran 712 tests with 19 failures and 4 errors, mostly in migration fixtures.
 Keep both PRs draft and unmerged until those gaps are addressed.

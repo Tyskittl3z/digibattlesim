@@ -36,3 +36,5 @@ suite ran 712 tests and reported 19 failures and 4 errors, mostly in migration
 fixtures; 55 focused tracker, scorer, and Piercing tests passed. The 10,000-match
 evaluation has not started and no evaluation credit is claimed.
 See `READINESS.md` for the remaining review gates.
+The rules review identified a Piercing timing discrepancy in games 24 and 55;
+see `RULES_REVIEW_FINDING.md`. These games cannot be counted as rules-certified.

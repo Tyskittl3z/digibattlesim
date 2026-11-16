@@ -5,6 +5,11 @@ accepted actions and heuristic colors can be inspected in the per-game logs.
 No game has independent rules certification, so accepted fact-finding credit
 remains zero.
 
+Rules review found a confirmed Piercing timing defect in games 24 and 55:
+`END_ATTACK` cleared the attack before the mandatory check resolved. See
+`RULES_REVIEW_FINDING.md`. Repair the scheduler under a new source hash and
+rerun affected evidence from the locked seeds; this archive stays diagnostic.
+
 The current approval gates still require:
 
 1. A selected-matchup official rules snapshot and independent review.
