@@ -6,8 +6,9 @@ import unittest
 
 from attack_flow import confirm_attack, end_attack
 from context_runtime import ContextRuntime, RuntimeHalt
-from effect_scheduler import has_attack_child_pending, pending_options, queue_effects, resolve_pending
+from effect_scheduler import pending_options, queue_effects, resolve_pending
 from field_tracker import FieldTracker
+from imported_attempts import has_attack_child_pending
 from interaction_scoring import score_transition
 from matchup_readiness import load_context_file
 from selected_mechanics import build_selected_registry

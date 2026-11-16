@@ -12,8 +12,8 @@ import random
 from context_runtime import ContextRuntime, RuntimeHalt
 from field_tracker import FieldTracker
 from imported_attempts import (ROOT, _apply, _load_context_selection, breeding_candidates,
-                               counter_options, main_candidates, pending_choice, pending_options)
-from effect_scheduler import has_attack_child_pending
+                               counter_options, has_attack_child_pending, main_candidates,
+                               pending_choice, pending_options)
 from interaction_learning import LearningPlayerBot, LearningState, verify_decision_rng, verify_decision_input, learning_player_manifest
 from board_text_player import BoardTextPlayerBot, board_text_player_manifest
 from interaction_scoring import criteria_manifest, score_transition

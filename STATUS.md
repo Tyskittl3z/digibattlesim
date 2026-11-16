@@ -29,6 +29,16 @@ a reinterpretation of the archive. The standalone scenario dispatch API still
 permits direct EX13-023 orientation activation outside a printed trigger;
 that path remains open for a separate guard before broad pack verification.
 
+Verification on the first published rules-review commit `f16f717` ran 703
+repository tests: 5 failures and 10 errors. Nine errors replay old saved
+actions that the corrected pending rules reject; one migration fixture failed
+to import a new helper. A follow-up moved that helper into the copied runner
+adapter and updated the BT12 conditional test. The focused regression set then
+passed 13 tests. The migration module still reports 15 failures and 4 errors
+across 21 tests from `REPAIR_BOOTSTRAP_RUNNER_MISMATCH` against its older
+checkpoint. The full repository suite has not been rerun after this follow-up;
+do not claim it is green.
+
 ## Corrected 60-game software sequence — latest checkpoint
 
 The BT20-102 Piercing measurement repair is on draft PR #2, branch

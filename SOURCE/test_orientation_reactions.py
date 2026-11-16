@@ -128,6 +128,7 @@ class ReactionTests(unittest.TestCase):
     def test_bt12_self_unsuspend_queues_its_registered_return(self):
         from selected_mechanics import _set_orientation
         r=self.runtime();source=stage(r,'A',['BT12-029'],suspended=True)
+        stage(r,'A',['BT22-085'])
         result=_set_orientation(r,'A',r.state.battle['A'][source],False)
         self.assertTrue(result['changed'])
         self.assertFalse(r.state.battle['A'][source].suspended)

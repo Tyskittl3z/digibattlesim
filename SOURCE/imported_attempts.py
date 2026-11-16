@@ -19,7 +19,7 @@ from battlefield_scope import assert_basic_board_scope
 from breeding_evolution import breeding_evolution_choices, choose_breeding_evolution
 from context_evolution import printed_evolution_options, UnsupportedEvolutionCondition
 from context_runtime import ContextRuntime, RuntimeHalt
-from effect_scheduler import has_attack_child_pending, pending_options, resolve_pending
+from effect_scheduler import pending_options, resolve_pending
 from main_actions import choose_play
 from match_context import canonical, digest
 from match_preparation import begin_preparation, choose_redraw
@@ -33,6 +33,15 @@ from turn_flow import pass_turn, finish_turn
 ROOT = Path(__file__).resolve().parents[1]
 CONTEXT_FILE = 'ARTIFACTS/ex13-engine-2026-10-30/context.json'
 POLICY = 'fresh-untrained-uniform-random-reference-v1'
+
+
+def has_attack_child_pending(runtime):
+    attack = runtime.state.attack
+    if attack is None:
+        return False
+    deferred = attack.get('deferred_depth')
+    return any(deferred is None or effect['depth'] > deferred
+               for effect in runtime.state.pending)
 
 
 def seed_for(index, context_id):

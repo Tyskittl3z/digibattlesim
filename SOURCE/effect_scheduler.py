@@ -140,15 +140,6 @@ def pending_options(runtime,seat):
     return copy.deepcopy([e for e in group if e['seat']==seat]) if seat==controller else []
 
 
-def has_attack_child_pending(runtime):
-    attack = runtime.state.attack
-    if attack is None:
-        return False
-    deferred = attack.get('deferred_depth')
-    return any(deferred is None or effect['depth'] > deferred
-               for effect in runtime.state.pending)
-
-
 def prune_pending(runtime, *, settle_conditions=False):
     validate_pending(runtime)
     retained,cancelled = [],[]
