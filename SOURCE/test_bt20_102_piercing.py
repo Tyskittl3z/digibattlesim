@@ -1,4 +1,5 @@
 """BT20-102 checks Security after deleting a Digimon in attack battle."""
+import copy
 import gzip
 import json
 import unittest
@@ -6,13 +7,61 @@ import unittest
 from attack_flow import choose_blocker, choose_counter, confirm_attack
 from context_runtime import ContextRuntime
 from effect_scheduler import pending_options, resolve_pending
+from field_tracker import FieldTracker
 from imported_attempts import _apply
+from interaction_scoring import score_transition
 from matchup_readiness import load_context_file
 from selected_mechanics import build_selected_registry, selected_pending_choices
 from test_selected_mechanics import ROOT
 
 
 class OmnimonPiercingTests(unittest.TestCase):
+    def test_end_turn_piercing_counts_when_attack_context_has_closed(self):
+        with gzip.open(ROOT / 'ARTIFACTS/board-text-60-2026-11-11/game-0024/segment-0002.json.gz', 'rt') as handle:
+            record = json.load(handle)
+        action = next(command for command in record['commands']
+                      if command['result'].get('processing') == 'MANDATORY_PIERCING_SECURITY_CHECK')
+        self.assertIsNone(action['before']['state']['attack'])
+        context = load_context_file(ROOT / record['context_file'])
+        tracker = FieldTracker(context)
+        tracker.start(action['before'])
+        tracker.observe(action['tracker_command'], action['before'], action['after'],
+                        action['result'], action['judge'])
+        self.assertEqual(tracker.public_metrics()['successful_security_checks']['B'], 1)
+
+    def test_piercing_check_rejects_mismatched_nested_result(self):
+        with gzip.open(ROOT / 'ARTIFACTS/board-text-60-2026-11-11/game-0011/segment-0004.json.gz', 'rt') as handle:
+            record = json.load(handle)
+        action = next(command for command in record['commands']
+                      if command['result'].get('processing') == 'MANDATORY_PIERCING_SECURITY_CHECK')
+        context = load_context_file(ROOT / record['context_file'])
+        tracker = FieldTracker(context)
+        tracker.start(action['before'])
+        result = copy.deepcopy(action['result'])
+        result['check']['checked_card'] = 'A:wrong-card#1'
+        with self.assertRaisesRegex(Exception, 'TRACKER_SECURITY_CHECK_RESULT_MISMATCH'):
+            tracker.observe(action['tracker_command'], action['before'], action['after'],
+                            result, action['judge'])
+
+    def test_saved_piercing_check_updates_bot_c_and_tempo(self):
+        with gzip.open(ROOT / 'ARTIFACTS/board-text-60-2026-11-11/game-0011/segment-0004.json.gz', 'rt') as handle:
+            record = json.load(handle)
+        action = next(command for command in record['commands']
+                      if command['result'].get('processing') == 'MANDATORY_PIERCING_SECURITY_CHECK')
+        context = load_context_file(ROOT / record['context_file'])
+        tracker = FieldTracker(context)
+        tracker.start(action['before'])
+        before_metrics = tracker.public_metrics()
+        observation = tracker.observe(action['tracker_command'], action['before'], action['after'],
+                                      action['result'], action['judge'])
+        after_metrics = tracker.public_metrics()
+        self.assertEqual(observation['public_metrics_after']['successful_security_checks']['B'], 1)
+        self.assertEqual(after_metrics['successful_security_checks']['B'], 1)
+        rating = score_transition(action['public_view'], action['public_view_after'], 'B',
+                                  command=action['tracker_command'], result=action['result'], context=context,
+                                  public_metrics_before=before_metrics, public_metrics_after=after_metrics)
+        self.assertEqual(rating['components']['security_checks']['delta'], 1)
+
     def test_saved_end_turn_digimon_battle_queues_mandatory_security_check(self):
         with gzip.open(ROOT / 'ARTIFACTS/board-text-60-2026-11-11/game-0011/segment-0000.json.gz', 'rt') as handle:
             record = json.load(handle)

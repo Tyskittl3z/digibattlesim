@@ -282,20 +282,53 @@ class FieldTracker:
 
     @staticmethod
     def _security_check(command, before, after, result):
-        if (command['command'] != 'CONFIRM_ATTACK' or not isinstance(result, dict)
-                or result.get('success') is not True or result.get('checked_card') is None):
+        if not isinstance(result, dict):
             return None
-        actor = command.get('seat'); defender = 'B' if actor == 'A' else 'A'
+        piercing = (command['command'] == 'RESOLVE_PENDING'
+                    and result.get('processing') == 'MANDATORY_PIERCING_SECURITY_CHECK')
+        if piercing and (result.get('checked_card') is None or not isinstance(result.get('check'), dict)
+                         or result['check'].get('success') is not True
+                         or result['check'].get('checked_card') != result['checked_card']):
+            raise RuntimeHalt('TRACKER_SECURITY_CHECK_RESULT_MISMATCH')
+        if result.get('checked_card') is None:
+            return None
+        ordinary = command['command'] == 'CONFIRM_ATTACK' and result.get('success') is True
+        if not (piercing or ordinary):
+            return None
+        actor = command.get('seat')
+        if actor not in _SEATS:
+            raise RuntimeHalt('TRACKER_SECURITY_CHECK_RESULT_MISMATCH')
+        defender = 'B' if actor == 'A' else 'A'
         a, b = before['state'].get('attack'), after['state'].get('attack')
         key = result['checked_card']
         old = before['state']['zones'][defender]['security']; new = after['state']['zones'][defender]['security']
-        if (actor not in _SEATS or not isinstance(a, dict) or not isinstance(b, dict)
-                or a.get('controller') != actor or a.get('defender') != defender
-                or a.get('target') != 'PLAYER' or a.get('window') != 'CONFIRM' or a.get('checked') is not None
-                or b.get('controller') != actor or b.get('defender') != defender
-                or b.get('target') != 'PLAYER' or b.get('window') != 'END' or b.get('checked') != key
-                or (a.get('attacker_instance') and b.get('attacker_instance') != a['attacker_instance'])
-                or (not a.get('attacker_instance') and b.get('attacker') != a.get('attacker'))
+        if piercing:
+            pending_id = command.get('args', {}).get('pending_id')
+            pending = [p for p in before['state']['pending'] if p.get('id') == pending_id]
+            valid_piercing = (len(pending) == 1 and pending[0].get('effect_id') == 'BT20-102.piercing_check'
+                              and pending[0].get('seat') == actor
+                              and pending[0].get('source', '').startswith(actor + ':BT20-102#')
+                              and pending[0].get('trigger', {}).get('kind') == 'Piercing'
+                              and pending[0]['trigger'].get('deleted_digimon') == result.get('original_target')
+                              and all(p.get('id') != pending_id for p in after['state']['pending'])
+                              and (a is None and b is None or
+                                   isinstance(a, dict) and isinstance(b, dict)
+                                   and a.get('target') == result.get('original_target')
+                                   and a.get('target') != 'PLAYER' and a.get('window') == 'END'
+                                   and b.get('target') == 'PLAYER'))
+        else:
+            valid_piercing = False
+        attack_valid = (isinstance(a, dict) and isinstance(b, dict)
+                        and a.get('controller') == actor and a.get('defender') == defender
+                        and (valid_piercing or ordinary and a.get('target') == 'PLAYER'
+                             and a.get('window') == 'CONFIRM')
+                        and a.get('checked') is None and b.get('controller') == actor
+                        and b.get('defender') == defender and b.get('target') == 'PLAYER'
+                        and b.get('window') == 'END' and b.get('checked') == key
+                        and (b.get('attacker_instance') == a['attacker_instance']
+                             if a.get('attacker_instance') else b.get('attacker') == a.get('attacker')))
+        closed_piercing = piercing and valid_piercing and a is None and b is None
+        if (not (attack_valid or closed_piercing)
                 or not old or old[-1] != key or new != old[:-1] or key in new):
             raise RuntimeHalt('TRACKER_SECURITY_CHECK_RESULT_MISMATCH')
         return actor

@@ -1,0 +1,18 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "commands": 290,
+  "exact_replay": true,
+  "first": "B",
+  "game_index": 11,
+  "halt_reason": null,
+  "history_report": {
+    "file": "ARTIFACTS/board-text-60-piercing-corrected-v2-2026-11-15/game-0010/report.md",
+    "sha256": "e89e9c39b29e6f143303ae4cdb9470ff7105be6baf152498b628040f87461c6c"
+  },
+  "model_games_before": 13,
+  "record_sha256": "d675219c8a3071cc60875556b665ffa5d8c62fca0b181cd26f2da7849b9a485a",
+  "seed": 4520756428303837408,
+  "segment": 1,
+  "status": "EXPERIMENTAL_SOFTWARE_TERMINAL",
+  "winner": "B"
+}

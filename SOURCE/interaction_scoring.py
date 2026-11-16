@@ -271,8 +271,14 @@ def score_transition(before_view, after_view, seat, *, command=None, result=None
                 'efficiency': {'status': 'UNRATED', 'benefit': None, 'benefit_per_memory': None}}
     if public_metrics_before is not None:
         deltas = {s: ma['successful_security_checks'][s] - mb['successful_security_checks'][s] for s in ('A', 'B')}
+        ordinary_check = kind == 'CONFIRM_ATTACK' and result.get('success') is True
+        piercing_check = (kind == 'RESOLVE_PENDING'
+                          and result.get('processing') == 'MANDATORY_PIERCING_SECURITY_CHECK'
+                          and isinstance(result.get('check'), dict)
+                          and result['check'].get('success') is True
+                          and result['check'].get('checked_card') == result.get('checked_card'))
         if any(n < 0 for n in deltas.values()) or any(deltas.values()) and (
-                kind != 'CONFIRM_ATTACK' or result.get('success') is not True or not result.get('checked_card')
+                not (ordinary_check or piercing_check) or not result.get('checked_card')
                 or deltas[actor] != 1 or deltas['B' if actor == 'A' else 'A'] != 0):
             raise RuntimeHalt('SCORING_SECURITY_COUNTER_TRANSITION_INVALID')
     opposite = 'B' if seat == 'A' else 'A'

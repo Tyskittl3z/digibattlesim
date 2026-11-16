@@ -1,5 +1,30 @@
 # Verified handoff status
 
+## Corrected 60-game software sequence — latest checkpoint
+
+The BT20-102 Piercing measurement repair is on draft PR #2, branch
+`fix/piercing-security-tracker`. Bot C now counts verified pending Piercing
+Security checks, including end-of-turn resolution after the attack context has
+closed, and the scorer accepts the corresponding counter change. A separate
+`ARTIFACTS/board-text-60-piercing-corrected-v2-2026-11-15/` sequence preserves
+the earlier campaigns as diagnostic archives. It uses the original locked
+60-seed schedule, the two initial game histories, and sequential report/model
+handoffs. The second correction sequence is complete in software: 60 terminal
+games, 30 starts per seat, Bot A 29 wins and Bot B 31, 10,047 accepted actions,
+62 exact-replayed segments, and no judge halts. Bot C counted all eight
+encountered BT20-102 Piercing checks; games 24 and 55 used the closed-attack
+pending shape. See the corrected campaign summary for counts and evidence.
+
+Independent fact-finding credit remains zero. The 10,000-match evaluation has
+not started, and the heuristic colors are not approved strategy roadmaps. The
+subsequent rules review found that games 24 and 55 resolved BT20-102 Piercing
+after `END_ATTACK`, contrary to comprehensive rules section 16-7-4. The
+archived actions and outcomes remain diagnostic; see `RULES_REVIEW_FINDING.md`
+in the corrected campaign folder. The
+focused tracker/scorer/Piercing tests passed (55); the full repository suite
+ran 712 tests with 19 failures and 4 errors, mostly in migration fixtures.
+Keep both PRs draft and unmerged until those gaps are addressed.
+
 ## Additional sequential 60-game run — current checkpoint
 
 The user authorized 60 additional sequential games for the selected Ulforce
