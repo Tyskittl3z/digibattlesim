@@ -99,6 +99,11 @@ def _source_window(runtime, seat, source_key, effect_id):
             raise RuntimeHalt('TAMER_PLAY_WINDOW_REQUIRED')
 
 
+def veedramon_tamer_condition_met(runtime, seat):
+    return sum(runtime.context.card(seat, stack.cards[-1].card_number).kind == 'Tamer'
+               for stack in runtime.state.battle[seat].values()) <= 1
+
+
 def tamer_play_choices(runtime, seat, source_key, effect_id):
     _source_window(runtime, seat, source_key, effect_id)
     if effect_id == EGG_EFFECT:
@@ -109,10 +114,8 @@ def tamer_play_choices(runtime, seat, source_key, effect_id):
         if effect_id == ATTACK_TAMER_EFFECT and (runtime.state.attack is None
                 or runtime.state.attack['controller'] != seat):
             return [None]
-        if effect_id == VEEDRAMON_PLAY_EFFECT and sum(
-                runtime.context.card(seat,s.cards[-1].card_number).kind == 'Tamer'
-                for s in runtime.state.battle[seat].values()) > 1:
-            return [None]
+        if effect_id == VEEDRAMON_PLAY_EFFECT and not veedramon_tamer_condition_met(runtime, seat):
+            raise RuntimeHalt('TAMER_COUNT_CONDITION_NOT_MET')
         return [None] + sorted(card.key for card in runtime.state.zones[seat]['hand']
             if _eligible_tamer(runtime.context.card(seat, card.card_number),effect_id))
     opponent = 'B' if seat == 'A' else 'A'
@@ -191,10 +194,6 @@ def resolve_tamer_play(runtime, seat, source_key, choice):
     effect=activated[0] if activated is not None else PLAY_EFFECT
     if choice not in tamer_play_choices(runtime, seat, source_key, effect):
         raise RuntimeHalt('TAMER_PLAY_TARGET_INVALID')
-    if effect == VEEDRAMON_PLAY_EFFECT and sum(
-            runtime.context.card(seat,s.cards[-1].card_number).kind=='Tamer'
-            for s in runtime.state.battle[seat].values())>1:
-        return {'played_card':None,'processing':'CONDITION_NOT_MET','full_match_credit':0}
     opt = effect in (PLAY_EFFECT, ATTACK_TAMER_EFFECT)
     if opt:_consume(runtime, seat, source_key, effect)
     if choice is None:

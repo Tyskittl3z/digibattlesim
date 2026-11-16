@@ -1,5 +1,34 @@
 # Verified handoff status
 
+## Rules review in progress — 2026-11-16
+
+The selected 123129 vs 122110 mirror's corrected 60-game archive remains
+diagnostic software evidence. A trace index under
+`RULES/reviews/123129-vs-122110/` maps all 10,047 accepted commands, 3,044
+effect resolutions, 9,462 choices, and 37 canceled pending effects to saved
+games and judge receipts. Its 23 cited official source hashes match local
+cached files; every effect binding remains `EXPERIMENTAL_UNREVIEWED`.
+
+Official rules review found BT20-102 Piercing processed after `END_ATTACK` in
+games 24 and 55. It also found four printed `if` effects activated with false
+processing conditions: BT22-023 inherited unsuspend (58 cases), BT22-022
+Tamer play (8), BT22-085 start-turn memory (25), EX13-069 start-main
+memory (42), and BT12-029 unsuspend return (12). The engine branch has
+focused tests and fixes for those paths;
+the original archive and seeds are preserved. See the campaign's
+`RULES_REVIEW_FINDING.md` and `CONDITION_REVIEW_FINDING.md`. The rules lock,
+complete semantic interaction review, fresh corrected cohort, and independent
+certification remain open. Fact-finding credit, approved roadmaps, and final
+evaluation remain zero.
+
+Focused attack scenarios additionally found that an ineligible child effect
+could block both settlement and `END_ATTACK`. The runner and scheduler now
+provide an explicit `SETTLE_PENDING` action for that child in ordinary and
+deferred attacks before ending the attack. This is a prospective repair, not
+a reinterpretation of the archive. The standalone scenario dispatch API still
+permits direct EX13-023 orientation activation outside a printed trigger;
+that path remains open for a separate guard before broad pack verification.
+
 ## Corrected 60-game software sequence — latest checkpoint
 
 The BT20-102 Piercing measurement repair is on draft PR #2, branch

@@ -19,7 +19,7 @@ from battlefield_scope import assert_basic_board_scope
 from breeding_evolution import breeding_evolution_choices, choose_breeding_evolution
 from context_evolution import printed_evolution_options, UnsupportedEvolutionCondition
 from context_runtime import ContextRuntime, RuntimeHalt
-from effect_scheduler import pending_options, resolve_pending
+from effect_scheduler import has_attack_child_pending, pending_options, resolve_pending
 from main_actions import choose_play
 from match_context import canonical, digest
 from match_preparation import begin_preparation, choose_redraw
@@ -543,7 +543,7 @@ def run_attempt(index, root=ROOT, max_commands=300, *, context_file=CONTEXT_FILE
                 choice = pilots[owner].choose(runtime.public_view(owner), candidates)
                 call('REDRAW_CHOICE', owner, choice, candidates)
                 redraw_count += 1
-            elif runtime.state.pending and (not runtime.state.attack or any(
+            elif runtime.state.pending and (not runtime.state.attack or has_attack_child_pending(runtime) or any(
                     pending_options(runtime, owner) for owner in ('A', 'B'))):  # Scheduler routing, not pilot input.
                 current['command'] = 'GENERATE_PENDING_CHOICES'
                 options = {owner: pending_options(runtime, owner) for owner in ('A', 'B')}

@@ -46,6 +46,37 @@ class PhaseTests(unittest.TestCase):
         advance_phase(r,'A',ROOT)
         self.assertFalse(r.state.battle['A'][source].suspended)
 
+    def test_start_turn_memory_condition_false_cancels_before_activation(self):
+        r=self.runtime();r.state.memory=6
+        stage(r,'A',['BT22-085'])
+        advance_phase(r,'A',ROOT)
+        self.assertEqual(pending_options(r,'A'),[])
+        r.settle_pending()
+        self.assertEqual(r.state.pending,[])
+        self.assertEqual(r.state.memory,6)
+        cancellation=next(e for e in r.events if e['type']=='PENDING_CANCELLED')
+        self.assertEqual(cancellation['reason'],'START_TURN_MEMORY_CONDITION_NOT_MET')
+
+    def test_start_main_memory_condition_false_cancels_before_activation(self):
+        r=self.runtime();stage(r,'A',['EX13-069'])
+        r.state.phase='BREEDING'
+        choose_breeding_action(r,'A','skip',ROOT)
+        self.assertEqual(pending_options(r,'A'),[])
+        r.settle_pending()
+        self.assertEqual(r.state.pending,[])
+        self.assertEqual(r.state.memory,0)
+        cancellation=next(e for e in r.events if e['type']=='PENDING_CANCELLED')
+        self.assertEqual(cancellation['reason'],'START_MAIN_DIGIMON_CONDITION_NOT_MET')
+
+    def test_start_main_memory_cannot_be_called_without_its_pending_trigger(self):
+        r=self.runtime()
+        source=stage(r,'A',['EX13-069'])
+        stage(r,'A',['BT11-023'])
+        r.state.phase='MAIN'
+        with self.assertRaisesRegex(RuntimeHalt,'PHASE_PENDING_REQUIRED'):
+            r.dispatch('EX13-069.start_main_memory','A',source,None)
+        self.assertEqual(r.state.memory,0)
+
     def test_unsuspend_phase_emits_inherited_memory_but_not_main_phase_only_memory(self):
         r=self.runtime();r.state.turn=2
         source=stage(r,'A',['P-138','EX1-013','EX13-023'],suspended=True)
