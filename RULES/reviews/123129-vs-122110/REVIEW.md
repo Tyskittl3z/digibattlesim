@@ -135,3 +135,11 @@ guard before claiming the mechanic pack broadly verified.
   the next game's model. Synthetic tampering tests cover both failures.
 - A focused current-state scenario also follows BT20-102 Raid through battle
   deletion, mandatory Piercing, a Security check and attack end in order.
+- BT20-102's *true* first condition remains open. Bot B's exact loaded list
+  contains two BT12-029 copies and one BT20-102; printed evolution from
+  BT12-029 into BT20-102 costs 6, so an [X Antibody] source and the
+  conditional board wipe are reachable. The handler currently halts before
+  payment for that true condition. Its survivor choice, simultaneous
+  deletions, leave/replacement effects and mandatory Then return require a
+  targeted official-rules scenario, including BT20-102 Q6018 if the effect
+  source leaves during the first process. This blocks full pack review.
