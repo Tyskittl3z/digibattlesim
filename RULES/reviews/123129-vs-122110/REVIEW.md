@@ -135,11 +135,15 @@ guard before claiming the mechanic pack broadly verified.
   the next game's model. Synthetic tampering tests cover both failures.
 - A focused current-state scenario also follows BT20-102 Raid through battle
   deletion, mandatory Piercing, a Security check and attack end in order.
-- BT20-102's *true* first condition remains open. Bot B's exact loaded list
-  contains two BT12-029 copies and one BT20-102; printed evolution from
-  BT12-029 into BT20-102 costs 6, so an [X Antibody] source and the
-  conditional board wipe are reachable. The handler currently halts before
-  payment for that true condition. Its survivor choice, simultaneous
-  deletions, leave/replacement effects and mandatory Then return require a
-  targeted official-rules scenario, including BT20-102 Q6018 if the effect
-  source leaves during the first process. This blocks full pack review.
+- BT20-102's *true* first condition remains unsupported in the generic
+  engine. The earlier claim that BT12-029 reaches it was incorrect:
+  Comprehensive Rules v4.3 sections 2-3-1-2 and 2-3-1-3 distinguish the
+  exact bracketed name `[X Antibody]` from "with [X Antibody] in its name."
+  BT12-029 is named `UlforceVeedramon (X Antibody)`, so evolving Bot B's
+  single BT20-102 onto it leaves the condition false; the mandatory Then
+  return still resolves (Q4725). Neither exact loaded deck has a source card
+  named `Omnimon` or `X Antibody`. The only card with `Omnimon` in its longer
+  name is Bot B's single BT20-102, which cannot be beneath itself. A true
+  condition in a future matchup still halts before payment pending survivor,
+  simultaneous-deletion, leave/replacement and Q6018 implementation. This
+  branch does not block the selected pair's conditional path.

@@ -1,5 +1,25 @@
 # Verified handoff status
 
+## BT20-102 exact-name review — 2026-11-17
+
+The pinned Comprehensive Rules v4.3 sections 2-3-1-2 and 2-3-1-3 distinguish
+an exact bracketed card name from the phrase "with [X] in its name."
+Bot B's BT12-029 is `UlforceVeedramon (X Antibody)`, so evolving its sole
+BT20-102 onto BT12-029 does not satisfy the first-process `[X Antibody]`
+condition. The mandatory Then return still resolves under Q4725. Neither
+selected list has a source card exactly named `Omnimon` or `X Antibody`; the
+true conditional board wipe is not reachable in this selected matchup. The
+generic true branch remains explicitly unsupported for future matchups. The
+engine now checks exact names, a focused evolution scenario covers this
+interaction, and 58 affected tests passed. The earlier claim that the true
+branch was reachable was corrected in the rules review ledger.
+
+The matchup rules lock remains `UNVERIFIED` for missing official document
+effective dates and a separate complete rules review. No new verified cohort
+game has started; accepted fact-finding and final-evaluation credit remain
+zero. A broad repository test discovery run was interrupted after reporting
+errors in historical tests; it is not a passing full-suite result.
+
 ## Rules review in progress — 2026-11-16
 
 The selected 123129 vs 122110 mirror's corrected 60-game archive remains
