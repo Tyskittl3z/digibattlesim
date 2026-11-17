@@ -67,3 +67,36 @@ The standalone `ContextRuntime.dispatch` scenario API also accepts direct
 EX13-023 orientation activation without a pending trigger in a gameplay phase;
 the match runners use pending activation, but this API path needs a separate
 guard before claiming the mechanic pack broadly verified.
+
+## 2026-11-17 mechanic and source checkpoint
+
+- EX13-023 Q7268 and Comprehensive Rules v4.3 section 7-3 support its
+  Assembly -5 play from one eligible Lv.3, Lv.4, and Lv.5 card in the
+  controller's trash. The new action records the three physical keys in
+  stack order and pays 7 memory. A focused scenario verifies the resulting
+  On Play triggers. Archived game 0 action 96 had a reachable Assembly
+  choice, so earlier archives cannot count as complete choice inventories.
+- BT20-102 Q4725 expressly requires the Then return even when the preceding
+  Omnimon/X Antibody condition is false. A current-state scenario verifies
+  that return; the old test asserting an empty effect list was removed.
+  The true board-wipe condition still halts before payment until reviewed.
+- BT20-102 Raid, Comprehensive Rules v4.3 section 16-23, is now an explicit
+  attack-time choice. A focused scenario switches the attack to the current
+  highest-DP unsuspended opposing Digimon; another records an explicit
+  decline. Historical replay fixtures expecting no Raid pending effect are
+  stale and were replaced by current-state scenarios.
+- The matchup-scoped `RULES_LOCK.json` pins 22 official card pages, the
+  v4.3 Comprehensive Rules PDF, and current official restrictions and
+  errata HTML. The restrictions page has SHA-256
+  `89a71be061a96cf6929cb8b83af916ea7da3e4ba73fe817e5f4b325a9bf886a1`;
+  the errata page has SHA-256
+  `283a2d4e1f3b91c7ab9d93eb9823a38524a3a755706d655b5ae0d3849e904ce9`.
+  No loaded card number appears in either page. The official rules index
+  points to `general_rule.pdf?20260918`, whose cached bytes have SHA-256
+  `a9f5d9589726e8750caf765c1fb44e3d5b723a5324a10b877f226059faf81271`.
+  The index itself has SHA-256
+  `7c9b088ab92babdc87a38170f99be6f73e9e82fc5bf2299a843e8bf572a8475b`.
+  Official effective dates for the card pages and Comprehensive Rules were
+  not found, and no separate complete snapshot review is recorded. The
+  lock validator reports `UNVERIFIED` with those two blockers. This
+  checkpoint credits zero new rules-certified matches.
