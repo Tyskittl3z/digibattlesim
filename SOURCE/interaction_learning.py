@@ -148,6 +148,7 @@ def _action(candidate, seat):
         fields = {
             'PASS_TURN': {'kind'}, 'DECLARE_ATTACK': {'kind', 'attacker', 'target'},
             'PLAY_CARD': {'kind', 'hand_key', 'printed_cost', 'legality'},
+            'ASSEMBLY_PLAY': {'kind', 'hand_key', 'materials', 'printed_cost', 'legality'},
             'USE_OPTION': {'kind', 'hand_key', 'printed_cost', 'legality'},
             'UNKNOWN_OPTION_ACTION': {'kind', 'hand_key', 'printed_cost', 'legality'},
             'OPTION_DELAY': {'kind', 'source_key', 'legality'},
@@ -163,6 +164,7 @@ def _action(candidate, seat):
         required = {
             'PASS_TURN': {'kind'}, 'DECLARE_ATTACK': {'kind', 'attacker', 'target'},
             'PLAY_CARD': {'kind', 'hand_key'}, 'USE_OPTION': {'kind', 'hand_key'},
+            'ASSEMBLY_PLAY': {'kind', 'hand_key', 'materials'},
             'UNKNOWN_OPTION_ACTION': {'kind', 'hand_key'},
             'OPTION_DELAY': {'kind', 'source_key'}, 'UNKNOWN_DELAY_ACTION': {'kind', 'source_key'},
             'BREEDING_CHOICE': {'kind', 'action'},
@@ -187,6 +189,12 @@ def _action(candidate, seat):
             _require(item is None or isinstance(item, dict) and set(item) == {'source_key', 'hand_key', 'route_index'},
                      'ACTION_DELAY_EVOLUTION_SCHEMA')
             result[key] = None if item is None else _action(item, seat)
+        elif key == 'materials':
+            _require(isinstance(item,list) and len(item)==3 and len(set(item))==3
+                     and all(isinstance(card,str) and _PHYSICAL.fullmatch(card)
+                             and _PHYSICAL.fullmatch(card)[1]==seat for card in item),
+                     'ACTION_ASSEMBLY_MATERIALS')
+            result[key]=[_physical(card,seat) for card in item]
         elif key in ('route_index', 'cost', 'printed_cost'):
             _require(type(item) is int and item >= 0, 'ACTION_COST_OR_ROUTE')
             result[key] = item
@@ -211,6 +219,8 @@ def _action_cards(candidate):
     cards = [candidate[k] for k in keys if isinstance(candidate.get(k), str) and _PHYSICAL.fullmatch(candidate[k])]
     if candidate.get('evolution') is not None:
         cards.extend(_action_cards(candidate['evolution']))
+    if candidate.get('materials') is not None:
+        cards.extend(_action_cards(candidate['materials']))
     return cards
 
 

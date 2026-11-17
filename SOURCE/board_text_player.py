@@ -114,6 +114,11 @@ class BoardTextPlayerBot(LearningPlayerBot):
             card = self._card(key)
             return (self._printed_value(key, trigger='On Play')
                     - (card.get('play_cost') or 0) * 0.25), 'own hand text and paid memory'
+        if kind == 'ASSEMBLY_PLAY':
+            key=candidate['hand_key']
+            return (self._printed_value(key,trigger='On Play')
+                    - candidate['printed_cost'] * 0.25
+                    + len(candidate['materials']) * 0.3), 'own hand text, visible trash materials and paid memory'
         if kind in ('BATTLE_EVOLUTION', 'BREEDING_EVOLUTION', 'UNKNOWN_BATTLE_EVOLUTION'):
             key = candidate['hand_key']
             return (self._printed_value(key, trigger='When Digivolving') + 0.5

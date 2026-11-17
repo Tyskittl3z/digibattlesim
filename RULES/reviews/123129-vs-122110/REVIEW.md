@@ -100,3 +100,16 @@ guard before claiming the mechanic pack broadly verified.
   not found, and no separate complete snapshot review is recorded. The
   lock validator reports `UNVERIFIED` with those two blockers. This
   checkpoint credits zero new rules-certified matches.
+- A noncredit smoke replay with the new Assembly action halted at action 97,
+  seed `16664364153905075627`, before selecting a main action. The learning
+  bot's strict candidate grammar rejected `ASSEMBLY_PLAY` with
+  `LEARNING_ACTION_FIELDS`. Its archived record SHA-256 is
+  `5a4a1db02f6d9b31f1cc42c17e4cc8536363e34bedf0626c4a86aa63b0dfa57f`.
+  A focused bot-to-judge scenario exposed and fixed that pipeline gap.
+- A new smoke archive under the changed source snapshot replayed the same
+  scheduled seed exactly: 155 accepted actions and 155 Bot C observations,
+  including two Assembly plays, ending with Bot B as winner. Its record
+  SHA-256 is
+  `9cab2c93b926b6078a46892fc37331aabb3e338913d9b5d718e9a81f72d910c8`.
+  Both seats used `BOARD_AND_CARD_TEXT` with random exploration off. This is
+  one experimental software game and contributes zero to the verified 60.

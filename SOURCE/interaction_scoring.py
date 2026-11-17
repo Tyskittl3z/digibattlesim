@@ -21,7 +21,7 @@ CRITERIA_SHA256 = digest(CRITERIA)
 _STACK_FIELDS = frozenset(('cards', 'suspended', 'statuses', 'instance_id', 'played_turn', 'ready_since_turn'))
 _VIEW_FIELDS = frozenset(('active', 'memory', 'turn', 'phase', 'attack', 'terminal', 'winner', 'players', 'resolving_option'))
 _PLAYER_FIELDS = frozenset(('hand', 'deck', 'eggdeck', 'security', 'trash', 'battle', 'breeding'))
-_SPEND_COMMANDS = frozenset(('PLAY_CARD', 'USE_OPTION', 'BATTLE_EVOLUTION', 'BREEDING_EVOLUTION'))
+_SPEND_COMMANDS = frozenset(('PLAY_CARD', 'ASSEMBLY_PLAY', 'USE_OPTION', 'BATTLE_EVOLUTION', 'BREEDING_EVOLUTION'))
 
 
 def criteria_manifest():
