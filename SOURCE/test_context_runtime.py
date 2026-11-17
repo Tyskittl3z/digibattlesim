@@ -142,6 +142,15 @@ class RuntimeTests(unittest.TestCase):
         self.assertEqual(runtime.matches_played, 0)
         self.assertEqual(runtime.certification, 'EXPERIMENTAL')
 
+    def test_direct_dispatch_in_gameplay_requires_a_pending_trigger(self):
+        c=context_with_effect();runtime=ContextRuntime(c,1,'A',registry(c),allow_experimental=True)
+        source=put_source(runtime)
+        runtime.state.phase='MAIN'
+        before=runtime.snapshot()['state']
+        with self.assertRaisesRegex(RuntimeHalt,'PENDING_TRIGGER_REQUIRED'):
+            runtime.dispatch('test-effect','A',source,None)
+        self.assertEqual(runtime.snapshot()['state'],before)
+
     def test_unknown_mechanic_halts_before_mutation(self):
         runtime = ContextRuntime(context_with_effect(), 8, 'A', allow_experimental=True)
         source = put_source(runtime); before = runtime.snapshot()['state']

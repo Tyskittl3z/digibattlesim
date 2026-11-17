@@ -113,3 +113,15 @@ guard before claiming the mechanic pack broadly verified.
   `9cab2c93b926b6078a46892fc37331aabb3e338913d9b5d718e9a81f72d910c8`.
   Both seats used `BOARD_AND_CARD_TEXT` with random exploration off. This is
   one experimental software game and contributes zero to the verified 60.
+- Gameplay-phase calls to `ContextRuntime.dispatch` now require a pending
+  trigger. The direct scenario API remains available in `SCENARIO`; a focused
+  test rejects gameplay activation without a pending effect. Security text
+  can no longer be dispatched from a battle-area card without its checked
+  security window. A timing scenario now queues the printed effect instead
+  of invoking it directly in gameplay. An old BT11-112 archived replay test
+  was redundant with the current security-play scenario and was removed
+  because its old pending IDs cannot replay under the repaired engine.
+- The empty prospective 60-game campaign driver pins the canonical matchup
+  rules-lock hash, current source file hashes, scoring criteria and
+  board-text policy source before game zero. It is still preparation, not
+  a run. Its lock currently carries `UNVERIFIED` and zero accepted credit.
