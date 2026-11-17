@@ -169,9 +169,8 @@ def _attack_source_dependencies(runtime, owner, anchor, source, field, event):
                     and (event['target'] == 'PLAYER'
                          or owner != actor and anchor == event['target']
                          or owner == actor and anchor == attacker)):
-                # A player target declines optional Raid (16-23-3). As a
-                # defender, only Blocker applies. An attacker can process
-                # Piercing after deleting the selected opposing Digimon.
+                # Raid is queued as an explicit choice after attack
+                # declaration. Piercing follows a battle deletion.
                 continue
             # A keyword can add declaration timing (for example Raid). Do not
             # suspend/open Counter before unsupported participant text is known.

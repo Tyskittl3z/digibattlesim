@@ -698,6 +698,10 @@ def build_selected_registry(context, root):
     bindings.extend(rina_unsuspend_bindings(context,root,rules))
     from ex13_ulforce_effects import ulforce_return_bindings
     bindings.extend(ulforce_return_bindings(context,root,rules))
+    from omni_return_effect import omni_return_bindings
+    bindings.extend(omni_return_bindings(context,root,rules))
+    from raid_effect import raid_bindings
+    bindings.extend(raid_bindings(context,root,rules))
     from return_effects import inherited_return_replacement_bindings
     bindings.extend(inherited_return_replacement_bindings(context,root,rules))
     from rina_reactivation import rina_reactivation_bindings

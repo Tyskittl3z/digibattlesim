@@ -53,7 +53,8 @@ def _digivolving_effects(runtime, target, source_stack=None):
                or runtime.context.card(target.owner, card.card_number).name == 'X Antibody'
                for card in underneath):
             raise RuntimeHalt('BT20_102_CONDITIONAL_BOARD_WIPE_UNSUPPORTED: ' + target.key)
-        effects = ()
+        from omni_return_effect import EFFECT
+        effects = (EFFECT,)
     elif target.card_number in PLAY_SPECS:
         effect,line=PLAY_SPECS[target.card_number]
         if lines!=(line,):

@@ -164,6 +164,9 @@ class NamedPlayerBot:
             key = candidate['hand_key']
             cost = candidate.get('cost', 0)
             return (75 if self.seat == 'B' else 70, *self._card_preference(view, key), -cost), 'develop current offered evolution'
+        if kind == 'ASSEMBLY_PLAY':
+            return (65, *self._card_preference(view, candidate['hand_key']),
+                    -candidate['printed_cost']), 'develop current Assembly play'
         if kind in ('PLAY_CARD', 'USE_OPTION', 'UNKNOWN_OPTION_ACTION', 'OPTION_DELAY', 'UNKNOWN_DELAY_ACTION'):
             key = candidate.get('hand_key', candidate.get('source_key'))
             return (65, *self._card_preference(view, key)), 'develop current printed resource'

@@ -131,7 +131,7 @@ def _bind_choices(command, tracker, context, pilots):
         return
     kind, args = command['command'], command.get('args', {})
     direct = {'REDRAW_CHOICE', 'BREEDING_CHOICE', 'COUNTER_CHOICE', 'BLOCK_CHOICE',
-              'PLAY_CARD', 'USE_OPTION', 'OPTION_DELAY', 'BATTLE_EVOLUTION',
+              'PLAY_CARD', 'ASSEMBLY_PLAY', 'USE_OPTION', 'OPTION_DELAY', 'BATTLE_EVOLUTION',
               'BREEDING_EVOLUTION', 'PASS_TURN', 'DECLARE_ATTACK',
               'UNKNOWN_OPTION_ACTION', 'UNKNOWN_DELAY_ACTION', 'UNKNOWN_BATTLE_EVOLUTION'}
     if kind in direct:
