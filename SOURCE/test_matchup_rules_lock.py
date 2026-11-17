@@ -30,5 +30,22 @@ class MatchupRulesLockTests(unittest.TestCase):
         self.assertIn('SOURCE_HASH_MISMATCH',report['blockers'])
         self.assertIn('EFFECTIVE_AFTER_AS_OF',report['blockers'])
 
+    def test_card_document_cannot_borrow_another_cards_valid_official_page(self):
+        original=json.loads((ROOT/'RULES/matchups/123129-vs-122110/RULES_LOCK.json').read_text())
+        lock=copy.deepcopy(original)
+        for doc in lock['documents']:
+            if doc['effective_date'] is None:doc['effective_date']='2026-11-17'
+        lock['status']='VERIFIED'
+        lock['review']={'verdict':'VERIFIED','reviewer':'synthetic test reviewer'}
+        by_id={doc['id']:doc for doc in lock['documents']}
+        wrong=by_id['card-BT11-023'];other=by_id['card-BT11-032']
+        for key in ('local_file','sha256','official_url'):
+            wrong[key]=other[key]
+        from matchup_rules_lock import inspect_lock
+        report=inspect_lock(lock,ROOT)
+        self.assertEqual(report['bad_hashes'],[])
+        self.assertEqual(report['status'],'UNVERIFIED')
+        self.assertIn('DOCUMENT_CARD_SOURCE_MISMATCH',report['blockers'])
+
 
 if __name__=='__main__':unittest.main()

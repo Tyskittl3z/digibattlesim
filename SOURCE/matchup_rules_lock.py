@@ -19,6 +19,8 @@ def inspect_lock(lock,root):
     expected={card.number for card in context.cards
               if any(card.number==n for seat in ('A','B')
                      for n,_ in context.deck(seat).main+context.deck(seat).eggs)}
+    expected_sources={card.number:card.to_dict()['official_source'] for card in context.cards
+                      if card.number in expected}
     card_pages=set()
     if (lock.get('schema')!='matchup-rules-lock-v1'
             or lock.get('ordered_decks')!=['123129','122110']
@@ -34,7 +36,14 @@ def inspect_lock(lock,root):
             blockers.append('DOCUMENT_ID_INVALID')
         ids.add(doc_id)
         if doc_id and doc_id.startswith('card-'):
-            card_pages.add(doc_id[5:])
+            number=doc_id[5:]
+            card_pages.add(number)
+            source=expected_sources.get(number)
+            if (source is None or doc.get('local_file')!=source['file']
+                    or doc.get('official_url')!=source['url']
+                    or doc.get('sha256')!=source['sha256']
+                    or set(doc.get('kind',[]))!={'CARD_TEXT','CARD_QA'}):
+                blockers.append('DOCUMENT_CARD_SOURCE_MISMATCH')
         url=urlparse(doc.get('official_url',''))
         if (url.scheme!='https' or url.hostname not in
                 ('digimoncard.com','world.digimoncard.com')):

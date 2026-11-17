@@ -127,6 +127,24 @@ def _handoff(out, index, lock):
             raise RuntimeError('PRIOR_GAME_NOT_COMMITTED: ' + str(prior))
         report = str(report_file.resolve().relative_to(ROOT))
         receipt = _load(prior / 'commit.json')
+        segments = _segments(prior)
+        if not segments:
+            raise RuntimeError('PRIOR_TERMINAL_SEGMENT_MISSING')
+        record = _record(segments[-1])
+        scheduled = lock['schedule']['games'][index - 1]
+        expected_game_id = digest({k: record[k] for k in
+            ('campaign_id', 'context_id', 'index', 'seed')})
+        if (record.get('status') != 'EXPERIMENTAL_SOFTWARE_TERMINAL'
+                or record.get('record_sha256') != digest({k: v for k, v in record.items()
+                    if k != 'record_sha256'})
+                or record.get('index') != index - 1
+                or record.get('campaign_id') != lock['campaign_id']
+                or record.get('context_id') != lock['context_id']
+                or record.get('seed') != scheduled['seed']
+                or record.get('first') != scheduled['first']
+                or receipt.get('record_sha256') != digest(record)
+                or receipt.get('game_id') != expected_game_id):
+            raise RuntimeError('PRIOR_RECORD_RECEIPT_MISMATCH')
         if receipt['learning_state_id'] != _load(model_file)['state_id'] or receipt['updated'] is not True:
             raise RuntimeError('PRIOR_MODEL_RECEIPT_MISMATCH')
     model = LearningState.from_dict(_load(model_file))
@@ -215,6 +233,8 @@ def advance_once(out=DEFAULT_OUT, index=0, *, budget=256):
         raise ValueError('game index 0..59 and positive budget required')
     out = Path(out).resolve()
     lock = _lock(out)
+    if lock['rules_lock_status'] != 'VERIFIED':
+        raise RuntimeError('RULES_LOCK_UNVERIFIED: ' + ','.join(lock['rules_lock_blockers']))
     model, report, report_sha = _handoff(out, index, lock)
     game_dir = out / f'game-{index:04d}'
     game_dir.mkdir(parents=True, exist_ok=True)

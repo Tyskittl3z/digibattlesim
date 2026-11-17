@@ -124,4 +124,14 @@ guard before claiming the mechanic pack broadly verified.
 - The empty prospective 60-game campaign driver pins the canonical matchup
   rules-lock hash, current source file hashes, scoring criteria and
   board-text policy source before game zero. It is still preparation, not
-  a run. Its lock currently carries `UNVERIFIED` and zero accepted credit.
+  a run. It refuses to start game zero while the rules lock is `UNVERIFIED`.
+  The lock currently carries zero accepted credit.
+- Independent code review identified two provenance failures: a card document
+  could borrow another card's valid official page, and a next-game handoff
+  could accept a prior receipt with the wrong record hash. The validator now
+  compares each card document's URL, path and SHA-256 to its exact loaded
+  card definition. The prospective driver binds each prior terminal segment
+  to its saved receipt, game ID, schedule entry and context before loading
+  the next game's model. Synthetic tampering tests cover both failures.
+- A focused current-state scenario also follows BT20-102 Raid through battle
+  deletion, mandatory Piercing, a Security check and attack end in order.
