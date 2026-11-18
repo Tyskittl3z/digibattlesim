@@ -12,6 +12,17 @@ saved match events instead of requiring a separate branch catalog. The older
 eligibility prerequisite. Bandai text/rulings and live state remain the
 authority for action legality; unsupported decisions halt on the saved seed.
 
+The first prospective fact-finding game used scheduled seed
+`16664364153905075627` with A starting and the prior board-text history
+loaded. It ended with B winning after 155 accepted commands. All 155 have
+accepted automated judge receipts and Bot C observations. Four saved segments
+and the terminal record replay exactly, with no judge halt. The terminal
+record's internal SHA-256 is
+`bc73cfcf192a3a52475f4c2adda1aab242434bef7daec0ea5d6098c39feb4c70`.
+The report and learning handoff were committed only after terminal replay.
+This is one completed experimental software game, zero rules-certified
+fact-finding matches, and zero final-evaluation matches.
+
 ## BT20-102 exact-name review — 2026-11-17
 
 The pinned Comprehensive Rules v4.3 sections 2-3-1-2 and 2-3-1-3 distinguish
@@ -27,9 +38,9 @@ interaction, and 58 affected tests passed. The earlier claim that the true
 branch was reachable was corrected in the rules review ledger.
 
 The matchup rules lock remains `UNVERIFIED` for missing official document
-effective dates and a separate complete rules review. No new verified cohort
-game has started; accepted fact-finding and final-evaluation credit remain
-zero. A broad repository test discovery run was interrupted after reporting
+effective dates and a separate complete rules review. At this earlier
+checkpoint, no prospective game had started; accepted fact-finding and
+final-evaluation credit remain zero. A broad repository test discovery run was interrupted after reporting
 errors in historical tests; it is not a passing full-suite result.
 
 ## Rules review in progress — 2026-11-16
