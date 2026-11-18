@@ -56,6 +56,17 @@ not queued its choice. The HALT and exact replay are preserved as segment 0;
 Game 13 and the Game 12 learning update have not started. A focused test
 reproduces this interaction and a source repair is in progress.
 
+The BT11-032 return now queues EX13-017's inherited replacement as an
+explicit defender choice. If declined, the selected Digimon returns to hand;
+if paid, it suspends and stays. The saved Game 12 test and 25 related
+return-effect tests pass. Source-only migration preserved all 180 accepted
+actions, the selected failed action, seed, state, RNG, policy choices and Bot C
+observations; original and migrated records replay exactly. Segment 1 holds
+the migrated HALT with lineage, and both original and repaired campaign locks
+are archived. The action has not yet been retried, Game 13 has not started,
+and certified credit remains zero. Two historical archive replay tests still
+fail on their old pending-effect IDs and are not evidence for this checkpoint.
+
 ## BT20-102 exact-name review — 2026-11-17
 
 The pinned Comprehensive Rules v4.3 sections 2-3-1-2 and 2-3-1-3 distinguish

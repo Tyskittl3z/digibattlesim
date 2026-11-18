@@ -10,9 +10,10 @@
     "sha256": "3f4ec5ef74432508c3e84e730cc34f0f00f56cf1d0eeeb46b720c2c616798dab"
   },
   "model_games_before": 14,
-  "record_sha256": "a5170b009b0a66f005b1164b97f94ca096d96a0fa19403ea9b2884dee0f620e0",
+  "record_sha256": "cb1855de771c915341b77fae2324d177245d894b82d61df6f3dfd07e1bebfc49",
+  "repair": "BT11-032 return now offers EX13-017 inherited leave replacement on the saved Game 12 target; earlier choices and state are unchanged.",
   "seed": 12975361446898795440,
-  "segment": 0,
+  "segment": 1,
   "status": "HALT",
   "winner": null
 }

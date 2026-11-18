@@ -1,0 +1,22 @@
+{
+  "approved_changes": {
+    "return_effects.py": {
+      "after": "400c58435610a839a38dd48786da224febea9b374f2848551c91d40590e09775",
+      "before": "74a121b91f9b2a1b79b5e8a10dd72a5d1f53156d711c10c97becece27d7eef66"
+    },
+    "selected_mechanics.py": {
+      "after": "6b15a31bd66c1aa4dde941f11a41edcd1bcab4f53274bd9c644cfe6962beed03",
+      "before": "a0d79461c0e195b6fc4586d643261b4337ed57844a9cd9ec1b3592df833497dd"
+    }
+  },
+  "game_index": 12,
+  "halt_reason": "ULFORCE_UNSUSPEND_RETURN_REPLACEMENT_CHOICE_REQUIRED: B:EX13-023#1",
+  "lineage_sha256": "a7153fdc78c1a8ed35f8e89157d4467b83ccef43aff0cab04fcfea81c1834cb1",
+  "migrated_record_sha256": "cb1855de771c915341b77fae2324d177245d894b82d61df6f3dfd07e1bebfc49",
+  "new_lock_sha256": "abbfc8af7688d37dcebd75f85bddcbe9b3cf3fbc65ac8ba0b497d89be8a53b75",
+  "old_lock_sha256": "50fc95d249238997b29e029f3eaa2208434dc38d616b64bbe3141e11f3d8c567",
+  "parent_record_sha256": "a5170b009b0a66f005b1164b97f94ca096d96a0fa19403ea9b2884dee0f620e0",
+  "repair_note": "BT11-032 return now offers EX13-017 inherited leave replacement on the saved Game 12 target; earlier choices and state are unchanged.",
+  "schema": "prospective-source-repair-v1",
+  "seed": 12975361446898795440
+}

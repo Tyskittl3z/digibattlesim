@@ -244,6 +244,7 @@ def _replacement_window(runtime, seat, source_key):
             or trigger.get('target_instance') != stack.instance_id
             or trigger.get('actor') == seat or trigger.get('source_effect') not in
             ('EX13-023.return_fewest', 'BT12-029.unsuspend_return_lowest',
+             'BT11-032.unsuspend_return',
              'BT22-023.on_play_return', 'BT22-023.when_digivolving_return',
              'BT20-102.on_play_digivolving')):
         raise RuntimeHalt('RETURN_REPLACEMENT_WINDOW_REQUIRED')
@@ -270,7 +271,8 @@ def resolve_return_replacement(runtime, seat, source_key, choice):
         runtime.state.once_used.add(usage)
         return {'prevented_return': True, 'suspended': target,
                 'once_per_turn_consumed': True, 'full_match_credit': 0}
-    if trigger['source_effect'] == 'BT12-029.unsuspend_return_lowest':
+    if trigger['source_effect'] in ('BT12-029.unsuspend_return_lowest',
+                                    'BT11-032.unsuspend_return'):
         moved = return_to_hand(runtime, actor, seat, target,
             halt_prefix='BT12_RETURN', replacement_handled=True)
     else:
