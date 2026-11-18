@@ -265,6 +265,29 @@ def resolve_return_replacement(runtime, seat, source_key, choice):
     record, stack = _replacement_window(runtime, seat, source_key)
     trigger = record['trigger']
     target, actor = trigger['target'], trigger['actor']
+    group_order = trigger.get('group_order')
+    if group_order is not None:
+        if (trigger['source_effect'] != 'EX13-023.return_fewest'
+                or not isinstance(group_order, list) or len(group_order) < 2
+                or len(group_order) != len(set(group_order))
+                or not isinstance(trigger.get('group_instances'), dict)
+                or set(group_order) != set(trigger['group_instances'])
+                or target not in group_order):
+            raise RuntimeHalt('RETURN_REPLACEMENT_GROUP_INVALID')
+        for key in group_order:
+            current = runtime.state.battle[seat].get(key)
+            if current is None or current.instance_id != trigger['group_instances'][key]:
+                raise RuntimeHalt('RETURN_REPLACEMENT_GROUP_CHANGED')
+            if key != target and inherited_return_replacement(runtime, actor, seat, key) is not None:
+                raise RuntimeHalt('RETURN_REPLACEMENT_GROUP_NEW_REPLACEMENT')
+        if choice:
+            stack.suspended = True
+            runtime.state.once_used.add(replacement_usage(runtime, seat, source_key, stack))
+        moving = [key for key in group_order if not choice or key != target]
+        moved = return_to_deck_bottom(runtime, actor, seat, moving, moving,
+            halt_prefix='ULFORCE_RETURN', replacement_handled=True)
+        return {'prevented_return': choice, 'suspended': target if choice else None,
+                'once_per_turn_consumed': choice, **moved, 'full_match_credit': 0}
     if choice:
         stack.suspended = True
         usage = replacement_usage(runtime, seat, source_key, stack)

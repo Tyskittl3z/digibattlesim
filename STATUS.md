@@ -88,6 +88,18 @@ replay, no Game 15 learning commit, and Game 16 has not started. This is a
 newly encountered branch; it requires a focused rule scenario and source-only
 migration before the saved action can continue.
 
+The reviewed Game 15 repair now queues the inherited replacement for one
+affected target while retaining the action controller's bottom-deck order
+for both tied targets. The defender can suspend the protected target and
+return only the other, or decline and return both in the chosen order.
+If multiple distinct replacements are simultaneously payable, the handler
+still halts before movement. The saved-state scenario and 27 related return
+tests passed. Source-only migration verified the 111 accepted-action prefix,
+original seed, state, RNG, policy choices and Bot C observations under the
+old and repaired sources. Migrated segment 1 and its exact replay receipt
+are saved, with both campaign lock versions and the approved two-file source
+diff. Game 15's failed action has not yet been retried; Game 16 remains off.
+
 ## BT20-102 exact-name review — 2026-11-17
 
 The pinned Comprehensive Rules v4.3 sections 2-3-1-2 and 2-3-1-3 distinguish

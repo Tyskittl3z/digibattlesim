@@ -10,9 +10,10 @@
     "sha256": "3983f9f4cf8ed7a49f1033d25695a10c502fbbe380895f911e5e1a131538bc89"
   },
   "model_games_before": 17,
-  "record_sha256": "18c929f908c46530c35e9ff8b0a79ed51b84ed8fd1210cb7b9ccd35eacd15eb8",
+  "record_sha256": "82626adc989f1b5649f5295da2a734a14af4c26485ab40d5c88c1b78439d7949",
+  "repair": "EX13-023 simultaneous two-target return now offers EX13-017 inherited replacement for one target while preserving the controller chosen bottom order for cards that leave.",
   "seed": 7725066267705985086,
-  "segment": 0,
+  "segment": 1,
   "status": "HALT",
   "winner": null
 }
