@@ -100,6 +100,17 @@ old and repaired sources. Migrated segment 1 and its exact replay receipt
 are saved, with both campaign lock versions and the approved two-file source
 diff. Game 15's failed action has not yet been retried; Game 16 remains off.
 
+The exact saved Game 15 action was then retried with its original two-card
+bottom order and accepted. Bot A chose the printed replacement to suspend
+its EX13-023 stack and keep it in battle; the other tied Digimon returned.
+Game 15 ended with A winning after 133 accepted actions, 133 accepted judge
+receipts and 133 Bot C observations. Terminal segment 2 replayed exactly,
+and the report/model handoff was committed. Its internal record SHA-256 is
+`50a83f11d1ae49f95e70a67a3fade80ed55813f18e7da4535286f839bfe2135f`.
+The original HALT and migration lineage remain archived. Progress is 16/60
+completed experimental software games, 0/60 certified fact-finding matches,
+and zero final-evaluation matches.
+
 ## BT20-102 exact-name review — 2026-11-17
 
 The pinned Comprehensive Rules v4.3 sections 2-3-1-2 and 2-3-1-3 distinguish

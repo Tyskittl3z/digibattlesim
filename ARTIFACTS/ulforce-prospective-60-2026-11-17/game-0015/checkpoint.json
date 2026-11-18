@@ -1,19 +1,18 @@
 {
   "accepted_fact_finding_credit": 0,
-  "commands": 112,
+  "commands": 133,
   "exact_replay": true,
   "first": "B",
   "game_index": 15,
-  "halt_reason": "ULFORCE_RETURN_REPLACEMENT_CHOICE_REQUIRED: A:EX13-023#4",
+  "halt_reason": null,
   "history_report": {
     "file": "ARTIFACTS/ulforce-prospective-60-2026-11-17/game-0014/report.md",
     "sha256": "3983f9f4cf8ed7a49f1033d25695a10c502fbbe380895f911e5e1a131538bc89"
   },
   "model_games_before": 17,
-  "record_sha256": "82626adc989f1b5649f5295da2a734a14af4c26485ab40d5c88c1b78439d7949",
-  "repair": "EX13-023 simultaneous two-target return now offers EX13-017 inherited replacement for one target while preserving the controller chosen bottom order for cards that leave.",
+  "record_sha256": "50a83f11d1ae49f95e70a67a3fade80ed55813f18e7da4535286f839bfe2135f",
   "seed": 7725066267705985086,
-  "segment": 1,
-  "status": "HALT",
-  "winner": null
+  "segment": 2,
+  "status": "EXPERIMENTAL_SOFTWARE_TERMINAL",
+  "winner": "A"
 }
