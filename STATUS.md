@@ -23,6 +23,15 @@ The report and learning handoff were committed only after terminal replay.
 This is one completed experimental software game, zero rules-certified
 fact-finding matches, and zero final-evaluation matches.
 
+Prospective game 1 then used scheduled seed `15362257287162317678` with B
+starting and Game 0's report/model loaded. It ended with B winning after 153
+accepted commands, 153 accepted judge receipts and 153 Bot C observations.
+The terminal segment replayed exactly, with no judge halt, and its report and
+learning handoff were committed. Its internal record SHA-256 is
+`9d72b233a90f32af37488ac34b12b8ecd62ee7c89b6bf1a4b0952ec671509734`.
+Prospective progress is 2 completed experimental software games, 0/60
+rules-certified games, and zero final-evaluation matches.
+
 ## BT20-102 exact-name review — 2026-11-17
 
 The pinned Comprehensive Rules v4.3 sections 2-3-1-2 and 2-3-1-3 distinguish
