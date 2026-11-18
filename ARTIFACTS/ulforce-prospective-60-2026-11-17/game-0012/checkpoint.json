@@ -1,19 +1,18 @@
 {
   "accepted_fact_finding_credit": 0,
-  "commands": 181,
+  "commands": 220,
   "exact_replay": true,
   "first": "A",
   "game_index": 12,
-  "halt_reason": "ULFORCE_UNSUSPEND_RETURN_REPLACEMENT_CHOICE_REQUIRED: B:EX13-023#1",
+  "halt_reason": null,
   "history_report": {
     "file": "ARTIFACTS/ulforce-prospective-60-2026-11-17/game-0011/report.md",
     "sha256": "3f4ec5ef74432508c3e84e730cc34f0f00f56cf1d0eeeb46b720c2c616798dab"
   },
   "model_games_before": 14,
-  "record_sha256": "cb1855de771c915341b77fae2324d177245d894b82d61df6f3dfd07e1bebfc49",
-  "repair": "BT11-032 return now offers EX13-017 inherited leave replacement on the saved Game 12 target; earlier choices and state are unchanged.",
+  "record_sha256": "cafa5e64189d0c8b268b676714144d2ac2a4642abf2382abce0bf30547b17c27",
   "seed": 12975361446898795440,
-  "segment": 1,
-  "status": "HALT",
-  "winner": null
+  "segment": 2,
+  "status": "EXPERIMENTAL_SOFTWARE_TERMINAL",
+  "winner": "A"
 }

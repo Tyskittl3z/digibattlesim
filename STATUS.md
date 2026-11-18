@@ -67,6 +67,16 @@ are archived. The action has not yet been retried, Game 13 has not started,
 and certified credit remains zero. Two historical archive replay tests still
 fail on their old pending-effect IDs and are not evidence for this checkpoint.
 
+The saved action was then retried under the repaired source and accepted
+without altering its target or earlier choices. Game 12 ended with A winning
+after 220 accepted actions, 220 accepted automated judge receipts and 220 Bot C
+observations. Its terminal segment 2 replayed exactly, and the report/model
+handoff was committed. The terminal internal SHA-256 is
+`cafa5e64189d0c8b268b676714144d2ac2a4642abf2382abce0bf30547b17c27`.
+The original HALT, migration lineage and prior lock remain archived. Current
+progress is 13/60 completed experimental software games, 0/60 certified
+fact-finding games, and zero final-evaluation matches.
+
 ## BT20-102 exact-name review — 2026-11-17
 
 The pinned Comprehensive Rules v4.3 sections 2-3-1-2 and 2-3-1-3 distinguish
