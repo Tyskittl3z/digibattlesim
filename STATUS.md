@@ -48,6 +48,14 @@ judge receipts and 2,009 Bot C observations. Every game is terminal and
 committed with no judge halt. These are 12/60 experimental software games,
 0/60 rules-certified fact-finding matches, and zero final-evaluation matches.
 
+Prospective Game 12 stopped at its saved action 181, seed
+`12975361446898795440`, first player A. BT11-032's unsuspend return selected
+B's EX13-023 stack with EX13-017 inherited. The defender's printed
+once-per-turn suspend replacement was available, but this return handler had
+not queued its choice. The HALT and exact replay are preserved as segment 0;
+Game 13 and the Game 12 learning update have not started. A focused test
+reproduces this interaction and a source repair is in progress.
+
 ## BT20-102 exact-name review — 2026-11-17
 
 The pinned Comprehensive Rules v4.3 sections 2-3-1-2 and 2-3-1-3 distinguish
