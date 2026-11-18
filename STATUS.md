@@ -32,6 +32,15 @@ learning handoff were committed. Its internal record SHA-256 is
 Prospective progress is 2 completed experimental software games, 0/60
 rules-certified games, and zero final-evaluation matches.
 
+The next bounded batch completed prospective Games 2 through 6 in order,
+each using its immediate predecessor's committed report and learning state.
+Across Games 0 through 6 there are 7 terminal software games, 4 A starts and
+3 B starts, 4 B wins and 3 A wins, 1,171 accepted actions, 1,171 accepted
+automated judge receipts and 1,171 Bot C observations. Each terminal record
+has an exact replay receipt and learning commit; no judge halt occurred.
+Rules-certified fact-finding credit remains 0/60 and final-evaluation credit
+remains zero because the source lock and independent rules review are open.
+
 ## BT20-102 exact-name review — 2026-11-17
 
 The pinned Comprehensive Rules v4.3 sections 2-3-1-2 and 2-3-1-3 distinguish
