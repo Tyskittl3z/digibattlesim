@@ -1,5 +1,17 @@
 # Verified handoff status
 
+## Live judging and trace-only interaction record — 2026-11-17
+
+The latest user correction removes advance and duplicate interaction
+inventories. The prospective campaign can now record bounded fact-finding
+segments while its rules lock is `UNVERIFIED`; its source identity checks,
+judge receipts, Bot C observations, exact replay and zero certified credit
+remain. The final eligibility gate derives observed interaction counts from
+saved match events instead of requiring a separate branch catalog. The older
+`RULES/INTERACTION_COVERAGE.json` validator is legacy and is no longer an
+eligibility prerequisite. Bandai text/rulings and live state remain the
+authority for action legality; unsupported decisions halt on the saved seed.
+
 ## BT20-102 exact-name review — 2026-11-17
 
 The pinned Comprehensive Rules v4.3 sections 2-3-1-2 and 2-3-1-3 distinguish

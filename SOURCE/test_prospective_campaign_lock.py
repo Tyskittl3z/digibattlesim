@@ -4,7 +4,6 @@ import json
 import shutil
 import tempfile
 import unittest
-from unittest.mock import patch
 
 from match_context import digest
 from test_selected_mechanics import ROOT
@@ -31,15 +30,17 @@ class ProspectiveCampaignLockTests(unittest.TestCase):
         self.assertEqual(lock['criteria']['criterion_sha256'],campaign.criteria_manifest()['criterion_sha256'])
         self.assertEqual(saved['lock_sha256'],digest(lock))
 
-    def test_unverified_rules_lock_prevents_first_cohort_game(self):
+    def test_unverified_rules_lock_allows_logged_noncredit_fact_finding(self):
         campaign=self.campaign()
         with tempfile.TemporaryDirectory() as temp:
             from pathlib import Path
             out=Path(temp)
-            with patch.object(campaign,'run_game',side_effect=AssertionError('game started')):
-                with self.assertRaisesRegex(RuntimeError,'RULES_LOCK_UNVERIFIED'):
-                    campaign.advance_once(out,0,budget=1)
-            self.assertFalse((out/'game-0000').exists())
+            result=campaign.advance_once(out,0,budget=1)
+            self.assertEqual(result['status'],'PAUSED')
+            self.assertEqual(result['accepted_fact_finding_credit'],0)
+            self.assertTrue(result['exact_replay'])
+            self.assertTrue((out/'game-0000/segment-0000.json.gz').is_file())
+            self.assertFalse((out/'game-0000/model-after.json').exists())
 
     def test_prior_receipt_must_bind_the_terminal_segment_before_handoff(self):
         campaign=self.campaign()

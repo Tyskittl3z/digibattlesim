@@ -14,7 +14,7 @@ import random
 from match_evidence import ROOT, canonical_bytes, digest, provenance
 from loaded_digivolution import BY_SEAT
 from seeded_opening_probe import seed_for
-from workflow_policy import (load_object, validate_rules_pin, validate_coverage,
+from workflow_policy import (load_object, validate_rules_pin, summarize_observed_interactions,
                              validate_criteria, validate_strategy_lane, validate_strategy_review)
 
 
@@ -277,12 +277,9 @@ def assess_eligibility(root, cohort_dir, review_path=None, strategy_review_path=
                 review = None
 
         try:
-            pinned_ids = {d['id'] for d in pin['documents']} if pin else set()
-            review_ids = {d['id'] for d in review['official_sources']} if review else set()
-            result['interaction_coverage'] = validate_coverage(
-                root, summary['provenance_sha256'], records, pinned_ids & review_ids, validate_snapshot)
+            result['observed_interactions'] = summarize_observed_interactions(records)
         except (OSError, ValueError, KeyError, TypeError, AttributeError) as exc:
-            block('INTERACTION_COVERAGE_INVALID', str(exc))
+            block('OBSERVED_INTERACTIONS_INVALID', str(exc))
 
         strategy_review = None
         if strategy_review_path is None:
