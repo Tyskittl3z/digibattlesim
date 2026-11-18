@@ -41,6 +41,13 @@ has an exact replay receipt and learning commit; no judge halt occurred.
 Rules-certified fact-finding credit remains 0/60 and final-evaluation credit
 remains zero because the source lock and independent rules review are open.
 
+Prospective Games 7 through 11 also completed in sequence with exact terminal
+replay and report/model handoffs. The 12-game checkpoint has 6 starts per
+seat, 7 B wins and 5 A wins, 2,009 accepted commands, 2,009 accepted automated
+judge receipts and 2,009 Bot C observations. Every game is terminal and
+committed with no judge halt. These are 12/60 experimental software games,
+0/60 rules-certified fact-finding matches, and zero final-evaluation matches.
+
 ## BT20-102 exact-name review — 2026-11-17
 
 The pinned Comprehensive Rules v4.3 sections 2-3-1-2 and 2-3-1-3 distinguish
