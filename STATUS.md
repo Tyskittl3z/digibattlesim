@@ -77,6 +77,17 @@ The original HALT, migration lineage and prior lock remain archived. Current
 progress is 13/60 completed experimental software games, 0/60 certified
 fact-finding games, and zero final-evaluation matches.
 
+Prospective Games 13 and 14 then completed and replayed exactly with 202 and
+174 accepted actions respectively; Game 13 was an A win and Game 14 a B win.
+Game 15 halted at saved action 112, seed `7725066267705985086`, first player B.
+B's EX13-023 selected two tied fewest-source opposing Digimon for its printed
+return-all effect. One target had EX13-017's inherited leave replacement.
+The current handler only queues that replacement when there is one target, so
+the two-target branch halted before moving either Digimon. The HALT has exact
+replay, no Game 15 learning commit, and Game 16 has not started. This is a
+newly encountered branch; it requires a focused rule scenario and source-only
+migration before the saved action can continue.
+
 ## BT20-102 exact-name review — 2026-11-17
 
 The pinned Comprehensive Rules v4.3 sections 2-3-1-2 and 2-3-1-3 distinguish

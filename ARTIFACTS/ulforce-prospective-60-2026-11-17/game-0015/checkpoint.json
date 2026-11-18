@@ -1,0 +1,18 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "commands": 112,
+  "exact_replay": true,
+  "first": "B",
+  "game_index": 15,
+  "halt_reason": "ULFORCE_RETURN_REPLACEMENT_CHOICE_REQUIRED: A:EX13-023#4",
+  "history_report": {
+    "file": "ARTIFACTS/ulforce-prospective-60-2026-11-17/game-0014/report.md",
+    "sha256": "3983f9f4cf8ed7a49f1033d25695a10c502fbbe380895f911e5e1a131538bc89"
+  },
+  "model_games_before": 17,
+  "record_sha256": "18c929f908c46530c35e9ff8b0a79ed51b84ed8fd1210cb7b9ccd35eacd15eb8",
+  "seed": 7725066267705985086,
+  "segment": 0,
+  "status": "HALT",
+  "winner": null
+}
