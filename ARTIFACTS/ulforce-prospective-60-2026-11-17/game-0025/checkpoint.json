@@ -1,19 +1,18 @@
 {
   "accepted_fact_finding_credit": 0,
-  "commands": 52,
+  "commands": 155,
   "exact_replay": true,
   "first": "B",
   "game_index": 25,
-  "halt_reason": "RETURN_MULTIPLE_REPLACEMENTS_UNIMPLEMENTED",
+  "halt_reason": null,
   "history_report": {
     "file": "ARTIFACTS/ulforce-prospective-60-2026-11-17/game-0024/report.md",
     "sha256": "24bc7a861c8c621baa7ebe1ae55be83328cdb70840b409f9838dbd6e6cfef248"
   },
   "model_games_before": 27,
-  "record_sha256": "668c3c076c6c46fe522543e43a223056f291ca5103c5badc8076f7317f2e4013",
-  "repair": "Offer both printed inherited return replacements for Game 25 BT20-102; defender orders them, and preventing the leave event cancels the other",
+  "record_sha256": "06973e235b0668b8e7dd98c59ad7f91dc6a2953d4aa674f862872026de8cf2e4",
   "seed": 12134641098518414298,
-  "segment": 1,
-  "status": "HALT",
-  "winner": null
+  "segment": 2,
+  "status": "EXPERIMENTAL_SOFTWARE_TERMINAL",
+  "winner": "B"
 }
