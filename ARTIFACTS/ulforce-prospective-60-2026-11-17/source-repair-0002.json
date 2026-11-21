@@ -1,0 +1,22 @@
+{
+  "approved_changes": {
+    "ex13_ulforce_effects.py": {
+      "after": "674a5a54832cf55bbce4a85ed47157c774dc3381d51abf7529508defccf57430",
+      "before": "efba54d4269ac888587cb28144b0acc200dc5b55c01ef03a88292a7197f80156"
+    },
+    "return_effects.py": {
+      "after": "927bf76e2ae6138560f27e48e04567f28df345898787228650f8529a701b50b7",
+      "before": "400c58435610a839a38dd48786da224febea9b374f2848551c91d40590e09775"
+    }
+  },
+  "game_index": 15,
+  "halt_reason": "ULFORCE_RETURN_REPLACEMENT_CHOICE_REQUIRED: A:EX13-023#4",
+  "lineage_sha256": "46068749a36089f085aee57fe4902a24bc8854bfc7a7f9d4c7c3bad7e37f3763",
+  "migrated_record_sha256": "82626adc989f1b5649f5295da2a734a14af4c26485ab40d5c88c1b78439d7949",
+  "new_lock_sha256": "e1cffde4aa41a98d57fed713d9debb87d1ba958002e7f552dea7fe59ca2ad804",
+  "old_lock_sha256": "abbfc8af7688d37dcebd75f85bddcbe9b3cf3fbc65ac8ba0b497d89be8a53b75",
+  "parent_record_sha256": "18c929f908c46530c35e9ff8b0a79ed51b84ed8fd1210cb7b9ccd35eacd15eb8",
+  "repair_note": "EX13-023 simultaneous two-target return now offers EX13-017 inherited replacement for one target while preserving the controller chosen bottom order for cards that leave.",
+  "schema": "prospective-source-repair-v1",
+  "seed": 7725066267705985086
+}

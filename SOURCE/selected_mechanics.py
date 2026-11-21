@@ -223,8 +223,22 @@ def resolve_ulforce_unsuspend_return(runtime, seat, source_key, choice):
     if choice is None:
         return {'processing': 'NO_ELIGIBLE_DIGIMON', 'returned': None,
                 'once_per_turn_consumed': True, 'full_match_credit': 0}
-    from return_effects import return_to_hand
+    from return_effects import (inherited_return_replacement, replacement_effect_id,
+                                return_to_hand)
     opponent = 'B' if seat == 'A' else 'A'
+    replacement = inherited_return_replacement(runtime, seat, opponent, choice)
+    if replacement is not None:
+        replacement_source, _ = replacement
+        stack = runtime.state.battle[opponent][choice]
+        queue_effects(runtime, [{'seat': opponent, 'source': replacement_source,
+            'effect_id': replacement_effect_id(runtime, opponent, replacement_source),
+            'field': 'inherited_text',
+            'trigger': {'kind': 'OPPONENT_EFFECT_RETURN', 'actor': seat,
+                'target': choice, 'target_instance': stack.instance_id,
+                'source_effect': ULFORCE_UNSUSPEND_RETURN_EFFECT}}])
+        return {'processing': 'RETURN_REPLACEMENT_PENDING', 'target': choice,
+                'replacement_source': replacement_source, 'returned': None,
+                'once_per_turn_consumed': True, 'full_match_credit': 0}
     moved = return_to_hand(runtime, seat, opponent, choice, halt_prefix='ULFORCE_UNSUSPEND_RETURN')
     return {'processing': 'RETURN_LEVEL_LIMIT_DIGIMON_TO_HAND', **moved,
             'once_per_turn_consumed': True, 'full_match_credit': 0}
@@ -698,6 +712,10 @@ def build_selected_registry(context, root):
     bindings.extend(rina_unsuspend_bindings(context,root,rules))
     from ex13_ulforce_effects import ulforce_return_bindings
     bindings.extend(ulforce_return_bindings(context,root,rules))
+    from omni_return_effect import omni_return_bindings
+    bindings.extend(omni_return_bindings(context,root,rules))
+    from raid_effect import raid_bindings
+    bindings.extend(raid_bindings(context,root,rules))
     from return_effects import inherited_return_replacement_bindings
     bindings.extend(inherited_return_replacement_bindings(context,root,rules))
     from rina_reactivation import rina_reactivation_bindings

@@ -24,6 +24,7 @@ _ARGUMENTS = {
     'BEGIN_PREPARATION': (set(), set()), 'REDRAW_CHOICE': ({'redraw'}, set()),
     'ADVANCE_PHASE': (set(), set()), 'BREEDING_CHOICE': ({'action'}, {'kind'}),
     'PLAY_CARD': ({'hand_key'}, {'kind', 'legality', 'printed_cost'}),
+    'ASSEMBLY_PLAY': ({'hand_key','materials'}, {'kind', 'legality', 'printed_cost'}),
     'USE_OPTION': ({'hand_key'}, {'kind', 'legality', 'printed_cost'}),
     'OPTION_DELAY': ({'source_key'}, {'kind', 'legality'}),
     'BATTLE_EVOLUTION': ({'source_key', 'hand_key', 'route_index'}, _ROUTE_META),

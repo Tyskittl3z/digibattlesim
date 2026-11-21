@@ -6,7 +6,8 @@ from pathlib import Path
 from context_runtime import MechanicBinding,RuntimeHalt
 from effect_scheduler import pending_options, queue_effects
 from match_context import require
-from return_effects import (inherited_return_replacement, replacement_effect_id,
+from return_effects import (inherited_return_replacement, inherited_return_replacements,
+                            replacement_effect_id,
                             return_to_deck_bottom)
 
 
@@ -73,17 +74,39 @@ def resolve_ulforce_return(runtime,seat,source_key,choice):
         raise RuntimeHalt('ULFORCE_RETURN_ORDER_INVALID')
     if len(targets) == 1:
         target_key, stack = targets[0]
-        replacement = inherited_return_replacement(runtime, seat, owner, target_key)
-        if replacement is not None:
-            source, usage = replacement
+        options = inherited_return_replacements(runtime, seat, owner, target_key)
+        if len(options) > 1:
+            trigger = {'kind': 'OPPONENT_EFFECT_RETURN', 'actor': seat,
+                       'target': target_key, 'target_instance': stack.instance_id,
+                       'source_effect': RETURN_EFFECT}
             queue_effects(runtime, [{'seat': owner, 'source': source,
-                'effect_id': replacement_effect_id(runtime, owner, source), 'field': 'inherited_text',
-                'trigger': {'kind': 'OPPONENT_EFFECT_RETURN', 'actor': seat,
-                    'target': target_key, 'target_instance': stack.instance_id,
-                    'source_effect': RETURN_EFFECT}}])
+                'effect_id': replacement_effect_id(runtime, owner, source),
+                'field': 'inherited_text', 'trigger': trigger}
+                for source, _ in options])
             return {'processing': 'RETURN_REPLACEMENT_PENDING', 'target': target_key,
-                'replacement_source': source, 'returned': [], 'trashed_sources': [],
-                'full_match_credit': 0}
+                'replacement_sources': [source for source, _ in options],
+                'returned': [], 'trashed_sources': [], 'full_match_credit': 0}
+    replacements = [(key, stack, inherited_return_replacement(runtime, seat, owner, key))
+                    for key, stack in targets]
+    payable = [(key, stack, replacement) for key, stack, replacement in replacements
+               if replacement is not None]
+    if len(payable) > 1:
+        raise RuntimeHalt('ULFORCE_RETURN_MULTIPLE_REPLACEMENTS_UNIMPLEMENTED')
+    if payable:
+        target_key, stack, replacement = payable[0]
+        source, _ = replacement
+        trigger = {'kind': 'OPPONENT_EFFECT_RETURN', 'actor': seat,
+                   'target': target_key, 'target_instance': stack.instance_id,
+                   'source_effect': RETURN_EFFECT}
+        if len(targets) > 1:
+            trigger['group_order'] = order
+            trigger['group_instances'] = {key: item.instance_id for key, item in targets}
+        queue_effects(runtime, [{'seat': owner, 'source': source,
+            'effect_id': replacement_effect_id(runtime, owner, source),
+            'field': 'inherited_text', 'trigger': trigger}])
+        return {'processing': 'RETURN_REPLACEMENT_PENDING', 'target': target_key,
+            'replacement_source': source, 'returned': [], 'trashed_sources': [],
+            'full_match_credit': 0}
     result=return_to_deck_bottom(runtime,seat,owner,[key for key,_ in targets],order,
                                  halt_prefix='ULFORCE_RETURN')
     return {'processing':'RETURNED_FEWEST_SOURCE_DIGIMON' if targets else 'NO_ELIGIBLE_TARGET',

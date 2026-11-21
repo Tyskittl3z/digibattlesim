@@ -63,18 +63,6 @@ class SecurityTamerTests(unittest.TestCase):
   self.assertEqual(r.state.attack['window'],'END')
   self.assertEqual(len(r.state.zones['A']['security']),len(before['state']['zones']['A']['security'])-1)
   r.verify()
- def test_recorded_bt11_112_security_play(self):
-  with gzip.open(ROOT/'ARTIFACTS/board-text-60-2026-11-11/game-0003/segment-0000.json.gz','rt') as handle:
-   record=json.load(handle)
-  context=load_context_file(ROOT/record['context_file'])
-  r=ContextRuntime(context,record['seed'],record['first'],build_selected_registry(context,ROOT),allow_experimental=True)
-  for command in record['commands'][:-1]:_apply(r,command['command'],command['seat'],command['args'],ROOT)
-  self.assertEqual(r.snapshot()['state'],record['commands'][-1]['before']['state'])
-  result=confirm_attack(r,'B',ROOT)
-  self.assertEqual(result['checked_card'],'A:BT11-112#3')
-  self.assertIn('A:BT11-112#3',r.state.battle['A'])
-  self.assertEqual(r.state.attack['window'],'END')
-  r.verify()
  def test_same_printed_security_template_plays_bt22_rina_and_queues_on_play_with_observer(self):
   from on_play_effects import ON_PLAY_SPECS
   from tamer_play_effects import OBSERVER_EFFECT

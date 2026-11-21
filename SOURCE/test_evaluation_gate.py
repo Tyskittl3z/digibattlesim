@@ -226,11 +226,12 @@ class OfficialEvidenceTests(unittest.TestCase):
         self.assertNotIn('JUDGE_REVIEW_INVALID', codes)
         self.assertFalse(result['eligible'])
 
-    def test_rules_review_alone_leaves_strategy_and_coverage_blocked(self):
+    def test_rules_review_leaves_strategy_blocked_without_a_separate_branch_catalog(self):
         result = self.assess(self.review())
         codes = {r['code'] for r in result['blockers']}
         self.assertIn('STRATEGY_REVIEW_MISSING', codes)
-        self.assertIn('INTERACTION_COVERAGE_INVALID', codes)
+        self.assertNotIn('INTERACTION_COVERAGE_INVALID', codes)
+        self.assertEqual(result['observed_interactions']['source'], 'SAVED_MATCH_TRACES')
         self.assertIn('RULES_PIN_INVALID', codes)
 
 

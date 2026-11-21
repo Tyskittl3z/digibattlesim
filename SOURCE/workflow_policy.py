@@ -116,6 +116,28 @@ def observed_branch(event):
     return value
 
 
+def summarize_observed_interactions(records):
+    """Count witnessed decisions and judge paths directly from saved traces.
+
+    This is an audit index, not a second interaction catalog or a rules
+    verdict. The judge's live receipts and match review own legality.
+    """
+    decisions = paths = 0
+    for _, record in records:
+        for event in record['transcript']['events']:
+            if event['type'] not in ('BOT_DECISION', 'JUDGE_PATH'):
+                continue
+            interaction_scope(event)
+            observed_branch(event)
+            if event['type'] == 'BOT_DECISION':
+                decisions += 1
+            else:
+                paths += 1
+    return {'source': 'SAVED_MATCH_TRACES', 'bot_decisions': decisions,
+            'judge_paths': paths, 'recorded_events': decisions + paths,
+            'rules_verdict': 'REQUIRES_MATCH_REVIEW'}
+
+
 def validate_coverage(root, provenance_sha256, records, source_ids, snapshot_validator=None):
     coverage = load_object(Path(root) / 'RULES/INTERACTION_COVERAGE.json')
     require(coverage.get('schema') == 'loaded-pair-interaction-coverage-v1'

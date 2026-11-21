@@ -117,6 +117,13 @@ def _declare(r,seat,c,root,*,from_end_effect=False):
     from selected_mechanics import _collect_orientation_reactions,collect_rina_attack_jamming
     effects=_collect_orientation_reactions(r,seat,stack,suspended_before)
     effects.extend(collect_rina_attack_jamming(r,seat,c['attacker']))
+    if top.card_number=='BT20-102':
+        from raid_effect import EFFECT as RAID_EFFECT,LINE as RAID_LINE
+        if RAID_LINE not in r.context.card(seat,top.card_number).effect_text('main_text').splitlines():
+            raise RuntimeHalt('RAID_PRINTED_TEXT_CHANGED')
+        effects.append({'seat':seat,'source':top.key,'effect_id':RAID_EFFECT,'field':'main_text',
+                        'trigger':{'kind':'When Attacking','attacker':top.key,
+                                   'declared_target':target}})
     if trigger_lines(r.context.card(seat,top.card_number).effect_text('main_text'),'When Attacking'):
         # Scope above proved the exact printed line. Shared once-per-turn
         # usage covers the same effect's other printed activation windows.

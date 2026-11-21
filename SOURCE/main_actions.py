@@ -16,7 +16,8 @@ from selected_contexts import require_selected_context
 PLAIN_MAIN_TEXT = {'EX1-013':'','ST7-05':'','BT9-011':''}
 
 
-def _play(runtime,seat,choice,root,*,within_effect=False,source_zone='hand',cost_override=None):
+def _play(runtime,seat,choice,root,*,within_effect=False,source_zone='hand',cost_override=None,
+          assembly_materials=None):
     state=runtime.state
     try:
         locked=require_selected_context(runtime.context,root)
@@ -48,6 +49,9 @@ def _play(runtime,seat,choice,root,*,within_effect=False,source_zone='hand',cost
         from selected_mechanics import ORIENTATION_EFFECT,ORIENTATION_LINE
         from ex13_ulforce_effects import RETURN_EFFECT,RETURN_LINE
         specs=((ORIENTATION_EFFECT,ORIENTATION_LINE),(RETURN_EFFECT,RETURN_LINE))
+    if card.number=='BT20-102':
+        from omni_return_effect import EFFECT,LINE
+        specs=((EFFECT,LINE),)
     on_play=trigger_lines(card.effect_text('main_text'),'On Play')
     if on_play and on_play!=tuple(item[1] for item in specs):
         raise RuntimeHalt('PLAY_EFFECT_UNSUPPORTED: '+card.number+' timing=On Play')
@@ -57,16 +61,27 @@ def _play(runtime,seat,choice,root,*,within_effect=False,source_zone='hand',cost
         event={'seat':seat,'card_number':card.number},within_effect=within_effect)
     for spec in specs:
         runtime.registry.lookup(card.number,spec[0],'main_text')
-    if cost_override is not None and not within_effect:
+    if cost_override is not None and not within_effect and assembly_materials is None:
         raise RuntimeHalt('PLAY_COST_OVERRIDE_WINDOW_INVALID')
+    materials=[]
+    if assembly_materials is not None:
+        from assembly_actions import ASSEMBLY_COST,assembly_choices
+        if (within_effect or source_zone!='hand' or card.number!='EX13-023'
+                or type(assembly_materials) is not list
+                or assembly_materials not in assembly_choices(runtime,seat,physical.key)
+                or cost_override!=ASSEMBLY_COST):
+            raise RuntimeHalt('ASSEMBLY_MATERIALS_INVALID')
+        materials=[next(c for c in state.zones[seat]['trash'] if c.key==key)
+                   for key in assembly_materials]
     cost=(cost_override if cost_override is not None else 0 if within_effect
           else card.to_dict()['play_cost'])
     if type(cost) is not int or cost<0 or cost>state.memory+10:
         raise RuntimeHalt('PLAY_COST_NOT_PAYABLE')
     state.memory-=cost
     if pool is not None:pool.remove(physical)
+    for material in materials:state.zones[seat]['trash'].remove(material)
     state.entity_sequence+=1
-    state.battle[seat][physical.key]=Stack([physical],instance_id='entity-'+str(state.entity_sequence),
+    state.battle[seat][physical.key]=Stack(materials+[physical],instance_id='entity-'+str(state.entity_sequence),
                                          played_turn=state.turn,ready_since_turn=state.turn+1)
     effects=[]
     for spec in specs:
@@ -86,7 +101,9 @@ def _play(runtime,seat,choice,root,*,within_effect=False,source_zone='hand',cost
     return {'played_card':physical.key,'cost':cost,'memory_after':state.memory,'full_match_credit':0,
             'rules_source':choice['rules'],'card_source':card_evidence,'scope_context_id':locked.matchup_id,
             'printed_trigger':'On Play','triggered_effects':[record['effect_id'] for record in effects],
-            'play_method':'EFFECT_WITHOUT_PAYING_COST' if within_effect else 'MAIN_ACTION'}
+            'play_method':('ASSEMBLY' if assembly_materials is not None else
+                           'EFFECT_WITHOUT_PAYING_COST' if within_effect else 'MAIN_ACTION'),
+            'assembly_materials':list(assembly_materials) if assembly_materials is not None else []}
 
 
 def play_tamer_from_security(runtime,seat,source_key,root):
@@ -142,3 +159,11 @@ def choose_play(runtime,seat,hand_key,root):
     rules={**_rules(root),'locator':'Comprehensive rules v4.3: 1-3-11-1; 4-2; 6-5-1-1; 7-1-1 through 7-1-3-3'}
     def play(trial,controller,choice):return _play(trial,controller,choice,root)
     return runtime._control_command('PLAY_CARD',seat,{'hand_key':hand_key,'rules':rules},play)
+
+
+def choose_assembly(runtime,seat,hand_key,materials,root):
+    rules={**_rules(root),'locator':'Comprehensive rules v4.3: 7-3-1; 7-3-2; 7-3-3; EX13-023 Q7268'}
+    return runtime._control_command('ASSEMBLY_PLAY',seat,
+        {'hand_key':hand_key,'materials':materials,'rules':rules},
+        lambda trial,controller,choice:_play(trial,controller,choice,root,
+            cost_override=7,assembly_materials=choice['materials']))

@@ -1,5 +1,136 @@
 # Verified handoff status
 
+## Live judging and trace-only interaction record — 2026-11-17
+
+The latest user correction removes advance and duplicate interaction
+inventories. The prospective campaign can now record bounded fact-finding
+segments while its rules lock is `UNVERIFIED`; its source identity checks,
+judge receipts, Bot C observations, exact replay and zero certified credit
+remain. The final eligibility gate derives observed interaction counts from
+saved match events instead of requiring a separate branch catalog. The older
+`RULES/INTERACTION_COVERAGE.json` validator is legacy and is no longer an
+eligibility prerequisite. Bandai text/rulings and live state remain the
+authority for action legality; unsupported decisions halt on the saved seed.
+
+The first prospective fact-finding game used scheduled seed
+`16664364153905075627` with A starting and the prior board-text history
+loaded. It ended with B winning after 155 accepted commands. All 155 have
+accepted automated judge receipts and Bot C observations. Four saved segments
+and the terminal record replay exactly, with no judge halt. The terminal
+record's internal SHA-256 is
+`bc73cfcf192a3a52475f4c2adda1aab242434bef7daec0ea5d6098c39feb4c70`.
+The report and learning handoff were committed only after terminal replay.
+This is one completed experimental software game, zero rules-certified
+fact-finding matches, and zero final-evaluation matches.
+
+Prospective game 1 then used scheduled seed `15362257287162317678` with B
+starting and Game 0's report/model loaded. It ended with B winning after 153
+accepted commands, 153 accepted judge receipts and 153 Bot C observations.
+The terminal segment replayed exactly, with no judge halt, and its report and
+learning handoff were committed. Its internal record SHA-256 is
+`9d72b233a90f32af37488ac34b12b8ecd62ee7c89b6bf1a4b0952ec671509734`.
+Prospective progress is 2 completed experimental software games, 0/60
+rules-certified games, and zero final-evaluation matches.
+
+The next bounded batch completed prospective Games 2 through 6 in order,
+each using its immediate predecessor's committed report and learning state.
+Across Games 0 through 6 there are 7 terminal software games, 4 A starts and
+3 B starts, 4 B wins and 3 A wins, 1,171 accepted actions, 1,171 accepted
+automated judge receipts and 1,171 Bot C observations. Each terminal record
+has an exact replay receipt and learning commit; no judge halt occurred.
+Rules-certified fact-finding credit remains 0/60 and final-evaluation credit
+remains zero because the source lock and independent rules review are open.
+
+Prospective Games 7 through 11 also completed in sequence with exact terminal
+replay and report/model handoffs. The 12-game checkpoint has 6 starts per
+seat, 7 B wins and 5 A wins, 2,009 accepted commands, 2,009 accepted automated
+judge receipts and 2,009 Bot C observations. Every game is terminal and
+committed with no judge halt. These are 12/60 experimental software games,
+0/60 rules-certified fact-finding matches, and zero final-evaluation matches.
+
+Prospective Game 12 stopped at its saved action 181, seed
+`12975361446898795440`, first player A. BT11-032's unsuspend return selected
+B's EX13-023 stack with EX13-017 inherited. The defender's printed
+once-per-turn suspend replacement was available, but this return handler had
+not queued its choice. The HALT and exact replay are preserved as segment 0;
+Game 13 and the Game 12 learning update have not started. A focused test
+reproduces this interaction and a source repair is in progress.
+
+The BT11-032 return now queues EX13-017's inherited replacement as an
+explicit defender choice. If declined, the selected Digimon returns to hand;
+if paid, it suspends and stays. The saved Game 12 test and 25 related
+return-effect tests pass. Source-only migration preserved all 180 accepted
+actions, the selected failed action, seed, state, RNG, policy choices and Bot C
+observations; original and migrated records replay exactly. Segment 1 holds
+the migrated HALT with lineage, and both original and repaired campaign locks
+are archived. The action has not yet been retried, Game 13 has not started,
+and certified credit remains zero. Two historical archive replay tests still
+fail on their old pending-effect IDs and are not evidence for this checkpoint.
+
+The saved action was then retried under the repaired source and accepted
+without altering its target or earlier choices. Game 12 ended with A winning
+after 220 accepted actions, 220 accepted automated judge receipts and 220 Bot C
+observations. Its terminal segment 2 replayed exactly, and the report/model
+handoff was committed. The terminal internal SHA-256 is
+`cafa5e64189d0c8b268b676714144d2ac2a4642abf2382abce0bf30547b17c27`.
+The original HALT, migration lineage and prior lock remain archived. Current
+progress is 13/60 completed experimental software games, 0/60 certified
+fact-finding games, and zero final-evaluation matches.
+
+Prospective Games 13 and 14 then completed and replayed exactly with 202 and
+174 accepted actions respectively; Game 13 was an A win and Game 14 a B win.
+Game 15 halted at saved action 112, seed `7725066267705985086`, first player B.
+B's EX13-023 selected two tied fewest-source opposing Digimon for its printed
+return-all effect. One target had EX13-017's inherited leave replacement.
+The current handler only queues that replacement when there is one target, so
+the two-target branch halted before moving either Digimon. The HALT has exact
+replay, no Game 15 learning commit, and Game 16 has not started. This is a
+newly encountered branch; it requires a focused rule scenario and source-only
+migration before the saved action can continue.
+
+The reviewed Game 15 repair now queues the inherited replacement for one
+affected target while retaining the action controller's bottom-deck order
+for both tied targets. The defender can suspend the protected target and
+return only the other, or decline and return both in the chosen order.
+If multiple distinct replacements are simultaneously payable, the handler
+still halts before movement. The saved-state scenario and 27 related return
+tests passed. Source-only migration verified the 111 accepted-action prefix,
+original seed, state, RNG, policy choices and Bot C observations under the
+old and repaired sources. Migrated segment 1 and its exact replay receipt
+are saved, with both campaign lock versions and the approved two-file source
+diff. Game 15's failed action has not yet been retried; Game 16 remains off.
+
+The exact saved Game 15 action was then retried with its original two-card
+bottom order and accepted. Bot A chose the printed replacement to suspend
+its EX13-023 stack and keep it in battle; the other tied Digimon returned.
+Game 15 ended with A winning after 133 accepted actions, 133 accepted judge
+receipts and 133 Bot C observations. Terminal segment 2 replayed exactly,
+and the report/model handoff was committed. Its internal record SHA-256 is
+`50a83f11d1ae49f95e70a67a3fade80ed55813f18e7da4535286f839bfe2135f`.
+The original HALT and migration lineage remain archived. Progress is 16/60
+completed experimental software games, 0/60 certified fact-finding matches,
+and zero final-evaluation matches.
+
+## BT20-102 exact-name review — 2026-11-17
+
+The pinned Comprehensive Rules v4.3 sections 2-3-1-2 and 2-3-1-3 distinguish
+an exact bracketed card name from the phrase "with [X] in its name."
+Bot B's BT12-029 is `UlforceVeedramon (X Antibody)`, so evolving its sole
+BT20-102 onto BT12-029 does not satisfy the first-process `[X Antibody]`
+condition. The mandatory Then return still resolves under Q4725. Neither
+selected list has a source card exactly named `Omnimon` or `X Antibody`; the
+true conditional board wipe is not reachable in this selected matchup. The
+generic true branch remains explicitly unsupported for future matchups. The
+engine now checks exact names, a focused evolution scenario covers this
+interaction, and 58 affected tests passed. The earlier claim that the true
+branch was reachable was corrected in the rules review ledger.
+
+The matchup rules lock remains `UNVERIFIED` for missing official document
+effective dates and a separate complete rules review. At this earlier
+checkpoint, no prospective game had started; accepted fact-finding and
+final-evaluation credit remain zero. A broad repository test discovery run was interrupted after reporting
+errors in historical tests; it is not a passing full-suite result.
+
 ## Rules review in progress — 2026-11-16
 
 The selected 123129 vs 122110 mirror's corrected 60-game archive remains

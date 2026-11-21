@@ -1,0 +1,18 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "commands": 134,
+  "exact_replay": true,
+  "first": "A",
+  "game_index": 22,
+  "halt_reason": null,
+  "history_report": {
+    "file": "ARTIFACTS/ulforce-prospective-60-2026-11-17/game-0021/report.md",
+    "sha256": "b2fdf9cac1410c9c2cd3ab2501038e2717fac1adf24c153d86f82e90edfaaba0"
+  },
+  "model_games_before": 24,
+  "record_sha256": "c7f939c92f1548dedb340ec362b3c88a5c7b08983d4c3f79531d77bb46ee7419",
+  "seed": 14962638506343889221,
+  "segment": 0,
+  "status": "EXPERIMENTAL_SOFTWARE_TERMINAL",
+  "winner": "A"
+}

@@ -22,6 +22,7 @@ _BOOTSTRAP_RUNNER = 'dd5cd17e718097c69e391c09e9b9d9c7c62b8021cc261b696f575433208
 _TRACKER_EXTENSION_BASE = 'fc3fcdcc639b5551729f8d752131661a468028ffe3de66b8345e18151e292a4e'
 _BLOCKER_EXTENSION_BASE = 'a9cfc58ba2499d8aed6438dfc9f3d3cddb12378f41927429e39add20a34b42dc'
 _CHOICE_ROUTER_BASE = '13402f5987663e0df17c64453328d218b3574a6babc0390df8b02f448fc4f0d4'
+_OMNI_RETURN_ALLOWLIST_BASE = 'c95e2ce0998e8b5902063b35432a1cfaf94f4cd7ac0178437d98c09645346014'
 # Explicit engine surface. Context, policies, schedule, judge, scorer, tracker and
 # evidence/freeze tooling are intentionally outside this list.
 _ENGINE = frozenset(('context_runtime.py', 'effect_scheduler.py', 'match_preparation.py',
@@ -162,6 +163,8 @@ def _differences(before, after, approved, *, bootstrap_sources=None):
              'fresh_repair_migration.py'} <= set(actual)
         and set(actual) - _ENGINE == {'interaction_learning.py', 'fresh_learning_campaign.py',
                                      'imported_attempts.py', 'fresh_repair_migration.py'})
+    omni_return_extension = (before.get('fresh_repair_migration.py') == _OMNI_RETURN_ALLOWLIST_BASE
+        and set(actual) == {'fresh_repair_migration.py', 'omni_return_effect.py', 'return_effects.py'})
     allowed = _ENGINE | ({'fresh_learning_campaign.py', 'fresh_repair_migration.py'} if bootstrap else set())
     if tracker_extension:
         allowed |= {'fresh_repair_migration.py'}
@@ -174,6 +177,8 @@ def _differences(before, after, approved, *, bootstrap_sources=None):
     if end_attack_router_extension:
         allowed |= {'interaction_learning.py', 'fresh_learning_campaign.py',
                     'imported_attempts.py', 'fresh_repair_migration.py'}
+    if omni_return_extension:
+        allowed |= {'omni_return_effect.py', 'fresh_repair_migration.py'}
     if set(actual) - allowed or any(before.get(k) is None or after.get(k) is None
                                     for k in actual if k in _ENGINE):
         raise RuntimeHalt('REPAIR_PROTECTED_SOURCE_CHANGE')
