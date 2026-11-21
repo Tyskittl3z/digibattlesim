@@ -1,19 +1,18 @@
 {
   "accepted_fact_finding_credit": 0,
-  "commands": 124,
+  "commands": 187,
   "exact_replay": true,
   "first": "B",
   "game_index": 37,
-  "halt_reason": "RETURN_MULTIPLE_REPLACEMENTS_UNIMPLEMENTED",
+  "halt_reason": null,
   "history_report": {
     "file": "ARTIFACTS/ulforce-prospective-60-2026-11-17/game-0036/report.md",
     "sha256": "10631d8c3984db5e6097c60dd43afc755451e378b1086d3f202d13fbba203a04"
   },
   "model_games_before": 39,
-  "record_sha256": "d26033ff187d33c8bc1e53a926bc960ee2752e0c656255c0207645198d4d96d0",
-  "repair": "Offer both printed inherited return replacements for the encountered single-target EX13-023 return in Game 37",
+  "record_sha256": "b8610f61372ba6782f7abd91d93d375143aaca9b4f0ed66bce40ebc9299631fc",
   "seed": 18198063192358571856,
-  "segment": 1,
-  "status": "HALT",
-  "winner": null
+  "segment": 2,
+  "status": "EXPERIMENTAL_SOFTWARE_TERMINAL",
+  "winner": "B"
 }
