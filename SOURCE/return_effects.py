@@ -47,14 +47,22 @@ def replacement_effect_id(runtime, owner, source_key):
 
 def inherited_return_replacement(runtime, actor, owner, target_key):
     """The exact printed, currently payable replacement on this affected stack."""
+    found = inherited_return_replacements(runtime, actor, owner, target_key)
+    if len(found) > 1:
+        raise RuntimeHalt('RETURN_MULTIPLE_REPLACEMENTS_UNIMPLEMENTED')
+    return found[0] if found else None
+
+
+def inherited_return_replacements(runtime, actor, owner, target_key):
+    """All payable inherited replacements for one would-leave event."""
     stack = runtime.state.battle[owner][target_key]
     top = runtime.context.card(owner, stack.cards[-1].card_number)
     if (actor == owner or 'Veedramon' not in top.name or stack.suspended
             or stack.statuses.get('cannot_suspend', False)):
-        return None
+        return []
     from effect_grants import active_restriction
     if active_restriction(runtime, owner, target_key, 'cannot_suspend'):
-        return None
+        return []
     found = []
     for source in stack.cards[:-1]:
         definition = runtime.context.card(owner, source.card_number)
@@ -63,9 +71,7 @@ def inherited_return_replacement(runtime, actor, owner, target_key):
             usage = replacement_usage(runtime, owner, source.key, stack)
             if usage not in runtime.state.once_used:
                 found.append((source.key, usage))
-    if len(found) > 1:
-        raise RuntimeHalt('RETURN_MULTIPLE_REPLACEMENTS_UNIMPLEMENTED')
-    return found[0] if found else None
+    return found
 
 
 def _strings(value):
@@ -98,7 +104,7 @@ def preflight_deck_bottom_return(runtime, actor, owner, target_key, *, halt_pref
     from effect_grants import validate_grants
     target = runtime.state.battle[owner][target_key]
     target_definition = runtime.context.card(owner, target.cards[-1].card_number)
-    if inherited_return_replacement(runtime, actor, owner, target_key) and not replacement_handled:
+    if not replacement_handled and inherited_return_replacement(runtime, actor, owner, target_key):
         raise RuntimeHalt(halt_prefix + '_REPLACEMENT_CHOICE_REQUIRED: ' + target_key)
     if target.statuses:
         validate_grants(runtime, owner, target_key)
@@ -254,8 +260,8 @@ def _replacement_window(runtime, seat, source_key):
 def return_replacement_choices(runtime, seat, source_key):
     record, stack = _replacement_window(runtime, seat, source_key)
     target = record['trigger']['target']
-    return [False, True] if inherited_return_replacement(runtime,
-        record['trigger']['actor'], seat, target) is not None else [False]
+    available = inherited_return_replacements(runtime, record['trigger']['actor'], seat, target)
+    return [False, True] if any(source == source_key for source, _ in available) else [False]
 
 
 def resolve_return_replacement(runtime, seat, source_key, choice):
@@ -265,6 +271,9 @@ def resolve_return_replacement(runtime, seat, source_key, choice):
     record, stack = _replacement_window(runtime, seat, source_key)
     trigger = record['trigger']
     target, actor = trigger['target'], trigger['actor']
+    siblings = [pending for pending in runtime.state.pending
+                if pending['seat'] == seat and pending['trigger'] == trigger
+                and pending['effect_id'] in (REPLACEMENT_EFFECT, BT22_REPLACEMENT_EFFECT)]
     group_order = trigger.get('group_order')
     if group_order is not None:
         if (trigger['source_effect'] != 'EX13-023.return_fewest'
@@ -292,8 +301,17 @@ def resolve_return_replacement(runtime, seat, source_key, choice):
         stack.suspended = True
         usage = replacement_usage(runtime, seat, source_key, stack)
         runtime.state.once_used.add(usage)
+        # The protected Digimon no longer would leave. CR15-4-4-5 cancels
+        # other immediate effects pending for this same leave event.
+        for pending in siblings:
+            runtime.state.pending.remove(pending)
+            runtime.events.append({'type': 'PENDING_CANCELLED', 'turn': runtime.state.turn,
+                                   'effect': pending, 'reason': 'RETURN_EVENT_PREVENTED'})
         return {'prevented_return': True, 'suspended': target,
                 'once_per_turn_consumed': True, 'full_match_credit': 0}
+    if siblings:
+        return {'prevented_return': False, 'replacement_pending': True,
+                'full_match_credit': 0}
     if trigger['source_effect'] in ('BT12-029.unsuspend_return_lowest',
                                     'BT11-032.unsuspend_return'):
         moved = return_to_hand(runtime, actor, seat, target,

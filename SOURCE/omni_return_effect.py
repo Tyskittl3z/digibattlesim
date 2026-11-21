@@ -4,7 +4,7 @@ import hashlib
 from context_runtime import MechanicBinding, RuntimeHalt
 from effect_scheduler import pending_options, queue_effects
 from match_context import require
-from return_effects import inherited_return_replacement, replacement_effect_id, return_to_deck_bottom
+from return_effects import inherited_return_replacements, replacement_effect_id, return_to_deck_bottom
 
 EFFECT = 'BT20-102.on_play_digivolving'
 LINE = ("[On Play] [When Digivolving] If [Omnimon] or [X Antibody] "
@@ -33,15 +33,15 @@ def resolve_omni_return(runtime,seat,source_key,choice):
     if choice is None:
         return {'processing':'NO_ELIGIBLE_TARGET','returned':None,'full_match_credit':0}
     opponent='B' if seat=='A' else 'A'
-    replacement=inherited_return_replacement(runtime,seat,opponent,choice)
-    if replacement is not None:
-        replacement_source,_=replacement
+    replacements=inherited_return_replacements(runtime,seat,opponent,choice)
+    if replacements:
         stack=runtime.state.battle[opponent][choice]
         queue_effects(runtime,[{'seat':opponent,'source':replacement_source,
             'effect_id':replacement_effect_id(runtime,opponent,replacement_source),
             'field':'inherited_text','trigger':{'kind':'OPPONENT_EFFECT_RETURN',
                 'actor':seat,'target':choice,'target_instance':stack.instance_id,
-                'source_effect':EFFECT}}])
+                'source_effect':EFFECT}}
+            for replacement_source,_ in replacements])
         return {'processing':'RETURN_REPLACEMENT_PENDING','target':choice,
                 'returned':None,'full_match_credit':0}
     moved=return_to_deck_bottom(runtime,seat,opponent,[choice],[choice],
