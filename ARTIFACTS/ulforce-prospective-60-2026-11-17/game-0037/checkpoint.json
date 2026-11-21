@@ -10,9 +10,10 @@
     "sha256": "10631d8c3984db5e6097c60dd43afc755451e378b1086d3f202d13fbba203a04"
   },
   "model_games_before": 39,
-  "record_sha256": "533987439926ad2019494fc7a8c56bffc3dc3dc348fb2649b3faeba069657867",
+  "record_sha256": "d26033ff187d33c8bc1e53a926bc960ee2752e0c656255c0207645198d4d96d0",
+  "repair": "Offer both printed inherited return replacements for the encountered single-target EX13-023 return in Game 37",
   "seed": 18198063192358571856,
-  "segment": 0,
+  "segment": 1,
   "status": "HALT",
   "winner": null
 }

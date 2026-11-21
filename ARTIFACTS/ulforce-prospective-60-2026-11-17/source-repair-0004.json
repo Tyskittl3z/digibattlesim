@@ -1,0 +1,18 @@
+{
+  "approved_changes": {
+    "ex13_ulforce_effects.py": {
+      "after": "b0bccbadfdff5652bf912386939f68de0f4d448f8c5a83a3e52fa6042e26cf54",
+      "before": "674a5a54832cf55bbce4a85ed47157c774dc3381d51abf7529508defccf57430"
+    }
+  },
+  "game_index": 37,
+  "halt_reason": "RETURN_MULTIPLE_REPLACEMENTS_UNIMPLEMENTED",
+  "lineage_sha256": "6e6076f1e6f6d248b042cefe71c60f68c24ebd4da9cda4ea08cccbd757fca79f",
+  "migrated_record_sha256": "d26033ff187d33c8bc1e53a926bc960ee2752e0c656255c0207645198d4d96d0",
+  "new_lock_sha256": "763901f0d516029b2be7251a83d485eae900ea69c658f634dccae8ee6de61331",
+  "old_lock_sha256": "73e95be99cc0378d23b37666b4f9d284dd01e49573441afff30f5fff8c95587d",
+  "parent_record_sha256": "533987439926ad2019494fc7a8c56bffc3dc3dc348fb2649b3faeba069657867",
+  "repair_note": "Offer both printed inherited return replacements for the encountered single-target EX13-023 return in Game 37",
+  "schema": "prospective-source-repair-v1",
+  "seed": 18198063192358571856
+}
