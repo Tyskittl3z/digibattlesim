@@ -15,6 +15,8 @@ The command-boundary board-impact labels total 4,080 GREEN, 5,391 YELLOW, and 1,
 
 These colors measure the immediate observed public board change under `RULES/learning-2026-11-10/INTERACTION_CRITERIA.json`. They are not best/medium/worst strategy approvals. For example, 544 attack declarations were RED at the declaration boundary, while the cohort later recorded 532 successful security checks. Declaring an attack suspends its attacker before the check resolves; the declaration's RED label cannot by itself say whether the full attack was a poor choice. The cohort ran through five engine-source manifests because four encountered judge halts required source repairs and exact prefix migrations.
 
+A later read-only grouping of each saved attack window under the same board weights found 359 positive, 58 neutral and 127 negative completed exchanges. All 544 declarations had been RED at the first command boundary. This grouping is a diagnostic calculation for the new learner, not a rewrite of the old saved ratings or a reviewed strategic verdict.
+
 ## Limits that affect the next run
 
 - Both pilot manifests say `BOARD_AND_CARD_TEXT` and use the same `BOARD_TEXT_HISTORY` policy source. The promised aggressive Bot A versus defensive Bot B distinction is not present in this cohort. Different deck, seat, hand and seed inputs do not establish different policy styles.
