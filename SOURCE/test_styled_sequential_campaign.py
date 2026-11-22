@@ -14,6 +14,22 @@ DRIVER = ROOT / 'ARTIFACTS/styled-prospective-60-2026-11-21/campaign.py'
 
 
 class StyledSequentialCampaignTests(unittest.TestCase):
+    def test_missing_replay_receipt_is_rebuilt_from_saved_segment(self):
+        spec = importlib.util.spec_from_file_location('styled_campaign', DRIVER)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        with TemporaryDirectory() as temporary:
+            out = Path(temporary)
+            first = module.advance_once(out, 0, budget=3)
+            self.assertEqual(first['status'], 'PAUSED')
+            receipt = out / 'game-0000/replay-0000.json'
+            expected = receipt.read_bytes()
+            receipt.unlink()
+            resumed = module.advance_once(out, 0, budget=1)
+            self.assertTrue(resumed['exact_replay'])
+            self.assertEqual(receipt.read_bytes(), expected)
+            self.assertEqual(resumed['commands'], 4)
+
     def test_terminal_checkpoint_finalizes_after_interrupted_commit(self):
         spec = importlib.util.spec_from_file_location('styled_campaign', DRIVER)
         module = importlib.util.module_from_spec(spec)

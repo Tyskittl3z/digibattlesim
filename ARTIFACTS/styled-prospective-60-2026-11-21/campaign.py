@@ -172,6 +172,11 @@ def advance_once(out=OUT, index=0, *, budget=256):
     previous = _record(paths[-1]) if paths else None
     if previous is not None:
         replay_file = folder / f'replay-{len(paths)-1:04d}.json'
+        if not replay_file.is_file():
+            proof = replay_game(previous, ROOT)
+            if proof.get('exact_match') is not True:
+                raise RuntimeError('PREVIOUS_REPLAY_FAILED')
+            _save(replay_file, _bytes(proof))
         if not replay_file.is_file() or json.loads(replay_file.read_text()).get('exact_match') is not True:
             raise RuntimeError('PREVIOUS_REPLAY_REQUIRED')
         if previous['status'] != 'PAUSED':
