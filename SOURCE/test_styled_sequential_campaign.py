@@ -1,5 +1,6 @@
 """The new cohort starts fresh and commits only terminal exact-replayed games."""
 import importlib.util
+import hashlib
 import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -30,6 +31,9 @@ class StyledSequentialCampaignTests(unittest.TestCase):
             self.assertFalse((out / 'game-0000/model-after.json').exists())
             self.assertFalse((out / 'game-0001').exists())
             status = json.loads((out / 'campaign-status.json').read_text())
+            lock = json.loads((out / 'campaign-lock.json').read_text())
+            self.assertEqual(lock['roadmap_criteria_file_sha256'], hashlib.sha256(
+                (ROOT / 'ARTIFACTS/styled-prospective-60-2026-11-21/ROADMAP_CRITERIA.json').read_bytes()).hexdigest())
             self.assertEqual(status['completed_software_games'], 0)
             self.assertEqual(status['accepted_fact_finding_credit'], 0)
             self.assertEqual(status['final_evaluation_credit'], 0)

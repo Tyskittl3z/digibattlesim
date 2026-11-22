@@ -1,0 +1,11 @@
+# Official rules review packet: Ulforce 123129 vs 122110
+
+The selected format is English-version worldwide. The saved rules lock is as of November 17, 2026. It contains all 22 card numbers in the two exact imported lists, the Comprehensive Rules Manual v4.3 snapshot, restrictions, and errata. `matchup_rules_lock.inspect_lock` finds 22 matching card pages, zero mismatched file hashes, and two blockers: `EFFECTIVE_DATE_MISSING` and `SEPARATE_REVIEW_MISSING`.
+
+The official products index saved at `sources/products-index.html` lists the English EX-13 release as October 2, 2026. The cardlist snapshots were retrieved October 30. The EX-13 card pages contain dated Q&A entries from September 18. These dates establish publication context, but a product release date or Q&A posting date alone does not prove when every card-text revision and ruling became effective. Do not copy these dates into `effective_date` without checking the official effective-date basis for each document.
+
+The software cohort at `ARTIFACTS/ulforce-prospective-60-2026-11-17/` has 60 terminal games and 78 exact replay receipts. Its four encountered HALTs and source-only repairs are preserved in `source-repair-0001.json` through `source-repair-0004.json`, with original and repaired segments for Games 12, 15, 25 and 37. The cohort review in that directory explains policy and scoring limitations. Automated judge acceptance and exact replay verify internal execution consistency; they are not a separate rules opinion.
+
+For an independent rules review, check the official source identity and applicable dates, deck restrictions, and each actual match's physical cards, memory, timing, Counter windows, once-per-turn use, optional choices, terminal state and card-specific rulings. Cite official document IDs and exact locators for any verdict. Keep any disputed play tied to its original game, seed and command. A rules disagreement is a HALT for that saved seed until repaired and replayed; it is not a red strategic play.
+
+The new styled-pilot campaign uses a different software version and must receive its own review. Neither the 60 old software terminals nor the new private smoke game has certified fact-finding credit. No 10,000-game evaluation is frozen or running.

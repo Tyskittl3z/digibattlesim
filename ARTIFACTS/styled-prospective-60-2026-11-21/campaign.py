@@ -28,6 +28,7 @@ from matchup_rules_lock import inspect_lock
 CAMPAIGN = 'ULFORCE_STYLED_FRESH_60_2026_11_21_V1'
 CONTEXT = 'ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json'
 RULES = 'RULES/matchups/123129-vs-122110/RULES_LOCK.json'
+ROADMAP_CRITERIA = 'ARTIFACTS/styled-prospective-60-2026-11-21/ROADMAP_CRITERIA.json'
 POLICY = 'BOARD_TEXT_HISTORY_STYLED'
 TARGET = 60
 
@@ -75,6 +76,8 @@ def _lock(out):
         'rules_status': audit['status'], 'rules_blockers': audit['blockers'],
         'schedule': make_schedule(context.matchup_id, CAMPAIGN),
         'engine_sources': _sources(ROOT), 'criteria': criteria_manifest(),
+        'roadmap_criteria_file': ROADMAP_CRITERIA,
+        'roadmap_criteria_file_sha256': hashlib.sha256((ROOT / ROADMAP_CRITERIA).read_bytes()).hexdigest(),
         'player_policy': POLICY, 'initial_model_state_id': LearningState().state_id,
         'target_games': TARGET, 'accepted_fact_finding_credit': 0,
         'final_evaluation_credit': 0}
