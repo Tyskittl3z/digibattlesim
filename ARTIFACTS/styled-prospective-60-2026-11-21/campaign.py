@@ -181,10 +181,10 @@ def advance_once(out=OUT, index=0, *, budget=256):
         raise RuntimeError('CAMPAIGN_PREFIX_CHANGED')
     number = len(paths)
     _save(folder / f'segment-{number:04d}.json.gz', gzip.compress(canonical(record) + b'\n', mtime=0))
-    if replay_game(record, ROOT).get('exact_match') is not True:
+    proof = replay_game(record, ROOT)
+    if proof.get('exact_match') is not True:
         raise RuntimeError('EXACT_REPLAY_FAILED')
-    _save(folder / f'replay-{number:04d}.json', _bytes({'exact_match': True,
-        'record_sha256': record['record_sha256']}))
+    _save(folder / f'replay-{number:04d}.json', _bytes(proof))
     if record['status'] == 'EXPERIMENTAL_SOFTWARE_TERMINAL':
         receipt = commit_completed_game(record, model, ROOT)
         _save(folder / 'report.md', _report(record).encode())

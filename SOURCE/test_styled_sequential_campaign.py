@@ -25,6 +25,8 @@ class StyledSequentialCampaignTests(unittest.TestCase):
             self.assertTrue(result['exact_replay'])
             self.assertEqual(result['model_games_before'], 0)
             self.assertEqual(result['player_policy'], 'BOARD_TEXT_HISTORY_STYLED')
+            replay = json.loads((out / 'game-0000/replay-0000.json').read_text())
+            self.assertEqual(replay['certification'], 'NONE_SOFTWARE_REPLAY_ONLY')
             self.assertFalse((out / 'game-0000/model-after.json').exists())
             self.assertFalse((out / 'game-0001').exists())
             status = json.loads((out / 'campaign-status.json').read_text())
