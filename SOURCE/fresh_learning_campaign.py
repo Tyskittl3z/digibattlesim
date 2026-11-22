@@ -17,6 +17,7 @@ from imported_attempts import (ROOT, _apply, _load_context_selection, breeding_c
 from interaction_learning import LearningPlayerBot, LearningState, verify_decision_rng, verify_decision_input, learning_player_manifest
 from board_text_player import BoardTextPlayerBot, board_text_player_manifest
 from styled_board_text_player import StyledBoardTextPlayerBot, styled_board_text_player_manifest
+from completed_play_reward import learning_decisions
 from interaction_scoring import criteria_manifest, score_transition
 from match_context import canonical, digest
 from named_bot_continuation import _plain_block_options
@@ -538,7 +539,6 @@ def commit_completed_game(record, learning_state, root=ROOT):
             or record['final']['state'].get('terminal_reason') != record['terminal_reason']
             or not record.get('commands')):
         raise RuntimeHalt('FRESH_COMPLETED_GAME_REQUIRED')
-    decisions = []
     for command in record['commands']:
         if (command.get('status') != 'EXPERIMENTAL_RESOLVED'
                 or command.get('judge', {}).get('accepted') is not True
@@ -551,7 +551,7 @@ def commit_completed_game(record, learning_state, root=ROOT):
                     or type(decision.get('learning_eligible')) is not bool
                     or decision.get('learning', {}).get('input_state_id') != record['learning_state_id']):
                 raise RuntimeHalt('FRESH_COMPLETED_DECISION_MISMATCH')
-            decisions.append(copy.deepcopy(decision))
+    decisions = learning_decisions(record['commands'], record.get('player_policy', 'NAMED_LEGACY'))
     proof = replay_game(record, root)
     if proof.get('exact_match') is not True:
         raise RuntimeHalt('FRESH_COMPLETED_REPLAY_MISMATCH')
