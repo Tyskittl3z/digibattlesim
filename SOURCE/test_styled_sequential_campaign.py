@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
+from unittest.mock import patch
 
 from test_selected_mechanics import ROOT
 
@@ -13,6 +14,26 @@ DRIVER = ROOT / 'ARTIFACTS/styled-prospective-60-2026-11-21/campaign.py'
 
 
 class StyledSequentialCampaignTests(unittest.TestCase):
+    def test_terminal_checkpoint_finalizes_after_interrupted_commit(self):
+        spec = importlib.util.spec_from_file_location('styled_campaign', DRIVER)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        with TemporaryDirectory() as temporary:
+            folder = Path(temporary)
+            record = {'status': 'EXPERIMENTAL_SOFTWARE_TERMINAL'}
+            model = module.LearningState()
+            receipt = {'updated': True, 'learning_state_id': model.state_id}
+            with patch.object(module, 'commit_completed_game', return_value=receipt), \
+                    patch.object(module, '_report', return_value='report'), \
+                    patch.object(module, '_actions_csv', return_value=b'actions'):
+                module._finalize_terminal(folder, record, model)
+            for name in ('report.md', 'actions.csv', 'commit.json', 'model-after.json'):
+                self.assertTrue((folder / name).is_file(), name)
+            with patch.object(module, 'commit_completed_game', return_value=receipt), \
+                    patch.object(module, '_report', return_value='report'), \
+                    patch.object(module, '_actions_csv', return_value=b'actions'):
+                module._finalize_terminal(folder, record, module.LearningState())
+
     def test_first_game_uses_new_profiles_and_pause_cannot_train_next_game(self):
         self.assertTrue(DRIVER.is_file(), 'styled campaign driver is missing')
         spec = importlib.util.spec_from_file_location('styled_campaign', DRIVER)

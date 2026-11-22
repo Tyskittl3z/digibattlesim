@@ -152,6 +152,15 @@ def _status(out, index, state):
         'accepted_fact_finding_credit': 0, 'final_evaluation_credit': 0}), replace=True)
 
 
+def _finalize_terminal(folder, record, model):
+    """Complete a terminal checkpoint after an interrupted write, idempotently."""
+    receipt = commit_completed_game(record, model, ROOT)
+    _save(folder / 'report.md', _report(record).encode())
+    _save(folder / 'actions.csv', _actions_csv(record))
+    _save(folder / 'commit.json', _bytes(receipt))
+    _save(folder / 'model-after.json', _bytes(model.export()))
+
+
 def advance_once(out=OUT, index=0, *, budget=256):
     if type(index) is not int or not 0 <= index < TARGET or type(budget) is not int or budget < 1:
         raise ValueError('Game index 0..59 and positive budget required')
@@ -166,6 +175,8 @@ def advance_once(out=OUT, index=0, *, budget=256):
         if not replay_file.is_file() or json.loads(replay_file.read_text()).get('exact_match') is not True:
             raise RuntimeError('PREVIOUS_REPLAY_REQUIRED')
         if previous['status'] != 'PAUSED':
+            if previous['status'] == 'EXPERIMENTAL_SOFTWARE_TERMINAL':
+                _finalize_terminal(folder, previous, model)
             _status(out, index, previous['status'])
             return {'game_index': index, 'status': previous['status'],
                 'commands': len(previous['commands']), 'exact_replay': True,
@@ -189,11 +200,7 @@ def advance_once(out=OUT, index=0, *, budget=256):
         raise RuntimeError('EXACT_REPLAY_FAILED')
     _save(folder / f'replay-{number:04d}.json', _bytes(proof))
     if record['status'] == 'EXPERIMENTAL_SOFTWARE_TERMINAL':
-        receipt = commit_completed_game(record, model, ROOT)
-        _save(folder / 'report.md', _report(record).encode())
-        _save(folder / 'actions.csv', _actions_csv(record))
-        _save(folder / 'commit.json', _bytes(receipt))
-        _save(folder / 'model-after.json', _bytes(model.export()))
+        _finalize_terminal(folder, record, model)
     _status(out, index, record['status'])
     return {'game_index': index, 'status': record['status'],
         'commands': len(record['commands']), 'exact_replay': True,
