@@ -34,7 +34,7 @@ class StyledBoardTextPlayerTests(unittest.TestCase):
                     'AGGRESSIVE_BOARD_TEXT' if seat == 'A' else 'DEFENSIVE_BOARD_TEXT')
 
     def test_supported_history_can_reverse_close_live_card_choice(self):
-        from styled_board_text_player import StyledBoardTextPlayerBot
+        from styled_board_text_player import StyledBoardTextPlayerBot, styled_state_key
         from match_context import digest
         runtime = ContextRuntime(self.context, 1337, 'A', allow_experimental=True)
         view = runtime.public_view('A')
@@ -45,12 +45,29 @@ class StyledBoardTextPlayerTests(unittest.TestCase):
         ]
         decision = {'kind': 'MAIN_ACTION'}
         self.assertEqual(bot.choose(view, choices, decision=decision), choices[0])
-        state_key = bot._features._state_key(view, decision)
+        state_key = styled_state_key(bot._features, view, decision)
         better_key = digest(bot._features._action(view, choices[1]))
         bot._model._tables['A'][state_key] = {better_key: {
             'independent_games': 3, 'mean_reward': 2.0, 'reward_sum': 6.0,
             'wins': 1, 'losses': 2}}
         self.assertEqual(bot.choose(view, choices, decision=decision), choices[1])
+
+    def test_public_tempo_key_groups_different_own_hands_without_private_leakage(self):
+        from styled_board_text_player import StyledBoardTextPlayerBot, styled_state_key
+        bot = StyledBoardTextPlayerBot(self.context, 'A', LearningState(), 453, None)
+        views = []
+        for number in ('BT11-023', 'P-138'):
+            runtime = ContextRuntime(self.context, 1337, 'A', allow_experimental=True)
+            deck = runtime.state.zones['A']['deck']
+            card = next(card for card in deck if card.card_number == number)
+            deck.remove(card)
+            runtime.state.zones['A']['hand'].append(card)
+            views.append(runtime.public_view('A'))
+        decision = {'kind': 'MAIN_ACTION'}
+        self.assertNotEqual(bot._features._state_key(views[0], decision),
+                            bot._features._state_key(views[1], decision))
+        self.assertEqual(styled_state_key(bot._features, views[0], decision),
+                         styled_state_key(bot._features, views[1], decision))
 
     def test_runner_identifies_new_policy_without_relabeling_old_policy(self):
         from fresh_learning_campaign import run_game, replay_game

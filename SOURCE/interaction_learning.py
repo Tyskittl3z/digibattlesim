@@ -685,6 +685,9 @@ def verify_decision_input(record, view, context, expected_manifest):
     if decision.get('kind') == 'BOTTOM_ORDER':
         features._state_key(view, {})  # Validate the supplied public projection.
         state_key = digest({'context_id': context.matchup_id, 'seat': seat, 'kind': 'BOTTOM_ORDER'})
+    elif expected_manifest.get('policy_status') == 'STYLED_PUBLIC_STATE_TEXT_WITH_HISTORY':
+        from styled_board_text_player import styled_state_key
+        state_key = styled_state_key(features, view, decision)
     else:
         state_key = features._state_key(view, decision)
     for candidate in record['candidates']:

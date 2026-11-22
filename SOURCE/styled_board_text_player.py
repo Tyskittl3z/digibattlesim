@@ -13,6 +13,37 @@ _SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 _STYLE = {'A': 'AGGRESSIVE_BOARD_TEXT', 'B': 'DEFENSIVE_BOARD_TEXT'}
 
 
+def styled_state_key(features, view, decision):
+    """Validate the full view, then group comparable public tempo positions."""
+    features._state_key(view, decision)
+    own = features.seat
+    other = 'B' if own == 'A' else 'A'
+
+    def band(value):
+        return 0 if value == 0 else 1 if value <= 2 else 3
+
+    def field(owner):
+        stacks = list(view['players'][owner]['battle'].values())
+        return {'units': band(len(stacks)),
+                'largest_stack': band(max((len(stack['cards']) for stack in stacks), default=0))}
+
+    selected = decision.get('selected_pending', {})
+    source = decision.get('source', selected.get('source'))
+    checks = decision.get('public_metrics', {}).get('successful_security_checks')
+    check_gap = None if checks is None else max(-2, min(2, checks[own] - checks[other]))
+    memory = view['memory'] if view['active'] == own else -view['memory']
+    return digest({'version': VERSION, 'context_id': features.context.matchup_id,
+        'seat': own, 'decision_kind': decision.get('kind'),
+        'effect_id': decision.get('effect_id', selected.get('effect_id')),
+        'effect_source_number': source.split(':', 1)[1].split('#', 1)[0] if source else None,
+        'active_role': 'OWN' if view['active'] == own else 'OPPONENT',
+        'phase': view['phase'], 'memory_band': -band(-memory) if memory < 0 else band(memory),
+        'own_security_band': band(view['players'][own]['security']['count']),
+        'opponent_security_band': band(view['players'][other]['security']['count']),
+        'own_field': field(own), 'opponent_field': field(other),
+        'completed_check_gap': check_gap})
+
+
 def styled_board_text_player_manifest(context, seat, input_state_id, policy_seed, report_sha256):
     from board_text_player import board_text_player_manifest
     base = board_text_player_manifest(context, seat, input_state_id, policy_seed, report_sha256)
@@ -50,7 +81,7 @@ class StyledBoardTextPlayerBot(BoardTextPlayerBot):
         decision = _decision({} if decision is None else decision)
         if not isinstance(candidates, list) or not candidates:
             raise RuntimeHalt('STYLED_BOARD_TEXT_CANDIDATES_REQUIRED')
-        state_key = self._features._state_key(view, decision)
+        state_key = styled_state_key(self._features, view, decision)
         keys = [digest(self._features._action(view, candidate)) for candidate in candidates]
         table = self._model._tables[self.seat].get(state_key, {})
         evaluated = []
