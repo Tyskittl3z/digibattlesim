@@ -2,7 +2,7 @@
 import unittest
 
 from context_runtime import ContextRuntime, RuntimeHalt
-from effect_scheduler import pending_options, resolve_pending
+from effect_scheduler import pending_options, queue_effects, resolve_pending
 from selected_mechanics import ORIENTATION_EFFECT, build_selected_registry
 from test_selected_mechanics import ROOT, selected_context, stage
 import turn_flow
@@ -53,10 +53,14 @@ class TurnFlowTests(unittest.TestCase):
     def test_real_pending_memory_gain_rescues_turn_without_resetting_usage(self):
         r = self.runtime(phase='END_OF_TURN', memory=-1)
         source = stage(r, 'A', ['P-138', 'EX13-023'], suspended=True)
-        r.dispatch(ORIENTATION_EFFECT, 'A', source, source)
+        queue_effects(r, [{'seat': 'A', 'source': source, 'effect_id': ORIENTATION_EFFECT,
+            'field': 'main_text', 'trigger': {'kind': 'WHEN_DIGIVOLVING', 'source': source}}])
         pending = pending_options(r, 'A')
         self.assertEqual(len(pending), 1)
-        resolve_pending(r, 'A', pending[0]['id'], None)
+        resolve_pending(r, 'A', pending[0]['id'], source)
+        memory_gain = pending_options(r, 'A')
+        self.assertEqual([p['effect_id'] for p in memory_gain], ['P-138.unsuspend_memory'])
+        resolve_pending(r, 'A', memory_gain[0]['id'], None)
         self.assertEqual((r.state.memory, r.state.phase), (0, 'END_OF_TURN'))
         used = set(r.state.once_used)
         result = turn_flow.finish_turn(r, 'A', ROOT)
@@ -77,7 +81,9 @@ class TurnFlowTests(unittest.TestCase):
             with self.subTest(command=command.__name__):
                 r = self.runtime()
                 source = stage(r, 'A', ['EX13-022', 'EX13-023'])
-                r.dispatch(ORIENTATION_EFFECT, 'A', source, source)
+                queue_effects(r, [{'seat': 'A', 'source': source, 'effect_id': ORIENTATION_EFFECT,
+                    'field': 'main_text', 'trigger': {'kind': 'WHEN_DIGIVOLVING', 'source': source}}])
+                resolve_pending(r, 'A', pending_options(r, 'A')[0]['id'], source)
                 r.state.phase = 'MAIN' if command == turn_flow.pass_turn else 'END_OF_TURN'
                 before = r.snapshot()
                 with self.assertRaisesRegex(RuntimeHalt, 'PENDING_EFFECTS_REQUIRE_RESOLUTION'):
