@@ -670,6 +670,10 @@ def verify_decision_input(record, view, context, expected_manifest):
         from board_text_player import board_text_player_manifest
         rebuilt = board_text_player_manifest(context, seat, expected_manifest['input_state_id'],
             expected_manifest.get('policy_seed'), expected_manifest.get('history_report_sha256'))
+    elif expected_manifest.get('policy_status') == 'STYLED_PUBLIC_STATE_TEXT_WITH_HISTORY':
+        from styled_board_text_player import styled_board_text_player_manifest
+        rebuilt = styled_board_text_player_manifest(context, seat, expected_manifest['input_state_id'],
+            expected_manifest.get('policy_seed'), expected_manifest.get('history_report_sha256'))
     else:
         rebuilt = learning_player_manifest(context, seat, expected_manifest['input_state_id'],
             expected_manifest.get('policy_seed'))

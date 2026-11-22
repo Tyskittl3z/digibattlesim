@@ -16,6 +16,7 @@ from imported_attempts import (ROOT, _apply, _load_context_selection, breeding_c
                                pending_choice, pending_options)
 from interaction_learning import LearningPlayerBot, LearningState, verify_decision_rng, verify_decision_input, learning_player_manifest
 from board_text_player import BoardTextPlayerBot, board_text_player_manifest
+from styled_board_text_player import StyledBoardTextPlayerBot, styled_board_text_player_manifest
 from interaction_scoring import criteria_manifest, score_transition
 from match_context import canonical, digest
 from named_bot_continuation import _plain_block_options
@@ -74,7 +75,7 @@ def _policy_seeds(context_id, campaign_id, index, state_id):
 
 
 def _history_binding(root, player_policy, history_report):
-    if player_policy not in ('NAMED_LEGACY', 'BOARD_TEXT_HISTORY'):
+    if player_policy not in ('NAMED_LEGACY', 'BOARD_TEXT_HISTORY', 'BOARD_TEXT_HISTORY_STYLED'):
         raise ValueError('Unknown player policy')
     if player_policy == 'NAMED_LEGACY':
         if history_report is not None:
@@ -198,7 +199,10 @@ def _revalidate(record, root, context, context_file, context_hash, learning_inpu
     _same(record.get('policy_rng_initial'), rng, 'INITIAL_POLICY_RNG')
     report_sha = history_binding['sha256'] if history_binding else None
     expected_pilots = {s: (board_text_player_manifest(context, s, model_id, seeds[s], report_sha)
-        if player_policy == 'BOARD_TEXT_HISTORY' else learning_player_manifest(context, s, model_id, seeds[s]))
+        if player_policy == 'BOARD_TEXT_HISTORY' else
+        styled_board_text_player_manifest(context, s, model_id, seeds[s], report_sha)
+        if player_policy == 'BOARD_TEXT_HISTORY_STYLED' else
+        learning_player_manifest(context, s, model_id, seeds[s]))
         for s in seeds}
     _same(record.get('pilots'), expected_pilots, 'PILOTS')
     runtime = ContextRuntime(context, game['seed'], game['first'], build_selected_registry(context, root),
@@ -316,7 +320,7 @@ def run_game(index, root=ROOT, *, context_file=CONTEXT_FILE, campaign_id,
     context, context_file, context_hash = _load_context_selection(root, context_file)
     schedule, sources = make_schedule(context.matchup_id, campaign_id), _sources(root)
     frozen = _clone(learning_state.export())
-    if player_policy == 'BOARD_TEXT_HISTORY' and history_binding is None:
+    if player_policy in ('BOARD_TEXT_HISTORY', 'BOARD_TEXT_HISTORY_STYLED') and history_binding is None:
         if index != 0 or LearningState.from_dict(frozen)._games:
             raise RuntimeHalt('FRESH_NO_HISTORY_IS_GAME_ONE')
     state_id, game = LearningState.from_dict(frozen).state_id, schedule['games'][index]
@@ -344,6 +348,9 @@ def run_game(index, root=ROOT, *, context_file=CONTEXT_FILE, campaign_id,
     bots = {s: (BoardTextPlayerBot(context, s, LearningState.from_dict(frozen), seeds[s],
                                   history_binding['sha256'] if history_binding else None)
                 if player_policy == 'BOARD_TEXT_HISTORY' else
+                StyledBoardTextPlayerBot(context, s, LearningState.from_dict(frozen), seeds[s],
+                                  history_binding['sha256'] if history_binding else None)
+                if player_policy == 'BOARD_TEXT_HISTORY_STYLED' else
                 LearningPlayerBot(context, s, LearningState.from_dict(frozen), seeds[s])) for s in seeds}
     for seat, bot in bots.items():
         bot.restore_rng(final_rng[seat])
