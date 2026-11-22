@@ -81,9 +81,17 @@ print(json.dumps(record))
                              'explicit migration API must exist')
         self.new = self.base / self._testMethodName
         shutil.copytree(self.old, self.new)
-        for path in (ROOT / 'SOURCE').glob('*.py'):
-            if not path.name.startswith('test_'):
-                shutil.copy2(path, self.new / 'SOURCE' / path.name)
+        # This fixture exercises the original, pinned lineage bootstrap. Later
+        # policy/scorer files are intentionally protected and must not be mixed
+        # into its approved engine-only migration.
+        with tarfile.open(ROOT / 'ARTIFACTS/repair-migration-2026-11-10/source-checkpoint.tar.gz') as archive:
+            for member in archive.getmembers():
+                if member.isfile() and member.name.startswith('SOURCE/'):
+                    target = self.new / member.name
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    target.write_bytes(archive.extractfile(member).read())
+        for name in ('field_tracker.py', 'imported_attempts.py', 'named_bot_continuation.py'):
+            shutil.copy2(self.old / 'SOURCE' / name, self.new / 'SOURCE' / name)
 
     def migrate(self, record=None, approved=None):
         return run_python(self.new, """
