@@ -1,0 +1,20 @@
+{
+  "accepted_prefix_count": 153,
+  "approved_changes": {
+    "selected_mechanics.py": {
+      "after": "2ec80e531df39be82f34e56011e4b9c14aba8e4de319300761a369ee844e5285",
+      "before": "6b15a31bd66c1aa4dde941f11a41edcd1bcab4f53274bd9c644cfe6962beed03"
+    }
+  },
+  "certification": "NONE_SOFTWARE_REPLAY_ONLY",
+  "exact_replay": true,
+  "failed_choice_reused": true,
+  "lineage_sha256": "01491f2134b7ee7fb3482e02bcfa13045e08658bbbc1e67193d879f56aa182b4",
+  "migrated_record_sha256": "80566999fa98ec65b56bc3bd91a7c3327cbdf0011107f348a948b0160bb048dd",
+  "original_record_sha256": "3333d34fbbce8b751a9419f7e979bd920c76c77cf99d4f96a4cdc7cada5fdc66",
+  "original_tag": "styled-50-halt-v1",
+  "retried_command_count": 154,
+  "retried_record_sha256": "96e40e8f6de1eaa8988f8dc19a9ec943f58debb331d02b164fb110fdf76b23ee",
+  "retried_status": "PAUSED",
+  "schema": "styled-source-repair-receipt-v1"
+}
