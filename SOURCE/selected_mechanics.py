@@ -148,19 +148,22 @@ def resolve_bt12_return(runtime, seat, source_key, choice):
     if choice is None:
         return {'processing': 'CONDITION_OR_TARGET_UNAVAILABLE', 'returned': None,
                 'trashed_sources': [], 'once_per_turn_consumed': True, 'full_match_credit': 0}
-    from return_effects import inherited_return_replacement, replacement_effect_id, return_to_hand
+    from return_effects import inherited_return_replacements, replacement_effect_id, return_to_hand
     other = 'B' if seat == 'A' else 'A'
-    replacement = inherited_return_replacement(runtime, seat, other, choice)
-    if replacement is not None:
-        replacement_source, _ = replacement
+    replacements = inherited_return_replacements(runtime, seat, other, choice)
+    if replacements:
         stack = runtime.state.battle[other][choice]
+        trigger = {'kind': 'OPPONENT_EFFECT_RETURN', 'actor': seat,
+                   'target': choice, 'target_instance': stack.instance_id,
+                   'source_effect': BT12_RETURN_EFFECT}
         queue_effects(runtime, [{'seat': other, 'source': replacement_source,
-            'effect_id': replacement_effect_id(runtime, other, replacement_source), 'field': 'inherited_text',
-            'trigger': {'kind': 'OPPONENT_EFFECT_RETURN', 'actor': seat,
-                'target': choice, 'target_instance': stack.instance_id,
-                'source_effect': BT12_RETURN_EFFECT}}])
+            'effect_id': replacement_effect_id(runtime, other, replacement_source),
+            'field': 'inherited_text', 'trigger': trigger}
+            for replacement_source, _ in replacements])
         return {'processing': 'RETURN_REPLACEMENT_PENDING', 'target': choice,
-            'replacement_source': replacement_source, 'returned': None,
+            **({'replacement_source': replacements[0][0]} if len(replacements) == 1
+               else {'replacement_sources': [source for source, _ in replacements]}),
+            'returned': None,
             'trashed_sources': [], 'once_per_turn_consumed': True,
             'full_match_credit': 0}
     moved = return_to_hand(runtime, seat, other, choice, halt_prefix='BT12_RETURN')
@@ -223,21 +226,23 @@ def resolve_ulforce_unsuspend_return(runtime, seat, source_key, choice):
     if choice is None:
         return {'processing': 'NO_ELIGIBLE_DIGIMON', 'returned': None,
                 'once_per_turn_consumed': True, 'full_match_credit': 0}
-    from return_effects import (inherited_return_replacement, replacement_effect_id,
+    from return_effects import (inherited_return_replacements, replacement_effect_id,
                                 return_to_hand)
     opponent = 'B' if seat == 'A' else 'A'
-    replacement = inherited_return_replacement(runtime, seat, opponent, choice)
-    if replacement is not None:
-        replacement_source, _ = replacement
+    replacements = inherited_return_replacements(runtime, seat, opponent, choice)
+    if replacements:
         stack = runtime.state.battle[opponent][choice]
+        trigger = {'kind': 'OPPONENT_EFFECT_RETURN', 'actor': seat,
+                   'target': choice, 'target_instance': stack.instance_id,
+                   'source_effect': ULFORCE_UNSUSPEND_RETURN_EFFECT}
         queue_effects(runtime, [{'seat': opponent, 'source': replacement_source,
             'effect_id': replacement_effect_id(runtime, opponent, replacement_source),
-            'field': 'inherited_text',
-            'trigger': {'kind': 'OPPONENT_EFFECT_RETURN', 'actor': seat,
-                'target': choice, 'target_instance': stack.instance_id,
-                'source_effect': ULFORCE_UNSUSPEND_RETURN_EFFECT}}])
+            'field': 'inherited_text', 'trigger': trigger}
+            for replacement_source, _ in replacements])
         return {'processing': 'RETURN_REPLACEMENT_PENDING', 'target': choice,
-                'replacement_source': replacement_source, 'returned': None,
+                **({'replacement_source': replacements[0][0]} if len(replacements) == 1
+                   else {'replacement_sources': [source for source, _ in replacements]}),
+                'returned': None,
                 'once_per_turn_consumed': True, 'full_match_credit': 0}
     moved = return_to_hand(runtime, seat, opponent, choice, halt_prefix='ULFORCE_UNSUSPEND_RETURN')
     return {'processing': 'RETURN_LEVEL_LIMIT_DIGIMON_TO_HAND', **moved,
