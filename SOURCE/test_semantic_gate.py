@@ -12,6 +12,9 @@ from fresh_learning_campaign import replay_game, run_game
 from interaction_learning import LearningState
 from match_context import CardDefinition, DeckDefinition, MatchContext
 from match_preparation import begin_preparation, choose_redraw
+from phase_flow import advance_phase, choose_breeding_action
+from breeding_evolution import choose_breeding_evolution
+from turn_flow import pass_turn, finish_turn
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -35,6 +38,127 @@ class SemanticGateTests(unittest.TestCase):
         self.context = selected_context()
         self.runtime = ContextRuntime(self.context, 7, 'A', allow_experimental=True)
         self.gate = module.SemanticGate(self.context, ROOT)
+
+    def ready_first_turn(self):
+        opening = {'command': 'BEGIN_PREPARATION', 'seat': 'A', 'args': {}}
+        self.runtime, _, _ = self.checked_trial(self.runtime, self.gate, opening,
+            lambda candidate: begin_preparation(candidate, ROOT))
+        for seat in ('A', 'B'):
+            redraw = {'command': 'REDRAW_CHOICE', 'seat': seat, 'args': {'redraw': False}}
+            self.runtime, _, _ = self.checked_trial(self.runtime, self.gate, redraw,
+                lambda candidate, seat=seat: choose_redraw(candidate, seat, False, ROOT))
+
+    def advance(self):
+        command = {'command': 'ADVANCE_PHASE', 'seat': 'A', 'args': {}}
+        self.runtime, result, receipt = self.checked_trial(self.runtime, self.gate, command,
+            lambda candidate: advance_phase(candidate, 'A', ROOT))
+        return result, receipt
+
+    def test_ordinary_first_turn_phases_and_hatch_are_checked(self):
+        self.ready_first_turn()
+        self.assertEqual(self.runtime.state.phase, 'START_OF_TURN')
+        for phase in ('TURN_START_EFFECTS', 'DRAW', 'BREEDING'):
+            result, receipt = self.advance()
+            self.assertEqual(result['phase'], phase)
+            self.assertEqual(receipt['status'], 'ALGORITHM_CHECK_PASSED')
+        hand_before = len(self.runtime.state.zones['A']['hand'])
+        self.assertEqual(len(self.runtime.state.zones['A']['hand']), hand_before)
+        egg_count = len(self.runtime.state.zones['A']['eggdeck'])
+        command = {'command': 'BREEDING_CHOICE', 'seat': 'A', 'args': {'action': 'hatch'}}
+        self.runtime, result, receipt = self.checked_trial(self.runtime, self.gate, command,
+            lambda candidate: choose_breeding_action(candidate, 'A', 'hatch', ROOT))
+        self.assertEqual(result['phase'], 'MAIN')
+        self.assertEqual(len(self.runtime.state.zones['A']['eggdeck']), egg_count - 1)
+        self.assertEqual(len(self.runtime.state.breeding['A']), 1)
+        self.assertEqual(receipt['checker'], 'BREEDING_CHOICE')
+
+    def test_phase_checker_rejects_unknown_pending_before_trial(self):
+        self.ready_first_turn()
+        self.runtime.state.pending.append({'id': 'unknown-effect'})
+        before = self.runtime.snapshot()
+        command = {'command': 'ADVANCE_PHASE', 'seat': 'A', 'args': {}}
+        with self.assertRaisesRegex(RuntimeHalt, 'RULE_PHASE_PENDING_UNREVIEWED'):
+            self.checked_trial(self.runtime, self.gate, command,
+                lambda candidate: self.fail('Engine ran before rule check'))
+        self.assertEqual(self.runtime.snapshot(), before)
+
+    def test_printed_breeding_digivolution_checks_cost_stack_and_draw(self):
+        self.ready_first_turn()
+        for _ in range(3):
+            self.advance()
+        hatch = {'command': 'BREEDING_CHOICE', 'seat': 'A', 'args': {'action': 'hatch'}}
+        self.runtime, _, _ = self.checked_trial(self.runtime, self.gate, hatch,
+            lambda candidate: choose_breeding_action(candidate, 'A', 'hatch', ROOT))
+        hand_key = next(card.key for card in self.runtime.state.zones['A']['hand']
+                        if card.card_number == 'BT11-023')
+        before = self.runtime.snapshot()
+        command = {'command': 'BREEDING_EVOLUTION', 'seat': 'A',
+                   'args': {'hand_key': hand_key, 'route_index': 0}}
+        self.runtime, result, receipt = self.checked_trial(self.runtime, self.gate, command,
+            lambda candidate: choose_breeding_evolution(candidate, 'A', hand_key, 0, ROOT))
+        self.assertEqual(result['cost'], 0)
+        self.assertEqual(len(self.runtime.state.breeding['A']), 2)
+        self.assertEqual(len(self.runtime.state.zones['A']['deck']),
+                         len(before['state']['zones']['A']['deck']) - 1)
+        self.assertEqual(receipt['checker'], 'BREEDING_EVOLUTION')
+
+    def test_breeding_digivolution_rejects_wrong_candidate_cost(self):
+        self.ready_first_turn()
+        for _ in range(3):
+            self.advance()
+        hatch = {'command': 'BREEDING_CHOICE', 'seat': 'A', 'args': {'action': 'hatch'}}
+        self.runtime, _, _ = self.checked_trial(self.runtime, self.gate, hatch,
+            lambda candidate: choose_breeding_action(candidate, 'A', 'hatch', ROOT))
+        hand_key = next(card.key for card in self.runtime.state.zones['A']['hand']
+                        if card.card_number == 'BT11-023')
+        before = self.runtime.snapshot()
+        command = {'command': 'BREEDING_EVOLUTION', 'seat': 'A',
+                   'args': {'hand_key': hand_key, 'route_index': 0, 'cost': 7}}
+        with self.assertRaisesRegex(RuntimeHalt, 'RULE_PRINTED_ROUTE_MISMATCH'):
+            self.checked_trial(self.runtime, self.gate, command,
+                lambda candidate: self.fail('Engine ran before rule check'))
+        self.assertEqual(self.runtime.snapshot(), before)
+
+    def test_normal_route_remains_available_when_special_predicate_does_not_match(self):
+        self.ready_first_turn()
+        for _ in range(3):
+            self.advance()
+        hatch = {'command': 'BREEDING_CHOICE', 'seat': 'A', 'args': {'action': 'hatch'}}
+        self.runtime, _, _ = self.checked_trial(self.runtime, self.gate, hatch,
+            lambda candidate: choose_breeding_action(candidate, 'A', 'hatch', ROOT))
+        rookie = next(card.key for card in self.runtime.state.zones['A']['hand']
+                      if card.card_number == 'BT11-023')
+        evolve = {'command': 'BREEDING_EVOLUTION', 'seat': 'A',
+                  'args': {'hand_key': rookie, 'route_index': 0}}
+        self.runtime, _, _ = self.checked_trial(self.runtime, self.gate, evolve,
+            lambda candidate: choose_breeding_evolution(candidate, 'A', rookie, 0, ROOT))
+        champion = next(card.key for card in self.runtime.state.zones['A']['hand']
+                        if card.card_number == 'EX13-019')
+        evolve['args'] = {'hand_key': champion, 'route_index': 0}
+        self.runtime, result, _ = self.checked_trial(self.runtime, self.gate, evolve,
+            lambda candidate: choose_breeding_evolution(candidate, 'A', champion, 0, ROOT))
+        self.assertEqual(result['route']['basis'], 'PRINTED_NORMAL')
+        self.assertEqual(result['cost'], 2)
+
+    def test_plain_pass_and_finish_turn_switch_player_and_memory(self):
+        self.ready_first_turn()
+        for _ in range(3):
+            self.advance()
+        skip = {'command': 'BREEDING_CHOICE', 'seat': 'A', 'args': {'action': 'skip'}}
+        self.runtime, _, _ = self.checked_trial(self.runtime, self.gate, skip,
+            lambda candidate: choose_breeding_action(candidate, 'A', 'skip', ROOT))
+        passing = {'command': 'PASS_TURN', 'seat': 'A', 'args': {}}
+        self.runtime, result, receipt = self.checked_trial(self.runtime, self.gate, passing,
+            lambda candidate: pass_turn(candidate, 'A', ROOT))
+        self.assertEqual(result['memory_after'], -3)
+        self.assertEqual(receipt['checker'], 'PASS_TURN')
+        finishing = {'command': 'FINISH_TURN', 'seat': 'A', 'args': {}}
+        self.runtime, result, receipt = self.checked_trial(self.runtime, self.gate, finishing,
+            lambda candidate: finish_turn(candidate, 'A', ROOT))
+        self.assertEqual(result['next_controller'], 'B')
+        self.assertEqual(self.runtime.state.memory, 3)
+        self.assertEqual(self.runtime.state.turn, 2)
+        self.assertEqual(receipt['checker'], 'FINISH_TURN')
 
     def test_unknown_action_halts_before_live_state_changes(self):
         before = self.runtime.snapshot()
@@ -92,7 +216,7 @@ class SemanticGateTests(unittest.TestCase):
             stream.flush()
             relative = str(Path(stream.name).relative_to(ROOT))
             record = run_game(0, ROOT, context_file=relative, campaign_id='STRICT_TEST',
-                learning_state=LearningState(), max_commands=8,
+                learning_state=LearningState(), max_commands=30,
                 player_policy='BOARD_TEXT_HISTORY_STYLED', rules_mode='STRICT')
             self.assertEqual(record['status'], 'HALT')
             self.assertIn('RULE_CHECK_NOT_INSTALLED', record['halt_reason'])

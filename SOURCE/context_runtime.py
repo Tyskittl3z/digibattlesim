@@ -421,6 +421,10 @@ class ContextRuntime:
         try:
             before=self.snapshot()
             choice=json.loads(canonical(choice))
+            if isinstance(choice, dict) and isinstance(choice.get('rules'), dict):
+                from rules_evidence import versioned_locator
+                choice['rules']['locator'] = versioned_locator(self.context,
+                    choice['rules'].get('locator'))
             self.context.deck(seat)
             self.verify()
             if self.state.terminal:

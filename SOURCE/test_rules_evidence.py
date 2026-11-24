@@ -8,6 +8,8 @@ import unittest
 from context_runtime import ContextRuntime
 from match_context import CardDefinition, DeckDefinition, MatchContext
 from match_preparation import begin_preparation
+from match_preparation import choose_redraw
+from phase_flow import advance_phase
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,6 +24,19 @@ def context_with_rules(source):
 
 
 class RulesEvidenceTests(unittest.TestCase):
+    def test_current_v44_manual_updates_all_phase_receipt_locators(self):
+        source = {'url': 'https://world.digimoncard.com/rule/pdf/general_rule.pdf?20261120=',
+                  'file': 'RULES/official/general_rule_v4.4_20261120.pdf',
+                  'sha256': '4c1c601dd9309772a4c97285f443e0c72065246bd4198931c5c06cd3fb0913c1'}
+        context = context_with_rules(source)
+        runtime = ContextRuntime(context, 7, 'A', allow_experimental=True)
+        opening = begin_preparation(runtime, ROOT)
+        self.assertTrue(opening['rules_source']['locator'].startswith('Comprehensive rules v4.4:'))
+        choose_redraw(runtime, 'A', False, ROOT)
+        choose_redraw(runtime, 'B', False, ROOT)
+        phase = advance_phase(runtime, 'A', ROOT)
+        self.assertTrue(phase['rules_source']['locator'].startswith('Comprehensive rules v4.4:'))
+
     def test_opening_uses_rules_file_selected_by_imported_context(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

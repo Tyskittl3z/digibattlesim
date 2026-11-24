@@ -45,4 +45,4 @@
 - [x] Run the tests and confirm the intended failures.
 - [x] Add a generic checker registry and strict mode to `run_game`; use a copied runtime for trial execution and bind gate receipts to saved commands and replay.
 - [x] Run focused runner/judge/gate tests, then the full repository suite; report any historical replay limitations by name.
-- [ ] Commit and publish the verified change on the draft branch.
+- [x] Commit and publish the verified change on the draft branch.

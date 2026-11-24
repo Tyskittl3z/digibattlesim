@@ -8,13 +8,20 @@ import copy
 import json
 from pathlib import Path
 import random
+import re
 
 from context_runtime import RuntimeHalt
 from match_context import canonical, digest
-from rules_evidence import comprehensive_rules
+from rules_evidence import comprehensive_rules, rules_version
 
 
 _OPENING_LOCATOR = 'Comprehensive rules v4.3: 5-2-1-1 through 5-2-1-8'
+_PHASE_LOCATOR = 'Comprehensive rules v4.3: 1-2-3-2; 6-1 through 6-4; 15-4'
+_BREEDING_LOCATOR = 'Comprehensive rules v4.3: 4-17; 4-18; 6-4; 6-5; 15-4'
+_BREEDING_EVOLUTION_LOCATOR = ('Comprehensive rules v4.3: 1-3-11-1; 3-4-7-3 through 3-4-7-8; '
+                               '6-5; 8-1-2-8; 8-1-3-1 through 8-1-3-3')
+_TURN_LOCATOR = ('Comprehensive rules v4.3: 6-1-3; 6-1-4; 6-5-1-7-1; 6-6; '
+                 '15-8-3-6; 15-11-1; 15-13; 15-14-1-5-1; 15-16-12')
 
 
 def _tuples(value):
@@ -82,12 +89,249 @@ def _redraw(context, before, command, source):
     return expected, result
 
 
+def _source_at(source, locator):
+    version = re.search(r'Comprehensive rules v(\d+\.\d+):', source['locator'])
+    return {**source, 'locator': locator.replace('Comprehensive rules v4.3:',
+        'Comprehensive rules v' + version.group(1) + ':') if version else locator}
+
+
+def _physical_number(key):
+    if not isinstance(key, str) or not re.fullmatch(r'[AB]:[A-Z0-9-]+#[1-9][0-9]*', key):
+        raise RuntimeHalt('RULE_PHYSICAL_KEY_INVALID')
+    return key.split(':', 1)[1].split('#', 1)[0]
+
+
+def _special_cost(condition, base):
+    legacy = re.fullmatch(r'\[Digivolve\] (\d+) from (\[[^\]]+\](?:/\[[^\]]+\])*)', condition)
+    if legacy:
+        cost, requirement = int(legacy.group(1)), legacy.group(2)
+    else:
+        current = re.fullmatch(r'\[Digivolve\] (.+): Cost (\d+)', condition)
+        if current is None:
+            raise RuntimeHalt('RULE_SPECIAL_ROUTE_UNREVIEWED: ' + condition)
+        requirement, cost = current.group(1), int(current.group(2))
+    if re.fullmatch(r'\[[^\]]+\](?:/\[[^\]]+\])*', requirement):
+        return cost if base['name'] in re.findall(r'\[([^\]]+)\]', requirement) else None
+    qualified = re.fullmatch(r'Lv\.(\d+) w/\[([^\]]+)\] (trait|in name)', requirement)
+    if qualified is None:
+        raise RuntimeHalt('RULE_SPECIAL_PREDICATE_UNREVIEWED: ' + requirement)
+    level, value, kind = qualified.groups()
+    if base.get('level') != int(level):
+        return None
+    matched = value in base.get('traits', []) if kind == 'trait' else value in base['name']
+    return cost if matched else None
+
+
+def _ordinary_window(before, command, *, allow_negative=False):
+    state = before['state']
+    if (state['terminal'] or command['seat'] != state['active']
+            or (state['memory'] < 0 and not allow_negative)
+            or state['attack'] is not None or state['resolving_option'] is not None):
+        raise RuntimeHalt('RULE_ORDINARY_WINDOW_INVALID')
+    if state['pending']:
+        raise RuntimeHalt('RULE_PHASE_PENDING_UNREVIEWED')
+    return state
+
+
+def _quiet_timing(context, state, seat, timing):
+    """Defer a live printed timing until its effect checker is installed."""
+    for stack in state['battle'][seat].values():
+        cards = stack['cards']
+        for index, physical in enumerate(cards):
+            field = 'main_text' if index == len(cards) - 1 else 'inherited_text'
+            text = context.card(seat, _physical_number(physical)).effect_text(field)
+            if '[' + timing + ']' in text:
+                raise RuntimeHalt('RULE_PHASE_EFFECT_UNREVIEWED: ' + timing + ' card=' + physical)
+
+
+def _advance_phase(context, before, command, source):
+    state = _ordinary_window(before, command)
+    seat = command['seat']
+    phase = state['phase']
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    rules = _source_at(source, _PHASE_LOCATOR)
+    if phase == 'START_OF_TURN':
+        _quiet_timing(context, state, seat, 'Start of Your Turn')
+        new['phase'] = 'TURN_START_EFFECTS'
+    elif phase == 'TURN_START_EFFECTS':
+        for stack in state['battle'][seat].values():
+            if stack['suspended'] or stack['statuses']:
+                raise RuntimeHalt('RULE_UNSUSPEND_INTERACTION_UNREVIEWED: ' + stack['cards'][-1])
+        new['phase'] = 'DRAW'
+    elif phase == 'UNSUSPEND':
+        new['phase'] = 'DRAW'
+    elif phase == 'DRAW':
+        if not (state['turn'] == 1 and seat == before['first']):
+            deck = new['zones'][seat]['deck']
+            if not deck:
+                new['terminal'] = True
+                new['winner'] = 'B' if seat == 'A' else 'A'
+                new['terminal_reason'] = 'DRAW_PHASE_DECKOUT'
+                return expected, {'phase': 'DRAW', 'winner': new['winner'],
+                    'status': 'EXPERIMENTAL_TERMINAL', 'full_match_credit': 0,
+                    'rules_source': rules}
+            new['zones'][seat]['hand'].append(deck.pop())
+        new['phase'] = 'BREEDING'
+    elif phase == 'BREEDING_MOVING_EFFECTS':
+        _quiet_timing(context, state, seat, 'Start of Your Main Phase')
+        new['phase'] = 'MAIN'
+    else:
+        raise RuntimeHalt('RULE_PHASE_ADVANCE_UNREVIEWED: ' + str(phase))
+    return expected, {'phase': new['phase'], 'full_match_credit': 0, 'rules_source': rules}
+
+
+def _breeding_choice(context, before, command, source):
+    state = _ordinary_window(before, command)
+    seat = command['seat']
+    action = command['args'].get('action')
+    if state['phase'] != 'BREEDING' or action not in ('skip', 'hatch'):
+        raise RuntimeHalt('RULE_BREEDING_CHOICE_UNREVIEWED: ' + str(action))
+    _quiet_timing(context, state, seat, 'Start of Your Main Phase')
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    if action == 'hatch':
+        if state['breeding'][seat] or not state['zones'][seat]['eggdeck']:
+            raise RuntimeHalt('RULE_HATCH_NOT_AVAILABLE')
+        new['breeding'][seat] = [new['zones'][seat]['eggdeck'].pop()]
+    new['phase'] = 'MAIN'
+    return expected, {'action': action, 'phase': 'MAIN', 'full_match_credit': 0,
+                      'rules_source': _source_at(source, _BREEDING_LOCATOR)}
+
+
+def _breeding_evolution(context, before, command, source):
+    state = _ordinary_window(before, command)
+    seat, args = command['seat'], command['args']
+    if state['phase'] != 'MAIN' or any(state['battle'][s] for s in ('A', 'B')):
+        raise RuntimeHalt('RULE_BREEDING_EVOLUTION_BOARD_UNREVIEWED')
+    stack = state['breeding'][seat]
+    if not stack:
+        raise RuntimeHalt('RULE_BREEDING_SOURCE_MISSING')
+    base = stack[-1]
+    if args.get('source_key', base) != base:
+        raise RuntimeHalt('RULE_BREEDING_SOURCE_MISMATCH')
+    hand = state['zones'][seat]['hand']
+    target = next((card for card in hand if card == args.get('hand_key')), None)
+    if target is None:
+        raise RuntimeHalt('RULE_EVOLUTION_HAND_COPY_MISSING')
+    base_def = context.card(seat, _physical_number(base)).to_dict()
+    definition = context.card(seat, _physical_number(target))
+    card_def = definition.to_dict()
+    if base_def['type'] not in ('Digi-Egg', 'Digimon') or card_def['type'] != 'Digimon':
+        raise RuntimeHalt('RULE_EVOLUTION_ROUTE_UNREVIEWED: ' + _physical_number(target))
+    for physical in [target] + [card for owner in ('A', 'B') for card in state['breeding'][owner]]:
+        definition_at = context.card(physical[0], _physical_number(physical))
+        if any('breeding' in definition_at.effect_text(field).lower()
+               for field in ('main_text', 'inherited_text')):
+            raise RuntimeHalt('RULE_BREEDING_EFFECT_UNREVIEWED: ' + physical)
+    routes = []
+    for condition in card_def.get('normal_digivolution', {}).values():
+        match = re.fullmatch(r'((?:(?:Red|Blue|Yellow|Green|Black|Purple|White)\s*)+)\s+(\d+) from Lv\.(\d+)', condition)
+        if match is None:
+            raise RuntimeHalt('RULE_PRINTED_ROUTE_UNREVIEWED: ' + str(condition))
+        colors, cost, level = match.groups()
+        accepted = set(re.findall(r'Red|Blue|Yellow|Green|Black|Purple|White', colors))
+        if base_def.get('level') == int(level) and accepted.intersection(base_def['colors']):
+            routes.append({'cost': int(cost), 'basis': 'PRINTED_NORMAL',
+                'printed_condition': condition, 'definition_sha256': definition.definition_sha256,
+                'status': 'PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY'})
+    for condition in card_def.get('special_conditions', {}).get('[Special Digivolution Condition]', '').splitlines():
+        cost = _special_cost(condition, base_def)
+        if cost is not None:
+            routes.append({'cost': cost, 'basis': 'PRINTED_SPECIAL',
+                'printed_condition': condition, 'definition_sha256': definition.definition_sha256,
+                'status': 'PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY'})
+    routes.sort(key=lambda route: (route['cost'], route['basis'], route['printed_condition']))
+    index = args.get('route_index')
+    if type(index) is not int or not 0 <= index < len(routes):
+        raise RuntimeHalt('RULE_PRINTED_ROUTE_MISSING')
+    route = routes[index]
+    for key in ('cost', 'basis', 'printed_condition', 'definition_sha256', 'status'):
+        if key in args and args[key] != route[key]:
+            raise RuntimeHalt('RULE_PRINTED_ROUTE_MISMATCH: ' + key)
+    if route['cost'] > state['memory'] + 10:
+        raise RuntimeHalt('RULE_EVOLUTION_COST_UNPAYABLE')
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    new['memory'] -= route['cost']
+    new_hand = new['zones'][seat]['hand']
+    new_hand.remove(target)
+    new['breeding'][seat].append(target)
+    deck = new['zones'][seat]['deck']
+    drew = bool(deck)
+    if drew:
+        new_hand.append(deck.pop())
+    if new['memory'] < 0:
+        new['phase'] = 'END_OF_TURN'
+    return expected, {'hand_key': target, 'source_key': base,
+        'route_index': index, 'route': route, 'cost': route['cost'], 'drew': drew,
+        'memory': new['memory'], 'phase': new['phase'],
+        'rules_source': _source_at(source, _BREEDING_EVOLUTION_LOCATOR),
+        'full_match_credit': 0}
+
+
+def _quiet_end(context, state, seat):
+    for owner in ('A', 'B'):
+        timing = 'End of Your Turn' if owner == seat else "End of Opponent's Turn"
+        for stack in state['battle'][owner].values():
+            if stack['statuses']:
+                raise RuntimeHalt('RULE_TURN_END_STATUS_UNREVIEWED: ' + stack['cards'][-1])
+            cards = stack['cards']
+            for index, physical in enumerate(cards):
+                field = 'main_text' if index == len(cards) - 1 else 'inherited_text'
+                text = context.card(owner, _physical_number(physical)).effect_text(field)
+                if '[' + timing + ']' in text or '[End of All Turns]' in text:
+                    raise RuntimeHalt('RULE_TURN_END_EFFECT_UNREVIEWED: ' + physical)
+
+
+def _pass_turn(context, before, command, source):
+    state = _ordinary_window(before, command)
+    if state['phase'] != 'MAIN':
+        raise RuntimeHalt('RULE_PASS_WINDOW_INVALID')
+    seat = command['seat']
+    _quiet_end(context, state, seat)
+    expected = copy.deepcopy(before)
+    expected['state']['memory'] = -3
+    expected['state']['phase'] = 'END_OF_TURN'
+    return expected, {'phase': 'END_OF_TURN', 'memory_before': state['memory'],
+        'memory_after': -3, 'turn_postponed': False, 'pending_end_effects': 0,
+        'rules_source': _source_at(source, _TURN_LOCATOR), 'full_match_credit': 0}
+
+
+def _finish_turn(context, before, command, source):
+    state = _ordinary_window(before, command, allow_negative=True)
+    if state['phase'] != 'END_OF_TURN':
+        raise RuntimeHalt('RULE_TURN_END_WINDOW_INVALID')
+    seat = command['seat']
+    _quiet_end(context, state, seat)
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    rules = _source_at(source, _TURN_LOCATOR)
+    if state['memory'] >= 0:
+        new['phase'] = 'MAIN'
+        return expected, {'phase': 'MAIN', 'memory_before': state['memory'],
+            'memory_after': state['memory'], 'turn_postponed': True,
+            'rules_source': rules, 'full_match_credit': 0}
+    new['active'] = 'B' if seat == 'A' else 'A'
+    new['memory'] = -state['memory']
+    new['turn'] += 1
+    new['once_used'] = []
+    new['phase'] = 'START_OF_TURN'
+    return expected, {'phase': 'START_OF_TURN', 'memory_before': state['memory'],
+        'memory_after': new['memory'], 'next_controller': new['active'],
+        'turn': new['turn'], 'turn_postponed': False,
+        'rules_source': rules, 'full_match_credit': 0}
+
+
 class SemanticGate:
     """Reusable action checker registry; absent mechanics have no verdict."""
     def __init__(self, context, root, checkers=()):
         self.context = context
         self.root = Path(root).resolve()
-        self.checkers = {'BEGIN_PREPARATION': _opening, 'REDRAW_CHOICE': _redraw}
+        self.checkers = {'BEGIN_PREPARATION': _opening, 'REDRAW_CHOICE': _redraw,
+                         'ADVANCE_PHASE': _advance_phase, 'BREEDING_CHOICE': _breeding_choice,
+                         'BREEDING_EVOLUTION': _breeding_evolution, 'PASS_TURN': _pass_turn,
+                         'FINISH_TURN': _finish_turn}
         for name, checker in checkers:
             if name in self.checkers or not callable(checker):
                 raise ValueError('Duplicate or invalid semantic checker: ' + str(name))
@@ -102,6 +346,8 @@ class SemanticGate:
         source = self.context.to_dict()['rules'].get('official_source')
         if source is None:
             raise RuntimeHalt('RULES_SOURCE_NOT_SELECTED_FOR_STRICT_JUDGE')
+        if rules_version(self.context) is None:
+            raise RuntimeHalt('RULES_MANUAL_VERSION_UNREVIEWED')
         evidence = comprehensive_rules(self.context, self.root, _OPENING_LOCATOR).manifest()
         kind = command['command']
         checker = self.checkers.get(kind)
