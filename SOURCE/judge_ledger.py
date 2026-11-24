@@ -150,7 +150,7 @@ def _engine_event(runtime, command, before, result):
 
 
 def _sources(runtime, command, before, result, event, root):
-    rules = _rules(root)
+    rules = _rules(root,runtime.context)
     specific = (event.get('choice') or {}).get('rules') if isinstance(event.get('choice'), dict) else None
     if specific is not None:
         if specific.get('sha256') != rules['sha256'] or specific.get('url') != rules['url']:

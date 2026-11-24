@@ -229,7 +229,7 @@ def trusted_evolve_from_effect(runtime,seat,source_key,hand_key,route_index,root
         if choice not in rina_evolution_choices(runtime,seat):
             raise RuntimeHalt('RINA_EVOLUTION_CHOICE_INVALID')
         return _choose(runtime,seat,{**choice,'cost_reduction':2,
-            'rules':{**_rules(root),'locator':RULE_LOCATOR}},root,within_effect=True)
+            'rules':{**_rules(root,runtime.context),'locator':RULE_LOCATOR}},root,within_effect=True)
     spec=OPTION_EVOLUTION_EFFECTS.get(effect)
     if spec is None:raise RuntimeHalt('OPTION_ACTIVE_BINDING_REQUIRED')
     source=validate_option_activation(runtime,seat,(effect,),source_zone=spec['source_zone'])
@@ -237,12 +237,12 @@ def trusted_evolve_from_effect(runtime,seat,source_key,hand_key,route_index,root
     if choice not in option_evolution_choices(runtime,seat,effect):
         raise RuntimeHalt('OPTION_EVOLUTION_CHOICE_INVALID')
     return _choose(runtime,seat,{**choice,'cost_reduction':spec['reduction'],
-        'rules':{**_rules(root),'locator':RULE_LOCATOR}},root,within_effect=True)
+        'rules':{**_rules(root,runtime.context),'locator':RULE_LOCATOR}},root,within_effect=True)
 
 
 def choose_battle_evolution(runtime, seat, source_key, hand_key, route_index, root, *, cost_reduction=0):
     """Choose an ordinary evolution; effect-bound reductions are separate work."""
-    rules = {**_rules(root), 'locator': RULE_LOCATOR}
+    rules = {**_rules(root,runtime.context), 'locator': RULE_LOCATOR}
     return runtime._control_command('BATTLE_EVOLUTION', seat,
         {'source_key': source_key, 'hand_key': hand_key, 'route_index': route_index,
          'cost_reduction': cost_reduction, 'rules': rules},

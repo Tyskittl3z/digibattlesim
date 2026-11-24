@@ -99,7 +99,7 @@ def _choose(runtime,seat,choice,root):
 
 
 def choose_breeding_evolution(runtime,seat,hand_key,route_index,root):
-    evidence=_rules(root)
+    evidence=_rules(root,runtime.context)
     evidence={**evidence,'locator':RULE_LOCATOR}
     return runtime._control_command('BREEDING_EVOLUTION',seat,
             {'hand_key':hand_key,'route_index':route_index,'rules':evidence},

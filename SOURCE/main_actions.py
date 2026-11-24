@@ -110,7 +110,7 @@ def play_tamer_from_security(runtime,seat,source_key,root):
     """Play the checked no-area card only during its bound immediate effect."""
     from security_tamer import validate_security_activation,RULE_LOCATOR
     validate_security_activation(runtime,seat,source_key)
-    return _play(runtime,seat,{'hand_key':source_key,'rules':{**_rules(root),'locator':RULE_LOCATOR}},
+    return _play(runtime,seat,{'hand_key':source_key,'rules':{**_rules(root,runtime.context),'locator':RULE_LOCATOR}},
                  root,within_effect=True,source_zone='security_check')
 
 
@@ -129,7 +129,7 @@ def play_tamer_from_effect(runtime,seat,hand_key,root):
         raise RuntimeHalt('EFFECT_PLAY_WINDOW_REQUIRED')
     if hand_key is None or hand_key not in tamer_play_choices(runtime,seat,source.key,activated[0]):
         raise RuntimeHalt('EFFECT_PLAY_TARGET_INVALID')
-    rules={**_rules(root),'locator':'Comprehensive rules v4.3: 3-4-3; 7-1-3; 15-4; 15-9-2-2; EX13-022 Q7264'}
+    rules={**_rules(root,runtime.context),'locator':'Comprehensive rules v4.3: 3-4-3; 7-1-3; 15-4; 15-9-2-2; EX13-022 Q7264'}
     cost_override = (max(0, runtime.context.card(seat, next(card.card_number
                     for card in runtime.state.zones[seat]['hand'] if card.key == hand_key)).to_dict()['play_cost'] - 2)
                      if activated[0] == ATTACK_TAMER_EFFECT else None)
@@ -150,19 +150,19 @@ def play_blue_scramble_from_trash(runtime,seat,trash_key,root):
     if (card is None or card.kind!='Digimon' or 'Blue' not in card.to_dict()['colors']
             or type(card.to_dict()['dp']) is not int or card.to_dict()['dp']>2000):
         raise RuntimeHalt('BLUE_SCRAMBLE_PLAY_TARGET_INVALID')
-    rules={**_rules(root),'locator':'Comprehensive rules v4.3: 7-1-3; 15-8-3; LM-028 Start of Your Turn Delay'}
+    rules={**_rules(root,runtime.context),'locator':'Comprehensive rules v4.3: 7-1-3; 15-8-3; LM-028 Start of Your Turn Delay'}
     return _play(runtime,seat,{'hand_key':trash_key,'rules':rules},root,
                  within_effect=True,source_zone='trash')
 
 
 def choose_play(runtime,seat,hand_key,root):
-    rules={**_rules(root),'locator':'Comprehensive rules v4.3: 1-3-11-1; 4-2; 6-5-1-1; 7-1-1 through 7-1-3-3'}
+    rules={**_rules(root,runtime.context),'locator':'Comprehensive rules v4.3: 1-3-11-1; 4-2; 6-5-1-1; 7-1-1 through 7-1-3-3'}
     def play(trial,controller,choice):return _play(trial,controller,choice,root)
     return runtime._control_command('PLAY_CARD',seat,{'hand_key':hand_key,'rules':rules},play)
 
 
 def choose_assembly(runtime,seat,hand_key,materials,root):
-    rules={**_rules(root),'locator':'Comprehensive rules v4.3: 7-3-1; 7-3-2; 7-3-3; EX13-023 Q7268'}
+    rules={**_rules(root,runtime.context),'locator':'Comprehensive rules v4.3: 7-3-1; 7-3-2; 7-3-3; EX13-023 Q7268'}
     return runtime._control_command('ASSEMBLY_PLAY',seat,
         {'hand_key':hand_key,'materials':materials,'rules':rules},
         lambda trial,controller,choice:_play(trial,controller,choice,root,

@@ -13,8 +13,8 @@ ATTACK_FIELDS = frozenset(('attacker','attacker_instance','target','target_insta
                           'controller','defender','window','counter_used','block_used','checked'))
 
 
-def _evidence(root):
-    return {**_rules(root),'locator':'Comprehensive rules v4.3: 1-2; 7-1-2-1; 11; 12; 13; 14; 15-3-1'}
+def _evidence(root,context):
+    return {**_rules(root,context),'locator':'Comprehensive rules v4.3: 1-2; 7-1-2-1; 11; 12; 13; 14; 15-3-1'}
 
 
 def validate_attack(state):
@@ -155,7 +155,7 @@ def _declare(r,seat,c,root,*,from_end_effect=False):
 
 def declare_attack(runtime,seat,attacker,target,root):
     return runtime._control_command('DECLARE_ATTACK',seat,
-        {'attacker':attacker,'target':target,'rules':_evidence(root)},
+        {'attacker':attacker,'target':target,'rules':_evidence(root,runtime.context)},
         lambda r,s,c:_declare(r,s,c,root))
 
 
@@ -192,7 +192,7 @@ def _counter(r,seat,c,root):
 
 
 def choose_counter(runtime,seat,card,root):
-    return runtime._control_command('COUNTER_CHOICE',seat,{'card':card,'rules':_evidence(root)},
+    return runtime._control_command('COUNTER_CHOICE',seat,{'card':card,'rules':_evidence(root,runtime.context)},
         lambda r,s,c:_counter(r,s,c,root),allow_attack=True)
 
 
@@ -220,7 +220,7 @@ def _block(r,seat,c,root):
 
 
 def choose_blocker(runtime,seat,card,root):
-    return runtime._control_command('BLOCK_CHOICE',seat,{'card':card,'rules':_evidence(root)},
+    return runtime._control_command('BLOCK_CHOICE',seat,{'card':card,'rules':_evidence(root,runtime.context)},
         lambda r,s,c:_block(r,s,c,root),allow_attack=True)
 
 
@@ -430,7 +430,7 @@ def _confirm(r,seat,c,root,*,evade_decision=None):
 
 
 def confirm_attack(runtime,seat,root):
-    return runtime._control_command('CONFIRM_ATTACK',seat,{'rules':_evidence(root)},
+    return runtime._control_command('CONFIRM_ATTACK',seat,{'rules':_evidence(root,runtime.context)},
         lambda r,s,c:_confirm(r,s,c,root),allow_attack=True)
 
 
@@ -441,5 +441,5 @@ def _end(r,seat,c,root):
 
 
 def end_attack(runtime,seat,root):
-    return runtime._control_command('END_ATTACK',seat,{'rules':_evidence(root)},
+    return runtime._control_command('END_ATTACK',seat,{'rules':_evidence(root,runtime.context)},
         lambda r,s,c:_end(r,s,c,root),allow_attack=True)

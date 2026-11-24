@@ -666,9 +666,9 @@ def _source_evidence(root, source, locator):
 
 def build_selected_registry(context, root):
     cards = {c.number: c for c in context.cards}
-    index = json.loads((Path(root) / 'RULES/matchups/123129-vs-124303/SOURCE_INDEX.json').read_bytes())
-    source = next(d for d in index['sources'] if d['id'] == 'rules')
-    rules = _source_evidence(root,source,'Comprehensive rules v4.3: 4-13; 15-3; 15-4; 15-14-1; memory cap 1-4-2')
+    from rules_evidence import comprehensive_rules
+    rules = comprehensive_rules(context, root,
+        'Comprehensive rules v4.3: 4-13; 15-3; 15-4; 15-14-1; memory cap 1-4-2')
     def bound_omnimon_end(runtime, seat, source_key, choice):
         return resolve_omnimon_end(runtime, seat, source_key, choice, root)
     def bound_omnimon_piercing(runtime, seat, source_key, choice):

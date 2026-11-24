@@ -114,7 +114,7 @@ def _use(runtime, seat, choice, root):
 
 def choose_use_option(runtime, seat, hand_key, root):
     return runtime._control_command('USE_OPTION',seat,
-        {'hand_key':hand_key,'rules':{**_rules(root),'locator':_RULES_LOCATOR}},
+        {'hand_key':hand_key,'rules':{**_rules(root,runtime.context),'locator':_RULES_LOCATOR}},
         lambda trial,controller,choice:_use(trial,controller,choice,root))
 
 
@@ -392,7 +392,7 @@ def resolve_blue_scramble_security(runtime, seat, source_key, choice):
         from main_actions import _play
         root = Path(__file__).resolve().parents[1]
         played = _play(runtime, seat, {'hand_key': choice,
-            'rules': {**_rules(root), 'locator': _RULES_LOCATOR}}, root,
+            'rules': {**_rules(root,runtime.context), 'locator': _RULES_LOCATOR}}, root,
             within_effect=True, source_zone='trash')
     current = runtime.state.resolving_option
     if current is None or current['seat'] != seat or current['stack'].cards[-1].key != source_key:
@@ -463,7 +463,7 @@ def choose_option_delay(runtime,seat,source_key,root):
                              'trigger':{'kind':'Main Delay','card':source.key}}])
         return {'source':source.key,'effect_id':effect,'rules_source':choice['rules'],'full_match_credit':0}
     return runtime._control_command('OPTION_DELAY',seat,
-        {'source_key':source_key,'rules':{**_rules(root),'locator':_RULES_LOCATOR}},choose)
+        {'source_key':source_key,'rules':{**_rules(root,runtime.context),'locator':_RULES_LOCATOR}},choose)
 
 
 def collect_option_start_turn(runtime,seat):
