@@ -31,18 +31,18 @@
 
 **Files:** `SOURCE/rules_evidence.py`, `SOURCE/match_context.py`, `SOURCE/match_preparation.py`, `SOURCE/selected_mechanics.py`, rule-source call sites, `SOURCE/test_rules_evidence.py`.
 
-- [ ] Write a failing test that a context's pinned alternate official rules file is used by opening preparation and mechanic bindings.
-- [ ] Run the test and confirm it fails for the fixed-path lookup.
-- [ ] Add `rules_evidence.comprehensive_rules(context, root, locator)` and pass the active context through rule-source call sites; retain the old fallback only for old experimental contexts.
-- [ ] Run the focused tests and confirm the new source is selected and a missing or altered file fails.
-- [ ] Commit the verified task.
+- [x] Write a failing test that a context's pinned alternate official rules file is used by opening preparation and mechanic bindings.
+- [x] Run the test and confirm it fails for the fixed-path lookup.
+- [x] Add `rules_evidence.comprehensive_rules(context, root, locator)` and pass the active context through rule-source call sites; retain the old fallback only for old experimental contexts.
+- [x] Run the focused tests and confirm the new source is selected and a missing or altered file fails.
+- [x] Commit the verified task.
 
 ### Task 2: Strict semantic gate and immutable trial
 
 **Files:** `SOURCE/semantic_gate.py`, `SOURCE/fresh_learning_campaign.py`, `SOURCE/test_semantic_gate.py`.
 
-- [ ] Write failing tests for an unsupported action halting before mutation, a supported opening transition being checked independently, and a mismatching trial transition preserving the live state.
-- [ ] Run the tests and confirm the intended failures.
-- [ ] Add a generic checker registry and strict mode to `run_game`; use a copied runtime for trial execution and bind gate receipts to saved commands and replay.
-- [ ] Run focused runner/judge/gate tests, then the full repository suite; report any historical replay limitations by name.
+- [x] Write failing tests for an unsupported action halting before mutation, a supported opening transition being checked independently, and a mismatching trial transition preserving the live state.
+- [x] Run the tests and confirm the intended failures.
+- [x] Add a generic checker registry and strict mode to `run_game`; use a copied runtime for trial execution and bind gate receipts to saved commands and replay.
+- [x] Run focused runner/judge/gate tests, then the full repository suite; report any historical replay limitations by name.
 - [ ] Commit and publish the verified change on the draft branch.
