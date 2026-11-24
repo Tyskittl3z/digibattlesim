@@ -1,11 +1,11 @@
 {
   "accepted_fact_finding_credit": 0,
   "campaign_id": "ULFORCE_STYLED_FRESH_60_2026_11_22_V2",
-  "completed_software_games": 25,
-  "current_game_index": 24,
+  "completed_software_games": 26,
+  "current_game_index": 25,
   "current_status": "EXPERIMENTAL_SOFTWARE_TERMINAL",
   "final_evaluation_credit": 0,
-  "next_game_index": 25,
+  "next_game_index": 26,
   "schema": "styled-sequential-60-status-v1",
   "target_games": 60
 }
