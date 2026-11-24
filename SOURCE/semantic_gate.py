@@ -22,6 +22,10 @@ _BREEDING_EVOLUTION_LOCATOR = ('Comprehensive rules v4.3: 1-3-11-1; 3-4-7-3 thro
                                '6-5; 8-1-2-8; 8-1-3-1 through 8-1-3-3')
 _TURN_LOCATOR = ('Comprehensive rules v4.3: 6-1-3; 6-1-4; 6-5-1-7-1; 6-6; '
                  '15-8-3-6; 15-11-1; 15-13; 15-14-1-5-1; 15-16-12')
+_PLAY_LOCATOR = 'Comprehensive rules v4.3: 1-3-11-1; 4-2; 6-5-1-1; 7-1-1 through 7-1-3-3'
+_EX13_017_SEARCH = ('[When Moving] [On Play] Reveal the top 3 cards of your deck. '
+    'Add 1 card with [Veedramon] in its text or the [Royal Knight] trait among them '
+    'to the hand. Return the rest to the bottom of the deck.')
 
 
 def _tuples(value):
@@ -185,15 +189,40 @@ def _breeding_choice(context, before, command, source):
     state = _ordinary_window(before, command)
     seat = command['seat']
     action = command['args'].get('action')
-    if state['phase'] != 'BREEDING' or action not in ('skip', 'hatch'):
+    if state['phase'] != 'BREEDING' or action not in ('skip', 'hatch', 'promote'):
         raise RuntimeHalt('RULE_BREEDING_CHOICE_UNREVIEWED: ' + str(action))
-    _quiet_timing(context, state, seat, 'Start of Your Main Phase')
     expected = copy.deepcopy(before)
     new = expected['state']
     if action == 'hatch':
         if state['breeding'][seat] or not state['zones'][seat]['eggdeck']:
             raise RuntimeHalt('RULE_HATCH_NOT_AVAILABLE')
         new['breeding'][seat] = [new['zones'][seat]['eggdeck'].pop()]
+    elif action == 'promote':
+        cards = state['breeding'][seat]
+        if not cards:
+            raise RuntimeHalt('RULE_PROMOTION_SOURCE_MISSING')
+        top = cards[-1]
+        top_def = context.card(seat, _physical_number(top)).to_dict()
+        if top_def['type'] != 'Digimon' or not isinstance(top_def['level'], int) or top_def['level'] < 3:
+            raise RuntimeHalt('RULE_PROMOTION_LEVEL_INVALID')
+        if any(stack['statuses'] for owner in ('A', 'B') for stack in state['battle'][owner].values()):
+            raise RuntimeHalt('RULE_PROMOTION_STATUS_UNREVIEWED')
+        for index, card in enumerate(cards):
+            field = 'main_text' if index == len(cards) - 1 else 'inherited_text'
+            if '[When Moving]' in context.card(seat, _physical_number(card)).effect_text(field):
+                raise RuntimeHalt('RULE_PROMOTION_EFFECT_UNREVIEWED: ' + card)
+        new['entity_sequence'] += 1
+        new['battle'][seat][top] = {'cards': list(cards), 'suspended': False,
+            'statuses': {}, 'instance_id': 'entity-' + str(new['entity_sequence']),
+            'played_turn': None, 'ready_since_turn': new['turn']}
+        new['breeding'][seat] = []
+    _quiet_timing(context, new, seat, 'Start of Your Main Phase')
+    for stack in state['battle']['B' if seat == 'A' else 'A'].values():
+        for index, card in enumerate(stack['cards']):
+            field = 'main_text' if index == len(stack['cards']) - 1 else 'inherited_text'
+            if "[Start of Opponent's Main Phase]" in context.card('B' if seat == 'A' else 'A',
+                    _physical_number(card)).effect_text(field):
+                raise RuntimeHalt('RULE_OPPONENT_MAIN_EFFECT_UNREVIEWED: ' + card)
     new['phase'] = 'MAIN'
     return expected, {'action': action, 'phase': 'MAIN', 'full_match_credit': 0,
                       'rules_source': _source_at(source, _BREEDING_LOCATOR)}
@@ -323,6 +352,120 @@ def _finish_turn(context, before, command, source):
         'rules_source': rules, 'full_match_credit': 0}
 
 
+def _play_card(context, before, command, source):
+    state = _ordinary_window(before, command)
+    seat = command['seat']
+    if state['phase'] != 'MAIN' or any(state['battle'][owner] for owner in ('A', 'B')):
+        raise RuntimeHalt('RULE_PLAY_BOARD_UNREVIEWED')
+    key = command['args'].get('hand_key')
+    if key not in state['zones'][seat]['hand']:
+        raise RuntimeHalt('RULE_PLAY_HAND_COPY_MISSING')
+    definition = context.card(seat, _physical_number(key)).to_dict()
+    if definition['type'] not in ('Digimon', 'Tamer'):
+        raise RuntimeHalt('RULE_PLAY_TYPE_UNREVIEWED: ' + definition['type'])
+    cost = definition['play_cost']
+    if type(cost) is not int or cost < 0 or cost > state['memory'] + 10:
+        raise RuntimeHalt('RULE_PLAY_COST_UNPAYABLE')
+    if 'printed_cost' in command['args'] and command['args']['printed_cost'] != cost:
+        raise RuntimeHalt('RULE_PLAY_PRINTED_COST_MISMATCH')
+    text = definition['main_text']
+    if definition['card_number'] == 'EX13-017' and text == _EX13_017_SEARCH:
+        effect_id = 'EX13-017.on_play_search'
+    elif text == '':
+        effect_id = None
+    else:
+        raise RuntimeHalt('RULE_PLAY_CARD_TEXT_UNREVIEWED: ' + definition['card_number'])
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    new['zones'][seat]['hand'].remove(key)
+    new['memory'] -= cost
+    new['entity_sequence'] += 1
+    instance = 'entity-' + str(new['entity_sequence'])
+    new['battle'][seat][key] = {'cards': [key], 'suspended': False, 'statuses': {},
+        'instance_id': instance, 'played_turn': new['turn'],
+        'ready_since_turn': new['turn'] + 1}
+    effects = []
+    if effect_id is not None:
+        new['effect_sequence'] += 1
+        new['pending'].append({'id': 'effect-' + str(new['effect_sequence']),
+            'seat': seat, 'source': key, 'effect_id': effect_id, 'field': 'main_text',
+            'instance': instance, 'depth': 0,
+            'trigger': {'kind': 'On Play', 'card': key}, 'usage': []})
+        effects.append(effect_id)
+    elif new['memory'] < 0:
+        new['phase'] = 'END_OF_TURN'
+    card_source = definition['official_source']
+    return expected, {'played_card': key, 'cost': cost, 'memory_after': new['memory'],
+        'full_match_credit': 0, 'rules_source': _source_at(source, _PLAY_LOCATOR),
+        'card_source': {'url': card_source['url'], 'sha256': card_source['sha256'],
+            'locator': '#' + definition['card_number'] + ' printed type, play cost and main effects'},
+        'scope_context_id': context.matchup_id, 'printed_trigger': 'On Play',
+        'triggered_effects': effects, 'play_method': 'MAIN_ACTION', 'assembly_materials': []}
+
+
+def _printed_strings(value):
+    if isinstance(value, str):
+        return [value]
+    if isinstance(value, dict):
+        return [text for key, item in value.items()
+                for text in _printed_strings(key) + _printed_strings(item)]
+    if isinstance(value, (list, tuple)):
+        return [text for item in value for text in _printed_strings(item)]
+    return []
+
+
+def _search_has_veedramon(context, seat, key):
+    card = context.card(seat, _physical_number(key)).to_dict()
+    return any('Veedramon' in text for field in ('name', 'traits', 'main_text',
+        'inherited_text', 'security_text', 'special_conditions', 'normal_digivolution')
+        for text in _printed_strings(card.get(field)))
+
+
+def _resolve_pending(context, before, command, source):
+    state = before['state']
+    seat = command['seat']
+    if (state['terminal'] or state['attack'] is not None or state['resolving_option'] is not None
+            or seat != state['active'] or len(state['pending']) != 1):
+        raise RuntimeHalt('RULE_PENDING_WINDOW_UNREVIEWED')
+    pending = state['pending'][0]
+    if pending['effect_id'] != 'EX13-017.on_play_search':
+        raise RuntimeHalt('RULE_EFFECT_CHECK_NOT_INSTALLED: ' + pending['effect_id'])
+    if (pending['id'] != command['args'].get('pending_id') or pending['seat'] != seat
+            or pending['field'] != 'main_text' or pending['source'] not in state['battle'][seat]
+            or state['battle'][seat][pending['source']]['instance_id'] != pending['instance']
+            or context.card(seat, _physical_number(pending['source'])).effect_text('main_text')
+               != _EX13_017_SEARCH):
+        raise RuntimeHalt('RULE_SEARCH_PENDING_MISMATCH')
+    choice = command['args'].get('choice')
+    if not isinstance(choice, dict) or set(choice) != {'selected', 'bottom_order'}:
+        raise RuntimeHalt('RULE_SEARCH_CHOICE_INVALID')
+    selected, bottom = choice['selected'], choice['bottom_order']
+    deck = state['zones'][seat]['deck']
+    revealed = list(reversed(deck[-3:]))
+    eligible = [key for key in revealed if _search_has_veedramon(context, seat, key)
+                or 'Royal Knight' in context.card(seat, _physical_number(key)).to_dict()['traits']]
+    if (not isinstance(selected, list) or not isinstance(bottom, list)
+            or any(not isinstance(key, str) for key in selected + bottom)
+            or len(selected) != (1 if eligible else 0)
+            or (selected and selected[0] not in eligible)
+            or len(bottom) != len(revealed) - len(selected)
+            or set(bottom) != set(revealed) - set(selected)
+            or len(set(bottom)) != len(bottom)):
+        raise RuntimeHalt('RULE_SEARCH_SELECTION_INVALID')
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    new['pending'] = []
+    new_deck = new['zones'][seat]['deck']
+    if revealed:
+        del new_deck[-len(revealed):]
+    new['zones'][seat]['hand'].extend(selected)
+    new_deck[:0] = bottom
+    if new['phase'] == 'MAIN' and new['memory'] < 0:
+        new['phase'] = 'END_OF_TURN'
+    return expected, {'revealed': revealed, 'selected': selected, 'bottom_order': bottom,
+        'bottom_order_convention': 'first element is bottommost', 'status': 'EXPERIMENTAL'}
+
+
 class SemanticGate:
     """Reusable action checker registry; absent mechanics have no verdict."""
     def __init__(self, context, root, checkers=()):
@@ -331,7 +474,8 @@ class SemanticGate:
         self.checkers = {'BEGIN_PREPARATION': _opening, 'REDRAW_CHOICE': _redraw,
                          'ADVANCE_PHASE': _advance_phase, 'BREEDING_CHOICE': _breeding_choice,
                          'BREEDING_EVOLUTION': _breeding_evolution, 'PASS_TURN': _pass_turn,
-                         'FINISH_TURN': _finish_turn}
+                         'FINISH_TURN': _finish_turn, 'PLAY_CARD': _play_card,
+                         'RESOLVE_PENDING': _resolve_pending}
         for name, checker in checkers:
             if name in self.checkers or not callable(checker):
                 raise ValueError('Duplicate or invalid semantic checker: ' + str(name))

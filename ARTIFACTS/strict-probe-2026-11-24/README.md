@@ -8,14 +8,14 @@ The context pins Bandai's November 20, 2026 Comprehensive Rules Manual v4.4
 by SHA-256. The card-page snapshots still need freshness and rules review.
 
 `game-0000-before-route.json` halted at EX13-019's printed digivolution
-route. It exactly replayed under its recorded source version before the route
-checker edit. `game-0000-after-route.json` uses the new checker, retains the
-same seed, choices, and first eight successful state transitions, and exactly
-replays under the current source version. Its original failed selection was
-retried with the same command arguments, view, choices, and policy RNG. It now
-halts before playing B's EX13-017 because a strict play/effect checker is not
-installed. `prefix-comparison.json` records these comparisons and the one
-changed source hash.
+route. `game-0000-after-route.json` passed that action and halted before
+playing EX13-017. `game-0000-after-search.json` passed the play and search,
+then halted before breeding promotion. `game-0000-after-promotion.json` passed
+that move and now halts before A's attack declaration. Each record exactly
+replayed under its recorded source version at creation. The latest record
+exactly replays under the current source version. The three
+`prefix-comparison*.json` files show that each update retained the original
+seed, prior successful choices and states, and the retried failed selection.
 
 The comparison is diagnostic evidence, not a formal source-only migration or
 independent official rules certification. Both records have zero fact-finding

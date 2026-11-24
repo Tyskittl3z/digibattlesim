@@ -15,6 +15,9 @@ from match_preparation import begin_preparation, choose_redraw
 from phase_flow import advance_phase, choose_breeding_action
 from breeding_evolution import choose_breeding_evolution
 from turn_flow import pass_turn, finish_turn
+from imported_attempts import _apply
+from matchup_readiness import load_context_file
+from selected_mechanics import build_selected_registry
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -160,10 +163,86 @@ class SemanticGateTests(unittest.TestCase):
         self.assertEqual(self.runtime.state.turn, 2)
         self.assertEqual(receipt['checker'], 'FINISH_TURN')
 
+    def test_encountered_ex13_017_play_queues_its_search_without_resolving_it(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-route.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        self.assertEqual(runtime.snapshot()['state'], record['commands'][-1]['before']['state'])
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, command['command'], command['seat'],
+                                     command['args'], ROOT))
+        self.assertEqual(runtime.snapshot(), before)
+        self.assertEqual(result['played_card'], 'B:EX13-017#2')
+        self.assertEqual(result['triggered_effects'], ['EX13-017.on_play_search'])
+        self.assertEqual(trial.state.pending[0]['effect_id'], 'EX13-017.on_play_search')
+        self.assertEqual(receipt['checker'], 'PLAY_CARD')
+
+    def test_encountered_search_resolution_checks_selection_and_deck_order(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-route.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        play = record['commands'][-1]
+        _apply(runtime, play['command'], play['seat'], play['args'], ROOT)
+        pending = runtime.state.pending[0]
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        revealed = list(reversed(runtime.snapshot()['state']['zones']['B']['deck'][-3:]))
+        selected = [key for key in revealed if key.startswith('B:BT22-023')]
+        choice = {'selected': selected, 'bottom_order': [key for key in revealed if key not in selected]}
+        command = {'command': 'RESOLVE_PENDING', 'seat': 'B',
+                   'args': {'pending_id': pending['id'], 'choice': choice}}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'RESOLVE_PENDING', 'B', command['args'], ROOT))
+        self.assertEqual(runtime.snapshot(), before)
+        self.assertEqual(result['selected'], selected)
+        self.assertEqual(trial.state.phase, 'END_OF_TURN')
+        self.assertEqual(trial.state.pending, [])
+        self.assertEqual(receipt['checker'], 'RESOLVE_PENDING')
+
+        wrong = copy.deepcopy(command)
+        wrong['args']['choice']['selected'] = [revealed[0]]
+        wrong['args']['choice']['bottom_order'] = revealed[1:]
+        with self.assertRaisesRegex(RuntimeHalt, 'RULE_SEARCH_SELECTION_INVALID'):
+            self.checked_trial(runtime, gate, wrong,
+                lambda candidate: self.fail('Engine ran before rule check'))
+        self.assertEqual(runtime.snapshot(), before)
+
+    def test_encountered_breeding_promotion_moves_the_whole_stack(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-search.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        self.assertEqual(runtime.snapshot()['state'], record['commands'][-1]['before']['state'])
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        stack_before = list(runtime.state.breeding['A'])
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'BREEDING_CHOICE', 'A', command['args'], ROOT))
+        self.assertEqual(result['phase'], 'MAIN')
+        self.assertEqual(runtime.state.breeding['A'], stack_before)
+        self.assertEqual(trial.state.breeding['A'], [])
+        self.assertEqual([c.key for c in trial.state.battle['A'][stack_before[-1].key].cards],
+                         [c.key for c in stack_before])
+        self.assertEqual(receipt['checker'], 'BREEDING_CHOICE')
+
     def test_unknown_action_halts_before_live_state_changes(self):
         before = self.runtime.snapshot()
-        command = {'command': 'PLAY_CARD', 'seat': 'A', 'args': {'hand_key': 'A:BT11-023#1'}}
-        with self.assertRaisesRegex(RuntimeHalt, 'RULE_CHECK_NOT_INSTALLED: PLAY_CARD'):
+        command = {'command': 'USE_OPTION', 'seat': 'A', 'args': {'hand_key': 'A:LM-034#1'}}
+        with self.assertRaisesRegex(RuntimeHalt, 'RULE_CHECK_NOT_INSTALLED: USE_OPTION'):
             self.checked_trial(self.runtime, self.gate, command,
                           lambda trial: self.fail('Engine ran before rule check'))
         self.assertEqual(self.runtime.snapshot(), before)
@@ -219,7 +298,7 @@ class SemanticGateTests(unittest.TestCase):
                 learning_state=LearningState(), max_commands=30,
                 player_policy='BOARD_TEXT_HISTORY_STYLED', rules_mode='STRICT')
             self.assertEqual(record['status'], 'HALT')
-            self.assertIn('RULE_CHECK_NOT_INSTALLED', record['halt_reason'])
+            self.assertTrue(record['halt_reason'].startswith('RULE_'))
             self.assertEqual(record['commands'][-1]['before'], record['commands'][-1]['after'])
             self.assertEqual(record['commands'][-1]['judge']['status'], 'SOFTWARE_GAP')
             self.assertEqual(record['rules_mode'], 'STRICT')

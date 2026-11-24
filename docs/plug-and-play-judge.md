@@ -16,8 +16,9 @@ classifies this as `SOFTWARE_GAP`, not an illegal or red play. Saved strict
 attempts replay their gate decisions.
 
 The installed algorithmic checks cover opening setup, redraw, quiet phase
-transitions, hatching or skipping breeding, printed breeding digivolution
-routes, and quiet pass or turn-end transitions. A live effect, unsupported
+transitions, hatching, skipping or quiet promotion, printed breeding digivolution
+routes, quiet pass or turn-end transitions, plain empty-text card plays, and the
+encountered EX13-017 On Play search. A live effect, unsupported
 printed route, modified board, or other uncovered action pauses the game.
 These checks are reusable across imported matchups. Card-specific rule
 checks can be added to `SemanticGate` as encountered mechanics are reviewed;

@@ -225,7 +225,7 @@ def judge_action(runtime, command, before, after, result, error=None, *, root=RO
                 raise RuntimeHalt('JUDGE_FAILED_TRANSACTION_CHANGED_STATE')
             reason = str(error)
             gap = any(word in reason.upper() for word in
-                      ('UNSUPPORTED', 'UNIMPLEMENTED', 'UNVERIFIED', 'MISSING',
+                      ('UNSUPPORTED', 'UNIMPLEMENTED', 'UNVERIFIED', 'UNREVIEWED', 'MISSING',
                        'NOT_INSTALLED', 'RESTART_REQUIRED'))
             receipt.update({'status': 'SOFTWARE_GAP' if gap else 'REJECTED', 'reason': reason})
             receipt['layers'].update({
