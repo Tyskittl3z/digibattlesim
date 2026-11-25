@@ -431,6 +431,111 @@ class SemanticGateTests(unittest.TestCase):
         self.assertEqual(receipt['checker'], 'PLAY_CARD')
         self.assertEqual(runtime.snapshot(), before)
 
+    def test_battle_digivolution_checks_route_draw_and_live_grant(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-live-play.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'BATTLE_EVOLUTION', 'A', command['args'], ROOT))
+        self.assertEqual(result['cost'], 3)
+        self.assertEqual(result['drawn_card'], 'A:BT22-085#1')
+        self.assertEqual(result['triggered_effects'], ['EX13-022.play_tamer'])
+        self.assertEqual(trial.state.battle['A']['A:EX13-022#1'].instance_id, 'entity-2')
+        self.assertEqual(receipt['checker'], 'BATTLE_EVOLUTION')
+        self.assertEqual(runtime.snapshot(), before)
+
+    def test_ex13_ulforce_tamer_play_checks_free_cost_and_restriction_trigger(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-battle-evolve.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'RESOLVE_PENDING', 'A', command['args'], ROOT))
+        self.assertEqual(result['play']['cost'], 0)
+        self.assertEqual(result['play']['triggered_effects'],
+                         ['BT11-112.on_play_grant', 'EX13-022.tamer_play_restriction'])
+        self.assertEqual([item['effect_id'] for item in trial.state.pending],
+                         ['BT11-112.on_play_grant', 'EX13-022.tamer_play_restriction'])
+        self.assertEqual(receipt['checker'], 'RESOLVE_PENDING')
+        self.assertEqual(runtime.snapshot(), before)
+
+    def test_ulforce_tamer_observer_restricts_chosen_opponent_target(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-ulforce-tamer.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'RESOLVE_PENDING', 'A', command['args'], ROOT))
+        self.assertEqual(result['target'], 'B:EX13-017#2')
+        self.assertEqual(result['grant']['effect'], {'restrictions': ['cannot_suspend']})
+        self.assertEqual(trial.state.pending, [])
+        self.assertEqual(receipt['checker'], 'RESOLVE_PENDING')
+        self.assertEqual(runtime.snapshot(), before)
+
+        wrong = copy.deepcopy(command)
+        wrong['args']['choice'] = 'A:EX13-022#1'
+        with self.assertRaisesRegex(RuntimeHalt, 'RULE_RESTRICTION_TARGET_INVALID'):
+            self.checked_trial(runtime, gate, wrong,
+                lambda candidate: self.fail('Engine ran before rule check'))
+
+    def test_turn_end_preserves_known_grants_until_opponent_end(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-restriction.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'FINISH_TURN', 'A', command['args'], ROOT))
+        self.assertEqual(result['next_controller'], 'B')
+        self.assertEqual(trial.state.turn, 4)
+        self.assertTrue(trial.state.battle['A']['A:EX13-022#1'].statuses)
+        self.assertTrue(trial.state.battle['B']['B:EX13-017#2'].statuses)
+        self.assertEqual(receipt['checker'], 'FINISH_TURN')
+        self.assertEqual(runtime.snapshot(), before)
+
+    def test_unsuspend_phase_ignores_known_cannot_suspend_grant_on_ready_card(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-turn-end.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'ADVANCE_PHASE', 'B', command['args'], ROOT))
+        self.assertEqual(result['phase'], 'DRAW')
+        self.assertEqual(trial.state.battle['B']['B:EX13-017#2'].statuses,
+                         runtime.state.battle['B']['B:EX13-017#2'].statuses)
+        self.assertEqual(receipt['checker'], 'ADVANCE_PHASE')
+        self.assertEqual(runtime.snapshot(), before)
+
     def test_encountered_blocker_evade_grant_checks_target_and_expiry(self):
         path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
         record = json.loads((path / 'game-0000-after-child-gap.json').read_bytes())

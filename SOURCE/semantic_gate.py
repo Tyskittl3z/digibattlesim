@@ -1,8 +1,7 @@
 """Fail-closed rule checks on proposed actions, independent of engine handlers.
 
-The installed generic checkers cover opening preparation only. Future mechanic
-packs can register checkers for actual encountered actions. This code supplies
-an algorithmic cross-check, not an independent human rules certification.
+Generic turn checks and encountered effect checks compare expected transitions
+with the engine on a copy. They do not supply independent rules certification.
 """
 import copy
 import hashlib
@@ -21,6 +20,8 @@ _PHASE_LOCATOR = 'Comprehensive rules v4.3: 1-2-3-2; 6-1 through 6-4; 15-4'
 _BREEDING_LOCATOR = 'Comprehensive rules v4.3: 4-17; 4-18; 6-4; 6-5; 15-4'
 _BREEDING_EVOLUTION_LOCATOR = ('Comprehensive rules v4.3: 1-3-11-1; 3-4-7-3 through 3-4-7-8; '
                                '6-5; 8-1-2-8; 8-1-3-1 through 8-1-3-3')
+_BATTLE_EVOLUTION_LOCATOR = ('Comprehensive rules v4.3: 1-3-11-1; 3-4-5; 4-2-2; 6-5-1-2; '
+    '8-1-1 through 8-1-3-3; 15-3-1; 15-4; 15-11-1; 15-13; 15-16-3-1')
 _TURN_LOCATOR = ('Comprehensive rules v4.3: 6-1-3; 6-1-4; 6-5-1-7-1; 6-6; '
                  '15-8-3-6; 15-11-1; 15-13; 15-14-1-5-1; 15-16-12')
 _PLAY_LOCATOR = 'Comprehensive rules v4.3: 1-3-11-1; 4-2; 6-5-1-1; 7-1-1 through 7-1-3-3'
@@ -29,6 +30,10 @@ _EX13_017_SEARCH = ('[When Moving] [On Play] Reveal the top 3 cards of your deck
     'to the hand. Return the rest to the bottom of the deck.')
 _EX13_019_ATTACK = ('[When Attacking] [Once Per Turn] You may play 1 Tamer card with '
                     '[Veedramon] in its text from your hand with the cost reduced by 2.')
+_EX13_022_PLAY = ('[On Play] [When Digivolving] [When Attacking] [Once Per Turn] You may '
+    'play 1 Tamer card with [Veedramon] in its text from your hand without paying the cost.')
+_EX13_022_OBSERVER = ("[All Turns] [Once Per Turn] When any of your Tamers are played, 1 "
+    "of your opponent's Digimon or Tamers can't suspend until their turn ends.")
 _BT11_112_ON_PLAY = ('[On Play] Until the end of your opponent\'s turn, 1 of your '
     'Digimon with [Veemon] or [Veedramon] in its name gains ＜Blocker＞ and ＜Evade＞.')
 _EX13_002_EGG = ('[Your Turn] [Once Per Turn] When any of your blue Tamers are played, '
@@ -182,9 +187,10 @@ def _advance_phase(context, before, command, source):
         _quiet_timing(context, state, seat, 'Start of Your Turn')
         new['phase'] = 'TURN_START_EFFECTS'
     elif phase == 'TURN_START_EFFECTS':
-        for stack in state['battle'][seat].values():
-            if stack['suspended'] or stack['statuses']:
-                raise RuntimeHalt('RULE_UNSUSPEND_INTERACTION_UNREVIEWED: ' + stack['cards'][-1])
+        for key, stack in state['battle'][seat].items():
+            _reviewed_attack_statuses(context, state, seat, key, stack)
+            if stack['suspended']:
+                raise RuntimeHalt('RULE_UNSUSPEND_INTERACTION_UNREVIEWED: ' + key)
         new['phase'] = 'DRAW'
     elif phase == 'UNSUSPEND':
         new['phase'] = 'DRAW'
@@ -325,9 +331,8 @@ def _breeding_evolution(context, before, command, source):
 def _quiet_end(context, state, seat):
     for owner in ('A', 'B'):
         timing = 'End of Your Turn' if owner == seat else "End of Opponent's Turn"
-        for stack in state['battle'][owner].values():
-            if stack['statuses']:
-                raise RuntimeHalt('RULE_TURN_END_STATUS_UNREVIEWED: ' + stack['cards'][-1])
+        for key, stack in state['battle'][owner].items():
+            _reviewed_attack_statuses(context, state, owner, key, stack)
             cards = stack['cards']
             for index, physical in enumerate(cards):
                 field = 'main_text' if index == len(cards) - 1 else 'inherited_text'
@@ -484,6 +489,10 @@ def _resolve_pending(context, before, command, source):
         return _resolve_rina_suspension(context, before, command, source, pending)
     if pending['effect_id'] == 'LM-057.main_search' and pending['field'] == 'security_text':
         return _resolve_training_security(context, before, command, source, pending)
+    if pending['effect_id'] == 'EX13-022.play_tamer':
+        return _resolve_ulforce_tamer(context, before, command, source, pending)
+    if pending['effect_id'] == 'EX13-022.tamer_play_restriction':
+        return _resolve_ulforce_restriction(context, before, command, source, pending)
     if pending['effect_id'] != 'EX13-017.on_play_search':
         raise RuntimeHalt('RULE_EFFECT_CHECK_NOT_INSTALLED: ' + pending['effect_id'])
     if (len(state['pending']) != 1 or state['attack'] is not None or state['resolving_option'] is not None
@@ -764,6 +773,141 @@ def _resolve_memory_reaction(context, before, command, source, pending):
     return expected, result
 
 
+def _resolve_ulforce_tamer(context, before, command, source, pending):
+    state = before['state']
+    seat, args = command['seat'], command['args']
+    key = pending['source']
+    stack = state['battle'][seat].get(key)
+    usage = [state['turn'], seat, key, pending['instance'], pending['effect_id']]
+    text = context.card(seat, _physical_number(key)).effect_text('main_text')
+    if (seat != state['active'] or seat != pending['seat']
+            or pending['id'] != args.get('pending_id') or len(state['pending']) != 1
+            or pending['field'] != 'main_text' or stack is None
+            or stack['instance_id'] != pending['instance'] or stack['cards'][-1] != key
+            or _physical_number(key) != 'EX13-022'
+            or _EX13_022_PLAY not in text.splitlines()
+            or _EX13_022_OBSERVER not in text.splitlines()
+            or pending['trigger'].get('kind') != 'When Digivolving'
+            or pending['trigger'].get('card') != key
+            or pending['usage'] != usage or usage in state['once_used']):
+        raise RuntimeHalt('RULE_ULFORCE_TAMER_PENDING_MISMATCH')
+    choice = args.get('choice')
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    new['pending'] = []
+    new['once_used'] = sorted(state['once_used'] + [usage])
+    if choice is None:
+        return expected, {'played_card': None,
+            'processing': 'OPTIONAL_PROCESSING_DECLINED_AFTER_ACTIVATION',
+            'once_per_turn_consumed': True, 'full_match_credit': 0}
+    if not isinstance(choice, str) or choice not in state['zones'][seat]['hand']:
+        raise RuntimeHalt('RULE_TAMER_CHOICE_INVALID')
+    definition = context.card(seat, _physical_number(choice)).to_dict()
+    if definition['type'] != 'Tamer' or not _search_has_veedramon(context, seat, choice):
+        raise RuntimeHalt('RULE_TAMER_CHOICE_INVALID')
+    if definition['card_number'] != 'BT11-112' or _BT11_112_ON_PLAY not in definition['main_text'].splitlines():
+        raise RuntimeHalt('RULE_TAMER_PLAY_TEXT_UNREVIEWED: ' + definition['card_number'])
+    if context.card(seat, _physical_number(key)).name.find('Veedramon') < 0:
+        raise RuntimeHalt('RULE_ULFORCE_TAMER_SOURCE_MISMATCH')
+    for physical in stack['cards'][:-1]:
+        inherited = context.card(seat, _physical_number(physical)).effect_text('inherited_text')
+        if 'Tamers are played' not in inherited:
+            continue
+        if _physical_number(physical) == 'EX13-002' and inherited == _EX13_002_EGG:
+            prior = [state['turn'], seat, physical, stack['instance_id'],
+                     'EX13-002.tamer_play_unsuspend']
+            if prior in state['once_used']:
+                continue
+        raise RuntimeHalt('RULE_TAMER_PLAY_REACTION_UNREVIEWED: ' + physical)
+    new['zones'][seat]['hand'].remove(choice)
+    new['entity_sequence'] += 1
+    instance = 'entity-' + str(new['entity_sequence'])
+    new['battle'][seat][choice] = {'cards': [choice], 'suspended': False,
+        'statuses': {}, 'instance_id': instance, 'played_turn': new['turn'],
+        'ready_since_turn': new['turn'] + 1}
+    new['effect_sequence'] += 1
+    new['pending'].append({'id': 'effect-' + str(new['effect_sequence']),
+        'seat': seat, 'source': choice, 'effect_id': 'BT11-112.on_play_grant',
+        'field': 'main_text', 'instance': instance, 'depth': pending['depth'] + 1,
+        'trigger': {'kind': 'On Play', 'card': choice}, 'usage': []})
+    observer_usage = [state['turn'], seat, key, stack['instance_id'],
+                      'EX13-022.tamer_play_restriction']
+    if observer_usage in state['once_used']:
+        raise RuntimeHalt('RULE_ULFORCE_OBSERVER_ALREADY_USED_UNREVIEWED')
+    new['effect_sequence'] += 1
+    new['pending'].append({'id': 'effect-' + str(new['effect_sequence']),
+        'seat': seat, 'source': key, 'effect_id': 'EX13-022.tamer_play_restriction',
+        'field': 'main_text', 'instance': stack['instance_id'],
+        'depth': pending['depth'] + 1,
+        'trigger': {'kind': 'Tamer Played', 'played_card': choice, 'played_seat': seat},
+        'usage': observer_usage})
+    official = definition['official_source']
+    play = {'played_card': choice, 'cost': 0, 'memory_after': state['memory'],
+        'full_match_credit': 0, 'rules_source': _source_at(source,
+            'Comprehensive rules v4.3: 3-4-3; 7-1-3; 15-4; 15-9-2-2; EX13-022 Q7264'),
+        'card_source': {'url': official['url'], 'sha256': official['sha256'],
+            'locator': '#BT11-112 printed type, play cost and main effects'},
+        'scope_context_id': context.matchup_id, 'printed_trigger': 'On Play',
+        'triggered_effects': ['BT11-112.on_play_grant', 'EX13-022.tamer_play_restriction'],
+        'play_method': 'EFFECT_WITHOUT_PAYING_COST', 'assembly_materials': []}
+    return expected, {'played_card': choice, 'play': play,
+        'processing': 'TAMER_PLAYED_WITHOUT_PAYING_COST',
+        'once_per_turn_consumed': True, 'full_match_credit': 0}
+
+
+def _resolve_ulforce_restriction(context, before, command, source, pending):
+    state = before['state']
+    seat, key = command['seat'], pending['source']
+    opponent = 'B' if seat == 'A' else 'A'
+    source_stack = state['battle'][seat].get(key)
+    trigger = pending['trigger']
+    played = trigger.get('played_card')
+    usage = [state['turn'], seat, key, pending['instance'], pending['effect_id']]
+    if (seat != state['active'] or seat != pending['seat']
+            or pending['id'] != command['args'].get('pending_id')
+            or len(state['pending']) != 1 or pending['field'] != 'main_text'
+            or source_stack is None or source_stack['instance_id'] != pending['instance']
+            or source_stack['cards'][-1] != key or _physical_number(key) != 'EX13-022'
+            or _EX13_022_OBSERVER not in context.card(seat, _physical_number(key))
+                .effect_text('main_text').splitlines()
+            or trigger != {'kind': 'Tamer Played', 'played_card': played,
+                           'played_seat': seat}
+            or played not in state['battle'][seat]
+            or context.card(seat, _physical_number(played)).kind != 'Tamer'
+            or pending['usage'] != usage or usage in state['once_used']):
+        raise RuntimeHalt('RULE_RESTRICTION_PENDING_MISMATCH')
+    eligible = sorted(target for target, stack in state['battle'][opponent].items()
+        if context.card(opponent, _physical_number(stack['cards'][-1])).kind
+           in ('Digimon', 'Tamer'))
+    choice = command['args'].get('choice')
+    if choice not in (eligible if eligible else [None]):
+        raise RuntimeHalt('RULE_RESTRICTION_TARGET_INVALID')
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    new['pending'] = []
+    new['once_used'] = sorted(state['once_used'] + [usage])
+    if new['memory'] < 0:
+        new['phase'] = 'END_OF_TURN'
+    if choice is None:
+        return expected, {'target': None, 'processing': 'NO_ELIGIBLE_TARGET',
+            'once_per_turn_consumed': True, 'full_match_credit': 0}
+    target_stack = state['battle'][opponent][choice]
+    card = context.card(seat, _physical_number(key))
+    grant = {'controller': seat, 'source': key,
+        'source_instance': source_stack['instance_id'], 'source_field': 'main_text',
+        'source_kind': 'Digimon', 'source_definition_sha256': card.definition_sha256,
+        'source_text_sha256': hashlib.sha256(card.effect_text('main_text').encode()).hexdigest(),
+        'target': choice, 'target_owner': opponent,
+        'target_instance': target_stack['instance_id'],
+        'effect': {'restrictions': ['cannot_suspend']}, 'created_turn': state['turn'],
+        'expires': {'turn': state['turn'] + 1, 'controller': opponent,
+                    'boundary': 'turn_end'}}
+    new['battle'][opponent][choice]['statuses'].setdefault('effect_grants', []).append(grant)
+    return expected, {'target': choice, 'grant': grant,
+        'processing': 'RESTRICTION_APPLIED', 'once_per_turn_consumed': True,
+        'full_match_credit': 0}
+
+
 def _resolve_rina_suspension(context, before, command, source, pending):
     state = before['state']
     seat, key = command['seat'], pending['source']
@@ -848,6 +992,107 @@ def _resolve_training_security(context, before, command, source, pending):
         'status': 'EXPERIMENTAL', 'full_match_credit': 0}
 
 
+def _battle_evolution(context, before, command, source):
+    state = _ordinary_window(before, command)
+    seat, args = command['seat'], command['args']
+    if state['phase'] != 'MAIN' or args.get('cost_reduction', 0) != 0:
+        raise RuntimeHalt('RULE_BATTLE_EVOLUTION_WINDOW_UNREVIEWED')
+    source_key, target = args.get('source_key'), args.get('hand_key')
+    stack = state['battle'][seat].get(source_key)
+    if stack is None or target not in state['zones'][seat]['hand']:
+        raise RuntimeHalt('RULE_BATTLE_EVOLUTION_SOURCE_MISSING')
+    _reviewed_attack_statuses(context, state, seat, source_key, stack)
+    base = stack['cards'][-1]
+    base_def = context.card(seat, _physical_number(base)).to_dict()
+    definition = context.card(seat, _physical_number(target))
+    card_def = definition.to_dict()
+    if base_def['type'] != 'Digimon' or card_def['type'] != 'Digimon':
+        raise RuntimeHalt('RULE_BATTLE_EVOLUTION_TYPE_INVALID')
+    routes = []
+    for condition in card_def['normal_digivolution'].values():
+        match = re.fullmatch(r'((?:(?:Red|Blue|Yellow|Green|Black|Purple|White)\s*)+)\s+(\d+) from Lv\.(\d+)', condition)
+        if match is None:
+            raise RuntimeHalt('RULE_PRINTED_ROUTE_UNREVIEWED: ' + condition)
+        colors, cost, level = match.groups()
+        accepted = set(re.findall(r'Red|Blue|Yellow|Green|Black|Purple|White', colors))
+        if base_def['level'] == int(level) and accepted.intersection(base_def['colors']):
+            routes.append({'cost': int(cost), 'basis': 'PRINTED_NORMAL',
+                'printed_condition': condition, 'definition_sha256': definition.definition_sha256,
+                'status': 'PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY'})
+    for condition in card_def.get('special_conditions', {}).get('[Special Digivolution Condition]', '').splitlines():
+        cost = _special_cost(condition, base_def)
+        if cost is not None:
+            routes.append({'cost': cost, 'basis': 'PRINTED_SPECIAL',
+                'printed_condition': condition, 'definition_sha256': definition.definition_sha256,
+                'status': 'PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY'})
+    routes.sort(key=lambda route: (route['cost'], route['basis'], route['printed_condition']))
+    index = args.get('route_index')
+    if type(index) is not int or not 0 <= index < len(routes):
+        raise RuntimeHalt('RULE_PRINTED_ROUTE_MISSING')
+    route = routes[index]
+    for field in ('cost', 'basis', 'printed_condition', 'definition_sha256', 'status'):
+        if field in args and args[field] != route[field]:
+            raise RuntimeHalt('RULE_PRINTED_ROUTE_MISMATCH: ' + field)
+    if route['cost'] > state['memory'] + 10:
+        raise RuntimeHalt('RULE_EVOLUTION_COST_UNPAYABLE')
+    for owner in ('A', 'B'):
+        for observer_key, observer in state['battle'][owner].items():
+            _reviewed_attack_statuses(context, state, owner, observer_key, observer)
+            for physical in observer['cards']:
+                text = context.card(owner, _physical_number(physical)).effect_text('main_text')
+                for line in text.splitlines():
+                    body = re.sub(r'^(?:\[[^\]]+\]\s*)+', '', line).split(',', 1)[0]
+                    if body.startswith('When ') and re.search(r'\bdigivolv(?:e|es|ed|ing)\b|\bdraw(?:s|n)?\b', body, re.I):
+                        raise RuntimeHalt('RULE_BATTLE_EVOLUTION_OBSERVER_UNREVIEWED: ' + physical)
+    text = card_def['main_text']
+    lines = [line for line in text.splitlines() if '[When Digivolving]' in line]
+    if definition.number == 'EX13-022' and lines == [_EX13_022_PLAY]:
+        effects = ['EX13-022.play_tamer']
+    elif lines:
+        raise RuntimeHalt('RULE_BATTLE_EVOLUTION_EFFECT_UNREVIEWED: ' + target)
+    else:
+        effects = []
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    new['memory'] -= route['cost']
+    new['zones'][seat]['hand'].remove(target)
+    evolved = new['battle'][seat].pop(source_key)
+    evolved['cards'].append(target)
+    new['battle'][seat][target] = evolved
+    deck = new['zones'][seat]['deck']
+    drawn = deck.pop() if deck else None
+    if drawn is not None:
+        new['zones'][seat]['hand'].append(drawn)
+    for effect in effects:
+        new['effect_sequence'] += 1
+        new['pending'].append({'id': 'effect-' + str(new['effect_sequence']),
+            'seat': seat, 'source': target, 'effect_id': effect, 'field': 'main_text',
+            'instance': evolved['instance_id'], 'depth': 0,
+            'trigger': {'kind': 'When Digivolving', 'card': target, 'previous_top': source_key},
+            'usage': [state['turn'], seat, target, evolved['instance_id'], effect]})
+    official = []
+    for physical in (base, target):
+        card_source = context.card(seat, _physical_number(physical)).to_dict()['official_source']
+        official.append({'url': card_source['url'], 'sha256': card_source['sha256'],
+            'locator': '#' + _physical_number(physical)
+                + ' printed identity, evolution conditions and active effect text'})
+    return expected, {'source_key': source_key, 'hand_key': target, 'route_index': index,
+        'route': route, 'cost': route['cost'], 'cost_reduction': 0,
+        'memory_after': new['memory'], 'drew': drawn is not None, 'drawn_card': drawn,
+        'rules_source': _source_at(source, _BATTLE_EVOLUTION_LOCATOR),
+        'card_sources': official, 'scope_context_id': context.matchup_id,
+        'triggered_effects': effects, 'steps': [
+            {'operation': 'DECLARE_DIGIVOLUTION', 'source': source_key,
+             'target': target, 'route_index': index, 'route': route},
+            {'operation': 'PAY_DIGIVOLUTION_COST', 'cost': route['cost'],
+             'memory_before': state['memory'], 'memory_after': new['memory']},
+            {'operation': 'STACK_DIGIMON', 'previous_top': source_key,
+             'new_top': target, 'instance': evolved['instance_id']},
+            {'operation': 'EVOLUTION_DRAW', 'card': drawn},
+            {'operation': 'TRIGGER_WHEN_DIGIVOLVING', 'effects': effects}],
+        'full_match_credit': 0}
+
+
 def _reviewed_attack_statuses(context, state, owner, key, stack):
     statuses = stack['statuses']
     if not statuses:
@@ -857,22 +1102,37 @@ def _reviewed_attack_statuses(context, state, owner, key, stack):
         raise RuntimeHalt('RULE_ATTACK_STATUS_UNREVIEWED: ' + key)
     for grant in grants:
         source_key = grant.get('source') if isinstance(grant, dict) else None
-        source_stack = state['battle'][owner].get(source_key)
+        target_key = grant.get('target') if isinstance(grant, dict) else None
+        controller = grant.get('controller') if isinstance(grant, dict) else None
+        if controller not in ('A', 'B') or target_key not in stack['cards']:
+            raise RuntimeHalt('RULE_ATTACK_STATUS_UNREVIEWED: ' + key)
+        source_stack = next((item for item in state['battle'][controller].values()
+            if source_key in item['cards']), None)
         if source_stack is None:
             raise RuntimeHalt('RULE_ATTACK_STATUS_UNREVIEWED: ' + key)
-        card = context.card(owner, _physical_number(source_key))
+        card = context.card(controller, _physical_number(source_key))
         created = grant.get('created_turn')
-        if (card.number != 'BT11-112' or not isinstance(created, int)
+        if card.number == 'BT11-112' and owner == controller:
+            expected_effect = {'keywords': ['Blocker', 'Evade']}
+            source_kind = 'Tamer'
+            text_ok = _BT11_112_ON_PLAY in card.effect_text('main_text').splitlines()
+        elif card.number == 'EX13-022' and owner != controller:
+            expected_effect = {'restrictions': ['cannot_suspend']}
+            source_kind = 'Digimon'
+            text_ok = _EX13_022_OBSERVER in card.effect_text('main_text').splitlines()
+        else:
+            raise RuntimeHalt('RULE_ATTACK_STATUS_UNREVIEWED: ' + key)
+        if (not isinstance(created, int)
                 or created > state['turn'] or state['turn'] > created + 1
-                or _BT11_112_ON_PLAY not in card.effect_text('main_text').splitlines()
-                or grant != {'controller': owner, 'source': source_key,
+                or not text_ok
+                or grant != {'controller': controller, 'source': source_key,
                     'source_instance': source_stack['instance_id'], 'source_field': 'main_text',
-                    'source_kind': 'Tamer', 'source_definition_sha256': card.definition_sha256,
+                    'source_kind': source_kind, 'source_definition_sha256': card.definition_sha256,
                     'source_text_sha256': hashlib.sha256(card.effect_text('main_text').encode()).hexdigest(),
-                    'target': key, 'target_owner': owner, 'target_instance': stack['instance_id'],
-                    'effect': {'keywords': ['Blocker', 'Evade']}, 'created_turn': created,
+                    'target': target_key, 'target_owner': owner, 'target_instance': stack['instance_id'],
+                    'effect': expected_effect, 'created_turn': created,
                     'expires': {'turn': created + 1,
-                        'controller': 'B' if owner == 'A' else 'A', 'boundary': 'turn_end'}}):
+                        'controller': 'B' if controller == 'A' else 'A', 'boundary': 'turn_end'}}):
             raise RuntimeHalt('RULE_ATTACK_STATUS_UNREVIEWED: ' + key)
 
 
@@ -1103,6 +1363,7 @@ class SemanticGate:
                          'ADVANCE_PHASE': _advance_phase, 'BREEDING_CHOICE': _breeding_choice,
                          'BREEDING_EVOLUTION': _breeding_evolution, 'PASS_TURN': _pass_turn,
                          'FINISH_TURN': _finish_turn, 'PLAY_CARD': _play_card,
+                         'BATTLE_EVOLUTION': _battle_evolution,
                          'RESOLVE_PENDING': _resolve_pending,
                          'DECLARE_ATTACK': _declare_attack,
                          'COUNTER_CHOICE': _attack_decline, 'BLOCK_CHOICE': _attack_decline,

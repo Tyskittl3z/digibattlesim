@@ -23,7 +23,12 @@ and BT11-112's suspension trigger. Bot A declines that optional effect. The
 next security check reveals LM-057; its printed Security text searches two
 cards and places the Option in the battle area. Bot A then plays EX13-017 on
 the populated board. The latest record, `game-0000-after-live-play.json`,
-pauses before a battle-area digivolution into EX13-022 at command 43.
+then digivolves the suspended stack into EX13-022, draws a card, and plays
+BT11-112 without paying its cost. The new Tamer grants Blocker and Evade, and
+EX13-022 restricts an opposing Digimon from suspending until the opponent's
+turn ends. Turn transition and the ready-card unsuspend window pass. The latest
+record, `game-0000-after-unsuspend-window.json`, pauses before Bot B promotes
+its breeding stack at command 51 with those grants still on the board.
 Each record exactly replayed under its recorded source version at creation.
 The latest record exactly replays under the current source version. The
 `prefix-comparison*.json` files show that each update retained the original
