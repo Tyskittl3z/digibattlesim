@@ -19,7 +19,9 @@ The installed algorithmic checks cover opening setup, redraw, quiet phase
 transitions, hatching, skipping or quiet promotion, printed breeding digivolution
 routes, quiet pass or turn-end transitions, plain empty-text card plays, and the
 encountered EX13-017 On Play search, and the encountered EX13-019 attack
-declaration. A live effect, unsupported
+declaration and its encountered BT11-112 Tamer play with a reduced cost and
+queued child effects. A live
+effect, unsupported
 printed route, modified board, or other uncovered action pauses the game.
 These checks are reusable across imported matchups. Card-specific rule
 checks can be added to `SemanticGate` as encountered mechanics are reviewed;

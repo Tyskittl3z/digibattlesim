@@ -260,9 +260,52 @@ class SemanticGateTests(unittest.TestCase):
         self.assertEqual(trial.state.attack['target'], 'PLAYER')
         self.assertEqual(receipt['checker'], 'DECLARE_ATTACK')
 
-    def test_unknown_attack_effect_names_exact_pending_effect_before_trial(self):
+    def test_nested_tamer_play_uses_current_manual_locator(self):
         path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
-        record = json.loads((path / 'game-0000-after-attack-declare.json').read_bytes())
+        record = json.loads((path / 'game-0000-after-attack-gap.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        last = record['commands'][-1]
+        result = _apply(runtime, last['command'], last['seat'], last['args'], ROOT)
+        self.assertTrue(result['play']['rules_source']['locator'].startswith('Comprehensive rules v4.4:'))
+
+    def test_encountered_attack_tamer_play_checks_cost_and_child_triggers(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-attack-gap.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'RESOLVE_PENDING', 'A', command['args'], ROOT))
+        self.assertEqual(runtime.snapshot(), before)
+        self.assertEqual(result['play']['cost'], 1)
+        self.assertEqual(result['play']['rules_source']['locator'].split(':', 1)[0],
+                         'Comprehensive rules v4.4')
+        self.assertEqual(result['play']['triggered_effects'],
+                         ['BT11-112.on_play_grant', 'EX13-002.tamer_play_unsuspend'])
+        self.assertEqual(trial.state.memory, 2)
+        self.assertEqual([item['effect_id'] for item in trial.state.pending],
+                         ['BT11-112.on_play_grant', 'EX13-002.tamer_play_unsuspend'])
+        self.assertEqual(receipt['checker'], 'RESOLVE_PENDING')
+
+        wrong = copy.deepcopy(command)
+        wrong['args']['choice'] = 'A:EX13-017#2'
+        with self.assertRaisesRegex(RuntimeHalt, 'RULE_TAMER_CHOICE_INVALID'):
+            self.checked_trial(runtime, gate, wrong,
+                lambda candidate: self.fail('Engine ran before rule check'))
+        self.assertEqual(runtime.snapshot(), before)
+
+    def test_parallel_child_effect_halt_names_selected_effect(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-tamer-play.json').read_bytes())
         context = load_context_file(path / 'context.json')
         runtime = ContextRuntime(context, record['seed'], record['first'],
             build_selected_registry(context, ROOT), allow_experimental=True)
@@ -272,7 +315,7 @@ class SemanticGateTests(unittest.TestCase):
         command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
         before = runtime.snapshot()
         with self.assertRaisesRegex(RuntimeHalt,
-                'RULE_EFFECT_CHECK_NOT_INSTALLED: EX13-019.attack_play_tamer'):
+                'RULE_EFFECT_CHECK_NOT_INSTALLED: BT11-112.on_play_grant'):
             self.checked_trial(runtime, gate, command,
                 lambda candidate: self.fail('Engine ran before rule check'))
         self.assertEqual(runtime.snapshot(), before)

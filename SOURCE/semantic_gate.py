@@ -28,6 +28,10 @@ _EX13_017_SEARCH = ('[When Moving] [On Play] Reveal the top 3 cards of your deck
     'to the hand. Return the rest to the bottom of the deck.')
 _EX13_019_ATTACK = ('[When Attacking] [Once Per Turn] You may play 1 Tamer card with '
                     '[Veedramon] in its text from your hand with the cost reduced by 2.')
+_BT11_112_ON_PLAY = ('[On Play] Until the end of your opponent\'s turn, 1 of your '
+    'Digimon with [Veemon] or [Veedramon] in its name gains ＜Blocker＞ and ＜Evade＞.')
+_EX13_002_EGG = ('[Your Turn] [Once Per Turn] When any of your blue Tamers are played, '
+    'this Digimon with [Veedramon] in its name may unsuspend.')
 
 
 def _tuples(value):
@@ -426,12 +430,19 @@ def _search_has_veedramon(context, seat, key):
 def _resolve_pending(context, before, command, source):
     state = before['state']
     seat = command['seat']
-    if state['terminal'] or len(state['pending']) != 1:
+    if state['terminal'] or not state['pending']:
         raise RuntimeHalt('RULE_PENDING_WINDOW_UNREVIEWED')
-    pending = state['pending'][0]
+    pending = next((effect for effect in state['pending']
+                    if effect['id'] == command['args'].get('pending_id')), None)
+    if pending is None:
+        raise RuntimeHalt('RULE_PENDING_ID_INVALID')
+    if pending['effect_id'] == 'EX13-019.attack_play_tamer':
+        if len(state['pending']) != 1:
+            raise RuntimeHalt('RULE_ATTACK_TAMER_PENDING_GROUP_UNREVIEWED')
+        return _resolve_attack_tamer(context, before, command, source, pending)
     if pending['effect_id'] != 'EX13-017.on_play_search':
         raise RuntimeHalt('RULE_EFFECT_CHECK_NOT_INSTALLED: ' + pending['effect_id'])
-    if (state['attack'] is not None or state['resolving_option'] is not None
+    if (len(state['pending']) != 1 or state['attack'] is not None or state['resolving_option'] is not None
             or seat != state['active']):
         raise RuntimeHalt('RULE_PENDING_WINDOW_UNREVIEWED')
     if (pending['id'] != command['args'].get('pending_id') or pending['seat'] != seat
@@ -468,6 +479,88 @@ def _resolve_pending(context, before, command, source):
         new['phase'] = 'END_OF_TURN'
     return expected, {'revealed': revealed, 'selected': selected, 'bottom_order': bottom,
         'bottom_order_convention': 'first element is bottommost', 'status': 'EXPERIMENTAL'}
+
+
+def _resolve_attack_tamer(context, before, command, source, pending):
+    state = before['state']
+    seat, args = command['seat'], command['args']
+    attack = state['attack']
+    source_key = pending['source']
+    stack = state['battle'][seat].get(source_key)
+    usage = [state['turn'], seat, source_key, pending['instance'], pending['effect_id']]
+    if (seat != pending['seat'] or seat != state['active']
+            or pending['id'] != args.get('pending_id') or pending['field'] != 'main_text'
+            or pending['usage'] != usage or usage in state['once_used']
+            or stack is None or stack['instance_id'] != pending['instance']
+            or attack is None or attack['controller'] != seat or attack['window'] != 'COUNTER'
+            or _EX13_019_ATTACK not in context.card(seat, _physical_number(source_key))
+                .effect_text('main_text').splitlines()):
+        raise RuntimeHalt('RULE_ATTACK_TAMER_PENDING_MISMATCH')
+    choice = args.get('choice')
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    new['pending'] = []
+    new['once_used'] = sorted(state['once_used'] + [usage])
+    if choice is None:
+        return expected, {'played_card': None,
+            'processing': 'OPTIONAL_PROCESSING_DECLINED_AFTER_ACTIVATION',
+            'once_per_turn_consumed': True, 'full_match_credit': 0}
+    if not isinstance(choice, str) or choice not in state['zones'][seat]['hand']:
+        raise RuntimeHalt('RULE_TAMER_CHOICE_INVALID')
+    definition = context.card(seat, _physical_number(choice)).to_dict()
+    if definition['type'] != 'Tamer' or not _search_has_veedramon(context, seat, choice):
+        raise RuntimeHalt('RULE_TAMER_CHOICE_INVALID')
+    if (definition['card_number'] != 'BT11-112'
+            or _BT11_112_ON_PLAY not in definition['main_text'].splitlines()):
+        raise RuntimeHalt('RULE_TAMER_PLAY_TEXT_UNREVIEWED: ' + definition['card_number'])
+    cost = max(0, definition['play_cost'] - 2)
+    if cost > state['memory'] + 10:
+        raise RuntimeHalt('RULE_TAMER_COST_UNPAYABLE')
+    new['memory'] -= cost
+    new['zones'][seat]['hand'].remove(choice)
+    new['entity_sequence'] += 1
+    instance = 'entity-' + str(new['entity_sequence'])
+    new['battle'][seat][choice] = {'cards': [choice], 'suspended': False,
+        'statuses': {}, 'instance_id': instance, 'played_turn': new['turn'],
+        'ready_since_turn': new['turn'] + 1}
+    new['effect_sequence'] += 1
+    new['pending'].append({'id': 'effect-' + str(new['effect_sequence']),
+        'seat': seat, 'source': choice, 'effect_id': 'BT11-112.on_play_grant',
+        'field': 'main_text', 'instance': instance, 'depth': pending['depth'] + 1,
+        'trigger': {'kind': 'On Play', 'card': choice}, 'usage': []})
+    effects = ['BT11-112.on_play_grant']
+    for physical in stack['cards'][:-1]:
+        text = context.card(seat, _physical_number(physical)).effect_text('inherited_text')
+        if 'Tamer' not in text:
+            continue
+        if (physical != stack['cards'][0] or _physical_number(physical) != 'EX13-002'
+                or _EX13_002_EGG not in text.splitlines()
+                or 'Blue' not in definition['colors']
+                or 'Veedramon' not in context.card(seat, _physical_number(source_key)).name):
+            raise RuntimeHalt('RULE_TAMER_PLAY_REACTION_UNREVIEWED: ' + physical)
+        egg_effect = 'EX13-002.tamer_play_unsuspend'
+        egg_usage = [state['turn'], seat, physical, stack['instance_id'], egg_effect]
+        if egg_usage not in state['once_used']:
+            new['effect_sequence'] += 1
+            new['pending'].append({'id': 'effect-' + str(new['effect_sequence']),
+                'seat': seat, 'source': physical, 'effect_id': egg_effect,
+                'field': 'inherited_text', 'instance': stack['instance_id'],
+                'depth': pending['depth'] + 1,
+                'trigger': {'kind': 'Tamer Played', 'played_card': choice,
+                            'played_seat': seat}, 'usage': egg_usage})
+            effects.append(egg_effect)
+    card_source = definition['official_source']
+    play = {'played_card': choice, 'cost': cost, 'memory_after': new['memory'],
+        'full_match_credit': 0, 'rules_source': _source_at(source,
+            'Comprehensive rules v4.3: 3-4-3; 7-1-3; 15-4; 15-9-2-2; EX13-022 Q7264'),
+        'card_source': {'url': card_source['url'], 'sha256': card_source['sha256'],
+            'locator': '#' + definition['card_number'] + ' printed type, play cost and main effects'},
+        'scope_context_id': context.matchup_id, 'printed_trigger': 'On Play',
+        'triggered_effects': effects, 'play_method': 'EFFECT_WITHOUT_PAYING_COST',
+        'assembly_materials': []}
+    return expected, {'played_card': choice, 'play': play,
+        'processing': 'TAMER_PLAYED_WITH_COST_REDUCED_BY_2',
+        'once_per_turn_consumed': True, 'full_match_credit': 0}
 
 
 def _declare_attack(context, before, command, source):

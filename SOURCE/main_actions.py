@@ -18,6 +18,9 @@ PLAIN_MAIN_TEXT = {'EX1-013':'','ST7-05':'','BT9-011':''}
 
 def _play(runtime,seat,choice,root,*,within_effect=False,source_zone='hand',cost_override=None,
           assembly_materials=None):
+    from rules_evidence import versioned_locator
+    choice = {**choice, 'rules': {**choice['rules'],
+        'locator': versioned_locator(runtime.context, choice['rules']['locator'])}}
     state=runtime.state
     try:
         locked=require_selected_context(runtime.context,root)
