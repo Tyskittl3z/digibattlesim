@@ -14,11 +14,14 @@ then halted before breeding promotion. `game-0000-after-promotion.json` passed
 that move and halted before A's attack declaration. The two
 `game-0000-after-attack-*.json` records passed the declaration and pause at
 EX13-019's optional Tamer play; the second one names that missing effect
-checker. `game-0000-after-tamer-play.json` passes the selected BT11-112 play
-and queues its two child effects. `game-0000-after-child-gap.json` pauses on
-the selected BT11-112 On Play grant. Each record exactly replayed under its
-recorded source version at creation. The latest record exactly replays under
-the current source version. The seven
+checker. The subsequent records pass the selected BT11-112 Tamer play, its
+Blocker and Evade grant, the inherited egg unsuspend, and both memory gains.
+The defender declines Counter and Block. The first security check reveals
+EX13-069, whose printed Security effect plays that Tamer without cost, then
+the attack ends. The latest record, `game-0000-after-attack-end.json`, pauses
+before a second attack declaration while the Blocker and Evade grant is live.
+Each record exactly replayed under its recorded source version at creation.
+The latest record exactly replays under the current source version. The
 `prefix-comparison*.json` files show that each update retained the original
 seed, prior successful choices and states, and the retried failed selection.
 The Tamer-play comparison excludes `execution_id` because a rules-source

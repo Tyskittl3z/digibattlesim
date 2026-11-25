@@ -99,8 +99,10 @@ def resolve_checked_tamer(runtime,seat,physical,root):
             or binding.handler is not resolve_security_tamer):
         raise RuntimeHalt('SECURITY_TAMER_BINDING_MISMATCH')
     from selected_mechanics import _source_evidence
+    from rules_evidence import versioned_locator
     evidence=_source_evidence(root,definition.to_dict()['official_source'],
-        '#'+physical.card_number+' exact mandatory Security play; '+RULE_LOCATOR).manifest()
+        '#'+physical.card_number+' exact mandatory Security play; '
+        +versioned_locator(runtime.context,RULE_LOCATOR)).manifest()
     proof=_SecurityActivation(physical,effect,attack,definition.definition_sha256,text_sha,Path(root))
     security.pop();attack['checked']=physical.key
     missing=object()

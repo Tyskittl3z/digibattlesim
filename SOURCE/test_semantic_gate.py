@@ -303,7 +303,7 @@ class SemanticGateTests(unittest.TestCase):
                 lambda candidate: self.fail('Engine ran before rule check'))
         self.assertEqual(runtime.snapshot(), before)
 
-    def test_parallel_child_effect_halt_names_selected_effect(self):
+    def test_parallel_child_effect_checks_only_selected_effect(self):
         path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
         record = json.loads((path / 'game-0000-after-tamer-play.json').read_bytes())
         context = load_context_file(path / 'context.json')
@@ -314,11 +314,156 @@ class SemanticGateTests(unittest.TestCase):
         gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
         command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
         before = runtime.snapshot()
-        with self.assertRaisesRegex(RuntimeHalt,
-                'RULE_EFFECT_CHECK_NOT_INSTALLED: BT11-112.on_play_grant'):
-            self.checked_trial(runtime, gate, command,
-                lambda candidate: self.fail('Engine ran before rule check'))
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'RESOLVE_PENDING', 'A', command['args'], ROOT))
+        self.assertEqual(result['processing'], 'GRANT_APPLIED')
+        self.assertEqual([effect['effect_id'] for effect in trial.state.pending],
+                         ['EX13-002.tamer_play_unsuspend'])
+        self.assertEqual(receipt['checker'], 'RESOLVE_PENDING')
         self.assertEqual(runtime.snapshot(), before)
+
+    def test_encountered_blocker_evade_grant_checks_target_and_expiry(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-child-gap.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'RESOLVE_PENDING', 'A', command['args'], ROOT))
+        self.assertEqual(runtime.snapshot(), before)
+        self.assertEqual(result['processing'], 'GRANT_APPLIED')
+        self.assertEqual(result['grant']['effect'], {'keywords': ['Blocker', 'Evade']})
+        self.assertEqual(result['grant']['expires'],
+                         {'turn': 4, 'controller': 'B', 'boundary': 'turn_end'})
+        self.assertEqual(len(trial.state.pending), 1)
+        self.assertEqual(receipt['checker'], 'RESOLVE_PENDING')
+
+        wrong = copy.deepcopy(command)
+        wrong['args']['choice'] = 'A:BT11-112#3'
+        with self.assertRaisesRegex(RuntimeHalt, 'RULE_GRANT_TARGET_INVALID'):
+            self.checked_trial(runtime, gate, wrong,
+                lambda candidate: self.fail('Engine ran before rule check'))
+
+    def test_encountered_egg_unsuspend_queues_both_memory_reactions(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-grant.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'RESOLVE_PENDING', 'A', command['args'], ROOT))
+        self.assertEqual(runtime.snapshot(), before)
+        self.assertEqual(result['processing'], 'UNSUSPEND_SELECTED')
+        self.assertFalse(trial.state.battle['A']['A:EX13-019#2'].suspended)
+        self.assertEqual([effect['effect_id'] for effect in trial.state.pending],
+                         ['EX1-013.unsuspend_memory', 'BT11-112.unsuspend_memory'])
+        self.assertEqual(receipt['checker'], 'RESOLVE_PENDING')
+
+    def test_encountered_memory_reactions_each_gain_one_and_consume_once(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-egg.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        runtime, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'RESOLVE_PENDING', 'A', command['args'], ROOT))
+        self.assertEqual(result['gained'], 1)
+        self.assertEqual(runtime.state.memory, 3)
+        self.assertEqual(receipt['checker'], 'RESOLVE_PENDING')
+        remaining = runtime.state.pending[0]
+        next_command = {'command': 'RESOLVE_PENDING', 'seat': 'A',
+                        'args': {'pending_id': remaining['id'], 'choice': None}}
+        runtime, result, _ = self.checked_trial(runtime, gate, next_command,
+            lambda candidate: _apply(candidate, 'RESOLVE_PENDING', 'A', next_command['args'], ROOT))
+        self.assertEqual(result['gained'], 1)
+        self.assertEqual(runtime.state.memory, 4)
+        self.assertEqual(runtime.state.pending, [])
+        self.assertEqual(len(runtime.state.once_used), 4)
+
+    def test_counter_and_block_declines_advance_attack_windows(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-memory.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        counter = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        runtime, result, receipt = self.checked_trial(runtime, gate, counter,
+            lambda candidate: _apply(candidate, 'COUNTER_CHOICE', 'B', counter['args'], ROOT))
+        self.assertEqual(result['window'], 'BLOCK')
+        self.assertEqual(runtime.state.attack['window'], 'BLOCK')
+        self.assertEqual(receipt['checker'], 'COUNTER_CHOICE')
+        block = {'command': 'BLOCK_CHOICE', 'seat': 'B', 'args': {'card': None}}
+        runtime, result, receipt = self.checked_trial(runtime, gate, block,
+            lambda candidate: _apply(candidate, 'BLOCK_CHOICE', 'B', block['args'], ROOT))
+        self.assertEqual(result['window'], 'CONFIRM')
+        self.assertEqual(runtime.state.attack['window'], 'CONFIRM')
+        self.assertEqual(receipt['checker'], 'BLOCK_CHOICE')
+
+    def test_security_tamer_uses_current_manual_locator_inside_card_receipt(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-windows.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        last = record['commands'][-1]
+        result = _apply(runtime, last['command'], last['seat'], last['args'], ROOT)
+        self.assertIn('Comprehensive rules v4.4:', result['source']['locator'])
+
+    def test_confirm_attack_checks_security_tamer_play_from_checked_card(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-windows.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'CONFIRM_ATTACK', 'A', command['args'], ROOT))
+        self.assertEqual(runtime.snapshot(), before)
+        self.assertEqual(result['checked_card'], 'B:EX13-069#1')
+        self.assertEqual(result['security_effect'], 'EX13-069.security_play')
+        self.assertEqual(result['play']['cost'], 0)
+        self.assertEqual(trial.state.attack['window'], 'END')
+        self.assertIn('B:EX13-069#1', trial.state.battle['B'])
+        self.assertEqual(receipt['checker'], 'CONFIRM_ATTACK')
+
+    def test_end_attack_closes_completed_attack_window(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-security-tamer.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'END_ATTACK', 'A', command['args'], ROOT))
+        self.assertEqual(result['attack_ended'], True)
+        self.assertIsNone(trial.state.attack)
+        self.assertEqual(receipt['checker'], 'END_ATTACK')
 
     def test_unknown_action_halts_before_live_state_changes(self):
         before = self.runtime.snapshot()

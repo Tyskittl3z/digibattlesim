@@ -5,6 +5,7 @@ packs can register checkers for actual encountered actions. This code supplies
 an algorithmic cross-check, not an independent human rules certification.
 """
 import copy
+import hashlib
 import json
 from pathlib import Path
 import random
@@ -32,6 +33,13 @@ _BT11_112_ON_PLAY = ('[On Play] Until the end of your opponent\'s turn, 1 of you
     'Digimon with [Veemon] or [Veedramon] in its name gains ＜Blocker＞ and ＜Evade＞.')
 _EX13_002_EGG = ('[Your Turn] [Once Per Turn] When any of your blue Tamers are played, '
     'this Digimon with [Veedramon] in its name may unsuspend.')
+_EX1_013_UNSUSPEND = ('[Your Turn][Once Per Turn] When this Digimon becomes '
+    'unsuspended during your main phase, gain 1 memory.')
+_BT11_112_UNSUSPEND = ('[Your Turn][Once Per Turn] When one of your blue Digimon '
+    'becomes unsuspended, gain 1 memory.')
+_SECURITY_TAMER_LOCATOR = ('Comprehensive rules v4.3: 3-4-3; 7-1-3; 13-1-6; 13-1-8-1; '
+    '13-1-8-2; 13-1-8-4; 15-4; 15-16-2-1; 15-16-10-1 through 15-16-10-2')
+_SECURITY_TAMER_TEXT = '[Security] Play this card without paying the cost.'
 
 
 def _tuples(value):
@@ -440,6 +448,12 @@ def _resolve_pending(context, before, command, source):
         if len(state['pending']) != 1:
             raise RuntimeHalt('RULE_ATTACK_TAMER_PENDING_GROUP_UNREVIEWED')
         return _resolve_attack_tamer(context, before, command, source, pending)
+    if pending['effect_id'] == 'BT11-112.on_play_grant':
+        return _resolve_blocker_evade_grant(context, before, command, source, pending)
+    if pending['effect_id'] == 'EX13-002.tamer_play_unsuspend':
+        return _resolve_egg_unsuspend(context, before, command, source, pending)
+    if pending['effect_id'] in ('EX1-013.unsuspend_memory', 'BT11-112.unsuspend_memory'):
+        return _resolve_memory_reaction(context, before, command, source, pending)
     if pending['effect_id'] != 'EX13-017.on_play_search':
         raise RuntimeHalt('RULE_EFFECT_CHECK_NOT_INSTALLED: ' + pending['effect_id'])
     if (len(state['pending']) != 1 or state['attack'] is not None or state['resolving_option'] is not None
@@ -563,6 +577,163 @@ def _resolve_attack_tamer(context, before, command, source, pending):
         'once_per_turn_consumed': True, 'full_match_credit': 0}
 
 
+def _resolve_blocker_evade_grant(context, before, command, source, pending):
+    state = before['state']
+    seat = command['seat']
+    source_key = pending['source']
+    source_stack = state['battle'][seat].get(source_key)
+    source_card = context.card(seat, _physical_number(source_key))
+    if (seat != state['active'] or seat != pending['seat']
+            or pending['id'] != command['args'].get('pending_id')
+            or pending['field'] != 'main_text' or source_stack is None
+            or source_stack['instance_id'] != pending['instance']
+            or source_card.number != 'BT11-112'
+            or _BT11_112_ON_PLAY not in source_card.effect_text('main_text').splitlines()):
+        raise RuntimeHalt('RULE_GRANT_PENDING_MISMATCH')
+    eligible = sorted(key for key, stack in state['battle'][seat].items()
+        if context.card(seat, _physical_number(stack['cards'][-1])).kind == 'Digimon'
+        and any(name in context.card(seat, _physical_number(stack['cards'][-1])).name
+                for name in ('Veemon', 'Veedramon')))
+    choice = command['args'].get('choice')
+    if choice not in (eligible if eligible else [None]):
+        raise RuntimeHalt('RULE_GRANT_TARGET_INVALID')
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    new['pending'] = [effect for effect in state['pending'] if effect['id'] != pending['id']]
+    if choice is None:
+        return expected, {'target': None, 'processing': 'NO_ELIGIBLE_TARGET',
+                          'full_match_credit': 0}
+    target_stack = state['battle'][seat][choice]
+    grant = {'controller': seat, 'source': source_key,
+        'source_instance': source_stack['instance_id'], 'source_field': 'main_text',
+        'source_kind': 'Tamer', 'source_definition_sha256': source_card.definition_sha256,
+        'source_text_sha256': hashlib.sha256(source_card.effect_text('main_text').encode()).hexdigest(),
+        'target': choice, 'target_owner': seat, 'target_instance': target_stack['instance_id'],
+        'effect': {'keywords': ['Blocker', 'Evade']}, 'created_turn': state['turn'],
+        'expires': {'turn': state['turn'] + 1,
+                    'controller': 'B' if seat == 'A' else 'A', 'boundary': 'turn_end'}}
+    new['battle'][seat][choice]['statuses'].setdefault('effect_grants', []).append(grant)
+    return expected, {'target': choice, 'processing': 'GRANT_APPLIED',
+                      'grant': grant, 'full_match_credit': 0}
+
+
+def _resolve_egg_unsuspend(context, before, command, source, pending):
+    state = before['state']
+    seat, source_key = command['seat'], pending['source']
+    usage = [state['turn'], seat, source_key, pending['instance'], pending['effect_id']]
+    stack = next((item for item in state['battle'][seat].values()
+                  if source_key in item['cards'][:-1]), None)
+    if (seat != state['active'] or seat != pending['seat']
+            or pending['id'] != command['args'].get('pending_id')
+            or pending['field'] != 'inherited_text' or len(state['pending']) != 1
+            or pending['usage'] != usage or usage in state['once_used']
+            or stack is None or stack['instance_id'] != pending['instance']
+            or context.card(seat, _physical_number(source_key)).effect_text('inherited_text')
+               != _EX13_002_EGG or state['phase'] != 'MAIN'):
+        raise RuntimeHalt('RULE_EGG_UNSUSPEND_PENDING_MISMATCH')
+    choice = command['args'].get('choice')
+    if type(choice) is not bool:
+        raise RuntimeHalt('RULE_EGG_UNSUSPEND_CHOICE_INVALID')
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    new['pending'] = []
+    new['once_used'] = sorted(state['once_used'] + [usage])
+    if not choice:
+        return expected, {'changed': False,
+            'processing': 'OPTIONAL_PROCESSING_DECLINED_AFTER_ACTIVATION',
+            'once_per_turn_consumed': True, 'full_match_credit': 0}
+    target = stack['cards'][-1]
+    top = context.card(seat, _physical_number(target))
+    if 'Veedramon' not in top.name or 'Blue' not in top.to_dict()['colors']:
+        raise RuntimeHalt('RULE_EGG_UNSUSPEND_TARGET_INVALID')
+    if not stack['suspended']:
+        raise RuntimeHalt('RULE_EGG_UNSUSPEND_ALREADY_READY')
+    statuses = stack['statuses']
+    if set(statuses) - {'effect_grants'} or any(
+            'cannot_unsuspend' in grant['effect'].get('restrictions', [])
+            for grant in statuses.get('effect_grants', [])):
+        raise RuntimeHalt('RULE_EGG_UNSUSPEND_STATUS_UNREVIEWED')
+    new_stack = next(item for item in new['battle'][seat].values()
+                     if source_key in item['cards'][:-1])
+    new_stack['suspended'] = False
+    for physical in stack['cards'][:-1]:
+        text = context.card(seat, _physical_number(physical)).effect_text('inherited_text')
+        if 'becomes unsuspended' not in text:
+            continue
+        if _physical_number(physical) != 'EX1-013' or text != _EX1_013_UNSUSPEND:
+            raise RuntimeHalt('RULE_UNSUSPEND_REACTION_UNREVIEWED: ' + physical)
+        effect_id = 'EX1-013.unsuspend_memory'
+        child_usage = [state['turn'], seat, physical, effect_id]
+        if child_usage in state['once_used']:
+            continue
+        new['effect_sequence'] += 1
+        new['pending'].append({'id': 'effect-' + str(new['effect_sequence']),
+            'seat': seat, 'source': physical, 'effect_id': effect_id,
+            'field': 'inherited_text', 'instance': stack['instance_id'],
+            'depth': pending['depth'] + 1,
+            'trigger': {'kind': 'ORIENTATION_CHANGED', 'entity': target,
+                'name_at_trigger': top.name, 'phase': state['phase'],
+                'suspended_before': True, 'suspended_after': False},
+            'usage': child_usage})
+    for key, observer in state['battle'][seat].items():
+        if key == target:
+            continue
+        physical = observer['cards'][-1]
+        text = context.card(seat, _physical_number(physical)).effect_text('main_text')
+        if 'becomes unsuspended' not in text:
+            continue
+        if (_physical_number(physical) != 'BT11-112'
+                or _BT11_112_UNSUSPEND not in text.splitlines()):
+            raise RuntimeHalt('RULE_UNSUSPEND_OBSERVER_UNREVIEWED: ' + physical)
+        effect_id = 'BT11-112.unsuspend_memory'
+        child_usage = [state['turn'], seat, physical, observer['instance_id'], effect_id]
+        if child_usage in state['once_used']:
+            continue
+        new['effect_sequence'] += 1
+        new['pending'].append({'id': 'effect-' + str(new['effect_sequence']),
+            'seat': seat, 'source': physical, 'effect_id': effect_id,
+            'field': 'main_text', 'instance': observer['instance_id'],
+            'depth': pending['depth'] + 1,
+            'trigger': {'kind': 'DIGIMON_UNSUSPENDED', 'entity': target,
+                'name_at_trigger': top.name, 'suspended_before': True,
+                'suspended_after': False}, 'usage': child_usage})
+    return expected, {'suspended_before': True, 'suspended_after': False,
+        'changed': True, 'prohibition': None, 'processing': 'UNSUSPEND_SELECTED',
+        'once_per_turn_consumed': True, 'full_match_credit': 0}
+
+
+def _resolve_memory_reaction(context, before, command, source, pending):
+    state = before['state']
+    seat, key, effect_id = command['seat'], pending['source'], pending['effect_id']
+    tamer = effect_id == 'BT11-112.unsuspend_memory'
+    field = 'main_text' if tamer else 'inherited_text'
+    stack = next((item for item in state['battle'][seat].values()
+                  if key in (item['cards'][-1:] if tamer else item['cards'][:-1])), None)
+    definition = context.card(seat, _physical_number(key))
+    expected_text = _BT11_112_UNSUSPEND if tamer else _EX1_013_UNSUSPEND
+    expected_usage = ([state['turn'], seat, key, pending['instance'], effect_id]
+                      if tamer else [state['turn'], seat, key, effect_id])
+    if (seat != state['active'] or seat != pending['seat']
+            or pending['id'] != command['args'].get('pending_id')
+            or command['args'].get('choice') is not None
+            or pending['field'] != field or stack is None
+            or stack['instance_id'] != pending['instance']
+            or expected_text not in definition.effect_text(field).splitlines()
+            or pending['usage'] != expected_usage or expected_usage in state['once_used']
+            or state['phase'] != 'MAIN'):
+        raise RuntimeHalt('RULE_UNSUSPEND_MEMORY_PENDING_MISMATCH: ' + effect_id)
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    new['pending'] = [item for item in state['pending'] if item['id'] != pending['id']]
+    new['once_used'] = sorted(state['once_used'] + [expected_usage])
+    new['memory'] = min(10, state['memory'] + 1)
+    result = {'memory_before': state['memory'], 'memory_after': new['memory'],
+              'gained': new['memory'] - state['memory']}
+    if tamer:
+        result.update({'once_per_turn_consumed': True, 'full_match_credit': 0})
+    return expected, result
+
+
 def _declare_attack(context, before, command, source):
     state = _ordinary_window(before, command)
     seat, args = command['seat'], command['args']
@@ -620,6 +791,109 @@ def _declare_attack(context, before, command, source):
     return expected, result
 
 
+def _attack_decline(context, before, command, source):
+    state = before['state']
+    attack = state['attack']
+    kind = command['command']
+    required = 'COUNTER' if kind == 'COUNTER_CHOICE' else 'BLOCK'
+    if (state['terminal'] or state['phase'] != 'MAIN' or state['pending']
+            or attack is None or attack['window'] != required
+            or command['seat'] != attack['defender'] or state['active'] != attack['controller']):
+        raise RuntimeHalt('RULE_ATTACK_CHOICE_WINDOW_INVALID: ' + kind)
+    if command['args'].get('card') is not None:
+        raise RuntimeHalt('RULE_ATTACK_CHOICE_CARD_UNREVIEWED: ' + kind)
+    expected = copy.deepcopy(before)
+    if kind == 'COUNTER_CHOICE':
+        expected['state']['attack']['window'] = 'BLOCK'
+        return expected, {'choice': 'EXPLICIT_COUNTER_DECLINE',
+                          'window': 'BLOCK', 'strategy_status': 'UNTRAINED'}
+    expected['state']['attack']['window'] = 'CONFIRM'
+    return expected, {'choice': 'EXPLICIT_NO_BLOCK', 'window': 'CONFIRM'}
+
+
+def _confirm_attack(context, before, command, source):
+    state = before['state']
+    attack = state['attack']
+    seat = command['seat']
+    if (state['terminal'] or state['phase'] != 'MAIN' or state['pending']
+            or attack is None or attack['window'] != 'CONFIRM'
+            or attack['controller'] != seat or state['active'] != seat
+            or attack['target'] != 'PLAYER' or attack['checked'] is not None):
+        raise RuntimeHalt('RULE_ATTACK_CONFIRM_WINDOW_INVALID')
+    attacker = state['battle'][seat].get(attack['attacker'])
+    if attacker is None or attacker['instance_id'] != attack['attacker_instance']:
+        raise RuntimeHalt('RULE_ATTACKER_CHANGED_UNREVIEWED')
+    defender = attack['defender']
+    security = state['zones'][defender]['security']
+    if not security:
+        raise RuntimeHalt('RULE_DIRECT_WIN_CHECK_UNREVIEWED')
+    checked = security[-1]
+    card = context.card(defender, _physical_number(checked))
+    definition = card.to_dict()
+    if (card.number != 'EX13-069' or card.kind != 'Tamer'
+            or card.effect_text('security_text') != _SECURITY_TAMER_TEXT
+            or '[On Play]' in card.effect_text('main_text')):
+        raise RuntimeHalt('RULE_SECURITY_CARD_UNREVIEWED: ' + checked)
+    for stack in state['battle'][defender].values():
+        for index, physical in enumerate(stack['cards']):
+            field = 'main_text' if index == len(stack['cards']) - 1 else 'inherited_text'
+            text = context.card(defender, _physical_number(physical)).effect_text(field)
+            if 'Tamer' in text and ('played' in text or 'play' in text):
+                raise RuntimeHalt('RULE_SECURITY_TAMER_REACTION_UNREVIEWED: ' + physical)
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    new['zones'][defender]['security'].pop()
+    new['entity_sequence'] += 1
+    new['battle'][defender][checked] = {'cards': [checked], 'suspended': False,
+        'statuses': {}, 'instance_id': 'entity-' + str(new['entity_sequence']),
+        'played_turn': new['turn'], 'ready_since_turn': new['turn'] + 1}
+    new['attack']['checked'] = checked
+    new['attack']['window'] = 'END'
+    card_source = definition['official_source']
+    locator = _source_at(source, _SECURITY_TAMER_LOCATOR)['locator']
+    play = {'played_card': checked, 'cost': 0, 'memory_after': state['memory'],
+        'full_match_credit': 0, 'rules_source': _source_at(source, _SECURITY_TAMER_LOCATOR),
+        'card_source': {'url': card_source['url'], 'sha256': card_source['sha256'],
+            'locator': '#' + card.number + ' printed type, play cost and main effects'},
+        'scope_context_id': context.matchup_id, 'printed_trigger': 'On Play',
+        'triggered_effects': [], 'play_method': 'EFFECT_WITHOUT_PAYING_COST',
+        'assembly_materials': []}
+    return expected, {'success': True, 'checked_card': checked,
+        'security_effect': 'EX13-069.security_play', 'attacker_deleted': False,
+        'security_card_deleted': False,
+        'source': {'url': card_source['url'], 'sha256': card_source['sha256'],
+            'locator': '#' + card.number + ' exact mandatory Security play; ' + locator},
+        'play': play, 'steps': [
+            {'operation': 'REVEAL_SECURITY_CARD', 'card': checked},
+            {'operation': 'ACTIVATE_SECURITY_EFFECT_IMMEDIATELY',
+             'effect_id': 'EX13-069.security_play', 'field': 'security_text',
+             'source_area': None},
+            {'operation': 'PLAY_CHECKED_TAMER', 'card': checked, 'cost': 0}],
+        'full_match_credit': 0}
+
+
+def _end_attack(context, before, command, source):
+    state = before['state']
+    attack = state['attack']
+    seat = command['seat']
+    if (state['terminal'] or state['pending'] or attack is None
+            or attack['window'] != 'END' or attack['controller'] != seat
+            or state['active'] != seat or state['phase'] != 'MAIN'):
+        raise RuntimeHalt('RULE_ATTACK_END_WINDOW_INVALID')
+    for owner in ('A', 'B'):
+        for stack in state['battle'][owner].values():
+            for index, physical in enumerate(stack['cards']):
+                field = 'main_text' if index == len(stack['cards']) - 1 else 'inherited_text'
+                if '[End of Attack]' in context.card(owner,
+                        _physical_number(physical)).effect_text(field):
+                    raise RuntimeHalt('RULE_END_ATTACK_EFFECT_UNREVIEWED: ' + physical)
+    expected = copy.deepcopy(before)
+    expected['state']['attack'] = None
+    if expected['state']['memory'] < 0:
+        expected['state']['phase'] = 'END_OF_TURN'
+    return expected, {'attack_ended': True, 'full_match_credit': 0}
+
+
 class SemanticGate:
     """Reusable action checker registry; absent mechanics have no verdict."""
     def __init__(self, context, root, checkers=()):
@@ -630,7 +904,9 @@ class SemanticGate:
                          'BREEDING_EVOLUTION': _breeding_evolution, 'PASS_TURN': _pass_turn,
                          'FINISH_TURN': _finish_turn, 'PLAY_CARD': _play_card,
                          'RESOLVE_PENDING': _resolve_pending,
-                         'DECLARE_ATTACK': _declare_attack}
+                         'DECLARE_ATTACK': _declare_attack,
+                         'COUNTER_CHOICE': _attack_decline, 'BLOCK_CHOICE': _attack_decline,
+                         'CONFIRM_ATTACK': _confirm_attack, 'END_ATTACK': _end_attack}
         for name, checker in checkers:
             if name in self.checkers or not callable(checker):
                 raise ValueError('Duplicate or invalid semantic checker: ' + str(name))
