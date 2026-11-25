@@ -37,6 +37,15 @@ _EX1_013_UNSUSPEND = ('[Your Turn][Once Per Turn] When this Digimon becomes '
     'unsuspended during your main phase, gain 1 memory.')
 _BT11_112_UNSUSPEND = ('[Your Turn][Once Per Turn] When one of your blue Digimon '
     'becomes unsuspended, gain 1 memory.')
+_BT11_112_SUSPEND = ('[All Turns] When one of your Digimon with [Veedramon] in its name '
+    'becomes suspended, by suspending this Tamer, activate 1 of that Digimon\'s '
+    '[When Digivolving] effects.')
+_EX13_069_UNSUSPEND = ('[Your Turn] When any of your Digimon unsuspend, by suspending this '
+    'Tamer, ＜Draw 1＞. After, 1 of your Digimon may digivolve into a Digimon card with '
+    '[Veedramon] in its name in the hand with the cost reduced by 2.')
+_LM_057_SECURITY = ('[Security] Reveal the top 2 cards of your deck. Add 1 red or blue card '
+    'among them to the hand. Return the rest to the bottom of the deck. Then, place this '
+    'card in the battle area.')
 _SECURITY_TAMER_LOCATOR = ('Comprehensive rules v4.3: 3-4-3; 7-1-3; 13-1-6; 13-1-8-1; '
     '13-1-8-2; 13-1-8-4; 15-4; 15-16-2-1; 15-16-10-1 through 15-16-10-2')
 _SECURITY_TAMER_TEXT = '[Security] Play this card without paying the cost.'
@@ -369,7 +378,7 @@ def _finish_turn(context, before, command, source):
 def _play_card(context, before, command, source):
     state = _ordinary_window(before, command)
     seat = command['seat']
-    if state['phase'] != 'MAIN' or any(state['battle'][owner] for owner in ('A', 'B')):
+    if state['phase'] != 'MAIN':
         raise RuntimeHalt('RULE_PLAY_BOARD_UNREVIEWED')
     key = command['args'].get('hand_key')
     if key not in state['zones'][seat]['hand']:
@@ -377,6 +386,23 @@ def _play_card(context, before, command, source):
     definition = context.card(seat, _physical_number(key)).to_dict()
     if definition['type'] not in ('Digimon', 'Tamer'):
         raise RuntimeHalt('RULE_PLAY_TYPE_UNREVIEWED: ' + definition['type'])
+    for owner in ('A', 'B'):
+        for observer_key, observer in state['battle'][owner].items():
+            _reviewed_attack_statuses(context, state, owner, observer_key, observer)
+            for index, physical in enumerate(observer['cards']):
+                field = 'main_text' if index == len(observer['cards']) - 1 else 'inherited_text'
+                text = context.card(owner, _physical_number(physical)).effect_text(field)
+                for line in text.splitlines():
+                    body = re.sub(r'^(?:\[[^\]]+\]\s*)+', '', line)
+                    if re.search(r'\b(?:cannot|can\'t) play\b', body, re.I):
+                        raise RuntimeHalt('RULE_PLAY_RESTRICTION_UNREVIEWED: ' + physical)
+                    if re.search(r'\bwhen\b[^.]*\bplayed\b', body, re.I):
+                        if (definition['type'] == 'Digimon'
+                                and _physical_number(physical) == 'EX13-002'
+                                and field == 'inherited_text'
+                                and line == _EX13_002_EGG):
+                            continue
+                        raise RuntimeHalt('RULE_PLAY_OBSERVER_UNREVIEWED: ' + physical)
     cost = definition['play_cost']
     if type(cost) is not int or cost < 0 or cost > state['memory'] + 10:
         raise RuntimeHalt('RULE_PLAY_COST_UNPAYABLE')
@@ -454,6 +480,10 @@ def _resolve_pending(context, before, command, source):
         return _resolve_egg_unsuspend(context, before, command, source, pending)
     if pending['effect_id'] in ('EX1-013.unsuspend_memory', 'BT11-112.unsuspend_memory'):
         return _resolve_memory_reaction(context, before, command, source, pending)
+    if pending['effect_id'] == 'BT11-112.suspend_reactivation':
+        return _resolve_rina_suspension(context, before, command, source, pending)
+    if pending['effect_id'] == 'LM-057.main_search' and pending['field'] == 'security_text':
+        return _resolve_training_security(context, before, command, source, pending)
     if pending['effect_id'] != 'EX13-017.on_play_search':
         raise RuntimeHalt('RULE_EFFECT_CHECK_NOT_INSTALLED: ' + pending['effect_id'])
     if (len(state['pending']) != 1 or state['attack'] is not None or state['resolving_option'] is not None
@@ -734,6 +764,118 @@ def _resolve_memory_reaction(context, before, command, source, pending):
     return expected, result
 
 
+def _resolve_rina_suspension(context, before, command, source, pending):
+    state = before['state']
+    seat, key = command['seat'], pending['source']
+    tamer = state['battle'][seat].get(key)
+    trigger = pending['trigger']
+    observed = state['battle'][seat].get(trigger.get('observed_source'))
+    attack = state['attack']
+    if (seat != state['active'] or seat != pending['seat']
+            or pending['id'] != command['args'].get('pending_id')
+            or len(state['pending']) != 1 or pending['field'] != 'main_text'
+            or pending['usage'] != [] or tamer is None
+            or tamer['instance_id'] != pending['instance']
+            or context.card(seat, _physical_number(key)).number != 'BT11-112'
+            or _BT11_112_SUSPEND not in context.card(seat, _physical_number(key))
+                .effect_text('main_text').splitlines()
+            or observed is None or observed['instance_id'] != trigger.get('observed_instance')
+            or not observed['suspended']
+            or trigger != {'kind': 'DIGIMON_SUSPENDED',
+                'observed_instance': observed['instance_id'],
+                'observed_source': observed['cards'][-1],
+                'name_at_trigger': context.card(seat, _physical_number(observed['cards'][-1])).name,
+                'suspended_before': False, 'suspended_after': True}
+            or attack is None or attack['window'] != 'COUNTER'
+            or attack['attacker_instance'] != observed['instance_id']):
+        raise RuntimeHalt('RULE_RINA_SUSPENSION_PENDING_MISMATCH')
+    if command['args'].get('choice') is not None:
+        raise RuntimeHalt('RULE_RINA_PAID_CHOICE_UNREVIEWED')
+    expected = copy.deepcopy(before)
+    expected['state']['pending'] = []
+    return expected, {'suspension_paid': False, 'activated_effect': None,
+        'processing': 'RINA_REACTIVATION_DECLINED', 'full_match_credit': 0}
+
+
+def _resolve_training_security(context, before, command, source, pending):
+    state = before['state']
+    seat, key = command['seat'], pending['source']
+    attack = state['attack']
+    current = state['resolving_option']
+    card = context.card(seat, _physical_number(key))
+    if (seat != pending['seat'] or pending['id'] != command['args'].get('pending_id')
+            or len(state['pending']) != 1 or pending['usage'] != []
+            or card.number != 'LM-057' or card.kind != 'Option'
+            or card.effect_text('security_text') != _LM_057_SECURITY
+            or attack is None or attack['window'] != 'END' or attack['defender'] != seat
+            or attack['checked'] != key or current is None or current['seat'] != seat
+            or current['stack']['cards'] != [key]
+            or current['stack']['instance_id'] != pending['instance']
+            or pending['trigger'] != {'kind': 'Security Check', 'card': key}):
+        raise RuntimeHalt('RULE_SECURITY_SEARCH_PENDING_MISMATCH')
+    choice = command['args'].get('choice')
+    if not isinstance(choice, dict) or set(choice) != {'selected', 'bottom_order'}:
+        raise RuntimeHalt('RULE_SECURITY_SEARCH_SELECTION_INVALID')
+    selected, bottom = choice['selected'], choice['bottom_order']
+    if (not isinstance(selected, list) or not isinstance(bottom, list)
+            or any(not isinstance(item, str) for item in selected + bottom)):
+        raise RuntimeHalt('RULE_SECURITY_SEARCH_SELECTION_INVALID')
+    deck = state['zones'][seat]['deck']
+    revealed = list(reversed(deck[-2:]))
+    eligible = [item for item in revealed if
+        {'Red', 'Blue'}.intersection(context.card(seat, _physical_number(item)).to_dict()['colors'])]
+    if (len(selected) != (1 if eligible else 0)
+            or (selected and selected[0] not in eligible)
+            or len(bottom) != len(revealed) - len(selected)
+            or set(bottom) != set(revealed) - set(selected)
+            or len(set(bottom)) != len(bottom)):
+        raise RuntimeHalt('RULE_SECURITY_SEARCH_SELECTION_INVALID')
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    new['pending'] = []
+    new_deck = new['zones'][seat]['deck']
+    if revealed:
+        del new_deck[-len(revealed):]
+    new['zones'][seat]['hand'].extend(selected)
+    new_deck[:0] = bottom
+    placed = new['resolving_option']['stack']
+    placed['played_turn'] = state['turn']
+    new['battle'][seat][key] = placed
+    new['resolving_option'] = None
+    return expected, {'revealed': revealed, 'selected': selected,
+        'bottom_order': bottom, 'placed_option': key,
+        'bottom_order_convention': 'first element is bottommost',
+        'status': 'EXPERIMENTAL', 'full_match_credit': 0}
+
+
+def _reviewed_attack_statuses(context, state, owner, key, stack):
+    statuses = stack['statuses']
+    if not statuses:
+        return
+    grants = statuses.get('effect_grants')
+    if set(statuses) != {'effect_grants'} or not isinstance(grants, list) or not grants:
+        raise RuntimeHalt('RULE_ATTACK_STATUS_UNREVIEWED: ' + key)
+    for grant in grants:
+        source_key = grant.get('source') if isinstance(grant, dict) else None
+        source_stack = state['battle'][owner].get(source_key)
+        if source_stack is None:
+            raise RuntimeHalt('RULE_ATTACK_STATUS_UNREVIEWED: ' + key)
+        card = context.card(owner, _physical_number(source_key))
+        created = grant.get('created_turn')
+        if (card.number != 'BT11-112' or not isinstance(created, int)
+                or created > state['turn'] or state['turn'] > created + 1
+                or _BT11_112_ON_PLAY not in card.effect_text('main_text').splitlines()
+                or grant != {'controller': owner, 'source': source_key,
+                    'source_instance': source_stack['instance_id'], 'source_field': 'main_text',
+                    'source_kind': 'Tamer', 'source_definition_sha256': card.definition_sha256,
+                    'source_text_sha256': hashlib.sha256(card.effect_text('main_text').encode()).hexdigest(),
+                    'target': key, 'target_owner': owner, 'target_instance': stack['instance_id'],
+                    'effect': {'keywords': ['Blocker', 'Evade']}, 'created_turn': created,
+                    'expires': {'turn': created + 1,
+                        'controller': 'B' if owner == 'A' else 'A', 'boundary': 'turn_end'}}):
+            raise RuntimeHalt('RULE_ATTACK_STATUS_UNREVIEWED: ' + key)
+
+
 def _declare_attack(context, before, command, source):
     state = _ordinary_window(before, command)
     seat, args = command['seat'], command['args']
@@ -741,7 +883,7 @@ def _declare_attack(context, before, command, source):
         raise RuntimeHalt('RULE_ATTACK_TARGET_UNREVIEWED')
     key = args.get('attacker')
     stack = state['battle'][seat].get(key)
-    if stack is None or stack['suspended'] or stack['statuses']:
+    if stack is None or stack['suspended']:
         raise RuntimeHalt('RULE_ATTACKER_NOT_READY')
     top = stack['cards'][-1]
     if (context.card(seat, _physical_number(top)).kind != 'Digimon'
@@ -749,15 +891,25 @@ def _declare_attack(context, before, command, source):
             or stack['ready_since_turn'] is None
             or stack['ready_since_turn'] > state['turn']):
         raise RuntimeHalt('RULE_ATTACK_HISTORY_UNREVIEWED')
+    _reviewed_attack_statuses(context, state, seat, key, stack)
+    if stack['statuses'].get('cannot_suspend'):
+        raise RuntimeHalt('RULE_ATTACK_STATUS_UNREVIEWED: ' + key)
+    suspension_observers = []
     for owner in ('A', 'B'):
         for other_key, other_stack in state['battle'][owner].items():
-            if other_stack['statuses']:
-                raise RuntimeHalt('RULE_ATTACK_STATUS_UNREVIEWED: ' + other_key)
+            _reviewed_attack_statuses(context, state, owner, other_key, other_stack)
             for index, physical in enumerate(other_stack['cards']):
                 field = 'main_text' if index == len(other_stack['cards']) - 1 else 'inherited_text'
                 text = context.card(owner, _physical_number(physical)).effect_text(field)
-                if 'suspend' in text.lower().replace('unsuspend', ''):
+                known_suspension = (_physical_number(physical) == 'BT11-112'
+                    and field == 'main_text' and _BT11_112_SUSPEND in text.splitlines())
+                known_unsuspend_cost = (_physical_number(physical) == 'EX13-069'
+                    and field == 'main_text' and _EX13_069_UNSUSPEND in text.splitlines())
+                if ('suspend' in text.lower().replace('unsuspend', '')
+                        and not (known_suspension or known_unsuspend_cost)):
                     raise RuntimeHalt('RULE_ATTACK_ORIENTATION_EFFECT_UNREVIEWED: ' + physical)
+                if known_suspension and owner == seat and 'Veedramon' in context.card(seat, _physical_number(top)).name:
+                    suspension_observers.append((physical, other_stack['instance_id']))
                 if other_key != key and ('[When Attacking]' in text or 'when any of your digimon attacks' in text.lower()):
                     raise RuntimeHalt('RULE_ATTACK_OBSERVER_UNREVIEWED: ' + physical)
                 if other_key == key and physical != top and '[When Attacking]' in text:
@@ -778,6 +930,18 @@ def _declare_attack(context, before, command, source):
         'defender': other, 'window': 'COUNTER', 'counter_used': False,
         'block_used': False, 'checked': None}
     result = {'attacker': key, 'target': 'PLAYER', 'window': 'COUNTER', 'full_match_credit': 0}
+    triggered = []
+    for observer, instance in suspension_observers:
+        new['effect_sequence'] += 1
+        effect = 'BT11-112.suspend_reactivation'
+        new['pending'].append({'id': 'effect-' + str(new['effect_sequence']),
+            'seat': seat, 'source': observer, 'effect_id': effect, 'field': 'main_text',
+            'instance': instance, 'depth': 0,
+            'trigger': {'kind': 'DIGIMON_SUSPENDED', 'observed_instance': stack['instance_id'],
+                'observed_source': top,
+                'name_at_trigger': context.card(seat, _physical_number(top)).name,
+                'suspended_before': False, 'suspended_after': True}, 'usage': []})
+        triggered.append(effect)
     if effect_id is not None:
         usage = [state['turn'], seat, top, stack['instance_id'], effect_id]
         if usage not in state['once_used']:
@@ -787,7 +951,9 @@ def _declare_attack(context, before, command, source):
                 'field': 'main_text', 'instance': stack['instance_id'], 'depth': 0,
                 'trigger': {'kind': 'When Attacking', 'attacker': top, 'target': 'PLAYER'},
                 'usage': usage})
-            result['triggered_effects'] = [effect_id]
+            triggered.append(effect_id)
+    if triggered:
+        result['triggered_effects'] = triggered
     return expected, result
 
 
@@ -830,6 +996,8 @@ def _confirm_attack(context, before, command, source):
     checked = security[-1]
     card = context.card(defender, _physical_number(checked))
     definition = card.to_dict()
+    if card.number == 'LM-057' and card.kind == 'Option':
+        return _confirm_training_security(context, before, command, source, checked, card)
     if (card.number != 'EX13-069' or card.kind != 'Tamer'
             or card.effect_text('security_text') != _SECURITY_TAMER_TEXT
             or '[On Play]' in card.effect_text('main_text')):
@@ -869,6 +1037,38 @@ def _confirm_attack(context, before, command, source):
              'effect_id': 'EX13-069.security_play', 'field': 'security_text',
              'source_area': None},
             {'operation': 'PLAY_CHECKED_TAMER', 'card': checked, 'cost': 0}],
+        'full_match_credit': 0}
+
+
+def _confirm_training_security(context, before, command, source, checked, card):
+    state = before['state']
+    defender = state['attack']['defender']
+    if (card.effect_text('security_text') != _LM_057_SECURITY
+            or state['resolving_option'] is not None or state['pending']
+            or checked != state['zones'][defender]['security'][-1]):
+        raise RuntimeHalt('RULE_SECURITY_OPTION_TEXT_UNREVIEWED: ' + checked)
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    new['zones'][defender]['security'].pop()
+    new['entity_sequence'] += 1
+    instance = 'entity-' + str(new['entity_sequence'])
+    new['resolving_option'] = {'seat': defender, 'stack': {
+        'cards': [checked], 'suspended': False, 'statuses': {},
+        'instance_id': instance, 'played_turn': None, 'ready_since_turn': None}}
+    new['attack']['checked'] = checked
+    new['attack']['window'] = 'END'
+    new['effect_sequence'] += 1
+    effect = 'LM-057.main_search'
+    new['pending'].append({'id': 'effect-' + str(new['effect_sequence']),
+        'seat': defender, 'source': checked, 'effect_id': effect,
+        'field': 'security_text', 'instance': instance, 'depth': 0,
+        'trigger': {'kind': 'Security Check', 'card': checked}, 'usage': []})
+    official = card.to_dict()['official_source']
+    return expected, {'success': True, 'checked_card': checked,
+        'security_effect': effect, 'attacker_deleted': False,
+        'security_card_deleted': False, 'source': {
+            'url': official['url'], 'sha256': official['sha256'],
+            'locator': '#LM-057 exact printed Security search and placement'},
         'full_match_credit': 0}
 
 

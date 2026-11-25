@@ -21,9 +21,10 @@ routes, quiet pass or turn-end transitions, plain empty-text card plays, and the
 encountered EX13-017 On Play search, and the encountered EX13-019 attack
 declaration and its encountered BT11-112 Tamer play with a reduced cost,
 Blocker and Evade grant, Digi-Egg unsuspend, two memory gains, explicit Counter
-and Block declines, EX13-069 Security play, and a quiet attack end. A live
-effect, unsupported
-printed route, modified board, or other uncovered action pauses the game.
+and Block declines, EX13-069 Security play, a quiet attack end, the second attack
+with the live grant and BT11-112 suspension reaction, LM-057 Security search and
+placement, and EX13-017 play on the populated board. An unsupported printed
+route, unknown relevant status or trigger, or other uncovered action pauses the game.
 These checks are reusable across imported matchups. Card-specific rule
 checks can be added to `SemanticGate` as encountered mechanics are reviewed;
 the runner does not need a deck-specific route list. A source hash match or an

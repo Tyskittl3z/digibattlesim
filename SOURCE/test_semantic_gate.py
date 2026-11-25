@@ -322,6 +322,115 @@ class SemanticGateTests(unittest.TestCase):
         self.assertEqual(receipt['checker'], 'RESOLVE_PENDING')
         self.assertEqual(runtime.snapshot(), before)
 
+    def test_second_attack_checks_live_grant_and_suspension_observer(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-attack-end.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'DECLARE_ATTACK', 'A', command['args'], ROOT))
+        self.assertEqual(result['triggered_effects'], ['BT11-112.suspend_reactivation'])
+        self.assertEqual([item['effect_id'] for item in trial.state.pending],
+                         ['BT11-112.suspend_reactivation'])
+        self.assertTrue(trial.state.battle['A']['A:EX13-019#2'].suspended)
+        self.assertEqual(receipt['checker'], 'DECLARE_ATTACK')
+        self.assertEqual(runtime.snapshot(), before)
+
+        unreviewed = copy.deepcopy(runtime)
+        unreviewed.state.battle['A']['A:EX13-019#2'].statuses['cannot_suspend'] = True
+        with self.assertRaisesRegex(RuntimeHalt, 'RULE_ATTACK_STATUS_UNREVIEWED'):
+            self.checked_trial(unreviewed, gate, command,
+                lambda candidate: self.fail('Engine ran before rule check'))
+
+    def test_rina_suspension_effect_decline_leaves_tamer_ready(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-second-attack.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'RESOLVE_PENDING', 'A', command['args'], ROOT))
+        self.assertEqual(result['processing'], 'RINA_REACTIVATION_DECLINED')
+        self.assertFalse(trial.state.battle['A']['A:BT11-112#3'].suspended)
+        self.assertEqual(trial.state.pending, [])
+        self.assertEqual(receipt['checker'], 'RESOLVE_PENDING')
+        self.assertEqual(runtime.snapshot(), before)
+
+    def test_training_option_security_check_queues_printed_search(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-rina-decline.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'CONFIRM_ATTACK', 'A', command['args'], ROOT))
+        self.assertEqual(result['security_effect'], 'LM-057.main_search')
+        self.assertEqual(trial.state.pending[0]['field'], 'security_text')
+        self.assertEqual(trial.state.resolving_option['stack'].cards[0].key, 'B:LM-057#1')
+        self.assertEqual(receipt['checker'], 'CONFIRM_ATTACK')
+        self.assertEqual(runtime.snapshot(), before)
+
+    def test_training_security_search_checks_choice_and_places_option(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-lm057-check.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'RESOLVE_PENDING', 'B', command['args'], ROOT))
+        self.assertEqual(result['selected'], ['B:EX13-019#4'])
+        self.assertEqual(result['placed_option'], 'B:LM-057#1')
+        self.assertIn('B:LM-057#1', trial.state.battle['B'])
+        self.assertEqual(trial.state.pending, [])
+        self.assertEqual(receipt['checker'], 'RESOLVE_PENDING')
+        self.assertEqual(runtime.snapshot(), before)
+
+        wrong = copy.deepcopy(command)
+        wrong['args']['choice']['selected'] = ['B:BT11-023#2']
+        with self.assertRaisesRegex(RuntimeHalt, 'RULE_SECURITY_SEARCH_SELECTION_INVALID'):
+            self.checked_trial(runtime, gate, wrong,
+                lambda candidate: self.fail('Engine ran before rule check'))
+
+    def test_ordinary_digimon_play_checks_live_board_observers(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-lm057-search.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'PLAY_CARD', 'A', command['args'], ROOT))
+        self.assertEqual(result['played_card'], 'A:EX13-017#1')
+        self.assertEqual(result['triggered_effects'], ['EX13-017.on_play_search'])
+        self.assertEqual(len(trial.state.pending), 1)
+        self.assertEqual(receipt['checker'], 'PLAY_CARD')
+        self.assertEqual(runtime.snapshot(), before)
+
     def test_encountered_blocker_evade_grant_checks_target_and_expiry(self):
         path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
         record = json.loads((path / 'game-0000-after-child-gap.json').read_bytes())

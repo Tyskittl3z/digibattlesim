@@ -18,14 +18,18 @@ checker. The subsequent records pass the selected BT11-112 Tamer play, its
 Blocker and Evade grant, the inherited egg unsuspend, and both memory gains.
 The defender declines Counter and Block. The first security check reveals
 EX13-069, whose printed Security effect plays that Tamer without cost, then
-the attack ends. The latest record, `game-0000-after-attack-end.json`, pauses
-before a second attack declaration while the Blocker and Evade grant is live.
+the attack ends. The second declaration checks the live Blocker and Evade grant
+and BT11-112's suspension trigger. Bot A declines that optional effect. The
+next security check reveals LM-057; its printed Security text searches two
+cards and places the Option in the battle area. Bot A then plays EX13-017 on
+the populated board. The latest record, `game-0000-after-live-play.json`,
+pauses before a battle-area digivolution into EX13-022 at command 43.
 Each record exactly replayed under its recorded source version at creation.
 The latest record exactly replays under the current source version. The
 `prefix-comparison*.json` files show that each update retained the original
 seed, prior successful choices and states, and the retried failed selection.
-The Tamer-play comparison excludes `execution_id` because a rules-source
-locator fix changed the engine's source hash; it records that difference.
+The comparisons exclude `execution_id` because source hashes can change; they
+record the source changes.
 
 The comparison is diagnostic evidence, not a formal source-only migration or
 independent official rules certification. Every probe record has zero fact-finding
