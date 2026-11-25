@@ -36,6 +36,12 @@ _EX13_022_OBSERVER = ("[All Turns] [Once Per Turn] When any of your Tamers are p
     "of your opponent's Digimon or Tamers can't suspend until their turn ends.")
 _BT22_023_RETURN = ("[On Play] [When Digivolving] Return 1 of your opponent's level 4 "
     'or lower Digimon to the bottom of the deck.')
+_BT22_023_INHERIT = ('[All Turns] [Once Per Turn] When this Digimon with [Veedramon] '
+    'in its name suspends, if you have a blue Tamer, this Digimon may unsuspend.')
+_EX13_023_ORIENTATION = ('[On Play] [When Digivolving] [When Attacking] [Once Per Turn] '
+    '1 of your Digimon may change orientation.')
+_EX13_023_RETURN = ("[On Play] [When Digivolving] You may return all of your opponent's "
+    'Digimon with the fewest digivolution cards to the bottom of the deck.')
 _BT11_112_ON_PLAY = ('[On Play] Until the end of your opponent\'s turn, 1 of your '
     'Digimon with [Veemon] or [Veedramon] in its name gains ＜Blocker＞ and ＜Evade＞.')
 _EX13_002_EGG = ('[Your Turn] [Once Per Turn] When any of your blue Tamers are played, '
@@ -521,6 +527,12 @@ def _resolve_pending(context, before, command, source):
         return _resolve_start_main_memory(context, before, command, source, pending)
     if pending['effect_id'] == 'BT22-023.when_digivolving_return':
         return _resolve_aero_return(context, before, command, source, pending)
+    if pending['effect_id'] == 'EX13-023.orientation':
+        return _resolve_ulforce_orientation(context, before, command, source, pending)
+    if pending['effect_id'] == 'BT22-023.inherited_unsuspend':
+        return _resolve_inherited_unsuspend(context, before, command, source, pending)
+    if pending['effect_id'] == 'EX13-069.unsuspend_draw':
+        return _resolve_rina_draw(context, before, command, source, pending)
     if pending['effect_id'] != 'EX13-017.on_play_search':
         raise RuntimeHalt('RULE_EFFECT_CHECK_NOT_INSTALLED: ' + pending['effect_id'])
     if (len(state['pending']) != 1 or state['attack'] is not None or state['resolving_option'] is not None
@@ -936,6 +948,198 @@ def _resolve_ulforce_restriction(context, before, command, source, pending):
         'full_match_credit': 0}
 
 
+def _resolve_rina_draw(context, before, command, source, pending):
+    state = before['state']
+    seat, key = command['seat'], pending['source']
+    tamer = state['battle'][seat].get(key)
+    trigger = pending['trigger']
+    changed = state['battle'][seat].get(trigger.get('entity'))
+    if (seat != state['active'] or seat != pending['seat']
+            or pending['id'] != command['args'].get('pending_id')
+            or pending['field'] != 'main_text' or pending['usage'] != []
+            or tamer is None or tamer['instance_id'] != pending['instance']
+            or _physical_number(key) != 'EX13-069'
+            or _EX13_069_UNSUSPEND not in context.card(seat, 'EX13-069')
+                .effect_text('main_text').splitlines()
+            or changed is None or changed['suspended']
+            or trigger != {'kind': 'DIGIMON_UNSUSPENDED',
+                'entity': changed['cards'][-1],
+                'name_at_trigger': context.card(seat, _physical_number(changed['cards'][-1])).name,
+                'suspended_before': True, 'suspended_after': False}
+            or state['phase'] != 'MAIN'):
+        raise RuntimeHalt('RULE_RINA_DRAW_PENDING_MISMATCH')
+    choice = command['args'].get('choice')
+    if type(choice) is not bool:
+        raise RuntimeHalt('RULE_RINA_DRAW_CHOICE_INVALID')
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    new['pending'] = [item for item in state['pending'] if item['id'] != pending['id']]
+    if not choice:
+        return expected, {'suspension_paid': False, 'drawn_card': None,
+            'processing': 'SUSPENSION_DECLINED' if not tamer['suspended']
+                else 'SUSPENSION_COST_NOT_PAYABLE', 'full_match_credit': 0}
+    if tamer['suspended'] or tamer['statuses']:
+        raise RuntimeHalt('RULE_RINA_DRAW_SUSPEND_COST_UNREVIEWED')
+    new['battle'][seat][key]['suspended'] = True
+    deck = new['zones'][seat]['deck']
+    drawn = deck.pop() if deck else None
+    if drawn is not None:
+        new['zones'][seat]['hand'].append(drawn)
+    new['effect_sequence'] += 1
+    continuation = 'effect-' + str(new['effect_sequence'])
+    new['pending'].append({'id': continuation, 'seat': seat, 'source': key,
+        'effect_id': 'EX13-069.unsuspend_evolve', 'field': 'main_text',
+        'instance': tamer['instance_id'], 'depth': pending['depth'] + 1,
+        'trigger': {'kind': 'RINA_AFTER_DRAW',
+            'parent_effect': 'EX13-069.unsuspend_draw',
+            'parent_pending_id': pending['id'], 'paid_source': key,
+            'paid_instance': tamer['instance_id'], 'suspension_paid': True,
+            'draw_completed': True, 'drawn_card': drawn}, 'usage': []})
+    return expected, {'suspension_paid': True, 'drawn_card': drawn,
+        'continuation_pending_id': continuation,
+        'processing': 'DRAW_COMPLETE_EVOLUTION_PENDING', 'steps': [
+            {'operation': 'SUSPEND_TAMER_AS_COST', 'card': key, 'changed': True},
+            {'operation': 'DRAW', 'card': drawn},
+            {'operation': 'CONTINUE_AFTER_DRAW', 'pending_id': continuation}],
+        'full_match_credit': 0}
+
+
+def _resolve_inherited_unsuspend(context, before, command, source, pending):
+    state = before['state']
+    seat, physical = command['seat'], pending['source']
+    stack = next((item for item in state['battle'][seat].values()
+        if physical in item['cards'][:-1]), None)
+    usage = [state['turn'], seat, physical, pending['effect_id']]
+    if (seat != state['active'] or seat != pending['seat']
+            or pending['id'] != command['args'].get('pending_id')
+            or pending['field'] != 'inherited_text' or stack is None
+            or stack['instance_id'] != pending['instance']
+            or _physical_number(physical) != 'BT22-023'
+            or context.card(seat, 'BT22-023').effect_text('inherited_text') != _BT22_023_INHERIT
+            or pending['usage'] != usage or usage in state['once_used']
+            or pending['trigger'] != {'kind': 'ORIENTATION_CHANGED',
+                'entity': stack['cards'][-1],
+                'name_at_trigger': context.card(seat, _physical_number(stack['cards'][-1])).name,
+                'phase': state['phase'], 'suspended_before': False, 'suspended_after': True}):
+        raise RuntimeHalt('RULE_INHERITED_UNSUSPEND_PENDING_MISMATCH')
+    choice = command['args'].get('choice')
+    if type(choice) is not bool:
+        raise RuntimeHalt('RULE_INHERITED_UNSUSPEND_CHOICE_INVALID')
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    new['pending'] = [item for item in state['pending'] if item['id'] != pending['id']]
+    new['once_used'] = sorted(state['once_used'] + [usage])
+    if not choice:
+        return expected, {'changed': False, 'processing': 'OPTIONAL_UNSUSPEND_DECLINED',
+            'full_match_credit': 0}
+    top = stack['cards'][-1]
+    top_card = context.card(seat, _physical_number(top))
+    if ('Veedramon' not in top_card.name or not stack['suspended']
+            or stack['statuses'] or not any(
+                context.card(seat, _physical_number(item['cards'][-1])).kind == 'Tamer'
+                and 'Blue' in context.card(seat, _physical_number(item['cards'][-1])).to_dict()['colors']
+                for item in state['battle'][seat].values())):
+        raise RuntimeHalt('RULE_INHERITED_UNSUSPEND_CONDITION_UNREVIEWED')
+    new_stack = next(item for item in new['battle'][seat].values()
+                     if physical in item['cards'][:-1])
+    new_stack['suspended'] = False
+    for source_card in stack['cards'][:-1]:
+        text = context.card(seat, _physical_number(source_card)).effect_text('inherited_text')
+        if 'becomes unsuspended' not in text:
+            continue
+        if _physical_number(source_card) != 'EX1-013' or text != _EX1_013_UNSUSPEND:
+            raise RuntimeHalt('RULE_UNSUSPEND_REACTION_UNREVIEWED: ' + source_card)
+        effect = 'EX1-013.unsuspend_memory'
+        child_usage = [state['turn'], seat, source_card, effect]
+        if child_usage in state['once_used']:
+            continue
+        new['effect_sequence'] += 1
+        new['pending'].append({'id': 'effect-' + str(new['effect_sequence']),
+            'seat': seat, 'source': source_card, 'effect_id': effect,
+            'field': 'inherited_text', 'instance': stack['instance_id'],
+            'depth': pending['depth'] + 1,
+            'trigger': {'kind': 'ORIENTATION_CHANGED', 'entity': top,
+                'name_at_trigger': top_card.name, 'phase': state['phase'],
+                'suspended_before': True, 'suspended_after': False},
+            'usage': child_usage})
+    for source_key, observer in state['battle'][seat].items():
+        if source_key == top:
+            continue
+        text = context.card(seat, _physical_number(observer['cards'][-1])).effect_text('main_text')
+        if 'Digimon unsuspend' not in text:
+            continue
+        if (_physical_number(source_key) != 'EX13-069'
+                or _EX13_069_UNSUSPEND not in text.splitlines()):
+            raise RuntimeHalt('RULE_UNSUSPEND_OBSERVER_UNREVIEWED: ' + source_key)
+        new['effect_sequence'] += 1
+        new['pending'].append({'id': 'effect-' + str(new['effect_sequence']),
+            'seat': seat, 'source': source_key, 'effect_id': 'EX13-069.unsuspend_draw',
+            'field': 'main_text', 'instance': observer['instance_id'],
+            'depth': pending['depth'] + 1,
+            'trigger': {'kind': 'DIGIMON_UNSUSPENDED', 'entity': top,
+                'name_at_trigger': top_card.name, 'suspended_before': True,
+                'suspended_after': False}, 'usage': []})
+    return expected, {'suspended_before': True, 'suspended_after': False,
+        'changed': True, 'prohibition': None,
+        'processing': 'OPTIONAL_UNSUSPEND_SELECTED'}
+
+
+def _resolve_ulforce_orientation(context, before, command, source, pending):
+    state = before['state']
+    seat, key = command['seat'], pending['source']
+    stack = state['battle'][seat].get(key)
+    usage = [state['turn'], seat, key, pending['effect_id']]
+    if (seat != state['active'] or seat != pending['seat']
+            or pending['id'] != command['args'].get('pending_id')
+            or pending['field'] != 'main_text' or stack is None
+            or stack['instance_id'] != pending['instance'] or stack['cards'][-1] != key
+            or _physical_number(key) != 'EX13-023'
+            or _EX13_023_ORIENTATION not in context.card(seat, 'EX13-023')
+                .effect_text('main_text').splitlines()
+            or pending['trigger'].get('kind') != 'When Digivolving'
+            or pending['trigger'].get('card') != key
+            or pending['usage'] != usage or usage in state['once_used']):
+        raise RuntimeHalt('RULE_ULFORCE_ORIENTATION_PENDING_MISMATCH')
+    choice = command['args'].get('choice')
+    if choice != key:
+        raise RuntimeHalt('RULE_ULFORCE_ORIENTATION_CHOICE_UNREVIEWED')
+    if stack['suspended'] or stack['statuses']:
+        raise RuntimeHalt('RULE_ULFORCE_ORIENTATION_STATUS_UNREVIEWED')
+    if 'Veedramon' not in context.card(seat, 'EX13-023').name:
+        raise RuntimeHalt('RULE_ULFORCE_ORIENTATION_NAME_CHANGED')
+    inherited = [physical for physical in stack['cards'][:-1]
+        if 'suspend' in context.card(seat, _physical_number(physical))
+            .effect_text('inherited_text').lower().replace('unsuspend', '')]
+    if (len(inherited) != 1 or _physical_number(inherited[0]) != 'BT22-023'
+            or context.card(seat, 'BT22-023').effect_text('inherited_text') != _BT22_023_INHERIT):
+        raise RuntimeHalt('RULE_ULFORCE_SUSPEND_REACTION_UNREVIEWED')
+    has_tamer = any(context.card(seat, _physical_number(item['cards'][-1])).kind == 'Tamer'
+        and 'Blue' in context.card(seat, _physical_number(item['cards'][-1])).to_dict()['colors']
+        for item in state['battle'][seat].values())
+    if not has_tamer:
+        raise RuntimeHalt('RULE_ULFORCE_NO_TAMER_REACTION_UNREVIEWED')
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    new['pending'] = [item for item in state['pending'] if item['id'] != pending['id']]
+    new['once_used'] = sorted(state['once_used'] + [usage])
+    new['battle'][seat][key]['suspended'] = True
+    effect = 'BT22-023.inherited_unsuspend'
+    child_usage = [state['turn'], seat, inherited[0], effect]
+    if child_usage not in state['once_used']:
+        new['effect_sequence'] += 1
+        new['pending'].append({'id': 'effect-' + str(new['effect_sequence']),
+            'seat': seat, 'source': inherited[0], 'effect_id': effect,
+            'field': 'inherited_text', 'instance': stack['instance_id'],
+            'depth': pending['depth'] + 1,
+            'trigger': {'kind': 'ORIENTATION_CHANGED', 'entity': key,
+                'name_at_trigger': context.card(seat, 'EX13-023').name,
+                'phase': state['phase'], 'suspended_before': False,
+                'suspended_after': True}, 'usage': child_usage})
+    return expected, {'target': key, 'suspended_before': False,
+        'suspended_after': True, 'changed': True, 'prohibition': None,
+        'once_per_turn_consumed': True}
+
+
 def _resolve_aero_return(context, before, command, source, pending):
     state = before['state']
     seat, key = command['seat'], pending['source']
@@ -1158,6 +1362,9 @@ def _battle_evolution(context, before, command, source):
         effects = ['EX13-022.play_tamer']
     elif definition.number == 'BT22-023' and lines == [_BT22_023_RETURN]:
         effects = ['BT22-023.when_digivolving_return']
+    elif definition.number == 'EX13-023' and lines == [_EX13_023_ORIENTATION,
+                                                       _EX13_023_RETURN]:
+        effects = ['EX13-023.orientation', 'EX13-023.return_fewest']
     elif lines:
         raise RuntimeHalt('RULE_BATTLE_EVOLUTION_EFFECT_UNREVIEWED: ' + target)
     else:
@@ -1176,7 +1383,9 @@ def _battle_evolution(context, before, command, source):
     for effect in effects:
         new['effect_sequence'] += 1
         usage = ([state['turn'], seat, target, evolved['instance_id'], effect]
-                 if effect == 'EX13-022.play_tamer' else [])
+                 if effect == 'EX13-022.play_tamer' else
+                 [state['turn'], seat, target, effect]
+                 if effect == 'EX13-023.orientation' else [])
         new['pending'].append({'id': 'effect-' + str(new['effect_sequence']),
             'seat': seat, 'source': target, 'effect_id': effect, 'field': 'main_text',
             'instance': evolved['instance_id'], 'depth': 0,

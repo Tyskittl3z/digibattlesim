@@ -26,7 +26,10 @@ with the live grant and BT11-112 suspension reaction, LM-057 Security search and
 placement, EX13-017 play on the populated board, printed battle digivolution,
 EX13-022's free Tamer play and suspension restriction, and a turn transition
 with the recorded grants, a second breeding promotion, EX13-069's conditional
-memory gain, and BT22-023's printed return of a standalone Digimon. An unsupported printed
+memory gain, BT22-023's printed return of a standalone Digimon,
+EX13-023's two digivolution triggers and selected orientation change,
+BT22-023's inherited unsuspend, and EX13-069's suspended-Tamer draw are also
+checked. An unsupported printed
 route, unknown relevant status or trigger, or other uncovered action pauses the game.
 These checks are reusable across imported matchups. Card-specific rule
 checks can be added to `SemanticGate` as encountered mechanics are reviewed;

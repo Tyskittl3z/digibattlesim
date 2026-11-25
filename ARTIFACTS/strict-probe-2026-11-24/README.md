@@ -30,8 +30,10 @@ turn ends. Turn transition and the ready-card unsuspend window pass. The latest
 records then check Bot B's breeding promotion, EX13-069's conditional memory
 gain, and BT22-023's printed digivolution and return of A's standalone
 EX13-017 to the bottom of A's deck. The latest record,
-`game-0000-after-aero-return.json`, pauses before Bot B digivolves into
-EX13-023 at command 55.
+subsequent records check Bot B's EX13-023 digivolution, its orientation change,
+BT22-023's inherited unsuspend, the inherited memory gain, and EX13-069's
+Tamer suspension and draw. The latest record, `game-0000-after-rina-draw.json`,
+pauses before EX13-069's follow-up digivolution at command 60.
 Each record exactly replayed under its recorded source version at creation.
 The latest record exactly replays under the current source version. The
 `prefix-comparison*.json` files show that each update retained the original
