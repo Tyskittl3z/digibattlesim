@@ -16,10 +16,13 @@ from imported_attempts import (ROOT, _apply, _load_context_selection, breeding_c
                                pending_choice, pending_options)
 from interaction_learning import LearningPlayerBot, LearningState, verify_decision_rng, verify_decision_input, learning_player_manifest
 from board_text_player import BoardTextPlayerBot, board_text_player_manifest
+from styled_board_text_player import StyledBoardTextPlayerBot, styled_board_text_player_manifest
+from completed_play_reward import learning_decisions
 from interaction_scoring import criteria_manifest, score_transition
 from match_context import canonical, digest
 from named_bot_continuation import _plain_block_options
 from selected_mechanics import build_selected_registry
+from semantic_gate import SemanticGate, checked_trial
 
 
 SCHEMA = 'fresh-learning-game-v1'
@@ -74,7 +77,7 @@ def _policy_seeds(context_id, campaign_id, index, state_id):
 
 
 def _history_binding(root, player_policy, history_report):
-    if player_policy not in ('NAMED_LEGACY', 'BOARD_TEXT_HISTORY'):
+    if player_policy not in ('NAMED_LEGACY', 'BOARD_TEXT_HISTORY', 'BOARD_TEXT_HISTORY_STYLED'):
         raise ValueError('Unknown player policy')
     if player_policy == 'NAMED_LEGACY':
         if history_report is not None:
@@ -131,7 +134,7 @@ def _bind_choices(command, tracker, context, pilots):
         return
     kind, args = command['command'], command.get('args', {})
     direct = {'REDRAW_CHOICE', 'BREEDING_CHOICE', 'COUNTER_CHOICE', 'BLOCK_CHOICE',
-              'PLAY_CARD', 'USE_OPTION', 'OPTION_DELAY', 'BATTLE_EVOLUTION',
+              'PLAY_CARD', 'ASSEMBLY_PLAY', 'USE_OPTION', 'OPTION_DELAY', 'BATTLE_EVOLUTION',
               'BREEDING_EVOLUTION', 'PASS_TURN', 'DECLARE_ATTACK',
               'UNKNOWN_OPTION_ACTION', 'UNKNOWN_DELAY_ACTION', 'UNKNOWN_BATTLE_EVOLUTION'}
     if kind in direct:
@@ -171,7 +174,7 @@ def _resolve_decisions(command):
 
 
 def _revalidate(record, root, context, context_file, context_hash, learning_input, schedule, sources,
-                player_policy='NAMED_LEGACY', history_binding=None):
+                player_policy='NAMED_LEGACY', history_binding=None, rules_mode='EXPERIMENTAL'):
     """Replay saved successes and prove the complete audit checkpoint first."""
     _same(record.get('record_sha256'), digest({k: v for k, v in record.items() if k != 'record_sha256'}), 'RECORD_HASH')
     if 'repair_lineage' in record:
@@ -187,6 +190,7 @@ def _revalidate(record, root, context, context_file, context_hash, learning_inpu
         'learning_state_after': learning_input, 'learning_state_id': LearningState.from_dict(learning_input).state_id}.items():
         _same(record.get(key), value, key.upper())
     _same(record.get('player_policy', 'NAMED_LEGACY'), player_policy, 'PLAYER_POLICY')
+    _same(record.get('rules_mode', 'EXPERIMENTAL'), rules_mode, 'RULES_MODE')
     _same(record.get('history_report'), history_binding, 'HISTORY_REPORT')
     game = schedule['games'][record['index']]
     for key in ('index', 'seed', 'first'):
@@ -198,7 +202,10 @@ def _revalidate(record, root, context, context_file, context_hash, learning_inpu
     _same(record.get('policy_rng_initial'), rng, 'INITIAL_POLICY_RNG')
     report_sha = history_binding['sha256'] if history_binding else None
     expected_pilots = {s: (board_text_player_manifest(context, s, model_id, seeds[s], report_sha)
-        if player_policy == 'BOARD_TEXT_HISTORY' else learning_player_manifest(context, s, model_id, seeds[s]))
+        if player_policy == 'BOARD_TEXT_HISTORY' else
+        styled_board_text_player_manifest(context, s, model_id, seeds[s], report_sha)
+        if player_policy == 'BOARD_TEXT_HISTORY_STYLED' else
+        learning_player_manifest(context, s, model_id, seeds[s]))
         for s in seeds}
     _same(record.get('pilots'), expected_pilots, 'PILOTS')
     runtime = ContextRuntime(context, game['seed'], game['first'], build_selected_registry(context, root),
@@ -207,6 +214,7 @@ def _revalidate(record, root, context, context_file, context_hash, learning_inpu
     _same(record.get('initial'), initial, 'INITIAL')
     tracker = FieldTracker(context)
     tracker.start(initial)
+    gate = SemanticGate(context, root) if rules_mode == 'STRICT' else None
     _same(record.get('tracker'), tracker.manifest(), 'TRACKER_MANIFEST')
     commands = record.get('commands')
     if not isinstance(commands, list):
@@ -220,9 +228,26 @@ def _revalidate(record, root, context, context_file, context_hash, learning_inpu
             if i != len(commands) - 1 or record.get('status') not in ('HALT', 'DIAGNOSTIC_SOFTWARE_ERROR'):
                 raise RuntimeHalt('FRESH_FAILURE_POSITION_MISMATCH')
             _same(saved.get('after'), runtime.snapshot(), 'FAILED_STATE')
+            if gate is not None:
+                try:
+                    checked_trial(runtime, gate, {k: saved[k] for k in ('command', 'seat', 'args')},
+                        lambda candidate: _apply(candidate, saved['command'], saved['seat'],
+                                                 copy.deepcopy(saved['args']), root))
+                except Exception as exc:
+                    _same(str(exc), saved.get('reason'), 'FAILED_RULE_VERDICT')
+                else:
+                    raise RuntimeHalt('FRESH_FAILED_RULE_VERDICT_MISSING')
             continue
         before_view, metrics = tracker.player_view(saved['seat']), tracker.public_metrics()
-        result = _apply(runtime, saved['command'], saved['seat'], copy.deepcopy(saved['args']), root)
+        if gate is None:
+            result = _apply(runtime, saved['command'], saved['seat'], copy.deepcopy(saved['args']), root)
+        else:
+            proposal, result, verdict = checked_trial(runtime, gate,
+                {k: saved[k] for k in ('command', 'seat', 'args')},
+                lambda candidate: _apply(candidate, saved['command'], saved['seat'],
+                                         copy.deepcopy(saved['args']), root))
+            _same(verdict, saved.get('semantic_gate'), 'PREFIX_RULE_VERDICT')
+            runtime = proposal
         _same(result, saved.get('result'), 'PREFIX_RESULT')
         _same(runtime.snapshot(), saved.get('after'), 'PREFIX_AFTER')
         judge = judge_action(runtime, saved['tracker_command'], saved['before'], saved['after'], result, root=root, tracker=tracker)
@@ -294,12 +319,15 @@ class _Adapter:
 
 def run_game(index, root=ROOT, *, context_file=CONTEXT_FILE, campaign_id,
              learning_state, max_commands=2000, previous_record=None,
-             player_policy='NAMED_LEGACY', history_report=None):
+             player_policy='NAMED_LEGACY', history_report=None,
+             rules_mode='EXPERIMENTAL'):
     """Run a bounded private/authorized game segment; never update the model."""
     if type(index) is not int or index < 0 or index >= 60:
         raise ValueError('Schedule index 0..59 required')
     if type(max_commands) is not int or max_commands < 1:
         raise ValueError('Positive command budget required')
+    if rules_mode not in ('EXPERIMENTAL', 'STRICT'):
+        raise ValueError('Unknown rules mode')
     root = Path(root).resolve()
     history_binding = _history_binding(root, player_policy, history_report)
     if previous_record is not None and 'repair_lineage' in previous_record:
@@ -316,7 +344,7 @@ def run_game(index, root=ROOT, *, context_file=CONTEXT_FILE, campaign_id,
     context, context_file, context_hash = _load_context_selection(root, context_file)
     schedule, sources = make_schedule(context.matchup_id, campaign_id), _sources(root)
     frozen = _clone(learning_state.export())
-    if player_policy == 'BOARD_TEXT_HISTORY' and history_binding is None:
+    if player_policy in ('BOARD_TEXT_HISTORY', 'BOARD_TEXT_HISTORY_STYLED') and history_binding is None:
         if index != 0 or LearningState.from_dict(frozen)._games:
             raise RuntimeHalt('FRESH_NO_HISTORY_IS_GAME_ONE')
     state_id, game = LearningState.from_dict(frozen).state_id, schedule['games'][index]
@@ -326,7 +354,8 @@ def run_game(index, root=ROOT, *, context_file=CONTEXT_FILE, campaign_id,
     if previous is not None:
         _same(previous.get('index'), index, 'INDEX')
         runtime, tracker, initial = _revalidate(previous, root, context, context_file, context_hash,
-                                                frozen, schedule, sources, player_policy, history_binding)
+                                                frozen, schedule, sources, player_policy, history_binding,
+                                                rules_mode)
         if previous['status'] not in ('PAUSED', 'HALT', 'DIAGNOSTIC_SOFTWARE_ERROR') or runtime.state.terminal:
             raise RuntimeHalt('FRESH_RESUMABLE_STATUS_MISMATCH')
         history = copy.deepcopy(previous['commands'])
@@ -344,6 +373,9 @@ def run_game(index, root=ROOT, *, context_file=CONTEXT_FILE, campaign_id,
     bots = {s: (BoardTextPlayerBot(context, s, LearningState.from_dict(frozen), seeds[s],
                                   history_binding['sha256'] if history_binding else None)
                 if player_policy == 'BOARD_TEXT_HISTORY' else
+                StyledBoardTextPlayerBot(context, s, LearningState.from_dict(frozen), seeds[s],
+                                  history_binding['sha256'] if history_binding else None)
+                if player_policy == 'BOARD_TEXT_HISTORY_STYLED' else
                 LearningPlayerBot(context, s, LearningState.from_dict(frozen), seeds[s])) for s in seeds}
     for seat, bot in bots.items():
         bot.restore_rng(final_rng[seat])
@@ -351,6 +383,7 @@ def run_game(index, root=ROOT, *, context_file=CONTEXT_FILE, campaign_id,
     if previous is not None:
         _same(previous.get('pilots'), manifests, 'PILOTS')
     offsets = {s: 0 for s in bots}
+    gate = SemanticGate(context, root) if rules_mode == 'STRICT' else None
     current, status, reason, used = None, 'PAUSED', None, 0
 
     def rng():
@@ -376,20 +409,36 @@ def run_game(index, root=ROOT, *, context_file=CONTEXT_FILE, campaign_id,
             'policy_rng_after_choice': rng()}
 
     def call(kind, seat, args=None):
-        nonlocal used
+        nonlocal used, runtime
         current.update({'command': kind, 'seat': seat, 'args': copy.deepcopy(args or {}),
                         'public_view': tracker.player_view(seat)})
         collect()
         history.append(current)  # Selection, exact arguments and post-choice RNG precede mutation.
         used += 1
         before_view, metrics = tracker.player_view(seat), tracker.public_metrics()
-        result = _apply(runtime, kind, seat, copy.deepcopy(current['args']), root)
-        current.update({'status': 'EXPERIMENTAL_RESOLVED', 'result': copy.deepcopy(result),
-                        'after': runtime.snapshot(), 'rating': {'status': 'UNRATED'}})
-        current['tracker_command'] = {k: copy.deepcopy(current[k]) for k in ('command', 'seat', 'args', 'status')}
-        current['judge'] = judge_action(runtime, current['tracker_command'], current['before'], current['after'], result, root=root, tracker=tracker)
-        if current['judge'].get('accepted') is not True:
-            raise RuntimeHalt('FRESH_POST_APPLY_JUDGE_AUDIT: ' + str(current['judge'].get('reason')))
+        if gate is None:
+            result = _apply(runtime, kind, seat, copy.deepcopy(current['args']), root)
+            current.update({'status': 'EXPERIMENTAL_RESOLVED', 'result': copy.deepcopy(result),
+                            'after': runtime.snapshot(), 'rating': {'status': 'UNRATED'}})
+            current['tracker_command'] = {k: copy.deepcopy(current[k]) for k in ('command', 'seat', 'args', 'status')}
+            current['judge'] = judge_action(runtime, current['tracker_command'], current['before'], current['after'], result, root=root, tracker=tracker)
+            if current['judge'].get('accepted') is not True:
+                raise RuntimeHalt('FRESH_POST_APPLY_JUDGE_AUDIT: ' + str(current['judge'].get('reason')))
+        else:
+            proposal, result, verdict = checked_trial(runtime, gate,
+                {k: current[k] for k in ('command', 'seat', 'args')},
+                lambda candidate: _apply(candidate, kind, seat, copy.deepcopy(current['args']), root))
+            after = proposal.snapshot()
+            tracker_command = {'command': kind, 'seat': seat,
+                'args': copy.deepcopy(current['args']), 'status': 'EXPERIMENTAL_RESOLVED'}
+            judged = judge_action(proposal, tracker_command, current['before'], after,
+                                  result, root=root, tracker=tracker)
+            if judged.get('accepted') is not True:
+                raise RuntimeHalt('FRESH_STRICT_JUDGE_AUDIT: ' + str(judged.get('reason')))
+            runtime = proposal
+            current.update({'status': 'EXPERIMENTAL_RESOLVED', 'result': copy.deepcopy(result),
+                'after': after, 'rating': {'status': 'UNRATED'},
+                'tracker_command': tracker_command, 'judge': judged, 'semantic_gate': verdict})
         current['observation'] = tracker.observe(current['tracker_command'], current['before'],
             current['after'], result, current['judge'])
         current['public_view_after'] = tracker.player_view(seat)
@@ -495,6 +544,8 @@ def run_game(index, root=ROOT, *, context_file=CONTEXT_FILE, campaign_id,
         'terminal_reason': runtime.state.terminal_reason, 'max_commands': max_commands,
         'accepted_fact_finding_credit': 0, 'final_evaluation_credit': 0,
         'certification': 'EXPERIMENTAL_NOT_INDEPENDENTLY_CERTIFIED'}
+    if rules_mode == 'STRICT':
+        record['rules_mode'] = rules_mode
     if previous is not None and 'repair_lineage' in previous:
         record['repair_lineage'] = copy.deepcopy(previous['repair_lineage'])
     return _clone({**record, 'record_sha256': digest(record)})
@@ -513,7 +564,8 @@ def replay_game(record, root=ROOT):
     history = record.get('history_report')
     history_binding = _history_binding(root, player_policy, history['file'] if history else None)
     _revalidate(record, root, context, context_file, context_hash,
-                record['learning_state_before'], schedule, _sources(root), player_policy, history_binding)
+                record['learning_state_before'], schedule, _sources(root), player_policy, history_binding,
+                record.get('rules_mode', 'EXPERIMENTAL'))
     return {'exact_match': True, 'record_sha256': digest(record),
             'certification': 'NONE_SOFTWARE_REPLAY_ONLY'}
 
@@ -531,7 +583,6 @@ def commit_completed_game(record, learning_state, root=ROOT):
             or record['final']['state'].get('terminal_reason') != record['terminal_reason']
             or not record.get('commands')):
         raise RuntimeHalt('FRESH_COMPLETED_GAME_REQUIRED')
-    decisions = []
     for command in record['commands']:
         if (command.get('status') != 'EXPERIMENTAL_RESOLVED'
                 or command.get('judge', {}).get('accepted') is not True
@@ -539,12 +590,15 @@ def commit_completed_game(record, learning_state, root=ROOT):
                 or command.get('rating', {}).get('status') == 'UNRATED'
                 or 'audit_failure' in command):
             raise RuntimeHalt('FRESH_COMPLETED_ACCEPTED_COMMANDS_REQUIRED')
+        if (record.get('rules_mode') == 'STRICT'
+                and command.get('semantic_gate', {}).get('status') != 'ALGORITHM_CHECK_PASSED'):
+            raise RuntimeHalt('FRESH_COMPLETED_RULE_GATE_REQUIRED')
         for decision in command.get('decisions', []):
             if (decision.get('status') != 'EXPERIMENTAL_RESOLVED'
                     or type(decision.get('learning_eligible')) is not bool
                     or decision.get('learning', {}).get('input_state_id') != record['learning_state_id']):
                 raise RuntimeHalt('FRESH_COMPLETED_DECISION_MISMATCH')
-            decisions.append(copy.deepcopy(decision))
+    decisions = learning_decisions(record['commands'], record.get('player_policy', 'NAMED_LEGACY'))
     proof = replay_game(record, root)
     if proof.get('exact_match') is not True:
         raise RuntimeHalt('FRESH_COMPLETED_REPLAY_MISMATCH')

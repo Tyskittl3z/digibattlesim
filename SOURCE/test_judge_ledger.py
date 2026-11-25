@@ -91,6 +91,17 @@ class JudgeLedgerTests(unittest.TestCase):
         self.assertNotEqual(receipt.get('verdict'), 'ILLEGAL')
         self.assertTrue(receipt['rollback_unchanged'])
 
+    def test_missing_strict_rule_checker_is_a_software_gap(self):
+        runtime = self.runtime()
+        before = runtime.snapshot()
+        command = {'command': 'PLAY_CARD', 'seat': 'A', 'args': {'hand_key': 'A:BT11-023#1'},
+                   'status': 'HALT'}
+        receipt = self.judge(runtime, command, before, before, None,
+                             RuntimeHalt('RULE_CHECK_NOT_INSTALLED: PLAY_CARD'), root=ROOT)
+        self.assertEqual(receipt['status'], 'SOFTWARE_GAP')
+        self.assertFalse(receipt['accepted'])
+        self.assertTrue(receipt['rollback_unchanged'])
+
     def test_failed_transaction_cannot_claim_rollback_after_state_changed(self):
         runtime, command, before, after, result = self.opening()
         receipt = self.judge(runtime, command, before, after, result, 'CONTROL_COMMAND_ERROR', root=ROOT)

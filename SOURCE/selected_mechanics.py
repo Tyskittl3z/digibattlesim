@@ -148,19 +148,22 @@ def resolve_bt12_return(runtime, seat, source_key, choice):
     if choice is None:
         return {'processing': 'CONDITION_OR_TARGET_UNAVAILABLE', 'returned': None,
                 'trashed_sources': [], 'once_per_turn_consumed': True, 'full_match_credit': 0}
-    from return_effects import inherited_return_replacement, replacement_effect_id, return_to_hand
+    from return_effects import inherited_return_replacements, replacement_effect_id, return_to_hand
     other = 'B' if seat == 'A' else 'A'
-    replacement = inherited_return_replacement(runtime, seat, other, choice)
-    if replacement is not None:
-        replacement_source, _ = replacement
+    replacements = inherited_return_replacements(runtime, seat, other, choice)
+    if replacements:
         stack = runtime.state.battle[other][choice]
+        trigger = {'kind': 'OPPONENT_EFFECT_RETURN', 'actor': seat,
+                   'target': choice, 'target_instance': stack.instance_id,
+                   'source_effect': BT12_RETURN_EFFECT}
         queue_effects(runtime, [{'seat': other, 'source': replacement_source,
-            'effect_id': replacement_effect_id(runtime, other, replacement_source), 'field': 'inherited_text',
-            'trigger': {'kind': 'OPPONENT_EFFECT_RETURN', 'actor': seat,
-                'target': choice, 'target_instance': stack.instance_id,
-                'source_effect': BT12_RETURN_EFFECT}}])
+            'effect_id': replacement_effect_id(runtime, other, replacement_source),
+            'field': 'inherited_text', 'trigger': trigger}
+            for replacement_source, _ in replacements])
         return {'processing': 'RETURN_REPLACEMENT_PENDING', 'target': choice,
-            'replacement_source': replacement_source, 'returned': None,
+            **({'replacement_source': replacements[0][0]} if len(replacements) == 1
+               else {'replacement_sources': [source for source, _ in replacements]}),
+            'returned': None,
             'trashed_sources': [], 'once_per_turn_consumed': True,
             'full_match_credit': 0}
     moved = return_to_hand(runtime, seat, other, choice, halt_prefix='BT12_RETURN')
@@ -223,8 +226,24 @@ def resolve_ulforce_unsuspend_return(runtime, seat, source_key, choice):
     if choice is None:
         return {'processing': 'NO_ELIGIBLE_DIGIMON', 'returned': None,
                 'once_per_turn_consumed': True, 'full_match_credit': 0}
-    from return_effects import return_to_hand
+    from return_effects import (inherited_return_replacements, replacement_effect_id,
+                                return_to_hand)
     opponent = 'B' if seat == 'A' else 'A'
+    replacements = inherited_return_replacements(runtime, seat, opponent, choice)
+    if replacements:
+        stack = runtime.state.battle[opponent][choice]
+        trigger = {'kind': 'OPPONENT_EFFECT_RETURN', 'actor': seat,
+                   'target': choice, 'target_instance': stack.instance_id,
+                   'source_effect': ULFORCE_UNSUSPEND_RETURN_EFFECT}
+        queue_effects(runtime, [{'seat': opponent, 'source': replacement_source,
+            'effect_id': replacement_effect_id(runtime, opponent, replacement_source),
+            'field': 'inherited_text', 'trigger': trigger}
+            for replacement_source, _ in replacements])
+        return {'processing': 'RETURN_REPLACEMENT_PENDING', 'target': choice,
+                **({'replacement_source': replacements[0][0]} if len(replacements) == 1
+                   else {'replacement_sources': [source for source, _ in replacements]}),
+                'returned': None,
+                'once_per_turn_consumed': True, 'full_match_credit': 0}
     moved = return_to_hand(runtime, seat, opponent, choice, halt_prefix='ULFORCE_UNSUSPEND_RETURN')
     return {'processing': 'RETURN_LEVEL_LIMIT_DIGIMON_TO_HAND', **moved,
             'once_per_turn_consumed': True, 'full_match_credit': 0}
@@ -647,9 +666,9 @@ def _source_evidence(root, source, locator):
 
 def build_selected_registry(context, root):
     cards = {c.number: c for c in context.cards}
-    index = json.loads((Path(root) / 'RULES/matchups/123129-vs-124303/SOURCE_INDEX.json').read_bytes())
-    source = next(d for d in index['sources'] if d['id'] == 'rules')
-    rules = _source_evidence(root,source,'Comprehensive rules v4.3: 4-13; 15-3; 15-4; 15-14-1; memory cap 1-4-2')
+    from rules_evidence import comprehensive_rules
+    rules = comprehensive_rules(context, root,
+        'Comprehensive rules v4.3: 4-13; 15-3; 15-4; 15-14-1; memory cap 1-4-2')
     def bound_omnimon_end(runtime, seat, source_key, choice):
         return resolve_omnimon_end(runtime, seat, source_key, choice, root)
     def bound_omnimon_piercing(runtime, seat, source_key, choice):
@@ -698,6 +717,10 @@ def build_selected_registry(context, root):
     bindings.extend(rina_unsuspend_bindings(context,root,rules))
     from ex13_ulforce_effects import ulforce_return_bindings
     bindings.extend(ulforce_return_bindings(context,root,rules))
+    from omni_return_effect import omni_return_bindings
+    bindings.extend(omni_return_bindings(context,root,rules))
+    from raid_effect import raid_bindings
+    bindings.extend(raid_bindings(context,root,rules))
     from return_effects import inherited_return_replacement_bindings
     bindings.extend(inherited_return_replacement_bindings(context,root,rules))
     from rina_reactivation import rina_reactivation_bindings

@@ -3,7 +3,7 @@ import copy
 import unittest
 
 from context_runtime import ContextRuntime, RuntimeHalt, Stack
-from effect_scheduler import pending_options, resolve_pending
+from effect_scheduler import pending_options, queue_effects, resolve_pending
 from matchup_readiness import load_context_file
 from selected_mechanics import ORIENTATION_EFFECT, build_selected_registry
 from test_selected_mechanics import ROOT, stage
@@ -223,7 +223,9 @@ class EffectGrantTests(unittest.TestCase):
         source = stage(runtime, 'B', ['P-138', 'EX13-023'], suspended=True)
         runtime.state.phase = 'END_OF_TURN'
         runtime.state.memory = -1
-        runtime.dispatch(ORIENTATION_EFFECT, 'B', source, source)
+        queue_effects(runtime, [{'seat': 'B', 'source': source, 'effect_id': ORIENTATION_EFFECT,
+            'field': 'main_text', 'trigger': {'kind': 'WHEN_DIGIVOLVING', 'source': source}}])
+        resolve_pending(runtime, 'B', pending_options(runtime, 'B')[0]['id'], source)
         _, target, _ = self.grant(runtime)
         before = runtime.snapshot()
         blocked = copy.deepcopy(runtime)

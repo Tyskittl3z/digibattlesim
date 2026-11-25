@@ -4,7 +4,7 @@ import json
 from unittest.mock import patch
 
 from context_runtime import ContextRuntime,RuntimeHalt
-from effect_scheduler import pending_options,resolve_pending
+from effect_scheduler import pending_options,resolve_pending,queue_effects
 from selected_mechanics import build_selected_registry,ORIENTATION_EFFECT
 from test_selected_mechanics import selected_context,stage,ROOT
 
@@ -53,7 +53,9 @@ class ReactionTests(unittest.TestCase):
         for active,phase,want in [('A','MAIN',1),('A','DRAW',0),('B','MAIN',0)]:
             r=self.runtime();r.state.active=active;r.state.phase=phase
             source=stage(r,'A',['EX1-013','EX13-023'],suspended=True)
-            r.dispatch(ORIENTATION_EFFECT,'A',source,source)
+            queue_effects(r,[{'seat':'A','source':source,'effect_id':ORIENTATION_EFFECT,
+                'field':'main_text','trigger':{'kind':'On Play','card':source}}])
+            resolve_pending(r,'A',pending_options(r,'A')[0]['id'],source)
             self.assertEqual(len(r.state.pending),want)
 
     def test_bt22_processing_condition_checked_at_activation(self):

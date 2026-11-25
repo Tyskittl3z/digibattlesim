@@ -1,0 +1,142 @@
+action,turn,seat,command,choice_json,judge_accepted,board_color,learning_eligible,reward,memory_before,memory_after,zone_movements_json
+1,0,B,BEGIN_PREPARATION,{},True,YELLOW,False,0.0,0,0,"[{""card"": ""A:BT12-029#1"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}, {""card"": ""A:EX13-019#4"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}, {""card"": ""A:EX13-022#4"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}, {""card"": ""A:EX13-069#2"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}, {""card"": ""A:LM-056#1"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}, {""card"": ""B:BT11-112#4"", ""from"": {""owner"": ""B"", ""zone"": ""deck""}, ""to"": {""owner"": ""B"", ""zone"": ""hand""}}, {""card"": ""B:BT22-085#1"", ""from"": {""owner"": ""B"", ""zone"": ""deck""}, ""to"": {""owner"": ""B"", ""zone"": ""hand""}}, {""card"": ""B:EX13-023#2"", ""from"": {""owner"": ""B"", ""zone"": ""deck""}, ""to"": {""owner"": ""B"", ""zone"": ""hand""}}, {""card"": ""B:LM-057#1"", ""from"": {""owner"": ""B"", ""zone"": ""deck""}, ""to"": {""owner"": ""B"", ""zone"": ""hand""}}, {""card"": ""B:P-138#2"", ""from"": {""owner"": ""B"", ""zone"": ""deck""}, ""to"": {""owner"": ""B"", ""zone"": ""hand""}}]"
+2,0,B,REDRAW_CHOICE,"{""redraw"": false}",True,YELLOW,False,0.0,0,0,[]
+3,0,A,REDRAW_CHOICE,"{""redraw"": false}",True,YELLOW,False,0.0,0,0,"[{""card"": ""A:BT11-023#2"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""security""}}, {""card"": ""A:BT11-023#3"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""security""}}, {""card"": ""A:BT12-029#3"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""security""}}, {""card"": ""A:BT22-023#1"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""security""}}, {""card"": ""A:EX13-069#1"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""security""}}, {""card"": ""B:BT11-032#1"", ""from"": {""owner"": ""B"", ""zone"": ""deck""}, ""to"": {""owner"": ""B"", ""zone"": ""security""}}, {""card"": ""B:BT12-029#1"", ""from"": {""owner"": ""B"", ""zone"": ""deck""}, ""to"": {""owner"": ""B"", ""zone"": ""security""}}, {""card"": ""B:EX1-013#3"", ""from"": {""owner"": ""B"", ""zone"": ""deck""}, ""to"": {""owner"": ""B"", ""zone"": ""security""}}, {""card"": ""B:P-104#1"", ""from"": {""owner"": ""B"", ""zone"": ""deck""}, ""to"": {""owner"": ""B"", ""zone"": ""security""}}, {""card"": ""B:P-138#4"", ""from"": {""owner"": ""B"", ""zone"": ""deck""}, ""to"": {""owner"": ""B"", ""zone"": ""security""}}]"
+4,1,B,ADVANCE_PHASE,{},True,YELLOW,False,0.0,0,0,[]
+5,1,B,ADVANCE_PHASE,{},True,YELLOW,False,0.0,0,0,[]
+6,1,B,ADVANCE_PHASE,{},True,YELLOW,False,0.0,0,0,[]
+7,1,B,BREEDING_CHOICE,"{""action"": ""hatch"", ""kind"": ""BREEDING_CHOICE""}",True,GREEN,True,0.5,0,0,"[{""card"": ""B:EX13-002#3"", ""from"": {""owner"": ""B"", ""zone"": ""eggdeck""}, ""to"": {""owner"": ""B"", ""zone"": ""breeding""}}]"
+8,1,B,PLAY_CARD,"{""hand_key"": ""B:P-138#2"", ""kind"": ""PLAY_CARD"", ""legality"": ""PRINTED_PAYABLE_NOT_FULL_LEGALITY"", ""printed_cost"": 5}",True,GREEN,True,1.0,0,-5,"[{""card"": ""B:P-138#2"", ""from"": {""owner"": ""B"", ""zone"": ""hand""}, ""to"": {""entity"": ""entity-1"", ""owner"": ""B"", ""zone"": ""battle""}}]"
+9,1,B,RESOLVE_PENDING,"{""choice"": {""bottom_order"": [""B:BT22-023#2""], ""selected"": [""B:EX13-069#4"", ""B:BT22-023#1""]}, ""pending_id"": ""effect-1""}",True,GREEN,False,1.0,-5,-5,"[{""card"": ""B:BT22-023#1"", ""from"": {""owner"": ""B"", ""zone"": ""deck""}, ""to"": {""owner"": ""B"", ""zone"": ""hand""}}, {""card"": ""B:EX13-069#4"", ""from"": {""owner"": ""B"", ""zone"": ""deck""}, ""to"": {""owner"": ""B"", ""zone"": ""hand""}}]"
+10,1,B,FINISH_TURN,{},True,YELLOW,False,0.0,-5,5,[]
+11,2,A,ADVANCE_PHASE,{},True,YELLOW,False,0.0,5,5,[]
+12,2,A,ADVANCE_PHASE,{},True,YELLOW,False,0.0,5,5,[]
+13,2,A,ADVANCE_PHASE,{},True,GREEN,False,0.5,5,5,"[{""card"": ""A:BT11-032#1"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}]"
+14,2,A,BREEDING_CHOICE,"{""action"": ""hatch"", ""kind"": ""BREEDING_CHOICE""}",True,GREEN,True,0.5,5,5,"[{""card"": ""A:EX13-002#1"", ""from"": {""owner"": ""A"", ""zone"": ""eggdeck""}, ""to"": {""owner"": ""A"", ""zone"": ""breeding""}}]"
+15,2,A,PLAY_CARD,"{""hand_key"": ""A:EX13-022#4"", ""kind"": ""PLAY_CARD"", ""legality"": ""PRINTED_PAYABLE_NOT_FULL_LEGALITY"", ""printed_cost"": 7}",True,GREEN,True,0.45,5,-2,"[{""card"": ""A:EX13-022#4"", ""from"": {""owner"": ""A"", ""zone"": ""hand""}, ""to"": {""entity"": ""entity-2"", ""owner"": ""A"", ""zone"": ""battle""}}]"
+16,2,A,RESOLVE_PENDING,"{""choice"": ""A:EX13-069#2"", ""pending_id"": ""effect-2""}",True,GREEN,True,2.0,-2,-2,"[{""card"": ""A:EX13-069#2"", ""from"": {""owner"": ""A"", ""zone"": ""hand""}, ""to"": {""entity"": ""entity-3"", ""owner"": ""A"", ""zone"": ""battle""}}]"
+17,2,A,RESOLVE_PENDING,"{""choice"": ""B:P-138#2"", ""pending_id"": ""effect-3""}",True,GREEN,False,1.75,-2,-2,[]
+18,2,A,FINISH_TURN,{},True,YELLOW,False,0.0,-2,2,[]
+19,3,B,ADVANCE_PHASE,{},True,YELLOW,False,0.0,2,2,[]
+20,3,B,ADVANCE_PHASE,{},True,YELLOW,False,0.0,2,2,[]
+21,3,B,ADVANCE_PHASE,{},True,GREEN,False,0.5,2,2,"[{""card"": ""B:EX13-022#4"", ""from"": {""owner"": ""B"", ""zone"": ""deck""}, ""to"": {""owner"": ""B"", ""zone"": ""hand""}}]"
+22,3,B,BREEDING_CHOICE,"{""action"": ""skip"", ""kind"": ""BREEDING_CHOICE""}",True,YELLOW,False,0.0,2,2,[]
+23,3,B,BATTLE_EVOLUTION,"{""basis"": ""PRINTED_NORMAL"", ""cost"": 3, ""definition_sha256"": ""65bfa05c9838899ee391c5168eff33a01cbabfc29e6611b08b8cb3b280715c85"", ""hand_key"": ""B:BT22-023#1"", ""kind"": ""BATTLE_EVOLUTION"", ""legality"": ""PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"", ""printed_condition"": ""Blue 3 from Lv.4"", ""route_index"": 0, ""source_key"": ""B:P-138#2"", ""status"": ""PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY""}",True,RED,True,-1.025,2,-1,"[{""card"": ""B:BT22-023#1"", ""from"": {""owner"": ""B"", ""zone"": ""hand""}, ""to"": {""entity"": ""entity-1"", ""owner"": ""B"", ""zone"": ""battle""}}, {""card"": ""B:EX13-069#2"", ""from"": {""owner"": ""B"", ""zone"": ""deck""}, ""to"": {""owner"": ""B"", ""zone"": ""hand""}}]"
+24,3,B,RESOLVE_PENDING,"{""choice"": null, ""pending_id"": ""effect-4""}",True,YELLOW,False,0.0,-1,-1,[]
+25,3,B,FINISH_TURN,{},True,YELLOW,False,0.0,-1,-1,[]
+26,3,B,RESOLVE_PENDING,"{""choice"": ""B:BT22-023#1"", ""pending_id"": ""effect-5""}",True,YELLOW,True,0.0,-1,-1,[]
+27,3,B,FINISH_TURN,{},True,GREEN,False,2.225,-1,1,[]
+28,4,A,ADVANCE_PHASE,{},True,YELLOW,False,0.0,1,1,[]
+29,4,A,ADVANCE_PHASE,{},True,YELLOW,False,0.0,1,1,[]
+30,4,A,ADVANCE_PHASE,{},True,GREEN,False,0.5,1,1,"[{""card"": ""A:BT12-029#2"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}]"
+31,4,A,BREEDING_CHOICE,"{""action"": ""skip"", ""kind"": ""BREEDING_CHOICE""}",True,YELLOW,False,0.0,1,1,[]
+32,4,A,RESOLVE_PENDING,"{""choice"": null, ""pending_id"": ""effect-6""}",True,GREEN,False,0.5,1,2,[]
+33,4,A,DECLARE_ATTACK,"{""attacker"": ""A:EX13-022#4"", ""kind"": ""DECLARE_ATTACK"", ""target"": ""PLAYER""}",True,RED,True,-0.5,2,2,[]
+34,4,A,RESOLVE_PENDING,"{""choice"": null, ""pending_id"": ""effect-7""}",True,YELLOW,False,0.0,2,2,[]
+35,4,B,COUNTER_CHOICE,"{""card"": null, ""status"": ""EXPLICIT_DECLINE""}",True,YELLOW,False,0.0,2,2,[]
+36,4,B,BLOCK_CHOICE,"{""card"": null, ""status"": ""NO_ELIGIBLE_BLOCKER""}",True,YELLOW,False,0.0,2,2,[]
+37,4,A,CONFIRM_ATTACK,{},True,GREEN,False,4.0,2,2,"[{""card"": ""B:EX1-013#3"", ""from"": {""owner"": ""B"", ""zone"": ""security""}, ""to"": {""owner"": ""B"", ""zone"": ""trash""}}]"
+38,4,A,END_ATTACK,{},True,YELLOW,False,0.0,2,2,[]
+39,4,A,BATTLE_EVOLUTION,"{""basis"": ""PRINTED_NORMAL"", ""cost"": 4, ""definition_sha256"": ""58cbcd3ac04742aef5740cc244192e57c0ac20e220b2cfd9bf2abe2b9f6f348d"", ""hand_key"": ""A:BT12-029#1"", ""kind"": ""BATTLE_EVOLUTION"", ""legality"": ""PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"", ""printed_condition"": ""Blue 4 from Lv.5"", ""route_index"": 0, ""source_key"": ""A:EX13-022#4"", ""status"": ""PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY""}",True,RED,True,-0.75,2,-2,"[{""card"": ""A:BT12-029#1"", ""from"": {""owner"": ""A"", ""zone"": ""hand""}, ""to"": {""entity"": ""entity-2"", ""owner"": ""A"", ""zone"": ""battle""}}, {""card"": ""A:EX13-017#2"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}]"
+40,4,A,RESOLVE_PENDING,"{""choice"": ""A:BT12-029#1"", ""pending_id"": ""effect-8""}",True,GREEN,True,0.5,-2,-2,[]
+41,4,A,RESOLVE_PENDING,"{""choice"": ""B:BT22-023#1"", ""pending_id"": ""effect-10""}",True,GREEN,True,4.45,-2,-2,"[{""card"": ""B:BT22-023#1"", ""from"": {""entity"": ""entity-1"", ""owner"": ""B"", ""zone"": ""battle""}, ""to"": {""owner"": ""B"", ""zone"": ""hand""}}, {""card"": ""B:P-138#2"", ""from"": {""entity"": ""entity-1"", ""owner"": ""B"", ""zone"": ""battle""}, ""to"": {""owner"": ""B"", ""zone"": ""trash""}}]"
+42,4,A,RESOLVE_PENDING,"{""choice"": true, ""pending_id"": ""effect-9""}",True,YELLOW,True,0.0,-2,-2,"[{""card"": ""A:P-138#3"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}]"
+43,4,A,RESOLVE_PENDING,"{""choice"": null, ""pending_id"": ""effect-11""}",True,YELLOW,False,0.0,-2,-2,[]
+44,4,A,FINISH_TURN,{},True,YELLOW,False,0.0,-2,2,[]
+45,5,B,ADVANCE_PHASE,{},True,YELLOW,False,0.0,2,2,[]
+46,5,B,ADVANCE_PHASE,{},True,YELLOW,False,0.0,2,2,[]
+47,5,B,ADVANCE_PHASE,{},True,GREEN,False,0.5,2,2,"[{""card"": ""B:LM-056#1"", ""from"": {""owner"": ""B"", ""zone"": ""deck""}, ""to"": {""owner"": ""B"", ""zone"": ""hand""}}]"
+48,5,B,BREEDING_CHOICE,"{""action"": ""skip"", ""kind"": ""BREEDING_CHOICE""}",True,YELLOW,False,0.0,2,2,[]
+49,5,B,PLAY_CARD,"{""hand_key"": ""B:BT22-023#1"", ""kind"": ""PLAY_CARD"", ""legality"": ""PRINTED_PAYABLE_NOT_FULL_LEGALITY"", ""printed_cost"": 7}",True,GREEN,True,0.45,2,-5,"[{""card"": ""B:BT22-023#1"", ""from"": {""owner"": ""B"", ""zone"": ""hand""}, ""to"": {""entity"": ""entity-4"", ""owner"": ""B"", ""zone"": ""battle""}}]"
+50,5,B,RESOLVE_PENDING,"{""choice"": null, ""pending_id"": ""effect-12""}",True,YELLOW,False,0.0,-5,-5,[]
+51,5,B,FINISH_TURN,{},True,YELLOW,False,0.0,-5,-5,[]
+52,5,B,RESOLVE_PENDING,"{""choice"": null, ""pending_id"": ""effect-13""}",True,YELLOW,True,0.0,-5,-5,[]
+53,5,B,FINISH_TURN,{},True,YELLOW,False,0.0,-5,5,[]
+54,6,A,ADVANCE_PHASE,{},True,YELLOW,False,0.0,5,5,[]
+55,6,A,ADVANCE_PHASE,{},True,GREEN,False,0.5,5,5,[]
+56,6,A,ADVANCE_PHASE,{},True,GREEN,False,0.5,5,5,"[{""card"": ""A:BT11-023#4"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}]"
+57,6,A,BREEDING_CHOICE,"{""action"": ""skip"", ""kind"": ""BREEDING_CHOICE""}",True,YELLOW,False,0.0,5,5,[]
+58,6,A,RESOLVE_PENDING,"{""choice"": null, ""pending_id"": ""effect-14""}",True,GREEN,False,0.5,5,6,[]
+59,6,A,DECLARE_ATTACK,"{""attacker"": ""A:BT12-029#1"", ""kind"": ""DECLARE_ATTACK"", ""target"": ""PLAYER""}",True,RED,True,-0.5,6,6,[]
+60,6,A,RESOLVE_PENDING,"{""choice"": true, ""pending_id"": ""effect-15""}",True,GREEN,True,0.5,6,6,[]
+61,6,A,RESOLVE_PENDING,"{""choice"": ""B:BT22-023#1"", ""pending_id"": ""effect-17""}",True,GREEN,True,3.95,6,6,"[{""card"": ""B:BT22-023#1"", ""from"": {""entity"": ""entity-4"", ""owner"": ""B"", ""zone"": ""battle""}, ""to"": {""owner"": ""B"", ""zone"": ""hand""}}]"
+62,6,A,RESOLVE_PENDING,"{""choice"": true, ""pending_id"": ""effect-16""}",True,YELLOW,True,0.0,6,6,"[{""card"": ""A:BT11-112#2"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}]"
+63,6,A,RESOLVE_PENDING,"{""choice"": null, ""pending_id"": ""effect-18""}",True,YELLOW,False,0.0,6,6,[]
+64,6,B,COUNTER_CHOICE,"{""card"": null, ""status"": ""EXPLICIT_DECLINE""}",True,YELLOW,False,0.0,6,6,[]
+65,6,B,BLOCK_CHOICE,"{""card"": null, ""status"": ""NO_ELIGIBLE_BLOCKER""}",True,YELLOW,False,0.0,6,6,[]
+66,6,A,CONFIRM_ATTACK,{},True,GREEN,False,2.0,6,6,"[{""card"": ""B:P-104#1"", ""from"": {""owner"": ""B"", ""zone"": ""security""}, ""to"": {""entity"": ""entity-5"", ""owner"": ""B"", ""zone"": ""battle""}}]"
+67,6,A,END_ATTACK,{},True,YELLOW,False,0.0,6,6,[]
+68,6,A,DECLARE_ATTACK,"{""attacker"": ""A:BT12-029#1"", ""kind"": ""DECLARE_ATTACK"", ""target"": ""PLAYER""}",True,RED,True,-0.5,6,6,[]
+69,6,B,COUNTER_CHOICE,"{""card"": null, ""status"": ""EXPLICIT_DECLINE""}",True,YELLOW,False,0.0,6,6,[]
+70,6,B,BLOCK_CHOICE,"{""card"": null, ""status"": ""NO_ELIGIBLE_BLOCKER""}",True,YELLOW,False,0.0,6,6,[]
+71,6,A,CONFIRM_ATTACK,{},True,GREEN,False,4.0,6,6,"[{""card"": ""B:P-138#4"", ""from"": {""owner"": ""B"", ""zone"": ""security""}, ""to"": {""owner"": ""B"", ""zone"": ""trash""}}]"
+72,6,A,END_ATTACK,{},True,YELLOW,False,0.0,6,6,[]
+73,6,A,BREEDING_EVOLUTION,"{""basis"": ""PRINTED_NORMAL"", ""cost"": 0, ""definition_sha256"": ""2b087e49a70979928e01b0527f9ce8533b55114ae4323024f62e643b90108fa9"", ""hand_key"": ""A:BT11-023#4"", ""kind"": ""BREEDING_EVOLUTION"", ""legality"": ""PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"", ""printed_condition"": ""Blue 0 from Lv.2"", ""route_index"": 0, ""source_key"": ""A:EX13-002#1"", ""status"": ""PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY""}",True,GREEN,True,0.5,6,6,"[{""card"": ""A:BT11-023#4"", ""from"": {""owner"": ""A"", ""zone"": ""hand""}, ""to"": {""owner"": ""A"", ""zone"": ""breeding""}}, {""card"": ""A:BT22-023#3"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}]"
+74,6,A,BREEDING_EVOLUTION,"{""basis"": ""PRINTED_NORMAL"", ""cost"": 2, ""definition_sha256"": ""5e6a9dd5c48e23e360714e7256657b8d6a5353992168739f796829648f453158"", ""hand_key"": ""A:P-138#3"", ""kind"": ""BREEDING_EVOLUTION"", ""legality"": ""PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"", ""printed_condition"": ""Blue 2 from Lv.3"", ""route_index"": 0, ""source_key"": ""A:BT11-023#4"", ""status"": ""PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY""}",True,RED,True,-0.5,6,4,"[{""card"": ""A:EX13-022#1"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}, {""card"": ""A:P-138#3"", ""from"": {""owner"": ""A"", ""zone"": ""hand""}, ""to"": {""owner"": ""A"", ""zone"": ""breeding""}}]"
+75,6,A,BREEDING_EVOLUTION,"{""basis"": ""PRINTED_NORMAL"", ""cost"": 3, ""definition_sha256"": ""65bfa05c9838899ee391c5168eff33a01cbabfc29e6611b08b8cb3b280715c85"", ""hand_key"": ""A:BT22-023#3"", ""kind"": ""BREEDING_EVOLUTION"", ""legality"": ""PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"", ""printed_condition"": ""Blue 3 from Lv.4"", ""route_index"": 0, ""source_key"": ""A:P-138#3"", ""status"": ""PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY""}",True,RED,True,-1.0,4,1,"[{""card"": ""A:BT22-023#3"", ""from"": {""owner"": ""A"", ""zone"": ""hand""}, ""to"": {""owner"": ""A"", ""zone"": ""breeding""}}, {""card"": ""A:LM-028#1"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}]"
+76,6,A,BREEDING_EVOLUTION,"{""basis"": ""PRINTED_NORMAL"", ""cost"": 4, ""definition_sha256"": ""58cbcd3ac04742aef5740cc244192e57c0ac20e220b2cfd9bf2abe2b9f6f348d"", ""hand_key"": ""A:BT12-029#2"", ""kind"": ""BREEDING_EVOLUTION"", ""legality"": ""PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"", ""printed_condition"": ""Blue 4 from Lv.5"", ""route_index"": 0, ""source_key"": ""A:BT22-023#3"", ""status"": ""PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY""}",True,RED,True,-1.5,1,-3,"[{""card"": ""A:BT12-029#2"", ""from"": {""owner"": ""A"", ""zone"": ""hand""}, ""to"": {""owner"": ""A"", ""zone"": ""breeding""}}, {""card"": ""A:BT22-085#1"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}]"
+77,6,A,FINISH_TURN,{},True,YELLOW,False,0.0,-3,3,[]
+78,7,B,ADVANCE_PHASE,{},True,YELLOW,False,0.0,3,3,[]
+79,7,B,ADVANCE_PHASE,{},True,YELLOW,False,0.0,3,3,[]
+80,7,B,ADVANCE_PHASE,{},True,GREEN,False,0.5,3,3,"[{""card"": ""B:BT11-112#1"", ""from"": {""owner"": ""B"", ""zone"": ""deck""}, ""to"": {""owner"": ""B"", ""zone"": ""hand""}}]"
+81,7,B,BREEDING_CHOICE,"{""action"": ""skip"", ""kind"": ""BREEDING_CHOICE""}",True,YELLOW,False,0.0,3,3,[]
+82,7,B,PLAY_CARD,"{""hand_key"": ""B:BT22-023#1"", ""kind"": ""PLAY_CARD"", ""legality"": ""PRINTED_PAYABLE_NOT_FULL_LEGALITY"", ""printed_cost"": 7}",True,GREEN,True,0.45,3,-4,"[{""card"": ""B:BT22-023#1"", ""from"": {""owner"": ""B"", ""zone"": ""hand""}, ""to"": {""entity"": ""entity-6"", ""owner"": ""B"", ""zone"": ""battle""}}]"
+83,7,B,RESOLVE_PENDING,"{""choice"": null, ""pending_id"": ""effect-19""}",True,YELLOW,False,0.0,-4,-4,[]
+84,7,B,FINISH_TURN,{},True,YELLOW,False,0.0,-4,-4,[]
+85,7,B,RESOLVE_PENDING,"{""choice"": null, ""pending_id"": ""effect-20""}",True,YELLOW,True,0.0,-4,-4,[]
+86,7,B,FINISH_TURN,{},True,YELLOW,False,0.0,-4,4,[]
+87,8,A,ADVANCE_PHASE,{},True,YELLOW,False,0.0,4,4,[]
+88,8,A,ADVANCE_PHASE,{},True,GREEN,False,1.0,4,4,[]
+89,8,A,RESOLVE_PENDING,"{""choice"": ""B:BT22-023#1"", ""pending_id"": ""effect-22""}",True,GREEN,True,3.95,4,4,"[{""card"": ""B:BT22-023#1"", ""from"": {""entity"": ""entity-6"", ""owner"": ""B"", ""zone"": ""battle""}, ""to"": {""owner"": ""B"", ""zone"": ""hand""}}]"
+90,8,A,RESOLVE_PENDING,"{""choice"": true, ""pending_id"": ""effect-21""}",True,YELLOW,True,0.0,4,4,"[{""card"": ""A:LM-058#1"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}]"
+91,8,A,RESOLVE_PENDING,"{""choice"": null, ""pending_id"": ""effect-23""}",True,YELLOW,False,0.0,4,4,[]
+92,8,A,ADVANCE_PHASE,{},True,YELLOW,False,0.0,4,4,[]
+93,8,A,ADVANCE_PHASE,{},True,GREEN,False,0.5,4,4,"[{""card"": ""A:BT11-112#4"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}]"
+94,8,A,BREEDING_CHOICE,"{""action"": ""promote"", ""kind"": ""BREEDING_CHOICE""}",True,GREEN,True,4.7,4,4,"[{""card"": ""A:BT11-023#4"", ""from"": {""owner"": ""A"", ""zone"": ""breeding""}, ""to"": {""entity"": ""entity-7"", ""owner"": ""A"", ""zone"": ""battle""}}, {""card"": ""A:BT12-029#2"", ""from"": {""owner"": ""A"", ""zone"": ""breeding""}, ""to"": {""entity"": ""entity-7"", ""owner"": ""A"", ""zone"": ""battle""}}, {""card"": ""A:BT22-023#3"", ""from"": {""owner"": ""A"", ""zone"": ""breeding""}, ""to"": {""entity"": ""entity-7"", ""owner"": ""A"", ""zone"": ""battle""}}, {""card"": ""A:EX13-002#1"", ""from"": {""owner"": ""A"", ""zone"": ""breeding""}, ""to"": {""entity"": ""entity-7"", ""owner"": ""A"", ""zone"": ""battle""}}, {""card"": ""A:P-138#3"", ""from"": {""owner"": ""A"", ""zone"": ""breeding""}, ""to"": {""entity"": ""entity-7"", ""owner"": ""A"", ""zone"": ""battle""}}]"
+95,8,A,RESOLVE_PENDING,"{""choice"": null, ""pending_id"": ""effect-24""}",True,GREEN,False,0.5,4,5,[]
+96,8,A,DECLARE_ATTACK,"{""attacker"": ""A:BT12-029#1"", ""kind"": ""DECLARE_ATTACK"", ""target"": ""PLAYER""}",True,RED,True,-0.5,5,5,[]
+97,8,A,RESOLVE_PENDING,"{""choice"": true, ""pending_id"": ""effect-25""}",True,GREEN,True,0.5,5,5,[]
+98,8,A,RESOLVE_PENDING,"{""choice"": false, ""pending_id"": ""effect-26""}",True,YELLOW,False,0.0,5,5,[]
+99,8,B,COUNTER_CHOICE,"{""card"": null, ""status"": ""EXPLICIT_DECLINE""}",True,YELLOW,False,0.0,5,5,[]
+100,8,B,BLOCK_CHOICE,"{""card"": null, ""status"": ""NO_ELIGIBLE_BLOCKER""}",True,YELLOW,False,0.0,5,5,[]
+101,8,A,CONFIRM_ATTACK,{},True,RED,False,-1.7,5,5,"[{""card"": ""A:BT12-029#1"", ""from"": {""entity"": ""entity-2"", ""owner"": ""A"", ""zone"": ""battle""}, ""to"": {""owner"": ""A"", ""zone"": ""trash""}}, {""card"": ""A:EX13-022#4"", ""from"": {""entity"": ""entity-2"", ""owner"": ""A"", ""zone"": ""battle""}, ""to"": {""owner"": ""A"", ""zone"": ""trash""}}, {""card"": ""B:BT12-029#1"", ""from"": {""owner"": ""B"", ""zone"": ""security""}, ""to"": {""owner"": ""B"", ""zone"": ""trash""}}]"
+102,8,A,END_ATTACK,{},True,YELLOW,False,0.0,5,5,[]
+103,8,A,DECLARE_ATTACK,"{""attacker"": ""A:BT12-029#2"", ""kind"": ""DECLARE_ATTACK"", ""target"": ""PLAYER""}",True,RED,True,-0.5,5,5,[]
+104,8,A,RESOLVE_PENDING,"{""choice"": true, ""pending_id"": ""effect-27""}",True,GREEN,True,0.5,5,5,[]
+105,8,A,RESOLVE_PENDING,"{""choice"": null, ""pending_id"": ""effect-30""}",True,YELLOW,True,0.0,5,5,[]
+106,8,A,RESOLVE_PENDING,"{""choice"": false, ""pending_id"": ""effect-29""}",True,YELLOW,True,0.0,5,5,[]
+107,8,A,RESOLVE_PENDING,"{""choice"": null, ""pending_id"": ""effect-28""}",True,GREEN,False,0.5,5,6,[]
+108,8,B,COUNTER_CHOICE,"{""card"": null, ""status"": ""EXPLICIT_DECLINE""}",True,YELLOW,False,0.0,6,6,[]
+109,8,B,BLOCK_CHOICE,"{""card"": null, ""status"": ""NO_ELIGIBLE_BLOCKER""}",True,YELLOW,False,0.0,6,6,[]
+110,8,A,CONFIRM_ATTACK,{},True,RED,False,-3.2,6,6,"[{""card"": ""A:BT11-023#4"", ""from"": {""entity"": ""entity-7"", ""owner"": ""A"", ""zone"": ""battle""}, ""to"": {""owner"": ""A"", ""zone"": ""trash""}}, {""card"": ""A:BT12-029#2"", ""from"": {""entity"": ""entity-7"", ""owner"": ""A"", ""zone"": ""battle""}, ""to"": {""owner"": ""A"", ""zone"": ""trash""}}, {""card"": ""A:BT22-023#3"", ""from"": {""entity"": ""entity-7"", ""owner"": ""A"", ""zone"": ""battle""}, ""to"": {""owner"": ""A"", ""zone"": ""trash""}}, {""card"": ""A:EX13-002#1"", ""from"": {""entity"": ""entity-7"", ""owner"": ""A"", ""zone"": ""battle""}, ""to"": {""owner"": ""A"", ""zone"": ""trash""}}, {""card"": ""A:P-138#3"", ""from"": {""entity"": ""entity-7"", ""owner"": ""A"", ""zone"": ""battle""}, ""to"": {""owner"": ""A"", ""zone"": ""trash""}}, {""card"": ""B:BT11-032#1"", ""from"": {""owner"": ""B"", ""zone"": ""security""}, ""to"": {""owner"": ""B"", ""zone"": ""trash""}}]"
+111,8,A,END_ATTACK,{},True,YELLOW,False,0.0,6,6,[]
+112,8,A,PLAY_CARD,"{""hand_key"": ""A:EX13-017#2"", ""kind"": ""PLAY_CARD"", ""legality"": ""PRINTED_PAYABLE_NOT_FULL_LEGALITY"", ""printed_cost"": 3}",True,GREEN,True,1.35,6,3,"[{""card"": ""A:EX13-017#2"", ""from"": {""owner"": ""A"", ""zone"": ""hand""}, ""to"": {""entity"": ""entity-8"", ""owner"": ""A"", ""zone"": ""battle""}}]"
+113,8,A,RESOLVE_PENDING,"{""choice"": {""bottom_order"": [""A:BT11-112#1"", ""A:P-138#1""], ""selected"": [""A:EX13-022#3""]}, ""pending_id"": ""effect-31""}",True,GREEN,True,0.5,3,3,"[{""card"": ""A:EX13-022#3"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}]"
+114,8,A,BATTLE_EVOLUTION,"{""basis"": ""PRINTED_NORMAL"", ""cost"": 2, ""definition_sha256"": ""ad54641a89c77e77f48729f22f91b646ca3045e2cabf048570351d415e4e7d67"", ""hand_key"": ""A:EX13-019#4"", ""kind"": ""BATTLE_EVOLUTION"", ""legality"": ""PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"", ""printed_condition"": ""Blue 2 from Lv.3"", ""route_index"": 0, ""source_key"": ""A:EX13-017#2"", ""status"": ""PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY""}",True,YELLOW,True,0.25,3,1,"[{""card"": ""A:EX13-019#4"", ""from"": {""owner"": ""A"", ""zone"": ""hand""}, ""to"": {""entity"": ""entity-8"", ""owner"": ""A"", ""zone"": ""battle""}}, {""card"": ""A:EX13-023#4"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}]"
+115,8,A,BATTLE_EVOLUTION,"{""basis"": ""PRINTED_NORMAL"", ""cost"": 3, ""definition_sha256"": ""73cef4900ac35284738c7c875f69d7b18858c481f844ca920dce86b0d2907daf"", ""hand_key"": ""A:EX13-022#1"", ""kind"": ""BATTLE_EVOLUTION"", ""legality"": ""PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY"", ""printed_condition"": ""Blue 3 from Lv.4"", ""route_index"": 0, ""source_key"": ""A:EX13-019#4"", ""status"": ""PRINTED_CANDIDATE_NOT_FULL_ACTION_LEGALITY""}",True,RED,True,-0.65,1,-2,"[{""card"": ""A:EX13-022#1"", ""from"": {""owner"": ""A"", ""zone"": ""hand""}, ""to"": {""entity"": ""entity-8"", ""owner"": ""A"", ""zone"": ""battle""}}, {""card"": ""A:EX13-069#3"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}]"
+116,8,A,RESOLVE_PENDING,"{""choice"": ""A:BT11-112#2"", ""pending_id"": ""effect-32""}",True,GREEN,True,2.0,-2,-2,"[{""card"": ""A:BT11-112#2"", ""from"": {""owner"": ""A"", ""zone"": ""hand""}, ""to"": {""entity"": ""entity-9"", ""owner"": ""A"", ""zone"": ""battle""}}]"
+117,8,A,RESOLVE_PENDING,"{""choice"": ""A:EX13-022#1"", ""pending_id"": ""effect-33""}",True,GREEN,True,1.0,-2,-2,[]
+118,8,A,RESOLVE_PENDING,"{""choice"": null, ""pending_id"": ""effect-34""}",True,YELLOW,False,0.0,-2,-2,[]
+119,8,A,FINISH_TURN,{},True,YELLOW,False,0.0,-2,2,[]
+120,9,B,ADVANCE_PHASE,{},True,YELLOW,False,0.0,2,2,[]
+121,9,B,ADVANCE_PHASE,{},True,YELLOW,False,0.0,2,2,[]
+122,9,B,ADVANCE_PHASE,{},True,GREEN,False,0.5,2,2,"[{""card"": ""B:EX13-022#3"", ""from"": {""owner"": ""B"", ""zone"": ""deck""}, ""to"": {""owner"": ""B"", ""zone"": ""hand""}}]"
+123,9,B,BREEDING_CHOICE,"{""action"": ""skip"", ""kind"": ""BREEDING_CHOICE""}",True,YELLOW,False,0.0,2,2,[]
+124,9,B,PLAY_CARD,"{""hand_key"": ""B:BT22-023#1"", ""kind"": ""PLAY_CARD"", ""legality"": ""PRINTED_PAYABLE_NOT_FULL_LEGALITY"", ""printed_cost"": 7}",True,GREEN,True,0.45,2,-5,"[{""card"": ""B:BT22-023#1"", ""from"": {""owner"": ""B"", ""zone"": ""hand""}, ""to"": {""entity"": ""entity-10"", ""owner"": ""B"", ""zone"": ""battle""}}]"
+125,9,B,RESOLVE_PENDING,"{""choice"": null, ""pending_id"": ""effect-35""}",True,YELLOW,False,0.0,-5,-5,[]
+126,9,B,FINISH_TURN,{},True,YELLOW,False,0.0,-5,-5,[]
+127,9,B,RESOLVE_PENDING,"{""choice"": null, ""pending_id"": ""effect-36""}",True,YELLOW,True,0.0,-5,-5,[]
+128,9,B,FINISH_TURN,{},True,GREEN,False,1.0,-5,5,[]
+129,10,A,ADVANCE_PHASE,{},True,YELLOW,False,0.0,5,5,[]
+130,10,A,ADVANCE_PHASE,{},True,GREEN,False,0.5,5,5,[]
+131,10,A,ADVANCE_PHASE,{},True,GREEN,False,0.5,5,5,"[{""card"": ""A:LM-034#1"", ""from"": {""owner"": ""A"", ""zone"": ""deck""}, ""to"": {""owner"": ""A"", ""zone"": ""hand""}}]"
+132,10,A,BREEDING_CHOICE,"{""action"": ""hatch"", ""kind"": ""BREEDING_CHOICE""}",True,GREEN,True,0.5,5,5,"[{""card"": ""A:EX13-002#3"", ""from"": {""owner"": ""A"", ""zone"": ""eggdeck""}, ""to"": {""owner"": ""A"", ""zone"": ""breeding""}}]"
+133,10,A,RESOLVE_PENDING,"{""choice"": null, ""pending_id"": ""effect-37""}",True,GREEN,False,0.5,5,6,[]
+134,10,A,DECLARE_ATTACK,"{""attacker"": ""A:EX13-022#1"", ""kind"": ""DECLARE_ATTACK"", ""target"": ""PLAYER""}",True,RED,True,-0.5,6,6,[]
+135,10,A,RESOLVE_PENDING,"{""choice"": ""EX13-022.play_tamer"", ""pending_id"": ""effect-38""}",True,RED,True,-0.5,6,6,[]
+136,10,A,RESOLVE_PENDING,"{""choice"": ""A:BT11-112#4"", ""pending_id"": ""effect-40""}",True,GREEN,True,2.0,6,6,"[{""card"": ""A:BT11-112#4"", ""from"": {""owner"": ""A"", ""zone"": ""hand""}, ""to"": {""entity"": ""entity-11"", ""owner"": ""A"", ""zone"": ""battle""}}]"
+137,10,A,RESOLVE_PENDING,"{""choice"": ""A:EX13-022#1"", ""pending_id"": ""effect-41""}",True,YELLOW,True,0.0,6,6,[]
+138,10,A,RESOLVE_PENDING,"{""choice"": ""B:BT22-023#1"", ""pending_id"": ""effect-42""}",True,GREEN,False,1.975,6,6,[]
+139,10,B,COUNTER_CHOICE,"{""card"": null, ""status"": ""EXPLICIT_DECLINE""}",True,YELLOW,False,0.0,6,6,[]
+140,10,B,BLOCK_CHOICE,"{""card"": null, ""status"": ""NO_ELIGIBLE_BLOCKER""}",True,YELLOW,False,0.0,6,6,[]
+141,10,A,CONFIRM_ATTACK,{},True,YELLOW,False,0.0,6,6,[]

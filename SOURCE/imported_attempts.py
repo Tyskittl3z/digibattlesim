@@ -124,6 +124,12 @@ def main_candidates(runtime, seat, root=ROOT):
     for key in own['hand']:
         card = runtime.context.card(seat, _number(key)).to_dict()
         cost = card['play_cost']
+        if card['card_number']=='EX13-023' and view['memory']+10>=7:
+            from assembly_actions import assembly_choices,ASSEMBLY_COST
+            choices.extend({'kind':'ASSEMBLY_PLAY','hand_key':key,'materials':materials,
+                            'printed_cost':ASSEMBLY_COST,
+                            'legality':'PRINTED_ASSEMBLY_CANDIDATE_NOT_FULL_ACTION_LEGALITY'}
+                           for materials in assembly_choices(runtime,seat,key))
         if type(cost) is not int or cost < 0 or cost > view['memory'] + 10:
             continue
         if card['type'] in ('Digimon', 'Tamer'):
@@ -233,6 +239,12 @@ def pending_choice(runtime, seat, selected, pilot):
     from aero_effects import PLAY_EFFECT,DIGIVOLVE_EFFECT,END_EFFECT,aero_choices
     if effect in (PLAY_EFFECT,DIGIVOLVE_EFFECT,END_EFFECT):
         return pilot.choose(view,aero_choices(runtime,seat,selected['source'],effect))
+    from omni_return_effect import EFFECT as OMNI_RETURN_EFFECT,omni_return_choices
+    if effect==OMNI_RETURN_EFFECT:
+        return pilot.choose(view,omni_return_choices(runtime,seat,selected['source']))
+    from raid_effect import EFFECT as RAID_EFFECT,raid_choices
+    if effect==RAID_EFFECT:
+        return pilot.choose(view,raid_choices(runtime,seat,selected['source']))
     from tamer_play_effects import TAMER_CHOICE_EFFECTS, tamer_play_choices
     if effect in TAMER_CHOICE_EFFECTS:
         return pilot.choose(view, tamer_play_choices(runtime, seat, selected['source'], effect))
@@ -259,6 +271,9 @@ def _apply(runtime, kind, seat, args, root):
         return choose_breeding_action(runtime, seat, args['action'], root)
     if kind == 'PLAY_CARD':
         return choose_play(runtime, seat, args['hand_key'], root)
+    if kind == 'ASSEMBLY_PLAY':
+        from main_actions import choose_assembly
+        return choose_assembly(runtime,seat,args['hand_key'],args['materials'],root)
     if kind == 'USE_OPTION':
         from option_actions import choose_use_option
         return choose_use_option(runtime,seat,args['hand_key'],root)

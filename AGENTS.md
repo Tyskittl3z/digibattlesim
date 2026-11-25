@@ -1,5 +1,18 @@
 # Permanent Codex instructions — Digimon Battle Simulator
 
+## Latest interaction-review correction — 2026-11-17
+- The user rejected advance or duplicate catalogs of every possible card
+  interaction. Bots choose from the live state and their own hand/card text;
+  the judge checks each proposed action against Bandai card text, Comprehensive
+  Rules and rulings at that moment. Save actual proposals, verdicts, state
+  changes and Bot C observations in the match log. Unsupported rules halt the
+  exact seed for repair and replay. A separate branch inventory is not a
+  prerequisite to fact-finding play or final eligibility.
+- A prospective fact-finding game may run with an `UNVERIFIED` document-date
+  lock for discovery, but carries zero certified credit until the required
+  source and match review is complete. Do not turn a software pass into a
+  rules-certified result.
+
 ## Latest user decision-policy instruction — 2026-11-11
 - The user wants each Bot A/B choice based on the current visible battle state,
   that bot's own hand and printed card text, with the fresh prior match report

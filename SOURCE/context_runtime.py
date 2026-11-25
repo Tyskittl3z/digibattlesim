@@ -311,6 +311,8 @@ class ContextRuntime:
             if physical.key == source_key and (field_ != 'security_text' or
                     (self.state.attack is not None and self.state.attack['checked'] == source_key)):
                 return physical
+        if field_ == 'security_text':
+            raise RuntimeHalt('SECURITY_WINDOW_UNIMPLEMENTED')
         for stack in self.state.battle[seat].values():
             pool = stack.cards[:-1] if field_ == 'inherited_text' else stack.cards[-1:]
             for card in pool:
@@ -346,6 +348,8 @@ class ContextRuntime:
                     raise RuntimeHalt('PENDING_CHOICE_INVALID')
             elif self.state.pending:
                 raise RuntimeHalt('PENDING_EFFECTS_REQUIRE_RESOLUTION')
+            elif self.state.phase != 'SCENARIO':
+                raise RuntimeHalt('PENDING_TRIGGER_REQUIRED')
             if canonical(self.registry.manifest()) != self._pack_manifest:
                 raise RuntimeHalt('PACK_CHANGED_RESTART_REQUIRED')
             source = self._source(seat, source_key, field_)
@@ -417,6 +421,10 @@ class ContextRuntime:
         try:
             before=self.snapshot()
             choice=json.loads(canonical(choice))
+            if isinstance(choice, dict) and isinstance(choice.get('rules'), dict):
+                from rules_evidence import versioned_locator
+                choice['rules']['locator'] = versioned_locator(self.context,
+                    choice['rules'].get('locator'))
             self.context.deck(seat)
             self.verify()
             if self.state.terminal:

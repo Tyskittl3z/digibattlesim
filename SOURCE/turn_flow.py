@@ -13,8 +13,8 @@ from match_preparation import _rules
 from printed_triggers import trigger_lines
 
 
-def _turn_rules(root):
-    return {**_rules(root), 'locator': (
+def _turn_rules(root,context):
+    return {**_rules(root,context), 'locator': (
         'Comprehensive rules v4.3: 6-1-3; 6-1-4; 6-5-1-7-1; 6-6; '
         '15-8-3-6; 15-11-1; 15-13; 15-14-1-5-1; 15-16-12')}
 
@@ -96,7 +96,7 @@ def _pass(runtime, seat, choice):
 
 def pass_turn(runtime, seat, root):
     """Declare a pass explicitly; finish_turn closes its end window separately."""
-    return runtime._control_command('PASS_TURN', seat, {'rules': _turn_rules(root)}, _pass)
+    return runtime._control_command('PASS_TURN', seat, {'rules': _turn_rules(root,runtime.context)}, _pass)
 
 
 def _finish(runtime, seat, choice):
@@ -132,4 +132,4 @@ def _finish(runtime, seat, choice):
 
 def finish_turn(runtime, seat, root):
     """Finish an open main-phase end window after all effects have resolved."""
-    return runtime._control_command('FINISH_TURN', seat, {'rules': _turn_rules(root)}, _finish)
+    return runtime._control_command('FINISH_TURN', seat, {'rules': _turn_rules(root,runtime.context)}, _finish)

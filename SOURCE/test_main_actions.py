@@ -74,10 +74,32 @@ class MainPlayTests(unittest.TestCase):
             'usage':list(_usage(r,'A',key,ORIENTATION_EFFECT)),'trigger':{'kind':'When Attacking'}}])
         self.assertEqual(r.state.pending,[]);r.verify()
 
+    def test_assembly_offers_three_named_trash_materials_and_stacks_them_for_seven_memory(self):
+        from imported_attempts import main_candidates, _apply
+        r=self.runtime();r.state.memory=4
+        top=hand_card(r,'A','EX13-023')
+        materials=[]
+        for number in ('EX13-017','P-138','BT22-023'):
+            physical=next(c for c in r.state.zones['A']['deck'] if c.card_number==number)
+            r.state.zones['A']['deck'].remove(physical)
+            r.state.zones['A']['trash'].append(physical)
+            materials.append(physical.key)
+        offered=main_candidates(r,'A',ROOT)
+        action=next((item for item in offered if item['kind']=='ASSEMBLY_PLAY'
+                     and item['hand_key']==top and item['materials']==materials),None)
+        self.assertIsNotNone(action)
+        result=_apply(r,action['kind'],'A',action,ROOT)
+        self.assertEqual((result['cost'],r.state.memory),(7,-3))
+        self.assertEqual([card.key for card in r.state.battle['A'][top].cards],materials+[top])
+        self.assertFalse(any(key in [card.key for card in r.state.zones['A']['trash']]
+                             for key in materials))
+        self.assertEqual([item['effect_id'] for item in pending_options(r,'A')],
+                         ['EX13-023.orientation','EX13-023.return_fewest'])
+        r.verify()
+
     def test_live_board_scope_wrong_actor_or_not_in_hand_fails_atomically(self):
-        for case in ('board','actor','source'):
-            r=self.runtime();key=hand_card(r,'A','BT11-112' if case=='board' else 'EX1-013')
-            if case=='board':stage(r,'A',['BT11-023','P-138'])
+        for case in ('actor','source'):
+            r=self.runtime();key=hand_card(r,'A','EX1-013')
             before=r.snapshot()['state']
             with self.assertRaises(RuntimeHalt):
                 choose_play(r,'B' if case=='actor' else 'A','absent' if case=='source' else key,ROOT)

@@ -43,17 +43,18 @@ def _digivolving_effects(runtime, target, source_stack=None):
     elif target.card_number == 'BT12-029' and lines == (BT12_UNSUSPEND_LINE,):
         effects = (BT12_UNSUSPEND_EFFECT,)
     elif target.card_number == 'BT20-102' and lines == (BT20_102_DIGIVOLVE_LINE,):
-        # A false printed If clause has no card action to resolve. Preserve
-        # the strict halt when the clause is true until that board wipe is bound.
+        # CR 2-3-1-2/3: a bare bracketed name is an exact name match;
+        # "with [X] in its name" is the distinct substring condition.
+        # The true board-wipe branch remains gated until it has a binding.
         stack = source_stack or runtime.state.battle[target.owner].get(target.key)
         if stack is None:
             raise RuntimeHalt('BT20_102_DIGIVOLUTION_STACK_REQUIRED')
         underneath = stack.cards[:-1] if stack.cards[-1].key == target.key else stack.cards
-        if any('Omnimon' in runtime.context.card(target.owner, card.card_number).name
-               or runtime.context.card(target.owner, card.card_number).name == 'X Antibody'
-               for card in underneath):
+        if any(runtime.context.card(target.owner, card.card_number).name
+               in ('Omnimon', 'X Antibody') for card in underneath):
             raise RuntimeHalt('BT20_102_CONDITIONAL_BOARD_WIPE_UNSUPPORTED: ' + target.key)
-        effects = ()
+        from omni_return_effect import EFFECT
+        effects = (EFFECT,)
     elif target.card_number in PLAY_SPECS:
         effect,line=PLAY_SPECS[target.card_number]
         if lines!=(line,):
@@ -228,7 +229,7 @@ def trusted_evolve_from_effect(runtime,seat,source_key,hand_key,route_index,root
         if choice not in rina_evolution_choices(runtime,seat):
             raise RuntimeHalt('RINA_EVOLUTION_CHOICE_INVALID')
         return _choose(runtime,seat,{**choice,'cost_reduction':2,
-            'rules':{**_rules(root),'locator':RULE_LOCATOR}},root,within_effect=True)
+            'rules':{**_rules(root,runtime.context),'locator':RULE_LOCATOR}},root,within_effect=True)
     spec=OPTION_EVOLUTION_EFFECTS.get(effect)
     if spec is None:raise RuntimeHalt('OPTION_ACTIVE_BINDING_REQUIRED')
     source=validate_option_activation(runtime,seat,(effect,),source_zone=spec['source_zone'])
@@ -236,12 +237,12 @@ def trusted_evolve_from_effect(runtime,seat,source_key,hand_key,route_index,root
     if choice not in option_evolution_choices(runtime,seat,effect):
         raise RuntimeHalt('OPTION_EVOLUTION_CHOICE_INVALID')
     return _choose(runtime,seat,{**choice,'cost_reduction':spec['reduction'],
-        'rules':{**_rules(root),'locator':RULE_LOCATOR}},root,within_effect=True)
+        'rules':{**_rules(root,runtime.context),'locator':RULE_LOCATOR}},root,within_effect=True)
 
 
 def choose_battle_evolution(runtime, seat, source_key, hand_key, route_index, root, *, cost_reduction=0):
     """Choose an ordinary evolution; effect-bound reductions are separate work."""
-    rules = {**_rules(root), 'locator': RULE_LOCATOR}
+    rules = {**_rules(root,runtime.context), 'locator': RULE_LOCATOR}
     return runtime._control_command('BATTLE_EVOLUTION', seat,
         {'source_key': source_key, 'hand_key': hand_key, 'route_index': route_index,
          'cost_reduction': cost_reduction, 'rules': rules},

@@ -50,17 +50,18 @@ class RecordedSecurityTests(unittest.TestCase):
         self.assertEqual(runtime.state.phase,'MAIN')
         runtime.verify()
 
-    def test_actual_security_effect_is_still_not_silently_skipped(self):
+    def test_actual_security_effect_is_resolved_as_placement(self):
         runtime=self.recorded()
         old=runtime.state.zones['B']['security'].pop()
         runtime.state.zones['B']['deck'].append(old)
         option=next(c for c in runtime.state.zones['B']['deck'] if c.card_number=='P-104')
         runtime.state.zones['B']['deck'].remove(option)
         runtime.state.zones['B']['security'].append(option)
-        before=runtime.snapshot()['state']
-        with self.assertRaisesRegex(RuntimeHalt,'SECURITY_CARD_UNSUPPORTED'):
-            confirm_attack(runtime,'A',ROOT)
-        self.assertEqual(runtime.snapshot()['state'],before)
+        result=confirm_attack(runtime,'A',ROOT)
+        self.assertEqual(result['security_effect'],'P-104.security_place')
+        self.assertEqual(result['placed_option'],option.key)
+        self.assertIn(option.key,runtime.state.battle['B'])
+        runtime.verify()
 
 
 if __name__=='__main__':

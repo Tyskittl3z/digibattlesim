@@ -73,7 +73,7 @@ class PhaseTests(unittest.TestCase):
         source=stage(r,'A',['EX13-069'])
         stage(r,'A',['BT11-023'])
         r.state.phase='MAIN'
-        with self.assertRaisesRegex(RuntimeHalt,'PHASE_PENDING_REQUIRED'):
+        with self.assertRaisesRegex(RuntimeHalt,'PENDING_TRIGGER_REQUIRED'):
             r.dispatch('EX13-069.start_main_memory','A',source,None)
         self.assertEqual(r.state.memory,0)
 

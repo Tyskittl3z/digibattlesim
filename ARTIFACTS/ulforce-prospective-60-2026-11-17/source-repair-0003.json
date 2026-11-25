@@ -1,0 +1,26 @@
+{
+  "approved_changes": {
+    "fresh_repair_migration.py": {
+      "after": "ffdab722ff78ac6879df0b6e68a0c300e2fec3991bb90abb938fef19d47e1eae",
+      "before": "c95e2ce0998e8b5902063b35432a1cfaf94f4cd7ac0178437d98c09645346014"
+    },
+    "omni_return_effect.py": {
+      "after": "bbc9d7cfe471f7bd64d56f96aabfdecfeb3ee3a1272770124f7b6cbbcede8efe",
+      "before": "ab6d0e1aa9bc894752e1d61d8bfe8d6c886d8d0f0080b8052baaa4368f81b731"
+    },
+    "return_effects.py": {
+      "after": "91053063490aef283d542b80a22d68d1b13760925e43067b7adbef9bf1206a16",
+      "before": "927bf76e2ae6138560f27e48e04567f28df345898787228650f8529a701b50b7"
+    }
+  },
+  "game_index": 25,
+  "halt_reason": "RETURN_MULTIPLE_REPLACEMENTS_UNIMPLEMENTED",
+  "lineage_sha256": "d83a9122fd1a4e96c06200e5593b8f19b3d511e403d88aa9f2f7c31b9e105f35",
+  "migrated_record_sha256": "668c3c076c6c46fe522543e43a223056f291ca5103c5badc8076f7317f2e4013",
+  "new_lock_sha256": "73e95be99cc0378d23b37666b4f9d284dd01e49573441afff30f5fff8c95587d",
+  "old_lock_sha256": "e1cffde4aa41a98d57fed713d9debb87d1ba958002e7f552dea7fe59ca2ad804",
+  "parent_record_sha256": "76f51f8df0da25627b7de268cee8a8fa53ee68b5c817215f77b19ae2c689fb8a",
+  "repair_note": "Offer both printed inherited return replacements for Game 25 BT20-102; defender orders them, and preventing the leave event cancels the other",
+  "schema": "prospective-source-repair-v1",
+  "seed": 12134641098518414298
+}

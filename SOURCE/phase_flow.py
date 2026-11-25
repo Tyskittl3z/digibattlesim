@@ -85,7 +85,7 @@ def _advance(runtime,seat,choice):
 
 
 def advance_phase(runtime,seat,root):
-    rules={**_rules(root),'locator':'Comprehensive rules v4.3: 1-2-3-2; 6-1 through 6-4; 15-4'}
+    rules={**_rules(root,runtime.context),'locator':'Comprehensive rules v4.3: 1-2-3-2; 6-1 through 6-4; 15-4'}
     return runtime._control_command('ADVANCE_PHASE',seat,{'rules':rules},_advance)
 
 
@@ -124,5 +124,5 @@ def _breeding(runtime,seat,choice):
 
 
 def choose_breeding_action(runtime,seat,action,root):
-    rules={**_rules(root),'locator':'Comprehensive rules v4.3: 4-17; 4-18; 6-4; 6-5; 15-4'}
+    rules={**_rules(root,runtime.context),'locator':'Comprehensive rules v4.3: 4-17; 4-18; 6-4; 6-5; 15-4'}
     return runtime._control_command('BREEDING_CHOICE',seat,{'action':action,'rules':rules},_breeding)

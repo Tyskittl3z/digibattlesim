@@ -16,41 +16,25 @@ The lock, its source bytes and the lane criteria enter provenance before any
 cohort runs. A changed lock/document/criterion invalidates the old cohort for
 current eligibility. No official evidence or missing format selection is guessed.
 
-## 2. Minimum cohort plus encountered branch coverage
+## 2. Minimum cohort and live action review
 
 The minimum is 60 full judge-reviewed matches, with equal starts and at least
 30 starts per deck. Larger balanced cohorts are allowed. Keep every attempted
 seed and HALT; do not cherry-pick a successful subset.
 
-`RULES/INTERACTION_COVERAGE.json` is bound to current provenance. Its entries
-identify loaded-card interactions, link all encountered BOT_DECISION/JUDGE_PATH
-events, and enumerate reviewed alternatives. A judge must attest that each
-branch inventory is complete. Legal branches need evidence from a bound match
-trace or a reproducible targeted scenario; ILLEGAL alternatives need official
-citations and remain separate. Unknown or uncovered legal branches block freeze.
-Other events and timing still require full-transcript rules review.
+For each proposed action, the judge checks the current state, action window,
+printed card text, Comprehensive Rules and applicable Bandai rulings before
+accepting the action. Record the proposal, verdict, state transition and Bot C
+observation as they happen. An unsupported or unresolved rule halts that seed;
+repair and replay from its saved checkpoint. Never infer legality from a prior
+game's accepted action or a named deck route.
 
-Coverage-entry contract:
-
-```text
-interaction_id, card, encounters: [match trace references],
-inventory_review: {reviewer, verdict: VERIFIED, citations},
-branches: [{id, legality: LEGAL|ILLEGAL, citations, evidence}]
-```
-
-Match references identify `index`, `seed`, `record_sha256`, `event_index`, and
-`kind: MATCH`. An inventory groups only one card/decision/effect context. Every
-observed choice/path must be present as a LEGAL branch; unchosen prohibited
-alternatives may be ILLEGAL with citations. A branch's match evidence must be
-one of that inventory's declared encounters and actually select that branch.
-Equal ACTIVATE/DECLINE labels on another card or effect cannot supply coverage.
-Use `card: null` only for generic pilot decisions with no card source; their
-decision type and acting seat still define the context.
-
-Scenario evidence identifies `kind: SCENARIO`, a file under
-`RULES/scenarios/` and its SHA-256. A scenario records current provenance,
-initial/final snapshots, nonempty actions and its own rules review/citations.
-**A targeted scenario contributes zero full matches.**
+The saved match traces are the interaction record. Derive observed decision and
+judge-path counts directly from them. There is no separate prerequisite to
+list every possible interaction, enumerate unchosen alternatives, or recreate
+the trace in `RULES/INTERACTION_COVERAGE.json`. Targeted scenarios may verify
+a discovered rule or repair, but contribute zero full matches. Full-match
+rules review and exact replay remain required for certified credit.
 
 ## 3. Keep three verification questions separate
 

@@ -3,13 +3,12 @@ import json
 from pathlib import Path
 
 from context_runtime import RuntimeHalt
-from selected_mechanics import _source_evidence
+from rules_evidence import comprehensive_rules
 
 
-def _rules(root):
-    index=json.loads((Path(root)/'RULES/matchups/123129-vs-124303/SOURCE_INDEX.json').read_bytes())
-    raw=next(s for s in index['sources'] if s['id']=='rules')
-    return _source_evidence(root,raw,'Comprehensive rules v4.3: 5-2-1-1 through 5-2-1-8').manifest()
+def _rules(root, context=None):
+    return comprehensive_rules(context, root,
+        'Comprehensive rules v4.3: 5-2-1-1 through 5-2-1-8').manifest()
 
 
 def _begin(runtime,seat,choice):
@@ -34,7 +33,7 @@ def _begin(runtime,seat,choice):
 
 def begin_preparation(runtime,root):
     return runtime._control_command('BEGIN_PREPARATION',runtime.first,
-                                    {'rules':_rules(root)},_begin)
+                                    {'rules':_rules(root,runtime.context)},_begin)
 
 
 def _redraw(runtime,seat,choice):
@@ -65,4 +64,4 @@ def _redraw(runtime,seat,choice):
 
 def choose_redraw(runtime,seat,redraw,root):
     return runtime._control_command('REDRAW_CHOICE',seat,
-                                    {'redraw':redraw,'rules':_rules(root)},_redraw)
+                                    {'redraw':redraw,'rules':_rules(root,runtime.context)},_redraw)

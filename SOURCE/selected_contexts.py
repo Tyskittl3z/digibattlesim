@@ -6,8 +6,9 @@ saved lock. This shares existing primitives, never another matchup's results.
 """
 from pathlib import Path
 
-from context_runtime import RuntimeHalt
+from context_runtime import OfficialEvidence, RuntimeHalt
 from match_context import MatchContext
+from rules_evidence import comprehensive_rules
 
 
 _CONTEXTS = {
@@ -19,24 +20,39 @@ _CONTEXTS = {
 
 
 def require_selected_context(context, root):
-    """Return the matching saved lock or reject before an action mutates state."""
+    """Verify an old saved lock or a new source-pinned imported context."""
     from matchup_readiness import load_context_file
 
     try:
         if type(context) is not MatchContext:
             raise ValueError('Validated exact context required')
         context_id = context.matchup_id
-        source_ids, relative = _CONTEXTS[context_id]
-        if (context.deck_a.source_id, context.deck_b.source_id) != source_ids:
-            raise ValueError('Ordered source identities changed')
         root = Path(root).resolve()
-        path = (root / relative).resolve()
-        if not path.is_relative_to(root):
-            raise ValueError('Context lock escapes root')
-        locked = load_context_file(path)
-        if (locked.matchup_id != context_id
-                or (locked.deck_a.source_id, locked.deck_b.source_id) != source_ids):
-            raise ValueError('Saved context lock changed')
-        return locked
+        if context_id in _CONTEXTS:
+            source_ids, relative = _CONTEXTS[context_id]
+            if (context.deck_a.source_id, context.deck_b.source_id) != source_ids:
+                raise ValueError('Ordered source identities changed')
+            path = (root / relative).resolve()
+            if not path.is_relative_to(root):
+                raise ValueError('Context lock escapes root')
+            locked = load_context_file(path)
+            if (locked.matchup_id != context_id
+                    or (locked.deck_a.source_id, locked.deck_b.source_id) != source_ids):
+                raise ValueError('Saved context lock changed')
+            return locked
+        if context.to_dict()['rules'].get('official_source') is None:
+            raise ValueError('New context requires an explicit official rules source')
+        comprehensive_rules(context, root, 'Comprehensive rules: imported context preflight')
+        base = (root / 'RULES').resolve()
+        for card in context.cards:
+            source = card.to_dict().get('official_source')
+            if not isinstance(source, dict):
+                raise ValueError('Official card source required: ' + card.number)
+            path = (root / source['file']).resolve()
+            if not path.is_relative_to(base) or not base.is_relative_to(root):
+                raise ValueError('Official card source escapes RULES')
+            OfficialEvidence.from_bytes(source['url'], path.read_bytes(),
+                                        source['sha256'], source.get('locator') or '#' + card.number)
+        return context
     except (OSError, ValueError, KeyError, TypeError, AttributeError, StopIteration) as exc:
         raise RuntimeHalt('BASIC_BOARD_SELECTED_CONTEXT_REQUIRED') from exc

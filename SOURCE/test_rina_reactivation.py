@@ -122,7 +122,7 @@ class RinaReactivationTests(unittest.TestCase):
    if forged:r.state.pending[0]['trigger']['suspended_before']=True
    else:r.state.pending=[]
    before=r.snapshot()
-   with self.assertRaisesRegex(RuntimeHalt,'RINA_REACTIVATION_WINDOW_REQUIRED|RINA_REACTIVATION_TRIGGER_INVALID'):
+   with self.assertRaisesRegex(RuntimeHalt,'PENDING_TRIGGER_REQUIRED|RINA_REACTIVATION_TRIGGER_INVALID'):
     if forged:resolve_pending(r,'B',r.state.pending[0]['id'],None)
     else:r.dispatch(REACTIVATION_EFFECT,'B',tamer,None)
    self.assertEqual(r.snapshot(),before)

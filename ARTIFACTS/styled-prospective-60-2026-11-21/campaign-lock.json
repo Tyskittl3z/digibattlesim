@@ -1,0 +1,456 @@
+{
+  "accepted_fact_finding_credit": 0,
+  "campaign_id": "ULFORCE_STYLED_FRESH_60_2026_11_21_V1",
+  "context_file": "ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json",
+  "context_file_sha256": "089d449edab177c4f1d31a4b2ce8414650439df4ea6459080400df45d5004484",
+  "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+  "criteria": {
+    "binding": "LOADED_ARTIFACTS_AT_MODULE_IMPORT",
+    "criteria": {
+      "breeding": "Each physical card in breeding contributes 0.5; breeding cards are excluded from battle body/source/DP components.",
+      "definitions": {
+        "GREEN": "Positive observed net impact above the neutral threshold under these declared weights.",
+        "RED": "Negative observed net impact below the neutral threshold under these declared weights.",
+        "UNRATED": "The action did not resolve successfully. No reward is assigned.",
+        "YELLOW": "Near-zero observed net impact within the neutral threshold under these declared weights."
+      },
+      "disabled": "Cannot-suspend, or suspended and cannot-unsuspend. Threat units are 1 + 0.5 per source + 0.25 per level + 0.1 per 1000 known DP; this is a declared heuristic, not combat legality.",
+      "efficiency": "Positive net non-memory board benefit divided by evidenced paid memory. Explicit zero-cost development is FREE with no division. Missing payment evidence remains UNVERIFIED. This is not a globally-cheapest claim.",
+      "known_dp": "Printed DP plus active typed positive DP grants only. No inference of unimplemented continuous card text.",
+      "limitations": "Immediate command-boundary measurements do not establish causation, optimal play, calibrated win probabilities or approved roadmap lanes. Later effects can change a play's overall result.",
+      "memory_payment": "Use canonical PAY_* result steps. Traverse a steps tree instead of duplicated sibling result aliases; without steps prefer result, then named evolution/play subresults. A node's direct cost summarizes its canonical subtree and is a fallback only when no nested payment evidence exists. Equal-cost distinct PAY steps remain distinct. Independent payments must appear as separate canonical sibling steps or subresults. If no explicit evidence exists, a same-active actor-relative gauge decrease is an estimate only for explicit spend commands.",
+      "memory_resource_residual": "When the active player is unchanged, actor-relative gauge change plus explicit/estimated paid cost records observed other resource gains or losses. It is separate from actual paid cost. Turn flips create neither payment nor residual. This credits observed capped gains/refunds without using nominal printed gains.",
+      "neutral_absolute_threshold": 0.25,
+      "objective": "Observed public board impact, memory efficiency and tempo from the scoring player's perspective.",
+      "position_components": "Each position component is own amount minus opponent amount. Delta is after minus before; contribution is delta times its declared weight.",
+      "procedural_commands": [
+        "BEGIN_PREPARATION",
+        "REDRAW_CHOICE",
+        "ADVANCE_PHASE",
+        "FINISH_TURN",
+        "END_ATTACK",
+        "SETTLE_PENDING"
+      ],
+      "procedural_policy": "Preserve the actual signed observed components, reward and color at every successfully resolved boundary. Mark procedural commands as learning_eligible=false and decision_type=PROCEDURAL: automatic deals/draws or phase-boundary effects are observations, not learned strategic choices. Learning also excludes forced singleton choices, as enforced by the decision recorder and learner.",
+      "ready": "An unsuspended Digimon or Tamer that is not prevented from suspending. Options receive no readiness bonus.",
+      "schema": "observed-board-impact-criteria-v1",
+      "security_checks": "Cumulative completed checks supplied by Bot C. Missing history is unknown and is never reconstructed from remaining security or attack declarations.",
+      "status": "DEFINED_HEURISTIC_NOT_APPROVED_STRATEGY",
+      "tempo": "Show per-player cards in play, source depth, largest stack and completed check totals, plus per-axis leader. An overall leader requires dominance across all known axes; conflicting leads are CONTESTED and missing check history is UNKNOWN. No weights or win probabilities are implied by this dominance summary.",
+      "terminal_outcomes": "Recorded separately. A winner flag alone does not make an interaction green and is not included in this board reward.",
+      "version": 1,
+      "weights": {
+        "battle_units": 2.0,
+        "breeding_cards": 0.5,
+        "disabled_threat": -0.5,
+        "hand_cards": 0.5,
+        "known_dp_thousands": 0.1,
+        "levels": 0.25,
+        "memory_paid": -0.5,
+        "memory_resource_residual": 0.5,
+        "ready_blockers": 1.0,
+        "ready_cards": 0.5,
+        "security_checks": 2.0,
+        "security_remaining": 2.0,
+        "sources": 0.5
+      }
+    },
+    "criterion_sha256": "84de51952609311beadcbec58f9c8252e1aea2c9eae96689eaf5aad4711fcdaf",
+    "file": "RULES/learning-2026-11-10/INTERACTION_CRITERIA.json",
+    "file_sha256": "90e68db01b5644693f5403eb5d7d5fd6a30059e0b01f465c9cb2729df26a5ba4",
+    "probability_claim": false,
+    "scorer_source_sha256": "5e2aff4ac2265bb20e0a9fd4ffb5cb7a8e968ad82bff6f5c7f9b60dc52fd36b1",
+    "strategic_approval": "NONE"
+  },
+  "engine_sources": {
+    "aero_effects.py": "2035513ce3d9f65a2c7a4083fa8c8ccd78ea8d1ed0e685f28f60a1e78905a3c2",
+    "assembly_actions.py": "82965f8c4016254b49f00c0855c964c08689583b665cc4a3188c0c788b5710c2",
+    "attack_flow.py": "778490c52498b519f6c17f44bfb921c81da6149f6c350b95846cc768fae91a4e",
+    "basic_event_dependencies.py": "d1cd66f6f442f275247bf904a8042e132875cf696b7e0a84ceeabfdd67951593",
+    "battle_evolution.py": "21fd90dd6a42e3908814237052e68b0dee800a1951f58332c69d7784b2eb7e29",
+    "battlefield_scope.py": "4f6b15d94a191f7702746779fed35c7c5fc0767a41dc352efbc7db2bd52ec386",
+    "board_text_player.py": "0c2d05149d33d86374cc0ee2ac6c29a6aba3fb6d2aa7612ff92f6e87a095b03f",
+    "breeding_evolution.py": "129186ef5525238cf1981cf8a56e57fbfeae54c14612ea593d1a2763b32c6986",
+    "completed_play_reward.py": "f727c9d7567e62aa6d4d4ee0999caa6a27ec1d4e77307e01b46293a2dc8bf5ed",
+    "context_evolution.py": "5c4bc2291dc368a3957720ae7257b1bd9a6da3bc2f423fab8daf1c8472005b54",
+    "context_runtime.py": "093002c5ef26f9b55b6024f331bf7746846c571cd1f5225d39f5698879d71eec",
+    "effect_grants.py": "4d1e664d2ae94c55793d119c1f2236089105868db9133d45b396db6cea2b9b09",
+    "effect_scheduler.py": "3d5390b1167273c3101ba21fe4bfefb480c937c58e8b6e86d78dcf9aa978c657",
+    "evaluation_gate.py": "ff4c2ba758f0257cd91949167921f8e60fe91f7f4d53334db16e05f3d4491c00",
+    "ex13_ulforce_effects.py": "b0bccbadfdff5652bf912386939f68de0f4d448f8c5a83a3e52fa6042e26cf54",
+    "field_tracker.py": "b5beb92a7af611b7eaf5854e351f794fd24aca6db3c4f296d61af77e721e8256",
+    "fresh_learning_campaign.py": "172b73ea48d100ec061c1fc0becde571919e5afef7d6aaee41b9f85ff9840a30",
+    "fresh_repair_migration.py": "ffdab722ff78ac6879df0b6e68a0c300e2fec3991bb90abb938fef19d47e1eae",
+    "frozen_evaluation.py": "bbb3d78d775eb6597e92c0cdcb90cb5a7b60e6d731662d31308a698528fbff8d",
+    "full_game_integrity.py": "ea32b0bf1e6bdd74aac2e5f2a30a3121732f315faebbb6dff7f24118767ecc01",
+    "full_match_attempt.py": "6d43ac60796246f2eeb53f9269cc7961ccee77c82f7ca404c73e72a718f15f9a",
+    "imported_attempts.py": "32a3bd099f8cd1e656fe22b58b457d62f7a97918c06ecb4713b54e83a3507a5b",
+    "interaction_learning.py": "d6155928ecff36287257a93c3aa6f0b3c5188fbedbabeefa501cac3f8480f0d9",
+    "interaction_scoring.py": "5e2aff4ac2265bb20e0a9fd4ffb5cb7a8e968ad82bff6f5c7f9b60dc52fd36b1",
+    "judge_ledger.py": "9a16b7a8e28b35050997a2017c63e01518281f0382af3d22ee1601bf264fe030",
+    "loaded_digivolution.py": "4ae853d35b5d068ab9eb405e9871825e20d9fa3f973125e984ca4bc03309fb83",
+    "loaded_effects.py": "609a0d42e26d1eb3c600498d25ade94279706d5e100b5b012bcb0aeb4ce668ab",
+    "main_actions.py": "9c4ac7108d9e486db9b670f735af92a9f391acfa9200bf067520cf4ce8bd403b",
+    "match_context.py": "140c9e1442d1f646a1bea724d2f01141a701fd729586c4072bbaaed45a2f0cd3",
+    "match_evidence.py": "d6f7c751880e4a26b671b4b9e7461d9df12dda848e60c375d243202b9f134b32",
+    "match_preparation.py": "31da31a26c80a2aaf23b7287cb515bec9c7b9799907f39c14e3efb501fd3a6b6",
+    "matchup_readiness.py": "1c42e03cdb6aef049472b34f13f7e381fe50a41fe9e85e9b14f1cfca57bcdb3f",
+    "matchup_rules_lock.py": "5a84bb61aebe37c261241e9617bd97162732b9179d03df028489cdf5d34ff229",
+    "matchup_v10_active_choices.py": "2223ec232807ab91cb2588dac0e8b2da856efd8d4b3b221a3f9d040e2f282b4f",
+    "matchup_v11_endturn_choices.py": "543709af32eca7f3bf1e5534db1b64ae1fadd00998dcb4c398aee3fe4331fff8",
+    "matchup_v12_attack_sources.py": "d10150d48bf9698485eb5231e3abe3ec3fef39fa999d96403b2b34db2fd83b45",
+    "matchup_v5.py": "b1fd7954fa34fe641960527f907b2f31dd205b5ff14a9f922390ee91dbe8ef94",
+    "matchup_v6.py": "eaba3254258c95774cb284f0886d1cde48fec7b8a8435365d00b2e36738d1c20",
+    "matchup_v7.py": "77050d3dd72252f0ee35655672db2620dc6b6b0639e3a79977dfe09def2738f3",
+    "matchup_v8.py": "830e471a46d2f9f5b10ea21d166bd2c5e59243d4f94c96bb6d21a22602130afd",
+    "matchup_v9_decision_policy.py": "a863dd658503111d979a325f49b5f716766ecdb8d3a598bc784ae30d68d37a64",
+    "named_bot_continuation.py": "45583bd1523a22030e5ca21e4e2a3beb7c4c80962cf1172772d2060654143538",
+    "named_player_bots.py": "63222d5658fb697f715f2439fbced442223034ba1ac47e3b280225e00cc7ea32",
+    "omni_return_effect.py": "bbc9d7cfe471f7bd64d56f96aabfdecfeb3ee3a1272770124f7b6cbbcede8efe",
+    "on_play_effects.py": "9f7674332feeb05a43e08a4285b6340000db752cc44d18ad2f79b1a4ef84b05e",
+    "option_actions.py": "55ff2c958b2e77d9c3f976de51285775cca00b7f046206755c6e25d7932f3361",
+    "phase_flow.py": "0ea66f83b22c43a826ff9419866e19cf00935726a7b8a8a582294119f21145e7",
+    "printed_triggers.py": "ec5c85443ade73d2428d5751fbb99a4fe95ec98d78e3249ae71b082c6f256621",
+    "raid_effect.py": "c0b41ec579cb272ec33552ea8ab58995b4145ad85e1fc7b1001e0042cc12722e",
+    "recorded_action_checkpoint.py": "8008887595fc23e3f0ae2aa687a183be52cde09f793c837a93f07b476b896753",
+    "return_effects.py": "91053063490aef283d542b80a22d68d1b13760925e43067b7adbef9bf1206a16",
+    "rina_reactivation.py": "5184c962f0dffde521ca32cc9619885d11df7e15bb108d65cf33086484b26f55",
+    "rina_unsuspend_effects.py": "5dddf87be2046d7e4982a26bce14905fec8796f67e508a79cb4aab713cc55dd0",
+    "search_effects.py": "a9b50a9f6107908087577a85e31551b9f60b8f1277a4d6c563cf16a6d540e10f",
+    "security_attack_layer.py": "22373be7d01c67967f570a36a2c5c17f5134eceb816f29fd984b390ea8f65501",
+    "security_tamer.py": "6f193185221251a6beb6c1aec9ceadcdae1c746508786bf2ced0561397963ed8",
+    "seeded_opening_probe.py": "d106c287eb100f9f9f6bec3a6dce240be2a5643d943bdda137003cd7b429c586",
+    "selected_contexts.py": "657b901c23725c4187ecb7c29cf411709aee7a3f4bd7af76612b7cbc2b86fb2a",
+    "selected_mechanics.py": "6b15a31bd66c1aa4dde941f11a41edcd1bcab4f53274bd9c644cfe6962beed03",
+    "styled_board_text_player.py": "d8ce8693f01ef96ad1bb444af04217a38fec27dfae4fd4c07be18885d4bcb7ea",
+    "tamer_play_effects.py": "4713caf4acb60de0887600a61ae33cd1f55386195d625c8c66e6430d128c37ff",
+    "turn_flow.py": "4a6a73981ea98d3d2cc2329ba39e8362e16bea158c3bfd67fda1d49a50f4592f",
+    "two_player_prefix.py": "c3b7d29500795a35938673ac1ab5f9c41e1ac6fdcfc200ac7e014bc3bbe1e518",
+    "verified_full_match.py": "945d21a9f43c423f5eb3a4c1cf35433dc086091a1e5ae4a6d5b1e092c4ceb16e",
+    "workflow_policy.py": "2cfd1a3dc6424a6cd4b98b10561bd6bb92a98ecdecd51ad851aca6797881a04f"
+  },
+  "final_evaluation_credit": 0,
+  "initial_model_state_id": "66db6c6c425dc5e897ce2e6d360805a499b9b60937ab697c855e9a4c6f5cb034",
+  "lock_sha256": "bf3e7c12696e8e1e68c52992b3730842160a97b3303dc48919fd35f65741a319",
+  "player_policy": "BOARD_TEXT_HISTORY_STYLED",
+  "roadmap_criteria_file": "ARTIFACTS/styled-prospective-60-2026-11-21/ROADMAP_CRITERIA.json",
+  "roadmap_criteria_file_sha256": "dacf4b0213a82e5bcaa7819fa307c14feb39e500d3d73ba92466dde37d565b77",
+  "rules_blockers": [
+    "EFFECTIVE_DATE_MISSING",
+    "SEPARATE_REVIEW_MISSING"
+  ],
+  "rules_lock_file": "RULES/matchups/123129-vs-122110/RULES_LOCK.json",
+  "rules_lock_file_sha256": "44fe1f83582eb227844891f4e991af4821a45f0f63a9f34ac2378469b5294142",
+  "rules_status": "UNVERIFIED",
+  "schedule": {
+    "campaign_id": "ULFORCE_STYLED_FRESH_60_2026_11_21_V1",
+    "context_id": "9dd326339d64f263c7570a33b03e4ab9d57c1cd466ec0fddffcec4d7ea5bcd8d",
+    "count": 60,
+    "games": [
+      {
+        "first": "A",
+        "index": 0,
+        "seed": 13222111115381104236
+      },
+      {
+        "first": "B",
+        "index": 1,
+        "seed": 9647418045423011032
+      },
+      {
+        "first": "A",
+        "index": 2,
+        "seed": 16488327870621519385
+      },
+      {
+        "first": "B",
+        "index": 3,
+        "seed": 349688540661762218
+      },
+      {
+        "first": "A",
+        "index": 4,
+        "seed": 15130158140042924710
+      },
+      {
+        "first": "B",
+        "index": 5,
+        "seed": 839170962250656197
+      },
+      {
+        "first": "A",
+        "index": 6,
+        "seed": 16477205050348618237
+      },
+      {
+        "first": "B",
+        "index": 7,
+        "seed": 10846546368096402496
+      },
+      {
+        "first": "A",
+        "index": 8,
+        "seed": 5626485618544633195
+      },
+      {
+        "first": "B",
+        "index": 9,
+        "seed": 7173783424751354370
+      },
+      {
+        "first": "A",
+        "index": 10,
+        "seed": 11115531950240514644
+      },
+      {
+        "first": "B",
+        "index": 11,
+        "seed": 14940806208043943993
+      },
+      {
+        "first": "A",
+        "index": 12,
+        "seed": 17741691947082963940
+      },
+      {
+        "first": "B",
+        "index": 13,
+        "seed": 14187101837158120835
+      },
+      {
+        "first": "A",
+        "index": 14,
+        "seed": 11973000594534661583
+      },
+      {
+        "first": "B",
+        "index": 15,
+        "seed": 13031458436939403381
+      },
+      {
+        "first": "A",
+        "index": 16,
+        "seed": 6842417880705729411
+      },
+      {
+        "first": "B",
+        "index": 17,
+        "seed": 17981451765577453130
+      },
+      {
+        "first": "A",
+        "index": 18,
+        "seed": 14378197218909753542
+      },
+      {
+        "first": "B",
+        "index": 19,
+        "seed": 593345679275883376
+      },
+      {
+        "first": "A",
+        "index": 20,
+        "seed": 4678901005812751510
+      },
+      {
+        "first": "B",
+        "index": 21,
+        "seed": 16516475269810713008
+      },
+      {
+        "first": "A",
+        "index": 22,
+        "seed": 17241006859317940015
+      },
+      {
+        "first": "B",
+        "index": 23,
+        "seed": 7737700572347011327
+      },
+      {
+        "first": "A",
+        "index": 24,
+        "seed": 3071521798155460561
+      },
+      {
+        "first": "B",
+        "index": 25,
+        "seed": 9286640048459406182
+      },
+      {
+        "first": "A",
+        "index": 26,
+        "seed": 3512010890238737941
+      },
+      {
+        "first": "B",
+        "index": 27,
+        "seed": 385277551117720693
+      },
+      {
+        "first": "A",
+        "index": 28,
+        "seed": 16701910761779170373
+      },
+      {
+        "first": "B",
+        "index": 29,
+        "seed": 13830329005636490368
+      },
+      {
+        "first": "A",
+        "index": 30,
+        "seed": 10817168501531122746
+      },
+      {
+        "first": "B",
+        "index": 31,
+        "seed": 14720251512640294617
+      },
+      {
+        "first": "A",
+        "index": 32,
+        "seed": 2790629016211515996
+      },
+      {
+        "first": "B",
+        "index": 33,
+        "seed": 11758819345933444282
+      },
+      {
+        "first": "A",
+        "index": 34,
+        "seed": 16066381002716298023
+      },
+      {
+        "first": "B",
+        "index": 35,
+        "seed": 4855625759159611514
+      },
+      {
+        "first": "A",
+        "index": 36,
+        "seed": 12497360961314709920
+      },
+      {
+        "first": "B",
+        "index": 37,
+        "seed": 4591086904077190472
+      },
+      {
+        "first": "A",
+        "index": 38,
+        "seed": 4204666319863211135
+      },
+      {
+        "first": "B",
+        "index": 39,
+        "seed": 1028105678603614782
+      },
+      {
+        "first": "A",
+        "index": 40,
+        "seed": 9153974573035911478
+      },
+      {
+        "first": "B",
+        "index": 41,
+        "seed": 1974977017439464458
+      },
+      {
+        "first": "A",
+        "index": 42,
+        "seed": 4297401295498964626
+      },
+      {
+        "first": "B",
+        "index": 43,
+        "seed": 13660668666475149074
+      },
+      {
+        "first": "A",
+        "index": 44,
+        "seed": 13037317773114710947
+      },
+      {
+        "first": "B",
+        "index": 45,
+        "seed": 15047153873034362144
+      },
+      {
+        "first": "A",
+        "index": 46,
+        "seed": 8631142194348720066
+      },
+      {
+        "first": "B",
+        "index": 47,
+        "seed": 5700423065341847152
+      },
+      {
+        "first": "A",
+        "index": 48,
+        "seed": 9741772038050231002
+      },
+      {
+        "first": "B",
+        "index": 49,
+        "seed": 14654118082502935606
+      },
+      {
+        "first": "A",
+        "index": 50,
+        "seed": 968916522565182642
+      },
+      {
+        "first": "B",
+        "index": 51,
+        "seed": 15596673169715692044
+      },
+      {
+        "first": "A",
+        "index": 52,
+        "seed": 18363820265428187754
+      },
+      {
+        "first": "B",
+        "index": 53,
+        "seed": 12786014386076382273
+      },
+      {
+        "first": "A",
+        "index": 54,
+        "seed": 17120212648855083779
+      },
+      {
+        "first": "B",
+        "index": 55,
+        "seed": 13919266950735819584
+      },
+      {
+        "first": "A",
+        "index": 56,
+        "seed": 3519058937445452205
+      },
+      {
+        "first": "B",
+        "index": 57,
+        "seed": 10597809622651826866
+      },
+      {
+        "first": "A",
+        "index": 58,
+        "seed": 6353805340872635371
+      },
+      {
+        "first": "B",
+        "index": 59,
+        "seed": 12659185046353307380
+      }
+    ],
+    "schedule_sha256": "9a74ec9afbde37e2a0e8faf2f9f5efa6e3c7c43cfd845f6fedaab18a088d8409",
+    "schema": "fresh-learning-schedule-v1"
+  },
+  "schema": "styled-sequential-60-lock-v1",
+  "target_games": 60
+}

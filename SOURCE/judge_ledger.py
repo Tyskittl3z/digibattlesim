@@ -24,6 +24,7 @@ _ARGUMENTS = {
     'BEGIN_PREPARATION': (set(), set()), 'REDRAW_CHOICE': ({'redraw'}, set()),
     'ADVANCE_PHASE': (set(), set()), 'BREEDING_CHOICE': ({'action'}, {'kind'}),
     'PLAY_CARD': ({'hand_key'}, {'kind', 'legality', 'printed_cost'}),
+    'ASSEMBLY_PLAY': ({'hand_key','materials'}, {'kind', 'legality', 'printed_cost'}),
     'USE_OPTION': ({'hand_key'}, {'kind', 'legality', 'printed_cost'}),
     'OPTION_DELAY': ({'source_key'}, {'kind', 'legality'}),
     'BATTLE_EVOLUTION': ({'source_key', 'hand_key', 'route_index'}, _ROUTE_META),
@@ -149,7 +150,7 @@ def _engine_event(runtime, command, before, result):
 
 
 def _sources(runtime, command, before, result, event, root):
-    rules = _rules(root)
+    rules = _rules(root,runtime.context)
     specific = (event.get('choice') or {}).get('rules') if isinstance(event.get('choice'), dict) else None
     if specific is not None:
         if specific.get('sha256') != rules['sha256'] or specific.get('url') != rules['url']:
@@ -224,7 +225,8 @@ def judge_action(runtime, command, before, after, result, error=None, *, root=RO
                 raise RuntimeHalt('JUDGE_FAILED_TRANSACTION_CHANGED_STATE')
             reason = str(error)
             gap = any(word in reason.upper() for word in
-                      ('UNSUPPORTED', 'UNIMPLEMENTED', 'UNVERIFIED', 'MISSING', 'RESTART_REQUIRED'))
+                      ('UNSUPPORTED', 'UNIMPLEMENTED', 'UNVERIFIED', 'UNREVIEWED', 'MISSING',
+                       'NOT_INSTALLED', 'RESTART_REQUIRED'))
             receipt.update({'status': 'SOFTWARE_GAP' if gap else 'REJECTED', 'reason': reason})
             receipt['layers'].update({
                 'Justitia': {'status': 'TRANSACTION_REJECTED_UNCHANGED', 'reason': reason},

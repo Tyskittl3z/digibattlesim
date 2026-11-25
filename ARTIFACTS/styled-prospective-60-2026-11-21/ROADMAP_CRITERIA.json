@@ -1,0 +1,19 @@
+{
+  "schema": "ulforce-styled-conditional-roadmap-criteria-v1",
+  "status": "PREREGISTERED_NOT_APPROVED",
+  "registered_on": "2026-11-21",
+  "matchup": ["123129", "122110"],
+  "board_impact_criteria_file": "RULES/learning-2026-11-10/INTERACTION_CRITERIA.json",
+  "board_impact_criteria_file_sha256": "90e68db01b5644693f5403eb5d7d5fd6a30059e0b01f465c9cb2729df26a5ba4",
+  "minimum_independent_seeds": 2,
+  "minimum_evaluated_legal_alternatives": 2,
+  "lane_fields": ["current_public_condition", "legal_choice", "alternatives", "observed_board_effect", "memory_spent", "uncertainty", "rule_citations", "match_seed_and_command_refs"],
+  "definitions": {
+    "GREEN": "Reviewed evidence supports this legal choice over evaluated legal alternatives under the stated public condition for the declared board-impact objective.",
+    "YELLOW": "The choice is legal, but reviewed alternatives show a tradeoff or insufficient separation under the stated public condition.",
+    "RED": "Reviewed evidence supports worse board impact than an evaluated legal alternative under the stated public condition.",
+    "UNKNOWN": "Legality or comparative strategy evidence is insufficient.",
+    "ILLEGAL": "A separate official-rules verdict, never a strategic color."
+  },
+  "constraint": "No preloaded routes, hidden opponent information, inferred counterfactual outcome, or promotion from a single immediate command label. Every approved lane needs actual alternative traces from at least two independent seeds and a separate rules and strategy review."
+}

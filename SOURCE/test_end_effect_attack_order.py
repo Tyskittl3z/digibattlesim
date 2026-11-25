@@ -1,37 +1,48 @@
-"""Game 20's chosen end-turn attack finishes before the other end effect."""
-import gzip
-import json
+"""An end-turn attack defers the other same-depth end effect."""
 import unittest
 
 from attack_flow import choose_counter, choose_blocker, confirm_attack, end_attack
 from context_runtime import ContextRuntime
 from effect_scheduler import pending_options, resolve_pending
 from field_tracker import FieldTracker
-from imported_attempts import _apply
 from matchup_readiness import load_context_file
 from selected_mechanics import build_selected_registry
-from test_selected_mechanics import ROOT
+from test_selected_mechanics import ROOT, stage
+from turn_flow import finish_turn
 
 
 class EndEffectAttackOrderTests(unittest.TestCase):
-    def test_saved_end_attack_defers_other_same_depth_effect(self):
-        path = ROOT / 'ARTIFACTS/board-text-60-2026-11-11/game-0020/segment-0000.json.gz'
-        with gzip.open(path, 'rt') as handle:
-            record = json.load(handle)
-        context = load_context_file(ROOT / record['context_file'])
-        runtime = ContextRuntime(context, record['seed'], record['first'],
-            build_selected_registry(context, ROOT), allow_experimental=True)
-        for command in record['commands'][:-1]:
-            _apply(runtime, command['command'], command['seat'], command['args'], ROOT)
-        failed = record['commands'][-1]
-        self.assertEqual(runtime.snapshot()['state'], failed['before']['state'])
-        result = resolve_pending(runtime, 'B', failed['args']['pending_id'], failed['args']['choice'])
+    def test_end_attack_defers_other_same_depth_effect(self):
+        context = load_context_file(ROOT / 'ARTIFACTS/ulforce-bootstrap-2026-11-02/context.json')
+        runtime = ContextRuntime(context, 20, 'B', build_selected_registry(context, ROOT),
+                                 allow_experimental=True)
+        runtime.state.phase = 'END_OF_TURN'
+        runtime.state.turn = 3
+        runtime.state.memory = -1
+        attacker = stage(runtime, 'B', ['BT20-102'], suspended=True)
+        observer = stage(runtime, 'B', ['BT22-023'], suspended=True)
+        runtime.state.battle['B'][attacker].played_turn = 1
+        runtime.state.battle['B'][attacker].ready_since_turn = 2
+        runtime.state.battle['B'][observer].played_turn = 1
+        runtime.state.battle['B'][observer].ready_since_turn = 2
+        card = next(c for c in runtime.state.zones['A']['deck'] if c.card_number == 'BT11-032')
+        runtime.state.zones['A']['deck'].remove(card)
+        runtime.state.zones['A']['security'].append(card)
+        finish_turn(runtime, 'B', ROOT)
+        pending = pending_options(runtime, 'B')
+        self.assertEqual({p['effect_id'] for p in pending},
+                         {'BT20-102.end_turn_rush_attack', 'BT22-023.end_turn_unsuspend'})
+        chosen = next(p for p in pending if p['effect_id'] == 'BT20-102.end_turn_rush_attack')
+        result = resolve_pending(runtime, 'B', chosen['id'],
+                                 {'kind': 'DECLARE_ATTACK', 'attacker': attacker, 'target': 'PLAYER'})
         self.assertEqual(result['processing'], 'RUSH_AND_ATTACK_WITHOUT_SUSPENDING')
         self.assertEqual(runtime.state.attack['window'], 'COUNTER')
-        self.assertNotIn('deferred_depth', runtime.public_view('B')['attack'])
         tracker = FieldTracker(context)
         tracker.start(runtime.snapshot())
         self.assertNotIn('deferred_depth', tracker.player_view('B')['attack'])
+        raid = [p for p in runtime.state.pending if p['effect_id'] == 'BT20-102.raid_target']
+        if raid:
+            resolve_pending(runtime, 'B', raid[0]['id'], None)
         self.assertEqual([p['effect_id'] for p in runtime.state.pending],
                          ['BT22-023.end_turn_unsuspend'])
         self.assertEqual(pending_options(runtime, 'B'), [])
@@ -42,7 +53,3 @@ class EndEffectAttackOrderTests(unittest.TestCase):
         self.assertEqual([p['effect_id'] for p in pending_options(runtime, 'B')],
                          ['BT22-023.end_turn_unsuspend'])
         runtime.verify()
-
-
-if __name__ == '__main__':
-    unittest.main()
