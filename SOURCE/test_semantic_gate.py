@@ -239,6 +239,44 @@ class SemanticGateTests(unittest.TestCase):
                          [c.key for c in stack_before])
         self.assertEqual(receipt['checker'], 'BREEDING_CHOICE')
 
+    def test_encountered_attack_declaration_suspends_and_queues_printed_trigger(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-promotion.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        self.assertEqual(runtime.snapshot()['state'], record['commands'][-1]['before']['state'])
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'DECLARE_ATTACK', 'A', command['args'], ROOT))
+        self.assertEqual(runtime.snapshot(), before)
+        self.assertEqual(result['window'], 'COUNTER')
+        self.assertEqual(result['triggered_effects'], ['EX13-019.attack_play_tamer'])
+        self.assertTrue(trial.state.battle['A'][command['args']['attacker']].suspended)
+        self.assertEqual(trial.state.attack['target'], 'PLAYER')
+        self.assertEqual(receipt['checker'], 'DECLARE_ATTACK')
+
+    def test_unknown_attack_effect_names_exact_pending_effect_before_trial(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-attack-declare.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        with self.assertRaisesRegex(RuntimeHalt,
+                'RULE_EFFECT_CHECK_NOT_INSTALLED: EX13-019.attack_play_tamer'):
+            self.checked_trial(runtime, gate, command,
+                lambda candidate: self.fail('Engine ran before rule check'))
+        self.assertEqual(runtime.snapshot(), before)
+
     def test_unknown_action_halts_before_live_state_changes(self):
         before = self.runtime.snapshot()
         command = {'command': 'USE_OPTION', 'seat': 'A', 'args': {'hand_key': 'A:LM-034#1'}}

@@ -11,13 +11,16 @@ by SHA-256. The card-page snapshots still need freshness and rules review.
 route. `game-0000-after-route.json` passed that action and halted before
 playing EX13-017. `game-0000-after-search.json` passed the play and search,
 then halted before breeding promotion. `game-0000-after-promotion.json` passed
-that move and now halts before A's attack declaration. Each record exactly
-replayed under its recorded source version at creation. The latest record
-exactly replays under the current source version. The three
+that move and halted before A's attack declaration. The two
+`game-0000-after-attack-*.json` records passed the declaration and pause at
+EX13-019's optional Tamer play; the latest one names the exact missing effect
+checker. Each record exactly replayed under its recorded source version at
+creation. The latest record exactly replays under the current source version.
+The five
 `prefix-comparison*.json` files show that each update retained the original
 seed, prior successful choices and states, and the retried failed selection.
 
 The comparison is diagnostic evidence, not a formal source-only migration or
-independent official rules certification. Both records have zero fact-finding
+independent official rules certification. Every probe record has zero fact-finding
 and final-evaluation credit. The new cohort and 10,000-game evaluation have
 not started.

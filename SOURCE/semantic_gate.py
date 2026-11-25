@@ -26,6 +26,8 @@ _PLAY_LOCATOR = 'Comprehensive rules v4.3: 1-3-11-1; 4-2; 6-5-1-1; 7-1-1 through
 _EX13_017_SEARCH = ('[When Moving] [On Play] Reveal the top 3 cards of your deck. '
     'Add 1 card with [Veedramon] in its text or the [Royal Knight] trait among them '
     'to the hand. Return the rest to the bottom of the deck.')
+_EX13_019_ATTACK = ('[When Attacking] [Once Per Turn] You may play 1 Tamer card with '
+                    '[Veedramon] in its text from your hand with the cost reduced by 2.')
 
 
 def _tuples(value):
@@ -424,12 +426,14 @@ def _search_has_veedramon(context, seat, key):
 def _resolve_pending(context, before, command, source):
     state = before['state']
     seat = command['seat']
-    if (state['terminal'] or state['attack'] is not None or state['resolving_option'] is not None
-            or seat != state['active'] or len(state['pending']) != 1):
+    if state['terminal'] or len(state['pending']) != 1:
         raise RuntimeHalt('RULE_PENDING_WINDOW_UNREVIEWED')
     pending = state['pending'][0]
     if pending['effect_id'] != 'EX13-017.on_play_search':
         raise RuntimeHalt('RULE_EFFECT_CHECK_NOT_INSTALLED: ' + pending['effect_id'])
+    if (state['attack'] is not None or state['resolving_option'] is not None
+            or seat != state['active']):
+        raise RuntimeHalt('RULE_PENDING_WINDOW_UNREVIEWED')
     if (pending['id'] != command['args'].get('pending_id') or pending['seat'] != seat
             or pending['field'] != 'main_text' or pending['source'] not in state['battle'][seat]
             or state['battle'][seat][pending['source']]['instance_id'] != pending['instance']
@@ -466,6 +470,63 @@ def _resolve_pending(context, before, command, source):
         'bottom_order_convention': 'first element is bottommost', 'status': 'EXPERIMENTAL'}
 
 
+def _declare_attack(context, before, command, source):
+    state = _ordinary_window(before, command)
+    seat, args = command['seat'], command['args']
+    if state['phase'] != 'MAIN' or args.get('target') != 'PLAYER':
+        raise RuntimeHalt('RULE_ATTACK_TARGET_UNREVIEWED')
+    key = args.get('attacker')
+    stack = state['battle'][seat].get(key)
+    if stack is None or stack['suspended'] or stack['statuses']:
+        raise RuntimeHalt('RULE_ATTACKER_NOT_READY')
+    top = stack['cards'][-1]
+    if (context.card(seat, _physical_number(top)).kind != 'Digimon'
+            or stack['played_turn'] == state['turn']
+            or stack['ready_since_turn'] is None
+            or stack['ready_since_turn'] > state['turn']):
+        raise RuntimeHalt('RULE_ATTACK_HISTORY_UNREVIEWED')
+    for owner in ('A', 'B'):
+        for other_key, other_stack in state['battle'][owner].items():
+            if other_stack['statuses']:
+                raise RuntimeHalt('RULE_ATTACK_STATUS_UNREVIEWED: ' + other_key)
+            for index, physical in enumerate(other_stack['cards']):
+                field = 'main_text' if index == len(other_stack['cards']) - 1 else 'inherited_text'
+                text = context.card(owner, _physical_number(physical)).effect_text(field)
+                if 'suspend' in text.lower().replace('unsuspend', ''):
+                    raise RuntimeHalt('RULE_ATTACK_ORIENTATION_EFFECT_UNREVIEWED: ' + physical)
+                if other_key != key and ('[When Attacking]' in text or 'when any of your digimon attacks' in text.lower()):
+                    raise RuntimeHalt('RULE_ATTACK_OBSERVER_UNREVIEWED: ' + physical)
+                if other_key == key and physical != top and '[When Attacking]' in text:
+                    raise RuntimeHalt('RULE_ATTACK_INHERITED_EFFECT_UNREVIEWED: ' + physical)
+    top_text = context.card(seat, _physical_number(top)).effect_text('main_text')
+    if _EX13_019_ATTACK in top_text.splitlines() and _physical_number(top) == 'EX13-019':
+        effect_id = 'EX13-019.attack_play_tamer'
+    elif '[When Attacking]' in top_text:
+        raise RuntimeHalt('RULE_ATTACK_EFFECT_UNREVIEWED: ' + top)
+    else:
+        effect_id = None
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    new['battle'][seat][key]['suspended'] = True
+    other = 'B' if seat == 'A' else 'A'
+    new['attack'] = {'attacker': key, 'attacker_instance': stack['instance_id'],
+        'target': 'PLAYER', 'target_instance': '', 'controller': seat,
+        'defender': other, 'window': 'COUNTER', 'counter_used': False,
+        'block_used': False, 'checked': None}
+    result = {'attacker': key, 'target': 'PLAYER', 'window': 'COUNTER', 'full_match_credit': 0}
+    if effect_id is not None:
+        usage = [state['turn'], seat, top, stack['instance_id'], effect_id]
+        if usage not in state['once_used']:
+            new['effect_sequence'] += 1
+            new['pending'].append({'id': 'effect-' + str(new['effect_sequence']),
+                'seat': seat, 'source': top, 'effect_id': effect_id,
+                'field': 'main_text', 'instance': stack['instance_id'], 'depth': 0,
+                'trigger': {'kind': 'When Attacking', 'attacker': top, 'target': 'PLAYER'},
+                'usage': usage})
+            result['triggered_effects'] = [effect_id]
+    return expected, result
+
+
 class SemanticGate:
     """Reusable action checker registry; absent mechanics have no verdict."""
     def __init__(self, context, root, checkers=()):
@@ -475,7 +536,8 @@ class SemanticGate:
                          'ADVANCE_PHASE': _advance_phase, 'BREEDING_CHOICE': _breeding_choice,
                          'BREEDING_EVOLUTION': _breeding_evolution, 'PASS_TURN': _pass_turn,
                          'FINISH_TURN': _finish_turn, 'PLAY_CARD': _play_card,
-                         'RESOLVE_PENDING': _resolve_pending}
+                         'RESOLVE_PENDING': _resolve_pending,
+                         'DECLARE_ATTACK': _declare_attack}
         for name, checker in checkers:
             if name in self.checkers or not callable(checker):
                 raise ValueError('Duplicate or invalid semantic checker: ' + str(name))
