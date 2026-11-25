@@ -536,6 +536,82 @@ class SemanticGateTests(unittest.TestCase):
         self.assertEqual(receipt['checker'], 'ADVANCE_PHASE')
         self.assertEqual(runtime.snapshot(), before)
 
+    def test_promote_with_known_grant_queues_start_main_tamer(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-unsuspend-window.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'BREEDING_CHOICE', 'B', command['args'], ROOT))
+        self.assertEqual(result['action'], 'promote')
+        self.assertEqual(trial.state.pending[0]['effect_id'], 'EX13-069.start_main_memory')
+        self.assertIn('B:EX13-019#1', trial.state.battle['B'])
+        self.assertEqual(receipt['checker'], 'BREEDING_CHOICE')
+        self.assertEqual(runtime.snapshot(), before)
+
+    def test_start_main_tamer_gains_memory_from_printed_condition(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-second-promotion.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'RESOLVE_PENDING', 'B', command['args'], ROOT))
+        self.assertEqual(result, {'memory_before': 2, 'memory_after': 3,
+                                  'condition_met': True})
+        self.assertEqual(trial.state.pending, [])
+        self.assertEqual(receipt['checker'], 'RESOLVE_PENDING')
+        self.assertEqual(runtime.snapshot(), before)
+
+    def test_bt22_battle_evolution_queues_printed_return(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-start-main.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'BATTLE_EVOLUTION', 'B', command['args'], ROOT))
+        self.assertEqual(result['triggered_effects'],
+                         ['BT22-023.when_digivolving_return'])
+        self.assertEqual(trial.state.pending[0]['usage'], [])
+        self.assertEqual(receipt['checker'], 'BATTLE_EVOLUTION')
+        self.assertEqual(runtime.snapshot(), before)
+
+    def test_bt22_return_checks_plain_target_and_bottom_deck_move(self):
+        path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
+        record = json.loads((path / 'game-0000-after-aero-evolve.json').read_bytes())
+        context = load_context_file(path / 'context.json')
+        runtime = ContextRuntime(context, record['seed'], record['first'],
+            build_selected_registry(context, ROOT), allow_experimental=True)
+        for saved in record['commands'][:-1]:
+            _apply(runtime, saved['command'], saved['seat'], saved['args'], ROOT)
+        gate = importlib.import_module('semantic_gate').SemanticGate(context, ROOT)
+        command = {k: record['commands'][-1][k] for k in ('command', 'seat', 'args')}
+        before = runtime.snapshot()
+        trial, result, receipt = self.checked_trial(runtime, gate, command,
+            lambda candidate: _apply(candidate, 'RESOLVE_PENDING', 'B', command['args'], ROOT))
+        self.assertEqual(result['returned'], 'A:EX13-017#1')
+        self.assertEqual(trial.state.zones['A']['deck'][0].key, 'A:EX13-017#1')
+        self.assertNotIn('A:EX13-017#1', trial.state.battle['A'])
+        self.assertEqual(receipt['checker'], 'RESOLVE_PENDING')
+        self.assertEqual(runtime.snapshot(), before)
+
     def test_encountered_blocker_evade_grant_checks_target_and_expiry(self):
         path = ROOT / 'ARTIFACTS/strict-probe-2026-11-24'
         record = json.loads((path / 'game-0000-after-child-gap.json').read_bytes())

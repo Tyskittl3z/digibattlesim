@@ -34,6 +34,8 @@ _EX13_022_PLAY = ('[On Play] [When Digivolving] [When Attacking] [Once Per Turn]
     'play 1 Tamer card with [Veedramon] in its text from your hand without paying the cost.')
 _EX13_022_OBSERVER = ("[All Turns] [Once Per Turn] When any of your Tamers are played, 1 "
     "of your opponent's Digimon or Tamers can't suspend until their turn ends.")
+_BT22_023_RETURN = ("[On Play] [When Digivolving] Return 1 of your opponent's level 4 "
+    'or lower Digimon to the bottom of the deck.')
 _BT11_112_ON_PLAY = ('[On Play] Until the end of your opponent\'s turn, 1 of your '
     'Digimon with [Veemon] or [Veedramon] in its name gains ＜Blocker＞ and ＜Evade＞.')
 _EX13_002_EGG = ('[Your Turn] [Once Per Turn] When any of your blue Tamers are played, '
@@ -48,6 +50,8 @@ _BT11_112_SUSPEND = ('[All Turns] When one of your Digimon with [Veedramon] in i
 _EX13_069_UNSUSPEND = ('[Your Turn] When any of your Digimon unsuspend, by suspending this '
     'Tamer, ＜Draw 1＞. After, 1 of your Digimon may digivolve into a Digimon card with '
     '[Veedramon] in its name in the hand with the cost reduced by 2.')
+_EX13_069_START_MAIN = ('[Start of Your Main Phase] If you have a Digimon with [Veemon] '
+    'or [Veedramon] in its name, gain 1 memory.')
 _LM_057_SECURITY = ('[Security] Reveal the top 2 cards of your deck. Add 1 red or blue card '
     'among them to the hand. Return the rest to the bottom of the deck. Then, place this '
     'card in the battle area.')
@@ -167,13 +171,30 @@ def _ordinary_window(before, command, *, allow_negative=False):
 
 def _quiet_timing(context, state, seat, timing):
     """Defer a live printed timing until its effect checker is installed."""
+    effects = []
     for stack in state['battle'][seat].values():
         cards = stack['cards']
         for index, physical in enumerate(cards):
             field = 'main_text' if index == len(cards) - 1 else 'inherited_text'
             text = context.card(seat, _physical_number(physical)).effect_text(field)
             if '[' + timing + ']' in text:
+                if (timing == 'Start of Your Main Phase' and field == 'main_text'
+                        and _physical_number(physical) == 'EX13-069'
+                        and _EX13_069_START_MAIN in text.splitlines()):
+                    effects.append((physical, stack['instance_id'],
+                                    'EX13-069.start_main_memory'))
+                    continue
                 raise RuntimeHalt('RULE_PHASE_EFFECT_UNREVIEWED: ' + timing + ' card=' + physical)
+    return effects
+
+
+def _queue_reviewed_phase(new, seat, timing, effects):
+    for physical, instance, effect in effects:
+        new['effect_sequence'] += 1
+        new['pending'].append({'id': 'effect-' + str(new['effect_sequence']),
+            'seat': seat, 'source': physical, 'effect_id': effect,
+            'field': 'main_text', 'instance': instance, 'depth': 0,
+            'trigger': {'kind': timing, 'phase': new['phase']}, 'usage': []})
 
 
 def _advance_phase(context, before, command, source):
@@ -207,8 +228,9 @@ def _advance_phase(context, before, command, source):
             new['zones'][seat]['hand'].append(deck.pop())
         new['phase'] = 'BREEDING'
     elif phase == 'BREEDING_MOVING_EFFECTS':
-        _quiet_timing(context, state, seat, 'Start of Your Main Phase')
         new['phase'] = 'MAIN'
+        _queue_reviewed_phase(new, seat, 'Start of Your Main Phase',
+                              _quiet_timing(context, new, seat, 'Start of Your Main Phase'))
     else:
         raise RuntimeHalt('RULE_PHASE_ADVANCE_UNREVIEWED: ' + str(phase))
     return expected, {'phase': new['phase'], 'full_match_credit': 0, 'rules_source': rules}
@@ -234,8 +256,9 @@ def _breeding_choice(context, before, command, source):
         top_def = context.card(seat, _physical_number(top)).to_dict()
         if top_def['type'] != 'Digimon' or not isinstance(top_def['level'], int) or top_def['level'] < 3:
             raise RuntimeHalt('RULE_PROMOTION_LEVEL_INVALID')
-        if any(stack['statuses'] for owner in ('A', 'B') for stack in state['battle'][owner].values()):
-            raise RuntimeHalt('RULE_PROMOTION_STATUS_UNREVIEWED')
+        for owner in ('A', 'B'):
+            for key, stack in state['battle'][owner].items():
+                _reviewed_attack_statuses(context, state, owner, key, stack)
         for index, card in enumerate(cards):
             field = 'main_text' if index == len(cards) - 1 else 'inherited_text'
             if '[When Moving]' in context.card(seat, _physical_number(card)).effect_text(field):
@@ -245,14 +268,15 @@ def _breeding_choice(context, before, command, source):
             'statuses': {}, 'instance_id': 'entity-' + str(new['entity_sequence']),
             'played_turn': None, 'ready_since_turn': new['turn']}
         new['breeding'][seat] = []
-    _quiet_timing(context, new, seat, 'Start of Your Main Phase')
+    new['phase'] = 'MAIN'
+    _queue_reviewed_phase(new, seat, 'Start of Your Main Phase',
+                          _quiet_timing(context, new, seat, 'Start of Your Main Phase'))
     for stack in state['battle']['B' if seat == 'A' else 'A'].values():
         for index, card in enumerate(stack['cards']):
             field = 'main_text' if index == len(stack['cards']) - 1 else 'inherited_text'
             if "[Start of Opponent's Main Phase]" in context.card('B' if seat == 'A' else 'A',
                     _physical_number(card)).effect_text(field):
                 raise RuntimeHalt('RULE_OPPONENT_MAIN_EFFECT_UNREVIEWED: ' + card)
-    new['phase'] = 'MAIN'
     return expected, {'action': action, 'phase': 'MAIN', 'full_match_credit': 0,
                       'rules_source': _source_at(source, _BREEDING_LOCATOR)}
 
@@ -493,6 +517,10 @@ def _resolve_pending(context, before, command, source):
         return _resolve_ulforce_tamer(context, before, command, source, pending)
     if pending['effect_id'] == 'EX13-022.tamer_play_restriction':
         return _resolve_ulforce_restriction(context, before, command, source, pending)
+    if pending['effect_id'] == 'EX13-069.start_main_memory':
+        return _resolve_start_main_memory(context, before, command, source, pending)
+    if pending['effect_id'] == 'BT22-023.when_digivolving_return':
+        return _resolve_aero_return(context, before, command, source, pending)
     if pending['effect_id'] != 'EX13-017.on_play_search':
         raise RuntimeHalt('RULE_EFFECT_CHECK_NOT_INSTALLED: ' + pending['effect_id'])
     if (len(state['pending']) != 1 or state['attack'] is not None or state['resolving_option'] is not None
@@ -908,6 +936,86 @@ def _resolve_ulforce_restriction(context, before, command, source, pending):
         'full_match_credit': 0}
 
 
+def _resolve_aero_return(context, before, command, source, pending):
+    state = before['state']
+    seat, key = command['seat'], pending['source']
+    opponent = 'B' if seat == 'A' else 'A'
+    source_stack = state['battle'][seat].get(key)
+    if (seat != state['active'] or seat != pending['seat']
+            or pending['id'] != command['args'].get('pending_id')
+            or len(state['pending']) != 1 or pending['field'] != 'main_text'
+            or pending['usage'] != [] or source_stack is None
+            or source_stack['instance_id'] != pending['instance']
+            or source_stack['cards'][-1] != key or _physical_number(key) != 'BT22-023'
+            or _BT22_023_RETURN not in context.card(seat, 'BT22-023')
+                .effect_text('main_text').splitlines()
+            or pending['trigger'].get('kind') != 'When Digivolving'
+            or pending['trigger'].get('card') != key):
+        raise RuntimeHalt('RULE_AERO_RETURN_PENDING_MISMATCH')
+    eligible = sorted(target for target, stack in state['battle'][opponent].items()
+        if context.card(opponent, _physical_number(stack['cards'][-1])).kind == 'Digimon'
+        and isinstance(context.card(opponent, _physical_number(stack['cards'][-1])).to_dict()['level'], int)
+        and context.card(opponent, _physical_number(stack['cards'][-1])).to_dict()['level'] <= 4)
+    choice = command['args'].get('choice')
+    if choice not in (eligible if eligible else [None]):
+        raise RuntimeHalt('RULE_AERO_RETURN_TARGET_INVALID')
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    new['pending'] = []
+    if choice is None:
+        if new['memory'] < 0:
+            new['phase'] = 'END_OF_TURN'
+        return expected, {'target': None, 'processing': 'NO_ELIGIBLE_TARGET',
+            'full_match_credit': 0}
+    target = state['battle'][opponent][choice]
+    if len(target['cards']) != 1 or target['statuses']:
+        raise RuntimeHalt('RULE_AERO_RETURN_STACK_INTERACTION_UNREVIEWED')
+    for owner in ('A', 'B'):
+        for observer in state['battle'][owner].values():
+            for index, physical in enumerate(observer['cards']):
+                field = 'main_text' if index == len(observer['cards']) - 1 else 'inherited_text'
+                text = context.card(owner, _physical_number(physical)).effect_text(field)
+                if re.search(r'\b(?:would leave|when .* leaves|can\'t be returned|cannot be returned)\b', text, re.I):
+                    raise RuntimeHalt('RULE_AERO_RETURN_DEPENDENCY_UNREVIEWED: ' + physical)
+    new['battle'][opponent].pop(choice)
+    new['zones'][opponent]['deck'].insert(0, choice)
+    if new['memory'] < 0:
+        new['phase'] = 'END_OF_TURN'
+    return expected, {'target': choice, 'returned': choice,
+        'trashed_sources': [], 'processing': 'RETURNED_TO_DECK_BOTTOM',
+        'full_match_credit': 0}
+
+
+def _resolve_start_main_memory(context, before, command, source, pending):
+    state = before['state']
+    seat, key = command['seat'], pending['source']
+    stack = state['battle'][seat].get(key)
+    if (seat != state['active'] or seat != pending['seat']
+            or pending['id'] != command['args'].get('pending_id')
+            or command['args'].get('choice') is not None
+            or len(state['pending']) != 1 or pending['field'] != 'main_text'
+            or state['phase'] != 'MAIN' or stack is None
+            or stack['instance_id'] != pending['instance']
+            or _physical_number(key) != 'EX13-069'
+            or _EX13_069_START_MAIN not in context.card(seat, 'EX13-069')
+                .effect_text('main_text').splitlines()
+            or pending['trigger'] != {'kind': 'Start of Your Main Phase', 'phase': 'MAIN'}
+            or pending['usage'] != []):
+        raise RuntimeHalt('RULE_START_MAIN_PENDING_MISMATCH')
+    condition = any(context.card(seat, _physical_number(item['cards'][-1])).kind == 'Digimon'
+        and any(name in context.card(seat, _physical_number(item['cards'][-1])).name
+                for name in ('Veemon', 'Veedramon'))
+        for item in state['battle'][seat].values())
+    if not condition:
+        raise RuntimeHalt('RULE_START_MAIN_FALSE_CONDITION_UNREVIEWED')
+    expected = copy.deepcopy(before)
+    new = expected['state']
+    new['pending'] = []
+    new['memory'] = min(10, state['memory'] + 1)
+    return expected, {'memory_before': state['memory'],
+        'memory_after': new['memory'], 'condition_met': True}
+
+
 def _resolve_rina_suspension(context, before, command, source, pending):
     state = before['state']
     seat, key = command['seat'], pending['source']
@@ -1048,6 +1156,8 @@ def _battle_evolution(context, before, command, source):
     lines = [line for line in text.splitlines() if '[When Digivolving]' in line]
     if definition.number == 'EX13-022' and lines == [_EX13_022_PLAY]:
         effects = ['EX13-022.play_tamer']
+    elif definition.number == 'BT22-023' and lines == [_BT22_023_RETURN]:
+        effects = ['BT22-023.when_digivolving_return']
     elif lines:
         raise RuntimeHalt('RULE_BATTLE_EVOLUTION_EFFECT_UNREVIEWED: ' + target)
     else:
@@ -1065,11 +1175,13 @@ def _battle_evolution(context, before, command, source):
         new['zones'][seat]['hand'].append(drawn)
     for effect in effects:
         new['effect_sequence'] += 1
+        usage = ([state['turn'], seat, target, evolved['instance_id'], effect]
+                 if effect == 'EX13-022.play_tamer' else [])
         new['pending'].append({'id': 'effect-' + str(new['effect_sequence']),
             'seat': seat, 'source': target, 'effect_id': effect, 'field': 'main_text',
             'instance': evolved['instance_id'], 'depth': 0,
             'trigger': {'kind': 'When Digivolving', 'card': target, 'previous_top': source_key},
-            'usage': [state['turn'], seat, target, evolved['instance_id'], effect]})
+            'usage': usage})
     official = []
     for physical in (base, target):
         card_source = context.card(seat, _physical_number(physical)).to_dict()['official_source']

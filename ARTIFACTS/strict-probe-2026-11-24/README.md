@@ -27,8 +27,11 @@ then digivolves the suspended stack into EX13-022, draws a card, and plays
 BT11-112 without paying its cost. The new Tamer grants Blocker and Evade, and
 EX13-022 restricts an opposing Digimon from suspending until the opponent's
 turn ends. Turn transition and the ready-card unsuspend window pass. The latest
-record, `game-0000-after-unsuspend-window.json`, pauses before Bot B promotes
-its breeding stack at command 51 with those grants still on the board.
+records then check Bot B's breeding promotion, EX13-069's conditional memory
+gain, and BT22-023's printed digivolution and return of A's standalone
+EX13-017 to the bottom of A's deck. The latest record,
+`game-0000-after-aero-return.json`, pauses before Bot B digivolves into
+EX13-023 at command 55.
 Each record exactly replayed under its recorded source version at creation.
 The latest record exactly replays under the current source version. The
 `prefix-comparison*.json` files show that each update retained the original
